@@ -1,0 +1,406 @@
+<!-- $ VSSKTEMPLATEVERSION#1.2.5.4 $ htmldocs/VSApps/client/importP12MS.htm
+
+-->
+<HTML>
+<HEAD>
+<TITLE>VeriSign Key Import</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Apps/PTAv2#8 -->
+<!-- VSSKEND Apps/PTAv2#8 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<Script Language="JavaScript">
+<!--
+var browserName=navigator.appName;
+var browserNum=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+           self.location="importP12NS.htm";
+    }
+else
+    {
+       if (browserNum < requiredBrowserNumMS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function declinefunc()
+{
+   window.navigate("cancelimport.htm") ;
+}
+//-->
+</Script>
+
+
+<SCRIPT Language="VBScript">
+<!--
+
+  '-- VSSKBEGIN Apps/PTAv2#5 --
+  '-- VSSKEND Apps/PTAv2#5 --
+  
+  '-- VSSKBEGIN Apps/PTAv2#25 --
+  '-- VSSKEND Apps/PTAv2#25 --
+
+     Dim strIssuerDN
+     Dim strCertSerial
+
+     Dim IVSProfMgmt
+     Dim IVSUIPrefs
+     Dim IVSCertPrefs
+     Dim IVSSrchCrit
+     Dim IVSSelectedID
+     Dim IVSRoamPrefs
+     Dim IVSImportP12
+
+     On Error Resume Next
+     Set IVSProfMgmt = IVSPTA.IVSProfMgmt
+     If (Hex(err.number) = "1B6") Then
+         window.location = "../error/win2k.htm"
+     End if
+     Set IVSUIPrefs = IVSPTA.IVSUIPrefs
+     Set IVSCertPrefs = IVSPTA.IVSCertPrefs
+     Set IVSSrchCrit = IVSPTA.IVSSrchCrit
+     Set IVSSelectedID = IVSPTA.IVSSelectedDigID
+     Set IVSRoamPrefs = IVSPTA.IVSRoamPrefs
+     Set IVSImportP12 = IVSPTA.IVSP12Import
+
+  Function CloseObjects (ErrorCode, Operation, WinErrorCode)
+    On Error Resume Next
+    IVSPTA.Close
+    if ( ErrorCode <> 0 ) then
+       Call SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", CheckErrorCodeMS(ErrorCode), WinErrorCode, Operation)
+       Exit Function
+    end if 
+    If ( err.number <> 0 ) then
+        Call SetErrorInfo("../fdf/VSApps/client/PTAv2Errors.fdf", 00000001, Hex(err.number), "IVSPTA.Close")
+        Exit Function
+    End If
+  End Function
+  
+   Sub importP12()
+     
+     Dim boolProfileOpen
+	 Dim boolTPMAvailable
+
+	 boolTPMAvailable = CBool(0)
+
+	 On Error Resume Next
+	 if(TPMEnabled = "CHECKED") then
+		 boolTPMAvailable = IVSPTA.IsTPMAvailable 
+	 End If
+
+	 if(TPMEnabled = "CHECKED" And boolTPMAvailable = "True") then
+        MsgBox "You are not using the PTA in VeriSign mode" &vbCRLF &_
+                "Import functionality not supported."
+         Exit Sub	 
+	 End If
+
+     if (strCertStore <> 1) then
+         MsgBox "You are not using the PTA in VeriSign mode" &vbCRLF &_
+                "You should use the options dialog in Internet Explorer directly to recover your keys."
+         Exit Sub
+     end if 
+     
+     On Error Resume Next
+     IVSPTA.Initialize strAppCtxtName,0
+     If ( err.number <> 0 ) then
+         Call CloseObjects(Hex(err.number), "Import P12::IVSPTA.Initialize", Hex(err.number))      
+         Exit Sub
+     End If
+		
+   
+    On Error Resume Next
+    If (Len(strNewPasswordTitle) <> 0) then 
+		IVSUIPrefs.NewPasswd_Title = strNewPasswordTitle
+		If ( err.number <> 0 ) then
+                        Call CloseObjects(Hex(err.number), "Import P12::IVSUIPrefs.NewPasswd_Title", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+	
+	On Error Resume Next
+    If (Len(strNewPasswordText) <> 0) then 
+		IVSUIPrefs.NewPasswd_Text = strNewPasswordText
+		If ( err.number <> 0 ) then
+                        Call CloseObjects(Hex(err.number), "Import P12::IVSUIPrefs.NewPasswd_Text", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+	
+	On Error Resume Next
+    If (Len(strAppLogoUrl) <> 0) then
+	IVSUIPrefs.UILogoUrl = strAppLogoUrl
+	   If ( err.number <> 0 ) then
+                  Call CloseObjects(Hex(err.number), "Import P12::IVSUIPrefs.LogoUrl", Hex(err.number))
+		  Exit Sub
+	   End If
+	End If
+
+	On Error Resume Next
+    If (Len(strAffiliateLogoUrl) <> 0 And strAffiliateLogoUrl <> "VeriSign") then
+      	 IVSPTA.AffLogoUrl = strAffiliateLogoUrl
+         If ( err.number <> 0 And err.number <> &h800010c4 ) then
+               Call CloseObjects(Hex(err.number), "Import P12::IVSPTA.AffLogoUrl", Hex(err.number))
+		       Exit Sub
+         End If
+	End If
+		
+	On Error Resume Next
+    If (Len(strNewProfileHelpUrl) <> 0) then 
+		IVSUIPrefs.NewPasswd_HelpUrl = strNewProfileHelpUrl
+		If ( err.number <> 0 ) then
+                        Call CloseObjects(Hex(err.number), "Import P12::IVSUIPrefs.NewPasswd_HelpUrl", Hex(err.number))
+	         	Exit Sub
+		End If
+	End If
+	
+	
+    ' set the password preferences.
+	On Error Resume Next
+	if ( passwordQuality <> "") then
+       IVSProfMgmt.PasswdQuality = CInt (passwordQuality)
+	   If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+                  Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.PasswdQuality", Hex(err.number))
+		  Exit Sub 
+       End If
+    End If 
+
+    On Error Resume Next
+	if ( passwordLength <> "") then
+       IVSProfMgmt.PasswdLength = CInt (passwordLength)
+	   If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+                  Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.PasswdLength", Hex(err.number))
+		  Exit Sub 
+       End If
+    End If     
+    
+    On Error Resume Next
+	if ( passwordTimeOut <> "") then
+       IVSProfMgmt.PasswdTimeOut = CInt (passwordTimeOut)
+	   If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+                  Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.PasswdTimeOut", Hex(err.number))
+		  Exit Sub 
+       End If
+    End If
+    
+    On Error Resume Next
+    if ( passwordTries <> "") then
+       IVSProfMgmt.PasswdLockOutTries = CInt (passwordTries)
+	   If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+                  Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.PasswdLockOutTries", Hex(err.number))
+		  Exit Sub 
+       End If
+    End If          
+    
+    On Error Resume Next
+    if ( passwordUnlockPeriod <> "") then
+       IVSProfMgmt.PasswdUnLockPeriod = CInt (passwordUnlockPeriod)
+	   If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+                  Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.PasswdUnLockPeriod", Hex(err.number))
+		  Exit Sub 
+       End If
+    End If      
+
+     '-- VSSKBEGIN Apps/PTAv2/Roaming#7 --
+     '-- VSSKEND Apps/PTAv2/Roaming#7 --
+	
+    ' set the open profile flags
+    OPENPROF_CREATE_OR_OPEN = CInt(547)
+    On Error Resume Next
+    IVSProfMgmt.OpenProfFlags = OPENPROF_CREATE_OR_OPEN
+    If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+       Call CloseObjects(Hex(err.number), "IVSProfMgmt.OpenProfFlags", Hex(err.number))
+       Exit Sub
+    End If
+
+     ' call Import P12
+     On Error Resume Next 
+     IVSImportP12.ImportP12 1, document.proform.p12filename.value, strCertSerial, strIssuerDN
+     If ( (err.number <> 0) And (Hex(err.number) <> "80001067")) then 
+         Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.ImportP12", Hex(err.number))
+         Exit Sub
+     End If 
+     If (Hex(err.number) = "80001067") then 
+         Call CloseObjects(0, "", 0)
+         Exit Sub
+     End If
+
+     ' save the PTA preferences 
+    ' the certificate is installed one way or the other so set the preferences. 
+    On Error Resume Next
+    if (Len (strIssuerDN) = 0) then 
+        Call CloseObjects("00000103", "Empty Issuer DN", "00000000")
+        Exit Sub 
+    end if
+    IVSCertPrefs.CertIssDN = strIssuerDN
+    If ( err.number <> 0 ) then
+      Call CloseObjects("00000103", "Import P12::IVSCertPrefs.CertIssDN", Hex(err.number))
+      Exit Sub
+    End If
+
+    On Error Resume Next
+    if (Len (strCertSerial) = 0) then 
+        Call CloseObjects("00000103", "Blank Serial Number", "00000000")
+        Exit Sub 
+    end if
+    On Error Resume Next
+    IVSCertPrefs.CertSerNum = strCertSerial
+    If ( err.number <> 0 ) then
+      Call CloseObjects(Hex(err.number), "Import P12::IVSCertPrefs.CertISerNum", Hex(err.number))
+      Exit Sub
+    End If
+
+    On Error Resume Next
+    If (Len (strCertLogoUrl) <> 0) then 
+       IVSCertPrefs.CertLogoUrl = strCertLogoUrl
+       If ( err.number <> 0 ) then
+          Call CloseObjects(Hex(err.number), "Import P12::IVSCertPrefs.CertLogoUrl", Hex(err.number))
+          Exit Sub
+       End If
+    End If 
+
+    On Error Resume Next
+    If (Len (strCertFriendlyName) <> 0) then 
+       IVSCertPrefs.CertFrndlyName = strCertFriendlyName
+       If ( err.number <> 0 ) then
+            Call CloseObjects(Hex(err.number), "Import P12::IVSCertPrefs.CertFrndlyName", Hex(err.number))
+            Exit Sub
+       End If   
+    End If  
+    
+    On Error Resume Next
+    If (Len (strCertTextureUrl) <> 0) then 
+       IVSCertPrefs.CertTextureUrl = strCertTextureUrl
+       If ( err.number <> 0 ) then
+            Call CloseObjects(Hex(err.number), "Import P12::IVSCertPrefs.CertTextureUrl", Hex(err.number))
+            Exit Sub
+       End If   
+    End If       
+
+     On Error Resume Next
+     IVSProfMgmt.SaveProfile
+     If ( err.number <> 0 ) then
+         Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.SaveProfile", Hex(err.number))
+         Exit Sub
+     End If   
+
+     On Error Resume Next
+     IVSProfMgmt.CloseProfile
+     If ( err.number <> 0 ) then
+         Call CloseObjects(Hex(err.number), "Import P12::IVSProfMgmt.CloseProfile", Hex(err.number))
+         Exit Sub
+     End If   
+
+     If (err.number = 0) Then
+         MsgBox "Your keys have been successfully imported by the PTA."
+         window.navigate "../ptaprefCenter.htm"
+     End If 
+    
+     Call CloseObjects(0, "", 0)      
+   End Sub
+'-->
+</SCRIPT>
+</HEAD>
+
+<BODY 	BGCOLOR="#ffffff" LINK="#cc0000" VLINK="#666666">
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<BR><P><BR>
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE="0" VSPACE="0">
+<TR>
+     <TD WIDTH=600 ALIGN=middle VALIGN=bottom COLSPAN=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=middle><IMG alt=Logo height=63 src="../graphics/logo_1.gif" width=100></TD> 
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD> 
+        <TD WIDTH=358 ALIGN=middle><IMG alt="Services Header" border=0 height=47 src="../graphics/hd_services.gif" width=350 ></TD>   
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD> 
+        <TD WIDTH=120 ALIGN=middle><IMG alt="" src="../graphics/logo_2.gif"></TD> 
+</TR>
+<TR>
+     <TD WIDTH=600 ALIGN=middle VALIGN=top COLSPAN=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+<P><BR><P>
+<FORM name=proform>
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=top>
+<FONT COLOR="#0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Complete Key Import Form</B></FONT></TD></TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+
+<TABLE WIDTH=588 BGCOLOR="#ffffcc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588>
+<FONT SIZE=2 FACE="verdana, arial, helvetica"><B>Key File</B><br>
+Enter the location of the file that was sent to you by your administrator. </FONT>
+</TD>	
+</TR>
+<TR><TD>
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+<TR>
+<TD WIDTH="50%" BGCOLOR='#ffcc00'><font face="verdana, arial, helvetica" size=2><B>Select the <BR>Key File</B></font></TD>
+<TD COLSPAN=2 WIDTH="50%" BGCOLOR='#ffcc00'><IMG height=27 src="../graphics/blank2.gif" width=27>
+<INPUT name=p12filename type=file>
+</TD>
+</TR>
+</TABLE></TR>
+</TABLE>
+
+<P><BR><P>
+<!-- VSSKBEGIN Apps/PTAv2/Roaming#1 -->
+<!-- VSSKEND Apps/PTAv2/Roaming#1 -->
+
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+
+<TR>
+     <TD WIDTH=50><IMG height=39 src="../graphics/action_39x39.gif" width=39></TD>
+     <TD WIDTH=538 COLSPAN=2><FONT COLOR="#009933" FACE="verdana, arial, helvetica" SIZE=2><B>If all the information above is correct,
+<BR>click Import to continue.</B><BR></FONT></TD>
+</TR>
+<TR>
+     <TD WIDTH=50>&nbsp;</TD>
+     <TD WIDTH=234 ALIGN=left><INPUT TYPE="button" NAME="Accept" VALUE="Import" onClick="importp12()"></TD>
+     <TD WIDTH=304 ALIGN=left><INPUT TYPE=button NAME="Cancel" VALUE="Cancel" onClick="declinefunc()"></TD>
+</TR>
+</TABLE>
+</FORM>
+
+
+<!--END MAIN CONTENT AREA-->
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG height=1 hspace=0 src="../../VSApps/graphics/dot_grey.gif" width=600 >
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../../VSApps/graphics/logo_3.gif" ALT="VeriSign Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO--></P>
+
+</BODY>
+</HTML>		
+

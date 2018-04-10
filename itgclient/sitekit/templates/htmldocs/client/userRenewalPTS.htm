@@ -1,0 +1,168 @@
+<!-- userRenewalPTS.htm
+
+** VSSKTEMPLATEVERSION#1.2.5.2 **
+-->
+<HTML>
+<HEAD>
+<TITLE>Digital Renewal</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<script language="JavaScript">
+<!--
+//if the browser is firefox check for browser navigate to index2.htm
+var browserName=navigator.appName;
+var browserVer=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+       if (browserVer < requiredBrowserNumNS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+else
+    {
+       if (browserVer < requiredBrowserNumMS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+
+//-->
+</script>
+
+<script Language="JavaScript">
+<!--
+  function renewclick()
+  {
+	document.theform.submit();
+  }
+
+// link for cancel button
+  function cancelFunc()
+  {
+    window.navigate("../../VSApps/client/cancel.htm") ;
+  }
+  
+// opens up new window for copyright link
+ function copyright ()
+{
+//Create a new window
+var newWin = window.open("copyright.htm", "popup_window", 
+             'toolbar=1,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=620,height=510'); 
+//Note where the window came from
+self.name = "mainWin";
+}
+//-->
+</script>
+</HEAD>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function dumbfunc()
+{
+   var newwin = window.open("../client/help/securitySetting.htm", "private_window",
+                "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0, resizable=0,WIDTH=420,HEIGHT=480");
+}
+// -->
+</SCRIPT>
+
+<BODY   BGCOLOR="ffffff" LINK="cc0000" VLINK="666666">
+
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 ALIGN=CENTER VALIGN=BOTTOM COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+    <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD> 
+    <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD> 
+    <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../graphics/hd_enroll.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Enroll Header"></TD> 
+    <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD> 
+    <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_2.gif" ALT=""></TD> 
+</TR>
+<TR>
+    <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+   <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+     <A HREF="../VSApps/client/help/tasks/renew_ie.htm" target="help"><IMG SRC="../graphics/button_help_page.gif" width=145 height=26 hspace=1 vspace=0 border=0 alt="Help with this Page"></a>
+   </TD>
+</TR>
+</TABLE>
+<P>
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+   <TD WIDTH=100%><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Digital ID Renewal</B></FONT><BR></TD>
+</TR>
+</TABLE>
+<!--END INSTRUCTIONAL TEXT-->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#2 -->
+<!-- VSSKEND Apps/PersonalTrustService#2 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#9 -->
+<!-- VSSKEND Apps/PersonalTrustService#9 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#20 -->
+<!-- VSSKEND Apps/PersonalTrustService#20 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#21 -->
+<!-- VSSKEND Apps/PersonalTrustService#21 -->
+
+<INPUT type="hidden" name="ErrorPage.ReturnTxt" value="Digital ID Center">
+<!-- VSSKBEGIN Global/Mode#119 -->
+<!-- VSSKEND Global/Mode#119 -->
+
+<P><BR><P>
+
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+    <TD WIDTH=50><img SRC="../graphics/action_39x39.gif" WIDTH=39 HEIGHT=39></TD>
+    <TD WIDTH=538 COLSPAN=2><FONT COLOR="009933" FACE="verdana, arial, helvetica" SIZE=2><B>If information above is correct,<BR>
+	click Renew to continue.</B><BR><BR></FONT></TD>
+</TR>
+<TR>
+    <TD WIDTH=50>&nbsp;</TD>
+    <TD WIDTH=234 ALIGN=LEFT><INPUT TYPE="button" VALUE="Renew" NAME="Renew" onClick="renewclick()"></TD>
+    <TD WIDTH=304 ALIGN=LEFT><INPUT TYPE=button NAME="decline" VALUE="Cancel" onClick="cancelFunc()"></TD>
+</TR>
+</TABLE>	
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="javascript:copyright();"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../graphics/logo_3.gif" ALT="Symantec Trust Network"></TD>
+</TR>
+</TABLE>
+
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+</FORM>
+
+</BODY>
+</HTML>
+ 
+<script language="JavaScript">
+<!--
+ renewclick();
+//-->
+</script>
+

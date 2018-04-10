@@ -1,0 +1,25 @@
+	import "oaidl.idl";
+	import "ocidl.idl";
+	#include "olectl.h"
+
+	[
+		object,
+		uuid(d962f4c4-ddb0-11d3-a428-d1a369ca484f),
+		dual,
+		helpstring("IVSRoamPrefs Interface"),
+		pointer_default(unique)
+	]
+	interface IVSRoamPrefs : IDispatch
+	{
+		[propget, id(1), helpstring("Number of roaming servers.")] HRESULT NumOfSrvrs([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("Number of roaming servers.")] HRESULT NumOfSrvrs([in] VARIANT newVal);
+		[propget, id(2), helpstring("An array containing the URLs of the roaming servers.")] HRESULT RoamingSrvrs([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("An array containing the URLs of the roaming servers.")] HRESULT RoamingSrvrs([in] VARIANT newVal);
+		[propget, id(3), helpstring("A string containing the URL of the storage servers.")] HRESULT StorageSrvr([out, retval] VARIANT *pVal);
+		[propput, id(3), helpstring("A string containing the URL of the storage servers.")] HRESULT StorageSrvr([in] VARIANT newVal);
+		[propget, id(17), helpstring("ClientInfo")] HRESULT ClientInfo([out, retval] VARIANT *pVal);
+		[propput, id(17), helpstring("ClientInfo")] HRESULT ClientInfo([in] VARIANT newVal);
+		[propget, id(18), helpstring("ClientInfoSig")] HRESULT ClientInfoSig([out, retval] VARIANT *pVal);
+		[propput, id(18), helpstring("ClientInfoSig")] HRESULT ClientInfoSig([in] VARIANT newVal);
+		
+	};

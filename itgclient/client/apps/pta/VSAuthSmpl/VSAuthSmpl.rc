@@ -1,0 +1,273 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\VSAuthSmpl.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "VSAuthSmpl DLL\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "VSAuthSmpl\0"
+            VALUE "LegalCopyright", "Copyright (C) 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "VSAuthSmpl.DLL\0"
+            VALUE "ProductName", "VSAuthSmpl Dynamic Link Library\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CREATEPROF DIALOGEX 0, 0, 354, 178
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Create Account"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,297,7,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,297,24,50,14
+    GROUPBOX        "Create New Account",IDC_STATIC,13,7,265,151
+    LTEXT           "1. Select Username",IDC_STATIC,19,24,72,9
+    LTEXT           "Select a username for your account and enter it below.",
+                    IDC_STATIC,27,35,207,11
+    LTEXT           "Username :",IDC_STATIC,41,51,41,9
+    EDITTEXT        IDC_USERNAME,84,50,131,12,ES_AUTOHSCROLL
+    LTEXT           "2. Select ""PassFigures""",IDC_STATIC,19,85,81,10
+    LTEXT           "Select atleast 6 figures from the figure palette, in any sequence. The figures and the sequence in which you select them will be your ""PassFigure"". You will need to input your ""PassFigure"" when you want to login to your account.",
+                    IDC_STATIC,29,96,245,33
+    PUSHBUTTON      "",IDC_CIRCLE,316,109,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_SQUARE,295,69,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_ELLIPSE,295,109,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_CROSSBMP,316,69,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_SEMICIRCLE,295,89,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_DIAMOND,316,89,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    LTEXT           "PassFigure :",IDC_STATIC,43,131,41,9,WS_TABSTOP
+    CONTROL         1001,IDC_PASSWRDPOS1,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    86,131,11,10
+    CONTROL         1002,IDC_PASSWRDPOS2,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    98,131,11,10
+    CONTROL         1002,IDC_PASSWRDPOS4,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    122,131,11,10
+    CONTROL         1002,IDC_PASSWRDPOS5,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    134,131,11,10
+    CONTROL         1002,IDC_PASSWRDPOS6,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    146,131,11,10
+    CONTROL         1003,IDC_PASSWRDPOS7,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    158,131,11,10
+    CONTROL         1005,IDC_PASSWRDPOS8,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    170,131,10,10
+    GROUPBOX        "Figure Palette",IDC_STATIC,286,50,61,105
+    CONTROL         1002,IDC_PASSWRDPOS3,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    110,131,11,10
+    PUSHBUTTON      "Clear",IDC_CLEAR,295,131,36,14
+END
+
+IDD_OPENPROF DIALOGEX 0, 0, 354, 167
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Open Account"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,297,7,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,297,24,50,14
+    GROUPBOX        "Open Your Account",IDC_STATIC,13,7,265,142
+    LTEXT           "1. Enter Username",IDC_STATIC,19,24,72,9
+    LTEXT           "Enter the username for your account.",IDC_STATIC,27,35,
+                    207,11
+    LTEXT           "Username :",IDC_STATIC,41,51,41,9
+    EDITTEXT        IDC_USERNAME,84,50,131,12,ES_AUTOHSCROLL
+    LTEXT           "2. Enter ""PassFigures""",IDC_STATIC,19,85,81,10
+    LTEXT           "Use the figure palette to enter your ""PassFigure""",
+                    IDC_STATIC,29,96,245,11
+    PUSHBUTTON      "",IDC_CIRCLE,316,100,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_SQUARE,295,60,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_ELLIPSE,295,100,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_CROSSBMP,316,60,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_SEMICIRCLE,295,80,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_DIAMOND,316,80,16,16,BS_BITMAP | BS_CENTER | 
+                    BS_VCENTER,WS_EX_CLIENTEDGE
+    LTEXT           "PassFigure :",IDC_STATIC,43,112,41,9,WS_TABSTOP
+    CONTROL         1001,IDC_PASSWRDPOS1,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    86,112,11,10
+    CONTROL         1002,IDC_PASSWRDPOS2,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    98,112,11,10
+    CONTROL         1002,IDC_PASSWRDPOS4,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    122,112,11,10
+    CONTROL         1002,IDC_PASSWRDPOS5,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    134,112,11,10
+    CONTROL         1002,IDC_PASSWRDPOS6,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    146,112,11,10
+    CONTROL         1003,IDC_PASSWRDPOS7,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    158,112,11,10
+    CONTROL         1005,IDC_PASSWRDPOS8,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    170,112,10,10
+    GROUPBOX        "Figure Palette",IDC_STATIC,286,45,61,105
+    CONTROL         1002,IDC_PASSWRDPOS3,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    110,112,11,10
+    PUSHBUTTON      "Clear",IDC_CLEAR,295,122,36,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CREATEPROF, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 347
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_OPENPROF, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 347
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 160
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CIRCLE              BITMAP  DISCARDABLE     "circle.bmp"
+IDB_DIAMOND             BITMAP  DISCARDABLE     "diamond.bmp"
+IDB_SQUARE              BITMAP  DISCARDABLE     "square.bmp"
+IDB_CROSSBMP            BITMAP  DISCARDABLE     "cross.bmp"
+IDB_ELLIPSE             BITMAP  DISCARDABLE     "ellipse.bmp"
+IDB_SEMICIRCLE          BITMAP  DISCARDABLE     "semicirc.bmp"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\VSAuthSmpl.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

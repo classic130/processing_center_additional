@@ -1,0 +1,8 @@
+#------------------------------------------------------------------------------
+#  NAME         TYPE    REQUIREMENT     DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+CONST		operation	rsaverify
+dataToSign	HYBRID	MANDATORY	NONE		NONE
+dataSignature	RSA_SIG	MANDATORY	dataToSign	NONE
+
+STATUS	0	success.htm

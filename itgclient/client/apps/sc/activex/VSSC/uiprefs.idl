@@ -1,0 +1,96 @@
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+
+	[
+		object,
+		uuid(d962f4c0-ddb0-11d3-a428-d1a369ca484f),
+		dual,
+		helpstring("IVSUIPrefs Interface"),
+		pointer_default(unique)
+	]
+	interface IVSUIPrefs : IDispatch
+	{
+		[propget, id(1), helpstring("Character set identifying the language to be used for the UI")] HRESULT Language([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("Character set identifying the language to be used for the UI")] HRESULT Language([in] VARIANT newVal);
+		[propget, id(2), helpstring("List of fonts that should be used for titles of dialog boxes")] HRESULT TitleFont([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("List of fonts that should be used for titles of dialog boxes")] HRESULT TitleFont([in] VARIANT newVal);
+		[propget, id(3), helpstring("List of fonts that should be used for the text of dialog boxes")] HRESULT TextFont([out, retval] VARIANT *pVal);
+		[propput, id(3), helpstring("List of fonts that should be used for the text of dialog boxes")] HRESULT TextFont([in] VARIANT newVal);
+		[propget, id(4), helpstring("List of fonts that should be used for the buttons of dialog boxes")] HRESULT BtnFont([out, retval] VARIANT *pVal);
+		[propput, id(4), helpstring("List of fonts that should be used for the buttons of dialog boxes")] HRESULT BtnFont([in] VARIANT newVal);
+		[propget, id(5), helpstring("URL of the logo of the new password dialog box")] HRESULT UILogoUrl([out, retval] VARIANT *pVal);
+		[propput, id(5), helpstring("URL of the logo of the new password dialog box")] HRESULT UILogoUrl([in] VARIANT newVal);
+		[propget, id(6), helpstring("Title of the New Password dialog box")] HRESULT NewPasswd_Title([out, retval] VARIANT *pVal);
+		[propput, id(6), helpstring("Title of the New Password dialog box")] HRESULT NewPasswd_Title([in] VARIANT newVal);
+		[propget, id(7), helpstring("Text of the New Password dialog box")] HRESULT NewPasswd_Text([out, retval] VARIANT *pVal);
+		[propput, id(7), helpstring("Text of the New Password dialog box")] HRESULT NewPasswd_Text([in] VARIANT newVal);
+		[propget, id(8), helpstring("Text of the OK button")] HRESULT NewPasswd_OKBtnText([out, retval] VARIANT *pVal);
+		[propput, id(8), helpstring("Text of the OK button")] HRESULT NewPasswd_OKBtnText([in] VARIANT newVal);
+		[propget, id(9), helpstring("Text of the Cancel button in the New Password dialog box")] HRESULT NewPasswd_CancelBtnText([out, retval] VARIANT *pVal);
+		[propput, id(9), helpstring("Text of the Cancel button in the New Password dialog box")] HRESULT NewPasswd_CancelBtnText([in] VARIANT newVal);
+		[propget, id(10), helpstring("Help page url")] HRESULT NewPasswd_HelpUrl([out, retval] VARIANT *pVal);
+		[propput, id(10), helpstring("Help page url")] HRESULT NewPasswd_HelpUrl([in] VARIANT newVal);
+		[propget, id(12), helpstring("Title of the login wizard.")] HRESULT LgnDlg_Title([out, retval] VARIANT *pVal);
+		[propput, id(12), helpstring("Title of the login wizard.")] HRESULT LgnDlg_Title([in] VARIANT newVal);
+		[propget, id(13), helpstring("Title of an Open Profile dialog box")] HRESULT OpenProf_Title([out, retval] VARIANT *pVal);
+		[propput, id(13), helpstring("Title of an Open Profile dialog box")] HRESULT OpenProf_Title([in] VARIANT newVal);
+		[propget, id(14), helpstring("Text of Open Profile dialog box")] HRESULT OpenProf_Text([out, retval] VARIANT *pVal);
+		[propput, id(14), helpstring("Text of Open Profile dialog box")] HRESULT OpenProf_Text([in] VARIANT newVal);
+		[propget, id(15), helpstring("Caption of the OK button in the Open Profile dialog box.")] HRESULT OpenProf_OKBtnText([out, retval] VARIANT *pVal);
+		[propput, id(15), helpstring("Caption of the OK button in the Open Profile dialog box.")] HRESULT OpenProf_OKBtnText([in] VARIANT newVal);
+		[propget, id(16), helpstring("Caption of the Cancel button ")] HRESULT OpenProf_CancelBtnText([out, retval] VARIANT *pVal);
+		[propput, id(16), helpstring("Caption of the Cancel button ")] HRESULT OpenProf_CancelBtnText([in] VARIANT newVal);
+		[propget, id(17), helpstring("Help page Url")] HRESULT OpenProf_HelpUrl([out, retval] VARIANT *pVal);
+		[propput, id(17), helpstring("Help page Url")] HRESULT OpenProf_HelpUrl([in] VARIANT newVal);
+		[propget, id(18), helpstring("Title of Select ID dialog box")] HRESULT SelID_Title([out, retval] VARIANT *pVal);
+		[propput, id(18), helpstring("Title of Select ID dialog box")] HRESULT SelID_Title([in] VARIANT newVal);
+		[propget, id(19), helpstring("Text of Select ID dialog box.")] HRESULT SelID_Text([out, retval] VARIANT *pVal);
+		[propput, id(19), helpstring("Text of Select ID dialog box.")] HRESULT SelID_Text([in] VARIANT newVal);
+		[propget, id(20), helpstring("Caption of the OK button in the Select ID dialog box")] HRESULT SelID_OKBtnText([out, retval] VARIANT *pVal);
+		[propput, id(20), helpstring("Caption of the OK button in the Select ID dialog box")] HRESULT SelID_OKBtnText([in] VARIANT newVal);
+		[propget, id(21), helpstring("Caption of the Cancel button in the Select ID dialog box.")] HRESULT SelID_CancelBtnText([out, retval] VARIANT *pVal);
+		[propput, id(21), helpstring("Caption of the Cancel button in the Select ID dialog box.")] HRESULT SelID_CancelBtnText([in] VARIANT newVal);
+		[propget, id(22), helpstring("A flag indicating if the default id check box should be displayed or not.")] HRESULT SelID_ShowDefChkBox([out, retval] VARIANT *pVal);
+		[propput, id(22), helpstring("A flag indicating if the default id check box should be displayed or not.")] HRESULT SelID_ShowDefChkBox([in] VARIANT newVal);
+		[propget, id(23), helpstring("Text of the check box that appears in select digital id dialog box.")] HRESULT SelID_ChkBoxText([out, retval] VARIANT *pVal);
+		[propput, id(23), helpstring("Text of the check box that appears in select digital id dialog box.")] HRESULT SelID_ChkBoxText([in] VARIANT newVal);
+		[propget, id(24), helpstring("Url of the location to navigate to when the help button is clicked.")] HRESULT SelID_HelpUrl([out, retval] VARIANT *pVal);
+		[propput, id(24), helpstring("Url of the location to navigate to when the help button is clicked.")] HRESULT SelID_HelpUrl([in] VARIANT newVal);
+		[propget, id(26), helpstring("Title of the Sign dialog box")] HRESULT SgnDlg_Title([out, retval] VARIANT *pVal);
+		[propput, id(26), helpstring("Title of the Sign dialog box")] HRESULT SgnDlg_Title([in] VARIANT newVal);
+		[propget, id(27), helpstring("Text of Review Message dialog box.")] HRESULT RvwMsg_Text([out, retval] VARIANT *pVal);
+		[propput, id(27), helpstring("Text of Review Message dialog box.")] HRESULT RvwMsg_Text([in] VARIANT newVal);
+		[propget, id(28), helpstring("Caption of the OK button.")] HRESULT RvwMsg_OKBtnText([out, retval] VARIANT *pVal);
+		[propput, id(28), helpstring("Caption of the OK button.")] HRESULT RvwMsg_OKBtnText([in] VARIANT newVal);
+		[propget, id(29), helpstring("Title of Review Message dialog box.")] HRESULT RvwMsg_Title([out, retval] VARIANT *pVal);
+		[propput, id(29), helpstring("Title of Review Message dialog box.")] HRESULT RvwMsg_Title([in] VARIANT newVal);
+		[propget, id(30), helpstring("Caption of the Cancel button.")] HRESULT RvwMsg_CancelBtnText([out, retval] VARIANT *pVal);
+		[propput, id(30), helpstring("Caption of the Cancel button.")] HRESULT RvwMsg_CancelBtnText([in] VARIANT newVal);
+		[propget, id(31), helpstring("Url of the location to navigate to when the help button is clicked.")] HRESULT RvwMsg_HelpUrl([out, retval] VARIANT *pVal);
+		[propput, id(31), helpstring("Url of the location to navigate to when the help button is clicked.")] HRESULT RvwMsg_HelpUrl([in] VARIANT newVal);
+		[propget, id(32), helpstring("Title of the Introduction screen")] HRESULT IntroDlg_Title([out, retval] VARIANT *pVal);
+		[propput, id(32), helpstring("Title of the Introduction screen")] HRESULT IntroDlg_Title([in] VARIANT newVal);
+		[propget, id(33), helpstring("Text of the Introduction screen")] HRESULT IntroDlg_Text([out, retval] VARIANT *pVal);
+		[propput, id(33), helpstring("Text of the Introduction screen")] HRESULT IntroDlg_Text([in] VARIANT newVal);
+		[propget, id(36), helpstring("Help Url")] HRESULT IntroDlg_HelpUrl([out, retval] VARIANT *pVal);
+		[propput, id(36), helpstring("Help Url")] HRESULT IntroDlg_HelpUrl([in] VARIANT newVal);
+		[propget, id(37), helpstring("Ttile of the create profile wizard")] HRESULT CreateNewProf_Title([out, retval] VARIANT *pVal);
+		[propput, id(37), helpstring("Title of the create profile wizard")] HRESULT CreateNewProf_Title([in] VARIANT newVal);
+		[propget, id(38), helpstring("Title of an Open Profile dialog box")] HRESULT ChangePasswd_Title([out, retval] VARIANT *pVal);
+		[propput, id(38), helpstring("Title of an Open Profile dialog box")] HRESULT ChangePasswd_Title([in] VARIANT newVal);
+		[propget, id(39), helpstring("Text of Open Profile dialog box")] HRESULT ChangePasswd_Text([out, retval] VARIANT *pVal);
+		[propput, id(39), helpstring("Text of Open Profile dialog box")] HRESULT ChangePasswd_Text([in] VARIANT newVal);
+		[propget, id(40), helpstring("Caption of the OK button in the Open Profile dialog box.")] HRESULT ChangePasswd_OKBtnText([out, retval] VARIANT *pVal);
+		[propput, id(40), helpstring("Caption of the OK button in the Open Profile dialog box.")] HRESULT ChangePasswd_OKBtnText([in] VARIANT newVal);
+		[propget, id(41), helpstring("Caption of the Cancel button ")] HRESULT ChangePasswd_CancelBtnText([out, retval] VARIANT *pVal);
+		[propput, id(41), helpstring("Caption of the Cancel button ")] HRESULT ChangePasswd_CancelBtnText([in] VARIANT newVal);
+		[propget, id(42), helpstring("Help page Url")] HRESULT ChangePasswd_HelpUrl([out, retval] VARIANT *pVal);
+		[propput, id(42), helpstring("Help page Url")] HRESULT ChangePasswd_HelpUrl([in] VARIANT newVal);
+		[propget, id(43), helpstring("Help page Url")] HRESULT Timeout_HelpUrl([out, retval] VARIANT *pVal);
+		[propput, id(43), helpstring("Help page Url")] HRESULT Timeout_HelpUrl([in] VARIANT newVal);
+
+		
+		
+	};
+

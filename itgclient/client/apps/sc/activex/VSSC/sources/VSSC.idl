@@ -1,0 +1,192 @@
+// VSSC.idl : IDL source for VSSC.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VSSC.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(C5E8B9E1-D217-11D4-A21E-001083023D07),
+		dual,
+		helpstring("IVSSC Interface"),
+		pointer_default(unique)
+	]
+	interface IVSSC : IDispatch
+	{
+		
+		[id(3), helpstring("method Compose")] HRESULT Compose([in, out] VARIANT* i_pvarAppStatus);
+		[propget, id(4), helpstring("property ToRecipientsInfo")] HRESULT ToRecipientsInfo([out, retval] VARIANT *pVal);
+		[propput, id(4), helpstring("property ToRecipientsInfo")] HRESULT ToRecipientsInfo([in] VARIANT newVal);
+		[propget, id(5), helpstring("property CcRecipientsInfo")] HRESULT CcRecipientsInfo([out, retval] VARIANT *pVal);
+		[propput, id(5), helpstring("property CcRecipientsInfo")] HRESULT CcRecipientsInfo([in] VARIANT newVal);
+		[propget, id(6), helpstring("property BccRecipientsInfo")] HRESULT BccRecipientsInfo([out, retval] VARIANT *pVal);
+		[propput, id(6), helpstring("property BccRecipientsInfo")] HRESULT BccRecipientsInfo([in] VARIANT newVal);
+		[propget, id(7), helpstring("property FromInfo")] HRESULT FromInfo([out, retval] VARIANT *pVal);
+		[propput, id(7), helpstring("property FromInfo")] HRESULT FromInfo([in] VARIANT newVal);
+		[propget, id(8), helpstring("property Subject")] HRESULT Subject([out, retval] VARIANT *pVal);
+		[propput, id(8), helpstring("property Subject")] HRESULT Subject([in] VARIANT newVal);
+		[propget, id(9), helpstring("property MsgType")] HRESULT MsgType([out, retval] VARIANT *pVal);
+		[propput, id(9), helpstring("property MsgType")] HRESULT MsgType([in] VARIANT newVal);
+		[propget, id(10), helpstring("property Body")] HRESULT Body([out, retval] VARIANT *pVal);
+		[propput, id(10), helpstring("property Body")] HRESULT Body([in] VARIANT newVal);
+		[propget, id(11), helpstring("property GetMsg")] HRESULT GetMsg([out, retval] VARIANT *pVal);
+		[propget, id(13), helpstring("property Date")] HRESULT Date([out, retval] VARIANT *pVal);
+		[propput, id(13), helpstring("property Date")] HRESULT Date([in] VARIANT newVal);
+		[propget, id(14), helpstring("property CryptStatus")] HRESULT CryptStatus([out, retval] VARIANT *pVal);
+		[id(16), helpstring("method SelectAttachments")] HRESULT SelectAttachments([in, out] VARIANT* i_pvarAppStatus);
+		[propget, id(17), helpstring("property SelectedAttachments")] HRESULT SelectedAttachments([out, retval] VARIANT *pVal);
+		[propput, id(18), helpstring("property UnSelectAttachments")] HRESULT UnSelectAttachments([in] VARIANT newVal);
+		[propget, id(22), helpstring("property AttachedFileList")] HRESULT AttachedFileList([out, retval] VARIANT *pVal);
+		[id(23), helpstring("method SaveAttachment")] HRESULT SaveAttachment(VARIANT *pFileName, VARIANT *pStatus);
+		[propput, id(26), helpstring("property MsgPostData")] HRESULT MsgPostData([in] VARIANT newVal);
+		[id(28), helpstring("method CertificateResolution")] HRESULT CertificateResolution(VARIANT* in_pvarEmailInfo,[in, out] VARIANT* i_pvarAppStatus);
+		[id(29), helpstring("method SMIMECertificateResolution")] HRESULT SMIMECertificateResolution([in, out] VARIANT* i_pvarAppStatus);
+		[propput, id(30), helpstring("property CertResolveURL")] HRESULT CertResolveURL([in] VARIANT newVal);
+		[propget, id(31), helpstring("property IVSSCPTA")] HRESULT IVSSCPTA([out, retval] IDispatch* *pVal);
+		[id(32), helpstring("method Decompose")] HRESULT Decompose([in] VARIANT* i_pvarSMIMEMsg, [in, out] VARIANT* i_pvarAppStatus);
+    	[propput, id(36), helpstring("property UseProxyRecipCert")] HRESULT UseProxyRecipCert([in] VARIANT newVal);
+		[id(37), helpstring("method Initialize")] HRESULT Initialize(VARIANT *i_pMsgObjID,VARIANT *i_pMode,[in, out] VARIANT* i_pvarAppStatus);
+		[id(38), helpstring("method StoreAll")] HRESULT StoreAll(VARIANT *i_pModeType,[in, out] VARIANT* i_pvarAppStatus);
+		[propget, id(39), helpstring("property MsgObjID")] HRESULT MsgObjID([out, retval] VARIANT *pVal);
+		[propget, id(40), helpstring("property MsgBlobSize")] HRESULT MsgBlobSize([out, retval] VARIANT *pVal);
+		[id(41), helpstring("method InternetInitialize")] HRESULT InternetInitialize(VARIANT *in_pvarURL,VARIANT *in_pvarMethod,VARIANT *in_pvarPostData,[in, out] VARIANT* i_pvarAppStatus);
+		[id(42), helpstring("method InternetSendRequest")] HRESULT InternetSendRequest([in, out] VARIANT* i_pvarAppStatus);
+		[propput, id(43), helpstring("property UseInternetData")] HRESULT UseInternetData([in] VARIANT newVal);
+		[propget, id(44), helpstring("property InternetDataSize")] HRESULT InternetDataSize([out, retval] VARIANT *pVal);
+		[propget, id(45), helpstring("property InternetData")] HRESULT InternetData([out, retval] VARIANT *pVal);
+		[id(46), helpstring("method ChangeVarType")] HRESULT ChangeVarType(VARIANT* in_pvarByteArray,VARIANT* in_pvarType, [out,retval]VARIANT* o_pvarOutputType);
+		[id(47), helpstring("method SelectedAttachmentSize")] HRESULT SelectedAttachmentSize(VARIANT* in_pvarFileName,[in, out] VARIANT* i_pvarAppStatus,[out,retval]VARIANT* o_pvarFileSize);
+		[propget, id(48), helpstring("property IVSSignerInfo")] HRESULT IVSSignerInfo([out, retval] IDispatch* *pVal);
+		[propget, id(49), helpstring("property IVSSCResolveInfo")] HRESULT IVSSCResolveInfo([out, retval] IDispatch* *pVal);
+		[propput, id(50), helpstring("property AddSignerCertificate")] HRESULT AddSignerCertificate([in] VARIANT newVal);
+		[propput, id(52), helpstring("property AddRFC822Header")] HRESULT AddRFC822Header([in] VARIANT newVal);
+		[propput, id(53), helpstring("property AddMIMEHeader")] HRESULT AddMIMEHeader([in] VARIANT newVal);
+		[propput, id(54), helpstring("property OpaqueSign")] HRESULT OpaqueSign([in] VARIANT newVal);
+		[propput, id(55), helpstring("property AddSenderRecipientInfo")] HRESULT AddSenderRecipientInfo([in] VARIANT newVal);
+		[propget, id(56), helpstring("property SCType")] HRESULT SCType([out, retval] VARIANT *pVal);
+		[propput, id(56), helpstring("property SCType")] HRESULT SCType([in] VARIANT newVal);
+		[propget, id(57), helpstring("property CertificateTimeOut")] HRESULT CertificateTimeOut([out, retval] VARIANT *pVal);
+		[propput, id(57), helpstring("property CertificateTimeOut")] HRESULT CertificateTimeOut([in] VARIANT newVal);
+		[propget, id(58), helpstring("property MessageTimeOut")] HRESULT MessageTimeOut([out, retval] VARIANT *pVal);
+		[propput, id(58), helpstring("property MessageTimeOut")] HRESULT MessageTimeOut([in] VARIANT newVal);
+		[id(59), helpstring("method ClearAll")] HRESULT ClearAll([in] VARIANT* i_pvarSMIMEMsg, [in, out] VARIANT* i_pvarAppStatus);
+		[propput, id(60), helpstring("property UsePKCS7Certificate")] HRESULT UsePKCS7Certificate([in] VARIANT newVal);
+		[propput, id(61), helpstring("property AddSMIMECapabilities")] HRESULT AddSMIMECapabilities([in] VARIANT newVal);
+		[propput, id(62), helpstring("property AllowDecryption")] HRESULT AllowDecryption([in] VARIANT newVal);
+		[propput, id(63), helpstring("property SupportedPTAVer")] HRESULT SupportedPTAVer([in] VARIANT newVal);
+		[propget, id(64), helpstring("property InstalledPTAVer")] HRESULT InstalledPTAVer([out, retval] VARIANT *pVal);
+		[propput, id(65), helpstring("property ShowSelIDUI")] HRESULT ShowSelIDUI([in] VARIANT newVal);
+		[propput, id(66), helpstring("property URLEncodeData")] HRESULT URLEncodeData([in] VARIANT newVal);
+		[id(67), helpstring("method ResolveProxyRecipCert")] HRESULT ResolveProxyRecipCert(VARIANT *in_pvarEmailInfo,[in,out]VARIANT *in_pvarAppStatus,[out,retval]VARIANT *in_pvarStatus);
+		[propput, id(68), helpstring("property UseSimder")] HRESULT UseSimder([in] VARIANT newVal);
+
+
+	};
+	
+	[
+		object,
+		uuid(18865332-716F-11D5-A251-001083023D07),
+		dual,
+		helpstring("IResolveRcpt Interface"),
+		pointer_default(unique)
+	]
+	interface IResolveRcpt : IDispatch
+	{
+		[propget, id(1), helpstring("property EmailAddress")] HRESULT EmailAddress([out, retval] VARIANT *pVal);
+		[propget, id(2), helpstring("property Recipient_Count")] HRESULT Recipient_Count([out, retval] VARIANT *pVal);
+		[id(3), helpstring("method First")] HRESULT First();
+		[id(4), helpstring("method Next")] HRESULT Next();
+		[propget, id(5), helpstring("property Status")] HRESULT Status([out, retval] VARIANT *pVal);
+		[propget, id(6), helpstring("property Issuer_DN")] HRESULT Issuer_DN([out, retval] VARIANT *pVal);
+		[propget, id(7), helpstring("property SerialNumber")] HRESULT SerialNumber([out, retval] VARIANT *pVal);
+		[propget, id(8), helpstring("property RevocationStatus")] HRESULT RevocationStatus([out, retval] VARIANT *pVal);
+		[propget, id(9), helpstring("property ChainValidationStatus")] HRESULT ChainValidationStatus([out, retval] VARIANT *pVal);
+		[propget, id(10), helpstring("property IsCertExpired")] HRESULT IsCertExpired([out, retval] VARIANT *pVal);
+	};
+	[
+		object,
+		uuid(C8110D64-8608-11D5-A257-001083023D07),
+		dual,
+		helpstring("IVSSignerInfo Interface"),
+		pointer_default(unique)
+	]
+	interface IVSSignerInfo : IDispatch
+	{
+		[propget, id(1), helpstring("property SubjectCN")] HRESULT SubjectCN([out, retval] VARIANT *pVal);
+		[propget, id(2), helpstring("property SubjectDN")] HRESULT SubjectDN([out, retval] VARIANT *pVal);
+		[propget, id(3), helpstring("property IssuerDN")] HRESULT IssuerDN([out, retval] VARIANT *pVal);
+		[propget, id(4), helpstring("property SubjectSerialNumber")] HRESULT SubjectSerialNumber([out, retval] VARIANT *pVal);
+		[propget, id(5), helpstring("property SubjectValidFrom")] HRESULT SubjectValidFrom([out, retval] DATE *pVal);
+		[propget, id(6), helpstring("property SubjectValidTo")] HRESULT SubjectValidTo([out, retval] DATE *pVal);
+	};
+	[
+		object,
+		uuid(C8110D67-8608-11D5-A257-001083023D07),
+		dual,
+		helpstring("IVSSCDllApi Interface"),
+		pointer_default(unique)
+	]
+	interface IVSSCDllApi : IDispatch
+	{
+		[propget, id(1), helpstring("property HostFQDN")] HRESULT HostFQDN([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("property HostFQDN")] HRESULT HostFQDN([in] VARIANT newVal);
+		[propget, id(2), helpstring("property HostProtocol")] HRESULT HostProtocol([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("property HostProtocol")] HRESULT HostProtocol([in] VARIANT newVal);
+		[id(3), helpstring("method GetAttachFileContent")] HRESULT GetAttachFileContent(VARIANT* in_pvarFileName,[in, out] VARIANT* i_pvarAppStatus,[out,retval]VARIANT* o_pvarFileContent);
+
+	};
+	
+
+[
+	uuid(C5E8B9D5-D217-11D4-A21E-001083023D07),
+	version(1.0),
+	helpstring("VSSC 1.0 Type Library")
+]
+library VSSCLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(C5E8B9E2-D217-11D4-A21E-001083023D07),
+		helpstring("VSSC Class")
+	]
+	coclass VSSC
+	{
+		[default] interface IVSSC;
+		interface IResolveRcpt;
+		interface IVSSignerInfo;
+		interface IVSSCDllApi;
+	};
+	
+	//[
+	//	uuid(18865333-716F-11D5-A251-001083023D07),
+	//	helpstring("ResolveRcpt Class")
+	//]
+	//coclass ResolveRcpt
+	//{
+	//	[default] interface IResolveRcpt;
+	//};
+	
+	//[
+	//	uuid(C8110D65-8608-11D5-A257-001083023D07),
+	//	helpstring("VSSignerInfo Class")
+	//]
+	//coclass VSSignerInfo
+	//{
+	//	[default] interface IVSSignerInfo;
+	//};
+	//[
+	//	uuid(C8110D68-8608-11D5-A257-001083023D07),
+	//	helpstring("VSSCDllApi Class")
+	//]
+	//coclass VSSCDllApi
+	//{
+	//	[default] interface IVSSCDllApi;
+	//};
+};

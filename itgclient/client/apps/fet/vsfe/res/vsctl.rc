@@ -1,0 +1,1050 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""vsctl.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_SAFE                ICON    DISCARDABLE     "closedsafe.ico"
+IDI_UNLOCK              ICON    DISCARDABLE     "unlock.ico"
+IDI_MULTIPLE_SEL        ICON    DISCARDABLE     "multiplesel.ico"
+IDI_OPEN_SAFE           ICON    DISCARDABLE     "opensafe.ico"
+IDI_ICON_OVERLAY        ICON    DISCARDABLE     "overlay.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ADVANCED_OPTS DIALOG DISCARDABLE  0, 0, 193, 191
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Advanced"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "&Move file to Safe. File will only appear in the",
+                    IDC_BUTTON_MOVE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    18,23,152,9
+    CONTROL         "&Encrypt the file in place. File will be encrypted",
+                    IDC_BUTTON_INPLACE,"Button",BS_AUTORADIOBUTTON,18,52,155,
+                    11
+    EDITTEXT        IDE_PASSWD_TIMEOUT,77,132,26,12,ES_RIGHT | 
+                    ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "&Security...",IDB_SECURITY,74,165,43,15
+    GROUPBOX        "Location of Encrypted File",IDC_STATIC,15,8,161,77
+    LTEXT           "Safe.",IDC_STATIC,30,33,17,8
+    GROUPBOX        "Password Settings",IDC_STATIC,16,98,160,63
+    LTEXT           "accessed for",IDC_STATIC_TIMEOUT,29,133,42,8
+    LTEXT           "minute(s).",IDC_STATIC_MINUTES,107,133,28,8
+    CONTROL         "Spin2",IDC_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_ARROWKEYS,91,132,12,13
+    LTEXT           "at the original location.",IDC_STATIC,30,63,75,9
+    LTEXT           "Prompt for a password if the keys are not",IDC_TIMEOUT,
+                    28,118,132,10
+END
+
+IDD_SAFE_PROP DIALOG DISCARDABLE  0, 0, 209, 197
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Change...",IDB_MODIFY_ENCR,85,143,40,14
+    CONTROL         "On encryption &Digitally Sign the files.",
+                    IDC_CHECK_SIGN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    168,130,11
+    LTEXT           "Issued To:",IDC_STATIC,18,80,35,9
+    LTEXT           "",IDC_ISSUEDTO_ENCR,56,80,136,16
+    GROUPBOX        "Digital ID used for Encryption and Signatures",
+                    IDC_STATIC,13,66,181,95
+    LTEXT           "Number of files in Safe:",IDC_STATIC,18,20,77,9
+    GROUPBOX        "Details",IDC_STATIC,13,8,184,47
+    LTEXT           "Size of the Safe:",IDC_STATIC,18,36,73,8
+    LTEXT           "Expires On:",IDC_STATIC,18,126,37,8
+    LTEXT           "",IDC_EXPIRY_ENCR,58,126,87,9
+    LTEXT           "",IDC_SAFE_FILES,96,20,96,11
+    LTEXT           "",IDC_SAFE_SIZE,96,36,96,11
+    LTEXT           "Serial No:",IDC_STATIC,18,105,35,9
+    LTEXT           "",IDC_SERIAL_ENCRYPT,53,105,140,8
+END
+
+IDD_FILE_PROP DIALOG DISCARDABLE  0, 0, 229, 186
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "&Encrypted",IDC_FILE_ENCRYPTED,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,63,134,47,9
+    CONTROL         "&Signed",IDC_FILE_SIGNED,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,134,36,8
+    CONTROL         "E&ncrypt when Safe is locked",IDC_FILE_ENCR_AT_LOGOFF,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,63,150,104,10
+    CONTROL         "D&ecrypt when Safe is unlocked",IDC_FILE_DECR_LOGON,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,63,163,114,11
+    LTEXT           "",IDC_FILE_NAME,57,14,151,14
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,12,38,200,6
+    LTEXT           "Type:",IDC_STATIC,12,46,19,10
+    LTEXT           "Original Size:",IDC_STATIC,12,61,43,10
+    LTEXT           "Encrypted Size:",IDC_STATIC,12,76,52,9
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,12,90,200,6
+    LTEXT           "Created:",IDC_STATIC,12,99,28,8
+    LTEXT           "Encrypted:",IDC_STATIC,12,112,37,9
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,12,125,200,6
+    LTEXT           "Attributes:",IDC_STATIC,12,133,32,8
+    LTEXT           "",IDC_FILE_TYPE,68,46,150,10
+    LTEXT           "",IDC_ORIG_SIZE,68,61,150,9
+    LTEXT           "",IDC_ENCR_SIZE,68,76,150,9
+    LTEXT           "",IDC_CREATED,68,99,150,9
+    LTEXT           "",IDC_ENCRYPTED,68,112,150,9
+    LTEXT           "",IDC_VALID,164,134,38,8
+END
+
+IDD_REPLACE DIALOG DISCARDABLE  0, 0, 274, 73
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirm Replace"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Yes",IDOK,13,49,50,14
+    PUSHBUTTON      "Yes To &All",IDB_YESTOALL,77,49,49,14
+    PUSHBUTTON      "&No",IDB_NO,144,49,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,208,49,50,14
+    LTEXT           "",IDC_REPLACE_TEXT,13,31,243,17
+    LTEXT           "",IDC_FILE_FOLDER,13,10,243,19
+END
+
+IDD_SAFE_SECURITY DIALOG DISCARDABLE  0, 0, 222, 226
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Security"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_ENCRYPT_ALGO,119,31,74,45,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_HASH_ALGO,119,57,74,42,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_SCREEN_SAVER,20,133,111,69,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDE_WAIT,154,134,26,12,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "&Password Protected",IDC_PASSWORD,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,21,159,78,10
+    PUSHBUTTON      "&Change...",IDB_PASSWORD,145,157,50,14
+    CONTROL         "&Securely delete the original plaintext file after encryption.",
+                    IDC_SECURE_DEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,
+                    179,192,11
+    PUSHBUTTON      "OK",IDOK,30,197,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,91,197,50,14
+    PUSHBUTTON      "Help",IDB_HELP,150,196,50,14
+    LTEXT           "Encryption Algorithm:",IDC_STATIC_ENCR_ALGO,22,33,69,9
+    GROUPBOX        "Settings",IDC_STATIC,15,5,194,75
+    GROUPBOX        "Lock Desktop",IDC_STATIC,15,85,194,91
+    LTEXT           "To prevent others from encrypting/decrypting file while you are away from the machine specify a password protected screen saver.",
+                    IDC_STATIC,24,98,178,26
+    LTEXT           "Wait:",IDC_STATIC,133,136,18,10
+    LTEXT           "minutes.",IDC_STATIC,182,137,25,8
+    LTEXT           "Select the algorithm for Encryption and Hashing.",
+                    IDC_STATIC,22,15,160,11
+    LTEXT           "Hashing Algorithm:",IDC_STATIC,22,58,63,9
+    CONTROL         "Spin1",IDC_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_ARROWKEYS,169,135,10,11
+END
+
+IDD_FILE_ENCRYPT_DECRYPT DIALOG DISCARDABLE  0, 0, 254, 110
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,188,76,50,14
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",WS_BORDER,
+                    18,79,159,9
+    LTEXT           "",IDC_FROM_TO,18,55,221,18
+    LTEXT           "",IDC_FILE_NAME,18,41,109,11
+END
+
+IDD_ENCRYPT_ERROR DIALOG DISCARDABLE  0, 0, 275, 77
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirm Encryption"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Yes",IDOK,14,46,50,14
+    PUSHBUTTON      "Yes To &All",ID_YES_TO_ALL,80,46,50,14
+    PUSHBUTTON      "&No",ID_NO,148,46,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,214,46,50,14
+    LTEXT           "",IDC_ERROR_TEXT,15,13,246,23
+END
+
+IDD_CERT_MGMT DIALOG DISCARDABLE  0, 0, 202, 178
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Digital ID"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Get Digital ID...",IDB_GET_DIGID,113,29,70,15
+    PUSHBUTTON      "R&evoke Digital ID...",IDB_REVOKE_DIGID,113,60,70,15
+    PUSHBUTTON      "&Renew Digital ID...",IDB_RENEW_DIGID,113,92,70,15
+    PUSHBUTTON      "Re&cover Digital ID...",IDB_RECOVER_DIGID,113,124,70,15
+    LTEXT           "Enroll for a new Digital ID. ",IDC_STATIC,17,33,82,9
+    GROUPBOX        "Digital ID Lifecycle Management",IDC_STATIC,13,13,172,
+                    135
+    LTEXT           "Revoke an existing Digital ID. ",IDC_STATIC,17,64,93,9
+    LTEXT           "Renew an existing Digital ID.",IDC_STATIC,17,95,92,9
+    LTEXT           "Recover a Digital ID.",IDC_STATIC,17,128,74,10
+END
+
+IDD_MULTI_SEL DIALOG DISCARDABLE  0, 0, 221, 186
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "&Encrypted",IDC_MULTI_FILE_ENCRYPTED,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,63,108,47,9
+    CONTROL         "&Signed",IDC_MULTI_SIGNED,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,108,36,8
+    CONTROL         "E&ncrypt when Safe is locked",IDC_MULTI_ENCR_AT_LOGOFF,
+                    "Button",BS_AUTO3STATE | WS_TABSTOP,63,126,105,9
+    CONTROL         "D&ecrypt when Safe is unlocked",IDC_MULTI_DECR_LOGON,
+                    "Button",BS_AUTO3STATE | WS_TABSTOP,63,142,113,10
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,10,38,200,6
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,10,96,200,6
+    LTEXT           "Type:",IDC_STATIC,12,51,19,10
+    LTEXT           "Original Size:",IDC_STATIC,12,66,43,10
+    LTEXT           "Encrypted Size:",IDC_STATIC,12,81,52,9
+    LTEXT           "Attributes:",IDC_STATIC,12,108,32,8
+    LTEXT           "",IDC_NO_SEL,46,17,151,14
+    ICON            IDI_MULTIPLE_SEL,IDC_STATIC,10,14,20,20
+    LTEXT           "",IDC_VALID,165,108,34,9
+    LTEXT           "",IDC_MULTI_ORIG_SIZE,71,66,134,11
+    LTEXT           "",IDC_MULTI_ENCR_SIZE,71,81,134,11
+    LTEXT           "",IDC_MULTI_FILE_TYPE,71,52,134,11
+END
+
+IDD_FOLDER_PROP DIALOG DISCARDABLE  0, 0, 220, 113
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "",IDC_FOLDER_NAME,57,15,151,14
+    CONTROL         108,IDC_STATIC,"Static",SS_BITMAP,10,38,200,6
+    LTEXT           "Original Size:",IDC_STATIC,13,65,43,10
+    LTEXT           "Encrypted Size:",IDC_STATIC,13,82,52,9
+    LTEXT           "",IDC_FOLDER_ORIG_SIZE,68,65,138,9
+    LTEXT           "",IDC_FOLDER_ENCR_SIZE,68,82,140,9
+    LTEXT           "Type:",IDC_STATIC,13,48,18,9
+    LTEXT           "",IDC_FOLDER_TYPE,68,49,138,9
+END
+
+IDD_FILE_EXT DIALOG DISCARDABLE  0, 0, 124, 109
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "File Extensions"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDL_EXT_EXCLUDE,15,33,86,48,LBS_SORT | LBS_MULTIPLESEL | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,15,85,36,14
+    PUSHBUTTON      "Cancel",IDCANCEL,66,85,39,14
+    LTEXT           "Select the extensions which need to be excluded.",
+                    IDC_STATIC,15,10,89,16
+END
+
+IDD_FILTER DIALOG DISCARDABLE  0, 0, 187, 170
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Filter"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_FILTER,81,48,83,46,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "&Add",IDB_ADD,81,142,38,14
+    PUSHBUTTON      "&Remove",IDB_REMOVE,127,142,38,14
+    LTEXT           "Do not encrypt files ",IDC_STATIC,12,50,63,9
+    LTEXT           "You can prevent certain files from getting encrypted depending on their extension, their attributes or the folder in which they belong.",
+                    IDC_STATIC,12,15,165,24
+END
+
+IDD_EXT DIALOG DISCARDABLE  0, 0, 162, 84
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Add Extension"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDE_EXT,21,36,57,13,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,19,58,39,14
+    PUSHBUTTON      "Cancel",IDCANCEL,78,57,37,14
+    LTEXT           "Enter the File Extension which you want to exclude from Encryption. (.txt or .exe ...)",
+                    IDC_STATIC,19,13,132,16
+END
+
+IDD_PASSWD_UNLOCK DIALOG DISCARDABLE  0, 0, 139, 73
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Safe password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDE_PASSWD,14,26,111,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,14,47,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,76,47,50,14
+    LTEXT           "Enter password to unlock your Safe",IDC_DISP_TXT,14,11,
+                    113,8
+END
+
+IDD_NEW_PASSWD DIALOG DISCARDABLE  0, 0, 208, 167
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Safe password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDE_PASSWD,91,36,90,13,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDE_CONFIRM_PASSWD,91,53,90,13,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDE_RECOVERY_FILE,66,107,124,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse...",ID_BROWSE,144,122,46,15
+    DEFPUSHBUTTON   "OK",IDOK,13,143,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,81,143,50,14
+    PUSHBUTTON      "&Help",ID_HELP,145,143,50,14
+    LTEXT           "",IDC_DISP_TEXT,20,17,173,16
+    LTEXT           "Password:",IDC_STATIC,20,38,34,8
+    LTEXT           "Confirm Password:",IDC_STATIC,20,56,58,8
+    GROUPBOX        "New Password",IDC_STATIC,13,8,182,64
+    GROUPBOX        "Password Recovery",IDC_STATIC,13,76,181,64
+    LTEXT           "If you forget your password you can recover it using a recovery file. Use the default file or select a new file.",
+                    IDC_STATIC,18,86,172,17
+    LTEXT           "Recovery File:",IDC_STATIC,18,109,46,8
+END
+
+IDD_PASSWD_ENTER DIALOG DISCARDABLE  0, 0, 158, 69
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Safe password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDE_PASSWD,11,28,116,12,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,11,43,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,78,43,50,14
+    LTEXT           "",IDC_DISP_TXT,11,12,134,11
+END
+
+IDD_CHANGE_PASSWD DIALOG DISCARDABLE  0, 0, 206, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Change Safe Password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Old password:",IDC_STATIC,16,20,47,8
+    EDITTEXT        IDE_OLD_PASSWD,92,17,81,14,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "&New password:",IDC_STATIC,16,38,51,9
+    EDITTEXT        IDE_NEW_PASSWD,92,35,81,14,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "Con&firm new password:",IDC_STATIC,16,55,73,9
+    EDITTEXT        IDE_CONFIRM_PASSWD,92,53,82,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDE_RECOVERY_FILE,67,102,113,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse...",ID_BROWSE,136,117,45,14
+    DEFPUSHBUTTON   "OK",IDOK,15,139,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,79,139,50,14
+    PUSHBUTTON      "&Help",ID_HELP,139,139,50,14
+    LTEXT           "Recovery File :",IDC_STATIC,16,105,48,10
+    GROUPBOX        "Change Password",IDC_STATIC,11,8,176,64
+    GROUPBOX        "Password Recovery",IDC_STATIC,12,75,176,59
+    LTEXT           "If you forget your password you can recover it using a recovery file. Use the default file or select a new file.",
+                    IDC_STATIC,15,83,169,17
+END
+
+IDD_PASSWORD_IMPORT DIALOG DISCARDABLE  0, 0, 208, 167
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Password Import"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_NEW_PASSWORD,94,40,94,13,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_CONFIRM_NEW_PASSWORD,94,58,94,12,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,15,142,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,80,142,50,14
+    LTEXT           "Your password has been successfully imported. To continue using the Safe specify a new password now.",
+                    IDC_STATIC,18,20,170,19
+    LTEXT           "&New Password:",IDC_STATIC,18,42,51,8
+    LTEXT           "Con&firm new password:",IDC_STATIC,18,59,74,9
+    PUSHBUTTON      "&Help",ID_HELP,145,142,50,14
+    GROUPBOX        "New Password",IDC_STATIC,14,12,180,62
+    GROUPBOX        "Password Recovery",IDC_STATIC,15,79,179,59
+    LTEXT           "If you forget your password you can recover it using a recovery file. Use the default file or select a new file.",
+                    IDC_STATIC,20,87,170,17
+    LTEXT           "Recovery File:",IDC_STATIC,19,108,47,10
+    EDITTEXT        IDE_RECOVERY_FILE,69,106,120,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse...",ID_BROWSE,140,121,50,14
+END
+
+IDD_LOGON_OFF DIALOG DISCARDABLE  0, 0, 177, 54
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "",IDC_MSG,21,21,135,12
+END
+
+IDD_DISP_TEXT DIALOG DISCARDABLE  0, 0, 175, 78
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Backup Digital ID"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,21,54,50,14
+    LTEXT           "",IDC_TEXT,13,12,149,37
+    PUSHBUTTON      "&Help",ID_HELP,106,54,50,14
+END
+
+IDD_DECRYPT_ERROR DIALOG DISCARDABLE  0, 0, 275, 84
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirm Decryption"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Yes",IDOK,14,52,50,14
+    PUSHBUTTON      "Yes To &All",ID_YES_TO_ALL,81,52,50,14
+    PUSHBUTTON      "&No",ID_NO,149,52,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,214,52,50,14
+    LTEXT           "",IDC_ERROR_MSG,14,14,245,10
+    LTEXT           "If files in the existing folder have the same name as files you are decrypting, do you want to replace the existing files?",
+                    IDC_FOLDER_TEXT,14,30,248,17
+END
+
+IDD_RECOVER_PASSWORD DIALOG DISCARDABLE  0, 0, 240, 178
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Recover Password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,21,152,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,97,152,50,14
+    PUSHBUTTON      "&Help",ID_HELP,172,152,50,14
+    LTEXT           "To recover your password follow the steps listed below.",
+                    IDC_STATIC,21,22,175,10
+    LTEXT           "1. Create a password recovery request file.",IDC_STATIC,
+                    21,44,135,10
+    LTEXT           "2. Send the recovery file to your administrator. If you are unsure how to do this contact your adminstrator.",
+                    IDC_STATIC,21,67,191,19
+    LTEXT           "3. Your administrator will send you a recovery",
+                    IDC_STATIC,21,96,142,9
+    LTEXT           "4. After importing the recovery token you will be prompted to enter a new password.",
+                    IDC_STATIC,21,125,193,16
+    PUSHBUTTON      "&Import...",ID_IMPORT,172,98,50,14
+    PUSHBUTTON      "&Create...",ID_CREATE,172,41,50,14
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,21,34,200,6
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,21,59,200,6
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,21,84,200,8
+    CONTROL         308,IDC_STATIC,"Static",SS_BITMAP,21,119,200,6
+    LTEXT           "token. Import it here.",IDC_STATIC,22,106,67,9
+    GROUPBOX        "Recover Password",IDC_STATIC,15,11,211,135
+END
+
+IDD_CHANGE_CERT DIALOG DISCARDABLE  0, 0, 213, 82
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Change certificate"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,23,60,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,140,60,50,14
+    LTEXT           "",IDC_TEXT,14,12,186,41
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ADVANCED_OPTS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 184
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_SAFE_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 8
+        RIGHTMARGIN, 202
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 189
+    END
+
+    IDD_FILE_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 218
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+        HORZGUIDE, 85
+    END
+
+    IDD_REPLACE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 265
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+
+    IDD_SAFE_SECURITY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 219
+    END
+
+    IDD_FILE_ENCRYPT_DECRYPT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 247
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 103
+    END
+
+    IDD_ENCRYPT_ERROR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 268
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 68
+    END
+
+    IDD_CERT_MGMT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 195
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_MULTI_SEL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 214
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+
+    IDD_FOLDER_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 213
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 106
+    END
+
+    IDD_FILE_EXT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 117
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 102
+    END
+
+    IDD_FILTER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 163
+        HORZGUIDE, 45
+    END
+
+    IDD_EXT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 155
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 77
+    END
+
+    IDD_PASSWD_UNLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 133
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 63
+    END
+
+    IDD_NEW_PASSWD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 201
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 160
+    END
+
+    IDD_PASSWD_ENTER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 150
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 62
+    END
+
+    IDD_CHANGE_PASSWD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 199
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_PASSWORD_IMPORT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 201
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 160
+    END
+
+    IDD_LOGON_OFF, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 170
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 47
+    END
+
+    IDD_DISP_TEXT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 168
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 71
+    END
+
+    IDD_DECRYPT_ERROR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 268
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 77
+    END
+
+    IDD_RECOVER_PASSWORD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_CHANGE_CERT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 206
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CLOSESAFE           BITMAP  DISCARDABLE     "closesafe.bmp"
+IDB_ENCRYPTED           BITMAP  DISCARDABLE     "encrypted.bmp"
+IDB_RECENTLY_DECR       BITMAP  DISCARDABLE     "decrypted.bmp"
+IDB_OPENSAFE            BITMAP  DISCARDABLE     "opensafe.bmp"
+IDB_VSLOGO              BITMAP  DISCARDABLE     "logo.bmp"
+IDB_LINE                BITMAP  DISCARDABLE     "line.bmp"
+IDB_LOGOUT              BITMAP  DISCARDABLE     "safelock.bmp"
+IDB_LOGIN               BITMAP  DISCARDABLE     "safeunlock.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AVI
+//
+
+ID_FILECOPY_AVI         AVI     DISCARDABLE     "filecopy.avi"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,1,1
+ PRODUCTVERSION 1,0,1,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "VeriSign, Inc.\0"
+            VALUE "FileDescription", "vsctl Module\0"
+            VALUE "FileVersion", "1, 0, 1, 1\0"
+            VALUE "InternalName", "vsctl\0"
+            VALUE "LegalCopyright", "Copyright 1999\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OLESelfRegister", "\0"
+            VALUE "OriginalFilename", "vsctl.DLL\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "vsctl Module\0"
+            VALUE "ProductVersion", "1, 0, 1, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_VSCTRL              REGISTRY DISCARDABLE    "vsctrl.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_SAFEACCELS ACCELERATORS DISCARDABLE 
+BEGIN
+    "A",            IDS_SELECT_ALL,         VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "vsctl"
+    IDS_BY_DATE_DECRYPT     "by &Date Decrypted"
+    IDS_ID_REM_ERR          "The Digital ID used for %s has been deleted. Please select another Digital ID."
+    IDS_FOLDER_OVERWRITE    "If files in the existing folder have the same name as files in the folder you are encrypting, do you want to replace the existing files ?"
+    IDS_FILE_FOLDER_PRESENT "The %s '%s' is already present in the Safe."
+    IDS_FILE_OVERWRITE      "Do you wish to overwrite the file ?"
+    IDS_LOCK_SAFE           "&Lock Safe"
+    IDS_PASSWD_PROMPT       "Enter password for the Safe."
+    IDS_PASSWD_UNLOCK       "Enter password to unlock the Safe."
+    IDS_PASSWD_TIMEOUT      "The password has timed out. Please enter it again."
+    IDS_RESTORE_PASSWORD    "&Recover Password"
+    IDS_UNLOCK_SAFE         "&Unlock Safe"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_REPLACE_FOLDER      "This folder already contains the folder called "
+    IDS_REPLACE_FOLDER2     "If files in the existing folder have the same name as files in the folder you are encrypting, do you want to replace the existing files ?"
+    IDS_ENCRYPT             "Encr&ypt"
+    IDS_DELETE              "&Delete"
+    IDS_CURR_LOCATION       "Current Location"
+    IDS_CLOSE               "&Close"
+    IDS_CLEAR               "Clea&r"
+    IDS_HIDE                "&Hide"
+    IDS_ENCRYPTED           "Encr&ypted"
+    IDS_DECRYPTED           "Decryp&ted"
+    IDS_VSSAFE              "VSSafe"
+    IDS_ENCRYPT_FILE        "&Encrypt File..."
+    IDS_DECRYPT_VERIFY      "Decrypt and &Verify"
+    IDS_DATE_DECRYPT        "Decrypted"
+    IDS_REMOVAL_MESSAGE     "(To completely uninstall the product please delete it and then logoff from the machine)"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EXT_TITLE           "My Safe"
+    IDS_FILE_NAME           "Name"
+    IDS_ORIG_LOCATION       "Original Location"
+    IDS_DATE_ENCRYPT        "Encrypted"
+    IDS_FILE_TYPE           "Type"
+    IDS_FILE_SIZE           "Size"
+    IDS_NEW_SAFE            "Ne&w Safe..."
+    IDS_DECRYPT             "D&ecrypt"
+    IDS_DECRYPT_ALL         "D&ecrypt All"
+    IDS_PROPERTIES          "P&roperties"
+    IDS_VIEW_LARGE          "Lar&ge Icons"
+    IDS_VIEW_SMALL          "S&mall Icons"
+    IDS_VIEW_LIST           "&List"
+    IDS_VIEW_DETAILS        "&Details"
+    IDS_VIEW                "&View"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ARRANGE_ICONS       "Arrange &Icons"
+    IDS_BY_NAME             "by &Name"
+    IDS_BY_ORIGIN           "by &Location"
+    IDS_BY_DATE_ENCRYPT     "by &Date Encrypted"
+    IDS_BY_TYPE             "by &Type"
+    IDS_BY_SIZE             "by &Size"
+    IDS_PASTE               "&Paste"
+    IDS_EXPLORE             "&Explore"
+    IDS_OPEN                "&Open"
+    IDS_RESTORE             "&Restore"
+    IDS_SELECT_ALL          "Select &All"
+    IDS_INVERT_SELECTION    "&Invert Selection"
+    IDS_REMOVE_FILE         "This file(s) will be decrypted and permanently removed from the safe. Do you wish to continue?"
+    IDS_WARNING             "Warning!!!"
+    IDS_REPLACE_FILE        "This folder already contains the encrypted file "
+    IDS_REPLACE_FILE2       "Do you want to replace this file?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_BACKUP              "Please backup the selected Digital ID using Internet Explorer. If you lose your encryption or signature Digital ID then you will not be able to decrypt or verify files."
+    IDS_HELP_TOPICS         "&Help Topics"
+    IDS_ABOUT               "&About My Safe"
+    IDS_ABOUT_TEXT          "My Safe#"
+    IDS_COMMENT             "'File Encryption Tool for Windows'"
+    IDS_INSTALL_DIGID       "There are no Digital IDs on your machine. Do you want to install one now?"
+    IDS_DELETE_PROMPT       "Are you sure you want to delete the encrypted file(s)?"
+    IDS_DELETE_CONFIRM      "Confirm Deletion"
+    IDS_UNINSTALL           "&Uninstall"
+    IDS_DECRYPT_FOLDER_ERROR 
+                            "If files in the existing folder have the same name as files you are decrypting, do you want to replace the existing files?"
+    IDS_DECRYPT_FILE_ERROR  "Do you wish to overwrite this file?"
+    IDS_NO_MEMORY           "Out of memory."
+    IDS_REG_CREATE          "Error creating Windows registry key."
+    IDS_REG_WRITE           "Error writing to the Windows registry."
+    IDS_CONNECT_ERROR       "Cannot connect to server %s to get the Policy File. Please check your network connection."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NETWORK_ERROR       "Network error while downloading the policy file, please contact your Administrator."
+    IDS_REG_OPEN            "Error opening Windows registry key."
+    IDS_POLICY_DOWNLOAD_ERR "Could not download new Policy file because of Network problem. Do you wish to continue with current policy settings?"
+    IDS_CONTINUE_POLICY     "Do you wish to continue with current policy settings?"
+    IDS_SAFE_DIR_ERR        "Unable to create the Safe directory '%s'."
+    IDS_READ_FILE_ERR       "Cannot read file '%s'."
+    IDS_ROOT_FOLDER_ERR     "Cannot encrypt root folder '%s'."
+    IDS_OS_FOLDER_ERR       "Cannot encrypt operating system folder '%s'."
+    IDS_OS_FILE_ERR         "'%s' is present in the operating system folder. Encrypting it may cause operating system error. Do you wish to continue?"
+    IDS_FILTER_ERR          "Cannot encrypt file '%s' because of the Filters specified in the Safe properties."
+    IDS_ENCRYPT_HIDDEN      "Do you wish to encrypt the hidden file '%s'?"
+    IDS_ENCRYPT_SYSTEM      "Do you wish to encrypt the system file '%s'?"
+    IDS_ENCRYPT_READONLY    "Do you wish to encrypt the read-only file '%s' ?"
+    IDS_ENCRYPT_TEMP        "Do you wish to encrypt the temporary file '%s' ?"
+    IDS_DIR_SELECT          "Cannot create directory '%s' . Please select another directory for the decryted file."
+    IDS_ENCRYPTING          "Encrypting..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DECRYPTING          "Decrypting..."
+    IDS_ENCRYPT_LOGOFF      "Encrypting at Logoff..."
+    IDS_DECRYPT_LOGON       "Decrypting at Logon..."
+    IDS_NO_IDS_FOR_SAFE     "No Digital ID's selected. Please open the 'Safe'."
+    IDS_PASSWD_PROP         "Enter password to access Safe properties."
+    IDS_PASSWD_FILE         "Enter password to access file properties."
+    IDS_PASSWD_ENCRYPT      "Enter password to encrypt selected file(s)."
+    IDS_PASSWD_DECRYPT      "Enter password to decrypt selected file(s)."
+    IDS_PASSWD_PROMPT_TIMEOUT "Password timeout. Please enter it again."
+    IDS_FROM_TO             "From '%s' to '%s'."
+    IDS_VERIFY_FAIL         "Signature verification for file '%s' failed."
+    IDS_DECRYPT_FAIL        "Cannot decrypt file '%s'."
+    IDS_TEMP_FILE_ERR       "Could not create temporary file."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WRITE_FILE_ERR      "Cannot write to file '%s'."
+    IDS_PASSWD_FILE_ERR     "Invalid password file."
+    IDS_POLICY_OPEN_ERR     "Failed to open the policy file '%s'."
+    IDS_POLICY_CNT_ERR      "Error opening policy file container."
+    IDS_CRYPT_SERVICE_ERR   "Cryptographic service not present."
+    IDS_UNINSTALL_MSG       "%d Encrypted file(s) present in the Safe. Do you wish to decrypt these files before uninstall?"
+    IDS_TEMP_PATH_ERR       "Failed to get temporary path."
+    IDS_USERNAME_ERR        "Failed to get Windows user name."
+    IDS_COPY_FILE_ERR       "Error copying file '%s' to '%s'."
+    IDS_POLICY_UPDATE_ERR   "Cannot update policy file. Do you wish to continue with the current policy settings?"
+    IDS_POLICY_WRITE_ERR    "Error writing to policy file '%s'."
+    IDS_REG_READ_ERR        "Error reading Windows registry key."
+    IDS_CRYPT_ERR           "Error occured during cryptographic operation."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_INVALID_RESULT      "Invalid Result returned while selecting Digital ID."
+    IDS_DIGID_ABSENT        "Could not obtain the Digital ID for decryption. To continue decryption restore the Digital ID."
+    IDS_INVALID_USER        "Invalid user accessing the Safe."
+    IDS_ENCRYPT_ID_DEL      "The Digital ID used for Encryption is not present. Please select another ID."
+    IDS_DIR_CREATE_ERR      "Error creating folder '%s'."
+    IDS_ENCR_CERT_ERR       "Failed to initialize Digital ID for encryption."
+    IDS_SHARE_ERR           "File '%s' is in use by another application. Please close the application and try again."
+    IDS_SIGN_CERT_ERR       "Failed to initialize Digital ID for signature."
+    IDS_SIGN_ID_DEL         "The Digital ID used for Signature is not present. Please select another ID."
+    IDS_SIGN_ERR            "Could not sign file '%s'."
+    IDS_INVALID_PASSWD      "Invalid password."
+    IDS_DLL_INIT_ERR        "Failed during dll initialization."
+    IDS_PTA_INIT_ERR        "Error initializing PTA."
+    IDS_SEL_SCRNSVR         "Please select a password protected Screen Saver if you wish to protect your desktop while you are away from your machine."
+    IDS_SCRNSVR_PASSWD      "Do you wish to specify  a screen saver password?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ENTER_PASSWD        "Please enter a password."
+    IDS_PASSWD_MISMATCH     "The new and confirmed passwords do not match. Please type them again."
+    IDS_SCRNSVR_ERR         "Error getting screen saver information."
+    IDS_OLD_PASSWD          "Please enter the old password."
+    IDS_ENTER_NEW_PASSWD    "Please enter the new password."
+    IDS_PASSWD_CHANGE       "Password successfully changed."
+    IDS_FROM                "From"
+    IDS_TO                  "to"
+    IDS_RECOVERY_FILE       "Password recovery file"
+    IDS_SEL_RECOVERY_FILE   "Select password recovery file"
+    IDS_UNINSTALL_CONFIRM   "Do you wish to uninstall your Safe?"
+    IDS_RECOVERY_FILE_CREATED "Password recovery file successfully created."
+    IDS_IMPORT_RECOVERY_FILE "Import password token file"
+    IDS_LOST_PASSWORD       "If you have forgotten your password, recover it using the 'Recover Password' option in the 'File' menu."
+    IDS_TOKEN_IMPORTED      "Recovery token successfully imported, enter a new password now."
+    IDS_NEW_PASSWD          "You are accessing the Safe for the first time. Specify a password to protect your Safe. "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_RECOVER_PASSWD      "Token file successfully imported, to continue using the Safe enter a new password now."
+    IDS_SELID_ERROR         "Error selecting the Digital ID."
+    IDS_SEL_FILES           "Select file(s) to be encrypted."
+    IDS_SAFE_PROP           "Display properties of the Safe."
+    IDS_ITEM_PROP           "Displays the properties of the selected items."
+    IDS_LOCK_THE_SAFE       "Locks the Safe."
+    IDS_UNLOCK_THE_SAFE     "Unlocks the Safe."
+    IDS_CLOSE_WINDOW        "Closes the window."
+    IDS_RECOVER_PASSWORD    "Recover your Safe password."
+    IDS_SELECT_ALL_ITEMS    "Selects all items in the window."
+    IDS_INVERT_SELECT_ALL_ITEMS 
+                            "Reverses which items are selected and which are not."
+    IDS_RECENTLY_DECRYPTED  "Shows the list of recently decrypted items."
+    IDS_VIEW_LARGE_ITEMS    "Displays items by using large icons."
+    IDS_VIEW_SMALL_ITEMS    "Displays items by using small icons."
+    IDS_VIEW_LIST_ITEMS     "Displays items in a list."
+    IDS_VIEW_DETAIL_ITEMS   "Displays information about each item in the window."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HELP                "Opens Help."
+    IDS_HELP_ABOUT          "Displays program information, version number, and coypright."
+    IDS_OPEN_ITEM           "Open"
+    IDS_DECRYPTOPEN_ITEMS   "Decrypts the selected items and launch the associated application."
+    IDS_DECRYPT_ITEMS       "Decrypts the selected items."
+    IDS_ENCRYPT_ITEMS       "Encrypts the selected items."
+    IDS_DECRYPTVERIFY_ITEMS "Decrypts the selected items and verifies the signature."
+    IDS_EXPLORE_ITEMS       "Explore"
+    IDS_DELETE_ITEMS        "Deletes the selected items."
+    IDS_VIEW_ITEMS          "Contains commands for customizing this window."
+    IDS_ARRANGE_ITEMS       "Contains commands for arranging items in the window."
+    IDS_BY_NAME_ITEM        "Sorts items alphabetically by name."
+    IDS_BY_TYPE_ITEM        "Sorts items by type."
+    IDS_BY_DATE_ITEM        "Sorts items by date, from oldest to most recent."
+    IDS_BY_SIZE_ITEM        "Sorts items by size, from smallest to largest."
+    IDS_BY_ORIGIN_ITEM      "Sorts items according to their location."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CLEAR_ITEM          "Clear the list of recently decrypted items."
+    IDS_HIDE_ITEM           "Hides the recently decrypted pane."
+    IDS_ENCRYPT_ITEM        "Encrypts the selected items by putting them in the Safe."
+    IDS_ENCRYPT_INPLACE_ITEM "Encrypts the selected items in-place."
+    IDS_DECRYPT_ITEM        "Decrypts the selected items."
+    IDS_MS_TO_VS            "By selecting this certificate you are switching from a password based protection of the Safe to a profile based protection. If you select 'OK' you will be prompted to enter the  password for the profile. Do you wish to continue?"
+    IDS_VS_TO_MS            "By selecting this certificate you are switching from a profile based protection of the Safe to a password based protection. If you select 'OK' you will be prompted to enter a password for accessing the Safe. Do you wish to continue?"
+    IDS_DIFF_PROFILE        "By selecting this certificate you are switching to a new profile If you select 'OK' you will be prompted to enter the  password for the profile. Do you wish to continue?"
+    IDS_ENTER_SAFE_PASSWD   "Enter password to access the Safe"
+    IDS_MS_PASSWD1          "Prompt for a password everytime files are"
+    IDS_VS_PASSWD1          "Prompt for a password everytime your "
+    IDS_MS_PASSWD2          "encrypted/decrypted or the properties are accessed."
+    IDS_MS_PASSWD3          "Prompt for a password if the Safe is not"
+    IDS_VS_PASSWD3          "Prompt for a password if the keys are not"
+    IDS_VS_PASSWD2          "keys are accessed."
+    IDS_OPEN_SAFE           "To access the properties first open the 'Safe'."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_APP_DATA_ERR        "Error while getting the application preferences. Please contact administrator."
+    IDS_INVALID_PROFILE     "Invalid profile used to open the Safe."
+    IDS_FORGOT_PASSWD       "If you do not remember your password, do you wish to recover it now?"
+    IDS_INSTALL_DIR_ERR     "Unable to create the Safe directory '%s'."
+    IDS_DIG_SIG_ERR         "Error performing Digital Signature operation."
+    IDS_SETTINGS_READ_ERR   "Error reading the File Encryption settings, please contact your Administrator."
+    IDS_SETTINGS_VERF_ERR   "Error verifying the File Encryption settings, please contact your Administrator."
+    IDS_DECRYPT_ERR         "Error occured during decryption."
+    IDS_SAFE                "Safe"
+    IDS_SAFE_DIR_ERR_PERM   "You do not have permission to create the Safe directory '%s', please contact your Administrator."
+    IDS_OPEN_FET_PROFILE    "Open your File Encryption Profile"
+    IDS_DIGID_REMOVED       "Could not obtain the Digital ID to open the Safe. Please restore  your Digital ID."
+    IDS_SAFE_DIR            "Cannot encrypt file(s) that are present in the Safe directory."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "vsctl.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

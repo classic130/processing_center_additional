@@ -1,0 +1,78 @@
+#! /usr/bin/csh
+echo " "
+echo "Usage:  vsamigrate-aix <src_dir> <dest_dir> <policy_file>"
+echo "source directory       : $1"
+echo "destination directory  : $2"
+echo "policy file            : $3"
+
+setenv LIBPATH .
+
+if ($#argv != 3) then
+  echo " "
+  echo " "
+  echo "***** Invalid parameters *****"
+  echo "Usage:  vsamigrate-aix <src_dir> <dest_dir> <policy_file>"
+  echo " "
+else if ("$1" != "$2") then
+    echo "creating directory structure and copying files"
+    mkdir -p $2/log/VSApps
+    chmod 777 $2/log/VSApps
+    mkdir -p $2/cgi-bin
+    mkdir -p $2/htmldocs
+    mkdir -p $2/fdf
+
+    cp -r $1/cgi-bin/VSApps $2/cgi-bin/
+    cp -r $1/htmldocs/VSApps $2/htmldocs/
+    cp -r $1/fdf/VSApps $2/fdf/
+    echo "running customizer"
+    ./customizer.exe -f ../fragments/VSApps -c ../templates/vsapps_unix.lst -s $1 -d $2 -p $3 -l $2/log/VSApps/migrate.log -u check
+else
+        
+    echo "running customizer"
+    ./customizer.exe -f ../fragments/VSApps -c ../templates/vsapps_unix.lst -s $1 -d $2 -p $3 -l $2/log/VSApps/migrate.log -u check
+endif 
+
+if ($#argv == 3) then
+   # Reformat migrate.log
+   if (-e $2/log/VSApps/migrate.log) then
+      # Search for "INFO-UPDATE"
+      cp $2/log/VSApps/migrate.log $2/log/VSApps/temp.log
+      grep "INFO-UPDATE" $2/log/VSApps/temp.log > $2/log/VSApps/migrate.log
+
+      # Search for not "Fragment"
+      if (-e $2/log/VSApps/migrate.log) then
+         cp $2/log/VSApps/migrate.log $2/log/VSApps/temp.log
+         grep -v "Fragment" $2/log/VSApps/temp.log > $2/log/VSApps/migrate.log
+      endif
+
+      # Search for not ".fdf"
+      if (-e $2/log/VSApps/migrate.log) then
+         cp $2/log/VSApps/migrate.log $2/log/VSApps/temp.log
+         grep -v ".fdf" $2/log/VSApps/temp.log > $2/log/VSApps/migrate.log
+      endif
+   endif 
+
+   printf "Because of template changes in the new site kit, some of your locally \n"> $2/log/VSApps/temp.log
+   printf "hosted HTML files might be overwritten with standard VeriSign files \n">> $2/log/VSApps/temp.log
+   printf "during the upgrade procedures. \n" >> $2/log/VSApps/temp.log
+   printf "\n" >> $2/log/VSApps/temp.log
+   printf "If there are any files listed below, save copies of the files before \n">> $2/log/VSApps/temp.log
+   printf "continuing with the upgrade. After you run the install command, you \n">> $2/log/VSApps/temp.log
+   printf "must re-apply the modifications to only these files. Use the copies \n">> $2/log/VSApps/temp.log
+   printf "for reference only; the structure of the new HTML files has changed \n">> $2/log/VSApps/temp.log
+   printf "and requires new editing. If no files appear below, you may continue \n">> $2/log/VSApps/temp.log
+   printf "with the upgrade and your HTML pages will be preserved. \n">> $2/log/VSApps/temp.log
+   printf "\n" >> $2/log/VSApps/temp.log
+   printf "============================================\n" >> $2/log/VSApps/temp.log
+   printf "\n" >> $2/log/VSApps/temp.log
+
+   if (-e $2/log/VSApps/migrate.log) then
+      cat $2/log/VSApps/migrate.log >> $2/log/VSApps/temp.log
+   endif
+
+   printf "\n" >> $2/log/VSApps/temp.log
+
+   mv $2/log/VSApps/temp.log $2/log/VSApps/migrate.log
+endif
+
+exit 0

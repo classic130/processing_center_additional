@@ -1,0 +1,34 @@
+HKCR
+{
+	VSSC.VSSC.1 = s 'VSSC Class'
+	{
+		CLSID = s '{C5E8B9E2-D217-11D4-A21E-001083023D07}'
+	}
+	VSSC.VSSC = s 'VSSC Class'
+	{
+		CLSID = s '{C5E8B9E2-D217-11D4-A21E-001083023D07}'
+		CurVer = s 'VSSC.VSSC.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C5E8B9E2-D217-11D4-A21E-001083023D07} = s 'VSSC Class'
+		{
+			ProgID = s 'VSSC.VSSC.1'
+			VersionIndependentProgID = s 'VSSC.VSSC'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{C5E8B9D5-D217-11D4-A21E-001083023D07}'
+			'Version' = s '1.0'
+		}
+	}
+}

@@ -1,0 +1,12 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'winnt',
+            'sparc',
+            'hpux',
+            'aix'
+          ],
+          'itgclient/server/apps/pta/bin',
+          'build/log/VerArchive'
+        ];

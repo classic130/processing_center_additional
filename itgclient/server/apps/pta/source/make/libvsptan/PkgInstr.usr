@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'dynamic'
+          ],
+          'itgclient/server/apps/pta/source/make/libvsptan',
+          'build/log/VerArchive'
+        ];

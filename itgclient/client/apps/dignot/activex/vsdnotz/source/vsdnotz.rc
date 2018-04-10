@@ -1,0 +1,374 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""vsdnotz.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_VSNZ                REGISTRY DISCARDABLE    "..\\VSNZ.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DNZUI DIALOGEX 0, 0, 283, 204
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "VeriSign Personal Trust Agent"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,145,54,72,12,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    PUSHBUTTON      "",IDBTN4,223,52,50,14,NOT WS_VISIBLE
+    DEFPUSHBUTTON   "OK",IDOK,109,190,50,14
+    PUSHBUTTON      "Cancel",IDBTN2,168,190,50,14
+    PUSHBUTTON      "",IDBTN3,225,190,50,14
+    LTEXT           "Static",IDC_HEADER_TITLE,53,14,131,9
+    CONTROL         "",IDC_BOTTOM_SEPARATOR,"Static",SS_ETCHEDHORZ,-1,24,284,
+                    1
+    CONTROL         "",IDC_TOP_SEPARATOR,"Static",SS_ETCHEDHORZ,-1,175,282,1
+    CONTROL         "",IDC_VRSN_LOGO,"Static",SS_BITMAP | NOT WS_VISIBLE,-1,
+                    180,60,23
+    CONTROL         "",IDC_HEADER_LOGO,"Static",SS_BITMAP | NOT WS_VISIBLE,
+                    171,2,20,20
+    LTEXT           "Static",IDC_UI_TITLE,5,28,18,11,NOT WS_VISIBLE
+    LTEXT           "Static",IDC_UI_TEXT,7,39,66,9,NOT WS_VISIBLE
+    LTEXT           "Static Abc",IDC_LABEL1,12,58,47,8,NOT WS_VISIBLE
+    CONTROL         "Progress1",IDC_PROGRESS1,"msctls_progress32",NOT 
+                    WS_VISIBLE | WS_BORDER,17,84,239,8
+    EDITTEXT        IDC_EDIT_RDONLY,144,34,23,12,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_READONLY | NOT WS_VISIBLE | 
+                    WS_VSCROLL
+    CONTROL         "",IDC_RBS,"Static",SS_BITMAP | NOT WS_VISIBLE,64,97,15,
+                    13
+    CONTROL         "",IDC_DIGRCPT,"Static",SS_BITMAP | NOT WS_VISIBLE,63,
+                    113,15,13
+    LTEXT           "Static",IDC_LABEL3,5,108,22,13,NOT WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL4,37,107,20,13,NOT WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL5,7,118,22,13,NOT WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL6,7,129,20,13,SS_NOTIFY | NOT 
+                    WS_VISIBLE
+    CONTROL         "",IDC_ERROR,"Static",SS_BITMAP | NOT WS_VISIBLE,65,126,
+                    15,13
+    LTEXT           "Static",IDC_LABEL2_1,37,97,39,13,NOT WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL4_1,37,117,21,13,NOT WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL5_1,37,129,23,13,NOT WS_VISIBLE
+    CONTROL         219,IDC_VALIDBMP,"Static",SS_BITMAP | NOT WS_VISIBLE,9,
+                    159,35,12,WS_EX_TRANSPARENT
+    CONTROL         221,IDC_VALIDRBS,"Static",SS_BITMAP | NOT WS_VISIBLE,91,
+                    103,57,53
+    CONTROL         224,IDC_INVALIDBMP,"Static",SS_BITMAP | NOT WS_VISIBLE,9,
+                    144,46,13
+    LTEXT           "Static",IDC_LABEL7,61,158,20,13,SS_NOTIFY | NOT 
+                    WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL8,119,161,19,8,SS_NOTIFY | NOT 
+                    WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL9,168,161,19,8,SS_NOTIFY | NOT 
+                    WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL3_3,79,67,19,8,SS_NOTIFY | NOT 
+                    WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL3_4,91,41,19,8,NOT WS_VISIBLE
+    LTEXT           "Static",IDC_LABEL2,1,101,19,8,NOT WS_VISIBLE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_VSLARGE             BITMAP  DISCARDABLE     "bitmap8.bmp"
+IDB_ERROR               BITMAP  DISCARDABLE     "cross.bmp"
+IDB_DIGRCPT             BITMAP  DISCARDABLE     "digrcpt.bmp"
+IDB_VALID               BITMAP  DISCARDABLE     "valid.bmp"
+IDB_VALIDRBS            BITMAP  DISCARDABLE     "validrbs.bmp"
+IDB_INVALID             BITMAP  DISCARDABLE     "invalid.bmp"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,6
+ PRODUCTVERSION 1,0,0,6
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "vsdnotz Module\0"
+            VALUE "FileVersion", "1, 0, 0, 6\0"
+            VALUE "InternalName", "vsdnotz\0"
+            VALUE "LegalCopyright", "Copyright 2000\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OLESelfRegister", "\0"
+            VALUE "OriginalFilename", "vsdnotz.DLL\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "vsdnotz Module\0"
+            VALUE "ProductVersion", "1, 0, 0, 6\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DNZUI, DIALOG
+    BEGIN
+        HORZGUIDE, 104
+        HORZGUIDE, 113
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "vsdnotz"
+    IDS_NOTARIZE            "VeriSign Di&gital Notarization"
+    IDS_MENU_STATUS         "Perform Digital Notarization."
+    IDS_SELFILE_FILENAMELBL "&Filename :"
+    IDS_BROWSE              "&Browse..."
+    IDS_FILEFILTER          "All Files (*.*)"
+    IDS_FILEOPEN            "Select File For Digital Notarization"
+    IDS_PREV                "< &Previous"
+    IDS_NEXT                "&Next >"
+    IDS_CANCEL              "C&ancel"
+    IDS_SELECT              "&Select"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HELP                "&Help"
+    IDS_SELFILE_TITLE       "Select Document"
+    IDS_SELFILE_TEXT        "Select the document for Digital Notarization."
+    IDS_CREATENOTREQ_WIZTITLE "Digitally Notarize Document"
+    IDS_FINISH              "&Finish"
+    IDS_DONE                "&Done"
+    IDS_PROGRESS_TEXT       "Digitally Notarizing document.....%d percent complete."
+    IDS_PROGRESS_TITLE      "Digital Notarization Status"
+    IDS_VERFYRCPT_TITLE     "Digital Notarization Receipt"
+    IDS_VERFYRCPTTXT_TEXT   "The following document was digitally notarized. The details of the digital notarization are provided below."
+    IDS_NZSERVER_ERR        "The Digital Notarization server was unable to digitally notarize the information, please contact your Administrator."
+    IDS_CERT_EXP            "Your Digital ID has expired, try the operation again after renewal of the Digital ID. Do you wish to renew now?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CERT_INVALID        "You do not have a valid Digital ID, do you wish to enroll for one now?"
+    IDS_USR_SETTINGS_ERR    "Some settings needed to perform Digital Notarization are absent, do you wish to get the settings now?"
+    IDS_CREATE_REQ          "Creating the Digital Notarization request..."
+    IDS_SIGN_REQ            "Signing the Digital Notarization request..."
+    IDS_SEND_REQ            "Sending the request to the Digital Notarization server..."
+    IDS_VERIFY_RESP         "Verifying the Digital Notarization server's response..."
+    IDS_NZ_COMPLETE2        "\n\n          The Digital Notarization operation is completed successfully.\n\n "
+    IDS_NZ_GENERAL_ERR      "An error occurred during the Digital Notarization operation, please contact your Administrator."
+    IDS_SIG_VERIFY_ERR      "An error occurred while verifying the Digital Notarization server signature, please contact your Administrator."
+    IDS_NOT_TRUSTED         "An error occurred while verifying the Digital Notarization server signature. The server Digital ID is not trusted."
+    IDS_CERT_REVOKED        "An error occurred while verifying the Digital Notarization server signature. A digital ID in the certificate chain has been revoked."
+    IDS_INVALID_ALG         "Invalid hash algorithm specified."
+    IDS_MEM_ERR             "Out of memory. Close some applications and try again."
+    IDS_RANDOM_GEN_ERR      "An error occurred while generating the random number, please contact your Administrator."
+    IDS_HASH_ERR            "An error occurred while creating a fingerprint of the document, please contact your Administrator."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SIGN_ERR            "An error occurred while signing the Digital Notarization request, please contact your Administrator."
+    IDS_INVALID_NZ_SERVER_PATH 
+                            "Invalid Digital Notarization server path, please contact your Administrator."
+    IDS_INET_SEND_ERR       "An error occurred while sending the request to server. Make sure you are online and try again."
+    IDS_INET_QUERY_ERR      "An error occurred while querying the request status, please try again."
+    IDS_NZ_BAD_STAT         "An error occurred while processing the request on the server, please try again."
+    IDS_INET_READ_ERR       "An error occurred while reading the server response, please contact your Administrator."
+    IDS_RECEIPT_TITLE       "Digital Receipt"
+    IDS_RECEIPT_DESC        "This Digital Receipt was issued by the VeriSign Digital Notarization Service."
+    IDS_RECEIPT_FOR         "For :"
+    IDS_RECEIPT_DOC         "Title :"
+    IDS_RECEIPT_DATE        "Date :"
+    IDS_RECEIPT_TIME        "Time :"
+    IDS_RECEIPT_DETAILS     "Web Service"
+    IDS_RECEIPT_VERIFY_ERR  "An error occurred verifying the receipt signature, do not trust this receipt."
+    IDS_RECEIPT_INTEGRITY_ERR 
+                            "The information that was digitally notarized has changed."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PARSE_RESP_ERR      "An error occurred while decoding the Digital Notarization server response. Please install the latest version of the Digital Notarization client."
+    IDS_INVALID_VER         "The Digital Notarization server version is not supported by the client, please contact your Administrator."
+    IDS_INVALID_NONCE       "Invalid nonce value returned by the Digital Notarization server, please contact your Administrator."
+    IDS_VERF_GENERAL_ERR    "An error occurred while verifying the digital receipt."
+    IDS_INVALID_RECORD_FORMAT "The receipt has an invalid format."
+    IDS_DOC_NOACCESS        "An error occurred while creating file '%s', you may not have write permission on the drive. Change permissions and retry the operation."
+    IDS_DOC_EXISTS          "The file '%s' already exists. Rename the file and try the operation again."
+    IDS_DOC_SHARE_ERR       "The file '%s' may be in use by another application, please close the application and try again."
+    IDS_CDP_GET_ERR         "An error occurred while obtaining the revocation information from the server."
+    IDS_SELID_ERR           "An error occurred while selecting the Digital ID, please contact  your Administrator."
+    IDS_PROFILE_CORRUPT     "The selected profile is corrupt, please use a different profile."
+    IDS_VS_NZ               "VeriSign Digital Notarization"
+    IDS_ERROR               "Error"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NZ_COMPLETE         "Digital Notarization operation was completed successfully."
+    IDS_CLOSE               "&Close"
+    IDS_SELID_TITLE         "Select Digital Notarization ID"
+    IDS_OPENPROF_TITLE      "Open Your Digital Notarization Profile"
+    IDS_LGNDLG_TITLE        "Digitally Notarize Document"
+    IDS_SIGNDLG_TITLE       "Digitally Notarize Document"
+    IDS_INVALID_POLICY      "The Digital Notarization server does not support the Authentic Document request, please contact your Administrator."
+    IDS_TIMENOTAVAIL        "The Digital Notarization server is not available, please try later."
+    IDS_ERRPOLICY           "The requested policy is not supported by the Digital Notarization server, please contact your Administrator."
+    IDS_CDP_ABSENT          "An error occurred while verifying the Digital Notarization server signature. The revocation information is not present in the Digital ID."
+    IDS_SELFILE_ERR         "The specifed file does not exist. Please check the file name."
+    IDS_PROMPT_FOR_DOC      "The document that was digitally notarized does not exist at the original location. Do you wish to browse for the document?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LOCATE_DOC          "Locate Document"
+    IDS_DNZ_ERROR           "Digital Notarization"
+    IDS_NZ_RCPT             "Receipt file having extension '.rcpt' has been saved in the same folder as the document."
+    IDS_SELIDCHKBOX_TEXT    "Always use this Digital ID for Digital Notarization "
+    IDS_SELF_SIGNED         "An error occurred while verifying the Digital Notarization server signature, the server certificate is self signed. Please contact your administrator."
+    IDS_RCPTFILE_ERR        "You cannot create a receipt file in the current directory as you may not have sufficient privileges."
+    IDS_CLIENT_AUTH_ERR     "The document that you are trying to access is on a Web Server that requires SSL client authentication. This is not supported."
+    IDS_SEC_CERT_ERR        "The document that you are trying to access is on a Web Server that has an invalid SSL certificate."
+    IDS_SELFILE_ERR2        "The specified file could not be opened. Please try again."
+    IDS_SCRIPT              "Script"
+    IDS_NAVIGATOR           "navigator"
+    IDS_UAGENT              "userAgent"
+    IDS_USR_SETTINGS_ERR3   "Settings needed by the Digital Notarization client are not present on your machine. To obtain the settings please goto the Web Site from where you downloaded the client."
+    IDS_NZERR_ALG           "The Digital Notarization server does not support the algorithm specified in the request, please contact your Administrator."
+    IDS_NZERR_WRONG_FORMAT  "The request submitted to the Digital Notarization server has an invalid format, please contact your Administrator."
+    IDS_NZERR_TIME_UNAVAIL  "The Digital Notarization server is not available, please try again."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NZERR_SIG_FAIL      "The Digital Notarization server could not verify the signature submitted in the request, please contact your Administrator."
+    IDS_NZERR_CERT_REVOKED  "The Digital ID used for signing the Digital Notarization request has been revoked, you need to enroll for a new ID."
+    IDS_NZERR_CERT_EXPIRED  "The Digital ID used for signing the Digital Notarization request has expired, you need to enroll for a new ID."
+    IDS_NZERR_CERT_INVALID  "The Digital ID used for signing the Digital Notarization request in invalid, please contact your Administrator."
+    IDS_NZERR_CERT_ABSENT   "The Digital ID used for signing the Digital Notarization request could not be found, please contact your Administrator."
+    IDS_NZERR_NO_ACCT       "The Digital ID used for signing the Digital Notarization request does not have a Digital Notarization account, please contact your Administrator."
+    IDS_NZERR_ACCT_INVALID  "The Digital Notarization account is invalid, please contact your Administrator."
+    IDS_NZERR_LIMIT         "You have reached the limit for the number of digital notarizations available, please enroll for a new Digital ID now."
+    IDS_RECEIPT_SAVE        "Save Original Document and Receipt."
+    IDS_RECEIPT_VIEW        "View Original Document"
+    IDS_SAVE_DOC            "Save Document"
+    IDS_DOCSAVED_MESG       "The document has been successfully saved at "
+    IDS_RCPTSAVED_MESG      "The receipt has been successfully saved at "
+    IDS_SAVEDMESG_TITLE     "Save Successful"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_VIEWDOC_WEB_ERR     "An application to view a file of this type could not be found.\nPlease save the document and then view it."
+    IDS_VIEWDOC_ERR_TITLE   "View Document Error Message"
+    IDS_VIEWDOC_APP_ERR     "An application to view a file of this type could not be found."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "vsdnotz.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

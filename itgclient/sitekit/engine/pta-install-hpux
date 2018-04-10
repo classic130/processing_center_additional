@@ -1,0 +1,31 @@
+#! /usr/bin/csh
+echo " "
+echo "Usage:  pta-install-hpux <src_dir> <dest_dir> <policy_file>"
+echo "source directory       : $1"
+echo "destination directory  : $2"
+echo "policy file            : $3"
+
+setenv SHLIB_PATH .
+
+if ($#argv != 3) then
+  echo " "
+  echo " "
+  echo "***** Invalid parameters *****"
+  echo "Usage:  pta-install-hpux <src_dir> <dest_dir> <policy_file>"
+  echo " "
+else if ("$1" != "$2") then
+    echo "creating directory structure and copying files"
+    mkdir -p $2/log/VSApps
+    chmod 777 $2/log/VSApps
+
+    cp -r $1/pta $2
+    mkdir -p $2/pta/log
+    chmod 777 $2/pta/log
+    echo "running customizer"
+    ./customizer.exe -c ../templates/sitekit_pta_unix.lst -s $1 -d $2 -f ../fragments/VSApps -p $3 -l $2/log/VSApps/ptaCustomizer.log
+else
+    echo "running customizer"
+    ./customizer.exe -c ../templates/sitekit_pta_unix.lst -s $1 -d $2 -f ../fragments/VSApps -p $3 -l $2/log/VSApps/ptaCustomizer.log
+endif 
+
+exit 0

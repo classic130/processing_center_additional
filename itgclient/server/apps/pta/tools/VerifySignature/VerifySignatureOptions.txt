@@ -1,0 +1,16 @@
+
+# Sample Configuration file VerifySignature.exe
+
+add-env-vars="1"
+add-error-js-vars="1"
+save-pkcs7="0" 
+digest-alg="MD5"
+
+no-crl-check="1"
+
+cfg-filename="../config/VerifySignature.cfg"
+file-prefix="../certcache/"
+url-prefix="http://crl.verisign.com/"
+cache-dir="../certcache/"
+no-check-chain="1"
+

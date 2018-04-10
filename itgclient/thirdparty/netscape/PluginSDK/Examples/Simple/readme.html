@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+
+<TITLE>Simple Readme</TITLE>
+
+
+</HEAD>
+<BODY>
+
+<H3>What does the Simple example do?</H3>
+<p> This sample plug-in demonstrates how to write a
+LiveConnect-enabled plug-in. It displays a rectangle
+with the text "Hello World" and writes messages to the Java Console
+and to stdout to tell you what it's doing.
+
+<H2>Building and using Simple</H2>
+
+<H3>Win32/MSVC++ 4.0: </H3>
+<OL>
+<LI>In the Examples\Simple\Windows directory, open the
+	Simple.mdp project workspace file.
+<LI>Select the "Build|Build NPSimp32.dll" menu item.
+<LI>Copy the java class file Examples\Simple\Simple.class
+	to the navigator plugins directory.
+<LI>Copy the plugin Examples\Simple\Windows\NPSimp32.dll to the
+	navigator plugins directory.
+<LI>Quit and relaunch the Navigator, if it is running.
+<LI>With the Navigator (preferably 3.0b5 or above) open the file
+	Examples\Simple\Testing\SimpleExample.html.
+</OL>
+
+<H3>PPC Mac/CodeWarrior 9:</H3>
+
+<OL>
+<LI>In the "Examples:Simple:Macintosh" folder, open the
+	SimplePPC.µ project file.
+<LI>Select the "Project|Make" menu item.
+<LI>Copy the java class file "Examples:Simple:Simple.class"
+	to "System Folder:Preferences:Netscape Ÿ:Java:netscape-classes". (In
+	the next beta release it should be possible to simply place the
+	class file in the plugins directory.)
+<LI>Copy the plugin (or an alias) "Examples:Simple:SimplePPC"
+	to the navigator Plug-ins folder.
+<LI>Quit and relaunch the Navigator, if it is running.
+<LI>With the Navigator (preferably 3.0b5 or above) open the file
+	"Examples:Simple:Testing:SimpleExample.html".
+</OL>
+	
+<I>(The Simple example does not work with 68k macs.)</I><P>
+
+
+</BODY>
+</HTML>

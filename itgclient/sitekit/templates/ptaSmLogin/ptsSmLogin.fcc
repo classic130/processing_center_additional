@@ -1,0 +1,128 @@
+<!-- SiteMinder Encoding=ISO-8859-1; -->
+@username=%USER%
+@smretries=3
+@smerrorpage=/siteminderagent/forms/ptaSmLoginError.fcc
+<SCRIPT LANGUAGE="JavaScript">
+<!-- 
+toSign="$$toSign$$";
+reasonCode="login";
+digestAlg="$$digestAlg$$";
+// -->
+</script>
+
+<HTML>
+<HEAD>
+<!-- 
+/*--------------------------------------------------------------------
+| Copyright (C) VeriSign, Inc. created 1996. All rights reserved.     |
+| This is an unpublished work protected as such under copyright law.  |
+| This work contains proprietary, confidential, and trade secret      |
+| information of VeriSign, Inc.  Use, disclosure or reproduction      |
+| without the expressed written authorization of VeriSign, Inc.       |
+| is prohibited.                                                      |
+--------------------------------------------------------------------*/
+** VSSKTEMPLATEVERSION#1.0.0.2 **
+-->
+<TITLE>
+   Login
+</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+  //-- VSSKBEGIN Global/Mode#30 --
+  //-- VSSKEND Global/Mode#30 --
+
+  //-- VSSKBEGIN Apps/KeyManager#16 --
+  //-- VSSKEND Apps/KeyManager#16 --
+
+  //-- VSSKBEGIN Apps/GSE#36 --
+  //-- VSSKEND Apps/GSE#36 --
+
+
+  function SignIt()
+   {
+      document.theform.Challenge.value = toSign;
+      document.theform.ChallengePostURL.value = document.URL;	   
+      if (digestAlg == "MD5") 
+         document.theform.SignHashAlg.value="MD5";
+      else
+         document.theform.SignHashAlg.value="SHA";
+
+     if ( ExchangeIntegration == 0 && KeyManagerIntegration == 0)
+	document.theform.CheckForRenew.value="true";
+     else 
+	document.theform.CheckForRenew.value="false";
+
+      document.theform.submit();  
+   }
+
+  function SignUp()
+  {
+    var EnrollUrl;
+    EnrollPage = "userEnrollPTS.htm";
+    EnrollUrl = hostName + "/VSApps/client/" + EnrollPage;
+    self.location = EnrollUrl;
+  }
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<!-- Note to PTA Administrators -->
+<!-- You can customize the HTML below this point to have your own look and feel -->
+<!-- However you need to maintain the FORM tags and various form variable tags as they are -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#2 -->
+<!-- VSSKEND Apps/PersonalTrustService#2 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#9 -->
+<!-- VSSKEND Apps/PersonalTrustService#9 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#10 -->
+<!-- VSSKEND Apps/PersonalTrustService#10 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#21 -->
+<!-- VSSKEND Apps/PersonalTrustService#21 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#22 -->
+<!-- VSSKEND Apps/PersonalTrustService#22 -->
+
+
+<INPUT type="hidden" name="Action" value="SignChallenge"> 
+<INPUT type="hidden" name="Challenge"> 
+<INPUT type="hidden" name="ChallengePostURL" value=""> 
+<INPUT type="hidden" name="SignHashAlg" value="">
+<INPUT TYPE="hidden" NAME="CheckForRenew" VALUE="true">
+
+
+<INPUT TYPE=HIDDEN NAME="Enroll_SMENC" VALUE="ISO-8859-1">
+<INPUT type=HIDDEN name="Enroll_SMLOCALE" value="US-EN">
+<input type=hidden name=Enroll_target value="$$target$$">
+<input type=hidden name=Enroll_smauthreason value="$$smauthreason$$">
+<input type=hidden name=Enroll_USER value="VeriSign">
+<input type=hidden name=dataSignatureParam value="PASSWORD">
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="590" >
+  <TR ALIGN=LEFT VALIGN=TOP>
+    <TD WIDTH="328">
+        <BR>&nbsp;
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        To access the protected pages, click Login.
+        </FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME=Login VALUE="LOGIN" onClick="SignIt()" LANGUAGE="JavaScript">
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        If you do not have a Digital ID you can Sign Up Now!</FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME="Sign Up" VALUE="Sign Up" onClick="SignUp()">
+    </TD>
+  </TR>
+</TABLE>
+</FORM>
+
+<HR WIDTH=100%>
+
+</BODY>
+</HTML>
+

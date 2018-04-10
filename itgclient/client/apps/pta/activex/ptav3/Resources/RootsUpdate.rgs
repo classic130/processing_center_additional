@@ -1,0 +1,33 @@
+HKCR
+{
+	RootsUpdate.VSROOTS.1 = s 'VSROOTS Class'
+	{
+		CLSID = s '{50E71FEB-2234-11d4-8D73-0060B0FC0637}'
+	}
+	RootsUpdate.VSROOTS = s 'VSROOTS Class'
+	{
+		CLSID = s '{50E71FEB-2234-11d4-8D73-0060B0FC0637}'
+		CurVer = s 'RootsUpdate.VSROOTS.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {50E71FEB-2234-11d4-8D73-0060B0FC0637} = s 'VSROOTS Class'
+		{
+			ProgID = s 'RootsUpdate.VSROOTS.1'
+			VersionIndependentProgID = s 'RootsUpdate.VSROOTS'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{6F7864EC-DB33-11D3-8166-0060B0F885E6}'
+			'Version' = s '1.0'
+		}
+	}
+}

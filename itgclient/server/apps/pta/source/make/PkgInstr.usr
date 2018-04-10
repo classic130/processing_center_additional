@@ -1,0 +1,15 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'mod_pta',
+            'mod_pta_2',
+            'libvssmauth',
+            'libvsssc',
+            'libvsptam',
+            'loadreg_exe',
+            'libvsptan'
+          ],
+          'itgclient/server/apps/pta/source/make',
+          'build/log/VerArchive'
+        ];

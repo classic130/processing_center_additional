@@ -1,0 +1,222 @@
+Content-Type:text/html
+
+<!-- htmldocs/VSApps/client/userInstallMS.htm
+
+-->
+<!-- VSSKTEMPLATEVERSION#1.2.5.3 -->
+<HTML>
+<HEAD>
+<TITLE>ID Download</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<SCRIPT Language="JavaScript" src="../client/env.js"></SCRIPT>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/Mode#44 -->
+<!-- VSSKEND Global/Mode#44 -->
+
+<!-- xenroll control -->
+<!-- VSSKBEGIN Enrollment/CertStore#22 -->
+<!-- VSSKEND Enrollment/CertStore#22 -->
+
+<!-- VSSKBEGIN Apps/PTAv2#8 -->
+<!-- VSSKEND Apps/PTAv2#8 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<!-- VSSKBEGIN Global/System#16 -->
+<!-- VSSKEND Global/System#16 -->
+
+<!-- VSSKBEGIN Apps/GSE#48 -->
+<!-- VSSKEND Apps/GSE#48 -->
+
+<!-- VSSKBEGIN Apps/KeyManager#17 -->
+<!-- VSSKEND Apps/KeyManager#17 -->
+
+<!-- Addroots control -->
+<!-- VSSKBEGIN Apps/PTAv2#9 -->
+<!-- VSSKEND Apps/PTAv2#9 -->
+
+<Script Language="JavaScript">
+<!--
+var browserName=navigator.appName;
+var browserNum=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+       if (browserNum < requiredBrowserNumNS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+else
+    {
+       if (browserNum < requiredBrowserNumMS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+//-->
+</script>
+
+<!-- VSSKBEGIN Apps/KeyManager#18 -->
+<!-- VSSKEND Apps/KeyManager#18 --> 
+
+<SCRIPT LANGUAGE="VBScript">
+<!--
+ Dim CertChain
+ CertChain="$$cert_base64_for_VBScript$$"
+'-->
+</Script>
+
+<!-- certificate installation -->
+<!-- VSSKBEGIN Enrollment/CertStore#11 -->
+<!-- VSSKEND Enrollment/CertStore#11 -->
+
+<!-- setting the preferences -->
+<!-- VSSKBEGIN Apps/PTAv2#12 -->
+<!-- VSSKEND Apps/PTAv2#12 -->
+
+</HEAD>
+
+<BODY 	BGCOLOR="ffffff" LINK="cc0000" VLINK="666666">
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<!-- VSSKBEGIN Apps/KeyManager#21 -->
+<!-- VSSKEND Apps/KeyManager#21 -->
+
+<SCRIPT Language=VBScript>
+<!--
+  Call CheckIfVista()
+  Call InstallCert
+-->
+</SCRIPT>
+
+<!-- pta set preferences -->
+<!-- VSSKBEGIN Apps/PTAv2#11 -->
+<!-- VSSKEND Apps/PTAv2#11 -->
+
+<!-- VSSKBEGIN Apps/KeyManager#19 -->
+<!-- VSSKEND Apps/KeyManager#19 --> 
+
+<BR><P><BR>
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE=0 VSPACE=0>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER valign=bottom colspan=5><IMG SRC="../VSApps/graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../VSApps/graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD>
+        <TD WIDTH=1 VALIGN=MIDDLE><img src="../VSApps/graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../VSApps/graphics/hd_services.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Digital ID Center Header"></TD>  
+        <TD WIDTH=1 VALIGN=MIDDLE><img src="../VSApps/graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=120 ALIGN=CENTER><img src="../VSApps/graphics/logo_2.gif" ALT=""></TD>
+</TR>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../VSApps/graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+
+<!--PAGE TITLE AND DIRECTIONS-->
+<TABLE WIDTH=588 BGCOLOR="ffffFF" CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588 colspan=7><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Congratulations!</B></FONT><BR>
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2><B>Your Digital ID has been successfully generated and installed.</B><BR></TD>
+</TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+<P>
+<!--MAIN CONTENT AREA-->
+<TABLE WIDTH=588 CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+    <TD WIDTH=588 BGCOLOR="#cccccc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>
+    <FONT FACE="arial, helvetica" SIZE=2>Your Digital ID Information.</B></FONT><BR>
+    <P>
+    <CENTER>
+      <TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0 BGCOLOR="ffffcc">
+      <TR>
+         <TD WIDTH=100% ><FONT FACE="verdana, arial, helvetica" SIZE=2>$$cert_DN$$</TD>
+      </TR>
+      <TR>
+          <script language="JavaScript" type="text/javascript">
+          var tmpStr = "$$cert_serial$$";
+          if(tmpStr.charAt(0) < '8')
+              document.write("<TD WIDTH=100%><FONT FACE=\"verdana, arial, helvetica\" SIZE=2>Serial Number = $$cert_serial$$</TD>");
+          else
+              document.write("<TD WIDTH=100%><FONT FACE=\"verdana, arial, helvetica\" SIZE=2>Serial Number = 00$$cert_serial$$</TD>");
+          </script>
+      </TR>
+      </TABLE>	 
+    </TD>
+</TR>
+</TABLE>
+<P>
+
+<!-- VSSKBEGIN Apps/FileEncryption#2 -->
+<!-- VSSKEND Apps/FileEncryption#2 -->
+<!--END BANNER-->
+<!--INSTRUCTIONAL TEXT-->
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<!--
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+    <A HREF="help/null.htm" target="help"><img src="../VSApps/graphics/button_help_page.gif" width=145 height=26 
+    hspace=1 vspace=0 border=0 alt="Help with this Page"></a></TD>
+</TR>
+</TABLE>
+-->
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<P>
+
+<TABLE WIDTH=588 CELLPADDING=6 CELLSPACING=0 BORDER=0>
+<TR>
+  <TD BGCOLOR="cccccc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Consult our Help Desk and Tutorials:</B></FONT><P>
+  <CENTER>
+    <TABLE WIDTH=574 CELLPADDING=2 CELLSPACING=0 BORDER=0 BGCOLOR="ffffcc">
+    <TR>
+      <TD>
+        <OL>
+        <LI>Go to the <a href="../VSApps/client/help/index.html">Help Desk </a>to view our tutorials and other useful information.
+        <LI>Go to the <a href="../VSApps/digitalidCenter.htm">Digital ID Center </a>to find out more about Digital IDs and Digital ID services.
+        </OL>  
+      </TD>
+     </TR>
+     </TABLE>
+   </TD>
+</TR>
+</TABLE>
+
+<!--END MAIN CONTENT AREA-->
+
+<!--PLACE HOLDER FOR SITEKIT BACK BUTTON-->
+
+<!-- continue button for the PTA -->
+<!-- VSSKBEGIN Apps/PTAv2#10 -->
+<!-- VSSKEND Apps/PTAv2#10 -->
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG SRC="../VSApps/graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../VSApps/graphics/logo_3.gif" ALT="Symantec Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+</BODY>
+</HTML>		
+

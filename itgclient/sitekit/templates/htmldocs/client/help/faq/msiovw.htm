@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Overview of MSI deployment</TITLE>
+<SCRIPT Language="JavaScript" src="/client/copyright.js"></SCRIPT>
+</HEAD>
+<BODY>
+<TABLE WIDTH="94%">
+<TR>
+<TD>
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" COLOR="#000066" SIZE=5><B>Overview of MSI deployments</B></FONT>
+
+
+<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>
+
+    
+<H3 align=left>Deploying the Symantec MSI packages</H3>
+<P align=left>Software contained within an MSI package can be deployed in the 
+following ways:</P>
+<P align=left><STRONG>Publish software to a user</STRONG> : When software is 
+published to a user, it is made available to the user for installation via the 
+Add/Remove Programs applet in the Control Panel the next time the user logs in. 
+The user can launch the Add/Remove Program applet, click on Add New Programs and 
+choose to add the published software. This will completely install the software 
+on the user's machine. The user can be a non-power user and does not need 
+special privileges to install published software.</P>
+<P align=left><STRONG>Assign software to a user : </STRONG>When software is 
+assigned to a user, it is psuedo-installed the next time the user logs in. This 
+means that the user is given the impression that the software has been installed but 
+is only completely installed the first time the user tries to use the software. 
+This feature provides an install on demand mode of installation. The user can be 
+a non-power user and does not need special privileges to completely install 
+assigned software.</P>
+<P align=left><STRONG>Assign software to a machine : </STRONG>When software is 
+assigned to a machine, it is completely installed on the machine when the 
+machine is rebooted. Once installed, the software is available to all users on 
+that machine.&nbsp;</P>
+<P align=left><STRONG>Launching the MSI package : </STRONG>By double clicking 
+the MSI package, a user can install the software contained within the MSI 
+package. However the user needs to be an administrator on the machine where the 
+installation is being launched in this mode. This mode does not require active 
+directory or group policy support. </P>
+<P align=left>Additional information about MSI 
+      packages is available on the <A 
+      href="http://www.microsoft.com/TechNet" target="_new">Microsoft TechNet</A>. </P>
+      <UL>
+        <LI><A 
+        href="http://www.microsoft.com/TechNet/win2000/instmain.asp" target="_new">Step-by-Step 
+        Guide to Software Installation and Maintenance<A> </LI></UL>
+<H3 align=left></A>Requirements </h3>
+<P align=left>The first three modes of deployment require a Windows Server 2008/Windows 2012 domain 
+with an Active Directory. The administrator of such a domain can specify how the 
+software should be deployed (assigned to user/machine or published) by 
+specifying a group policy. The end user machine where the software is installed 
+must be one of the following : </P>
+<OL>
+  <LI>
+  <DIV align=left>Windows 7 </DIV>
+  <LI>
+  <DIV align=left>Windows 8.1 </DIV></LI></OL></FONT>
+</TD>
+</TR>
+</TABLE>
+
+<IMG SRC="../../graphics/dot_grey.gif" WIDTH=94% HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=94% CELLPADDING=2 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=480 VALIGN="TOP">
+		<FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="../../copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+
+        <TD WIDTH=120 VALIGN="TOP" ALIGN="RIGHT">
+		<!-- VSSKBEGIN LOGO3#2 -->
+        <IMG ALIGN="right" SRC="../../graphics/logo3.gif" ALT="Logo">
+		<!-- VSSKEND LOGO3#2 -->
+		</TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+</BODY>
+</HTML>

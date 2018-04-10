@@ -1,0 +1,43 @@
+Property	Value
+s72	l0
+Property	Property
+_IsMaintenance	Change
+_IsSetupTypeMin	Typical
+AgreeToLicense	No
+ApplicationUsers	AllUsers
+ARPHELPLINK	http://www.verisign.com
+ARPHELPTELEPHONE	 
+ARPNOREPAIR	0
+ARPURLINFOABOUT	http://www.verisign.com
+ARPURLUPDATEINFO	http://www.verisign.com
+DefaultUIFont	Tahoma8
+DialogCaption	InstallShield for Windows Installer
+DiskPrompt	[1]
+DiskSerial	1234-5678
+Display_IsBitmapDlg	1
+DisplayNameCustom	Custom
+DisplayNameMinimal	Minimal
+DisplayNameTypical	Typical
+ErrorDialog	SetupError
+InstallChoice	AR
+INSTALLLEVEL	100
+Manufacturer	VeriSign, Inc
+PIDTemplate	12345<###-%%%%%%%>@@@@@
+ProductCode	{190BA289-3E5C-11D5-B7A0-00008643E0E4}
+ProductID	None
+ProductLanguage	1033
+ProductName	VeriSign Personal Trust Agent
+ProductVersion	1.00.24
+ProgressType0	install
+ProgressType1	Installing
+ProgressType2	installed
+ProgressType3	installs
+<!-- VSSKBEGIN Global/System#2 -->
+<!-- VSSKEND Global/System#2 -->
+RebootYesNo	Yes
+Registration	No
+ReinstallFileVersion	o
+ReinstallModeText	omus
+ReinstallRepair	r
+SetupType	Typical
+UpgradeCode	{190BA28C-3E5C-11D5-B7A0-00008643E0E4}

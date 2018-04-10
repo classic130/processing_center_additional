@@ -1,0 +1,500 @@
+<!-- userEnrollDualMS.htm
+
+-->
+<!-- VSSKTEMPLATEVERSION#1.2.5.2 -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<TITLE>End-user enrollment for Microsoft Internet Explorer Browser</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<SCRIPT Language="JavaScript" src="../client/env.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Enrollment/CertStore#22 -->
+<!-- VSSKEND Enrollment/CertStore#22 -->
+
+<!-- VSSKBEGIN Apps/PTAv2#8 -->
+<!-- VSSKEND Apps/PTAv2#8 -->
+
+
+<!-- VSSKBEGIN Apps/GSE#48 -->
+<!-- VSSKEND Apps/GSE#48 -->
+
+<!-- VSSKBEGIN Apps/GSE#47 -->
+<!-- VSSKEND Apps/GSE#47 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<!-- VSSKBEGIN Global/System#16 -->
+<!-- VSSKEND Global/System#16 -->
+
+<Script Language="JavaScript">
+<!--
+//if the browser is firefox check for browser navigate to index2.htm
+var browserName=navigator.appName;
+var browserVer=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+         self.location="userEnrollDualNS.htm";
+    }
+else
+    {
+       if (browserVer < requiredBrowserNumMS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function declinefunc()
+{
+   window.navigate("cancel.htm") ;
+}
+  
+function dumbfunc()
+{
+   var newwin = window.open("help/securitySetting.htm", "private_window", 
+                "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0, resizable=0,WIDTH=420,HEIGHT=480");
+}
+
+function popup ()
+{
+//Create a new window
+var newWin = window.open("help/tasks/enrollform.htm", "popup_window", 
+             'toolbar=0,location=0,directories=0, status=0,menubar=0,scrollbars=1,resizable=0,WIDTH=490,HEIGHT=510'); 
+//Note where the window came from
+self.name = "mainWin";
+}
+
+function copyright ()
+{
+//Create a new window
+var newWin = window.open("copyright.htm", "popup_window", 
+            'toolbar=1,location=0,directories=0,status=0, menubar=0,scrollbars=1,resizable=0,WIDTH=620,HEIGHT=510'); 
+//Note where the window came from
+self.name = "mainWin";
+}
+
+//-->
+</SCRIPT>
+
+<!-- VSSKBEGIN Apps/GSE#41 -->
+<!-- VSSKEND Apps/GSE#41 -->
+
+<SCRIPT LANGUAGE="VBScript">
+
+<!--
+  Function IsIE4
+    dim ua 
+    dim pos
+    dim msie
+    dim tmp
+    ua = window.navigator.userAgent
+    pos = instr(ua, "MSIE 4")
+    if pos > 0 then
+      tmp = true
+    else
+      tmp = false
+    end if
+    IsIE4 = tmp
+  End Function
+
+  Function IsIE5
+    dim ua
+    dim pos
+    dim tmp
+    ua = window.navigator.userAgent
+    pos = instr(ua, "MSIE 5")
+    if pos > 0 then
+      tmp = true
+    else
+      tmp = false
+    end if
+    IsIE5 = tmp
+  End Function   
+
+  Function IsIE4orLater
+    dim ua
+    dim pos
+    dim ieVer
+    IsIE4orLater = false
+    ua = window.navigator.userAgent
+    pos = instr(ua, "MSIE ")
+      if pos > 0 then
+        ieVer = CInt(Mid(ua, pos+5, 1))
+        if (ieVer>=4) then
+          IsIE4orLater = true
+      end if
+    end if
+  End Function
+
+'-->
+</SCRIPT>
+
+<!-- VSSKBEGIN Apps/PTAv2#28 -->
+<!-- VSSKEND Apps/PTAv2#28 -->
+
+
+<!-- VSSKBEGIN Enrollment/CertStore#4 -->
+<!-- VSSKEND Enrollment/CertStore#4 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var browserNum = parseInt(navigator.appVersion);
+//variable "forn"  counts the number of False OR Null fields found in function lastCheck
+var forn = 0;
+
+//function firstCheck validates all the fields
+function firstCheck ()
+{
+   forn = 0;
+//-- VSSKBEGIN Enrollment/FirstName#2 --
+//-- VSSKEND Enrollment/FirstName#2 --
+
+//-- VSSKBEGIN Enrollment/LastName#2 --
+//-- VSSKEND Enrollment/LastName#2 --
+
+//-- VSSKBEGIN Enrollment/EMAIL#2 --
+//-- VSSKEND Enrollment/EMAIL#2 --
+
+//-- VSSKBEGIN Enrollment/CertCorpCompany#2 --
+//-- VSSKEND Enrollment/CertCorpCompany#2 --
+
+//-- VSSKBEGIN Enrollment/CertOrgUnit#2 --
+//-- VSSKEND Enrollment/CertOrgUnit#2 --
+
+//-- VSSKBEGIN Enrollment/PassCode#2 --
+//-- VSSKEND Enrollment/PassCode#2 --
+
+//-- VSSKBEGIN Enrollment/JobTitle#2 --
+//-- VSSKEND Enrollment/JobTitle#2 --
+
+//-- VSSKBEGIN Enrollment/EmpID#2 --
+//-- VSSKEND Enrollment/EmpID#2 --
+        
+//-- VSSKBEGIN Enrollment/MailStop#2 --
+//-- VSSKEND Enrollment/MailStop#2 --
+
+//-- VSSKBEGIN Enrollment/AddField4#2 --
+//-- VSSKEND Enrollment/AddField4#2 --
+
+//-- VSSKBEGIN Enrollment/AddField5#2 --
+//-- VSSKEND Enrollment/AddField5#2 --
+
+//-- VSSKBEGIN Enrollment/AddField6#2 --
+//-- VSSKEND Enrollment/AddField6#2 --
+
+//-- VSSKBEGIN Enrollment/Locality#2 --
+//-- VSSKEND Enrollment/Locality#2 --
+
+//-- VSSKBEGIN Enrollment/State#2 --
+//-- VSSKEND Enrollment/State#2 --
+
+//-- VSSKBEGIN Enrollment/Country#2 --
+//-- VSSKEND Enrollment/Country#2 --
+
+
+//-- VSSKBEGIN Enrollment/Challenge#2 --
+//-- VSSKEND Enrollment/Challenge#2 --
+}
+
+
+//function checkField is generically used to check if fields are null or true.
+function checkFieldAndDisplay(theimg, theName, theValue)
+ {
+             
+     if(theValue == "")                
+        {
+            document.images[theimg].src = "../graphics/bang2.gif";      
+            forn++;
+        }
+     else 
+        {
+            document.images[theimg].src = "../graphics/blank2.gif";
+        }
+        
+}
+
+function clearImage(theimg)
+{
+    //document.images[theimg].src = "../graphics/blank2.gif";
+}
+
+//-- VSSKBEGIN Enrollment/EMAIL#3 --
+//-- VSSKEND Enrollment/EMAIL#3 --
+
+function lastCheck ()
+   {
+      
+      firstCheck();
+      if(forn==0)
+         {
+            var rval ;
+
+            //-- VSSKBEGIN Enrollment/EMAIL#10 --
+            //-- VSSKEND Enrollment/EMAIL#10 --
+            if( rval == true )
+                {
+
+		     //-- VSSKBEGIN Enrollment/Privacy#2 --
+                     //-- VSSKEND Enrollment/Privacy#2 --
+
+                     DoKeyGen();
+		     document.proform.accept.disabled = false;
+                }
+            //-- VSSKBEGIN Enrollment/EMAIL#11 --
+            //-- VSSKEND Enrollment/EMAIL#11 --
+         }
+         else 
+         if(forn==1)
+	       {
+                   alert ('There is still 1 field that is wrong or incomplete.');
+               }
+         else 
+	       {
+                   alert ('There are still '+forn+' fields that are wrong or incomplete.');
+               }
+        forn = 0;
+    }
+//-->
+</script>
+</HEAD>
+
+<!-- VSSKBEGIN Enrollment/CertStore#3 -->
+<!-- VSSKEND Enrollment/CertStore#3 -->
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<!-- VSSKBEGIN Global/Mode#1 -->
+<!-- VSSKEND Global/Mode#1 -->
+
+<INPUT TYPE=hidden NAME=form_file VALUE="../fdf/VSApps/client/userEnrollDualMS.fdf">
+<INPUT TYPE=hidden NAME=public_key VALUE="">
+<!-- VSSKBEGIN Apps/GSE#19 -->
+<!-- VSSKEND Apps/GSE#19 -->
+
+<!-- VSSKBEGIN Apps/GSE#4 -->
+<!-- VSSKEND Apps/GSE#4 -->
+
+<!-- Start Add : CR21346 -->
+<!-- Define addition hidden values for name valu pairs for user first and last name-->
+<!-- VSSKBEGIN Apps/GSE#73 -->
+<!-- VSSKEND Apps/GSE#73 -->
+<!-- End Add : CR21346 -->
+
+<!-- VSSKBEGIN Apps/GSE#42 -->
+<!-- VSSKEND Apps/GSE#42 -->
+
+
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE=0 VSPACE=0>
+<TR>
+     <TD WIDTH=600 ALIGN=CENTER VALIGN=BOTTOM COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD> 
+        <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD> 
+        <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../graphics/hd_enroll.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Enroll Header"></TD>   
+        <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD> 
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_2.gif" ALT=""></TD> 
+</TR>
+<TR>
+     <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+    <A HREF="javascript:popup();"><IMG SRC="../graphics/button_help_page.gif" WIDTH=145 HEIGHT=26 hspace=1 vspace=0 border=0 alt="Help with this Page"></A>
+    </TD>
+</TR>
+</TABLE>
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<!-- BEGIN FORM -->
+
+
+
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=TOP>
+<FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=+1><B>Complete Enrollment Form</B></FONT></TD>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+
+<!--MAIN CONTENT AREA-->
+<P><BR><P>
+
+<!-- VSSKBEGIN Apps/GSE#43 -->
+<!-- VSSKEND Apps/GSE#43 -->
+
+<!--BEGIN  TABLE ONE-->
+<!-- VSSKBEGIN Global/System#14 -->
+<!-- VSSKEND Global/System#14 -->
+        
+<!--BEGIN INPUT FIELD TABLE-->        
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+
+<!-- VSSKBEGIN Enrollment/FirstName#1 -->
+<!-- VSSKEND Enrollment/FirstName#1 -->
+
+<!-- VSSKBEGIN Enrollment/LastName#1 -->
+<!-- VSSKEND Enrollment/LastName#1 -->
+
+<!-- VSSKBEGIN Enrollment/EMAIL#1 -->
+<!-- VSSKEND Enrollment/EMAIL#1 -->
+
+<!-- VSSKBEGIN Enrollment/CertCorpCompany#1 -->
+<!-- VSSKEND Enrollment/CertCorpCompany#1 -->
+
+<!-- VSSKBEGIN Enrollment/CertOrgUnit#1 -->
+<!-- VSSKEND Enrollment/CertOrgUnit#1 -->
+
+<!-- VSSKBEGIN Enrollment/PassCode#1 -->
+<!-- VSSKEND Enrollment/PassCode#1 -->
+
+<!-- VSSKBEGIN Enrollment/JobTitle#1 -->
+<!-- VSSKEND Enrollment/JobTitle#1 -->
+
+<!-- VSSKBEGIN Enrollment/EmpID#1 -->
+<!-- VSSKEND Enrollment/EmpID#1 -->
+        
+<!-- VSSKBEGIN Enrollment/MailStop#1 -->
+<!-- VSSKEND Enrollment/MailStop#1 -->
+
+<!-- VSSKBEGIN Enrollment/AddField4#1 -->
+<!-- VSSKEND Enrollment/AddField4#1 -->
+
+<!-- VSSKBEGIN Enrollment/AddField5#1 -->
+<!-- VSSKEND Enrollment/AddField5#1 -->
+
+<!-- VSSKBEGIN Enrollment/AddField6#1 -->
+<!-- VSSKEND Enrollment/AddField6#1 -->
+
+<!-- VSSKBEGIN Enrollment/Locality#1 -->
+<!-- VSSKEND Enrollment/Locality#1 -->
+
+<!-- VSSKBEGIN Enrollment/State#1 -->
+<!-- VSSKEND Enrollment/State#1 -->
+
+<!-- VSSKBEGIN Enrollment/Country#1 -->
+<!-- VSSKEND Enrollment/Country#1 -->
+
+
+</TABLE>
+<!--END INPUT FIELD TABLE-->
+<!-- VSSKBEGIN Global/System#15 -->
+<!-- VSSKEND Global/System#15 -->
+<!--END TABLE ONE-->
+
+<!--BEGIN TABLE TWO-->
+<!-- VSSKBEGIN Enrollment/Challenge#1 -->
+<!-- VSSKEND Enrollment/Challenge#1 -->
+<!--END TABLE TWO-->
+
+<!-- If the certstore is not symantec show the CSP and Key Protection as per those policies -->
+<!-- VSSKBEGIN Enrollment/CertStore#2 -->
+<!-- VSSKEND Enrollment/CertStore#2 -->
+
+<!-- VSSKBEGIN Enrollment/CertStore#27 -->
+<!-- VSSKEND Enrollment/CertStore#27 -->
+
+<!-- VSSKBEGIN Enrollment/CertPublish#1 -->
+<!-- VSSKEND Enrollment/CertPublish#1 -->
+
+<!--BEGIN TABLE FIVE-->
+
+<!-- VSSKBEGIN Enrollment/Comments#1 -->
+<!-- VSSKEND Enrollment/Comments#1 -->
+
+<!--END TABLE FIVE-->
+
+<!--BEGIN TABLE SIX-->
+
+<!-- VSSKBEGIN Enrollment/SubscriberAgreement#2 -->
+<!-- VSSKEND Enrollment/SubscriberAgreement#2 -->
+
+<!--END CONTENT TABLE SIX-->
+
+<!--BEGIN TABLE SEVEN-->
+
+<!-- VSSKBEGIN Enrollment/Privacy#1 -->
+<!-- VSSKEND Enrollment/Privacy#1 -->
+
+<!--END CONTENT TABLE SEVEN-->
+
+<!--END MAIN CONTENT AREA-->
+<!--end form tag-->
+<!--end form tag-->
+
+<TABLE WIDTH=588 BGCOLOR="ffffcc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+<TD WIDTH=588><FONT SIZE=2 FACE="verdana, arial, helvetica">
+When you submit this Digital ID application by clicking <B>Submit</b>, your browser
+will generate the public and private keys for your Signing Digital ID.
+The browser will also prompt you to set 
+up a password to protect your private key if you have chosen additional
+ protection for your private key in Step 5 above.  Your 
+private key is a secret file that you will use to digitally sign e-mail. 
+Your public key will become part of your Signing Digital ID&#151;your 
+associates can use it to verify your digital signature.
+
+<p>
+Your Signing private key and password are stored on your computer and are not 
+transmitted to the Certification Authority that creates your Digital ID.
+Your Encryption private key is transferred to you and is also held in
+escrow by your organization.
+When your Signing and Encryption Digital IDs are ready, you will receive
+e-mail that includes 
+instructions for retrieving and installing them.
+<P>
+</FONT>
+</TD>	
+</TR>
+</TABLE>
+
+
+<!--NAVIGATIONAL INSTRUCTIONS AND BUTTONS-->
+<P>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+
+<TR>
+     <TD WIDTH=50><img SRC="../graphics/action_39x39.gif" WIDTH=39 HEIGHT=39></TD>
+     <TD WIDTH=538 COLSPAN=2><FONT COLOR="009933" FACE="verdana, arial, helvetica" SIZE=2>If all the information above is correct,
+<BR>click <B>Submit</b> to continue.<P></FONT></TD>
+</TR>
+<TR>
+     <TD WIDTH=50>&nbsp;</TD>
+     <TD WIDTH=234 ALIGN=LEFT><INPUT TYPE="button" NAME="accept" VALUE="Submit" onClick="lastCheck()"></TD>
+     <TD WIDTH=304 ALIGN=LEFT><INPUT TYPE=button NAME="Cancel" VALUE="Cancel" onClick="declinefunc()"></TD>
+</TR>
+</TABLE>
+<!--END NAVIGATIONAL INSTRUCTIONS AND BUTTONS-->
+
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+    <TD WIDTH=480 ><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+    <TD WIDTH=120 VALIGN=top ALIGN=right>
+    <IMG SRC="../graphics/logo_3.gif" ALIGN="right" ALT="Symantec Trust Network"></TD>
+    </TR>
+</TABLE>
+
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+</FORM>
+</BODY>
+</HTML>

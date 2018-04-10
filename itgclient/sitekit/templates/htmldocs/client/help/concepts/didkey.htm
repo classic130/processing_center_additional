@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+<SCRIPT Language="JavaScript" src="/client/copyright.js"></SCRIPT>
+	<META NAME="robots" CONTENT="noindex">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#CC0000" VLINK="#666666">
+
+
+<!--BEGIN PAGE CONTENT-->
+
+
+<TABLE WIDTH="94%">
+<TR>
+<TD>
+
+
+<!-- HEADING -->
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" COLOR="#000066" SIZE=+1><B> What is a Digital ID key pair? </B></FONT>
+<!-- END HEADING -->
+
+<P>
+
+<!-- CONTENT -->
+
+
+<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>
+
+When you communicate with another person (or computer), you need a way to exchange information
+securely, so no one can intercept and read the information. Currently, the most advanced way 
+to scramble (encrypt) data is through a system that uses key pairs. A key pair consists of a public 
+and a private key. The keys are used similarly to keys in a lock, except the key pair requires one 
+key to secure the lock and another to open the lock.
+
+<P>
+
+With key pairs, your software application uses one key to encrypt a document. The person who 
+receives your encrypted document then must use the matching key to decrypt the message. The 
+problem with this process is, how do you give someone the "key" to decrypt your message without 
+allowing anyone else to get the key? 
+
+<P>
+
+The solution is in the way the keys are used. When you request a Digital ID, your Web browser 
+creates both a private key, that can only be used with the Digital ID you requested, and a public key, that
+becomes part of the Digital ID. The Web browser 
+might ask you for a password to use when accessing the private key. It is very important that you 
+choose a password that only you will know (not your birthday or other number or phrase someone 
+is likely to guess). 
+
+<P>
+
+After you receive and install a Digital ID, you distribute it to whoever needs it. The Digital ID 
+that you send contains your public key. When someone needs to send you an encrypted message, 
+they use your public key. When a message is encrypted with your public key, you are the only 
+person who can decrypt the message because only you have the matching private key.
+
+<P>
+
+Likewise, when you want to send someone an encrypted message, you must first get their public 
+key. You do this either by looking up their Digital ID in a directory, or you simply have them send 
+you a signed e-mail message, which contains their Digital ID and public key. Then your e-mail
+application can automatically store the Digital ID until you need to use it.
+
+<P>
+
+
+
+</TD>
+</TR>
+</TABLE>
+
+<!-- END CONTENT -->
+
+
+<!-- VSSKBEGIN Copyright#1 -->
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../../graphics/dot_grey.gif" WIDTH=94% HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=94% CELLPADDING=2 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=480 VALIGN="TOP">
+		<FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="../../copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+
+        <TD WIDTH=120 VALIGN="TOP" ALIGN="RIGHT">
+		<!-- VSSKBEGIN LOGO3#2 -->
+        <IMG ALIGN="right" SRC="../../graphics/logo3.gif" ALT="Logo">
+		<!-- VSSKEND LOGO3#2 -->
+		</TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<!-- VSSKEND Copyright#1 -->
+
+</BODY>
+</HTML>

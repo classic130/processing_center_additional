@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'make'
+          ],
+          'itgclient/server/apps/cvm/source',
+          'build/log/VerArchive'
+        ];

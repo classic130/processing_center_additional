@@ -1,0 +1,26 @@
+HKCR
+{
+	VSSC.VSSignerInfo.1 = s 'VSSignerInfo Class'
+	{
+		CLSID = s '{C8110D65-8608-11D5-A257-001083023D07}'
+	}
+	VSSC.VSSignerInfo = s 'VSSignerInfo Class'
+	{
+		CLSID = s '{C8110D65-8608-11D5-A257-001083023D07}'
+		CurVer = s 'VSSC.VSSignerInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C8110D65-8608-11D5-A257-001083023D07} = s 'VSSignerInfo Class'
+		{
+			ProgID = s 'VSSC.VSSignerInfo.1'
+			VersionIndependentProgID = s 'VSSC.VSSignerInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{C5E8B9D5-D217-11D4-A21E-001083023D07}'
+		}
+	}
+}

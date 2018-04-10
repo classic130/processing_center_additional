@@ -1,0 +1,55 @@
+	import "oaidl.idl";
+	import "ocidl.idl";
+	#include "olectl.h"
+
+	[
+		object,
+		uuid(8304ffe0-ddad-11d3-a428-444553540000),
+		dual,
+		helpstring("IVSProfMgmt Interface"),
+		pointer_default(unique)
+	]
+	interface IVSProfMgmt : IDispatch
+	{
+		[propget, id(1), helpstring("The domains that are allowed to read this profile.")] HRESULT ReadOKDomains([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("The domains that are allowed to read this profile.")] HRESULT ReadOKDomains([in] VARIANT newVal);
+		[propget, id(2), helpstring("The domains that are allowed to read from and write into this profile")] HRESULT WriteOKDomains([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("The domains that are allowed to read from and write into this profile")] HRESULT WriteOKDomains([in] VARIANT newVal);
+		[propget, id(3), helpstring("Level of the password quality ")] HRESULT PasswdQuality([out, retval] VARIANT *pVal);
+		[propput, id(3), helpstring("Level of the password quality ")] HRESULT PasswdQuality([in] VARIANT newVal);
+		[propget, id(4), helpstring("password length that should be enforced")] HRESULT PasswdLength([out, retval] VARIANT *pVal);
+		[propput, id(4), helpstring("password length that should be enforced")] HRESULT PasswdLength([in] VARIANT newVal);
+		[propget, id(5), helpstring("Minutes after which the user will be prompted for the password")] HRESULT PasswdTimeOut([out, retval] VARIANT *pVal);
+		[propput, id(5), helpstring("Minutes after which the user will be prompted for the password")] HRESULT PasswdTimeOut([in] VARIANT newVal);
+		[propget, id(6), helpstring("Number of failed tries that will lock the profile")] HRESULT PasswdLockOutTries([out, retval] VARIANT *pVal);
+		[propput, id(6), helpstring("Number of failed tries that will lock the profile")] HRESULT PasswdLockOutTries([in] VARIANT newVal);
+		[propget, id(7), helpstring("Number of minutes after which a locked profile will be unlocked")] HRESULT PasswdUnLockPeriod([out, retval] VARIANT *pVal);
+		[propput, id(7), helpstring("Number of minutes after which a locked profile will be unlocked")] HRESULT PasswdUnLockPeriod([in] VARIANT newVal);
+		[propget, id(8), helpstring("Name of the profile to open or create")] HRESULT ProfileName([out, retval] VARIANT *pVal);
+		[propput, id(8), helpstring("Name of the profile to open or create")] HRESULT ProfileName([in] VARIANT newVal);
+		[id(9), helpstring("method OpenProfile")] HRESULT OpenProfile();
+		[id(10), helpstring("method CloseProfile")] HRESULT CloseProfile();
+		[propput, id(11), helpstring("property Password")] HRESULT Password([in] VARIANT newVal);
+		[propget, id(12), helpstring("property SaveLocal")] HRESULT SaveLocal([out, retval] VARIANT *pVal);
+		[propput, id(12), helpstring("property SaveLocal")] HRESULT SaveLocal([in] VARIANT newVal);
+		[propget, id(13), helpstring("property RoamProfile")] HRESULT RoamProfile([out, retval] VARIANT *pVal);
+		[propput, id(13), helpstring("property RoamProfile")] HRESULT RoamProfile([in] VARIANT newVal);
+		[propget, id(14), helpstring("property OpenProfFlags")] HRESULT OpenProfFlags([out, retval] VARIANT *pVal);
+		[propput, id(14), helpstring("property OpenProfFlags")] HRESULT OpenProfFlags([in] VARIANT newVal);
+		[id(15), helpstring("method SaveProfile")] HRESULT SaveProfile();
+		[id(16), helpstring("method ChangePassword")] HRESULT ChangePassword();
+		[propput, id(17), helpstring("property Wild card for the host who opened the profile")] HRESULT ProfileOpenHostWildCard([in] VARIANT newVal);	
+		[propget, id(18), helpstring("property AddApplicationIfItDoesNotExistFlag")] HRESULT AddApplicationIfItDoesNotExistFlag([out, retval] VARIANT *pVal);
+		[propput, id(18), helpstring("property AddApplicationIfItDoesNotExistFlag")] HRESULT AddApplicationIfItDoesNotExistFlag([in] VARIANT newVal);
+		[propget, id(19), helpstring("property IsUsernameEditable")] HRESULT IsUsernameEditable([out, retval] VARIANT *pVal);
+		[propput, id(19), helpstring("property IsUsernameEditable")] HRESULT IsUsernameEditable([in] VARIANT newVal);
+		[id(20), helpstring("method ResetPassword")] HRESULT ResetPassword();
+		[id(21), helpstring("method RemoveCertificates")] HRESULT RemoveCertificates();
+		[propget, id(22), helpstring("property FirstName")] HRESULT FirstName([out, retval] VARIANT *pVal);
+		[propput, id(22), helpstring("property FirstName")] HRESULT FirstName([in] VARIANT newVal);
+		[propget, id(23), helpstring("property LastName")] HRESULT LastName([out, retval] VARIANT *pVal);
+		[propput, id(23), helpstring("property LastName")] HRESULT LastName([in] VARIANT newVal);
+		[propget, id(24), helpstring("property Email")] HRESULT Email([out, retval] VARIANT *pVal);
+		[propput, id(24), helpstring("property Email")] HRESULT Email([in] VARIANT newVal);
+	};
+

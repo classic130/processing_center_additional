@@ -1,0 +1,22 @@
+#
+# Application MakeFile
+#
+
+INCL =  -I./ -I../include -I../../../../include
+
+CFLAGS = -c +z +DAportable $(INCL)
+
+OBJS = pestub.o
+RM = rm -f
+CC = CC 
+
+all :: pestub.sl 
+
+pestub.sl : $(OBJS)
+	   $(CC) -b $(OBJS) -o libpestub.sl
+
+pestub.o:	./pestub.cpp
+		$(CC) $(CFLAGS) ./pestub.cpp
+
+clean ::
+	$(RM) *.o libpestub.sl

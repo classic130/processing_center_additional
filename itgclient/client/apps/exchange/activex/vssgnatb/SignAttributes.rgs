@@ -1,0 +1,26 @@
+HKCR
+{
+	SignAtrb.SignAttributes.1 = s 'SignAttributes Class'
+	{
+		CLSID = s '{71C6919E-F9C0-11D2-8344-0060B0B32E16}'
+	}
+	SignAtrb.SignAttributes = s 'SignAttributes Class'
+	{
+		CLSID = s '{71C6919E-F9C0-11D2-8344-0060B0B32E16}'
+		CurVer = s 'SignAtrb.SignAttributes.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {71C6919E-F9C0-11D2-8344-0060B0B32E16} = s 'SignAttributes Class'
+		{
+			ProgID = s 'SignAtrb.SignAttributes.1'
+			VersionIndependentProgID = s 'SignAtrb.SignAttributes'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{71C69191-F9C0-11D2-8344-0060B0B32E16}'
+		}
+	}
+}

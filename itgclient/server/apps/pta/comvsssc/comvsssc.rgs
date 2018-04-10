@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{AD748C1A-433B-4223-A788-35FBDFA66A5D} = s 'comvsssc'
+		'comvsssc.EXE'
+		{
+			val AppID = s {AD748C1A-433B-4223-A788-35FBDFA66A5D}
+		}
+	}
+}

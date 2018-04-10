@@ -1,0 +1,9 @@
+onsite_v7_1_1_0_1
+	branched from itgclient_v1_15_0
+	aalsup merged in the PkgInstr.usr files from onsite_v7_1_1_0 (06/01/00)
+	aalsup updated several PkgInstr.usr files to pick up files that were
+added between itgclient_v1_10_0 and itgclient_1_15_0.  A location was agreed 
+upon for the directory to checkin the built .exe, .cab, and .jar files.  The
+location is packager/local-install, and PkgInstr.usr files were added to
+package these files up. (06/01/00).
+

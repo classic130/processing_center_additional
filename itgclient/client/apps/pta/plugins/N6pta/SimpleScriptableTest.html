@@ -1,0 +1,128 @@
+<html>
+<head>
+</head>
+ <body>
+<h1> Simple XPConnect Scriptable Sample Plug-in </h1>
+<p>   This sample plug-in demonstrates how to write a XPConnect-enabled plug-in. 
+  You  should see in the plug-in rectangle below with the text "Hello World". 
+  The text  box and buttons demostrate calling the scriptable xpcom interfaces 
+  of the plugin  from JavaScript.    </p>
+<hr>
+<center>
+<embed type="application/x-vspta2-plugin" name="simple1" width="400" height="300">
+<script>
+function GetText()
+{
+//    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+alert ("GetText");
+    
+    document.the_form.the_text.value = 
+        document.simple1.ns6IPTA.text;
+}
+
+function SetText()
+{
+alert ("SetText");
+//    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+    
+    document.simple1.ns6IPTA.text = 
+       document.the_form.the_text.value;
+}
+
+function GetNumber ()
+{
+alert ("GetNumber");
+//    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+    
+   document.the_form.the_number1.value = 
+        document.simple1.ns6IPTA.number;
+}
+
+function SetNumber ()
+{
+alert ("SetNumber");
+//    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+    
+    document.simple1.ns6IPTA.number = 
+        document.the_form.the_number.value;
+
+}
+
+function DoMultiply ()
+{
+alert ("Multiply");
+var answer = 5;
+var result;
+var first;
+
+//	    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+	first = document.the_form.the_mult.value;
+
+	document.simple1.ns6IPTA.Donothing();
+	answer = document.simple1.ns6IPTA.multiply(first);
+	alert(answer);
+	document.the_form.the_answer.value = answer;
+
+}
+
+/*
+// For JS evaluator below; unused.
+
+var it = undefined; // persistent last special value.
+function EvalIt() {
+    var inText = document.eval_form.eval_text.value;
+
+    dump(document.simple1);
+
+    try {
+        var result = eval(inText);
+        result = result ? result : "";
+        document.eval_form.result_text.value = result;
+        if (it)
+            document.eval_form.it_text.value = "it: " + it;
+        document.eval_form.eval_text.value = "";
+    } catch (err) {
+        document.eval_form.result_text.value = "Exn: " + err.toString();
+    }
+    return true;
+}
+*/
+
+</script>
+<form name="the_form"><input type="text" name="the_text" value="some text" size="25"><input type="button" value="Set Text" onclick="SetText()"><input type="button" value="Get Text" onclick="GetText()">
+  <p>  &nbsp; &nbsp; <input tpye="text" name="the_number" size="4"><input type="button" value="Set Number" onclick="SetNumber()"></p>
+  <p>  &nbsp;  <input type="text" name="the_number1" value="0" size="4"><input type="button" value="Get Number" onclick="GetNumber()"></p>
+  <p>  &nbsp;  <input type="text" name="the_mult" size="4"><input type="button" value="Multiply" onclick="DoMultiply()"></p>
+  <p>  &nbsp; &nbsp; <input type="text" name="the_answer"  size="4"></p>
+</form>
+<!--
+<hr>
+<form name ="eval_form">
+JavaScript evaluation for poking at the plugin ('document.simple1').<br>
+input:<br>
+<INPUT TYPE="text" NAME="eval_text" onchange = "EvalIt()" SIZE="80"><br>
+result:<br>
+<INPUT TYPE="text" NAME="result_text" SIZE="80"><br>
+contents of 'it':<br>
+<INPUT TYPE="text" NAME="it_text" SIZE="80">
+<p>
+<input type=button value="eval" onclick="EvalIt()">
+</form>
+--><br>
+<hr></center>
+<h4>Problems?</h4>
+<ul>
+  <li><b>Can't load pluign</b>:  Copy the compiled plugin to your plugins 
+  directory          </li>
+  <li><b>JavaScript error in the JavaScript console talking about how   XPConnect 
+  can't build a wrapper</b>:   Copy the type library (ns6IPTA.xpt) 
+ to the mozilla components  directory.         </li>
+  <li><b>Plugin loads, but when I push the 'Set Text' button the plugin text 
+    is not updated</b>:   Are you not running Windows? Only the Windows version 
+  updates text the plugin   draws. But the calls from JS to the plugin should 
+  work on all platforms.  [We welcome fixes to the samples if you'd like to
+  submit them]    </li>
+</ul>
+<hr>
+</body>
+</html>

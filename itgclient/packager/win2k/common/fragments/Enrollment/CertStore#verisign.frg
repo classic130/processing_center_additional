@@ -1,0 +1,3 @@
+<!-- VSSKBEGINPOLICYVAL#verisign#1 -->
+PROPCAPI	0
+<!-- VSSKENDPOLICYVAL#verisign#1 -->

@@ -1,0 +1,22 @@
+# $ VSSKTEMPLATEVERSION#1.0.0.2 $ userQueryResult.fdf
+#
+#------------------------------------------------------------------------------
+#  NAME                     TYPE    REQUIREMENT     DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+Template                    TEXT    MANDATORY       NONE            NONE
+form_file                   TEXT    MANDATORY       NONE            NONE
+CERT_MSG                    TEXT    OPTIONAL        NONE            NONE
+vs_issuer_digest            TEXT    MANDATORY       NONE            NONE
+qmCompileAlways             CLEAR   MANDATORY       NONE            NONE
+cert_jurisdiction_hash      TEXT    MANDATORY       NONE            NONE
+remote_host                 CLEAR   OPTIONAL        NONE            NONE
+
+#------------------------------------------------------------------------------
+#  NAME     CODE   VALUE
+#------------------------------------------------------------------------------
+STATUS      4000   VSApps/client/Xdisplay.htm
+STATUS      0016   VSApps/client/Xdisplay.htm

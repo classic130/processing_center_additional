@@ -1,0 +1,26 @@
+HKCR
+{
+	VSSC.VSSCDllApi.1 = s 'VSSCDllApi Class'
+	{
+		CLSID = s '{C8110D68-8608-11D5-A257-001083023D07}'
+	}
+	VSSC.VSSCDllApi = s 'VSSCDllApi Class'
+	{
+		CLSID = s '{C8110D68-8608-11D5-A257-001083023D07}'
+		CurVer = s 'VSSC.VSSCDllApi.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C8110D68-8608-11D5-A257-001083023D07} = s 'VSSCDllApi Class'
+		{
+			ProgID = s 'VSSC.VSSCDllApi.1'
+			VersionIndependentProgID = s 'VSSC.VSSCDllApi'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{C5E8B9D5-D217-11D4-A21E-001083023D07}'
+		}
+	}
+}

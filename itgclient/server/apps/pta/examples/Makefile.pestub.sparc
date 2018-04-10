@@ -1,0 +1,24 @@
+#
+# Application MakeFile
+#
+
+INCL =  -I./ -I../include -I../../../../include
+
+CFLAGS = -xcg92 -c $(INCL) -g
+
+OBJS = pestub.o
+
+RM = rm -f
+
+OTHERLIBS =
+
+all :: pestub.so 
+
+pestub.so :  $(OBJS)
+	   $(CC) -G -L. -R. -lC $(OTHERLIBS) -o $@ $(OBJS)
+
+pestub.o:	./pestub.cpp
+		CC $(CFLAGS) ./pestub.cpp
+
+clean ::
+	$(RM) *.o pestub.so

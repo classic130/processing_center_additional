@@ -1,0 +1,9 @@
+# Microsoft Developer Studio Generated Dependency File, included by gsesetupw.mak
+
+.\gsesetupw.cpp : \
+	".\StdAfx.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	

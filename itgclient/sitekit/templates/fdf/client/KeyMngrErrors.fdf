@@ -1,0 +1,4 @@
+STATUS	00000001	VSApps/error/keymngr_SetProvNameFail.htm
+STATUS	00000002	VSApps/error/keymngr_CertImportFail.htm
+STATUS  DEFAULT		VSApps/error/KeyMngrDefault.htm
+

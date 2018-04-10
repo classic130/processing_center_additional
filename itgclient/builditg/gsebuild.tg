@@ -1,0 +1,11 @@
+# Onetime event, will fire once on 10/12/1998 2:33:00 then be deleted 
+{ 
+  -start -time 11:00:00 PM 
+ # -stop -time 03:50:00 PM 
+  -command c:\cygnus\cygwin-b20\automatebuildgse.bat
+  -action -show
+  -action -inc 1 0 0 0 
+  -action -logfile 
+  -skip -week 1 7
+#  -stop 10/23/2000 12:30:00 AM 
+} 

@@ -1,0 +1,5 @@
+
+# Configuration file for comvsssc Control
+
+comvsssc-log-name="c:/VeriSign/pta/log/comvsssc.log"
+comvsssc-cfg-name="c:/VeriSign/pta/config/iis_opts.txt"

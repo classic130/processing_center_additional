@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE>Frequently asked questions</TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice/5.2 (Solaris Sparc)">
+	<META NAME="CREATED" CONTENT="20010205;9210200">
+	<META NAME="CHANGEDBY" CONTENT="Caperon Bren">
+	<META NAME="CHANGED" CONTENT="20010212;10312900">
+	<META NAME="ProgId" CONTENT="FrontPage.Editor.Document">
+</HEAD>
+<BODY>
+<H1>JCSI&nbsp; S/MIME - Frequently asked questions</H1>
+<TABLE WIDTH=71% BORDER=0 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=38*>
+	<COL WIDTH=218*>
+	<TR>
+		<TD WIDTH=15% HEIGHT=29 VALIGN=TOP BGCOLOR="#c0c0c0">
+			<H4>KEY1</H4>
+		</TD>
+		<TD WIDTH=85% BGCOLOR="#c0c0c0">
+			<P><FONT SIZE=3>I install JCSI but when I try to use keytool with
+			a PKCS#12 keystore it cannot find pkcs12</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=175 VALIGN=TOP>
+			<H4>Details:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P STYLE="margin-bottom: 0cm">&gt; /local/jdk1.2/bin/keytool
+			-genkey -keystore freddy -keystore pkcs12</P>
+			<P STYLE="margin-bottom: 0cm">keytool error: pkcs12 not found</P>
+			<P STYLE="margin-bottom: 0cm"><BR>
+			</P>
+			<P STYLE="margin-bottom: 0cm">or JCK 1.3</P>
+			<P STYLE="margin-bottom: 0cm"><BR>
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt; /local/jdk-1.3.0/keytool
+			-genkey -keystore freddy -keystore pkcs12      
+			</P>
+			<P STYLE="margin-bottom: 0cm">keytool error:
+			java.security.KeyStoreException: pkcs12 not found</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=42 VALIGN=TOP>
+			<P><B>Reason: </B>
+			</P>
+		</TD>
+		<TD WIDTH=85%>
+			<P STYLE="margin-bottom: 0cm">There are a number of reasons why
+			this could be happening.</P>
+			<OL>
+				<LI><P STYLE="margin-bottom: 0cm">The JCSI providers may not be
+				correctly installed in java.security properties file</P>
+				<LI><P STYLE="margin-bottom: 0cm">JDK1.2 does not like trailing
+				spaces in properties files</P>
+				<LI><P STYLE="margin-bottom: 0cm">to use keytool you must copy
+				the JCSI jars to the jre/lib/ext directory</P>
+			</OL>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=27 VALIGN=TOP>
+			<H4>Workaround:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=42 VALIGN=TOP>
+			<H4>Solution:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<OL>
+				<LI><P STYLE="margin-bottom: 0cm">check the
+				jre/lib/security/java.security to make sure the JCSI providers
+				are installed</P>
+				<P STYLE="margin-bottom: 0cm">For jdk1.3 it should look like this</P>
+				<P STYLE="margin-bottom: 0cm">#</P>
+				<P STYLE="margin-bottom: 0cm"># List of providers and their
+				preference orders (see above):</P>
+				<P STYLE="margin-bottom: 0cm">#</P>
+				<P STYLE="margin-bottom: 0cm">security.provider.1=sun.security.provider.Sun</P>
+				<P STYLE="margin-bottom: 0cm">security.provider.2=com.sun.rsajca.Provider</P>
+				<P STYLE="margin-bottom: 0cm">security.provider.3=com.dstc.security.provider.DSTC</P>
+				<P STYLE="margin-bottom: 0cm">security.provider.4=com.dstc.security.keymanage.eystore.DSTC</P>
+				<P STYLE="margin-bottom: 0cm">security.provider.5=com.dstc.security.x509.DSTD</P>
+				<P STYLE="margin-bottom: 0cm"></P>
+				<LI><P STYLE="margin-bottom: 0cm">check for trailing spaces in
+				the java.security file providers list</P>
+				<P STYLE="margin-bottom: 0cm"></P>
+			</OL>
+			<P STYLE="margin-bottom: 0cm">use javap
+			com.dstc.security.keymanage.keystore.DSTC to check if java can
+			find the JCSI keystore provider</P>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=27 VALIGN=TOP>
+			<H4>Notes:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=42 VALIGN=TOP BGCOLOR="#c0c0c0">
+			<H4>SM2</H4>
+		</TD>
+		<TD WIDTH=85% BGCOLOR="#c0c0c0">
+			<P><FONT SIZE=3>Running MakeSMIMEKeyStores in S/MIME example
+			aborts with&nbsp;<BR>java.security.cert.CertificateException:
+			Cannot determine encoding format</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=232 VALIGN=TOP>
+			<H4>Details:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>Example output:<BR>o Sending PKCS#10 request<BR>o
+			Getting response<BR>java.security.cert.CertificateException:
+			Cannot determine encoding format<BR>at
+			sun.security.provider.X509Factory.engineGenerateCertificate(Compiled
+			Code)<BR>at
+			java.security.cert.CertificateFactory.generateCertificate(Compiled
+			Code)<BR>at
+			com.dstc.security.examples.smime.MakeSMIMEKeyStores.getResponse(Compiled
+			Code)<BR>at
+			com.dstc.security.examples.smime.MakeSMIMEKeyStores.callAutomatedCa(Compiled
+			Code)<BR>at
+			com.dstc.security.examples.smime.MakeSMIMEKeyStores.generateCertificate(Compiled
+			Code)<BR>at
+			com.dstc.security.examples.smime.MakeSMIMEKeyStores.CreateKeyStore(Compiled
+			Code)<BR>at
+			com.dstc.security.examples.smime.MakeSMIMEKeyStores.main(Compiled
+			Code)<BR>Failed to create keystores</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=48 VALIGN=TOP>
+			<P><B>Reason: </B>
+			</P>
+		</TD>
+		<TD WIDTH=85%>
+			<P>The HTTP response from the CA server might not complete hence
+			an encoding error is triggered reading the incomplete certificate.
+						</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=27 VALIGN=TOP>
+			<H4>Workaround:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P>Run it again.</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=48 VALIGN=TOP>
+			<H4>Solution:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P>Additional code is needed to perform re-trys to the CA server
+			when the client application fails to fetch the certificate.&nbsp; 
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=70 VALIGN=TOP>
+			<H4>Notes:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P>Care needs to taken for the case when the CA server thinks that
+			the cert has been issued but it was not received by the client
+			application.&nbsp; To avoid this a new unique distinguished name
+			might be needed for each retry.&nbsp;&nbsp;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=26 VALIGN=TOP>
+			<H4>SM1</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>S/MIME application is throwing
+			javax.activation.UnsupportedDataTypeException</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=70 VALIGN=TOP>
+			<H4>Details:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>Example output:&nbsp;<BR>Failed to send: Clear
+			Signed/Encrypted
+			Message<BR>com.dstc.security.examples.smime.SMIMEKeyStoreException:
+			IOException while copying message;<BR>nested exception
+			is:<BR>javax.activation.UnsupportedDataTypeException<BR>at
+			com.dstc.security.examples.smime.SMIMEKeyStore.encrypt(Compiled
+			Code)<BR>at
+			com.dstc.security.examples.smime.SMIMESend.sendMessage(Compiled
+			Code)<BR>at
+			com.dstc.security.examples.smime.SMIMESend.main(Compiled Code)&nbsp;</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=26 VALIGN=TOP>
+			<H4>Reason:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>Java activation framework used by JavaMail fails
+			to recognise the MimeMessage content types registered by JCSI
+			S/MIME.</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=70 VALIGN=TOP>
+			<H4>Workaround:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=26 VALIGN=TOP>
+			<H4>Solution:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>The JavaMail and JCSI jars must be in the same
+			directory preferably both under $JAVA_HOME/jre/lib/ext/ .</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=70 VALIGN=TOP>
+			<H4>Notes:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=26 VALIGN=TOP>
+			<H4>Provider1</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>PrivateKey.getEncoded() throws
+			ArrayIndexOutOfBoundException when sun.rsajca provider installed
+			before JCSI</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=70 VALIGN=TOP>
+			<H4>Details:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P STYLE="margin-bottom: 0cm">The following program exemplifies
+			the problem in the rsajca provider.</P>
+			<P STYLE="margin-bottom: 0cm"><BR>
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt; import java.security.*;</P>
+			<P STYLE="margin-bottom: 0cm">&gt; import java.security.spec.*;</P>
+			<P STYLE="margin-bottom: 0cm">&gt; 
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt; public class RSAJCABug</P>
+			<P STYLE="margin-bottom: 0cm">&gt; {</P>
+			<P STYLE="margin-bottom: 0cm">&gt;   //com.sun.rsajca.Provider
+			fails with a very nice</P>
+			<P STYLE="margin-bottom: 0cm">&gt;  
+			//ArrayIndexOutOfBoundsException exception</P>
+			<P STYLE="margin-bottom: 0cm">&gt;   //</P>
+			<P STYLE="margin-bottom: 0cm">&gt;  
+			//CLASSPATH=.:../../lib/classes javac  -d classes RSAJCABug.java</P>
+			<P STYLE="margin-bottom: 0cm">&gt;  
+			//CLASSPATH=./classes:../../lib/classes java -DJAVA_COMPILER=NONE
+			RSAJCABug</P>
+			<P STYLE="margin-bottom: 0cm">&gt;  
+			//com.sun.rsajca.JSA_RSAPrivateKey@28c4e7</P>
+			<P STYLE="margin-bottom: 0cm">&gt;  
+			//java.security.spec.RSAPrivateCrtKeySpec@7aeca</P>
+			<P STYLE="margin-bottom: 0cm">&gt;  
+			//java.lang.ArrayIndexOutOfBoundsException</P>
+			<P STYLE="margin-bottom: 0cm">&gt;   //      at
+			com.sun.rsajca.JSA_RSAPrivateKey.getEncoded([DashoPro-V1.2-12019</P>
+			<P STYLE="margin-bottom: 0cm">8])  //      at
+			RSAJCABug.main(RSAJCABug.java:35)</P>
+			<P STYLE="margin-bottom: 0cm">&gt;   //</P>
+			<P STYLE="margin-bottom: 0cm">&gt;   public static void
+			main(String args[])</P>
+			<P STYLE="margin-bottom: 0cm">&gt;   {</P>
+			<P STYLE="margin-bottom: 0cm">&gt;     try</P>
+			<P STYLE="margin-bottom: 0cm">&gt;     {</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       KeyPairGenerator kpg =
+			KeyPairGenerator.getInstance(&quot;RSA&quot;);</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       kpg.initialize(512);</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       KeyPair kp =
+			kpg.generateKeyPair();</P>
+			<P STYLE="margin-bottom: 0cm">&gt; 
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       PrivateKey priv =
+			kp.getPrivate();</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       System.out.println(priv);</P>
+			<P STYLE="margin-bottom: 0cm">&gt; 
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       KeyFactory keyFact =
+			KeyFactory.getInstance(&quot;RSA&quot;);</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       KeySpec ks =
+			keyFact.getKeySpec(priv, RSAPrivateCrtKeySpec.class);</P>
+			<P STYLE="margin-bottom: 0cm">&gt; 
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       System.out.println(ks);</P>
+			<P STYLE="margin-bottom: 0cm">&gt; 
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       PrivateKey key2 =
+			keyFact.generatePrivate(ks);</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       key2.getEncoded();</P>
+			<P STYLE="margin-bottom: 0cm">&gt; 
+			</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       System.out.println(key2);</P>
+			<P STYLE="margin-bottom: 0cm">&gt;     }</P>
+			<P STYLE="margin-bottom: 0cm">&gt;     catch (Exception e)</P>
+			<P STYLE="margin-bottom: 0cm">&gt;     {</P>
+			<P STYLE="margin-bottom: 0cm">&gt;       e.printStackTrace();</P>
+			<P STYLE="margin-bottom: 0cm">&gt;     }</P>
+			<P STYLE="margin-bottom: 0cm"><FONT SIZE=3>&gt;   }</FONT></P>
+			<P>}</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=26 VALIGN=TOP>
+			<H4>Reason:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>Bug in com.sun.rsajca provider</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=70 VALIGN=TOP>
+			<H4>Workaround:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><FONT SIZE=3>place com.sun.rasjca provider after jcsi providers
+			in jre/lib/security/java.security file or</FONT></P>
+			<P><FONT SIZE=3>dynamically load the DSTC provider in your
+			application see setup.html for details.</FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=26 VALIGN=TOP>
+			<H4>Solution:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=15% HEIGHT=26 VALIGN=TOP>
+			<H4>Notes:</H4>
+		</TD>
+		<TD WIDTH=85%>
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

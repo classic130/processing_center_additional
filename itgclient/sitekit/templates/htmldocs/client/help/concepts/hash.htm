@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+<SCRIPT Language="JavaScript" src="/client/copyright.js"></SCRIPT>
+	<META NAME="robots" CONTENT="noindex">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#CC0000" VLINK="#666666">
+
+
+<!--BEGIN PAGE CONTENT-->
+
+
+<TABLE WIDTH="94%">
+<TR>
+<TD>
+
+
+<!-- HEADING -->
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" COLOR="#000066" SIZE=+1><B> What is a hash algorithm? </B></FONT>
+<!-- END HEADING -->
+
+<P>
+
+<!-- CONTENT -->
+
+
+<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>
+
+A hash function is a math equation that uses text (such as an e-mail message) to create a code 
+called a message digest. Examples of well-known hash functions are MD4, MD5, and SHS. 
+
+<P>
+
+A hash function used for digital authentication must have certain properties that make it secure 
+enough for cryptographic use. Specifically, it must be infeasible to find: 
+
+<P>
+<UL>
+   <LI>Text that hashes to a given value. That is, if you know the message digest, you should not be able to figure out the message.</LI>
+
+   <LI>Two distinct messages that hash to the same value </LI>
+</UL>
+The ability to find a message that hashes to a given value would enable an attacker to substitute a 
+fake message for a real message that was signed. It would also enable someone to falsely disown 
+a message by claiming that he or she actually signed a different message hashing to the same 
+value, thus violating the non-repudiation property of digital signatures. 
+
+<P>
+
+The ability to find two distinct messages that hash to the same value could enable an attack 
+whereby someone is tricked into signing a message that hashes to the same value as another message
+with a quite different meaning. 
+
+<P>
+
+
+
+</TD>
+</TR>
+</TABLE>
+
+<!-- END CONTENT -->
+
+
+<!-- VSSKBEGIN Copyright#1 -->
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../../graphics/dot_grey.gif" WIDTH=94% HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=94% CELLPADDING=2 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=480 VALIGN="TOP">
+		<FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="../../copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+
+        <TD WIDTH=120 VALIGN="TOP" ALIGN="RIGHT">
+		<!-- VSSKBEGIN LOGO3#2 -->
+        <IMG ALIGN="right" SRC="../../graphics/logo3.gif" ALT="Logo">
+		<!-- VSSKEND LOGO3#2 -->
+		</TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<!-- VSSKEND Copyright#1 -->
+
+</BODY>
+</HTML>

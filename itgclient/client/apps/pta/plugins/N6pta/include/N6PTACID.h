@@ -1,0 +1,9 @@
+#ifndef __N6PTA_CID_H__
+#define __N6PTA_CID_H__
+
+
+// {3CE195DF-EB56-11d4-89B4-0010B552D687}
+#define NS6_PTA_PLUGIN_CID { 0x3ce195df, 0xeb56, 0x11d4, { 0x89, 0xb4, 0x0, 0x10, 0xb5, 0x52, 0xd6, 0x87 } }
+
+
+#endif

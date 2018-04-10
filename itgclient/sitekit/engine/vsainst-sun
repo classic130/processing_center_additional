@@ -1,0 +1,34 @@
+#! /usr/bin/csh
+echo " "
+echo "Usage:  vsainst-sun <src_dir> <dest_dir> <policy_file>"
+echo "source directory       : $1"
+echo "destination directory  : $2"
+echo "policy file            : $3"
+
+setenv LD_LIBRARY_PATH .
+
+if ($#argv != 3) then
+  echo " "
+  echo " "
+  echo "***** Invalid parameters *****"
+  echo "Usage:  vsainst-sun <src_dir> <dest_dir> <policy_file>"
+  echo " "
+else if ("$1" != "$2") then
+    echo "creating directory structure and copying files"
+    mkdir -p $2/log/VSApps
+    chmod 777 $2/log/VSApps
+    mkdir -p $2/cgi-bin
+    mkdir -p $2/htmldocs
+    mkdir -p $2/fdf
+
+    cp -r $1/cgi-bin/VSApps $2/cgi-bin/
+    cp -r $1/htmldocs/VSApps $2/htmldocs/
+    cp -r $1/fdf/VSApps $2/fdf/
+    echo "running customizer"
+    ./customizer.exe -f ../fragments/VSApps -c ../templates/vsapps_unix.lst -s $1 -d $2 -p $3 -l $2/log/VSApps/Customizer.log
+else
+    echo "running customizer"
+    ./customizer.exe -f ../fragments/VSApps -c ../templates/vsapps_unix.lst -s $1 -d $2 -p $3 -l $2/log/VSApps/Customizer.log
+endif 
+
+exit 0

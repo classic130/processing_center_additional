@@ -1,0 +1,23 @@
+HKCR
+{
+	Ptav3.Temp.1 = s 'Temp Class'
+	{
+		CLSID = s '{F1432F83-DDA9-11D3-A428-D1A369CA484F}'
+	}
+	Ptav3.Temp = s 'Temp Class'
+	{
+		CLSID = s '{F1432F83-DDA9-11D3-A428-D1A369CA484F}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F1432F83-DDA9-11D3-A428-D1A369CA484F} = s 'Temp Class'
+		{
+			ProgID = s 'Ptav3.Temp.1'
+			VersionIndependentProgID = s 'Ptav3.Temp'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}

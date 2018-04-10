@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<TITLE>Login Error</TITLE>
+</HEAD>
+<BODY BGCOLOR="ffffff" LINK="000066">
+<!--BEGIN PAGE CONTENT-->
+<!--BANNER-->
+
+<!--END BANNER-->
+<P><BR><P>
+<!--PAGE TITLE AND DIRECTIONS-->
+
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=500>
+      <P><FONT COLOR="#cc0000" FACE="verdana, arial, helvetica" SIZE=5><B>VeriSign SiteMinder Authentication Scheme Error</B></FONT></P>
+      <P>	<FONT FACE="verdana, arial, helvetica" SIZE=2>
+	An error occurred while trying to login. Please check the certificate you used to login is correct. <BR><P>
+Contact the administrator if you continue to experience this problem. <BR><BR> 
+	</FONT></p>
+                   </TD>
+</TR>
+</TABLE>
+
+<P> 
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+	Copyright &#169; 1999-2001, VeriSign, Inc. All Rights Reserved<BR></FONT></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+</BODY>
+</HTML>

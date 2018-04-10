@@ -1,0 +1,23 @@
+HKCR
+{
+	VSSC.ResolveRcpt.1 = s 'ResolveRcpt Class'
+	{
+		CLSID = s '{18865333-716F-11D5-A251-001083023D07}'
+	}
+	VSSC.ResolveRcpt = s 'ResolveRcpt Class'
+	{
+		CLSID = s '{18865333-716F-11D5-A251-001083023D07}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {18865333-716F-11D5-A251-001083023D07} = s 'ResolveRcpt Class'
+		{
+			ProgID = s 'VSSC.ResolveRcpt.1'
+			VersionIndependentProgID = s 'VSSC.ResolveRcpt'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}

@@ -1,0 +1,34 @@
+HKCR
+{
+	Vsctl.vsctrl.1 = s 'VeriSign File Encyption Tool Control'
+	{
+		CLSID = s '{6C67604E-91A2-11D3-8C1B-0010830169AF}'
+	}
+	Vsctl.vsctrl = s 'VeriSign File Encyption Tool Control'
+	{
+		CLSID = s '{6C67604E-91A2-11D3-8C1B-0010830169AF}'
+		CurVer = s 'Vsctl.vsctrl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6C67604E-91A2-11D3-8C1B-0010830169AF} = s 'VeriSign File Encyption Tool Control'
+		{
+			ProgID = s 'Vsctl.vsctrl.1'
+			VersionIndependentProgID = s 'Vsctl.vsctrl'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{6C676041-91A2-11D3-8C1B-0010830169AF}'
+			'Version' = s '1.0'
+		}
+	}
+}

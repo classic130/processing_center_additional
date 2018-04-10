@@ -1,0 +1,23 @@
+;vsnzpta
+
+[Add.Code]
+Ptav3.dll=Ptav3.dll
+vscspsign=vscspsign
+vsdnotz.dll=vsdnotz.dll
+
+[vscspsign]
+file-win32-x86=thiscab
+
+[Ptav3.dll]
+file-win32-x86=thiscab
+RegisterServer=yes
+
+clsid = {6F7864F9-DB33-11D3-8166-0060B0F885E6}
+clsid = {50E71FEB-2234-11d4-8D73-0060B0FC0637}
+FileVersion=1,0,2,7
+
+[vsdnotz.dll]
+file-win32-x86=thiscab
+RegisterServer=yes
+clsid={D66256E2-B99C-11D4-8C74-0010830169AF}
+FileVersion=1,0,0,6

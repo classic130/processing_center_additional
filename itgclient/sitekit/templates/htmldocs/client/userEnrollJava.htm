@@ -1,0 +1,417 @@
+<!-- userEnrollJava.htm
+
+-->
+<!-- VSSKTEMPLATEVERSION#1.2.5.3 -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<TITLE>Microsoft end-user Enrollment</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/Mode#130 -->
+<!-- VSSKEND Global/Mode#130 -->
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#48 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#48 -->
+<!--  23 July 2004: End Changes -->
+
+<!-- load handlError function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#1 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#1 -->
+
+<!-- load javapta DoKeyGen() function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#8 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#8 -->
+
+<!-- load waitUntilAppletReady function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+
+<!-- load setPreference function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#22 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#22 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<!-- VSSKBEGIN Global/System#16 -->
+<!-- VSSKEND Global/System#16 -->
+
+<!-- preferences form -->
+<FORM name = "enrollPrefForm">
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#24 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#24 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#30 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#30 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#16 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#16 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#42 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#42 -->
+</FORM>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function declinefunc()
+{
+   window.navigate("cancel.htm") ;
+}
+
+function dumbfunc()
+{
+   var newwin = window.open("help/securitySetting.htm", "private_window",
+                "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0, resizable=0,WIDTH=420,HEIGHT=480");
+}
+
+function popup ()
+{
+//Create a new window
+var newWin = window.open("help/tasks/enrollform.htm", "popup_window",
+             'toolbar=0,location=0,directories=0, status=0,menubar=0,scrollbars=1,resizable=0,WIDTH=490,HEIGHT=510');
+//Note where the window came from
+self.name = "mainWin";
+}
+
+function copyright ()
+{
+//Create a new window
+var newWin = window.open("copyright.htm", "popup_window",
+            'toolbar=1,location=0,directories=0,status=0, menubar=0,scrollbars=1,resizable=0,WIDTH=620,HEIGHT=510');
+//Note where the window came from
+self.name = "mainWin";
+}
+
+//-->
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var browserNum = parseInt(navigator.appVersion);
+//variable "forn"  counts the number of False OR Null fields found in function lastCheck
+var forn = 0;
+
+//function firstCheck validates all the fields
+function firstCheck ()
+{
+   forn = 0;
+//-- VSSKBEGIN Enrollment/FirstName#2 --
+//-- VSSKEND Enrollment/FirstName#2 --
+
+//-- VSSKBEGIN Enrollment/LastName#2 --
+//-- VSSKEND Enrollment/LastName#2 --
+
+//-- VSSKBEGIN Enrollment/EMAIL#2 --
+//-- VSSKEND Enrollment/EMAIL#2 --
+
+//-- VSSKBEGIN Enrollment/CertCorpCompany#2 --
+//-- VSSKEND Enrollment/CertCorpCompany#2 --
+
+//-- VSSKBEGIN Enrollment/CertOrgUnit#2 --
+//-- VSSKEND Enrollment/CertOrgUnit#2 --
+
+//-- VSSKBEGIN Enrollment/Rating#2 --
+//-- VSSKEND Enrollment/Rating#2 --
+
+//-- VSSKBEGIN Enrollment/PassCode#2 --
+//-- VSSKEND Enrollment/PassCode#2 --
+
+//-- VSSKBEGIN Enrollment/JobTitle#2 --
+//-- VSSKEND Enrollment/JobTitle#2 --
+
+//-- VSSKBEGIN Enrollment/EmpID#2 --
+//-- VSSKEND Enrollment/EmpID#2 --
+
+//-- VSSKBEGIN Enrollment/MailStop#2 --
+//-- VSSKEND Enrollment/MailStop#2 --
+
+//-- VSSKBEGIN Enrollment/AddField4#2 --
+//-- VSSKEND Enrollment/AddField4#2 --
+
+//-- VSSKBEGIN Enrollment/AddField5#2 --
+//-- VSSKEND Enrollment/AddField5#2 --
+
+//-- VSSKBEGIN Enrollment/AddField6#2 --
+//-- VSSKEND Enrollment/AddField6#2 --
+
+//-- VSSKBEGIN Enrollment/Locality#2 --
+//-- VSSKEND Enrollment/Locality#2 --
+
+//-- VSSKBEGIN Enrollment/State#2 --
+//-- VSSKEND Enrollment/State#2 --
+
+//-- VSSKBEGIN Enrollment/Country#2 --
+//-- VSSKEND Enrollment/Country#2 --
+
+//-- VSSKBEGIN Enrollment/Challenge#2 --
+//-- VSSKEND Enrollment/Challenge#2 --
+}
+
+//function checkField is generically used to check if fields are null or true.
+function checkFieldAndDisplay(theimg, theName, theValue)
+ {
+     if(theValue == "")
+        {
+            document.images[theimg].src = "../graphics/bang2.gif";
+            forn++;
+        }
+     else
+        {
+            document.images[theimg].src = "../graphics/blank2.gif";
+        }
+}
+
+function clearImage(theimg)
+{
+    //document.images[theimg].src = "../graphics/blank2.gif";
+}
+
+//-- VSSKBEGIN Enrollment/EMAIL#3 --
+//-- VSSKEND Enrollment/EMAIL#3 --
+
+function lastCheck ()
+   {
+
+      firstCheck();
+      if(forn==0)
+         {
+            var rval ;
+
+            //-- VSSKBEGIN Enrollment/EMAIL#10 --
+            //-- VSSKEND Enrollment/EMAIL#10 --
+            if( rval == true )
+                {
+		     //-- VSSKBEGIN Enrollment/Privacy#2 --
+                     //-- VSSKEND Enrollment/Privacy#2 --
+                     DoKeyGen();
+
+				//  23 July 2004: Begin Changes
+				// set the interval depending on browser and OS
+
+				//-- VSSKBEGIN Apps/PTAv2/GSWAClientType#50
+				//-- VSSKEND Apps/PTAv2/GSWAClientType#50
+
+				//  23 July 2004: Begin Changes
+
+                }
+            //-- VSSKBEGIN Enrollment/EMAIL#11 --
+            //-- VSSKEND Enrollment/EMAIL#11 --
+         }
+         else
+         if(forn==1)
+	       {
+                   alert ('There is still 1 field that is wrong or incomplete.');
+               }
+         else
+	       {
+                   alert ('There are still '+forn+' fields that are wrong or incomplete.');
+               }
+        forn = 0;
+    }
+//-->
+
+<!--  23 July 2004: Begin Changes -->
+<!-- clear the interval depending on browser and OS.
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#47 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#47 -->
+<!--  23 July 2004: End Changes -->
+
+</script>
+</HEAD>
+
+<!--  the BODY tag -->
+<!-- VSSKBEGIN Enrollment/CertStore#3 -->
+<!-- VSSKEND Enrollment/CertStore#3 -->
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<!-- BEGIN FORM -->
+<!-- VSSKBEGIN Global/Mode#1 -->
+<!-- VSSKEND Global/Mode#1 -->
+
+<input TYPE=hidden NAME=form_file VALUE="../fdf/VSApps/client/userEnrollJava.fdf">
+<INPUT TYPE=hidden NAME=public_key VALUE="">
+<INPUT TYPE=hidden NAME=enroll_track VALUE="MSIE">
+
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE=0 VSPACE=0>
+<TR>
+     <TD WIDTH=600 ALIGN=CENTER VALIGN=BOTTOM COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD>
+        <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../graphics/hd_enroll.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Enroll Header"></TD>
+        <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_2.gif" ALT=""></TD>
+</TR>
+<TR>
+     <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+    <A HREF="javascript:popup();"><IMG SRC="../graphics/button_help_page.gif" WIDTH=145 HEIGHT=26 hspace=1 vspace=0 border=0 alt="Help with this Page"></A>
+    </TD>
+</TR>
+</TABLE>
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=TOP>
+<FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=+1><B>Complete Enrollment Form</B></FONT></TD>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+<!--MAIN CONTENT AREA-->
+
+<TABLE WIDTH=588 BGCOLOR=""ffffcc"" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+<TD WIDTH=588>
+<FONT SIZE=2 FACE=""verdana, arial, helvetica""><B>Enter your Digital ID
+information</B></FONT><BR>
+<FONT FACE=""arial, helvetica"" SIZE=2>Fill in all required fields. Fields marked with an
+asterisk <FONT COLOR=""0000cc"" FACE=""verdana, arial, helvetica"" SIZE=2><B>(*)</B></FONT> are
+included with your Digital ID and are viewable in the certificate's details.<BR></FONT><P>
+</TABLE>
+<!--BEGIN  TABLE ONE-->
+
+<!--BEGIN INPUT FIELD TABLE-->
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+
+<!-- VSSKBEGIN Enrollment/FirstName#1 -->
+<!-- VSSKEND Enrollment/FirstName#1 -->
+
+<!-- VSSKBEGIN Enrollment/LastName#1 -->
+<!-- VSSKEND Enrollment/LastName#1 -->
+
+<!-- VSSKBEGIN Enrollment/EMAIL#1 -->
+<!-- VSSKEND Enrollment/EMAIL#1 -->
+
+<!-- VSSKBEGIN Enrollment/CertCorpCompany#1 -->
+<!-- VSSKEND Enrollment/CertCorpCompany#1 -->
+
+<!-- VSSKBEGIN Enrollment/CertOrgUnit#1 -->
+<!-- VSSKEND Enrollment/CertOrgUnit#1 -->
+
+<!-- VSSKBEGIN Enrollment/PassCode#1 -->
+<!-- VSSKEND Enrollment/PassCode#1 -->
+
+<!-- VSSKBEGIN Enrollment/JobTitle#1 -->
+<!-- VSSKEND Enrollment/JobTitle#1 -->
+
+<!-- VSSKBEGIN Enrollment/EmpID#1 -->
+<!-- VSSKEND Enrollment/EmpID#1 -->
+
+<!-- VSSKBEGIN Enrollment/MailStop#1 -->
+<!-- VSSKEND Enrollment/MailStop#1 -->
+
+<!-- VSSKBEGIN Enrollment/AddField4#1 -->
+<!-- VSSKEND Enrollment/AddField4#1 -->
+
+<!-- VSSKBEGIN Enrollment/AddField5#1 -->
+<!-- VSSKEND Enrollment/AddField5#1 -->
+
+<!-- VSSKBEGIN Enrollment/AddField6#1 -->
+<!-- VSSKEND Enrollment/AddField6#1 -->
+
+<!-- VSSKBEGIN Enrollment/Locality#1 -->
+<!-- VSSKEND Enrollment/Locality#1 -->
+
+<!-- VSSKBEGIN Enrollment/State#1 -->
+<!-- VSSKEND Enrollment/State#1 -->
+
+<!-- VSSKBEGIN Enrollment/Country#1 -->
+<!-- VSSKEND Enrollment/Country#1 -->
+
+</TABLE>
+<!--END INPUT FIELD TABLE-->
+
+<!-- VSSKBEGIN Global/System#15 -->
+<!-- VSSKEND Global/System#15 -->
+
+<!--END TABLE ONE-->
+
+
+<!--BEGIN TABLE TWO-->
+<!-- VSSKBEGIN Enrollment/Challenge#1 -->
+<!-- VSSKEND Enrollment/Challenge#1 -->
+<!-- VSSKBEGIN Enrollment/Rating#1 -->
+<!-- VSSKEND Enrollment/Rating#1 -->
+<!--END TABLE TWO-->
+
+<!-- VSSKBEGIN Enrollment/CertPublish#1 -->
+<!-- VSSKEND Enrollment/CertPublish#1 -->
+
+<!--BEGIN TABLE FIVE-->
+
+<!-- VSSKBEGIN Enrollment/Comments#1 -->
+<!-- VSSKEND Enrollment/Comments#1 -->
+
+<!--END TABLE FIVE-->
+
+<!--BEGIN TABLE SIX-->
+
+<!-- VSSKBEGIN Enrollment/SubscriberAgreement#2 -->
+<!-- VSSKEND Enrollment/SubscriberAgreement#2 -->
+
+
+<!--END CONTENT TABLE SIX-->
+
+<!--BEGIN TABLE SEVEN-->
+
+<!-- VSSKBEGIN Enrollment/Privacy#1 -->
+<!-- VSSKEND Enrollment/Privacy#1 -->
+
+<!--END CONTENT TABLE SEVEN-->
+
+<!--END MAIN CONTENT AREA-->
+<!--end form tag-->
+<!--end form tag-->
+
+<!-- VSSKBEGIN Apps/KeyManager#8 -->
+<!-- VSSKEND Apps/KeyManager#8 -->
+
+<!--NAVIGATIONAL INSTRUCTIONS AND BUTTONS-->
+<P>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+
+<TR>
+     <TD WIDTH=50><img SRC="../graphics/action_39x39.gif" WIDTH=39 HEIGHT=39></TD>
+     <TD WIDTH=538 COLSPAN=2><FONT COLOR="009933" FACE="verdana, arial, helvetica" SIZE=2>If all the information above is correct,
+<BR>click <B>Submit</b> to continue.<BR></FONT></TD>
+</TR>
+<TR>
+     <TD WIDTH=50>&nbsp;</TD>
+     <TD WIDTH=234 ALIGN=LEFT><INPUT TYPE="button" NAME="Accept" VALUE="Submit" onClick="lastCheck()"></TD>
+     <TD WIDTH=304 ALIGN=LEFT><INPUT TYPE=button NAME="Cancel" VALUE="Cancel" onClick="declinefunc()"></TD>
+</TR>
+</TABLE>
+<!--END NAVIGATIONAL INSTRUCTIONS AND BUTTONS-->
+
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+    <TD WIDTH=480 ><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+    <TD WIDTH=120 VALIGN=top ALIGN=right>
+    <IMG SRC="../graphics/logo_3.gif" ALIGN="right" ALT="VeriSign Trust Network"></TD>
+    </TR>
+</TABLE>
+
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+</FORM>
+<!-- load applet -->
+<!-- VSSKBEGIN Global/Mode#131 -->
+<!-- VSSKEND Global/Mode#131 -->
+</BODY>
+</HTML>

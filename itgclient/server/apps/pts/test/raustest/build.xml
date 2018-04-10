@@ -1,0 +1,28 @@
+<project name="raustest" default="full">
+  <target name="clean">
+    <delete dir="built"/>
+  </target>
+
+  <target name="build">
+    <mkdir dir="built/classes"/>
+    <javac destdir="built/classes" debug="on" deprecation="on">
+      <classpath>
+        <fileset dir="lib" includes="**/*.jar"/>
+      </classpath>
+      <src path="src"/>
+    </javac>
+</target>
+
+  <target name="package" depends="build">
+    <war warfile="built/raustest.war" basedir="res" includes="**" webxml="meta/web.xml">
+      <classes dir="built/classes" includes="**/*.class"/>
+      <lib dir="lib/bundled" includes="*.jar"/>
+    </war>
+  </target>
+
+  <target name="deploy" depends="package">
+    <copy file="built/raustest.war" todir="${user.home}/jakarta-tomcat-4.0.1/webapps/"/>
+  </target>
+
+  <target name="full" depends="clean, deploy"/>
+</project>

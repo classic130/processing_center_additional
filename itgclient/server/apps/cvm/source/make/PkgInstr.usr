@@ -1,0 +1,13 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'libvsvalm',
+            'libvsvaln',
+            'mod_vsval',
+            'mod_vsval_2',
+            'mod_vsval_ibm_2'
+          ],
+          'itgclient/server/apps/cvm/source/make',
+          'build/log/VerArchive'
+        ];

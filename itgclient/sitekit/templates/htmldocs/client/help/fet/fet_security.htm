@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+   <TITLE>File Encryption Tool: Security Properties</TITLE>
+<SCRIPT Language="JavaScript" src="/client/copyright.js"></SCRIPT>
+	<META NAME="robots" CONTENT="noindex">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#CC0000" VLINK="#666666">
+<script src="../popup/popup.js">
+</script>
+
+
+<!--BEGIN PAGE CONTENT-->
+
+
+<TABLE WIDTH="94%">
+<TR>
+<TD>
+
+
+<!-- HEADING -->
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" COLOR="#000066" SIZE=5><B>Security Properties</B></FONT> <A HREF="fet_intro.htm"><IMG SRC="helphome.gif" ALT="Safe Help Home Page"></A>
+<!-- END HEADING -->
+
+<P>
+
+<!-- CONTENT -->
+
+
+<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>
+The Security Properties dialog box lets you select the algorithm used for encryption and hashing. It also allows you to set a screen saver.<P>
+
+To change Security properties:<BR>
+<OL>
+<LI>Open the <A HREF="fet_safeprops.htm">Safe Properties</A>.</LI>
+<LI>Click the Advanced tab and then the Security button.</LI>
+<LI>Change any settings and then click OK. The settings are described below.</LI>
+</OL>
+<IMG SRC="securprops.gif">
+<P>
+<B>Encryption Algorithm - </B><BR>
+This option determines which algorithm the File Encryption Tool uses when encrypting files. Your Administrator might have selected an algorithm for you. If you are unfamiliar with the algorithms, accept the default setting. The algorithms are:
+<UL>
+<LI>RC2-40bits</LI>
+<LI>RC2-56bits</LI>
+<LI>RC2-128bits</LI>
+<LI>RC4</LI>
+<LI>DES</LI>
+<LI>3DES</LI>
+</UL>
+
+<P>
+
+
+<B>Hashing Algorithm - </B><BR>
+This option sets the Hashing Algorithm used in the File Encryption Tool for signing files. If the Safe is not configured to sign files, this option is disabled. The hash algorithms are SHA1, MD4, and MD5.<P>
+
+<B>Lock Desktop - </B><BR>
+These options show you any screen savers which are available on your machine. Any changes you make here are immediately reflected in the Windows screen saver and vice-versa. You can use these options to set up a password-protected screen saver that locks your desktop when you stop working for a set amount of time. 
+
+<P>If you leave the File Encryption Tool running on your computer, it is possible for someone to use the Safe when you leave your computer. By setting up a screen saver that activates itself in a short amount of time (for example, two minutes), you can prevent others from using your computer while you are away. For more information on setting up the screen saver, see the Windows online help.
+<P>
+
+
+
+<B>Securely delete the original file after encryption - </B><BR>
+Use this option to have the File Encryption Tool completely delete any trace of the original file from your computer. Some Windows applications can create temporary files or backups of your files. The Safe has no way of knowing these files exist, so you need to make sure that you encrypt any copies or backups as well as the original file. See the documentation that came with your applications for information on what files, if any, the application creates.<P>
+
+When you move a file to the Safe or encrypt it in place, the original file is deleted from you hard disk. However, because of the way Windows normally deletes files, it is possible for someone who has access to your computer to use highly sophisticated software to read all or parts of the file on your hard disk.
+<P>
+When an application (such as the Safe) deletes a file, Windows leaves the file contents on the hard disk in a state where they can be overwritten by other files. Until another file (or set of files) is saved to the hard disk, the deleted file remains on the hard disk. You can think of it as a chalk board that is erased only when you want to write on it; until you write something new, you can still read the old writing.
+<P>
+This secure deletion option completely erases the file so that it cannot be read at all by any software or hardware. This option is on (checked) by default.
+
+
+</TD>
+</TR>
+</TABLE>
+
+<!-- END CONTENT -->
+
+
+<!-- VSSKBEGIN Copyright#1 -->
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../../graphics/dot_grey.gif" WIDTH=94% HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=94% CELLPADDING=2 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=480 VALIGN="TOP">
+		<FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="../../copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+
+        <TD WIDTH=120 VALIGN="TOP" ALIGN="RIGHT">
+		<!-- VSSKBEGIN LOGO3#2 -->
+        <IMG ALIGN="right" SRC="../../graphics/logo3.gif" ALT="Logo">
+		<!-- VSSKEND LOGO3#2 -->
+		</TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<!-- VSSKEND Copyright#1 -->
+
+</BODY>
+</HTML>

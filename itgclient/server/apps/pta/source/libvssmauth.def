@@ -1,0 +1,4 @@
+	SmAuthQuery
+	SmAuthInit
+	SmAuthRelease
+	SmAuthenticate

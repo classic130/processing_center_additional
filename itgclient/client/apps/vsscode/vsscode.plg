@@ -1,0 +1,90 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: vsscode - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/vsscode.res" /d "NDEBUG" /d "_AFXDLL" "E:\datafiles\project\vsscode\vsscode.rc"" 
+Creating temporary file "C:\TEMP\RSPE01.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "e:\work\itgclient_v11_pta\itgclient\client\apps\pta\activex\ptav3\include" /I "e:\work\itgclient_v11_pta\itgclient\client\apps\pta\activex\ptav3\source" /I "e:\work\itgclient_v11_pta\itgclient\common\simder\include" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/vsscode.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\datafiles\project\vsscode\certmgmt.cpp"
+"E:\datafiles\project\vsscode\datacc.cpp"
+"E:\datafiles\project\vsscode\DlgCSR.cpp"
+"E:\datafiles\project\vsscode\MainFrm.cpp"
+"E:\datafiles\project\vsscode\pkcs7engine.cpp"
+"E:\datafiles\project\vsscode\propsht.cpp"
+"E:\datafiles\project\vsscode\ptaiface.cpp"
+"E:\datafiles\project\vsscode\settings.cpp"
+"E:\datafiles\project\vsscode\sign.cpp"
+"E:\datafiles\project\vsscode\util.cpp"
+"E:\datafiles\project\vsscode\vsscode.cpp"
+"E:\datafiles\project\vsscode\vsscodeDoc.cpp"
+"E:\datafiles\project\vsscode\vsscodeView.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPE01.tmp" 
+Creating temporary file "C:\TEMP\RSPE02.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "e:\work\itgclient_v11_pta\itgclient\client\apps\pta\activex\ptav3\include" /I "e:\work\itgclient_v11_pta\itgclient\client\apps\pta\activex\ptav3\source" /I "e:\work\itgclient_v11_pta\itgclient\common\simder\include" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/vsscode.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\datafiles\project\vsscode\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPE02.tmp" 
+Creating temporary file "C:\TEMP\RSPE03.tmp" with contents
+[
+e:\work\itgclient_v11_pta\itgclient\common\lib\release\simder.lib comsupp.lib wininet.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/vsscode.pdb" /machine:I386 /out:"Release/vsscode.exe" 
+.\Release\certmgmt.obj
+.\Release\datacc.obj
+.\Release\DlgCSR.obj
+.\Release\MainFrm.obj
+.\Release\pkcs7engine.obj
+.\Release\propsht.obj
+.\Release\ptaiface.obj
+.\Release\settings.obj
+.\Release\sign.obj
+.\Release\StdAfx.obj
+.\Release\util.obj
+.\Release\vsscode.obj
+.\Release\vsscodeDoc.obj
+.\Release\vsscodeView.obj
+.\Release\vsscode.res
+]
+Creating command line "link.exe @C:\TEMP\RSPE03.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+certmgmt.cpp
+datacc.cpp
+DlgCSR.cpp
+Generating Code...
+Compiling...
+MainFrm.cpp
+pkcs7engine.cpp
+propsht.cpp
+Generating Code...
+Compiling...
+ptaiface.cpp
+settings.cpp
+sign.cpp
+Generating Code...
+Compiling...
+util.cpp
+vsscode.cpp
+vsscodeDoc.cpp
+Generating Code...
+Compiling...
+vsscodeView.cpp
+Generating Code...
+Linking...
+LINK : warning LNK4098: defaultlib "LIBC" conflicts with use of other libs; use /NODEFAULTLIB:library
+
+
+
+<h3>Results</h3>
+vsscode.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

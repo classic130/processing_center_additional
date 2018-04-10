@@ -1,0 +1,153 @@
+# $ VSSKTEMPLATEVERSION#1.0.0.1 $
+#
+# VSSKTEMPLATEVERSION#1.0.0.1 #
+# userEnrollEncNS.fdf
+#
+# This is a template FDF used to configure the LRA end user enrollment
+# page. The in the REQUIREMENT column will be
+# filled in based on the OnSite administrator's choices on the 
+# User Certificate configuration page.
+#
+#
+#------------------------------------------------------------------------------
+#  NAME         	TYPE   	REQUIREMENT		 DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+# VSSKBEGIN Apps/KeyManager#1
+# VSSKEND Apps/KeyManager#1
+#
+operation		TEXT	MANDATORY		NONE		NONE
+#
+# VSSKBEGIN Enrollment/FirstName#4
+# VSSKEND Enrollment/FirstName#4
+#
+# VSSKBEGIN Enrollment/LastName#4
+# VSSKEND Enrollment/LastName#4
+#
+# VSSKBEGIN Enrollment/EMAIL#5
+# VSSKEND Enrollment/EMAIL#5
+#
+# VSSKBEGIN Enrollment/CertCorpCompany#4
+# VSSKEND Enrollment/CertCorpCompany#4
+
+# VSSKBEGIN Enrollment/CertOrgUnit#4
+# VSSKEND Enrollment/CertOrgUnit#4
+#
+# VSSKBEGIN Enrollment/PassCode#4
+# VSSKEND Enrollment/PassCode#4
+#
+# VSSKBEGIN Enrollment/JobTitle#4
+# VSSKEND Enrollment/JobTitle#4
+#
+# VSSKBEGIN Enrollment/MailStop#4
+# VSSKEND Enrollment/MailStop#4
+#
+# VSSKBEGIN Enrollment/EmpID#4
+# VSSKEND Enrollment/EmpID#4
+#
+# VSSKBEGIN Enrollment/Challenge#4
+# VSSKEND Enrollment/Challenge#4
+#
+# VSSKBEGIN Enrollment/CertPublish#2 
+# VSSKEND Enrollment/CertPublish#2 
+#
+# VSSKBEGIN Enrollment/Comments#4
+# VSSKEND Enrollment/Comments#4
+#
+# VSSKBEGIN Enrollment/AddField4#4
+# VSSKEND Enrollment/AddField4#4
+#
+# VSSKBEGIN Enrollment/AddField5#4
+# VSSKEND Enrollment/AddField5#4
+#
+# VSSKBEGIN Enrollment/AddField6#4
+# VSSKEND Enrollment/AddField6#4
+#
+# VSSKBEGIN Enrollment/Locality#4 
+# VSSKEND Enrollment/Locality#4
+#
+# VSSKBEGIN Enrollment/State#4 
+# VSSKEND Enrollment/State#4
+#
+# VSSKBEGIN Enrollment/Country#4 
+# VSSKEND Enrollment/Country#4
+#
+# VSSKBEGIN Enrollment/KeyLength#6
+# VSSKEND Enrollment/KeyLength#6
+#
+#
+form_file		CLEAR	MANDATORY	        NONE	        NONE
+#remote_host		TEXT	OPTIONAL		NONE            NONE
+public_key              BASE64  OPTIONAL                NONE            NONE
+#
+#
+# these are onsite account specific constants
+# all the sitekit constants corresponding to the page are 
+# in this 
+# CONST   name                    value
+#-----------------------------------------------------------------
+CONST     cert_type               end-user
+CONST     embed_email             yes
+CONST     message                 confirm
+#
+# product identifiers, class, orig, etc. 
+CONST     class                   CLASS1
+#
+# VSSKBEGIN Apps/KeyManager#7
+# VSSKEND Apps/KeyManager#7
+#
+#
+# for the application, key format, etc. 
+# VSSKBEGIN Enrollment/CertStore#13
+# VSSKEND Enrollment/CertStore#13
+#
+# VSSKBEGIN Enrollment/CertStore#15
+# VSSKEND Enrollment/CertStore#15
+#
+# AA constants 
+#
+CONST     enroll_track            Netscape
+#
+# this is customer specific information customized
+#
+# VSSKBEGIN Global/System#2
+# VSSKEND Global/System#2
+#
+# VSSKBEGIN Global/System#4
+# VSSKEND Global/System#4
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+# VSSKBEGIN Global/Mode#21
+# VSSKEND Global/Mode#21
+#
+#-----------------------------------------------------------------
+#
+# VSSKBEGIN Enrollment/CertStore#17
+# VSSKEND Enrollment/CertStore#17
+#
+STATUS		A001		VSApps/error/onsiteAAerror1.htm
+STATUS		A002		VSApps/error/onsiteAAerror2.htm
+STATUS		A003		VSApps/error/onsiteAAerror3.htm
+STATUS		A004		VSApps/error/onsiteAAerror4.htm
+STATUS		A005		VSApps/error/onsiteAAerror5.htm
+STATUS		A006		VSApps/error/onsiteAAerror6.htm
+STATUS		A007		VSApps/error/onsiteAAerror7.htm
+STATUS		A008		VSApps/error/onsiteAAerror8.htm
+STATUS		A009		VSApps/error/onsiteAAerror9.htm
+STATUS		A00A		VSApps/error/onsiteAAerror10.htm
+STATUS		A104		VSApps/client/KMpending.htm
+STATUS		A198		VSApps/client/KMpending.htm
+STATUS		A193            VSApps/error/onsiteKMerror403.htm
+STATUS		A19D            VSApps/error/onsiteKMerror413.htm
+STATUS		3061		VSApps/error/onsiteAAreject.htm
+STATUS		3062		VSApps/client/KMpending.htm
+STATUS		1005		VSApps/error/overlap.htm
+STATUS          B005            VSApps/error/overlap.htm
+STATUS          D061            VSApps/error/onsiteAAreject.htm
+STATUS          30CA            VSApps/error/tokenMismatchError.htm
+STATUS          30CB            VSApps/error/tokenExpiredError.htm
+STATUS          3117            VSApps/error/tokenMismatchError.htm
+STATUS          3118            VSApps/error/tokenLockedError.htm
+STATUS          3119            VSApps/error/tokenUsedError.htm
+STATUS		DEFAULT		VSApps/error/onsiteAAerror.htm

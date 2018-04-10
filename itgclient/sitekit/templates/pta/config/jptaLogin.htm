@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<!--
+
+** VSSKTEMPLATEVERSION#1.0.0.4 **
+-->
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#48 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#48 -->
+<!--  23 July 2004: End Changes -->
+
+
+<TITLE>
+   Login
+</TITLE>
+
+<!-- VSSKBEGIN Global/Mode#130 -->
+<!-- VSSKEND Global/Mode#130 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#32 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#32 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+  //-- VSSKBEGIN Global/Mode#30 --
+  //-- VSSKEND Global/Mode#30 --
+
+  //-- VSSKBEGIN Apps/KeyManager#16 --
+  //-- VSSKEND Apps/KeyManager#16 --
+
+  //-- VSSKBEGIN Apps/GSE#36 --
+  //-- VSSKEND Apps/GSE#36 --
+
+
+ function CheckReasonCode()
+  {
+    // The script variable "reasonCode" gets assigned a value through the
+    // Java Script prepended by NSAPI Filter when the Login Page
+    // is sent to the browser.
+
+    if ( reasonCode.search(/expired/i) == 0 )
+    {
+      // This could be because either Inactivity or Absolute timeout.
+      document.write("<br><FONT SIZE=4 COLOR=RED><CENTER>Timeout ...</CENTER></FONT><br>") ;
+    }
+    else if ( reasonCode.search(/login/i) == -1 )
+    {
+      document.write("<br><FONT SIZE=4 COLOR=RED><CENTER>Unknown Error Occured ...</CENTER></FONT><br>") ;
+    }
+  }
+</script>
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#1 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#1 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#39 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#39 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#40 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#40 -->
+
+</HEAD>
+<BODY text=#333333 vLink=#333333 aLink=#cccccc link=#333333 bgColor=#ffffff onload="initApplet()" >
+<BASEFONT face=arial,helvetica,verdana,sans-serif size=2>
+<!-- BEGIN ENTIRE MAIN BODY TABLE -->
+<SCRIPT LANGUAGE="JavaScript">
+  CheckReasonCode() ;
+</SCRIPT>
+
+<FORM NAME=InitData >
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#24 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#24 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#28 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#28 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#25 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#25 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#30 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#30 -->
+<!-- Begin: Fix for artf14455-->
+<SCRIPT language=javascript>
+  urlhost = window.location.hostname
+  urlPort = window.location.port
+  urlProtocol = window.location.protocol
+  if (urlPort)
+	urlTemp = urlProtocol + '//' + urlhost + ':' + urlPort + '/'
+  else
+    urlTemp = urlProtocol + '//' + urlhost + '/'
+  document.InitData.ProtectedURL.value = urlTemp
+</SCRIPT>
+<!-- End: Fix for artf14455-->
+</FORM>
+
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#22 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#22 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#41 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#41 -->
+
+
+<FORM name="LoginForm" action="/vsadmin/post" method="post">
+
+  <input type="hidden" name="dataToSign">
+  <input type="hidden" name="dataSignature">
+  <input type="hidden" name="form_file" value="../fdf/rsaverify.fdf">
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="590" >
+  <TR ALIGN=LEFT VALIGN=TOP>
+    <TD WIDTH="328">
+        <BR>&nbsp;
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>To access the protected pages, click Login.</FONT></FONT></B>
+        <P>
+<INPUT language=JavaScript onclick=SignIt() type=button value=Login name=Login id=Loginbtn DISABLED>
+        <INPUT TYPE=checkbox NAME=ResetPref> Check this box to ignore your preferences.
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        If you do not have a Digital ID you can Sign Up Now!</FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME="Sign Up" VALUE="Sign Up" id=Signupbtn onClick="SignUpJava()" DISABLED>
+    </TD>
+  </TR>
+</TABLE>
+
+      <!---begin legal -->
+<TABLE cellSpacing=0 cellPadding=0 width=590 border=0>
+  <TBODY>
+  <TR>
+    <TD><IMG height=15 alt=Spacer src="/graphics/blank_pixel.html" width=1
+      border=0> </TD></TR>
+  <TR>
+    <TD><FONT class=copyright face="Helvetica, Arial" size=-3>
+    <A target=copyright href="/copyright.htm">Copyright © </A>, VeriSign, Inc. All Rights Reserved
+    </FONT></TD>
+  </TR>
+  </TBODY>
+</TABLE>
+
+</FORM>
+
+<!-- Loading the Applet -->
+<!-- VSSKBEGIN Global/Mode#131 -->
+<!-- VSSKEND Global/Mode#131 -->
+
+
+
+
+
+
+</BODY>
+</HTML> 

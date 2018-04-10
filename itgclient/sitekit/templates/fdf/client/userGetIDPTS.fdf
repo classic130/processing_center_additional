@@ -1,0 +1,52 @@
+# $ VSSKTEMPLATEVERSION#1.0.0.3 $
+#
+# userGetIDMS.fdf
+#
+# This is a template FDF used to configure the LRA end user enrollment
+# page. The in the REQUIREMENT column will be
+# filled in based on the OnSite administrator's choices on the 
+# User Certificate configuration page.
+#
+# VSSKBEGIN Apps/KeyManager#1
+# VSSKEND Apps/KeyManager#1 
+  CONST    operation    permenant
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+#------------------------------------------------------------------------------
+#  NAME        	TYPE   	REQUIREMENT		DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+form_file	CLEAR	MANDATORY		NONE		NONE
+secretCode      TEXT    MANDATORY               NONE            NONE
+certSerial      TEXT    OPTIONAL               secretCode       NONE
+
+remote_host     TEXT    OPTIONAL                NONE            NONE
+#
+# constants
+#
+  CONST    remote_mail  false
+#
+# VSSKBEGIN Global/Mode#25
+# VSSKEND Global/Mode#25
+# 
+#-----------------------------------------------------------------
+STATUS          6FFF            VSApps/client/userInstallPTS.htm
+STATUS          A001            VSApps/error/onsiteAAerror1.htm
+STATUS          A002            VSApps/error/onsiteAAerror2.htm
+STATUS          A003            VSApps/error/onsiteAAerror3.htm
+STATUS          A004            VSApps/error/onsiteAAerror4.htm
+STATUS          A005            VSApps/error/onsiteAAerror5.htm
+STATUS          A006            VSApps/error/onsiteAAerror6.htm
+STATUS          A007            VSApps/error/onsiteAAerror7.htm
+STATUS          A008            VSApps/error/onsiteAAerror8.htm
+STATUS          A009            VSApps/error/onsiteAAerror9.htm
+STATUS          A00A            VSApps/error/onsiteAAerror10.htm
+STATUS          304E            VSApps/error/permerr.htm
+STATUS          3061            VSApps/error/onsiteAAreject.htm
+STATUS          3062            VSApps/client/userEnrollChkEMail.htm
+STATUS          3063            VSApps/error/permerr.htm
+STATUS          306d            VSApps/error/permerr.htm
+STATUS          1005            VSApps/error/overlap.htm
+STATUS          DEFAULT         VSApps/error/onsiteAAerror.htm
+

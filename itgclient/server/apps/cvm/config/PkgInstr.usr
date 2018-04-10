@@ -1,0 +1,11 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'certcache',
+            'configfiles',
+            'valConfig'
+          ],
+          'itgclient/server/apps/cvm/config',
+          'build/log/VerArchive'
+        ];

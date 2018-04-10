@@ -1,0 +1,18 @@
+#
+#------------------------------------------------------------------------------
+#  NAME                 TYPE    REQUIREMENT              DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+#
+form_file           CLEAR   MANDATORY                NONE            NONE
+b64p12              BASE64  MANDATORY                NONE            NONE
+pkcs12_file         CLEAR   MANDATORY                NONE            NONE
+
+#----------------------------------------------------------------------
+# CONST   NAME                      VALUE
+#----------------------------------------------------------------------
+CONST     RAW_OUTPUT              yes
+
+
+#  NAME         CODE    VALUE
+#------------------------------------------------------------------------------
+STATUS         6FFF    VSApps/client/installP12.htm

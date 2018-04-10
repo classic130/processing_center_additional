@@ -1,0 +1,123 @@
+Content-Type:text/html
+
+<!-- htmldocs/VSApps/client/userInstallPTS.htm
+
+-->
+<!-- VSSKTEMPLATEVERSION#1.2.5.3 -->
+<HTML>
+<HEAD>
+<TITLE>ID Download</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<META HTTP-EQUIV="Cache-Control" CONTENT="no cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+
+
+<Script Language="JavaScript">
+<!--
+var browserName=navigator.appName;
+var browserNum=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+       if (browserNum < requiredBrowserNumNS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+else
+    {
+       if (browserNum < requiredBrowserNumMS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+//-->
+
+function InstallCert() {
+//   document.InstallForm.Submit.disabled = true;
+   document.InstallForm.submit();
+}
+</script>
+
+
+</HEAD>
+
+<BODY 	BGCOLOR="#ffffff" LINK="#cc0000" VLINK="#666666">
+<!-- VSSKBEGIN Apps/PersonalTrustService#6 -->
+<!-- VSSKEND Apps/PersonalTrustService#6 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#9 -->
+<!-- VSSKEND Apps/PersonalTrustService#9 -->
+
+<INPUT type="hidden" name="ErrorPage.ReturnTxt" value="Digital ID Center">
+<!-- VSSKBEGIN Global/Mode#119 -->
+<!-- VSSKEND Global/Mode#119 -->
+
+<input type="hidden" name="Base64CertInstallList" value="$$certOrCRL$$">
+
+<BR><P><BR><!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE="0" VSPACE="0">
+<TR>
+        <TD WIDTH=600 ALIGN=middle valign=bottom colspan=5><IMG height=1 hspace=0 src="../VSApps/graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=middle><IMG height=63 alt=Logo src="../VSApps/graphics/logo_1.gif" width=100></TD>
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../VSApps/graphics/dot_grey.gif" width=1 ></TD>
+        <TD WIDTH=358 ALIGN=middle><IMG height=47 alt="Digital ID Center Header" src  ="../VSApps/graphics/hd_services.gif" width=350 border=0 ></TD>  
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../VSApps/graphics/dot_grey.gif" width=1 ></TD>
+        <TD WIDTH=120 ALIGN=middle><IMG alt="" src="../VSApps/graphics/logo_2.gif"></TD>
+</TR>
+<TR>
+        <TD WIDTH=600 ALIGN=middle VALIGN=top COLSPAN=5><IMG height=1 hspace=0 src="../VSApps/graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+</TABLE><!--PAGE TITLE AND DIRECTIONS-->
+<P><!--MAIN CONTENT AREA-->
+
+<TABLE WIDTH=588 BGCOLOR="#ffffff" CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588 colspan=7>
+	  <FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2><B>
+      <CENTER>
+      Your Digital ID has been successfully generated.<BR>
+      Please wait while we install your Digital ID... 
+      </CENTER>
+      </B></FONT>
+      <CENTER>
+<!--
+      <BR>
+      <input type="button" name="Submit" value="Install Digital ID" onClick="javascript:InstallCert()"> 
+      </CENTER>
+-->
+</TD>
+</TR>
+<TR><TD>&nbsp;</TD></TR>
+</TABLE>
+       
+</FORM><!--END MAIN CONTENT AREA--><!--PLACE HOLDER FOR SITEKIT BACK BUTTON-->
+
+<SCRIPT Language="JavaScript">
+<!--
+    window.setTimeout("InstallCert()",500);
+//-->
+</SCRIPT>
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG height=1 hspace=0 src="../VSApps/graphics/dot_grey.gif" width=600 >
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../VSApps/graphics/logo_3.gif" ALT="VeriSign Trust Network"></TD>
+</TR>
+</TABLE><!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO--></TR></TBODY></P>
+</BODY>
+</HTML>		
+

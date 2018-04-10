@@ -1,0 +1,145 @@
+#
+# End-user EE CRS enrollment - RA Signed
+#
+#------------------------------------------------------------------------------
+#  NAME                 TYPE    REQUIREMENT	DEPENDENCY	CONTROL
+#------------------------------------------------------------------------------
+
+CONST operation			AutoAuthOSUserSubmit
+
+#
+# I18N support
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+
+#
+# common name/value pairs
+#
+CONST class			CLASS1
+CONST application		VeriSignOnSiteCRS
+CONST cert_type			end-user
+CONST message			confirm
+
+#
+# VSSKBEGIN Global/System#2 
+# VSSKEND Global/System#2 
+#
+# VSSKBEGIN Global/System#6 
+# VSSKEND Global/System#6 
+#
+
+#
+# VSSKBEGIN Apps/KeyManager#20
+# VSSKEND Apps/KeyManager#20
+#
+
+# Certificate DN
+#
+common_name             TEXT    OPTIONAL	NONE		NONE
+mail_firstName		TEXT    OPTIONAL	NONE		NONE
+mail_lastName		TEXT    OPTIONAL	NONE		NONE
+#
+# VSSKBEGIN Enrollment/EMAIL#5
+# VSSKEND Enrollment/EMAIL#5
+#
+# VSSKBEGIN Enrollment/CertCorpCompany#4
+# VSSKEND Enrollment/CertCorpCompany#4
+#
+# VSSKBEGIN Enrollment/CertOrgUnit#4
+# VSSKEND Enrollment/CertOrgUnit#4
+#
+# VSSKBEGIN Enrollment/Rating#4
+# VSSKEND Enrollment/Rating#4
+
+# VSSKBEGIN Enrollment/PassCode#4
+# VSSKEND Enrollment/PassCode#4
+#
+# VSSKBEGIN Enrollment/JobTitle#4
+# VSSKEND Enrollment/JobTitle#4
+#
+# VSSKBEGIN Enrollment/MailStop#4
+# VSSKEND Enrollment/MailStop#4
+#
+# VSSKBEGIN Enrollment/EmpID#4
+# VSSKEND Enrollment/EmpID#4
+#
+# VSSKBEGIN Enrollment/Challenge#4
+# VSSKEND Enrollment/Challenge#4
+#
+# VSSKBEGIN Enrollment/CertPublish#2 
+# VSSKEND Enrollment/CertPublish#2 
+#
+# VSSKBEGIN Enrollment/Comments#4
+# VSSKEND Enrollment/Comments#4
+#
+# VSSKBEGIN Enrollment/AddField4#4
+# VSSKEND Enrollment/AddField4#4
+#
+# VSSKBEGIN Enrollment/AddField5#4
+# VSSKEND Enrollment/AddField5#4
+#
+# VSSKBEGIN Enrollment/AddField6#4
+# VSSKEND Enrollment/AddField6#4
+#
+# VSSKBEGIN Enrollment/Locality#4 
+# VSSKEND Enrollment/Locality#4
+#
+# VSSKBEGIN Enrollment/State#4 
+# VSSKEND Enrollment/State#4
+#
+# VSSKBEGIN Enrollment/Country#4 
+# VSSKEND Enrollment/Country#4
+#
+# VSSKBEGIN Apps/GSE#41 
+# VSSKEND Apps/GSE#41
+#
+# VSSKBEGIN Apps/GSE#17 
+# VSSKEND Apps/GSE#17 
+#
+
+#
+# public key
+#
+public_key              BASE64  MANDATORY	NONE		NONE
+public_key_format	TEXT    MANDATORY       NONE		NONE
+
+#
+# adding name/value pairs to extension
+#
+cert_extension1		CLEAR	OPTIONAL	NONE		NONE
+cert_extension2		CLEAR	OPTIONAL	NONE		NONE
+cert_extension3		CLEAR	OPTIONAL	NONE		NONE
+
+#
+# Override corp_company and org_unit
+#
+cert_corp_company	T61	OPTIONAL	NONE		NONE
+cert_org_unit		T61	OPTIONAL	NONE		NONE
+
+#
+# Override validity period
+#
+override_validity	NUMBER	OPTIONAL	NONE		NONE
+override_validityGMT	NUMBER	OPTIONAL	NONE		NONE
+
+#
+# RA specific
+#
+CLIENT_CERT             BASE64  MANDATORY       NONE            NONE
+authenticate		TEXT    MANDATORY	NONE		NONE
+
+#
+# CRS specific
+#
+pkiclient               CLEAR   MANDATORY	NONE            NONE
+transaction_id		CLEAR	MANDATORY	NONE		NONE
+extensions              CLEAR   OPTIONAL	NONE		NONE
+proto_cert		CLEAR	OPTIONAL	NONE		NONE
+
+#
+# Affiliate Info
+#
+reference_id            CLEAR   OPTIONAL        NONE            NONE
+enrollment_data         CLEAR   OPTIONAL        NONE            NONE
+

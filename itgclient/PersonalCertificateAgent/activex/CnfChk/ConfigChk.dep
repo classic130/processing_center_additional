@@ -1,0 +1,31 @@
+# Microsoft Developer Studio Generated Dependency File, included by ConfigChk.mak
+
+.\ConfigChk.cpp : \
+	".\ConfigChk.h"\
+	".\ConfigChk_i.c"\
+	".\ConfigChkr.h"\
+	".\ConfigChkrHelper.h"\
+	".\StdAfx.h"\
+	
+
+.\ConfigChk.rc : \
+	".\configch.bmp"\
+	".\ConfigChk.tlb"\
+	".\ConfigChkr.rgs"\
+	
+
+.\ConfigChkr.cpp : \
+	".\ConfigChk.h"\
+	".\ConfigChkr.h"\
+	".\global.h"\
+	".\StdAfx.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	"i:\platform sdk\include\basetsd.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\propidl.h"\
+	"i:\platform sdk\include\tvout.h"\
+	"i:\platform sdk\include\winefs.h"\
+	

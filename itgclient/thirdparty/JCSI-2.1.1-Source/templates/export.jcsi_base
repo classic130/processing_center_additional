@@ -1,0 +1,7 @@
+Extension-Name: com.dstc.security.common
+Specification-Title: JCSI base code
+Specification-Vendor: DSTC Pty Ltd
+Specification-Version: @JCSI_VERSION@
+Implementation-Vendor: DSTC Pty Ltd
+Implementation-Vendor-Id: com.dstc
+Implementation-Version: @JCSI_VERSION@

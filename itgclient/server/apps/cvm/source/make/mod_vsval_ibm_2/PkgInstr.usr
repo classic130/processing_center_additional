@@ -1,0 +1,10 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'dynamic'
+          ],
+          'itgclient/server/apps/cvm/source/make/mod_vsval_ibm_2',
+          'build/log/VerArchive'
+        ];
+

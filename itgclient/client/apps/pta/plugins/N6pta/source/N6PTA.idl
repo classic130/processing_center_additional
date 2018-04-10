@@ -1,0 +1,436 @@
+/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+ *
+ * The contents of this file are subject to the Netscape Public
+ * License Version 1.1 (the "License"); you may not use this file
+ * except in compliance with the License. You may obtain a copy of
+ * the License at http://www.mozilla.org/NPL/
+ *
+ * Software distributed under the License is distributed on an "AS
+ * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+ * implied. See the License for the specific language governing
+ * rights and limitations under the License.
+ *
+ * The Original Code is mozilla.org code.
+ *
+ * The Initial Developer of the Original Code is Netscape
+ * Communications Corporation.  Portions created by Netscape are
+ * Copyright (C) 1998 Netscape Communications Corporation. All
+ * Rights Reserved.
+ *
+ * Contributor(s): 
+ */
+
+/**
+ * A sample longerface to show calling the plugin from JavaScript via XPConnect.
+ *
+ */
+
+#include "nsISupports.idl"
+
+[scriptable, uuid(312DA841-3DBF-11d3-BCFB-00A0C9C8D91E)]
+interface ns6IPTA : nsISupports
+{
+	/************************** PTA v2 Properties **************************/ 
+
+	/******************** PTA longerface ********************/
+	long PTA_Initialize (in wstring AppCtxtName, in long UseCapi);
+	long PTA_Close();
+
+	long set_PTA_AppPreference (in wstring PrefName, in wstring Value);
+	wstring get_PTA_AppPreference (in wstring PrefName);
+
+	long set_PTA_CSPName (in wstring CSPName);
+	wstring get_PTA_CSPName ();
+
+	wstring PTA_CreateCertReq (in wstring SubjectDN, in long KeyGenFlag, in long HashAlg, in unsigned long count, [array, size_is(count)] in wstring Attribs);
+	long PTA_InstallCert (in wstring Cert);
+	long PTA_InstallKeyPair (in wstring privKeyBlob, in wstring pkcs7Cert);
+
+	wstring PTA_SignChallenge (in wstring Challenge, in long AlgID);
+	wstring PTA_SignTransaction (in wstring Message, in long AlgID);
+	wstring PTA_SignRenewal (in long AlgID);
+
+	long PTA_SelectIDForTrans();
+	long PTA_SelectIDForChallenge();	
+
+	short get_PTA_UseDefCertFlag();
+	long set_PTA_UseDefCertFlag(in short defCertFlag);
+
+	long set_PTA_ProtocolName(in wstring protocolName);
+	wstring get_PTA_ProtocolName ();
+
+	long set_PTA_AuthDll(in wstring authDllName);
+	wstring get_PTA_AuthDll ();    
+
+    long set_PTA_ProfileIssFrndlyName (in wstring profileIssFrndlyName);
+	wstring get_PTA_ProfileIssFrndlyName  ();    
+
+    long set_PTA_ProfileIssUniqueId (in wstring profileIssUniqId);
+	wstring get_PTA_ProfileIssUniqueId  ();    
+
+	long set_PTA_AffLogoUrl (in wstring affLogoUrl);
+	wstring get_PTA_AffLogoUrl ();
+
+	long set_PTA_EnableCertForCapi(in boolean boolEnableForCapi);
+
+	/******************** CertPref longerface ********************/
+    long set_CertPref_CertSerNum(in wstring CertSerNum);
+	wstring get_CertPref_CertSerNum();
+
+	long set_CertPref_CertIssDN(in wstring CertIssDN);
+	wstring get_CertPref_CertIssDN();
+
+	long set_CertPref_CertFrndlyName(in wstring CertFrndlyName);
+	wstring get_CertPref_CertFrndlyName();
+
+	long set_CertPref_CertLogoUrl(in wstring CertLogoUrl);
+	wstring get_CertPref_CertLogoUrl();
+
+	long set_CertPref_CertDispString(in wstring CertDispString);
+	wstring get_CertPref_CertDispString();
+
+	long set_CertPref_CertTextureUrl(in wstring CertTextureUrl);
+	wstring get_CertPref_CertTextureUrl();
+
+	long set_CertPref_MarkAsRenewed(in boolean boolMarkAsRenewed);
+	boolean get_CertPref_MarkAsRenewed();
+
+	long set_CertPref_SetPreference(in wstring PrefName, in wstring Value);
+	wstring get_CertPref_GetPreference(in wstring PrefName);
+
+	/***************** Profile Management Interface ********************/
+	/*public native int set_ProfMgmt_ReadOKDomains(Object ReadDomains);*/
+	/*public native Object get_ProfMgmt_ReadOKDomains();*/
+
+	/*public native int set_ProfMgmt_WriteOKDomains(Object WriteDomains);*/
+	/*public native Object get_ProfMgmt_WriteOKDomains();*/
+ 
+    long set_ProfMgmt_PasswdQuality(in long PasswdQuality);
+	long get_ProfMgmt_PasswdQuality ();
+
+    long set_ProfMgmt_PasswdLength(in long PasswdLength);
+	long get_ProfMgmt_PasswdLength ();
+
+    long set_ProfMgmt_PasswdTimeOut(in long PasswdTimeOut);
+	long get_ProfMgmt_PasswdTimeOut ();
+
+    long set_ProfMgmt_PasswdLockOutTries(in long PasswdLockOutTries);
+	long get_ProfMgmt_PasswdLockOutTries ();
+
+    long set_ProfMgmt_PasswdUnLockPeriod(in long PasswdUnLockPeriod);
+	long get_ProfMgmt_PasswdUnLockPeriod ();
+
+	long set_ProfMgmt_ProfileName (in wstring ProfileName);
+	wstring get_ProfMgmt_ProfileName();
+
+	long set_ProfMgmt_Password (in wstring Password);
+
+	long set_ProfMgmt_SaveLocal (in boolean boolSaveLocal);
+	boolean get_ProfMgmt_SaveLocal();
+
+	long set_ProfMgmt_RoamProfile (in boolean boolRoamProfile);
+	boolean get_ProfMgmt_RoamProfile();
+
+	long set_ProfMgmt_OpenProfFlags (in long flags);
+	long get_ProfMgmt_OpenProfFlags ();
+
+    long ProfMgmt_OpenProfile();
+	long ProfMgmt_CloseProfile();
+
+    long ProfMgmt_SaveProfile();
+    long ProfMgmt_ChangePassword();
+
+	/***************** Search criteria Interface ********************/
+	long set_SrchCrit_IssuerDN(in wstring IssuerDN);
+	wstring get_SrchCrit_IssuerDN();
+
+	long set_SrchCrit_SubjectDN(in wstring SubjectDN);
+	wstring get_SrchCrit_SubjectDN();
+
+	long set_SrchCrit_SerNum(in wstring SerNum);
+	wstring get_SrchCrit_SerNum();
+
+	long set_SrchCrit_Email(in wstring Email);
+	wstring get_SrchCrit_Email();
+
+	long set_SrchCrit_ExpDate(in  unsigned long long ExpDate);
+	unsigned long long get_SrchCrit_ExpDate();
+
+	long set_SrchCrit_EffDate(in unsigned long long EffDate);
+	unsigned long long get_SrchCrit_EffDate();
+
+	long set_SrchCrit_DateEquality(in short DateEquality);
+	short get_SrchCrit_DateEquality();
+
+	long set_SrchCrit_Renewed(in boolean Renewed);
+	boolean get_SrchCrit_Renewed();
+
+	long set_SrchCrit_KeyUsage(in short KeyUsage);
+	short get_SrchCrit_KeyUsage();
+
+	long set_SrchCrit_KeySize(in short KeySize);
+	short get_SrchCrit_KeySize();
+
+	long set_SrchCrit_ExtOID(in wstring ExtOID);
+	wstring get_SrchCrit_ExtOID();
+
+	long set_SrchCrit_ExtVal(in wstring ExtVal);
+	wstring get_SrchCrit_ExtVal();
+
+
+
+
+	/***************** UI Preferences properties *****************/
+	/* TODO the data type for this might change */
+	long set_UIPrefs_Language (in long Language);
+	long get_UIPrefs_Language ();
+
+	long set_UIPrefs_TitleFont (in wstring TitleFont);
+	wstring get_UIPrefs_TitleFont ();
+
+	long set_UIPrefs_TextFont (in wstring TextFont);
+	wstring get_UIPrefs_TextFont ();
+
+	long set_UIPrefs_BtnFont (in wstring BtnFont);
+	wstring get_UIPrefs_BtnFont ();
+
+	long set_UIPrefs_UILogoUrl (in wstring UILogoUrl);
+	wstring get_UIPrefs_UILogoUrl ();
+
+	long set_UIPrefs_NewPasswd_Title (in wstring NewPasswd_Title);
+	wstring get_UIPrefs_NewPasswd_Title ();
+
+	long set_UIPrefs_NewPasswd_Text (in wstring NewPasswd_Text);
+	wstring get_UIPrefs_NewPasswd_Text ();
+
+	long set_UIPrefs_NewPasswd_OKBtnText (in long NewPasswd_OKBtnText);
+	long get_UIPrefs_NewPasswd_OKBtnText ();
+
+	long set_UIPrefs_NewPasswd_CancelBtnText (in long NewPasswd_CancelBtnText);
+	long get_UIPrefs_NewPasswd_CancelBtnText ();
+	
+	long set_UIPrefs_NewPasswd_HelpUrl (in wstring NewPasswd_HelpUrl);
+	wstring get_UIPrefs_NewPasswd_HelpUrl ();
+
+	long set_UIPrefs_LgnDlg_Title (in wstring LgnDlg_Title);
+	wstring get_UIPrefs_LgnDlg_Title ();
+
+	long set_UIPrefs_OpenProf_Title (in wstring OpenProf_Title);
+	wstring get_UIPrefs_OpenProf_Title ();
+	
+	long set_UIPrefs_OpenProf_Text (in wstring OpenProf_Text);
+	wstring get_UIPrefs_OpenProf_Text ();
+
+	long set_UIPrefs_OpenProf_OKBtnText (in long OpenProf_OKBtnText);
+	long get_UIPrefs_OpenProf_OKBtnText ();
+
+	long set_UIPrefs_OpenProf_CancelBtnText (in long OpenProf_CancelBtnText);
+	long get_UIPrefs_OpenProf_CancelBtnText ();
+
+	long set_UIPrefs_OpenProf_HelpUrl (in wstring OpenProf_HelpUrl);
+	wstring get_UIPrefs_OpenProf_HelpUrl ();
+	
+	long set_UIPrefs_SelID_Title (in wstring SelID_Title);
+	wstring get_UIPrefs_SelID_Title ();
+
+	long set_UIPrefs_SelID_Text (in wstring SelID_Text);
+	wstring get_UIPrefs_SelID_Text ();
+
+	long set_UIPrefs_SelID_OKBtnText (in long SelID_OKBtnText);
+	long get_UIPrefs_SelID_OKBtnText ();
+	
+	long set_UIPrefs_SelID_CancelBtnText (in long SelID_CancelBtnText);
+	long get_UIPrefs_SelID_CancelBtnText ();
+
+	long set_UIPrefs_SelID_ShowDefChkBox(in boolean SelID_ShowDefChkBox);
+	boolean get_UIPrefs_SelID_ShowDefChkBox();
+
+	long set_UIPrefs_SelID_ChkBoxText(in wstring SelID_ChkBoxText);
+	wstring get_UIPrefs_SelID_ChkBoxText();
+
+	long set_UIPrefs_SelID_HelpUrl(in wstring SelID_HelpUrl);
+	wstring get_UIPrefs_SelID_HelpUrl();
+
+	long set_UIPrefs_SgnDlg_Title(in wstring SgnDlg_Title);
+	wstring get_UIPrefs_SgnDlg_Title();
+
+	long set_UIPrefs_RvwMsg_Text(in wstring RvwMsg_Text);
+	wstring get_UIPrefs_RvwMsg_Text();
+
+	long set_UIPrefs_RvwMsg_OKBtnText(in long RvwMsg_OKBtnText);
+	long get_UIPrefs_RvwMsg_OKBtnText();
+
+	long set_UIPrefs_RvwMsg_Title(in wstring RvwMsg_Title);
+	wstring get_UIPrefs_RvwMsg_Title();
+
+	long set_UIPrefs_RvwMsg_CancelBtnText(in long RvwMsg_CancelBtnText);
+	long get_UIPrefs_RvwMsg_CancelBtnText();
+
+	long set_UIPrefs_RvwMsg_HelpUrl(in wstring RvwMsg_HelpUrl);
+	wstring get_UIPrefs_RvwMsg_HelpUrl();
+
+	long set_UIPrefs_IntroDlg_Title(in wstring IntroDlg_Title);
+	wstring get_UIPrefs_IntroDlg_Title();
+
+	long set_UIPrefs_IntroDlg_Text(in wstring IntroDlg_Text);
+	wstring get_UIPrefs_IntroDlg_Text();
+
+	long set_UIPrefs_IntroDlg_HelpUrl(in wstring IntroDlg_HelpUrl);
+	wstring get_UIPrefs_IntroDlg_HelpUrl ();
+
+	long set_UIPrefs_CreateNewProf_Title(in wstring CreateNewProf_Title);
+	wstring get_UIPrefs_CreateNewProf_Title();
+
+	long set_UIPrefs_ChangePasswd_Title(in wstring ChangePasswd_Title);
+	wstring get_UIPrefs_ChangePasswd_Title();
+
+	long set_UIPrefs_ChangePasswd_Text(in wstring ChangePasswd_Text);
+	wstring get_UIPrefs_ChangePasswd_Text();
+
+	long set_UIPrefs_ChangePasswd_OKBtnText(in long ChangePasswd_OKBtnText);
+	long get_UIPrefs_ChangePasswd_OKBtnText();
+
+	long set_UIPrefs_ChangePasswd_CancelBtnText(in long ChangePasswd_CancelBtnText);
+	long get_UIPrefs_ChangePasswd_CancelBtnText();
+
+	long set_UIPrefs_ChangePasswd_HelpUrl(in wstring ChangePasswd_HelpUrl);
+	wstring get_UIPrefs_ChangePasswd_HelpUrl();
+
+	long set_UIPrefs_Timeout_HelpUrl(in wstring ChangePasswd_HelpUrl);
+	wstring get_UIPrefs_Timeout_HelpUrl();
+
+	long set_UIPrefs_EnableTopMostWindow(in boolean boolEnableTopMost);
+
+	long set_UIPrefs_SignTransDlgWidth(in long nWidth);
+	long get_UIPrefs_SignTransDlgWidth();
+
+	long set_UIPrefs_SignTransDlgHeight(in long nHeight);
+	long get_UIPrefs_SignTransDlgHeight();
+
+	/***************** Selected Digital ID Interface ********************/
+	wstring get_SelectedDigID_IssuerDN();
+	wstring get_SelectedDigID_SubjectDN();
+	wstring get_SelectedDigID_SerNum();
+	unsigned long long get_SelectedDigID_ExpDate();
+	unsigned long long get_SelectedDigID_EffDate();
+	short get_SelectedDigID_KeyUsage();
+	short get_SelectedDigID_KeySize();
+	boolean get_SelectedDigID_Renewed();
+	wstring get_SelectedDigID_PubKeyMD5();
+	wstring get_SelectedDigID_PubKeySHA1();
+	wstring get_SelectedDigID_FrndlyName();
+	wstring get_SelectedDigID_LogoUrl();
+	wstring get_SelectedDigID_TextureUrl();
+
+	
+	/***************** Roaming Preferences Interface ********************/
+	long set_RoamPrefs_NumOfSrvrs (in short NumOfSrvrs);
+	short get_RoamPrefs_NumOfSrvrs ();
+
+//	long set_RoamPrefs_RoamingSrvrs (/*TBD in Object RoamingSrvrs*/);
+//	long /*TBD Object*/ get_RoamPrefs_RoamingSrvrs ();
+
+	long set_RoamPrefs_StorageSrvr (in wstring StorageSrvr);
+	wstring get_RoamPrefs_StorageSrvr();
+
+	long set_RoamPrefs_ClientInfo (in wstring ClientInfo);
+	wstring get_RoamPrefs_ClientInfo();
+
+	long set_RoamPrefs_ClientInfoSig (in wstring ClientInfoSig);
+	wstring get_RoamPrefs_ClientInfoSig();
+
+	/** XEnroll properties ***/
+	long set_XEnroll_ProviderType(in long nProviderType);
+	long get_XEnroll_ProviderType();
+
+	long set_XEnroll_GenKeyFlags(in long nGenKeyFlags);
+	long get_XEnroll_GenKeyFlags();
+
+	long set_XEnroll_ProviderName(in wstring szProviderName);
+	wstring get_XEnroll_ProviderName();
+
+	long set_XEnroll_HashAlgorithm(in wstring szHashAlgo);
+	wstring get_XEnroll_HashAlgorithm();
+
+	long set_XEnroll_KeySpec(in long nKeySpec);
+	long get_XEnroll_KeySpec();
+
+	long set_XEnroll_DeleteRequestCert(in boolean boolFlag);
+	boolean get_XEnroll_DeleteRequestCert();
+
+	long set_XEnroll_WriteCertToCSP(in boolean boolFlag);
+	boolean get_XEnroll_WriteCertToCSP();
+
+	/**** XEnroll methods ***/
+	wstring XEnroll_enumProviders(in long nIndex, in long nFlags);
+	wstring XEnroll_createPKCS10(in wstring szDNName, in wstring szUsage);
+	long XEnroll_acceptPKCS7(in wstring szPKCS7);
+
+	/**** Error handling method ****/
+	unsigned long GetLastError();
+
+
+	/**** Config Checker Methods ***/
+	/*
+	long CnfChk_CheckMSEnhCSP();
+	long CnfChk_FixEnhCSP(in wstring szEnhCSPVer);
+	long CnfChk_GetVersion(in wstring szFileName, //TBD StringBuffer szVersion);
+	long CnfChk_VerCompare(in wstring szVer1, in wstring szVer2);
+	*/
+
+	/**** VSImport Methods ****/
+	long VSImport_Import(in wstring PKCS12, in wstring PKCS7, out wstring szErrCodeString);
+	long VSImport_set_KeyExportable(in long nFlag);
+	long VSImport_get_KeyExportable();
+	long VSImport_set_ProviderName (in wstring szProviderName);
+	wstring VSImport_get_ProviderName ();
+
+	/**** AddRootCerts Methods ****/
+	long AddRootCerts_Initialize();
+	long AddRootCerts_CreateStandardTrustProfile();
+	long AddRootCerts_CreateVerisignTrustProfile();
+
+	/****	ImportP12 Methods ****/
+	long P12Import_ImportP12 (in long nType, in wstring strP12, out wstring strSerialNum, out wstring strIssuerDN);
+
+	/****	ExportP12 Methods ****/
+	long P12Export_ExportP12(in long nOutputType, in long nFlags, in wstring strFile);
+	long get_P12Export_PasswdQuality();
+	long set_P12Export_PasswdQuality(in long newVal);
+	long get_P12Export_PasswdLength();
+	long set_P12Export_PasswdLength(in long newVal);
+
+	/****	Digital Notarization Methods ****/	
+	long NZ_Initialize();
+	long NZ_Close();
+
+	long set_NZ_NotarizationServer(in wstring ServerName);
+	long set_NZ_HashAlg(in wstring HashAlg);
+	long set_NZ_DisplayDigitalID(in long DisplayID);
+	long set_NZ_CrlLocation(in wstring CrlLocation);
+	long set_NZ_ValidationPreference(in long ValPref);
+	long set_NZ_NotarizationDescription(in wstring Description);
+
+	wstring NZ_NotarizeDocument(in wstring DocumentName, in long UIMask, in long ResponseType);
+	wstring NZ_NotarizeHash(in wstring Hash, in long UIMask);
+	long NZ_VerifyNotarizationRecord(in wstring Record, in wstring Document, in long RecordType, in long UIMask);
+	long NZ_AddCertificate(in wstring Certificate);
+
+	/**** User Preferences methods of Digital Notarization ****/
+	long set_NZ_UIPrefs_LogoUrl(in wstring LogoUrl);
+	long set_NZ_UIPrefs_SelFileTitle(in wstring SelFileTitle);
+	long set_NZ_UIPrefs_SelFileDescription(in wstring SelFileDesc);
+	long set_NZ_UIPrefs_SelFileHelpUrl(in wstring SelFileHelpUrl);
+	long set_NZ_UIPrefs_ProgressTitle(in wstring ProgressTitle);
+	long set_NZ_UIPrefs_ProgressDescription(in wstring ProgressDesc);
+	long set_NZ_UIPrefs_ProgressHelpUrl(in wstring ProgressHelpUrl);
+	long set_NZ_UIPrefs_ReceiptTitle(in wstring ReceiptTitle);
+	long set_NZ_UIPrefs_ReceiptDescription(in wstring ReceiptDesc);
+	long set_NZ_UIPrefs_ReceiptHelpUrl(in wstring ReceiptHelpUrl);
+	long set_NZ_UIPrefs_WizardTitle(in wstring WizardTitle);
+
+	/**** Application Preferences methods of Digital Notarization ****/
+	long set_NZ_ApplicationPreference(in wstring ApplicationName, in wstring PreferenceName, in long PreferenceType, in wstring PreferenceValue);
+	wstring get_NZ_ApplicationPreference(in wstring ApplicationName, in wstring PreferenceName);
+};
+

@@ -1,0 +1,3 @@
+These certs are checked in for offshore development purpose.
+You will have to copy them to the local machine and update the GNUmakefiles
+to reference the new cert location for code signing

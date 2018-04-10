@@ -1,0 +1,240 @@
+#define get_Language get_UIPref_Language
+#define put_Language put_UIPref_Language
+#define get_TitleFont get_UIPref_TitleFont
+#define put_TitleFont put_UIPref_TitleFont
+#define get_TextFont get_UIPref_TextFont
+#define put_TextFont put_UIPref_TextFont
+#define get_BtnFont get_UIPref_BtnFont
+#define put_BtnFont put_UIPref_BtnFont
+#define get_UILogoUrl get_UIPref_UILogoUrl
+#define put_UILogoUrl put_UIPref_UILogoUrl
+#define get_NewPasswd_Title get_UIPref_NewPasswd_Title
+#define put_NewPasswd_Title put_UIPref_NewPasswd_Title
+#define get_NewPasswd_Text get_UIPref_NewPasswd_Text
+#define put_NewPasswd_Text put_UIPref_NewPasswd_Text
+#define get_NewPasswd_OKBtnText get_UIPref_NewPasswd_OKBtnText
+#define put_NewPasswd_OKBtnText put_UIPref_NewPasswd_OKBtnText
+#define get_NewPasswd_CancelBtnText get_UIPref_NewPasswd_CancelBtnText
+#define put_NewPasswd_CancelBtnText put_UIPref_NewPasswd_CancelBtnText
+#define get_NewPasswd_HelpUrl get_UIPref_NewPasswd_HelpUrl
+#define put_NewPasswd_HelpUrl put_UIPref_NewPasswd_HelpUrl
+#define put_EnableTopMostWindow	put_UIPref_EnableTopMostWindow
+#define get_LgnDlg_Title get_UIPref_LgnDlg_Title
+#define put_LgnDlg_Title put_UIPref_LgnDlg_Title
+#define get_OpenProf_Title get_UIPref_OpenProf_Title
+#define put_OpenProf_Title put_UIPref_OpenProf_Title
+#define get_OpenProf_Text get_UIPref_OpenProf_Text
+#define put_OpenProf_Text put_UIPref_OpenProf_Text
+#define get_OpenProf_OKBtnText get_UIPref_OpenProf_OKBtnText
+#define put_OpenProf_OKBtnText put_UIPref_OpenProf_OKBtnText
+#define get_OpenProf_CancelBtnText get_UIPref_OpenProf_CancelBtnText
+#define put_OpenProf_CancelBtnText put_UIPref_OpenProf_CancelBtnText
+#define get_OpenProf_HelpUrl get_UIPref_OpenProf_HelpUrl
+#define put_OpenProf_HelpUrl put_UIPref_OpenProf_HelpUrl
+#define get_SelID_Title get_UIPref_SelID_Title
+#define put_SelID_Title put_UIPref_SelID_Title
+#define get_SelID_Text get_UIPref_SelID_Text
+#define put_SelID_Text put_UIPref_SelID_Text
+#define get_SelID_OKBtnText get_UIPref_SelID_OKBtnText
+#define put_SelID_OKBtnText put_UIPref_SelID_OKBtnText
+#define get_SelID_CancelBtnText get_UIPref_SelID_CancelBtnText
+#define put_SelID_CancelBtnText put_UIPref_SelID_CancelBtnText
+#define get_SelID_ShowDefChkBox get_UIPref_SelID_ShowDefChkBox
+#define put_SelID_ShowDefChkBox put_UIPref_SelID_ShowDefChkBox
+#define get_SelID_ChkBoxText get_UIPref_SelID_ChkBoxText
+#define put_SelID_ChkBoxText put_UIPref_SelID_ChkBoxText
+#define get_SelID_HelpUrl get_UIPref_SelID_HelpUrl
+#define put_SelID_HelpUrl put_UIPref_SelID_HelpUrl
+#define get_SgnDlg_Title get_UIPref_SgnDlg_Title
+#define put_SgnDlg_Title put_UIPref_SgnDlg_Title
+#define get_RvwMsg_Text get_UIPref_RvwMsg_Text
+#define put_RvwMsg_Text put_UIPref_RvwMsg_Text
+#define get_RvwMsg_OKBtnText get_UIPref_RvwMsg_OKBtnText
+#define put_RvwMsg_OKBtnText put_UIPref_RvwMsg_OKBtnText
+#define get_RvwMsg_Title get_UIPref_RvwMsg_Title
+#define put_RvwMsg_Title put_UIPref_RvwMsg_Title
+#define get_RvwMsg_CancelBtnText get_UIPref_RvwMsg_CancelBtnText
+#define put_RvwMsg_CancelBtnText put_UIPref_RvwMsg_CancelBtnText
+#define get_RvwMsg_HelpUrl get_UIPref_RvwMsg_HelpUrl
+#define put_RvwMsg_HelpUrl put_UIPref_RvwMsg_HelpUrl
+#define get_IntroDlg_Title get_UIPref_IntroDlg_Title
+#define put_IntroDlg_Title put_UIPref_IntroDlg_Title
+#define get_IntroDlg_Text get_UIPref_IntroDlg_Text
+#define put_IntroDlg_Text put_UIPref_IntroDlg_Text
+#define get_IntroDlg_HelpUrl get_UIPref_IntroDlg_HelpUrl
+#define put_IntroDlg_HelpUrl put_UIPref_IntroDlg_HelpUrl
+#define get_CreateNewProf_Title get_UIPref_CreateNewProf_Title
+#define put_CreateNewProf_Title put_UIPref_CreateNewProf_Title
+#define get_ChangePasswd_Title get_UIPref_ChangePasswd_Title
+#define put_ChangePasswd_Title put_UIPref_ChangePasswd_Title
+#define get_ChangePasswd_Text get_UIPref_ChangePasswd_Text
+#define put_ChangePasswd_Text put_UIPref_ChangePasswd_Text
+#define get_ChangePasswd_OKBtnText get_UIPref_ChangePasswd_OKBtnText
+#define put_ChangePasswd_OKBtnText put_UIPref_ChangePasswd_OKBtnText
+#define get_ChangePasswd_CancelBtnText get_UIPref_ChangePasswd_CancelBtnText
+#define put_ChangePasswd_CancelBtnText put_UIPref_ChangePasswd_CancelBtnText
+#define get_ChangePasswd_HelpUrl get_UIPref_ChangePasswd_HelpUrl
+#define put_ChangePasswd_HelpUrl put_UIPref_ChangePasswd_HelpUrl
+#define get_Timeout_HelpUrl get_UIPref_Timeout_HelpUrl
+#define put_Timeout_HelpUrl put_UIPref_Timeout_HelpUrl
+#define get_SignTransDlgWidth get_UIPref_SignTransDlgWidth
+#define put_SignTransDlgWidth put_UIPref_SignTransDlgWidth
+#define get_SignTransDlgHeight get_UIPref_SignTransDlgHeight
+#define put_SignTransDlgHeight put_UIPref_SignTransDlgHeight
+
+//
+//	Sasi May 07, 2003		Start
+//
+
+#define get_GetSecretQuestion_Title get_UIPref_GetSecretQuestion_Title
+#define put_GetSecretQuestion_Title put_UIPref_GetSecretQuestion_Title
+#define get_GetSecretQuestion_Text get_UIPref_GetSecretQuestion_Text
+#define put_GetSecretQuestion_Text put_UIPref_GetSecretQuestion_Text
+#define get_GetSecretQuestion_OKBtnText get_UIPref_GetSecretQuestion_OKBtnText
+#define put_GetSecretQuestion_OKBtnText put_UIPref_GetSecretQuestion_OKBtnText
+#define get_GetSecretQuestion_CancelBtnText get_UIPref_GetSecretQuestion_CancelBtnText
+#define put_GetSecretQuestion_CancelBtnText put_UIPref_GetSecretQuestion_CancelBtnText
+
+#define get_ResetPasswd_Title get_UIPref_ResetPasswd_Title
+#define put_ResetPasswd_Title put_UIPref_ResetPasswd_Title
+#define get_ResetPasswd_Text get_UIPref_ResetPasswd_Text
+#define put_ResetPasswd_Text put_UIPref_ResetPasswd_Text
+#define get_ResetPasswd_OKBtnText get_UIPref_ResetPasswd_OKBtnText
+#define put_ResetPasswd_OKBtnText put_UIPref_ResetPasswd_OKBtnText
+#define get_ResetPasswd_CancelBtnText get_UIPref_ResetPasswd_CancelBtnText
+#define put_ResetPasswd_CancelBtnText put_UIPref_ResetPasswd_CancelBtnText
+
+#define get_CreateSecret_Title get_UIPref_CreateSecret_Title
+#define put_CreateSecret_Title put_UIPref_CreateSecret_Title
+#define get_CreateSecret_Text get_UIPref_CreateSecret_Text
+#define put_CreateSecret_Text put_UIPref_CreateSecret_Text
+#define get_CreateSecret_OKBtnText get_UIPref_CreateSecret_OKBtnText
+#define put_CreateSecret_OKBtnText put_UIPref_CreateSecret_OKBtnText
+#define get_CreateSecret_CancelBtnText get_UIPref_CreateSecret_CancelBtnText
+#define put_CreateSecret_CancelBtnText put_UIPref_CreateSecret_CancelBtnText
+
+//
+//	Sasi May 07, 2003		End
+//
+
+
+#include "uiprefs.h"
+
+#undef get_Language
+#undef put_Language
+#undef get_TitleFont
+#undef put_TitleFont
+#undef get_TextFont
+#undef put_TextFont
+#undef get_BtnFont
+#undef put_BtnFont
+#undef get_UILogoUrl
+#undef put_UILogoUrl
+#undef get_NewPasswd_Title
+#undef put_NewPasswd_Title
+#undef get_NewPasswd_Text
+#undef put_NewPasswd_Text
+#undef get_NewPasswd_OKBtnText
+#undef put_NewPasswd_OKBtnText
+#undef get_NewPasswd_CancelBtnText
+#undef put_NewPasswd_CancelBtnText
+#undef get_NewPasswd_HelpUrl
+#undef put_NewPasswd_HelpUrl
+#undef put_EnableTopMostWindow
+#undef get_LgnDlg_Title
+#undef put_LgnDlg_Title
+#undef get_OpenProf_Title
+#undef put_OpenProf_Title
+#undef get_OpenProf_Text
+#undef put_OpenProf_Text
+#undef get_OpenProf_OKBtnText
+#undef put_OpenProf_OKBtnText
+#undef get_OpenProf_CancelBtnText
+#undef put_OpenProf_CancelBtnText
+#undef get_OpenProf_HelpUrl
+#undef put_OpenProf_HelpUrl
+#undef get_SelID_Title
+#undef put_SelID_Title
+#undef get_SelID_Text
+#undef put_SelID_Text
+#undef get_SelID_OKBtnText
+#undef put_SelID_OKBtnText
+#undef get_SelID_CancelBtnText
+#undef put_SelID_CancelBtnText
+#undef get_SelID_ShowDefChkBox
+#undef put_SelID_ShowDefChkBox
+#undef get_SelID_ChkBoxText
+#undef put_SelID_ChkBoxText
+#undef get_SelID_HelpUrl
+#undef put_SelID_HelpUrl
+#undef get_SgnDlg_Title
+#undef put_SgnDlg_Title
+#undef get_RvwMsg_Text
+#undef put_RvwMsg_Text
+#undef get_RvwMsg_OKBtnText
+#undef put_RvwMsg_OKBtnText
+#undef get_RvwMsg_Title
+#undef put_RvwMsg_Title
+#undef get_RvwMsg_CancelBtnText
+#undef put_RvwMsg_CancelBtnText
+#undef get_RvwMsg_HelpUrl
+#undef put_RvwMsg_HelpUrl
+#undef get_IntroDlg_Title
+#undef put_IntroDlg_Title
+#undef get_IntroDlg_Text
+#undef put_IntroDlg_Text
+#undef get_IntroDlg_HelpUrl
+#undef put_IntroDlg_HelpUrl
+#undef get_CreateNewProf_Title
+#undef put_CreateNewProf_Title
+#undef get_ChangePasswd_Title
+#undef put_ChangePasswd_Title
+#undef get_ChangePasswd_Text
+#undef put_ChangePasswd_Text
+#undef get_ChangePasswd_OKBtnText
+#undef put_ChangePasswd_OKBtnText
+#undef get_ChangePasswd_CancelBtnText
+#undef put_ChangePasswd_CancelBtnText
+#undef get_ChangePasswd_HelpUrl
+#undef put_ChangePasswd_HelpUrl
+#undef get_Timeout_HelpUrl
+#undef put_Timeout_HelpUrl
+#undef get_SignTransDlgWidth
+#undef put_SignTransDlgWidth
+#undef get_SignTransDlgHeight
+#undef put_SignTransDlgHeight
+
+//
+//	Sasi May 07, 2003		Start
+//
+
+#undef get_GetSecretQuestion_Title
+#undef put_GetSecretQuestion_Title
+#undef get_GetSecretQuestion_Text
+#undef put_GetSecretQuestion_Text
+#undef get_GetSecretQuestion_OKBtnText
+#undef put_GetSecretQuestion_OKBtnText
+#undef get_GetSecretQuestion_CancelBtnText
+#undef put_GetSecretQuestion_CancelBtnText
+
+#undef get_ResetPasswd_Title
+#undef put_ResetPasswd_Title
+#undef get_ResetPasswd_Text
+#undef put_ResetPasswd_Text
+#undef get_ResetPasswd_OKBtnText
+#undef put_ResetPasswd_OKBtnText
+#undef get_ResetPasswd_CancelBtnText
+#undef put_ResetPasswd_CancelBtnText
+
+#undef get_CreateSecret_Title
+#undef put_CreateSecret_Title
+#undef get_CreateSecret_Text
+#undef put_CreateSecret_Text
+#undef get_CreateSecret_OKBtnText
+#undef put_CreateSecret_OKBtnText
+#undef get_CreateSecret_CancelBtnText
+#undef put_CreateSecret_CancelBtnText
+
+//
+//	Sasi May 07, 2003		End
+//

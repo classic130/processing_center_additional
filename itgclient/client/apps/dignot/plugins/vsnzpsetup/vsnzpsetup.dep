@@ -1,0 +1,12 @@
+# Microsoft Developer Studio Generated Dependency File, included by vsnzpsetup.mak
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	"i:\platform sdk\include\basetsd.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\tvout.h"\
+	
+
+.\vsnzpsetup.cpp : \
+	".\vsnzpsetup.h"\
+	

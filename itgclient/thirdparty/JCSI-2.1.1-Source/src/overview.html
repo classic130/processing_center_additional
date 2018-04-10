@@ -1,0 +1,52 @@
+<HTML>
+<BODY>
+
+<A HREF="http://www.wedgetail.com/jcsi/">JCSI</A>
+is a Java cryptographic toolkit for JDK 1.2 and 1.3 with extensive support 
+for commonly used cryptographic algorithms and protocols (including SSL, 
+S/MIME and Kerberos).
+
+<P>
+
+JCSI is designed around the standard Java JCA/JCE architecture for
+cryptography. Wherever possible it implements standard Java APIs;
+namely, the JSSE API for SSL ({@link javax.net.ssl}) and the 
+IETF GSS-API for Java ({@link org.ietf.jgss}). Where there
+is no standard Java API currently available, JCSI defines and implements
+its own; namely
+the CMS ({@link com.dstc.security.cms}) 
+and S/MIME ({@link com.dstc.security.smime}) APIs for secure messaging, the
+Kerberos API ({@link com.dstc.security.kerberos}), 
+and a PKI API ({@link com.dstc.security.pki}) for generating and managing 
+X.509 certificates and CRLs).
+
+<P>
+
+JCSI is designed to support arbitrary Security Providers in a manner
+intended by the JCA/JCE. It does however include all Security Providers
+necessary for the protocols it supports. These include:
+
+<ol>
+   <li>A cryptographic Provider supporting RSA, DSA, Diffie-Hellman
+       and various symmetric ciphers
+   <li>A {@link java.security.cert.CertificateFactory}
+       Provider for X.509 certificates and CRLs
+   <li>A {@link java.security.KeyStore} Provider producing and accepting
+       PKCS#12 formatted keystores.
+</ol>
+
+These can be replaced by suitable alternative Providers (if desired)
+when using JCSI for its SSL, CMS, S/MIME or Kerberos/GSSAPI capabilities.
+Configuration of Providers is covered <A HREF=../../setup.html>here</A>.
+
+On the flip-side, the JCSI Providers can be used with third-party JCA/JCE
+aware products (eg. Sun's keytool and jarsigner utilities). Details on
+the JCSI Providers is available <A HREF=../JCSICryptoProvider.html>here.</A>
+
+<p>
+Sample JCSI usage is described in individual packages. Full-blown examples
+are available for download from the JCSI
+<A HREF="http://www.wedgetail.com/jcsi/">homepage</A> 
+
+</BODY>
+</HTML>

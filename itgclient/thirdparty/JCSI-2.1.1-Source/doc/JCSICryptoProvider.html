@@ -1,0 +1,378 @@
+<HTML>
+
+<HEAD>
+
+<TITLE>JCSI 2.0 JCE implementation</TITLE>
+
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<HR>
+
+<center>
+<H1><big>Standard Names </big> </H1> 
+</center>
+
+<P> The standard names that can be used when importing from the 
+JCSI Provider package are specified below
+
+<H1>AlgorithmParameterGenerator</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> AlgorithmParameterGenerator </b></big></code>:
+<P>
+
+<UL>
+<LI> <b> DH, Diffie-Hellman </b>
+<LI> <b> DSA </b>
+</UL>
+</blockquote>
+
+<H1>AlgorithmParameters</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> AlgorithmParameters </b></big></code>:
+<P>
+<UL>
+<LI> <b> DESede/CBC </b>
+<LI> <b> DSA </b>
+<LI> <b> DH, Diffie-Hellman </b>
+<LI> <b> PBEwithMD5andDES-CBC </b>
+<LI> <b> PBEwithSHAand3-KeyTripleDES-CBC </b>
+<LI> <b> PBEwithSHAand128BitRC2-CBC </b>
+<LI> <b> PBEwithSHAand128BitRC4 </b>
+<LI> <b> PBEwithSHAand40BitRC2-CBC </b>
+<LI> <b> PBEwithSHAand40BitRC4 </b>
+<LI> <b> RC2/CBC </b>
+</UL>
+</blockquote>
+
+<H1>CertificateFactory</H1>
+<blockquote>
+<P>
+The following names can be specified when requesting an 
+instance of <code><big><b> CertificateFactory </b></big></code>:
+<P>
+<UL>
+<LI> <b> X509, X.509 </b>
+</UL>
+</blockquote>
+
+
+<H1>Cipher</H1>
+
+<blockquote>
+
+<H3>Algorithm</H3>
+
+<blockquote>
+
+<UL>
+<LI>
+<b> Blowfish </b> Block cipher designed at <a href = 
+"http://www.counterpane.com/labs.html">Counterpane Labs</a>
+
+<LI>
+<b>DES </b>: The Digital Encryption Standard as described in 
+<a href = "http://www.itl.nist.gov/fipspubs/fip46-2.htm">FIPS PUB 46-2</a>
+
+<LI>
+<b>DESede </b>: Triple DES
+
+<LI> 
+<b> IDEA </b>: IDEA<SUP><FONT SIZE=-2>TM </FONT></SUP> 
+(International Data Encryption Algorithm) produced by <a href = 
+"http://www.it-sec.com/idea.html">IT_Security AG</a>
+
+<LI>
+<b>PBEwithMD5andDES-CBC </b>: Password Based Encryption as defined in
+<a href = "http://www.rsalabs.com/pkcs/pkcs-5/">RSA Laboratories, 
+"PKCS #5: Password-Based Encryption Standard," version 2.0, Mar. 1999</a>
+
+<LI> 
+<b> PBEwithSHAand3-KeyTripleDES-CBC </b> 
+
+<LI> 
+<b> PBEwithSHAand40BitRC2-CBC </b> 
+
+<LI> 
+<b> PBEwithSHAand40BitRC4 </b> 
+
+<LI> 
+<b> PBEwithSHAand128BitRC2-CBC </b> 
+
+<LI> 
+<b> PBEwithSHAand128BitRC4 </b> 
+
+<LI> 
+<b> RC2 </b> See <a href = "http://www.ietf.org/rfc/rfc2268.txt">RFC 2268</a>
+
+<LI> 
+<b> RC4 </b> (No padding necessary)
+
+<LI> 
+<b> RC5 </b> See <a href = "http://www.ietf.org/rfc/rfc2040.txt">RFC 2040</a> 
+
+<LI> 
+<b> RSA </b> 
+</UL>
+
+</blockquote>
+
+<H3>Mode</H3>
+
+<blockquote>
+
+<UL>
+<LI>
+<b> ECB </b> Electronic Codebook Mode (see <a href = 
+"http://www.itl.nist.gov/fipspubs/fip81.htm">DES Modes of Operation :
+FIPS PUB 81</a>)
+
+<LI>
+<b> CBC </b> Cipher Block Chaining Mode 
+
+<LI>
+<b> CFB </b> Cipher FeedBack Mode 
+</UL>
+<P>
+Note: Output FeedBack Mode (OFB) is not supported.
+</P>
+
+</blockquote>
+
+
+<H3>Padding </H3>
+<blockquote>
+<UL>
+
+<LI> 
+<b> NoPadding </b>
+
+<LI> 
+<b> PKCS5 </b>
+
+<LI> 
+<b> PKCS1 </b>
+
+<LI> 
+<b> Zeroes </b>
+</UL>
+
+</blockquote>
+
+</blockquote>
+
+<H1>KeyAgreement</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> KeyAgreement </b></big></code>:
+<P>
+<ul>
+<li><b>Diffie-Hellman, DH</b>: Diffie-Hellman Key Agreement (and multi-party
+generalization thereof) as defined in 
+<a href = "http://www.rsalabs.com/pkcs/pkcs-3/">RSA Laboratories, 
+"PKCS #3: Diffie-Hellman Key Agreement Standard," version 1.4</a>
+
+<li><b>ESDH </b>: Diffie-Hellman Ephemeral-Static - Key Agreement 
+based on ANSI X9.42 draft 
+<a href = "http://www.ietf.org/rfc/rfc2631.txt">RFC 2631</a>
+</ul>
+
+</blockquote>
+
+
+<H1>KeyFactory</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> KeyFactory </b></big></code>:
+<P>
+<UL>
+<LI> <b> DH, Diffie-Hellman </b>
+<LI> <b> DSA </b>
+<LI> <b> RSA </b>
+</UL>
+</blockquote>
+
+
+<H1>KeyGenerator</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> KeyGenerator </b></big></code>:
+<P>
+<UL>
+<LI> <b> Blowfish </b>
+<LI> <b> DES </b>
+<LI> <b> DESede </b>
+<LI> <b> IDEA </b>
+<LI> <b> RC2 </b>
+<LI> <b> RC4 </b>
+<LI> <b> RC5 </b>
+</UL>
+</blockquote>
+
+<H1>KeyPairGenerator</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> KeyPairGenerator </b></big></code>:
+<P>
+<UL>
+<LI> <b> DH, Diffie-Hellman </b>
+<LI> <b> DSA, OID:1.2.840.10040.4.1 </b>
+<LI> <b> RSA </b>
+</UL>
+</blockquote>
+
+
+
+
+<H1>KeyStore</H1>
+<blockquote>
+<P>
+The following names can be specified when requesting an 
+instance of <code><big><b> KeyStore </b></big></code>:
+<P>
+<UL>
+<LI> <b> PKCS12 </b>
+</UL>
+</blockquote>
+
+
+
+<H1>MAC algorithms</H1>
+<blockquote>
+<P>
+The following names can be specified when requesting an 
+instance of <code><big><b> MAC </b></big></code>:
+<P>
+<UL>
+<LI> <b> DES-MAC </b>
+<LI> <b> HMACwithMD5 </b>
+<LI> <b> HMACwithRIPEMD160 </b>
+<LI> <b> HMACwithSHA1 </b>
+</UL>
+</blockquote>
+
+<H1>MessageDigest algorithms</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> MessageDigest </b></big></code>:
+<P>
+<UL>
+<LI> <b> MD2 </b> See <a href = 
+"http://www.ietf.org/rfc/rfc1319.txt">RFC 1319</a>
+<LI> <b> MD4 </b> See <a href = 
+"http://www.ietf.org/rfc/rfc1320.txt">RFC 1320</a>
+<LI> <b> MD5 </b>: See <a href = 
+"http://www.ietf.org/rfc/rfc1321.txt">RFC 1321</a>
+<LI> <b> RIPEMD-160 </b> See <a href =
+"http://www.esat.kuleuven.ac.be/~bosselae/ripemd160.html">this page</a>
+<LI> <b> SHA, SHA-1, SHA1 </b> See <a href =
+"http://www.itl.nist.gov/fipspubs/fip180-1.htm">FIPS 180-1</a>
+</UL>
+</blockquote>
+
+
+<H1>SecretKeyFactory</H1>
+<blockquote>
+<P>
+The following algorithm names can be specified when requesting an 
+instance of <code><big><b> SecretKeyFactory </b></big></code>:
+<P>
+<UL>
+<LI> <b> Blowfish </b>
+<LI> <b> DES </b>
+<LI> <b> DESede </b>
+<LI> <b> IDEA </b>
+<LI> <b> PBEwithMD5andDES-CBC </b>
+<LI> <b> PBEwithSHAand3-KeyTripleDES-CBC </b>
+<LI> <b> PBEwithSHAand128BitRC2-CBC </b>
+<LI> <b> PBEwithSHAand128BitRC4 </b>
+<LI> <b> PBEwithSHAand40BitRC2-CBC </b>
+<LI> <b> PBEwithSHAand40BitRC4 </b>
+<LI> <b> RC2 </b>
+<LI> <b> RC4 </b>
+<LI> <b> RC5 </b>
+</UL>
+</blockquote>
+
+<H1>Signature</H1>
+<blockquote>
+<P>
+The following names can be specified when requesting an 
+instance of <code><big><b> Signature </b></big></code>:
+<P>
+<UL>
+<LI> <b> DSA, DSS, SHA/DSA, SHA-1/DSA, SHA1withDSA, SHA-1withDSA,
+OID:1.2.840.10040.4.3 </b> Digital Signature Standard based on 
+<a href = "http://www.itl.nist.gov/fipspubs/fip186.htm">FIPS 186</a>.
+Implements DSA with SHA-1 hashing.
+<LI> <b> MD2/RSA, MD2withRSA </b>: Implements RSA signature algorithm with
+MD2 hashing.
+<LI> <b> MD5/RSA, MD5withRSA </b>: Implements RSA signature algorithm with
+MD5 hashing.
+<LI> <b> RawDSA </b>: Implements DSA without hashing.
+<LI> <b> RawRSA </b>: Implements RSA signature algorithm without hashing.
+<LI> <b> RIPEMD-160/RSA, RIPEMD-160withRSA, RIPEMD160withRSA </b>:
+Implements RSA signature algorithm with RIPEMD160 hashing.
+<LI> <b> SHA/RSA, SHA1/RSA, SHA-1/RSA, SHA-1withRSA, SHA1withRSA </b>:
+Implements RSA signature algorithm with SHA-1 hashing.
+</UL>
+</blockquote>
+
+<center>
+<H1><big>Default Parameters and Key Lengths </big> </H1> 
+</center>
+The DSTC provider uses the following default parameters:
+
+<blockquote>
+
+<H1> KeyGenerator </H1>
+
+<blockquote>
+<UL>
+<LI> <b>Blowfish </b>: 128 bits 
+<LI> <b>DES </b>: 64 bits
+<LI> <b>DESede </b>: 192 bits
+<LI> <b>IDEA </b>: 128 bits
+<LI> <b>RC2 </b>: 64 bits
+<LI> <b>RC4 </b>: 128 bits
+<LI> <b>RC5 </b>: 64 bits
+</UL>
+</blockquote>
+
+<H1> KeyPairGenerator </H1>
+
+<blockquote>
+<UL>
+<LI> <b> Diffie-Hellman </b>: 
+<ul> <li>Private Key - 1024 bits
+<li> Public Key - 1024 bits
+<li>Modulus: 1024 bits
+</ul>
+
+<LI> <b> DSA </b>: 
+<ul> <li> Private Key - 160 bits  
+<li>Public Key - 1024 bits 
+<li>Modulus: 1024 bits
+</ul>
+
+<LI> <b> RSA </b>: 
+<ul> <li> Keylength (modulus): 1024 bits  
+<li> Private Exponent: 65537
+</ul>
+</UL>
+</blockquote>
+
+
+</blockquote>
+
+</BODY>
+
+</HTML>

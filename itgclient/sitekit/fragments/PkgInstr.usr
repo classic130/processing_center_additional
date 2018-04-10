@@ -1,0 +1,12 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'Renewal',
+            'Apps',
+            'Global',
+            'Enrollment'
+          ],
+          'itgclient/sitekit/fragments',
+          'build/log/VerArchive'
+        ];

@@ -1,0 +1,46 @@
+// comvsssc.idl : IDL source for comvsssc.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (comvsssc.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(B201DA9E-CD54-4DA1-B5E0-6D4B748A6446),
+		dual,
+		helpstring("IvsVerify Interface"),
+		pointer_default(unique)
+	]
+	interface IvsVerify : IDispatch
+	{
+		[id(1), helpstring("method vPKIGetB64RevocationStatus")] HRESULT vPKIGetB64RevocationStatus([in] BSTR b64Cert, [out] VARIANT* certStatus ,  [out] VARIANT* userName , [out,retval] int* retCode);
+		[id(2), helpstring("method vPKIParseB64PKCS7")] HRESULT vPKIParseB64PKCS7([in] BSTR b64Pkcs7, [out] VARIANT*  hash , [out] VARIANT* hashLen, [out] VARIANT* outAlgorithm , [out] VARIANT* b64Cert, [out] VARIANT* certStatus , [out,retval] int* retCode);
+		[id(3), helpstring("method vPKICompareMsgHash")] HRESULT vPKICompareMsgHash([in] BSTR msg, [in] int msgLen, [in] int outAlgorithm, [in] VARIANT* hash, [in] int hashLen, [out,retval]  int* retCode);
+		[id(4), helpstring("method vPKIVerifyB64PKCS7")] HRESULT vPKIVerifyB64PKCS7([in] BSTR b64Pkcs7, [in] BSTR msg,  [in] int msgLen,  [out] VARIANT* hash,  [out] VARIANT* hashLen,  [out] VARIANT* outAlgorithm, [out] VARIANT* b64Cert, [out] VARIANT* certStatus, [out,retval] int* retCode);
+		[id(5), helpstring("method vPKIBase64Alloc")] HRESULT vPKIBase64Alloc([out] VARIANT* b64String, [in] VARIANT* data, [in] int len, [out,retval] int* retCode);
+		[id(6), helpstring("method vPKIUnBase64Alloc")] HRESULT vPKIUnBase64Alloc([out] VARIANT* data, [out] VARIANT* len,  [in] BSTR b64String, [out,retval] int* retCode);
+		[id(7), helpstring("method vPKIParseB64Cert")] HRESULT vPKIParseB64Cert([in] BSTR b64Cert, [out] VARIANT* emailAddress, [out] VARIANT* commonName, [out] VARIANT* title, [out] VARIANT* uniqueID, [out] VARIANT* address, [out] VARIANT* organization, [out] VARIANT* organizationUnits, [out] VARIANT* orgUnitCount, [out] VARIANT* issuerOrganization, [out] VARIANT* issuerLocality, [out] VARIANT* issuerCountry, [out] VARIANT* issuerCommonName, [out] VARIANT* issuerOrganizationUnits, [out] VARIANT* issuerOrgUnitCount, [out] VARIANT* notBefore, [out] VARIANT* notAfter, [out,retval] int* retCode);
+		[id(8), helpstring("method vPKIParseB64CertEx")] HRESULT vPKIParseB64CertEx([in] BSTR b64Cert, [out] VARIANT* emailAddress, [out] VARIANT* commonName, [out] VARIANT* title, [out] VARIANT* uniqueID, [out] VARIANT* address, [out] VARIANT* organization, [out] VARIANT* organizationUnits, [out] VARIANT* orgUnitCount, [out] VARIANT* issuerOrganization, [out] VARIANT* issuerLocality, [out] VARIANT* issuerCountry, [out] VARIANT* issuerCommonName, [out] VARIANT* issuerOrganizationUnits, [out] VARIANT* issuerOrgUnitCount, [out] VARIANT* notBefore, [out] VARIANT* notAfter, [out] VARIANT* keyUsage, [out] VARIANT* extendedKeyUsage, [out] VARIANT* sanDirectoryNames, [out] VARIANT* sanDirectoryNameCount, [out] VARIANT* sanRFC822Names, [out] VARIANT* sanRFC822NameCount, [out] VARIANT* sanDNSNames, [out] VARIANT* sanDNSNameCount, [out] VARIANT* sanURIs, [out] VARIANT* sanURICount, [out] VARIANT* sanUPNs, [out] VARIANT* sanUPNCount, [out] VARIANT* sanGUIDs, [out] VARIANT* sanGUIDCount, [out] VARIANT* cdpDpnDirectoryNames, [out] VARIANT* cdpDpnDirectoryNameCount, [out] VARIANT* cdpDpnRFC822Names, [out] VARIANT* cdpDpnRFC822NameCount, [out] VARIANT* cdpDpnDNSNames, [out] VARIANT* cdpDpnDNSNameCount, [out] VARIANT* cdpDpnURIs, [out] VARIANT* cdpDpnURICount, [out] VARIANT* cdpDpnUPNs, [out] VARIANT* cdpDpnUPNCount, [out] VARIANT* cdpDpnGUIDs, [out] VARIANT* cdpDpnGUIDCount, [out] VARIANT* cdpCrlIssuerDirectoryNames, [out] VARIANT* cdpCrlIssuerDirectoryNameCount, [out] VARIANT* cdpCrlIssuerRFC822Names, [out] VARIANT* cdpCrlIssuerRFC822NameCount, [out] VARIANT* cdpCrlIssuerDNSNames, [out] VARIANT* cdpCrlIssuerDNSNameCount, [out] VARIANT* cdpCrlIssuerURIs, [out] VARIANT* cdpCrlIssuerURICount, [out] VARIANT* cdpCrlIssuerUPNs, [out] VARIANT* cdpCrlIssuerUPNCount, [out] VARIANT* cdpCrlIssuerGUIDs, [out] VARIANT* cdpCrlIssuerGUIDCount,[out,retval] int* retCode);
+	};
+
+[
+	uuid(CEAB2106-8765-4D02-A1D6-94EA7FAE4625),
+	version(1.0),
+	helpstring("comvsssc 1.0 Type Library")
+]
+library COMVSSSCLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(DB314068-B552-4EF9-97D6-05F97D659C08),
+		helpstring("vsVerify Class")
+	]
+	coclass vsVerify
+	{
+		[default] interface IvsVerify;
+	};
+};

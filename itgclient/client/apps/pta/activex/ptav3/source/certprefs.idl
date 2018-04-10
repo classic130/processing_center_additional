@@ -1,0 +1,32 @@
+	import "oaidl.idl";
+	import "ocidl.idl";
+	#include "olectl.h"
+
+	[
+		object,
+		uuid(d962f4c1-ddb0-11d3-a428-d1a369ca484f),
+		dual,
+		helpstring("IVSCertPrefs Interface"),
+		pointer_default(unique)
+	]
+	interface IVSCertPrefs : IDispatch
+	{
+		[propget, id(1), helpstring("String containing the serial number of the cert whose preferences is to be set or obtained")] HRESULT CertSerNum([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("String containing the serial number of the cert whose preferences is to be set or obtained")] HRESULT CertSerNum([in] VARIANT newVal);
+		[propget, id(2), helpstring("String containing the issuer DN of the cert whose preferences is to be set or obtained")] HRESULT CertIssDN([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("String containing the issuer DN of the cert whose preferences is to be set or obtained")] HRESULT CertIssDN([in] VARIANT newVal);
+		[propget, id(3), helpstring("Friendly name of the cert identified by the serial number and issuer dn")] HRESULT CertFrndlyName([out, retval] VARIANT *pVal);
+		[propput, id(3), helpstring("Friendly name of the cert identified by the serial number and issuer dn")] HRESULT CertFrndlyName([in] VARIANT newVal);
+		[propget, id(4), helpstring("URL of the logo of the cert identified by the serial number and issuer dn.")] HRESULT CertLogoUrl([out, retval] VARIANT *pVal);
+		[propput, id(4), helpstring("URL of the logo of the cert identified by the serial number and issuer dn.")] HRESULT CertLogoUrl([in] VARIANT newVal);
+		[propget, id(5), helpstring("Additional string associated with the certificate")] HRESULT CertDispString([out, retval] VARIANT *pVal);
+		[propput, id(5), helpstring("Additional string associated with the certificate")] HRESULT CertDispString([in] VARIANT newVal);
+		[propget, id(6), helpstring("URL of the texture bitmap of the cert")] HRESULT CertTextureUrl([out, retval] VARIANT *pVal);
+		[propput, id(6), helpstring("URL of the texture bitmap of the cert")] HRESULT CertTextureUrl([in] VARIANT newVal);
+		[propget, id(7), helpstring("Marks the cert identified by the serial number and issuer dn as renewed.")] HRESULT MarkAsRenewed([out, retval] VARIANT *pVal);
+		[propput, id(7), helpstring("Marks the cert identified by the serial number and issuer dn as renewed.")] HRESULT MarkAsRenewed([in] VARIANT newVal);
+		[id(8), helpstring("method CertPref_SetPreference")] HRESULT SetPreference(VARIANT* in_pvarPrefName, VARIANT* in_pvarPrefValue);
+		[id(9), helpstring("method CertPref_GetPreference")] HRESULT GetPreference(VARIANT* in_pvarPrefName, VARIANT* in_pvarPrefValue);
+		
+	};
+

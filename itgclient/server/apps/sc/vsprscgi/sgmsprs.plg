@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: sgmsprs - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\TEMP\RSP1DC3.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "include" /I "..\policymodule\include" /I "..\vsprs\include" /I "..\..\..\..\common\utils\include" /I "..\..\..\..\client\modules\bsafelite\include" /I "..\..\..\..\common\scmodules\mimeengine\include" /I "..\..\..\..\common\simder\include" /I "..\..\..\..\client\apps\pta\activex\ptav3\include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/sgmsprs.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\work\itgclient_v1_sc\itgclient\server\apps\sc\vsprscgi\sources\Http.cpp"
+"D:\work\itgclient_v1_sc\itgclient\server\apps\sc\vsprscgi\sources\LogWrapper.cpp"
+"D:\work\itgclient_v1_sc\itgclient\server\apps\sc\vsprscgi\sources\sgmsprs.cpp"
+"D:\work\itgclient_v1_sc\itgclient\server\apps\sc\vsprscgi\sources\vslog.cpp"
+]
+Creating command line "cl.exe @D:\TEMP\RSP1DC3.tmp" 
+Creating temporary file "D:\TEMP\RSP1DC4.tmp" with contents
+[
+utils.lib mimeengine.lib policymodule.lib BSafeLite.lib ProtectedStorage.lib vsprs.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib crypt32.lib simder.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/sgmsprs.pdb" /debug /machine:I386 /out:"Debug/sgmsprs.exe" /pdbtype:sept /libpath:"..\..\..\..\common\lib\debug" /libpath:"..\..\..\..\client\modules\lib\static\debug" /libpath:"..\..\..\lib\static\debug" 
+.\Debug\getconfig.obj
+.\Debug\Http.obj
+.\Debug\LogWrapper.obj
+.\Debug\sgmsprs.obj
+.\Debug\vslog.obj
+]
+Creating command line "link.exe @D:\TEMP\RSP1DC4.tmp"
+<h3>Output Window</h3>
+Compiling...
+Http.cpp
+LogWrapper.cpp
+sgmsprs.cpp
+vslog.cpp
+cl.exe terminated at user request.
+
+</pre>
+</body>
+</html>

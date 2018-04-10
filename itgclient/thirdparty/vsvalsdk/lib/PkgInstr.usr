@@ -1,0 +1,13 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'aix',
+            'hpux',
+            'sparc',
+            'winnt',
+            'linux'
+          ],
+          'itgclient/thirdparty/vsvalsdk/lib',
+          'build/log/VerArchive'
+        ];

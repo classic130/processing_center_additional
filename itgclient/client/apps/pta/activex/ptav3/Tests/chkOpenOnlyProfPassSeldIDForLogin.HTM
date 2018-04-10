@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+
+<P>
+<OBJECT classid=clsid:6F7864F9-DB33-11D3-8166-0060B0F885E6 
+data=data:application/x-oleobject;base64,+WR4bzPb0xGBZgBgsPiF5gADAADYEwAA2BMAAA== 
+id=VSPTA1></OBJECT>
+</P>
+<SCRIPT Language = VBScript>
+Dim IVSProfMgmt
+Dim IVSUIPrefs
+Dim IVSCertPrefs
+Dim IVSSrchCrit
+
+On Error Resume Next
+Set IVSProfMgmt = VSPTA1.IVSProfMgmt
+Set IVSUIPrefs = VSPTA1.IVSUIPrefs
+Set IVSCertPrefs = VSPTA1.IVSCertPrefs
+Set IVSSrchCrit = VSPTA1.IVSSrchCrit
+
+On Error Resume Next
+VSPTA1.Initialize "TestCreateFlow", 0
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+'Store profile management preferences
+'Profile Name
+On Error Resume Next
+IVSProfMgmt.ProfileName = "Trial"
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+'Password
+On Error Resume Next
+IVSProfMgmt.Password = "TrialPass"
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+'Flags
+OPENPROF_OPEN_ONLY = CInt(273)
+
+On Error Resume Next
+IVSProfMgmt.OpenProfFlags = OPENPROF_OPEN_ONLY
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+DisplayFlag = CInt(1)
+On Error Resume Next
+VSPTA1.SelIDForChallenge DisplayFlag
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+</SCRIPT>
+
+</BODY>
+</HTML>

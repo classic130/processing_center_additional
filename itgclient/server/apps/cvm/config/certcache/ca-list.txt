@@ -1,0 +1,9 @@
+
+This is the list of CAs that are present in this directory-
+
+1) onsite_sub_demo.509 - TestDrive CA
+2) g2_class2testroot.509 - Pilot OnSite Root CA - G2
+3) g2_verisign_class2_onsite_individual_test_ca.509 - Pilot OnSite Public Signer(Intermediate) CA - G2
+4) g2_pca2ss.509 - OnSite Root CA - G2
+5) g2_vs_class2_onsite_individual_ca_2_v2.509 - OnSite Public Signer(Intermediate) CA - G2
+

@@ -1,0 +1,115 @@
+# Microsoft Developer Studio Generated Dependency File, included by sgmsprs.mak
+
+.\getconfig.cpp : \
+	"..\..\client\modules\bsafelite\include\aglobal.h"\
+	"..\..\client\modules\bsafelite\include\atypes.h"\
+	"..\..\client\modules\bsafelite\include\bsafelite.h"\
+	"..\..\client\modules\bsafelite\include\cmp.h"\
+	"..\..\client\modules\bsafelite\include\global.h"\
+	"..\..\client\modules\bsafelite\include\integrate.h"\
+	"..\..\client\modules\bsafelite\include\keysize.h"\
+	"..\..\client\modules\bsafelite\include\rc2.h"\
+	"..\..\client\modules\bsafelite\include\rc2cbc.h"\
+	"..\..\client\modules\bsafelite\include\rc4.h"\
+	"..\..\client\modules\bsafelite\include\rsa.h"\
+	"..\..\client\modules\bsafelite\include\rsakeygn.h"\
+	"..\..\client\modules\bsafelite\include\secrcbc.h"\
+	"..\..\client\modules\bsafelite\include\sha.h"\
+	"..\..\client\modules\bsafelite\include\shacomm.h"\
+	"..\..\client\modules\bsafelite\include\stdlibrf.h"\
+	"..\..\client\modules\protectedstorage\include\protectedstorage.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_asn.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_defines.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_macros.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_platforms.h"\
+	"..\..\client\modules\proxyrecipients\vsprs.h"\
+	"..\..\client\modules\proxyrecipients\vsprserrors.h"\
+	"..\..\common\include\charutils.h"\
+	"..\..\common\include\http.h"\
+	"..\..\common\include\vspmutil.h"\
+	"..\..\common\include\vsstring.h"\
+	"..\..\common\simder\include\baseder.h"\
+	"..\..\common\simder\include\basedercollection.h"\
+	"..\..\common\simder\include\basederhierarchy.h"\
+	"..\..\common\simder\include\bitstring.h"\
+	"..\..\common\simder\include\bmpstring.h"\
+	"..\..\common\simder\include\boolean.h"\
+	"..\..\common\simder\include\datatypes.h"\
+	"..\..\common\simder\include\derblob.h"\
+	"..\..\common\simder\include\ia5string.h"\
+	"..\..\common\simder\include\null.h"\
+	"..\..\common\simder\include\objectidentifier.h"\
+	"..\..\common\simder\include\octetstring.h"\
+	"..\..\common\simder\include\printablestring.h"\
+	"..\..\common\simder\include\sequence.h"\
+	"..\..\common\simder\include\set.h"\
+	"..\..\common\simder\include\simder_all.h"\
+	"..\..\common\simder\include\spooky.h"\
+	"..\..\common\simder\include\taggedvalue.h"\
+	"..\..\common\simder\include\universalinteger.h"\
+	"..\..\common\simder\include\utctime.h"\
+	"..\..\common\simder\include\visiblestring.h"\
+	".\sgmsprs.h"\
+	"i:\platform sdk\include\basetsd.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\propidl.h"\
+	"i:\platform sdk\include\tvout.h"\
+	"i:\platform sdk\include\winefs.h"\
+	
+
+.\sgmsprs.cpp : \
+	"..\..\client\modules\bsafelite\include\aglobal.h"\
+	"..\..\client\modules\bsafelite\include\atypes.h"\
+	"..\..\client\modules\bsafelite\include\bsafelite.h"\
+	"..\..\client\modules\bsafelite\include\cmp.h"\
+	"..\..\client\modules\bsafelite\include\global.h"\
+	"..\..\client\modules\bsafelite\include\integrate.h"\
+	"..\..\client\modules\bsafelite\include\keysize.h"\
+	"..\..\client\modules\bsafelite\include\rc2.h"\
+	"..\..\client\modules\bsafelite\include\rc2cbc.h"\
+	"..\..\client\modules\bsafelite\include\rc4.h"\
+	"..\..\client\modules\bsafelite\include\rsa.h"\
+	"..\..\client\modules\bsafelite\include\rsakeygn.h"\
+	"..\..\client\modules\bsafelite\include\secrcbc.h"\
+	"..\..\client\modules\bsafelite\include\sha.h"\
+	"..\..\client\modules\bsafelite\include\shacomm.h"\
+	"..\..\client\modules\bsafelite\include\stdlibrf.h"\
+	"..\..\client\modules\protectedstorage\include\protectedstorage.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_asn.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_defines.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_macros.h"\
+	"..\..\client\modules\protectedstorage\include\vsps_platforms.h"\
+	"..\..\client\modules\proxyrecipients\vsprs.h"\
+	"..\..\client\modules\proxyrecipients\vsprserrors.h"\
+	"..\..\common\include\charutils.h"\
+	"..\..\common\include\http.h"\
+	"..\..\common\include\vspmutil.h"\
+	"..\..\common\include\vsstring.h"\
+	"..\..\common\simder\include\baseder.h"\
+	"..\..\common\simder\include\basedercollection.h"\
+	"..\..\common\simder\include\basederhierarchy.h"\
+	"..\..\common\simder\include\bitstring.h"\
+	"..\..\common\simder\include\bmpstring.h"\
+	"..\..\common\simder\include\boolean.h"\
+	"..\..\common\simder\include\datatypes.h"\
+	"..\..\common\simder\include\derblob.h"\
+	"..\..\common\simder\include\ia5string.h"\
+	"..\..\common\simder\include\null.h"\
+	"..\..\common\simder\include\objectidentifier.h"\
+	"..\..\common\simder\include\octetstring.h"\
+	"..\..\common\simder\include\printablestring.h"\
+	"..\..\common\simder\include\sequence.h"\
+	"..\..\common\simder\include\set.h"\
+	"..\..\common\simder\include\simder_all.h"\
+	"..\..\common\simder\include\spooky.h"\
+	"..\..\common\simder\include\taggedvalue.h"\
+	"..\..\common\simder\include\universalinteger.h"\
+	"..\..\common\simder\include\utctime.h"\
+	"..\..\common\simder\include\visiblestring.h"\
+	".\sgmsprs.h"\
+	"i:\platform sdk\include\basetsd.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\propidl.h"\
+	"i:\platform sdk\include\tvout.h"\
+	"i:\platform sdk\include\winefs.h"\
+	

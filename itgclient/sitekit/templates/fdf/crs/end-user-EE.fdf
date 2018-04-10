@@ -1,0 +1,107 @@
+#
+# End-user EE CRS enrollment
+#
+#------------------------------------------------------------------------------
+#  NAME                 TYPE    REQUIREMENT		DEPENDENCY	CONTROL
+#------------------------------------------------------------------------------
+
+CONST operation			C1LRAUserSubmit
+
+#
+# I18N support
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+
+#
+# common name/value pairs
+#
+CONST class			CLASS1
+CONST application		VeriSignOnSiteCRS
+CONST cert_type			end-user
+CONST message			confirm
+
+#
+# VSSKBEGIN Global/System#2 
+# VSSKEND Global/System#2 
+#
+# VSSKBEGIN Global/System#6 
+# VSSKEND Global/System#6 
+#
+# VSSKBEGIN Global/System#11 
+# VSSKEND Global/System#11 
+#
+
+# Certificate DN
+#
+common_name             TEXT    OPTIONAL	NONE		NONE
+mail_firstName		TEXT    OPTIONAL	NONE		NONE
+mail_lastName		TEXT    OPTIONAL	NONE		NONE
+#
+# VSSKBEGIN Enrollment/EMAIL#5
+# VSSKEND Enrollment/EMAIL#5
+#
+# VSSKBEGIN Enrollment/PassCode#4
+# VSSKEND Enrollment/PassCode#4
+#
+# VSSKBEGIN Enrollment/JobTitle#4
+# VSSKEND Enrollment/JobTitle#4
+#
+# VSSKBEGIN Enrollment/MailStop#4
+# VSSKEND Enrollment/MailStop#4
+#
+# VSSKBEGIN Enrollment/EmpID#4
+# VSSKEND Enrollment/EmpID#4
+#
+# VSSKBEGIN Enrollment/Challenge#4
+# VSSKEND Enrollment/Challenge#4
+#
+# VSSKBEGIN Enrollment/CertPublish#2 
+# VSSKEND Enrollment/CertPublish#2 
+#
+# VSSKBEGIN Enrollment/Comments#4
+# VSSKEND Enrollment/Comments#4
+#
+# VSSKBEGIN Enrollment/AddField4#4
+# VSSKEND Enrollment/AddField4#4
+#
+# VSSKBEGIN Enrollment/AddField5#4
+# VSSKEND Enrollment/AddField5#4
+#
+# VSSKBEGIN Enrollment/AddField6#4
+# VSSKEND Enrollment/AddField6#4
+#
+# VSSKBEGIN Enrollment/Locality#4 
+# VSSKEND Enrollment/Locality#4
+#
+# VSSKBEGIN Enrollment/State#4 
+# VSSKEND Enrollment/State#4
+#
+# VSSKBEGIN Enrollment/Country#4 
+# VSSKEND Enrollment/Country#4
+#
+# VSSKBEGIN Apps/GSE#41 
+# VSSKEND Apps/GSE#41
+#
+# VSSKBEGIN Apps/GSE#17 
+# VSSKEND Apps/GSE#17 
+#
+
+#
+# Public Key
+#
+public_key              BASE64  MANDATORY               NONE		NONE
+CONST public_key_format         pkcs10
+
+#
+# adding name/value pairs to extension
+#
+cert_extension1         CLEAR   OPTIONAL        NONE            NONE
+cert_extension2         CLEAR   OPTIONAL        NONE            NONE
+cert_extension3         CLEAR   OPTIONAL        NONE            NONE
+
+#
+# CRS specific
+#
+transaction_id		CLEAR	MANDATORY		NONE		NONE
+extensions              CLEAR   OPTIONAL                NONE		NONE

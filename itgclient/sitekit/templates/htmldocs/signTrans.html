@@ -1,0 +1,79 @@
+<!-- $ VSSKTEMPLATEVERSION#1.0.0.0 $ signTrans.htm
+
+-->
+<HTML>
+<HEAD>
+<TITLE>JPTA Sign Transaction</TITLE>
+<SCRIPT Language="JavaScript" src="client/copyright.js"></SCRIPT>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<!-- VSSKBEGIN Enrollment/CharEncoding#3#exists#1.0.0.0#45962 -->
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+
+
+
+<SCRIPT>
+		function runApplet()
+	{
+	         window.history.forward();
+			 if(_info.indexOf("Sun")> 0)
+			 waitHandle = setInterval("waitApplet()",22000);
+			 else if(_info.indexOf("Linux")> 0)
+			 waitHandle = setInterval("waitApplet()",10000);
+			 else
+			 waitApplet()
+
+		  	 return true;
+
+	}
+	function waitApplet()
+	{
+		 if(_info.indexOf("Linux")> 0 || _info.indexOf("Sun")> 0)
+		 clearInterval(waitHandle);
+
+
+
+		appRef = waitUntilAppletIsReady()
+		document.theform.dataToSign.value = appRef.getVal("dataToSign")
+		document.theform.dataSignature.value = appRef.getVal("SIGNATURE")
+		<!-- Begin: Fix for artf14455-->		
+		document.theform.action= appletRef.getProtectedUrl() + "/protected-cgi/sophialite.exe"
+		<!-- End: Fix for artf14455-->
+		document.theform.submit()
+	}
+</SCRIPT>
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#48 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#48 -->
+<!--  23 July 2004: End Changes -->
+
+
+<!-- load waitUntilAppletReady function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+<!-- Begin: Fix for artf14455-->
+<FORM name=theform method=post>
+<!-- End: Fix for artf14455-->
+<INPUT TYPE="hidden" NAME="form_file" VALUE="../fdf/rsaverify.fdf">
+<INPUT name=dataSignature type=hidden> <INPUT name=dataToSign type=hidden>
+
+</FORM>
+
+</HEAD>
+
+<BODY BGCOLOR="#ffffff" LINK="#cc0000" VLINK="#666666" onload="runApplet()">
+<Form name = proform></Form>
+
+</BODY>
+
+<!-- Loading the Applet -->
+<!-- VSSKBEGIN Global/Mode#120 -->
+<!-- VSSKEND Global/Mode#120 -->
+
+
+

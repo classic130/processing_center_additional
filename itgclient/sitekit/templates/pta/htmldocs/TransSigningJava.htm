@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<TITLE>Transaction Signing Template</TITLE>
+<!-- VSSKTEMPLATEVERSION#1.0.0.1 -->
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/Mode#130 -->
+<!-- VSSKEND Global/Mode#130 -->
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#48 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#48 -->
+<!--  23 July 2004: End Changes -->
+
+
+</HEAD>
+
+<BODY>
+
+<!-- load applet -->
+<!-- VSSKBEGIN Global/Mode#131 -->
+<!-- VSSKEND Global/Mode#131 -->
+
+<!-- load handlError function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#1 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#1 -->
+<!-- load waitUntilAppletReady function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+<!-- load setPreference function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#22 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#22 -->
+<!-- load function pressedSignItNew -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#2 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#2 -->
+<!-- load function for break to renew -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#40 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#40 -->
+<!-- renewal form -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#41 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#41 -->
+<!-- preferences form -->
+<FORM name = "signTransPrefForm">
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#24 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#24 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#30 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#30 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#29 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#29 -->
+</FORM>
+
+<FORM action=../protected-cgi/sophialite.exe method=post name=theform>
+
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=TOP>
+<FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Transfer Funds</B></FONT></TD>
+</TABLE>
+
+<TABLE WIDTH=588 BGCOLOR="ffffcc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+      <TD WIDTH=588>
+<FONT SIZE=2 FACE="verdana, arial, helvetica"><B>Transaction Details</B></FONT><BR><P>
+<CENTER>
+
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffffcc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Transfer($)</B></FONT></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">From</TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">To</TD>
+</TR>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffcc00"><INPUT maxLength=12 name=MyMessage onblur=setMessage() size=12></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=from onchange=setFromTo() size=1>
+    <OPTION selected>Money Market
+    <OPTION>Cash
+    <OPTION>Mutual Fund
+    </OPTION>
+ </SELECT>
+</TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=to onchange=setFromTo() size=1>
+   <OPTION>Money Market
+   <OPTION selected>Cash
+   <OPTION>Mutual Fund</OPTION>
+ </SELECT>
+</TD>
+</TR>
+
+<TR>
+<TD COLSPAN=2 WIDTH=100% BGCOLOR="ffffcc"><INPUT name=SignIt onclick="pressedSignItNew()" type=button value="Submit Transfer">  </TD>
+</TR>
+
+
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+<P><BR><P>
+
+<INPUT TYPE="hidden" NAME="form_file" VALUE="../fdf/rsaverify.fdf">
+<INPUT name=dataSignature type=hidden> <INPUT name=dataToSign type=hidden>
+</FORM>
+
+<SCRIPT language=javascript>
+function setMessage ()
+{
+//		Msgg = document.theform.MyMessage.value + "," + document.theform.from[document.theform.from.selectedIndex].text + "," + document.theform.to[document.theform.to.selectedIndex].text;
+Msgg = "<table width=100%>" +
+"<TR align=center><TH COLSPAN=3>Transfer Funds Request</TH></TR>" +
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">TRANSFER FROM</FONT></TD>" +
+	"<TD>..........</TD>" +
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.from[document.theform.from.selectedIndex].text + "</B></FONT></TD>" +
+"</TR>"+
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">TRANSFER TO</FONT></TD>" +
+	"<TD>..........</TD>" +
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.to[document.theform.to.selectedIndex].text+ "</B></FONT></TD>" +
+"</TR>"+
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">AMOUNT</FONT></TD>" +
+	"<TD>..........</TD>" +
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.MyMessage.value+ "</B></FONT></TD>" +
+"</TR>"+
+"</table>"+
+"<BR>" +
+"I am authorizing the transfer of the above funds <B>by digitally signing </B> this request.";
+}
+
+function setFromTo()
+{
+parent.theFrom = document.theform.from[document.theform.from.selectedIndex].text
+parent.theTo = document.theform.to[document.theform.to.selectedIndex].text
+
+}
+</SCRIPT>
+</P></BODY></HTML>

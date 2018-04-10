@@ -1,0 +1,198 @@
+<!-- userRenewalJava.htm
+
+-->
+<!-- VSSKTEMPLATEVERSION#2.0.0.1 -->
+<HTML>
+<HEAD>
+<TITLE>Digital ID Renewal</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/Mode#130 -->
+<!-- VSSKEND Global/Mode#130 -->
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#48 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#48 -->
+<!--  23 July 2004: End Changes -->
+
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#1 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#1 -->
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#34 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#34 -->
+
+
+
+</Script>
+
+
+<script Language="JavaScript">
+<!--
+// link for cancel button
+  function cancelFunc()
+  {
+    window.navigate("../client/cancel.htm") ;
+  }
+
+// opens up new window for copyright link
+ function copyright ()
+{
+//Create a new window
+var newWin = window.open("copyright.htm", "popup_window",
+             'toolbar=1,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=620,height=510');
+//Note where the window came from
+self.name = "mainWin";
+}
+//-->
+</script>
+</HEAD>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function dumbfunc()
+{
+   var newwin = window.open("../client/help/securitySetting.htm", "private_window",
+                "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0, resizable=0,WIDTH=420,HEIGHT=480");
+}
+// -->
+</SCRIPT>
+
+<FORM NAME=InitData >
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#36 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#36 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#24 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#24 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#28 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#28 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#25 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#25 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#29 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#29 -->
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#30 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#30 -->
+
+<!-- These vars need to be overwritten for renewal -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#37 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#37 -->
+
+</FORM>
+
+
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#22 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#22 -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+
+
+<BODY onLoad="waitUntilRenewClick()" BGCOLOR="ffffff" LINK="cc0000" VLINK="666666">
+
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 ALIGN=CENTER VALIGN=BOTTOM COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+    <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD>
+    <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+    <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../graphics/hd_enroll.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Enroll Header"></TD>
+    <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+    <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_2.gif" ALT=""></TD>
+</TR>
+<TR>
+    <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+
+<!-- VSSKBEGIN Global/Mode#131 -->
+<!-- VSSKEND Global/Mode#131 -->
+
+
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+   <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+     <A HREF="help/tasks/renew_ie.htm" target="help"><IMG SRC="../graphics/button_help_page.gif" width=145 height=26 hspace=1 vspace=0 border=0 alt="Help with this Page"></a>
+   </TD>
+</TR>
+</TABLE>
+<P>
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+   <TD WIDTH=100%><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Renew Your Digital ID, Please Wait ...</B></FONT><BR></TD>
+</TR>
+</TABLE>
+<!--END INSTRUCTIONAL TEXT-->
+
+<!-- VSSKBEGIN Global/Mode#15 -->
+<!-- VSSKEND Global/Mode#15 -->
+
+<INPUT TYPE=hidden NAME=form_file VALUE="../fdf/VSApps/client/userRenewalJava.fdf">
+<INPUT TYPE=hidden NAME=getMethod VALUE="pkcs7">
+
+<!--
+<INPUT TYPE=hidden NAME=certSerial VALUE="">
+<INPUT TYPE=hidden NAME=issuerName VALUE="">
+-->
+
+<INPUT TYPE=hidden NAME=cryptoProv VALUE="user choice">
+
+<INPUT TYPE=hidden NAME=orig_cert_serial VALUE="$$orig_cert_serial$$">
+<INPUT TYPE=hidden NAME=orig_cert_issuerdn VALUE="$$orig_cert_issuerdn$$" >
+<INPUT TYPE=hidden NAME=pkcsInformation VALUE="$$pkcsInformation$$">
+<INPUT TYPE=hidden NAME=detachedMesg VALUE="Renew Digital ID">
+
+
+
+<INPUT TYPE="hidden" NAME="public_key" VALUE="$$public_key$$">
+
+<P><BR><P>
+
+
+<!--
+<P>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+    <TD WIDTH=50><img SRC="../graphics/action_39x39.gif" WIDTH=39 HEIGHT=39></TD>
+    <TD WIDTH=538 COLSPAN=2><FONT COLOR="009933" FACE="verdana, arial, helvetica" SIZE=2><B>If information above is correct,<BR>
+	click Renew to continue.</B><BR><BR></FONT></TD>
+</TR>
+<TR>
+    <TD WIDTH=50>&nbsp;</TD>
+    <TD WIDTH=234 ALIGN=LEFT><INPUT TYPE="button" VALUE="Renew" id=Renewbtn NAME="Accept" onClick="postRenewal()" DISABLED ></TD>
+    <TD WIDTH=304 ALIGN=LEFT><INPUT TYPE=button NAME="decline" id=Cancelbtn VALUE="Cancel" onClick="cancelFunc()" DISABLED ></TD>
+</TR>
+</TABLE>
+-->
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="javascript:copyright();"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../graphics/logo_3.gif" ALT="VeriSign Trust Network"></TD>
+</TR>
+</TABLE>
+
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+</FORM>
+
+</BODY>
+</HTML>
+

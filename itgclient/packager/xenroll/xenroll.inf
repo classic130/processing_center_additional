@@ -1,0 +1,13 @@
+;inf file for platform indepenence of xenroll.dll (version for alpha, and Intel)
+
+[Add.code]
+xenroll.dll=xenroll.dll
+
+[xenroll.dll]
+file-win32-x86=thiscab
+file-win32-alpha=/certcontrol/alpha/xenroll.dll
+
+
+clsid={127698e4-e730-4e5c-a2b1-21490a70c8a1}
+FileVersion=5,131,3659,0
+

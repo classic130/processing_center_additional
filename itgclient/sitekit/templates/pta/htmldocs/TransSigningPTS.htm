@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<TITLE>Transaction Signing Template</TITLE>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKTEMPLATEVERSION#1.0.0.2 -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+   var Msgg;
+
+  //-- VSSKBEGIN Apps/KeyManager#16 --
+  //-- VSSKEND Apps/KeyManager#16 --
+
+  //-- VSSKBEGIN Apps/GSE#36 --
+  //-- VSSKEND Apps/GSE#36 --
+
+
+   function pressedSignItNew()
+   {
+      setMessage();
+      document.theform.StringDataToSign.value = Msgg;
+      document.theform.Enroll_dataToSign.value = Msgg;
+      var thisUrl = window.location.href;
+      var index = thisUrl.lastIndexOf("/protected");
+      document.theform.SignaturePostURL.value = thisUrl.substring(0, index) + "/protected-cgi/sophialite.exe";	   
+
+      // default CheckForRenew is false.
+/*      if ( ExchangeIntegration == 0 && KeyManagerIntegration == 0)
+        document.theform.CheckForRenew.value="true";
+      else 
+        document.theform.CheckForRenew.value="false";
+*/
+
+//      document.theform.submit();  
+   }
+//-->
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#27 -->
+<!-- VSSKEND Apps/PersonalTrustService#27 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#9 -->
+<!-- VSSKEND Apps/PersonalTrustService#9 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#11 -->
+<!-- VSSKEND Apps/PersonalTrustService#11 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#21 -->
+<!-- VSSKEND Apps/PersonalTrustService#21 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#22 -->
+<!-- VSSKEND Apps/PersonalTrustService#22 -->
+
+<input type="hidden" name="Action" value="SignTransaction">
+<input type="hidden" name="SignTransactionCertDisplayRequired" value="false">
+<input type="hidden" name="SignHashAlg" value="MD5">
+<input type="hidden" name="SignatureConfirmationDisplayRequired" value="true">
+<input type="hidden" name="StringDataToSign" value="">  
+<input type="hidden" name="SignaturePostURL" value="">
+<INPUT TYPE="hidden" NAME="Enroll_form_file" VALUE="../fdf/rsaverify.fdf">
+<INPUT name=Enroll_dataToSign type=hidden value=""> 
+<INPUT TYPE="hidden" NAME="CheckForRenew" VALUE="false">
+
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=TOP>
+<FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Transfer Funds</B></FONT></TD>
+</TABLE>
+
+<TABLE WIDTH=588 BGCOLOR="ffffcc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+      <TD WIDTH=588>
+<FONT SIZE=2 FACE="verdana, arial, helvetica"><B>Transaction Details</B></FONT><BR><P>
+<CENTER>
+        
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffffcc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Transfer($)</B></FONT></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">From</TD>               
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">To</TD>             
+</TR>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffcc00"><INPUT maxLength=12 name=Enroll_MyMessage onblur=setMessage() size=12></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=Enroll_from size=1> 
+    <OPTION selected>Money Market
+    <OPTION>Cash
+    <OPTION>Mutual Fund
+    </OPTION>
+ </SELECT>
+</TD>               
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=Enroll_to size=1> 
+   <OPTION>Money Market
+   <OPTION selected>Cash
+   <OPTION>Mutual Fund</OPTION>
+ </SELECT> 
+</TD>             
+</TR>
+
+<TR>
+<TD COLSPAN=2 WIDTH=100% BGCOLOR="ffffcc"><INPUT name=SignIt type=submit value="Submit Transfer">  </TD>
+</TR>
+
+
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+<P><BR><P>
+
+</FORM>
+
+<SCRIPT language=javascript>
+function setMessage ()
+{
+		Msgg = document.theform.Enroll_MyMessage.value + "," + document.theform.Enroll_from[document.theform.Enroll_from.selectedIndex].text + "," + document.theform.Enroll_to[document.theform.Enroll_to.selectedIndex].text;
+}
+</SCRIPT>
+</P></BODY></HTML>

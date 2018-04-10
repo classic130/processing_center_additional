@@ -1,0 +1,509 @@
+<!-- SiteMinder Encoding=ISO-8859-1; -->
+@username=%USER%
+@smretries=3
+@smerrorpage=/siteminderagent/forms/ptaSmLoginError.fcc
+<SCRIPT LANGUAGE="JavaScript">
+<!-- 
+toSign="$$toSign$$";
+digestAlg="$$digestAlg$$";
+// -->
+</script>
+<HTML>
+<HEAD>
+<!-- 
+ptaSmLogin/ptaSmLoginNS.htm
+/*--------------------------------------------------------------------
+| Copyright (C) VeriSign, Inc. created 1996. All rights reserved.     |
+| This is an unpublished work protected as such under copyright law.  |
+| This work contains proprietary, confidential, and trade secret      |
+| information of VeriSign, Inc.  Use, disclosure or reproduction      |
+| without the expressed written authorization of VeriSign, Inc.       |
+| is prohibited.                                                      |
+--------------------------------------------------------------------*/
+** VSSKTEMPLATEVERSION#1.0.0.1 **
+-->
+<TITLE>
+   Login
+</TITLE>
+
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/Mode#101 -->
+<!-- VSSKEND Global/Mode#101 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<SCRIPT LANGUAGE="VBSCRIPT">
+<!--
+  '-- VSSKBEGIN Global/Mode#29 --
+  '-- VSSKEND Global/Mode#29 --
+
+  Dim Win2KErrorUrl
+  Win2KErrorUrl = hostName & "/VSApps/error/win2k.htm"
+
+  ' get the various interfaces
+  Dim IVSProfMgmt
+  Dim IVSUIPrefs
+  Dim IVSCertPrefs
+  Dim IVSSrchCrit
+  Dim IVSSelectedID
+  Dim IVSRoamPrefs
+
+  On Error Resume Next
+  Set IVSProfMgmt = IVSPTA.IVSProfMgmt
+  If (Hex(err.number) = "1B6") Then
+         window.location = Win2KErrorUrl
+  End if
+  Set IVSUIPrefs = IVSPTA.IVSUIPrefs
+  Set IVSCertPrefs = IVSPTA.IVSCertPrefs
+  Set IVSSrchCrit = IVSPTA.IVSSrchCrit
+  Set IVSSelectedID = IVSPTA.IVSSelectedDigID
+  Set IVSRoamPrefs = IVSPTA.IVSRoamPrefs
+  
+  
+  Sub RenewDigitalID
+    Dim RenewUrl
+
+    RenewUrl = hostName & "/VSApps/client/userRenewalMS.htm"
+    window.navigate RenewUrl
+  End Sub
+
+  Function SignUp
+    Dim EnrollUrl
+
+    '-- VSSKBEGIN Apps/KeyManager#10 --
+    '-- VSSKEND Apps/KeyManager#10 --
+    
+    EnrollUrl = hostName & "/VSApps/client/" & EnrollPage
+    window.navigate EnrollUrl
+  End Function
+
+  'This sub will call the close methods of both the objects  
+  Function CloseObjects (ErrorCode, Operation, WinErrorCode)
+    On Error Resume Next
+    IVSPTA.Close
+    if ( ErrorCode <> 0 ) then
+       Call SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", CheckErrorCodeMS(ErrorCode), WinErrorCode, Operation)
+       Exit Function
+    end if 
+    If ( err.number <> 0 ) then
+        Call SetErrorInfo("../fdf/VSApps/client/PTAv2Errors.fdf", 00000001, Hex(err.number), "IVSPTA.Close")
+        Exit Function
+    End If
+  End Function
+  
+  
+  Sub SignIt
+    Dim TheForm
+    Dim Signature
+    Dim retVal
+ 
+    '-- VSSKBEGIN Apps/PTAv2#1 --
+    '-- VSSKEND Apps/PTAv2#1 --
+
+
+    ' Initialize the PTA Object
+    On Error Resume Next
+    
+    if (strCertStore = "1") then 
+	IVSPTA.Initialize strAppCtxtName,0
+    else
+	IVSPTA.Initialize strAppCtxtName,1
+    End If
+	
+    If ( err.number <> 0 ) then
+      Call CloseObjects(Hex(err.number), "Login::IVSPTA.Initialize", Hex(err.number))
+      Exit Sub
+    End If
+
+    'MsgBox "PTA Initialized"
+
+    ' Initialize the Search Criteria
+    On Error Resume Next
+    If (Len(strCertIssuerDN) <> 0) then
+		IVSSrchCrit.IssuerDN = strCertIssuerDN
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Login::IVSSrchCrit.IssuerDN", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+
+    'MsgBox "Set Date Equality"
+
+    EXP_DATE_GREATER_THAN = &h20
+    EXP_DATE_EQUALTO      = &h10
+    EXP_DATE_LESS_THAN    = &h08
+    EFF_DATE_GREATER_THAN = &h04
+    EFF_DATE_EQUALTO      = &h02
+    EFF_DATE_LESS_THAN    = &h01
+
+    ' Initialize the Certificate Search Criterion "Date Equality"
+    On Error Resume Next
+    IVSSrchCrit.DateEquality = EXP_DATE_GREATER_THAN
+    If ( err.number <> 0 ) then
+	  Call CloseObjects(Hex(err.number), "Login::IVSSrchCrit.DateEquality", Hex(err.number))
+      Exit Sub
+    End If
+
+    ' Initialize the Certificate Search Criterion "Expiry Date"
+    ' to the CURRENT DATE.
+    StartDate = CDate(Date)
+    ShortStartDate = CDate(StartDate)
+
+    On Error Resume Next
+    IVSSrchCrit.ExpDate = ShortStartDate
+    If ( err.number <> 0 ) then
+	  Call CloseObjects(Hex(err.number), "Login::IVSSrchCrit.ExpDate", Hex(err.number))
+      Exit Sub
+    End If
+    
+    Dim boolRenewed 
+    boolRenewed = CBool(0)
+    ' Set flag to show only certs that have NOT been marked as RENEWED
+    On Error Resume Next
+    IVSSrchCrit.Renewed = boolRenewed
+    If ( err.number <> 0 ) then
+      Call CloseObjects(Hex(err.number), "Login::IVSSrchCrit.Renewed", Hex(err.number))
+      Exit Sub
+    End If
+	
+	' Initialize the login wizard title 
+    On Error Resume Next
+    If (Len(strLoginWizardTitle) <> 0) then 
+		IVSUIPrefs.LgnDlg_Title = strLoginWizardTitle
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.LgnDlg_Title", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+	
+	' Initialize the open profile preferences
+	if (strCertStore = "1") then
+		On Error Resume Next
+		If (Len(strLoginChooseTitle) <> 0) then
+			IVSUIPrefs.OpenProf_Title = strLoginChooseTitle
+			If ( err.number <> 0 ) then
+				Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.OpenProf_Title", Hex(err.number))
+				Exit Sub
+			End If
+		End If
+
+		On Error Resume Next
+		If (Len(strLoginChooseText) <> 0) then
+			IVSUIPrefs.OpenProf_Text = strLoginChooseText
+			If ( err.number <> 0 ) then
+				Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.OpenProf_Text", Hex(err.number))
+				Exit Sub
+			End If
+		End If
+		
+		On Error Resume Next
+		If (Len(strLoginChooseHelpUrl) <> 0) then
+			IVSUIPrefs.OpenProf_HelpUrl = strLoginChooseHelpUrl
+			If ( err.number <> 0 ) then
+				Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.OpenProf_HelpUrl", Hex(err.number))
+				Exit Sub
+			End If
+		End If
+
+                On Error Resume Next
+                If (Len(strUnLockHelpUrl) <> 0) then
+                        IVSUIPrefs.Timeout_HelpUrl = strUnLockHelpUrl
+                        If ( err.number <> 0 ) then
+                                Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.Timeout_HelpUrl", Hex(err.number))
+                                Exit Sub
+                        End If
+                End If
+
+		'Flags
+		OPENPROF_OPEN_ONLY = CInt(529)
+		On Error Resume Next
+		IVSProfMgmt.OpenProfFlags = OPENPROF_OPEN_ONLY
+		If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+			Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.OpenProfFlags", Hex(err.number))
+			Exit Sub
+		End If
+
+                '-- VSSKBEGIN Apps/PTAv2/Roaming#3 --
+                '-- VSSKEND Apps/PTAv2/Roaming#3 --
+	End If
+	
+	' set the select id preferences
+    On Error Resume Next
+    If (Len(strLoginTitle) <> 0) then 
+		IVSUIPrefs.SelID_Title = strLoginTitle
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.SelID_Title", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+
+    On Error Resume Next
+    If (Len(strLoginText) <> 0) then 
+		IVSUIPrefs.SelID_Text = strLoginText
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.SelID_Text", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+
+    Dim boolShowDef
+    boolShowDef = CBool(1)
+    On Error Resume Next
+    IVSUIPrefs.SelID_ShowDefChkBox = boolShowDef
+    If ( err.number <> 0 ) then
+       Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.SelID_ShowDefChkBox", Hex(err.number))
+       Exit Sub
+    End If
+	
+    On Error Resume Next
+    If (Len(strAppLogoUrl) <> 0) then
+		IVSUIPrefs.UILogoUrl = strAppLogoUrl
+	 	If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.LogoUrl", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+	
+	On Error Resume Next
+    If (Len(strAffiliateLogoUrl) <> 0 And strAffiliateLogoUrl <> "VeriSign") then
+      	 IVSPTA.AffLogoUrl = strAffiliateLogoUrl
+         If ( err.number <> 0 ) then
+               Call CloseObjects(Hex(err.number), "Login::IVSPTA.AffLogoUrl", Hex(err.number))
+		       Exit Sub
+         End If
+	End If
+
+	On Error Resume Next
+    If (Len(strLoginHelpUrl) <> 0) then
+		IVSUIPrefs.SelID_HelpUrl = strLoginHelpUrl
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.SelID_HelpUrl", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+		
+    
+    On Error Resume Next
+    IVSUIPrefs.SelID_OKBtnText = CInt(125)
+    if (err.number <> 0) then
+        Call CloseObjects(Hex(err.number), "Login::IVSUIPrefs.SelID_OKBtnText", Hex(err.number))
+        Exit Sub
+    End If
+
+    'MsgBox "before SelIDForChallenge"
+    'On Error Resume Next
+    'MsgBox "set the new property"
+    if document.LoginForm.ResetPref.checked = true then
+        IVSPTA.UseDefCertFlag = 0
+    else
+        IVSPTA.UseDefCertFlag = 1
+    end if 
+    
+        ' if the user did not choose to renew his Digital ID
+    ' or if the cert was not about to expire
+    MD5 = 3
+    SHA1 = 4 
+
+    ' Get the "Signature"
+    On Error Resume Next
+    If (digestAlg = "MD5") Then
+        Signature = IVSPTA.SignChallenge (toSign, CInt(MD5))
+    Else
+      If (digestAlg = "SHA") Then
+          Signature = IVSPTA.SignChallenge (toSign, CInt(SHA1))
+      End If
+    End If 
+
+    'If (err.number <> 0) then
+    '  Call CloseObjects(Hex(err.number), "Login::IVSPTA.SignChallenge", Hex(err.number))
+    '  Exit Sub
+    'End If
+
+    'MsgBox "Signature is : " & vbCRLF & Signature
+
+    VS_CERTNOMATCHCRIT = &h80001095
+    VS_CERTMATCHBUTEXP = &h80001096
+    VS_SUCCESS = &h00000000
+    VS_PROFDOESNOTEXIST = &h8000102B
+    VS_USER_CANCELLED = &h80001067
+    VS_CERTNOTFOUND = &h80001091
+    
+    
+   ' some special handling needs to be done.
+   If ( err.number <> 0 )then
+      If (err.number = VS_CERTMATCHBUTEXP) then
+          errString = "You do not have a valid Digital ID." &vbCRLF &_
+                      "Now the PTA will try to renew your expired Digital IDs."
+          Call MsgBox (errString, 48, "Login Error")
+          Call CloseObjects(0, "", 0)
+          RenewDigitalID()       
+          Exit Sub
+      Else
+         If ((err.number = VS_CERTNOMATCHCRIT) Or (err.number = VS_PROFDOESNOTEXIST) Or (err.number = VS_CERTNOTFOUND)) then
+             Call CloseObjects(0, "", 0)
+             errString = "You do not have a valid Digital ID." &vbCRLF & _
+                         "Would you like to enroll for a Digital ID at this time?"
+             Choice = MsgBox (errString, 52, "Login Error")
+             if ( 6 = Choice ) then
+                 Call SignUp()
+             end if 
+             Exit Sub 
+         Else 
+           If (err.number = VS_USER_CANCELLED) then 				
+              errString = "You have cancelled the Login operation." & vbCRLF & _
+                          "Please click login again to continue." 
+              Call MsgBox (errString, 48, "Login Error")
+              Call CloseObjects(0, "", 0)
+              Exit Sub
+           Else        
+              Call CloseObjects(Hex(err.number), "Login::IVSPTA.SignChallenge", Hex(err.number))
+              Exit Sub
+           End If
+         End If
+      End If
+   End If 
+   
+
+   ' at this instance the user selected an ID and signed the challenge
+   ' check if the ID is about to expire and give the user an option to renew
+   ' his digital ID
+   '    
+   ' If this point has been reached, the user selected a valid 
+   ' certificate. 
+    
+   ' Detect here by looking at the Selected cert's Expriy Date if it
+   ' is about to expire in 10 days. If it is, then ask the user if 
+   ' he wants to renew the cert which is about to expire OR 
+   ' he just wants to continue with the login.
+
+   ADVANCE_DAYS = AbtToExpWindow
+
+   SelExpDate = IVSSelectedID.ExpDate
+   ShortSelExpDate = CDate(SelExpDate)
+   If ( (Date + ADVANCE_DAYS) > ShortSelExpDate ) Then
+     Msg = "The Digital ID that you selected will expire after " & CStr(CInt(ShortSelExpDate-Date)) & " Days." & vbCRLF & _
+           "You can either choose to continue with this login " & vbCRLF & _
+	       "or you can renew your Digital ID." & vbCRLF & vbCRLF & _
+	       "Would you like to renew your Digital ID ?"
+     retVal = MsgBox(Msg, 49, "Login Warning")
+
+     If ( retVal = 1 ) Then
+        ' If the user press OK, then take him to the renewal stuff
+        ' START Renewal Stuff
+        MD5 = 3
+        SHA1 = 4 
+
+        ' Set the Message that needs to be signed.
+        RenewMsgg = document.RenewalForm.detachedMesg.value
+        'HexMsgg = "52656E6577204469676974616C204944"
+
+        'MsgBox "Message signed during cert renewal : " & Msgg
+
+        ' Get the "Signature" that is to be used to renew a given certificate
+        On Error Resume Next
+        RenewSignature = IVSPTA.SignRenewal (CInt(MD5))
+        If ( (err.number <> 0) And (Result <> 0) ) then
+           Call CloseObjects(Hex(err.number), "Login::IVSPTA.SignRenewal", Hex(err.number))
+           Exit Sub
+        End If
+
+        ' This sets the signature which has the certificate that needs renewal
+        document.RenewalForm.pkcsInformation.value = RenewSignature
+        'MsgBox "Signature for renewal is : " & vbCRLF & document.RenewalForm.pkcsInformation.value
+    
+        ' Get Serial Number of Certificate that needs renewal
+        On Error Resume Next
+        document.RenewalForm.orig_cert_serial.value = IVSSelectedID.SerNum
+        If ( err.number <> 0 ) then
+		  Call CloseObjects(Hex(err.number), "Login::IVSSelectedID.SerNum", Hex(err.number))
+          Exit Sub
+        End If
+        'MsgBox "Cert Serial Number : " & document.RenewalForm.orig_cert_serial.value
+    
+        ' Get Issuer DN of Certificate that needs renewal
+        On Error Resume Next
+        document.RenewalForm.orig_cert_issuerdn.value = IVSSelectedID.IssuerDN
+        If ( err.number <> 0 ) then
+          Call CloseObjects(Hex(err.number), "Login::IVSSelectedID.IssuerDN", Hex(err.number))
+          Exit Sub
+        End If
+    
+		Call CloseObjects(0, "", 0)
+        document.RenewalForm.submit
+        Exit Sub
+        ' END Renewal Stuff
+
+      End If ' end if user wants to renew
+    End If ' end if cert is about to expire
+
+    
+    ' Cleanup
+    Call CloseObjects(0, "", 0)
+    
+    ' set the login form variables and submit
+    document.LoginForm.PASSWORD.value = Signature
+    document.LoginForm.submit
+  End Sub
+'-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+
+
+<!-- VSSKBEGIN Global/Mode#28 -->
+<!-- VSSKEND Global/Mode#28 -->
+
+<INPUT TYPE=hidden NAME=orig_cert_serial>
+<INPUT TYPE=hidden NAME=orig_cert_issuerdn>
+<INPUT TYPE=hidden NAME=pkcsInformation>
+<INPUT TYPE=hidden NAME=detachedMesg VALUE="Renew Digital ID">
+<INPUT TYPE=hidden NAME=VHTML_FILE VALUE="../htmldocs/VSApps/client/userRenewalMS.htm">
+</FORM>
+
+
+
+<!-- Note to PTA Administrators -->
+<!-- You can customize the HTML below this point to have your own look and feel -->
+<!-- However you need to maintain the FORM tags and various form variable tags as they are -->
+
+
+<FORM NAME="LoginForm" METHOD="POST">
+<INPUT TYPE=HIDDEN NAME="SMENC" VALUE="ISO-8859-1">
+<INPUT type=HIDDEN name="SMLOCALE" value="US-EN">
+<input type=hidden name=target value="$$target$$">
+<input type=hidden name=smauthreason value="$$smauthreason$$">
+<input type=hidden name="USER" value="VeriSign">
+<input type=hidden name="PASSWORD" value="">
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="590" >
+  <TR ALIGN=LEFT VALIGN=TOP>
+    <TD WIDTH="328">
+        <BR>&nbsp;
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        To access the protected pages, click Login.
+        </FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME=Login VALUE="LOGIN" onClick="SignIt()" LANGUAGE="VBScript">
+        <INPUT TYPE=checkbox NAME=ResetPref> Check this box to ignore your preferences.
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        If you do not have a Digital ID you can Sign Up Now!</FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME="Sign Up" VALUE="Sign Up" onClick="SignUp()">
+    </TD>
+  </TR>
+</TABLE>
+</FORM>
+
+<HR WIDTH=100%>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,314 @@
+
+
+JAR-file versioning in JCSI
+===========================
+
+
+Precis
+------
+
+The export.* and import.* files here are templates for Manifest files for
+the JAR files that we build.  The Makefile that builds the JAR files first
+concatenates the appropriate templates and runs them through 'sed' to 
+replace @JCSI_VERSION@ with the current version number, then hands the 
+result to the 'jar' command.
+
+
+Which file does what
+--------------------
+
+When we build a JAR file, say jcsi_ssl.jar, we add information to the Manifest
+that describes the purpose and version of the jar file;  the template for this
+is the import.* file, e.g. import.jcsi_ssl.
+
+More importantly, we also list any other jar files that this one depends on,
+along with the minimum versions that we require for those jar files;  the
+template for this is an export.* file.
+
+If we had multiple dependencies (i.e. one jar file depended directly on two
+or more other jar files) then we could NOT simply concatenate export.* files
+for each dependency, because some of the Manifest entries (Class-Path and
+Extension-List) have to be merged.  Instead we would have to construct an
+export.* file that contained the merged information for the dependencies;
+in the worst case we would have a power set of export.* files, i.e. 2**n.
+
+Fortunately, the real dependency graph is simple:
+
+      - jcsi_base doesn't depend on anything
+
+      - everything else depends on jcsi_base
+
+      - there are no other dependencies
+
+so we have one export.* file, export.jcsi_base, and everyone uses it.
+
+Note that these are NOT java.lang.Properties files, so they do not use 
+comment characters like '#'.  Instead they more-or-less use RFC 822 format,
+so a comment would require a bogus header name, e.g.  "X-Comment: bah humbug".
+
+
+JAR-file dependency/versioning background
+-----------------------------------------
+
+What we really want is just the same sort of behaviour that is standard for
+shared-library dependencies and versioning on, say, Solaris:
+
+      - a library (jar file) can express which other libraries it needs,
+        along with a minimum version for each
+
+      - the runtime system automatically checks that the dependencies are
+        satisfied, including version requirements -- if not, it generates
+        a comprehensible error message and aborts.
+
+Sun is lurching toward a facility like this for Java;  one of these years they
+may get it right.  The current essays are:
+
+
+    (1) JDK 1.2 introduced a Manifest entry that lets one JAR file express
+        dependencies on other JAR files (or directories):
+
+                Class-Path: aaaa bbbb
+
+        The blurb says that in future each entry may be a full-blown URL,
+        but for now each entry is a relative path [which is probably all
+        we want anyway].
+
+        along with a set of Manifest entries to declare identity/version info:
+
+                Specification-Title:
+                Specification-Vendor:
+                Specification-Version:
+                Implementation-Title:
+                Implementation-Vendor:
+                Implementation-Version:
+
+        The intent seemed to be that the granularity of this information
+        should ideally be per java package (using Name: sections in the
+        manifest), but that all packages in a JAR file could also inherit
+        from a single set of information declared in the initial section
+        of the manifest.
+
+        JDK 1.2 also introduced the java.lang.Package class, which lets one
+        query this information per-package.  In particular, it has an
+        "isCompatibleWith(String desired)" method that checks whether the
+        Specification-Version >= the desired version.
+
+        The Specification-Version is defined to be a dot-separated sequence
+        of numbers with Dewey Decimal comparison semantics.
+
+        The Implementation-Version is unspecified, with an apologia at
+
+                http://java.sun.com/products/jdk/1.2/docs/guide/versioning/spec/VersioningSpecification.html#RationaleLimitingImplVersionNumbers
+
+        So...  there is machinery that lets you call isCompatibleWith()
+        yourself, but nothing in the system does it automatically.
+
+        (JDK 1.2 also adds the java.util.jar.* classes, including Manifest
+        and Attributes, and java.net.JarURLConnection, that give programmatic
+        access to the JAR file and its Manifest).
+
+
+    (2) The JDK 1.3 Java Plug-in builds on the structure above (mostly) and
+        adds automatic dependency-checking.  That's the good news;  the bad
+        news is:
+
+              - it was done for the Plug-in, i.e. applets, so it not only 
+                wants to check dependencies but also wants to fix broken
+                dependencies by downloading extension JAR files that satisfy
+                the dependencies -- wonderful for applets, less suitable for
+                our purposes
+
+              - the dependency-checking appears to be implemented in the JRE
+                rather than in the Plug-in, so presumably it can be applied
+                to all code (good) rather than just to applets that use the
+                Plug-in, but...
+
+                sun.misc.ExtensionDependency.checkExtensionsDependencies()
+                returns status as a boolean rather than as an exception, and
+                sun.misc.URLClassPath.parseExtensionsDependencies() blithely
+                ignores the boolean
+
+        In any case, the new machinery adds a few more attributes:
+
+                Extension-Name:                 (see below)
+                Implementation-Vendor-Id:       e.g. com.sun
+                Implementation-URL:             URL to download implementation
+
+        And then expresses dependencies this way:
+
+                Extension-List:  xxxx yyyy
+                xxxx-Extension-Name:
+                xxxx-Specification-Version:
+                xxxx-Implementation-Version:
+                xxxx-Implementation-Vendor-Id:
+                xxxx-Implementation-URL:
+                yyyy-Extension-Name:
+                yyyy-Specification-Version:
+                yyyy-Implementation-Version:
+                yyyy-Implementation-Vendor-Id:
+                yyyy-Implementation-URL:
+
+        The Extension-Name should be unique, and Sun suggests using the name
+        of some package in the JAR file.
+
+        Contrary to the JDK 1.2 versioning spec, the Implementation-Version
+        now has the same structure as the Specification-Version, and the
+        dependency-checking logic can check both of them.
+
+        The JDK 1.3 code that compares versions allows not only "." but also
+        "," as the separator between numbers, for Specification-Version as
+        well as for Implementation-Version.  I have no idea why;  in any case,
+        we stick to using ".".
+
+
+    (3) JDK 1.3 adds JAR indexing, wherein a JAR file may contain a
+        META-INF/INDEX.LIST file that lists, per-class or per-package,
+        which JAR file contains the needed resource.  "jar -i" can be
+        used to generate this information.  When used correctly, this is
+        a performance optimization, not a different approach to dependency
+        checking.
+
+        [We don't use this at present, but that's only because the Makefile
+        would need to figure out whether it has JDK 1.3 before it tried
+        the "jar -i"].
+
+
+    (4) JNLP (the Java Network Launching Protocol, JSR 56), with Java Web
+        Start as an implementation, takes a different approach.  It is still
+        very much focused on downloadable code, but instead of putting 
+        everything in the Manifest, it describes the components and their
+        dependencies using XML in ".jnlp" files.  This means that it can get
+        the information that it needs from the (relatively small) .jnlp file
+        rather than having to download one or more (possibly large) JAR files
+        in order to extract their Manifest entries.  JNLP's notion of a 
+        version "number" is much more liberal, and can contain alphanumerics
+        rather than just numerics.
+
+        [We don't use JNLP at present].
+
+
+Ideal approach
+--------------
+
+To do this properly, we should start from configuration info that lists the
+JAR files, their properties (name, version etc), and the dependencies between
+them -- ideally, the dependency info would be automatically derived from the
+Java classes [though Class.forName and the security-provider architecture
+makes this difficult].
+
+Given this configuration info, we could then derive
+
+    (a) The Makefile (or whatever) commands to generate the JAR files and
+        fill them with the right Java packages,
+
+    (b) The Manifest entries for those JAR files to express their identity,
+        version and dependencies
+
+    (c) The same information as (b), but in the JNLP format.
+
+The granularity of this information could be either per JAR or perhaps
+per Java package.
+
+And of course ideally the Java runtime would check the dependencies for us
+and abort if they were not satisfied.
+
+
+However
+-------
+
+What we actually do is to manually maintain the Makefile and the import.*
+and export.* files.
+
+These files define both Class-Path, from (1) above, and Implementation-URL,
+from (2) above;  we hope that one or other will do the trick.  We don't do
+anything about the JNLP format.
+
+I have used a relative URL for the Implementation-URL (in import.jcsi_base),
+i.e.
+
+                jcsi_base-Implementation-URL: jcsi_base.jar
+
+I don't know whether the JDK 1.3 code is set up to deal with this or whether
+it demands an absolute URL, but for our application I don't think we want
+the system to start downloading things without asking.
+
+The granularity that we use is per JAR, not per package.  This is probably 
+pretty reasonable.
+
+Even on JDK 1.3 we don't trust the Java runtime to do the checking for us,
+so we do it ourselves, and (endeavour to) embed a call to our checking code
+in a suitable place early in each JAR file.  Our checking code doesn't
+necessarily perform all the same checks that the JDK 1.3 code does (but then
+ours doesn't throw the result away...).
+
+
+JCSI import.* and export.* quirks
+---------------------------------
+
+Numerous, including:
+
+      - Single version.  @JCSI_VERSION@ is a single version number that we
+        use for all the JCSI JAR files.  This reflects our current view of
+        how we will do releases;  it may or may not match reality.
+
+      - Specification-* vs Implementation-*.  Using Specification-* feels 
+        funny for the com.dstc.security.* packages but we do it anyway,
+        at least partly because Package.isCompatibleWith() works on
+        Specification-Version, not on Implementation-Version.  A lousy
+        reason, but there it is.
+
+      - Hedging our bets for future versions, export.jcsi_base puts the
+        same information in Specification-* and Implementation-*, but the
+        corresponding dependency template (import.jcsi_base) only checks
+        the Specification-* attributes.
+
+      - We use "DSTC Pty Ltd" as a Vendor and "com.dstc" as a Vendor-Id;
+        dunno whether these will have to change for Wedgetail.
+
+      - Specification-*:
+
+                jcsi_base       See above
+
+                jcsi_jce        If Sun's JCE implementations had a real
+                                Manifest then we would use the same values
+                                (assuming that we are properly compatible),
+                                but I haven't found any that do.  I guessed
+                                that they should be
+
+                                  Extension-Name: javax.crypto
+                                  Specification-Title: Java Crypto Extension
+                                  Specification-Vendor: Sun Microsystems, Inc.
+                                  Specification-Version: 1.2
+
+                                and used those values.
+
+                jcsi_krb        The IETF defines the API (org.ietf.jgss)
+                                and the implementation comes from us;  easy.
+
+                jcsi_pki        Is our API, so we are the spec vendor;
+                                I don't even use Implementation-*
+
+                jcsi_provider   Is really just implementation;  rightly or
+                                wrongly we put the same values in both
+                                Specification-* and Implementation-*
+
+                jcsi_ssl        This time Sun does package them more-or-less
+                                properly, so we use the same Specification-*
+                                values that appear in Sun's JSSE 1.0.2 (which
+                                uses "Specification-Version: 1.0").  Sun's
+                                manifest had a space at the end of the Title
+                                and Vendor lines, so we do likewise, just in
+                                case it matters (it shouldn't, but...)
+
+      - Extension-Name is generally meant to be some package in the JAR.
+        We somewhat arbitrarily use
+
+                jcsi_base       com.dstc.security.common
+                jcsi_jce        javax.crypto
+                jcsi_krb        org.ietf.jgss
+                jcsi_pki        com.dstc.security.x509gen
+                jcsi_provider   com.dstc.security.provider
+                jcsi_ssl        javax.net.ssl
+
+-------------------------------------------------------------------------------
+

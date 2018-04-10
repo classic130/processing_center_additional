@@ -1,0 +1,25 @@
+#
+# Application MakeFile
+#
+
+INCL =  -I./ -I../include -I../../../../include
+
+CFLAGS = -c +z +DAportable $(INCL) -g -DHPUX
+OBJS = VerifySignature.o
+RM = rm -f
+CC = CC
+
+OTHERLIBS = -lpthread
+
+debug :: VerifySignature.exe
+release :: VerifySignature.exe
+all :: VerifySignature.exe
+
+VerifySignature.exe :  $(OBJS)
+	   $(CC) -lc -lC $(OTHERLIBS) -o $@ $(OBJS)
+
+VerifySignature.o:	../VerifySignature.cpp
+		CC $(CFLAGS) ../VerifySignature.cpp
+
+clean ::
+	$(RM) *.o VerifySignature.exe

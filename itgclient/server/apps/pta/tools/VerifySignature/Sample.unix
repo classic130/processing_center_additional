@@ -1,0 +1,1 @@
+./VerifySignature.exe -config ../config/VerifySignatureOptions.txt -message-file SampleMessage.txt -signature-file SampleSignature.txt

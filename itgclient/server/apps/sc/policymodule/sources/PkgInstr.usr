@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'make'
+          ],
+          'policymodule/source',
+          'build/log/VerArchive'
+        ];

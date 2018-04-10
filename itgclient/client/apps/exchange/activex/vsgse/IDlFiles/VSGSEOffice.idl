@@ -1,0 +1,649 @@
+// Generated .IDL file (by the OLE/COM Object Viewer)
+// 
+// typelib filename: MSO97.DLL
+
+[
+  uuid(2DF8D04C-5BFA-101B-BDE5-00AA0044DE52),
+  version(2.0),
+  helpstring("Microsoft Office 8.0 Object Library"),
+  helpfile("vbaoff8.hlp"),
+  helpcontext(0x00000001)
+]
+
+library Office
+{
+    // TLib :     // TLib : OLE Automation : {00020430-0000-0000-C000-000000000046}
+    importlib("STDOLE2.TLB");
+
+    // Forward declare all types defined in this typelib
+
+	interface IAccessible;
+    interface _IMsoDispObj;
+    interface _IMsoOleAccDispObj;
+    //interface _IMsoDispObj;
+    interface CommandBars;
+    interface CommandBar;
+    interface CommandBarControls;
+    interface CommandBarControl;
+    interface CommandBarButton;
+    interface CommandBarPopup;
+    interface CommandBarComboBox;
+
+	typedef enum {
+        msoBarLeft = 0,
+        msoBarTop = 1,
+        msoBarRight = 2,
+        msoBarBottom = 3,
+        msoBarFloating = 4,
+        msoBarPopup = 5,
+        msoBarMenuBar = 6
+    } MsoBarPosition;
+
+    typedef enum {
+        msoBarNoProtection = 0,
+        msoBarNoCustomize = 1,
+        msoBarNoResize = 2,
+        msoBarNoMove = 4,
+        msoBarNoChangeVisible = 8,
+        msoBarNoChangeDock = 16,
+        msoBarNoVerticalDock = 32,
+        msoBarNoHorizontalDock = 64
+    } MsoBarProtection;
+
+    typedef enum {
+        msoBarTypeNormal = 0,
+        msoBarTypeMenuBar = 1,
+        msoBarTypePopup = 2
+    } MsoBarType;
+
+    typedef enum {
+        msoControlCustom = 0,
+        msoControlButton = 1,
+        msoControlEdit = 2,
+        msoControlDropdown = 3,
+        msoControlComboBox = 4,
+        msoControlButtonDropdown = 5,
+        msoControlSplitDropdown = 6,
+        msoControlOCXDropdown = 7,
+        msoControlGenericDropdown = 8,
+        msoControlGraphicDropdown = 9,
+        msoControlPopup = 10,
+        msoControlGraphicPopup = 11,
+        msoControlButtonPopup = 12,
+        msoControlSplitButtonPopup = 13,
+        msoControlSplitButtonMRUPopup = 14,
+        msoControlLabel = 15,
+        msoControlExpandingGrid = 16,
+        msoControlSplitExpandingGrid = 17,
+        msoControlGrid = 18,
+        msoControlGauge = 19,
+        msoControlGraphicCombo = 20
+    } MsoControlType;
+
+    typedef enum {
+        msoButtonUp = 0,
+        msoButtonDown = -1,
+        msoButtonMixed = 2
+    } MsoButtonState;
+
+    typedef enum {
+        msoControlOLEUsageNeither = 0,
+        msoControlOLEUsageServer = 1,
+        msoControlOLEUsageClient = 2,
+        msoControlOLEUsageBoth = 3
+    } MsoControlOLEUsage;
+
+    typedef enum {
+        msoButtonAutomatic = 0,
+        msoButtonIcon = 1,
+        msoButtonCaption = 2,
+        msoButtonIconAndCaption = 3
+    } MsoButtonStyle;
+
+    typedef enum {
+        msoComboNormal = 0,
+        msoComboLabel = 1
+    } MsoComboStyle;
+
+    typedef enum {
+        msoOLEMenuGroupNone = -1,
+        msoOLEMenuGroupFile = 0,
+        msoOLEMenuGroupEdit = 1,
+        msoOLEMenuGroupContainer = 2,
+        msoOLEMenuGroupObject = 3,
+        msoOLEMenuGroupWindow = 4,
+        msoOLEMenuGroupHelp = 5
+    } MsoOLEMenuGroup;
+
+
+	typedef enum {
+        msoMenuAnimationNone = 0,
+        msoMenuAnimationRandom = 1,
+        msoMenuAnimationUnfold = 2,
+        msoMenuAnimationSlide = 3
+    } MsoMenuAnimation;
+
+	[
+      odl,
+      uuid(618736E0-3C3D-11CF-810C-00AA00389B71),
+      hidden,
+      dual,
+      oleautomation
+    ]
+    interface IAccessible : IDispatch {
+        [id(0xffffec78), propget, hidden]
+        HRESULT accParent([out, retval] IDispatch** ppdispParent);
+        [id(0xffffec77), propget, hidden]
+        HRESULT accChildCount([out, retval] long* pcountChildren);
+        [id(0xffffec76), propget, hidden]
+        HRESULT accChild(
+                        [in] VARIANT varChild, 
+                        [out, retval] IDispatch** ppdispChild);
+        [id(0xffffec75), propget, hidden]
+        HRESULT accName(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] BSTR* pszName);
+        [id(0xffffec74), propget, hidden]
+        HRESULT accValue(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] BSTR* pszValue);
+        [id(0xffffec73), propget, hidden]
+        HRESULT accDescription(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] BSTR* pszDescription);
+        [id(0xffffec72), propget, hidden]
+        HRESULT accRole(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] VARIANT* pvarRole);
+        [id(0xffffec71), propget, hidden]
+        HRESULT accState(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] VARIANT* pvarState);
+        [id(0xffffec70), propget, hidden]
+        HRESULT accHelp(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] BSTR* pszHelp);
+        [id(0xffffec6f), propget, hidden]
+        HRESULT accHelpTopic(
+                        [out] BSTR* pszHelpFile, 
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] long* pidTopic);
+        [id(0xffffec6e), propget, hidden]
+        HRESULT accKeyboardShortcut(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] BSTR* pszKeyboardShortcut);
+        [id(0xffffec6d), propget, hidden]
+        HRESULT accFocus([out, retval] VARIANT* pvarChild);
+        [id(0xffffec6c), propget, hidden]
+        HRESULT accSelection([out, retval] VARIANT* pvarChildren);
+        [id(0xffffec6b), propget, hidden]
+        HRESULT accDefaultAction(
+                        [in, optional] VARIANT varChild, 
+                        [out, retval] BSTR* pszDefaultAction);
+        [id(0xffffec6a), hidden]
+        HRESULT accSelect(
+                        [in] long flagsSelect, 
+                        [in, optional] VARIANT varChild);
+        [id(0xffffec69), hidden]
+        HRESULT accLocation(
+                        [out] long* pxLeft, 
+                        [out] long* pyTop, 
+                        [out] long* pcxWidth, 
+                        [out] long* pcyHeight, 
+                        [in, optional] VARIANT varChild);
+        [id(0xffffec68), hidden]
+        HRESULT accNavigate(
+                        [in] long navDir, 
+                        [in, optional] VARIANT varStart, 
+                        [out, retval] VARIANT* pvarEndUpAt);
+        [id(0xffffec67), hidden]
+        HRESULT accHitTest(
+                        [in] long xLeft, 
+                        [in] long yTop, 
+                        [out, retval] VARIANT* pvarChild);
+        [id(0xffffec66), hidden]
+        HRESULT accDoDefaultAction([in, optional] VARIANT varChild);
+        [id(0xffffec75), propput, hidden]
+        HRESULT accName(
+                        [in, optional] VARIANT varChild, 
+                        [in] BSTR pszName);
+        [id(0xffffec74), propput, hidden]
+        HRESULT accValue(
+                        [in, optional] VARIANT varChild, 
+                        [in] BSTR pszValue);
+    };
+
+
+	[
+      odl,
+      uuid(000C0301-0000-0000-C000-000000000046),
+      hidden,
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface _IMsoOleAccDispObj : IAccessible {
+        [id(0x60030000), propget, helpcontext(0x000003e9)]
+        HRESULT Application([out, retval] IDispatch** ppidisp);
+        [id(0x60030001), propget, helpcontext(0x000003ea)]
+        HRESULT Creator([out, retval] long* plCreator);
+    };
+
+
+    [
+      odl,
+      uuid(000C0300-0000-0000-C000-000000000046),
+      hidden,
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface _IMsoDispObj : IDispatch {
+        [id(0x60020000), propget, helpcontext(0x000003e9)]
+        HRESULT Application([out, retval] IDispatch** ppidisp);
+        [id(0x60020001), propget, helpcontext(0x000003ea)]
+        HRESULT Creator([out, retval] long* plCreator);
+    };
+
+    [
+      odl,
+      uuid(000C0302-0000-0000-C000-000000000046),
+      helpcontext(0x000007d0),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface CommandBars : _IMsoDispObj {
+        [id(0x60030000), propget, helpcontext(0x000007d1)]
+        HRESULT ActionControl([out, retval] CommandBarControl** ppcbc);
+        [id(0x60030001), propget, helpcontext(0x000007d2)]
+        HRESULT ActiveMenuBar([out, retval] CommandBar** ppcb);
+        [id(0x60030002), helpcontext(0x000007d3)]
+        HRESULT Add(
+                        [in, optional] VARIANT Name, 
+                        [in, optional] VARIANT Position, 
+                        [in, optional] VARIANT MenuBar, 
+                        [in, optional] VARIANT Temporary, 
+                        [out, retval] CommandBar** ppcb);
+        [id(0x60030003), propget, helpcontext(0x000007d4)]
+        HRESULT Count([out, retval] int* pcToolbars);
+        [id(0x60030004), propget, helpcontext(0x000007d5)]
+        HRESULT DisplayTooltips([out, retval] VARIANT_BOOL* pvarfDisplayTooltips);
+        [id(0x60030004), propput, helpcontext(0x000007d5)]
+        HRESULT DisplayTooltips([in] VARIANT_BOOL pvarfDisplayTooltips);
+        [id(0x60030006), propget, helpcontext(0x000007d6)]
+        HRESULT DisplayKeysInTooltips([out, retval] VARIANT_BOOL* pvarfDisplayKeys);
+        [id(0x60030006), propput, helpcontext(0x000007d6)]
+        HRESULT DisplayKeysInTooltips([in] VARIANT_BOOL pvarfDisplayKeys);
+        [id(0x60030008), helpcontext(0x000007d7)]
+        HRESULT FindControl(
+                        [in, optional] VARIANT Type, 
+                        [in, optional] VARIANT Id, 
+                        [in, optional] VARIANT Tag, 
+                        [in, optional] VARIANT Visible, 
+                        [out, retval] CommandBarControl** ppcbc);
+        [id(00000000), propget, helpcontext(0x000007d8)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] CommandBar** ppcb);
+        [id(0x6003000a), propget, helpcontext(0x000007d9)]
+        HRESULT LargeButtons([out, retval] VARIANT_BOOL* pvarfLargeButtons);
+        [id(0x6003000a), propput, helpcontext(0x000007d9)]
+        HRESULT LargeButtons([in] VARIANT_BOOL pvarfLargeButtons);
+        [id(0x6003000c), propget, helpcontext(0x000007da)]
+        HRESULT MenuAnimationStyle([out, retval] MsoMenuAnimation* pma);
+        [id(0x6003000c), propput, helpcontext(0x000007da)]
+        HRESULT MenuAnimationStyle([in] MsoMenuAnimation pma);
+        [id(0xfffffffc), propget]
+        HRESULT _NewEnum([out, retval] IUnknown** ppienum);
+        [id(0x6003000f), propget, helpcontext(0x000007db)]
+        HRESULT Parent([out, retval] IDispatch** ppidisp);
+        [id(0x60030010), helpcontext(0x000007dc)]
+        HRESULT ReleaseFocus();
+    };
+
+    [
+      odl,
+      uuid(000C0304-0000-0000-C000-000000000046),
+      helpcontext(0x00000bb8),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface CommandBar : _IMsoOleAccDispObj {
+        [id(0x60040000), propget, helpcontext(0x00000bb9)]
+        HRESULT BuiltIn([out, retval] VARIANT_BOOL* pvarfBuiltIn);
+        [id(0x60040001), propget, helpcontext(0x00000bba)]
+        HRESULT Context([out, retval] BSTR* pbstrContext);
+        [id(0x60040001), propput, helpcontext(0x00000bba)]
+        HRESULT Context([in] BSTR pbstrContext);
+        [id(0x60040003), propget, helpcontext(0x00000bbb)]
+        HRESULT Controls([out, retval] CommandBarControls** ppcbcs);
+        [id(0x60040004), helpcontext(0x00000bbc)]
+        HRESULT Delete();
+        [id(0x60040005), propget, helpcontext(0x00000bbd)]
+        HRESULT Enabled([out, retval] VARIANT_BOOL* pvarfEnabled);
+        [id(0x60040005), propput, helpcontext(0x00000bbd)]
+        HRESULT Enabled([in] VARIANT_BOOL pvarfEnabled);
+        [id(0x60040007), helpcontext(0x00000bbe)]
+        HRESULT FindControl(
+                        [in, optional] VARIANT Type, 
+                        [in, optional] VARIANT Id, 
+                        [in, optional] VARIANT Tag, 
+                        [in, optional] VARIANT Visible, 
+                        [in, optional] VARIANT Recursive, 
+                        [out, retval] CommandBarControl** ppcbc);
+        [id(0x60040008), propget, helpcontext(0x00000bbf)]
+        HRESULT Height([out, retval] int* pdy);
+        [id(0x60040008), propput, helpcontext(0x00000bbf)]
+        HRESULT Height([in] int pdy);
+        [id(0x6004000a), propget, helpcontext(0x00000bc0)]
+        HRESULT Index([out, retval] int* pi);
+        [id(0x6004000b), propget, hidden]
+        HRESULT InstanceId([out, retval] long* pid);
+        [id(0x6004000c), propget, helpcontext(0x00000bc1)]
+        HRESULT Left([out, retval] int* pxpLeft);
+        [id(0x6004000c), propput, helpcontext(0x00000bc1)]
+        HRESULT Left([in] int pxpLeft);
+        [id(0x6004000e), propget, helpcontext(0x00000bc2)]
+        HRESULT Name([out, retval] BSTR* pbstrName);
+        [id(0x6004000e), propput, helpcontext(0x00000bc2)]
+        HRESULT Name([in] BSTR pbstrName);
+        [id(0x60040010), propget, helpcontext(0x00000bc3)]
+        HRESULT NameLocal([out, retval] BSTR* pbstrNameLocal);
+        [id(0x60040010), propput, helpcontext(0x00000bc3)]
+        HRESULT NameLocal([in] BSTR pbstrNameLocal);
+        [id(0x60040012), propget, helpcontext(0x00000bc4)]
+        HRESULT Parent([out, retval] IDispatch** ppidisp);
+        [id(0x60040013), propget, helpcontext(0x00000bc5)]
+        HRESULT Position([out, retval] MsoBarPosition* ppos);
+        [id(0x60040013), propput, helpcontext(0x00000bc5)]
+        HRESULT Position([in] MsoBarPosition ppos);
+        [id(0x60040015), propget, helpcontext(0x00000bc6)]
+        HRESULT RowIndex([out, retval] int* piRow);
+        [id(0x60040015), propput, helpcontext(0x00000bc6)]
+        HRESULT RowIndex([in] int piRow);
+        [id(0x60040017), propget, helpcontext(0x00000bc7)]
+        HRESULT Protection([out, retval] MsoBarProtection* pprot);
+        [id(0x60040017), propput, helpcontext(0x00000bc7)]
+        HRESULT Protection([in] MsoBarProtection pprot);
+        [id(0x60040019), helpcontext(0x00000bc8)]
+        HRESULT Reset();
+        [id(0x6004001a), helpcontext(0x00000bc9)]
+        HRESULT ShowPopup(
+                        [in, optional] VARIANT x, 
+                        [in, optional] VARIANT y);
+        [id(0x6004001b), propget, helpcontext(0x00000bca)]
+        HRESULT Top([out, retval] int* pypTop);
+        [id(0x6004001b), propput, helpcontext(0x00000bca)]
+        HRESULT Top([in] int pypTop);
+        [id(0x6004001d), propget, helpcontext(0x00000bcb)]
+        HRESULT Type([out, retval] MsoBarType* ptype);
+        [id(0x6004001e), propget, helpcontext(0x00000bcc)]
+        HRESULT Visible([out, retval] VARIANT_BOOL* pvarfVisible);
+        [id(0x6004001e), propput, helpcontext(0x00000bcc)]
+        HRESULT Visible([in] VARIANT_BOOL pvarfVisible);
+        [id(0x60040020), propget, helpcontext(0x00000bcd)]
+        HRESULT Width([out, retval] int* pdx);
+        [id(0x60040020), propput, helpcontext(0x00000bcd)]
+        HRESULT Width([in] int pdx);
+    };
+
+    [
+      odl,
+      uuid(000C0306-0000-0000-C000-000000000046),
+      helpcontext(0x00000fa0),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface CommandBarControls : _IMsoDispObj {
+        [id(0x60030000), helpcontext(0x00000fa1)]
+        HRESULT Add(
+                        [in, optional] VARIANT Type, 
+                        [in, optional] VARIANT Id, 
+                        [in, optional] VARIANT Parameter, 
+                        [in, optional] VARIANT Before, 
+                        [in, optional] VARIANT Temporary, 
+                        [out, retval] CommandBarControl** ppcbc);
+        [id(0x60030001), propget, helpcontext(0x00000fa2)]
+        HRESULT Count([out, retval] int* pcToolbarControls);
+        [id(00000000), propget, helpcontext(0x00000fa3)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] CommandBarControl** ppcbc);
+        [id(0xfffffffc), propget]
+        HRESULT _NewEnum([out, retval] IUnknown** ppienum);
+        [id(0x60030004), propget, helpcontext(0x00000fa4)]
+        HRESULT Parent([out, retval] CommandBar** ppcb);
+    };
+
+    [
+      odl,
+      uuid(000C0308-0000-0000-C000-000000000046),
+      helpcontext(0x00001388),
+      dual,
+      oleautomation
+    ]
+    interface CommandBarControl : _IMsoOleAccDispObj {
+        [id(0x60040000), propget, helpcontext(0x00001389)]
+        HRESULT BeginGroup([out, retval] VARIANT_BOOL* pvarfBeginGroup);
+        [id(0x60040000), propput, helpcontext(0x00001389)]
+        HRESULT BeginGroup([in] VARIANT_BOOL pvarfBeginGroup);
+        [id(0x60040002), propget, helpcontext(0x0000138a)]
+        HRESULT BuiltIn([out, retval] VARIANT_BOOL* pvarfBuiltIn);
+        [id(0x60040003), propget, helpcontext(0x0000138b)]
+        HRESULT Caption([out, retval] BSTR* pbstrCaption);
+        [id(0x60040003), propput, helpcontext(0x0000138b)]
+        HRESULT Caption([in] BSTR pbstrCaption);
+        [id(0x60040005), propget, hidden]
+        HRESULT Control([out, retval] IDispatch** ppidisp);
+        [id(0x60040006), helpcontext(0x0000138c)]
+        HRESULT Copy(
+                        [in, optional] VARIANT Bar, 
+                        [in, optional] VARIANT Before, 
+                        [out, retval] CommandBarControl** ppcbc);
+        [id(0x60040007), helpcontext(0x0000138d)]
+        HRESULT Delete([in, optional] VARIANT Temporary);
+        [id(0x60040008), propget, helpcontext(0x0000138e)]
+        HRESULT DescriptionText([out, retval] BSTR* pbstrText);
+        [id(0x60040008), propput, helpcontext(0x0000138e)]
+        HRESULT DescriptionText([in] BSTR pbstrText);
+        [id(0x6004000a), propget, helpcontext(0x0000138f)]
+        HRESULT Enabled([out, retval] VARIANT_BOOL* pvarfEnabled);
+        [id(0x6004000a), propput, helpcontext(0x0000138f)]
+        HRESULT Enabled([in] VARIANT_BOOL pvarfEnabled);
+        [id(0x6004000c), helpcontext(0x00001390)]
+        HRESULT Execute();
+        [id(0x6004000d), propget, helpcontext(0x00001391)]
+        HRESULT Height([out, retval] int* pdy);
+        [id(0x6004000d), propput, helpcontext(0x00001391)]
+        HRESULT Height([in] int pdy);
+        [id(0x6004000f), propget, helpcontext(0x00001392)]
+        HRESULT HelpContextId([out, retval] int* pid);
+        [id(0x6004000f), propput, helpcontext(0x00001392)]
+        HRESULT HelpContextId([in] int pid);
+        [id(0x60040011), propget, helpcontext(0x00001393)]
+        HRESULT HelpFile([out, retval] BSTR* pbstrFilename);
+        [id(0x60040011), propput, helpcontext(0x00001393)]
+        HRESULT HelpFile([in] BSTR pbstrFilename);
+        [id(0x60040013), propget, helpcontext(0x00001394)]
+        HRESULT Id([out, retval] int* pid);
+        [id(0x60040014), propget, helpcontext(0x00001395)]
+        HRESULT Index([out, retval] int* pi);
+        [id(0x60040015), propget, hidden]
+        HRESULT InstanceId([out, retval] long* pid);
+        [id(0x60040016), helpcontext(0x00001396)]
+        HRESULT Move(
+                        [in, optional] VARIANT Bar, 
+                        [in, optional] VARIANT Before, 
+                        [out, retval] CommandBarControl** ppcbc);
+        [id(0x60040017), propget, helpcontext(0x00001397)]
+        HRESULT Left([out, retval] int* px);
+        [id(0x60040018), propget, helpcontext(0x00001398)]
+        HRESULT OLEUsage([out, retval] MsoControlOLEUsage* pcou);
+        [id(0x60040018), propput, helpcontext(0x00001398)]
+        HRESULT OLEUsage([in] MsoControlOLEUsage pcou);
+        [id(0x6004001a), propget, helpcontext(0x00001399)]
+        HRESULT OnAction([out, retval] BSTR* pbstrOnAction);
+        [id(0x6004001a), propput, helpcontext(0x00001399)]
+        HRESULT OnAction([in] BSTR pbstrOnAction);
+        [id(0x6004001c), propget, helpcontext(0x0000139a)]
+        HRESULT Parent([out, retval] CommandBar** ppcb);
+        [id(0x6004001d), propget, helpcontext(0x0000139b)]
+        HRESULT Parameter([out, retval] BSTR* pbstrParam);
+        [id(0x6004001d), propput, helpcontext(0x0000139b)]
+        HRESULT Parameter([in] BSTR pbstrParam);
+        [id(0x6004001f), propget, helpcontext(0x0000139c)]
+        HRESULT Priority([out, retval] int* pnPri);
+        [id(0x6004001f), propput, helpcontext(0x0000139c)]
+        HRESULT Priority([in] int pnPri);
+        [id(0x60040021), helpcontext(0x0000139d)]
+        HRESULT Reset();
+        [id(0x60040022), helpcontext(0x0000139e)]
+        HRESULT SetFocus();
+        [id(0x60040023), propget, helpcontext(0x0000139f)]
+        HRESULT Tag([out, retval] BSTR* pbstrTag);
+        [id(0x60040023), propput, helpcontext(0x0000139f)]
+        HRESULT Tag([in] BSTR pbstrTag);
+        [id(0x60040025), propget, helpcontext(0x000013a0)]
+        HRESULT TooltipText([out, retval] BSTR* pbstrTooltip);
+        [id(0x60040025), propput, helpcontext(0x000013a0)]
+        HRESULT TooltipText([in] BSTR pbstrTooltip);
+        [id(0x60040027), propget, helpcontext(0x000013a1)]
+        HRESULT Top([out, retval] int* py);
+        [id(0x60040028), propget, helpcontext(0x000013a2)]
+        HRESULT Type([out, retval] MsoControlType* ptype);
+        [id(0x60040029), propget, helpcontext(0x000013a3)]
+        HRESULT Visible([out, retval] VARIANT_BOOL* pvarfVisible);
+        [id(0x60040029), propput, helpcontext(0x000013a3)]
+        HRESULT Visible([in] VARIANT_BOOL pvarfVisible);
+        [id(0x6004002b), propget, helpcontext(0x000013a4)]
+        HRESULT Width([out, retval] int* pdx);
+        [id(0x6004002b), propput, helpcontext(0x000013a4)]
+        HRESULT Width([in] int pdx);
+        [id(0x6004002d), hidden]
+        HRESULT Reserved1();
+        [id(0x6004002e), hidden]
+        HRESULT Reserved2();
+        [id(0x6004002f), hidden]
+        HRESULT Reserved3();
+        [id(0x60040030), hidden]
+        HRESULT Reserved4();
+        [id(0x60040031), hidden]
+        HRESULT Reserved5();
+        [id(0x60040032), hidden]
+        HRESULT Reserved6();
+        [id(0x60040033), hidden]
+        HRESULT Reserved7();
+        [id(0x60040034), hidden]
+        HRESULT Reserved8();
+    };
+
+    [
+      odl,
+      uuid(000C030E-0000-0000-C000-000000000046),
+      helpcontext(0x00001770),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface CommandBarButton : CommandBarControl {
+        [id(0x60050000), propget, helpcontext(0x00001771)]
+        HRESULT BuiltInFace([out, retval] VARIANT_BOOL* pvarfBuiltIn);
+        [id(0x60050000), propput, helpcontext(0x00001771)]
+        HRESULT BuiltInFace([in] VARIANT_BOOL pvarfBuiltIn);
+        [id(0x60050002), helpcontext(0x00001772)]
+        HRESULT CopyFace();
+        [id(0x60050003), propget, helpcontext(0x00001773)]
+        HRESULT FaceId([out, retval] int* pid);
+        [id(0x60050003), propput, helpcontext(0x00001773)]
+        HRESULT FaceId([in] int pid);
+        [id(0x60050005), helpcontext(0x00001774)]
+        HRESULT PasteFace();
+        [id(0x60050006), propget, helpcontext(0x00001775)]
+        HRESULT ShortcutText([out, retval] BSTR* pbstrText);
+        [id(0x60050006), propput, helpcontext(0x00001775)]
+        HRESULT ShortcutText([in] BSTR pbstrText);
+        [id(0x60050008), propget, helpcontext(0x00001776)]
+        HRESULT State([out, retval] MsoButtonState* pstate);
+        [id(0x60050008), propput, helpcontext(0x00001776)]
+        HRESULT State([in] MsoButtonState pstate);
+        [id(0x6005000a), propget, helpcontext(0x00001777)]
+        HRESULT Style([out, retval] MsoButtonStyle* pstyle);
+        [id(0x6005000a), propput, helpcontext(0x00001777)]
+        HRESULT Style([in] MsoButtonStyle pstyle);
+    };
+
+    [
+      odl,
+      uuid(000C030A-0000-0000-C000-000000000046),
+      helpcontext(0x00001b58),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface CommandBarPopup : CommandBarControl {
+        [id(0x60050000), propget, helpcontext(0x00001b59)]
+        HRESULT CommandBar([out, retval] CommandBar** ppcb);
+        [id(0x60050001), propget, helpcontext(0x00001b5a)]
+        HRESULT Controls([out, retval] CommandBarControls** ppcbcs);
+        [id(0x60050002), propget, helpcontext(0x00001b5b)]
+        HRESULT OLEMenuGroup([out, retval] MsoOLEMenuGroup* pomg);
+        [id(0x60050002), propput, helpcontext(0x00001b5b)]
+        HRESULT OLEMenuGroup([in] MsoOLEMenuGroup pomg);
+    };
+
+    [
+      odl,
+      uuid(000C030C-0000-0000-C000-000000000046),
+      helpcontext(0x00001f40),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface CommandBarComboBox : CommandBarControl {
+        [id(0x60050000), helpcontext(0x00001f41)]
+        HRESULT AddItem(
+                        [in] BSTR Text, 
+                        [in, optional] VARIANT Index);
+        [id(0x60050001), helpcontext(0x00001f42)]
+        HRESULT Clear();
+        [id(0x60050002), propget, helpcontext(0x00001f43)]
+        HRESULT DropDownLines([out, retval] int* pcLines);
+        [id(0x60050002), propput, helpcontext(0x00001f43)]
+        HRESULT DropDownLines([in] int pcLines);
+        [id(0x60050004), propget, helpcontext(0x00001f44)]
+        HRESULT DropDownWidth([out, retval] int* pdx);
+        [id(0x60050004), propput, helpcontext(0x00001f44)]
+        HRESULT DropDownWidth([in] int pdx);
+        [id(0x60050006), propget, helpcontext(0x00001f45)]
+        HRESULT List(
+                        [in] int Index, 
+                        [out, retval] BSTR* pbstrItem);
+        [id(0x60050006), propput, helpcontext(0x00001f45)]
+        HRESULT List(
+                        [in] int Index, 
+                        [in] BSTR pbstrItem);
+        [id(0x60050008), propget, helpcontext(0x00001f46)]
+        HRESULT ListCount([out, retval] int* pcItems);
+        [id(0x60050009), propget, helpcontext(0x00001f47)]
+        HRESULT ListHeaderCount([out, retval] int* pcItems);
+        [id(0x60050009), propput, helpcontext(0x00001f47)]
+        HRESULT ListHeaderCount([in] int pcItems);
+        [id(0x6005000b), propget, helpcontext(0x00001f48)]
+        HRESULT ListIndex([out, retval] int* pi);
+        [id(0x6005000b), propput, helpcontext(0x00001f48)]
+        HRESULT ListIndex([in] int pi);
+        [id(0x6005000d), helpcontext(0x00001f49)]
+        HRESULT RemoveItem([in] int Index);
+        [id(0x6005000e), propget, helpcontext(0x00001f4a)]
+        HRESULT Style([out, retval] MsoComboStyle* pstyle);
+        [id(0x6005000e), propput, helpcontext(0x00001f4a)]
+        HRESULT Style([in] MsoComboStyle pstyle);
+        [id(0x60050010), propget, helpcontext(0x00001f4b)]
+        HRESULT Text([out, retval] BSTR* pbstrText);
+        [id(0x60050010), propput, helpcontext(0x00001f4b)]
+        HRESULT Text([in] BSTR pbstrText);
+    };
+}

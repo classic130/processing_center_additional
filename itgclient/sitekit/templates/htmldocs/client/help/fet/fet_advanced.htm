@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+   <TITLE>File Encryption Tool: Advanced Properties</TITLE>
+<SCRIPT Language="JavaScript" src="/client/copyright.js"></SCRIPT>
+	<META NAME="robots" CONTENT="noindex">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#CC0000" VLINK="#666666">
+<script src="../popup/popup.js">
+</script>
+
+
+<!--BEGIN PAGE CONTENT-->
+
+
+<TABLE WIDTH="94%">
+<TR>
+<TD>
+
+
+<!-- HEADING -->
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" COLOR="#000066" SIZE=5><B>Advanced Properties</B></FONT> <A HREF="fet_intro.htm"><IMG SRC="helphome.gif" ALT="Safe Help Home Page"></A>
+<!-- END HEADING -->
+
+<P>
+
+<!-- CONTENT -->
+
+
+<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>
+The Advanced Properties determine how files are moved into the Safe and how often you are prompted for the Safe password.<P>
+
+To change Advanced properties:
+<OL>
+<LI>Open the <A HREF="fet_safeprops.htm">Safe properties</A>.</LI>
+<LI>Click the Advanced tab.</LI>
+<LI>Change any settings you want and then click OK. The settings are described below.</LI>
+</OL>
+<IMG SRC="advprops.gif">
+<P>
+<B>Location of Encrypted File : </B><BR>
+<LI><B>Move file to Safe - </B> Any encrypted file is placed in the Safe. The Safe <A HREF="fet_security.htm">securely deletes</A> the original file. When you decrypt the file, it appears back in its original folder.<BR>
+<LI><B>Encrypt inplace - </B> Any encrypted file remains in the original location of the file but it gets a new .ENC extension. For example, if you encrypt a file named <TT>file.txt</TT>, the new file name is <TT>file.txt.enc</TT>. Using Explorer, you can right-click the file to decrypt it and then double-click the file to run it. In-place decryption also securely deletes the original file.<P>
+
+<B>Password Options : </B><BR>
+<LI><B>Prompt everytime - </B> This configures the Safe to ask you for the password every time you encrypt or decrypt a file or change any properties. <BR>
+<LI><B>Prompt after XX minutes - </B> This sets a number of minutes during which you do not have to enter the password. For example, if you set the password timeout to 5 minutes, you can encrypt and decrypt files, but if you stop working with the Safe for five minutes or more, the Safe asks you to re-enter the password the next time you try to do anything in the Safe. If you want maximum security, set the password to always prompt you. If you choose a timeout instead, make the number of minutes small. <P>
+
+In addition to the password protection provided by the Safe you can also set up a password protected Windows <A HREF="fet_security.htm">screen saver</A>.<P>
+
+<B><A HREF="fet_password.htm">Change Password</A></B><BR>
+This button lets you change the password that you use to unlock the Safe.<P>
+
+
+<B><A HREF="fet_security.htm">Security</A></B><BR>
+This button lets you set security options and modify the Windows screen saver.<P>
+
+<BR>
+<B>Note :</B> If you are using a certificate installed in the Symantec CSP then the password will be prompted everytime you access your private key or everytime the time-out occurs, depending on your settings. Also note that the <B>Change Password</B> option is not available in this case.
+
+</TD>
+</TR>
+</TABLE>
+
+<!-- END CONTENT -->
+
+
+<!-- VSSKBEGIN Copyright#1 -->
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../../graphics/dot_grey.gif" WIDTH=94% HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=94% CELLPADDING=2 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=480 VALIGN="TOP">
+		<FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="../../copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+
+        <TD WIDTH=120 VALIGN="TOP" ALIGN="RIGHT">
+		<!-- VSSKBEGIN LOGO3#2 -->
+        <IMG ALIGN="right" SRC="../../graphics/logo3.gif" ALT="Logo">
+		<!-- VSSKEND LOGO3#2 -->
+		</TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<!-- VSSKEND Copyright#1 -->
+
+</BODY>
+</HTML>

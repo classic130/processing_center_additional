@@ -1,0 +1,77 @@
+JCSI v2.1.1 supports the following:
+ 
+    1. A clean-room JCE framework implementation which interoperates with
+       Sun's JCE 1.2 (domestic US version)
+ 
+    2. a Crypto Provider for JCA/JCE implementing the JCA/JCE engine classes
+        o KeyPairGenerator for RSA, DSA and Diffie-Hellman
+        o Signature for SHAwithRSA, MD5withRSA, MD2withRSA, RIPEMD160withSHA,
+          SHAwithDSA, RawRSA and RawDSA
+        o KeyAgreement for Diffie-Hellman (DH) and ESDH (Ephemeral-Static DH)
+        o KeyGenerator for RSA, IDEA, DESede, Blowfish, RC5, RC4, RC2 and DES
+        o Cipher for RSA public key cipher and RC4 stream cipher
+        o Cipher for IDEA, DESede, Blowfish, RC5, RC2 and DES block ciphers
+          in ECB, CBC and CFB modes with PKCS5Padding, NoPadding and Zeroes
+        o MAC for HMACwithSHA1, HMACwithMD5 and DESMac
+        o MessageDigest for SHA1, MD5, MD2, MD4 and RIPEMD-160
+        o Cipher, KeyFactory and AlgorithmParameters for password-based
+          encryption (PBE) algorithms PBEwithMD5andDES-CBC and PBE
+          algorithms defined for PKCS#12
+ 
+    3. a Public Key Infrastructure (PKI) library, including
+        o A Certificate Provider for X.509 v3 certificate & v2 CRLs
+          supporting the extensions
+            + AuthorityKeyIdentifier
+            + BasicConstraints
+            + CRLDistributionPoints
+            + CRLNumber
+            + CertificatePolicies
+            + ExtendedKeyUsage
+            + IssuerAltName
+            + KeyUsage
+            + NameConstraints
+            + NetscapeCertType
+            + PolicyConstraints
+            + SubjectAltName
+            + SubjectKeyIdentifier
+        o A PKCS#12-based KeyStore Provider interoperating with Netscape
+          and Microsoft IE
+        o An API for PKCS#10 certification requests
+        o An API for PKCS#8 and SSLeay-style private key protection
+        o An API for X.509 certificate/CRL generation
+        o An API for storing and retrieving certificates and CRLs in an
+          LDAP repository
+ 
+    4. a Transport Layer Security (TLS) library implementing JSSE which
+        o Supports SSL v3.0 as well as TLS
+        o Supports all non-anonymous ciphersuites based on
+          RSA and Diffie-Hellman (ephemeral and static)
+        o Has session cache management support
+        o Has CRL support
+        o Supports pluggable crypto, including smartcards
+ 
+    5. a Cryptographic Message Syntax (CMS) library which
+        o Supports CMS Data, SignedData and EnvelopedData
+        o Supports RSA and DSA for signing
+        o Supports RSA Key Transport and Ephemeral-Static Diffie-Hellman 
+          Key Agreement
+        o Supports content encryption algorithms IDEA, DESede, RC2 and RC2/40
+        o Is implemented for data streaming
+ 
+    6. an S/MIME v3 library (requiring JavaMail 1.2) supporting
+        o the mime types 
+            + multipart/mixed, 
+            + application/pkcs7-mime; smime-type=enveloped-data
+            + application/pkcs7-mime; smime-type=signed-data
+        o interoperability with Netscape Messenger, Microsoft Outlook
+          and Outlook Express
+ 
+    7. a Kerberos 5 library including
+        o An API for making requests to and processing responses from
+          a Kerberos Key Distribution Centre (KDC)
+        o A Java GSS API (IETF RFC2853) for application-level messaging
+        o Extendable support for pre-authentication with built-in support
+          for encrypted timestamp pre-authentication
+        o Built-in support for arbitrary password salts
+        o Support for Kerberos user-to-user authentication
+ 

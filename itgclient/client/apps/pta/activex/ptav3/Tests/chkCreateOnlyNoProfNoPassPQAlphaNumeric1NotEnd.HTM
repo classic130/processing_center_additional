@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+
+<P>
+<OBJECT classid=clsid:6F7864F9-DB33-11D3-8166-0060B0F885E6 
+data=data:application/x-oleobject;base64,+WR4bzPb0xGBZgBgsPiF5gADAADYEwAA2BMAAA== 
+id=VSPTA1></OBJECT>
+</P>
+<SCRIPT Language = VBScript>
+Dim IVSProfMgmt
+Dim IVSUIPrefs
+Dim IVSCertPrefs
+Dim IVSSrchCrit
+
+On Error Resume Next
+Set IVSProfMgmt = VSPTA1.IVSProfMgmt
+Set IVSUIPrefs = VSPTA1.IVSUIPrefs
+Set IVSCertPrefs = VSPTA1.IVSCertPrefs
+Set IVSSrchCrit = VSPTA1.IVSSrchCrit
+
+On Error Resume Next
+VSPTA1.Initialize "TestCreateFlow", 0
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+'Store profile management preferences
+'Flags
+OPENPROF_CREATE_ONLY = CInt(289)
+
+On Error Resume Next
+IVSProfMgmt.OpenProfFlags = OPENPROF_CREATE_ONLY
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+PASSWDQUAL_ALPHANUMERIC_ATLEAST1_NOTEND = CInt(16672)
+
+On Error Resume Next
+IVSProfMgmt.PasswdQuality = PASSWDQUAL_ALPHANUMERIC_ATLEAST1_NOTEND
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+On Error Resume Next
+IVSProfMgmt.OpenProfile
+If (err.number <> 0) Then
+ MsgBox (err.number)
+ MsgBox (err.description)
+End If
+
+</SCRIPT>
+
+</BODY>
+</HTML>

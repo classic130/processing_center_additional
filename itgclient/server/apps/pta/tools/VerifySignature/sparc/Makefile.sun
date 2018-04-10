@@ -1,0 +1,25 @@
+#
+# Application MakeFile
+#
+
+INCL =  -I./ -I../include -I../../../../include
+
+CFLAGS = -xcg92 -KPIC -c $(INCL) -g -DSOLARIS
+OBJS = VerifySignature.o
+RM = rm -f
+CC = CC
+
+OTHERLIBS = -ldl
+
+debug ::
+release ::
+all :: VerifySignature.exe
+
+VerifySignature.exe :  $(OBJS)
+	   $(CC) -L. -R. -lc -lnsl -lCrun $(OTHERLIBS) -o $@ $(OBJS)
+
+VerifySignature.o:	./VerifySignature.cpp
+		CC $(CFLAGS) ./VerifySignature.cpp
+
+clean ::
+	$(RM) *.o VerifySignature.exe

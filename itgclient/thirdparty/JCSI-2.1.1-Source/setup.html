@@ -1,0 +1,86 @@
+<html>
+
+<head><title>JCSI - Installation</title></head>
+
+<body>
+
+<h1>JCSI - Installation</h1>
+
+<p>These are the steps required to configure the Java development and
+deployment environment to use the JCSI security provider classes and <b>com.dstc.security.*</b>
+packages.</p>
+
+
+<table border="0" cellpadding="4" width="674" cellspacing="3">
+  <tr>
+    <th valign="top" nowrap bgcolor="#C0C0C0">Step 1.&nbsp;
+      
+    </th>
+    <td width="662">&nbsp;Configure the environment variables:<br>
+      
+        <table border="1" cellpadding="2">
+          <tr>
+            <td valign="top"><b>$JCSI</b></td>
+            <td>Directory where JCSI has been installed.&nbsp;&nbsp;<br>
+              [eg. C:\JCSI (Windows)&nbsp; or&nbsp;&nbsp; /usr/local/jcsi (Unix)
+              ]</td>
+          </tr>
+          <tr>
+            <td valign="top"><b>$JAVA_HOME</b></td>
+            <td> JDK/JRE 1.2.x or 1.3.x root directory</td>
+          </tr>
+        </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <th valign="top" nowrap bgcolor="#C0C0C0">Step 2.&nbsp;
+    </th>
+    <td width="662"><p> Copy the <b>$JCSI/lib/*.jar</b>  files into the <b> $JAVA_HOME/jre/lib/ext</b> 
+      directory.<br>
+      The <b>$JAVA_HOME/jre/lib/ext</b>  directory may need to be created if it
+      does not already exist.&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <th valign="top" nowrap bgcolor="#C0C0C0">
+
+Step 3a.&nbsp;
+    </th>
+    <td width="662">
+<p>
+
+  Edit <b>$JAVA_HOME/jre/lib/security/java.security</b> and add the JCSI
+          security providers in the following sequence:&nbsp;</p>
+<pre>#
+# List of providers and their preference orders (see above):
+security.provider.1=sun.security.provider.Sun
+
+# DSTC Providers
+security.provider.2=com.dstc.security.provider.DSTC
+security.provider.3=com.dstc.security.keymanage.keystore.DSTC
+security.provider.4=com.dstc.security.x509.DSTC
+</pre>
+<p>Note that the base Sun provider <code>sun.security.provider.Sun</code> is preserved.</p>
+<p>
+JDK/JRE 1.3.x also includes the new provider <code>com.sun.rsajca.Provider</code>.&nbsp;&nbsp;<br>
+If you include the rsajca provider we suggest you place it after the jcsi to avoid a bug in the rsajca provider
+    </td>
+  </tr>
+  <tr>
+    <th valign="top" nowrap bgcolor="#C0C0C0">
+Step 3b.
+    </th>
+    <td width="662">
+Edit <b>$JAVA_HOME/jre/lib/security/java.security</b> to change the default keystore format from
+      &quot;jks&quot; to "pkcs12":
+<pre>#
+# Default keystore type.
+#
+# keystore.type=jks
+keystore.type=pkcs12</pre>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

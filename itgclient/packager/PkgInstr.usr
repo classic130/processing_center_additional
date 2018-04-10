@@ -1,0 +1,10 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'local-install',
+            'exchange'
+          ],
+          'itgclient/packager',
+          'build/log/VerArchive'
+        ];

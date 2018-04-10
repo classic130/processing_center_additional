@@ -1,0 +1,38 @@
+	import "oaidl.idl";
+	import "ocidl.idl";
+	#include "olectl.h"
+
+	[
+		object,
+		uuid(a453a978-2054-11d4-8175-0060b0f885e6),
+		dual,
+		helpstring("IVSPTADllApi Interface"),
+		pointer_default(unique)
+	]
+	interface IVSPTADllApi : IDispatch
+	{
+		[propget, id(1), helpstring("The FQDN of the current host")] HRESULT HostFQDN([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("The FQDN of the current website")] HRESULT HostFQDN([in] VARIANT newVal);
+		[propget, id(2), helpstring("The protocol name")] HRESULT Protocol([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("The protocol name")] HRESULT Protocol([in] VARIANT newVal);
+		[propget, id(3), helpstring("property SelectedIDCertContext")] HRESULT SelectedIDCertContext([out, retval] VARIANT *pVal);
+
+		[propget, id(4), helpstring("Is the transaction signature attached?")] HRESULT DoAttachedSig([out, retval] VARIANT *pVal);
+		[propput, id(4), helpstring("Is the transaction signature attached?")] HRESULT DoAttachedSig([in] VARIANT newVal);
+		[propget, id(5), helpstring("Is the UI shown while transaction signature")] HRESULT ShowSignUI([out, retval] VARIANT *pVal);
+		[propput, id(5), helpstring("Is the UI shown while transaction signature")] HRESULT ShowSignUI([in] VARIANT newVal);
+		[propget, id(6), helpstring("The client site that should be used")] HRESULT OleClientSite([out, retval] VARIANT *pVal);
+		[propput, id(6), helpstring("The client site that should be used")] HRESULT OleClientSite([in] VARIANT newVal);		
+		[propget, id(7), helpstring("property HashData")] HRESULT HashData([out, retval] VARIANT *pVal);
+		[propput, id(7), helpstring("property HashData")] HRESULT HashData([in] VARIANT newVal);
+		[propget, id(8), helpstring("property P7Output")] HRESULT P7Output([out, retval] VARIANT *pVal);
+		[propput, id(8), helpstring("property P7Output")] HRESULT P7Output([in] VARIANT newVal);
+		[propget, id(9), helpstring("property SignNotificationUI")] HRESULT SignNotificationUI([out, retval] VARIANT *pVal);
+		[propput, id(9), helpstring("property SignNotificationUI")] HRESULT SignNotificationUI([in] VARIANT newVal);
+		[propget, id(10), helpstring("property DecryptUI")] HRESULT DecryptUI([out, retval] VARIANT *pVal);
+		[propput, id(10), helpstring("property DecryptUI")] HRESULT DecryptUI([in] VARIANT newVal);
+		[propget, id(11), helpstring("property ShowSelIDUI")] HRESULT ShowSelIDUI([out, retval] VARIANT *pVal);
+		[propput, id(11), helpstring("property ShowSelIDUI")] HRESULT ShowSelIDUI([in] VARIANT newVal);
+	
+	};
+

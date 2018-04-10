@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<!-- 
+/*--------------------------------------------------------------------
+| Copyright (C) VeriSign, Inc. created 1996. All rights reserved.     |
+| This is an unpublished work protected as such under copyright law.  |
+| This work contains proprietary, confidential, and trade secret      |
+| information of VeriSign, Inc.  Use, disclosure or reproduction      |
+| without the expressed written authorization of VeriSign, Inc.       |
+| is prohibited.                                                      |
+--------------------------------------------------------------------*/
+** VSSKTEMPLATEVERSION#1.0.0.2 **
+-->
+<TITLE>
+   Login for SiteMinder Authentication Scheme
+</TITLE>
+</HEAD>
+<body>
+<!-- VSSKBEGIN Apps/PersonalTrustService#24 -->
+<!-- VSSKEND Apps/PersonalTrustService#24 -->
+</body>
+</html>

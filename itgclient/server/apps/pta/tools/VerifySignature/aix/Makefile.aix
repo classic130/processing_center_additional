@@ -1,0 +1,25 @@
+#
+# Application MakeFile
+#
+
+INCL =  -I./ -I../include -I../../../../include
+
+CFLAGS = -c $(INCL) -g -DAIX
+OBJS = VerifySignature.o
+RM = rm -f
+CC = /usr/vacpp/bin/xlC
+
+OTHERLIBS = -ldl
+
+debug ::
+release ::
+all :: VerifySignature.exe
+
+VerifySignature.exe :  $(OBJS)
+	   $(CC) -L. -R. -lc -lnsl $(OTHERLIBS) -o $@ $(OBJS)
+
+VerifySignature.o:	./VerifySignature.cpp
+		CC $(CFLAGS) ./VerifySignature.cpp
+
+clean ::
+	$(RM) *.o VerifySignature.exe

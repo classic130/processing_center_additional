@@ -1,0 +1,34 @@
+# $ VSSKTEMPLATEVERSION#1.0.0.2 $ downloadNS.fdf
+#
+#------------------------------------------------------------------------------
+#  NAME                     TYPE        REQUIREMENT    DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+issuerserial	TEXT	MANDATORY	NONE		NONE
+format		CLEAR	MANDATORY	NONE		NONE
+form_file	CLEAR	MANDATORY	NONE		NONE
+#
+remote_host     TEXT    OPTIONAL        NONE            NONE
+#
+# constants...
+#
+CONST           operation               download cert
+CONST           enroll_track            Netscape
+CONST           vs_status               Valid
+#
+# configurable constants
+#
+# VSSKBEGIN Global/System#4
+# VSSKEND Global/System#4
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+#---------------------------------------------------------------------
+# STATUS CODES
+#---------------------------------------------------------------------
+STATUS  10d		VSApps/error/MSkeygenerr.htm
+#
+# VSSKBEGIN Enrollment/CertStore#12
+# VSSKEND Enrollment/CertStore#12
+#
+

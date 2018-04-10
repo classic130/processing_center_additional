@@ -1,0 +1,556 @@
+<HTML>
+<HEAD>
+<TITLE>Transaction Signing Template</TITLE>
+<!-- VSSKTEMPLATEVERSION#1.2.5.7 -->
+
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/Mode#101 -->
+<!-- VSSKEND Global/Mode#101 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<SCRIPT LANGUAGE=JavaScript>
+var isRunningOnVista = 0
+
+function CheckIfVista()
+{
+  if (navigator.userAgent.indexOf("NT") >= 0 && navigator.userAgent.substr(navigator.userAgent.indexOf("NT")+3, 1) >=6)
+    isRunningOnVista = 1
+  else
+    isRunningOnVista = 0
+}
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<SCRIPT language=VBSCRIPT>
+  Dim strIssuerDN2
+</SCRIPT>
+
+<!-- VSSKBEGIN Global/System#20 -->
+<!-- VSSKEND Global/System#20 -->
+
+<SCRIPT language=VBSCRIPT>
+<!--
+  '-- VSSKBEGIN Global/Mode#29 --
+  '-- VSSKEND Global/Mode#29 --
+
+  Dim Win2KErrorUrl
+  Win2KErrorUrl = hostName & "/VSApps/error/win2k.htm"
+
+  ' get the various interfaces
+  Dim IVSProfMgmt
+  Dim IVSUIPrefs
+  Dim IVSCertPrefs
+  Dim IVSSrchCrit
+  Dim IVSSelectedID
+  Dim IVSRoamPrefs
+
+  On Error Resume Next
+  Set IVSProfMgmt = IVSPTA.IVSProfMgmt
+  If (Hex(err.number) = "1B6") Then
+         window.location = Win2KErrorUrl
+  End if
+  Set IVSUIPrefs = IVSPTA.IVSUIPrefs
+  Set IVSCertPrefs = IVSPTA.IVSCertPrefs
+  Set IVSSrchCrit = IVSPTA.IVSSrchCrit
+  Set IVSSelectedID = IVSPTA.IVSSelectedDigID
+  Set IVSRoamPrefs = IVSPTA.IVSRoamPrefs
+
+'--------------------------------------------------------
+
+  
+  Sub RenewDigitalID
+    Dim RenewUrl
+
+    RenewUrl = hostName & "/VSApps/client/userRenewalMS.htm"
+    window.navigate RenewUrl
+  End Sub
+  
+  Function SignUp
+    Dim EnrollUrl
+
+    '-- VSSKBEGIN Apps/KeyManager#10 --
+    '-- VSSKEND Apps/KeyManager#10 --
+    
+    EnrollUrl = hostName & "/VSApps/client/" & EnrollPage
+    window.navigate EnrollUrl
+  End Function
+
+  ' This sub will call the close method for the PTA 
+  Function CloseObjects (ErrorCode, Operation, WinErrorCode)
+    On Error Resume Next
+    IVSPTA.Close
+    if ( ErrorCode <> 0 ) then
+       Call SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", CheckErrorCodeMS(ErrorCode), WinErrorCode, Operation)
+       Exit Function
+    end if 
+    If ( err.number <> 0 ) then
+        Call SetErrorInfo("../fdf/VSApps/client/PTAv2Errors.fdf", 00000001, Hex(err.number), "IVSPTA.Close")
+        Exit Function
+    End If
+  End Function
+
+Sub pressedSignItNew	
+ Dim Choice
+ Dim SelExpDate
+ Dim ShortSelExpDate
+
+    '-- VSSKBEGIN Apps/PTAv2#1 --
+    '-- VSSKEND Apps/PTAv2#1 --
+
+ CheckIfVista()
+ if (isRunningOnVista = 0) then
+     setMessage()
+ else
+    setMessageVista()
+ End If
+
+ On Error Resume Next
+if(TPMEnabled = "CHECKED") then
+	boolTPMAvailable = IVSPTA.IsTPMAvailable 
+End If 
+
+ ' Initialize the PTA Object
+ On Error Resume Next
+
+ if(TPMEnabled = "CHECKED" And boolTPMAvailable = "True") then   
+	IVSPTA.Initialize strAppCtxtName,2   
+ else
+	 if (strCertStore = "1") then 
+		IVSPTA.Initialize strAppCtxtName,0
+	 else
+		IVSPTA.Initialize strAppCtxtName,1
+	 End If
+ End If
+ If ( err.number <> 0 ) then
+    Call CloseObjects(Hex(err.number), "Transaction Signing::IVSPTA.Initialize", Hex(err.number))
+    Exit Sub
+ End If
+
+ 'MsgBox "PTA Initialized"
+ 
+ 
+ ' Initialize the Search Criteria
+ On Error Resume Next
+If (firstSearch <> 1) then
+ If (Len(strIssuerDN) <> 0) then
+     IVSSrchCrit.IssuerDN = strIssuerDN
+     If ( err.number <> 0 ) then
+        Call CloseObjects(Hex(err.number), "Transaction Signing::IVSSrchCrit.IssuerDN", Hex(err.number))
+        Exit Sub
+     End If
+ End If
+Else
+ If (Len(strIssuerDN2) <> 0) then
+     IVSSrchCrit.IssuerDN = strIssuerDN2
+     If ( err.number <> 0 ) then
+        Call CloseObjects(Hex(err.number), "Transaction Signing::IVSSrchCrit.IssuerDN", Hex(err.number))
+        Exit Sub
+     End If
+ End If
+End If
+    
+ EXP_DATE_GREATER_THAN = &h20
+ EXP_DATE_EQUALTO      = &h10
+ EXP_DATE_LESS_THAN    = &h08
+ EFF_DATE_GREATER_THAN = &h04
+ EFF_DATE_EQUALTO      = &h02
+ EFF_DATE_LESS_THAN    = &h01
+
+ 'Initialize the Certificate Search Criterion "Date Equality"
+ On Error Resume Next
+ IVSSrchCrit.DateEquality = EXP_DATE_GREATER_THAN
+ If ( err.number <> 0 ) then
+	Call CloseObjects(Hex(err.number), "Transaction Signing::IVSSrchCrit.DateEquality", Hex(err.number))
+    Exit Sub
+ End If
+
+ ' Initialize the Certificate Search Criterion "Expiry Date"
+ ' to the CURRENT DATE.
+ StartDate = CDate(Date)
+ ShortStartDate = CDate(StartDate)
+
+ 
+ On Error Resume Next
+ IVSSrchCrit.ExpDate = ShortStartDate
+ If ( err.number <> 0 ) then
+	Call CloseObjects(Hex(err.number), "Transaction Signing::IVSSrchCrit.ExpDate", Hex(err.number))
+    Exit Sub
+ End If
+    
+ Dim boolRenewed 
+ boolRenewed = CBool(0)
+ ' Set flag to show only certs that have NOT been marked as RENEWED
+ On Error Resume Next
+ IVSSrchCrit.Renewed = boolRenewed
+ If ( err.number <> 0 ) then
+    Call CloseObjects(Hex(err.number), "Transaction Signing::IVSSrchCrit.Renewed", Hex(err.number))
+    Exit Sub
+ End If
+ 
+ 
+ ' Initialize the open profile preferences
+ if (strCertStore = "1") then
+     On Error Resume Next
+     If (Len(strSignChooseTitle) <> 0) then
+        IVSUIPrefs.OpenProf_Title = strSignChooseTitle
+        If ( err.number <> 0 ) then
+            Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.OpenProf_Title", Hex(err.number))
+            Exit Sub
+        End If
+     End If
+
+     On Error Resume Next
+     If (Len(strSignChooseText) <> 0) then
+       IVSUIPrefs.OpenProf_Text = strSignChooseText
+       If ( err.number <> 0 ) then
+           Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.OpenProf_Text", Hex(err.number))
+           Exit Sub
+       End If
+     End If
+		
+     On Error Resume Next
+     If (Len(strLoginChooseHelpUrl) <> 0) then
+        IVSUIPrefs.OpenProf_HelpUrl = strLoginChooseHelpUrl
+        If ( err.number <> 0 ) then
+          Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.OpenProf_HelpUrl", Hex(err.number))
+          Exit Sub
+        End If
+     End If
+
+     On Error Resume Next
+     If (Len(strUnLockHelpUrl) <> 0) then
+        IVSUIPrefs.Timeout_HelpUrl = strUnLockHelpUrl
+        If ( err.number <> 0 ) then
+          Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.Timeout_HelpUrl", Hex(err.number))
+          Exit Sub
+        End If
+     End If
+		
+     'Flags
+     OPENPROF_OPEN_ONLY = CInt(529)
+     On Error Resume Next
+     IVSProfMgmt.OpenProfFlags = OPENPROF_OPEN_ONLY
+     If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+       Call CloseObjects(Hex(err.number), "Transaction Signing::IVSProfMgmt.OpenProfFlags", Hex(err.number))
+       Exit Sub
+     End If
+
+    
+     '-- VSSKBEGIN Apps/PTAv2/Roaming#3 --
+     '-- VSSKEND Apps/PTAv2/Roaming#3 --
+ End If
+ 
+ ' Initialize the login wizard title 
+ On Error Resume Next
+ If (Len(strSignWizardTitle) <> 0) then 
+    IVSUIPrefs.SgnDlg_Title = strSignWizardTitle
+    If ( err.number <> 0 ) then
+      Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.SgnDlg_Title", Hex(err.number))
+      Exit Sub
+    End If
+ End If
+ 
+ On Error Resume Next
+ If (Len(strAppLogoUrl) <> 0) then
+     IVSUIPrefs.UILogoUrl = strAppLogoUrl
+     If ( err.number <> 0 ) then
+        Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.LogoUrl", Hex(err.number))
+        Exit Sub
+     End If 
+ End If
+	
+
+ On Error Resume Next
+ If (Len(strAffiliateLogoUrl) <> 0 And strAffiliateLogoUrl <> "VeriSign") then
+     IVSPTA.AffLogoUrl = strAffiliateLogoUrl
+     If ( err.number <> 0 And err.number <> &h800010c4 ) then
+           Call CloseObjects(Hex(err.number), "Transaction Signing::IVSPTA.AffLogoUrl", Hex(err.number))
+		   Exit Sub
+     End If
+ End If
+
+ On Error Resume Next
+ If (Len(strSignHelpUrl) <> 0) then
+    IVSUIPrefs.SelID_HelpUrl = strSignChooseHelpUrl
+    If ( err.number <> 0 ) then
+       Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.SelID_HelpUrl", Hex(err.number))
+       Exit Sub
+    End If
+ End If
+
+ On Error Resume Next
+ If (Len(strReviewHelpUrl) <> 0) then
+    IVSUIPrefs.RvwMsg_HelpUrl = strReviewHelpUrl
+    If ( err.number <> 0 ) then
+       Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.RvwMsg_HelpUrl", Hex(err.number))
+       Exit Sub
+    End If
+ End If
+    
+' set the 2 dialog texts and titles.
+' set the select id preferences
+On Error Resume Next
+If (Len(strSignTitle) <> 0) then 
+    IVSUIPrefs.SelID_Title = strSignTitle
+    If ( err.number <> 0 ) then
+       Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.SelID_Title", Hex(err.number))
+       Exit Sub
+    End If 
+End If
+
+On Error Resume Next
+If (Len(strSignText) <> 0) then 
+    IVSUIPrefs.SelID_Text = strSignText
+    If ( err.number <> 0 ) then
+        Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.SelID_Text", Hex(err.number))             
+        Exit Sub
+    End If
+End If
+
+' set the review message preferences
+On Error Resume Next
+If (Len(strReviewTitle) <> 0) then 
+    IVSUIPrefs.RvwMsg_Title = strReviewTitle
+    If ( err.number <> 0 ) then
+       Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.RvwMsg_Title", Hex(err.number))
+       Exit Sub
+    End If 
+End If
+
+On Error Resume Next
+If (Len(strReviewText) <> 0) then 
+    IVSUIPrefs.RvwMsg_Text = strReviewText
+    If ( err.number <> 0 ) then
+        Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.RvwMsg_Text", Hex(err.number))
+        Exit Sub
+    End If
+End If
+
+On Error Resume Next
+IVSUIPrefs.SelID_OKBtnText = CInt(122)
+if (err.number <> 0) then
+    Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.SelID_OKBtnText", Hex(err.number))
+    Exit Sub
+End If
+    
+On Error Resume Next
+IVSUIPrefs.RvwMsg_OKBtnText = CInt(123)
+if (err.number <> 0) then
+    Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.RvwMsg_OKBtnText", Hex(err.number))
+    Exit Sub
+End If
+
+Dim boolShowDef
+boolShowDef = CBool(0)
+On Error Resume Next
+IVSUIPrefs.SelID_ShowDefChkBox = boolShowDef
+If ( err.number <> 0 ) then
+    Call CloseObjects(Hex(err.number), "Transaction Signing::IVSUIPrefs.SelID_ShowDefChkBox", Hex(err.number))
+    Exit Sub
+End If
+
+MD5 = 3
+SHA1 = 4 
+		
+' Some special error codes returned by the Sign function
+'VS_DEFAULT_SELECTED	=	&h80000003
+'VS_NO_MATCHES	=	&h80000004
+'VS_NO_CERT_SEL	=	&h80000005
+'VS_CERT_SELECTED	=	&h80000006
+VS_CERTNOMATCHCRIT = &h80001095
+VS_CERTMATCHBUTEXP = &h80001096
+VS_PROFDOESNOTEXIST = &h8000102B
+VS_SUCCESS = &h00000000
+VS_USER_CANCELLED = &h80001067
+VS_CERTNOTFOUND = &h80001091
+VS_HTMLMSG_DEF_COLORDIFF = &h8000110C
+
+On Error Resume Next
+'This is required only for TPM mode but doesn't impact other modes.
+'Adding this line doesn't change the user interaction.
+IVSPTA.SelIDForTrans()
+'If (err.number <> 0) then
+'  Call CloseObjects(Hex(err.number), "Login::IVSPTA.SelIDForChallenge", Hex(err.number))
+'Exit Sub
+'End If
+
+
+'-- VSSKBEGIN Enrollment/CharEncoding#6 --
+'-- VSSKEND Enrollment/CharEncoding#6 --
+
+On Error Resume Next
+Signature = IVSPTA.SignTransaction(Msgg, CInt(SHA1))
+'If (err.number <> 0) then
+'  Call CloseObjects(Hex(err.number), "Transaction Signing::IVSPTA.SignTransaction", Hex(err.number))
+'  Exit Sub
+'End If
+		
+' some special handling needs to be done.
+If ( err.number <> 0 )then
+   If (err.number = VS_HTMLMSG_DEF_COLORDIFF ) then 
+       errString = "Your browser settings prevent us from displaying your transaction" & vbCRLF & _
+                   "Please change your default color settings for Internet Explorer" & vbCRLF & _
+                   "try again."
+       Call MsgBox (errString, 48, "Transaction Signing Error")
+       Call CloseObjects(0, "", 0)
+       Exit Sub
+   End If 
+
+   If (err.number = VS_CERTMATCHBUTEXP) then
+       errString = "You do not have a valid Digital ID." &vbCRLF &_
+                   "Now the PTA will try to renew your expired Digital IDs."
+       Call MsgBox (errString, 48, "Transaction Signing Error")
+       Call CloseObjects(0, "", 0)
+       RenewDigitalID()       
+       Exit Sub
+   Else
+       If ((err.number = VS_CERTNOMATCHCRIT) Or (err.number = VS_PROFDOESNOTEXIST)Or (err.number = VS_CERTNOTFOUND)) then
+         If ( firstSearch <> 1 ) then
+          firstSearch = 1
+          Call pressedSignItNew
+          Exit Sub
+         Else
+          Call CloseObjects(0, "", 0)
+          errString = "You do not have a valid Digital ID." &vbCRLF & _
+                      "Would you like to enroll for a Digital ID at this time?"
+          Choice = MsgBox (errString, 52, "Transaction Signing")
+          if ( 6 = Choice ) then
+              SignUp()
+          end if 
+          Exit Sub 
+         End If
+       Else 
+           If (err.number = VS_USER_CANCELLED) then 				
+               errString = "You have cancelled the operation." & vbCRLF & _
+                           "Please click submit again to continue"                    
+               Call MsgBox (errString, 48, "Transaction Signing Error")
+               Call CloseObjects(0, "", 0)
+               Exit Sub
+              
+           Else        
+               Call CloseObjects(Hex(err.number), "Transaction Signing::IVSPTA.SignTransaction", Hex(err.number))
+               Exit Sub
+           End If
+       End If
+   End If
+End If 
+	    
+Call CloseObjects(0, "", 0)
+document.theform.dataToSign.value = Msgg
+document.theform.dataSignature.value = Signature
+document.theform.submit
+End Sub
+'-->
+</SCRIPT>
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<FORM action=../protected-cgi/sophialite.exe method=post name=theform>
+
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=TOP>
+<FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Transfer Funds</B></FONT></TD>
+</TABLE>
+
+<TABLE WIDTH=588 BGCOLOR="ffffcc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+      <TD WIDTH=588>
+<FONT SIZE=2 FACE="verdana, arial, helvetica"><B>Transaction Details</B></FONT><BR><P>
+<CENTER>
+        
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffffcc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Transfer($)</B></FONT></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">From</TD>               
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">To</TD>             
+</TR>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffcc00"><INPUT maxLength=12 name=MyMessage onblur=setMessage() size=12></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=from onchange=setFromTo() size=1> 
+    <OPTION selected>Money Market
+    <OPTION>Cash
+    <OPTION>Mutual Fund
+    </OPTION>
+ </SELECT>
+</TD>               
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=to onchange=setFromTo() size=1> 
+   <OPTION>Money Market
+   <OPTION selected>Cash
+   <OPTION>Mutual Fund</OPTION>
+ </SELECT> 
+</TD>             
+</TR>
+
+<TR>
+<TD COLSPAN=2 WIDTH=100% BGCOLOR="ffffcc"><INPUT name=SignIt onclick=pressedSignItNew() type=button value="Submit Transfer">  </TD>             
+</TR>
+
+
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+<P><BR><P>
+
+<INPUT TYPE="hidden" NAME="form_file" VALUE="../fdf/rsaverify.fdf">
+<INPUT name=dataSignature type=hidden> <INPUT name=dataToSign type=hidden> 
+</FORM>
+
+<SCRIPT language=javascript>
+
+function setMessageVista ()
+{
+Msgg = "Transfer Funds Request " +" TRANSFER FROM " + ".........." +
+document.theform.from[document.theform.from.selectedIndex].text +" TRANSFER TO " +
+".........." + document.theform.to[document.theform.to.selectedIndex].text+ ".........." +
+document.theform.MyMessage.value +
+"I am authorizing the transfer of the above funds by digitally signing this request.";
+}
+
+function setMessage ()
+{
+//		Msgg = document.theform.MyMessage.value + "," + document.theform.from[document.theform.from.selectedIndex].text + "," + document.theform.to[document.theform.to.selectedIndex].text;
+Msgg = "<table width=100%>" +
+"<TR align=center><TH COLSPAN=3>Transfer Funds Request</TH></TR>" +
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">TRANSFER FROM</FONT></TD>" + 
+	"<TD>..........</TD>" + 
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.from[document.theform.from.selectedIndex].text + "</B></FONT></TD>" +
+"</TR>"+
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">TRANSFER TO</FONT></TD>" + 
+	"<TD>..........</TD>" + 
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.to[document.theform.to.selectedIndex].text+ "</B></FONT></TD>" +
+"</TR>"+
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">AMOUNT</FONT></TD>" + 
+	"<TD>..........</TD>" + 
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.MyMessage.value+ "</B></FONT></TD>" +
+"</TR>"+
+"</table>"+
+"<BR>" + 
+"I am authorizing the transfer of the above funds <B>by digitally signing </B> this request.";
+}
+
+function setFromTo()
+{
+parent.theFrom = document.theform.from[document.theform.from.selectedIndex].text
+parent.theTo = document.theform.to[document.theform.to.selectedIndex].text
+
+}
+</SCRIPT>
+</P></BODY></HTML>

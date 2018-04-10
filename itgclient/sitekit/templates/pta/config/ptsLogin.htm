@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<!-- 
+
+** VSSKTEMPLATEVERSION#1.0.0.3 **
+-->
+<TITLE>
+   Login
+</TITLE>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+  //-- VSSKBEGIN Global/Mode#30 --
+  //-- VSSKEND Global/Mode#30 --
+
+  //-- VSSKBEGIN Apps/KeyManager#16 --
+  //-- VSSKEND Apps/KeyManager#16 --
+
+  //-- VSSKBEGIN Apps/GSE#36 --
+  //-- VSSKEND Apps/GSE#36 --
+
+
+ function CheckReasonCode()
+  {
+    // The script variable "reasonCode" gets assigned a value through the 
+    // Java Script prepended by NSAPI Filter when the Login Page
+    // is sent to the browser.
+
+    if ( reasonCode.search(/expired/i) == 0 )
+    {
+      // This could be because either Inactivity or Absolute timeout.
+      document.write("<br><FONT SIZE=4 COLOR=RED><CENTER>Timeout ...</CENTER></FONT><br>") ;
+    }
+    else if ( reasonCode.search(/login/i) == -1 )
+    {
+      document.write("<br><FONT SIZE=4 COLOR=RED><CENTER>Unknown Error Occured ...</CENTER></FONT><br>") ;
+    }
+  }
+
+  function SignIt()
+   {
+      document.theform.Challenge.value = toSign;
+      var thisHost = window.location.host;
+      document.theform.ChallengePostURL.value = "https://" + thisHost + "/vsadmin/post";	   
+      if (digestAlg == "MD5") 
+         document.theform.SignHashAlg.value="MD5";
+      else
+         document.theform.SignHashAlg.value="SHA";
+
+     if ( ExchangeIntegration == 0 && KeyManagerIntegration == 0)
+	document.theform.CheckForRenew.value="true";
+     else 
+	document.theform.CheckForRenew.value="false";
+
+      document.theform.submit();  
+   }
+
+  function SignUp()
+  {
+    var EnrollUrl;
+    EnrollPage = "userEnrollPTS.htm";
+    EnrollUrl = hostName + "/VSApps/client/" + EnrollPage;
+    self.location = EnrollUrl;
+  }
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+  CheckReasonCode() ;
+</SCRIPT>
+
+<!-- Note to PTA Administrators -->
+<!-- You can customize the HTML below this point to have your own look and feel -->
+<!-- However you need to maintain the FORM tags and various form variable tags as they are -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#2 -->
+<!-- VSSKEND Apps/PersonalTrustService#2 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#9 -->
+<!-- VSSKEND Apps/PersonalTrustService#9 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#10 -->
+<!-- VSSKEND Apps/PersonalTrustService#10 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#21 -->
+<!-- VSSKEND Apps/PersonalTrustService#21 -->
+
+<!-- VSSKBEGIN Apps/PersonalTrustService#22 -->
+<!-- VSSKEND Apps/PersonalTrustService#22 -->
+
+<INPUT type="hidden" name="Action" value="SignChallenge"> 
+<INPUT type="hidden" name="Challenge"> 
+<INPUT type="hidden" name="ChallengePostURL" value=""> 
+<INPUT TYPE="hidden" NAME="CheckForRenew" VALUE="true">
+
+<INPUT TYPE="hidden" name="SignUpText" value="Sign Up">
+<INPUT TYPE="hidden" name="SignUpUrl" value="">
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="590" >
+  <TR ALIGN=LEFT VALIGN=TOP>
+    <TD WIDTH="328">
+        <BR>&nbsp;
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        To access the protected pages, click Login.
+        </FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME=Login VALUE="LOGIN" onClick="SignIt()" LANGUAGE="JavaScript">
+        <!--
+        <INPUT TYPE=checkbox NAME=ResetPref> Check this box to ignore your preferences.
+        -->
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        If you do not have a Digital ID you can Sign Up Now!</FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME="Sign Up" VALUE="Sign Up" onClick="SignUp()">
+    </TD>
+  </TR>
+</TABLE>
+</FORM>
+
+<HR WIDTH=100%>
+
+</BODY>
+</HTML>
+
+<SCRIPT LANGUAGE="JavaScript">
+    document.theform.SignUpUrl.value= hostName + "/VSApps/client/userEnrollPTS.htm" ;  
+</SCRIPT>

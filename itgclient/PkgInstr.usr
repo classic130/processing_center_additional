@@ -1,0 +1,14 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'sitekit',
+            'packager',
+            'server',
+            'thirdparty',
+            'cdimage',
+            'client'
+          ],
+          'itgclient',
+          'build/log/VerArchive'
+        ];

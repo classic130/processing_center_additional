@@ -1,0 +1,12 @@
+LIBRARY     VSSafe
+
+DESCRIPTION "Safe Name Space Extension"
+
+EXPORTS
+   DoOpenLink
+   EncryptAtLogoff
+   DllCanUnloadNow   PRIVATE
+   DllGetClassObject PRIVATE
+   DllRegisterServer PRIVATE
+   DllUnregisterServer PRIVATE
+   

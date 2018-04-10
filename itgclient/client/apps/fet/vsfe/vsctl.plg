@@ -1,0 +1,198 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: vsctl - Win32 Release MinDependency--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "midl.exe /tlb ".\vsctl.tlb" /h "vsctl.h" /iid "vsctl_i.c" /Oicf "D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\vsctl.idl""
+Creating command line "rc.exe /l 0x409 /fo"ReleaseMinDependency/vsctl.res" /i "res" /d "NDEBUG" "D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\res\vsctl.rc"" 
+Creating temporary file "D:\TEMP\RSP2F1.tmp" with contents
+[
+/nologo /MT /W3 /O1 /I "res" /I "h" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /FR"ReleaseMinDependency/" /Fp"ReleaseMinDependency/vsctl.pch" /Yu"stdafx.h" /Fo"ReleaseMinDependency/" /Fd"ReleaseMinDependency/" /FD /c 
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\certmgmt.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ClsFact.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ContMenu.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\cryptsup.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\DataObj.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\dlgprocs.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\DropSrc.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\Droptgt.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\encdeclist.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\Enumidl.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ExtrIcon.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\PidlMgr.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\policysup.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\safedel.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ShlFldr.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ShlView.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\slist.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\util.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\Viewlist.Cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vscontainer.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\vsctl.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\vsctrl.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vsnvp.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vsnvp_file.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vspmsp.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vspmutil.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vspolicyfile.cpp"
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vssafe.cpp"
+]
+Creating command line "cl.exe @D:\TEMP\RSP2F1.tmp" 
+Creating temporary file "D:\TEMP\RSP2F2.tmp" with contents
+[
+/nologo /MT /W3 /O1 /I "res" /I "h" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /FR"ReleaseMinDependency/" /Fp"ReleaseMinDependency/vsctl.pch" /Yc"stdafx.h" /Fo"ReleaseMinDependency/" /Fd"ReleaseMinDependency/" /FD /c 
+"D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\StdAfx.cpp"
+]
+Creating command line "cl.exe @D:\TEMP\RSP2F2.tmp" 
+Creating temporary file "D:\TEMP\RSP2F3.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib comctl32.lib crypt32.lib urlmon.lib version.lib wininet.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"ReleaseMinDependency/vsfe.pdb" /machine:I386 /def:".\vsctl.def" /out:"releasemindependency/vsfe.dll" /implib:"ReleaseMinDependency/vsfe.lib" 
+.\ReleaseMinDependency\certmgmt.obj
+.\ReleaseMinDependency\ClsFact.obj
+.\ReleaseMinDependency\ContMenu.obj
+.\ReleaseMinDependency\cryptsup.obj
+.\ReleaseMinDependency\DataObj.obj
+.\ReleaseMinDependency\dlgprocs.obj
+.\ReleaseMinDependency\DropSrc.obj
+.\ReleaseMinDependency\Droptgt.obj
+.\ReleaseMinDependency\encdeclist.obj
+.\ReleaseMinDependency\Enumidl.obj
+.\ReleaseMinDependency\ExtrIcon.obj
+.\ReleaseMinDependency\PidlMgr.obj
+.\ReleaseMinDependency\policysup.obj
+.\ReleaseMinDependency\safedel.obj
+.\ReleaseMinDependency\ShlFldr.obj
+.\ReleaseMinDependency\ShlView.obj
+.\ReleaseMinDependency\slist.obj
+.\ReleaseMinDependency\StdAfx.obj
+.\ReleaseMinDependency\util.obj
+.\ReleaseMinDependency\Viewlist.obj
+.\ReleaseMinDependency\vscontainer.obj
+.\ReleaseMinDependency\vsctl.obj
+.\ReleaseMinDependency\vsctrl.obj
+.\ReleaseMinDependency\vsnvp.obj
+.\ReleaseMinDependency\vsnvp_file.obj
+.\ReleaseMinDependency\vspmsp.obj
+.\ReleaseMinDependency\vspmutil.obj
+.\ReleaseMinDependency\vspolicyfile.obj
+.\ReleaseMinDependency\vssafe.obj
+.\ReleaseMinDependency\vsctl.res
+]
+Creating command line "link.exe @D:\TEMP\RSP2F3.tmp"
+<h3>Output Window</h3>
+Creating Type Library...
+Microsoft (R) MIDL Compiler Version 5.01.0164  
+Copyright (c) Microsoft Corp 1991-1997. All rights reserved.
+Processing D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\vsctl.idl
+vsctl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\oaidl.idl
+oaidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\objidl.idl
+objidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\unknwn.idl
+unknwn.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\wtypes.idl
+wtypes.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\ocidl.idl
+ocidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\oleidl.idl
+oleidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\servprov.idl
+servprov.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\urlmon.idl
+urlmon.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\msxml.idl
+msxml.idl
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+certmgmt.cpp
+D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\certmgmt.cpp(72) : warning C4102: 'Select' : unreferenced label
+ClsFact.Cpp
+ContMenu.Cpp
+cryptsup.cpp
+DataObj.Cpp
+dlgprocs.cpp
+DropSrc.Cpp
+Droptgt.Cpp
+encdeclist.cpp
+Generating Code...
+D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ContMenu.Cpp(467) : warning C4700: local variable 'hMem' used without having been initialized
+D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ContMenu.Cpp(475) : warning C4700: local variable 'pView' used without having been initialized
+Compiling...
+Enumidl.Cpp
+ExtrIcon.Cpp
+PidlMgr.Cpp
+policysup.cpp
+safedel.cpp
+ShlFldr.Cpp
+D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\ShlFldr.Cpp(1250) : warning C4101: 'szData' : unreferenced local variable
+ShlView.Cpp
+slist.cpp
+util.cpp
+Generating Code...
+Compiling...
+Viewlist.Cpp
+vscontainer.cpp
+vsctl.cpp
+vsctrl.cpp
+vsnvp.cpp
+D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vsnvp.cpp(333) : warning C4101: 'i' : unreferenced local variable
+vsnvp_file.cpp
+vspmsp.cpp
+vspmutil.cpp
+vspolicyfile.cpp
+Generating Code...
+Compiling...
+vssafe.cpp
+D:\work\wasim_022300\itgclient\client\apps\fet\vsfe\src\vssafe.cpp(460) : warning C4101: 'szData' : unreferenced local variable
+Generating Code...
+Linking...
+   Creating library ReleaseMinDependency/vsfe.lib and object ReleaseMinDependency/vsfe.exp
+Creating temporary file "D:\TEMP\RSP301.tmp" with contents
+[
+/nologo /o"ReleaseMinDependency/vsctl.bsc" 
+.\ReleaseMinDependency\StdAfx.sbr
+.\ReleaseMinDependency\certmgmt.sbr
+.\ReleaseMinDependency\ClsFact.sbr
+.\ReleaseMinDependency\ContMenu.sbr
+.\ReleaseMinDependency\cryptsup.sbr
+.\ReleaseMinDependency\DataObj.sbr
+.\ReleaseMinDependency\dlgprocs.sbr
+.\ReleaseMinDependency\DropSrc.sbr
+.\ReleaseMinDependency\Droptgt.sbr
+.\ReleaseMinDependency\encdeclist.sbr
+.\ReleaseMinDependency\Enumidl.sbr
+.\ReleaseMinDependency\ExtrIcon.sbr
+.\ReleaseMinDependency\PidlMgr.sbr
+.\ReleaseMinDependency\policysup.sbr
+.\ReleaseMinDependency\safedel.sbr
+.\ReleaseMinDependency\ShlFldr.sbr
+.\ReleaseMinDependency\ShlView.sbr
+.\ReleaseMinDependency\slist.sbr
+.\ReleaseMinDependency\util.sbr
+.\ReleaseMinDependency\Viewlist.sbr
+.\ReleaseMinDependency\vscontainer.sbr
+.\ReleaseMinDependency\vsctl.sbr
+.\ReleaseMinDependency\vsctrl.sbr
+.\ReleaseMinDependency\vsnvp.sbr
+.\ReleaseMinDependency\vsnvp_file.sbr
+.\ReleaseMinDependency\vspmsp.sbr
+.\ReleaseMinDependency\vspmutil.sbr
+.\ReleaseMinDependency\vspolicyfile.sbr
+.\ReleaseMinDependency\vssafe.sbr]
+Creating command line "bscmake.exe @D:\TEMP\RSP301.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+vsfe.dll - 0 error(s), 6 warning(s)
+</pre>
+</body>
+</html>

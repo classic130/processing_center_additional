@@ -1,0 +1,1 @@
+strIssuerDN2="%%::ptaIssuerDN%%"

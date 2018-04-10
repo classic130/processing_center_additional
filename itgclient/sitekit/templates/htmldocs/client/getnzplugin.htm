@@ -1,0 +1,148 @@
+<!-- $ VSSKTEMPLATEVERSION#1.0.2.1 $ getnzplugin.htm
+
+-->
+<HTML>
+<HEAD>
+<TITLE>Digital Notarization Plugin Download</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<script language="javascript">
+<!--
+function getPlugins()
+{
+   var Result;
+   //alert ("calling smart update script");
+   if ( navigator.javaEnabled() ) {
+        trigger = netscape.softupdate.Trigger;
+        if ( trigger.UpdateEnabled() ) {
+            if (navigator.platform == "Win32") {
+               vi = new netscape.softupdate.VersionInfo(3, 0, 0, 3);
+               //-- VSSKBEGIN Global/Mode#117 --
+               //-- VSSKEND Global/Mode#117 --
+
+	       if (Result == false) alert ("The plug-in is installed.\nClick Continue to resume operation.");
+      }
+      else alert("This plug-in only runs on Windows NT/95.");
+   }
+   else
+      alert("Enable SmartUpdate before running this script.");
+}
+else 
+   alert("Enable Java before running this script.");
+}
+
+function ContinueInstall()
+{
+    self.location=document.referrer;
+}
+//-->
+</script>
+</HEAD>
+
+<BODY BGCOLOR="#ffffff" LINK="#cc0000" vlink="#666666">
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE="0" VSPACE="0">
+<TR>
+        <TD WIDTH=600 ALIGN=middle valign=bottom colspan=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=middle><IMG alt=Logo height=63 src="../graphics/logo_1.gif" width=100></TD>
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD>
+        <TD WIDTH=358 ALIGN=middle><IMG alt="Services Header" border=0 height=47 src="../graphics/hd_services.gif" width=350 ></TD>  
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD>
+        <TD WIDTH=120 ALIGN=middle><IMG alt="" src="../graphics/logo_2.gif"></TD>
+</TR>
+<TR>
+        <TD WIDTH=600 ALIGN=middle VALIGN=top COLSPAN=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+
+<P>
+
+<!--PAGE TITLE AND DIRECTIONS-->
+<TABLE WIDTH=588 BGCOLOR="#ffffff" CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588 colspan=7><FONT COLOR="#0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Download the Symantec Digital Notarization plugin</B></FONT><BR></TD>
+</TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+<P>
+<TABLE WIDTH=588 CELLPADDING=6 CELLSPACING=0 BORDER=0>
+<TR>
+  <TD BGCOLOR="#cccccc">
+  <CENTER>
+  <TABLE WIDTH=574 CELLPADDING=2 CELLSPACING=0 BORDER=0 BGCOLOR="#ffffcc">
+  <TR>
+  <TD><FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>
+    <OL>
+        <LI><B> Download the Plugin</B><br> Click 
+              on&nbsp;<STRONG>Download</STRONG> below to download the Plugin. You will 
+              see a Firefox Java Security dialog box. 
+             Click the <B>Grant</B> Button (as shown below) to install the plugin.
+              <BR><P><BR><IMG align=middle 
+              alt="Smart Update dialog box" 
+              src="../graphics/ns_smart.gif">           
+             <BR><P><BR>
+             <CENTER>
+             <FORM><INPUT type=button value="Download" onclick=getPlugins()></FORM>
+             </CENTER>      
+   
+	<LI><B>Resume operation</B><BR>To complete the installation click the continue link below
+	<CENTER><FORM><INPUT type=button value="Continue" onclick=ContinueInstall()></FORM></CENTER>
+	</LI>
+	
+	<Script Language="JavaScript">
+	<!--
+	if ( navigator.userAgent.indexOf("Windows NT 5.0")>=1 || ( parseFloat(navigator.appVersion) < 4.7) ) {
+	    document.write("<P><LI><B>Windows 2000 and Plugin Download</B><BR>");
+	    document.write("If you are using Windows 2000 and do not have adequate privileges you");
+	    document.write(" might see the an error dialog similar to the one shown below.");
+	    if (parseFloat (navigator.appVersion) >= 4.77 ) {
+		document.write(" You might also experience the behavior that clicking the continue button does not take you to your previous operation.");
+	    }
+	    document.write("<BR><P><BR>");
+	    document.write("<CENTER>");
+	    if (parseFloat (navigator.appVersion) < 4.7 ) {
+	      document.write("<IMG align=middle alt=\"Netscape 4 Windows 2000 Error\"  src=\"../graphics/n4win2k.gif\">");
+	    } else {
+	      document.write("<IMG align=middle alt=\"Netscape 4 Windows 2000 Error\"  src=\"../graphics/n477win2k.gif\">");
+	    }
+	    document.write("</CENTER>");
+	    document.write("<BR><P><BR>"); 
+	    document.write("If you see this error, contact your system administrator and send the following link.");	     
+	    var thisUrl = window.location.href;
+	    var index = thisUrl.indexOf("VSApps");
+	    var win2kCenter = thisUrl.substring(0, index) + "VSApps/win2kCenter.htm";	   	     
+	    document.write("<CENTER><A HREF=\"" + win2kCenter + "\">" + win2kCenter + "</A></CENTER> ");
+	    document.write("This link contains information that your administrator can use to enable your machine ");
+	    document.write("with the necessary software.");
+	    document.write("</LI>");
+	}
+	//-->
+	</Script>         
+    </OL></FONT>  
+  </TD>
+  </TR>
+  </TABLE></CENTER>
+  </TD>
+</TR>
+</TABLE>
+<P>
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 >
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../graphics/logo_3.gif" ALT="Symantec Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO--></P>
+
+</BODY>
+</HTML>

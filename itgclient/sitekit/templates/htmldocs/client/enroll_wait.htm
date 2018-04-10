@@ -1,0 +1,127 @@
+<!-- $ VSSKTEMPLATEVERSION#1.0.0.2 $ htmldocs/client/enroll_wait.htm
+
+This file is used only in AutoAuth mode 
+# VSSKTEMPLATEVERSION#1.0.0.2 #
+-->
+<HTML>
+<HEAD>
+<TITLE>Microsoft end-user Enrollment</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+<script language="JavaScript">
+<!--
+function SubmitForm()
+{
+   document.proform.submit();
+}
+//-->
+</script>
+</HEAD>
+
+<BODY onLoad="SubmitForm()" BGCOLOR="ffffff" LINK="cc0000" VLINK="666666">
+
+<!-- If Exchange Integration is enabled, post to authsophialite.exe else to authsophia.exe -->
+<!-- VSSKBEGIN Apps/GSE#35 -->
+<!-- VSSKEND Apps/GSE#35 -->
+
+<input TYPE=hidden NAME=operation VALUE="$$operation$$">
+<input TYPE=hidden NAME=form_file VALUE="$$form_file$$">
+<INPUT TYPE=hidden NAME=public_key VALUE="$$public_key$$">
+
+<!-- VSSKBEGIN Enrollment/FirstName#5 -->
+<!-- VSSKEND Enrollment/FirstName#5 -->
+
+<!-- VSSKBEGIN Enrollment/LastName#5 -->
+<!-- VSSKEND Enrollment/LastName#5 -->
+
+<!-- VSSKBEGIN Enrollment/EMAIL#6 -->
+<!-- VSSKEND Enrollment/EMAIL#6 -->
+
+<!-- VSSKBEGIN Enrollment/PassCode#5 -->
+<!-- VSSKEND Enrollment/PassCode#5 -->
+
+<!-- VSSKBEGIN Enrollment/JobTitle#5 -->
+<!-- VSSKEND Enrollment/JobTitle#5 -->
+
+<!-- VSSKBEGIN Enrollment/EmpID#5 -->
+<!-- VSSKEND Enrollment/EmpID#5 -->
+
+<!-- VSSKBEGIN Enrollment/MailStop#5 -->
+<!-- VSSKEND Enrollment/MailStop#5 -->
+
+<!-- VSSKBEGIN Enrollment/Challenge#5 -->
+<!-- VSSKEND Enrollment/Challenge#5 -->
+
+<!-- VSSKBEGIN Enrollment/CertPublish#3 -->
+<!-- VSSKEND Enrollment/CertPublish#3 -->
+
+<!-- VSSKBEGIN Enrollment/Comments#3 -->
+<!-- VSSKEND Enrollment/Comments#3 -->
+
+<!-- VSSKBEGIN Enrollment/AddField4#5 -->
+<!-- VSSKEND Enrollment/AddField4#5 -->
+
+<!-- VSSKBEGIN Enrollment/AddField5#5 -->
+<!-- VSSKEND Enrollment/AddField5#5 -->
+
+<!-- VSSKBEGIN Enrollment/AddField6#5 -->
+<!-- VSSKEND Enrollment/AddField6#5 -->
+
+<!-- VSSKBEGIN Enrollment/Locality#5 -->
+<!-- VSSKEND Enrollment/Locality#5 -->
+
+<!-- VSSKBEGIN Enrollment/State#5 -->
+<!-- VSSKEND Enrollment/State#5 -->
+
+<!-- VSSKBEGIN Enrollment/Country#5 -->
+<!-- VSSKEND Enrollment/Country#5 -->
+
+<!-- VSSKBEGIN Enrollment/CertCorpCompany#5 -->
+<!-- VSSKEND Enrollment/CertCorpCompany#5 -->
+
+
+<!-- VSSKBEGIN Enrollment/CertOrgUnit#5 -->
+<!-- VSSKEND Enrollment/CertOrgUnit#5 -->
+
+<!-- VSSKBEGIN Enrollment/Rating#5 -->
+<!-- VSSKEND Enrollment/Rating#5 -->
+
+<!-- VSSKBEGIN Enrollment/KeyProtect#5 -->
+<!-- VSSKEND Enrollment/KeyProtect#5 -->
+
+<!-- 
+<input TYPE=hidden NAME=remote_host VALUE="$$remote_host$$">
+-->
+
+
+<input TYPE=hidden NAME=authenticate VALUE="$$authenticate$$">
+<input TYPE=hidden NAME=user_data_1 VALUE="$$user_data_1$$">
+<input TYPE=hidden NAME=user_data_2 VALUE="$$user_data_2$$">
+<input TYPE=hidden NAME=user_data_3 VALUE="$$user_data_3$$">
+<input TYPE=hidden NAME=user_data_4 VALUE="$$user_data_4$$">
+<input TYPE=hidden NAME=user_data_5 VALUE="$$user_data_5$$">
+
+<!-- VSSKBEGIN Apps/GSE#16 -->
+<!-- VSSKEND Apps/GSE#16 -->
+
+<!-- VSSKBEGIN Apps/GSE#18 -->
+<!-- VSSKEND Apps/GSE#18 -->
+
+<P><BR><P><P><BR><P>
+<CENTER>
+<TABLE WIDTH=588 BGCOLOR="ffffff" CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588 COLSPAN=7><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=+2><B>Please wait while the Digital ID is being
+	issued ... </b>
+        <font size=-1><br><br>NOTE: Do not close your browser during this time or you will not receive your Digital ID. Also, do not press <B>Stop</b> or <B>Refresh</b>.</FONT></TD>
+</TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+<P><BR><P>
+
+<IMG SRC="../VSApps/graphics/aniCert.gif" WIDTH=88 HEIGHT=70 BORDER=0 ALT="Issuing Digital ID">
+</CENTER>
+</form>
+</BODY>
+</HTML>

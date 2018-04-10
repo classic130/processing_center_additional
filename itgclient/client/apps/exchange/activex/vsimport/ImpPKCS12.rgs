@@ -1,0 +1,35 @@
+HKCR
+{
+	ImpPKCS12.ImpPKCS12.1 = s 'ImpPKCS12 Class'
+	{
+		CLSID = s '{B1D475FE-75CD-11D2-8301-0060B0B32E16}'
+		'Insertable'
+	}
+	ImpPKCS12.ImpPKCS12 = s 'ImpPKCS12 Class'
+	{
+		CurVer = s 'ImpPKCS12.ImpPKCS12.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B1D475FE-75CD-11D2-8301-0060B0B32E16} = s 'ImpPKCS12 Class'
+		{
+			ProgID = s 'ImpPKCS12.ImpPKCS12.1'
+			VersionIndependentProgID = s 'ImpPKCS12.ImpPKCS12'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Programmable'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{B1D475F0-75CD-11D2-8301-0060B0B32E16}'
+			'Version' = s '1.0'
+		}
+	}
+}

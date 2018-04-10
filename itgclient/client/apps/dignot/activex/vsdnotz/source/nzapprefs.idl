@@ -1,0 +1,14 @@
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(b358cc99-af8e-11d4-8c73-0010830169af),
+		dual,
+		helpstring("IVSNZAppPrefs Interface"),
+		pointer_default(unique)
+	]
+	interface IVSNZAppPrefs : IDispatch
+	{
+		[id(1), helpstring("method SetApplicationPreference")] HRESULT SetApplicationPreference(VARIANT* in_pvarAppName, VARIANT* in_pvarPrefName, VARIANT* in_pvarPrefValue);
+		[id(2), helpstring("method GetApplicationPreference")] HRESULT GetApplicationPreference(VARIANT* in_pvarAppName, VARIANT* in_pvarPrefName, VARIANT* o_pvarPrefType, [out,retval]VARIANT* o_pvarPrefValue);
+	};

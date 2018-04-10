@@ -1,0 +1,17 @@
+# Microsoft Developer Studio Generated Dependency File, included by valconfig.mak
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	
+
+.\valConfig.cpp : \
+	".\StdAfx.h"\
+	".\valConfig.h"\
+	".\valConfigDlg.h"\
+	
+
+.\valConfigDlg.cpp : \
+	".\StdAfx.h"\
+	".\valConfig.h"\
+	".\valConfigDlg.h"\
+	

@@ -1,0 +1,48 @@
+#include <olectl.h>
+// ImportPKCS12.idl : IDL source for ImportPKCS12.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ImportPKCS12.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	
+
+	[
+		object,
+		uuid(B1D475FD-75CD-11D2-8301-0060B0B32E16),
+		dual,
+		helpstring("IImpPKCS12 Interface"),
+		pointer_default(unique)
+	]
+	interface IImpPKCS12 : IDispatch
+	{
+		[id(1), helpstring("method Import")] HRESULT Import(VARIANT *i_pvarPKCS12, VARIANT *i_pvarPKCS7, VARIANT *o_pvarStatus, VARIANT * o_pvarErrorCode, VARIANT * o_pvarErrorCodeString);
+		[propget, id(2), helpstring("property KeyExportable")] HRESULT KeyExportable([out, retval] BOOL *pVal);
+		[propput, id(2), helpstring("property KeyExportable")] HRESULT KeyExportable([in] BOOL newVal);
+		[propget, id(3), helpstring("property ProviderName")] HRESULT ProviderName([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property ProviderName")] HRESULT ProviderName([in] BSTR newVal);
+		[propget, id(4), helpstring("property KeyUserProtected")] HRESULT KeyUserProtected([out, retval] BOOL *pVal);
+		[propput, id(4), helpstring("property KeyUserProtected")] HRESULT KeyUserProtected([in] BOOL newVal);
+	};
+[
+	uuid(B1D475F0-75CD-11D2-8301-0060B0B32E16),
+	version(1.0),
+	helpstring("ImportPKCS12 1.0 Type Library")
+]
+library IMPORTPKCS12Lib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(B1D475FE-75CD-11D2-8301-0060B0B32E16),
+		helpstring("ImpPKCS12 Class")
+	]
+	coclass ImpPKCS12
+	{
+		[default] interface IImpPKCS12;
+	};
+};
