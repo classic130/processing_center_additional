@@ -1,0 +1,75 @@
+
+What has been fixed?
+For MPKI v5.0, we only fixed shared libraries and static libraries.
+Standalone application "openssl" has not been checked in, so "openssl"
+application is not in sync with the libraries. 
+
+How to apply buffer overflow patch to openssl-0.9.6.c?
+1. untar openssl-0.9.6.c.tar on Solaris
+2. cd openssl-0.9.6.c
+3. run: patch -i openssl-0.9.6c-security.patch -p 0
+4. cd .. (back one directory)
+5. run: tar cvf openssl-0.9.6c-security.patch.tar openssl-0.9.6.c
+6. untar openssl-0.9.6c-security.patch.tar to the target operating system
+7. follow the README to do the build the ssl library.
+
+Note:
+   For HPUX, edit Makefile
+	add -L. to the linkage option of target "do_hpux-shared"
+   For WinNT, edit ms/ntdll.mak
+	add  "$(OBJ_D)\cryptlib.obj" to "SSLOBJ" list
+
+
+(Duplicate of README)
+
+          Information about this OpenSSL and this directory
+
+04/02/2002: MLP
+
+This directory contains OpenSSL package. We build binary files
+from source code, downloaded from www.openssl.org, and checkin
+binary files under this directory for each platform.
+
+  Source file: openssl-0.9.6c.tar
+ 
+Our build steps and options used in build commands follow these
+rules:
+
+  1. Build and install in builder's local directory $HOME/local/openssl
+  2. Multithread version is built
+  3. Both static and shared library are built
+  4. Assembly code is used in NT for better code performance
+  5. Cipher RC-5 and IDEA are not included to avoid patent issue. If these
+     are needed later, it should be rebuilt without option "no-rc5 no-idea".
+
+To build the binary again, refer to following commands for Unix:
+
+  % tar xvf openssl-0.9.6c.tar
+  % cd openssl-0.9.6c
+  % ./config --prefix=$HOME/local/openssl --openssldir=$HOME/local/openssl threads shared no-rc5 no-idea
+  % make
+  % make test
+  % make install
+
+You can then copy files from $HOME/local/openssl for output binary files and 
+header files.
+
+On Windows, we use VC++ 6.0 and Netwide Assembler (NASM) v0.98 (Downloaded
+from http://www.kernel.org/pub/software/devel/nasm/binaries/win32/) to build 
+both static and dynamic versions of openssl:
+
+  % tar xvf openssl-0.9.6c.tar
+  % cd openssl-0.9.6c
+  % perl Configure threads no-rc5 no-idea VC-32
+  % ms\do_nasm
+  % nmake -f ms\nt.mak
+  % nmake -f ms\ntdll.mak
+
+The output files are under "out32" for static library version, and 
+"out32dll" for dynamic library version. The header files are under
+"inc32".
+
+Warning: We experienced build failure when "Perl v5.6.1 built for cygwin-multi"
+         was used on Win2K; "Perl 5.003 built for NT" was used to build on Win2K.
+
+See http://www.openssl.org for documents.

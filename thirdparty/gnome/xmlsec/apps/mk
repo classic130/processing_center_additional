@@ -1,0 +1,8 @@
+#!/bin/ksh -x
+/usr/local/SUNWspro6.2//bin/CC -compat=4 -features=bool -xcg92 -KPIC -c -g \
+ -DHAVE_CONFIG_H -I. -I. -I.. -I../include -I/home/ohoang/work/aaa/thirdparty/openssl/sparc/include \
+ -I/home/ohoang/work/aaa/thirdparty/gnome/libxslt/include \
+ -I/home/ohoang/work/aaa/thirdparty/gnome/libxml2/include/libxml2 \
+ -g -DXMLSEC_DEBUG=1  -DXMLSEC_NO_AES=1 -DXMLSEC_NO_XPATHALT=1 -c xmlsec.c
+
+/usr/local/SUNWspro6.2//bin/CC -DXMLSEC_DEBUG=1 -DXMLSEC_NO_AES=1 -DXMLSEC_NO_XPATHALT=1 -o xmlsec xmlsec.o ../src/.libs/libxmlsec.a -L/home/ohoang/work/aaa/thirdparty/openssl/sparc/lib -lcrypto -L/home/ohoang/work/aaa/thirdparty/gnome/libxslt/sparc/lib -L/home/ohoang/work/aaa/thirdparty/gnome/libxml2/sparc/lib -lxslt -lxml2 -lz -lpthread -lsocket -lnsl -lm -lxml2 -lz -lpthread -lm -lsocket -lnsl /home/ohoang/work/aaa/thirdparty/openssl/sparc/lib/libcrypto.a -L/home/ohoang/work/aaa/thirdparty/gnome/libxslt/sparc/lib -L/home/ohoang/work/aaa/thirdparty/gnome/libxml2/sparc/lib -lxslt -lxml2 -lz -lpthread -lsocket -lnsl -lm -L/home/ohoang/work/aaa/thirdparty/gnome/libxml2/sparc/lib -lxml2 -lz -lpthread -lm -lsocket -lnsl -R/home/ohoang/work/aaa/thirdparty/gnome/libxslt/sparc/lib -R/home/ohoang/work/aaa/thirdparty/gnome/libxml2/sparc/lib -R/home/ohoang/work/aaa/thirdparty/gnome/libxslt/sparc/lib -R/home/ohoang/work/aaa/thirdparty/gnome/libxml2/sparc/lib

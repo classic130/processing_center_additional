@@ -1,0 +1,12 @@
+prefix=/home/jlancelle/work/extlib/sparc/libxml2-2.4.26
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+
+Name: libXML
+Version: 2.4.26
+Description: libXML library version2.
+Requires:
+Libs: -L${libdir} -lxml2 -lpthread -lz -lm -lsocket -lnsl 
+Cflags: -I${includedir}/libxml2 

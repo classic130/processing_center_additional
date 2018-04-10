@@ -1,0 +1,117 @@
+#
+# ***********************************************************************
+#            HTTP Request Authentication Example Build Notes
+# ***********************************************************************
+#
+# Select the OS you wish to build and modify the OS common parameters
+# below. To do this replace all occurrences of the placeholder "__BUILDID__"
+# with the one of the following build environment target identifiers:
+#
+#	SOLARIS  	- Solaris 2.6+
+#	AIX_43x		- AIX 4.3.x.
+#	HPUX_11   	- HP-UX 11.00 
+#
+# BUILD VARIABLES:
+#
+#	TARGET	: the name of the built mapper binary
+#	LIBS	: libraries needed for linking
+#	CFLAGS	: C flags to build C files
+#	LFLAGS	: link flags to pass to the linker
+#	IFLAGS  : flags to pass to the idl compiler
+#	DCFLAGS	: flags to turn on C compiler debug information
+#	DLFLAGS	: flags to turn on C linker debug information
+#	O_EXT	: the extension of an object module
+#	DELETE	: program used to delete files when "cleaning"
+#	CC	: program called to build C/C++ files
+#	LD	: program called to link C/C++ files
+#       LINK_DLL: program called to link a dynamically loaded library
+#
+
+
+#
+# Solaris 2.6+
+#
+SOLARIS_TARGET   =libxauthn.so
+SOLARIS_LIBS     =-lpdxauthn 
+SOLARIS_CFLAGS   =-mt -I. -I../include 
+SOLARIS_LFLAGS   =-mt -L../lib
+SOLARIS_DCFLAGS  =##-g
+SOLARIS_DLFLAGS  =##-g
+SOLARIS_CC       =cc
+SOLARIS_LD       =cc
+SOLARIS_LINK_DLL =cc -G
+SOLARIS_DELETE   =rm -f
+SOLARIS_O_EXT    =o
+
+
+# AIX 4.3.x
+AIX_43x_TARGET  =libxauthn.a
+AIX_43x_LIBS	=-lpdxauthn. -lipdauthn
+AIX_43x_CFLAGS  =-w -I. -I../include
+AIX_43x_LFLAGS  =-L../lib -L/opt/PolicyDirector/lib
+AIX_43x_DCFLAGS =##-g
+AIX_43x_DLFLAGS =##-g
+AIX_43x_CC      =xlC_r
+AIX_43x_LD      =xlC_r
+AIX_43x_LINK_DLL=makeC++SharedLib_r -p 2000 -bh:5 -blibpath:/usr/lib:/lib -bnoipath
+AIX_43x_DELETE  =rm -f
+AIX_43x_O_EXT   =o
+
+#
+# HPUX 11.00
+#
+HP_TARGET   =libxauthn.sl
+HP_LIBS	    =-lpdxauthn
+HP_CFLAGS   =+Z -I. -I../include
+HP_LFLAGS   =-L../lib
+HP_DCFLAGS  =##-g
+HP_DLFLAGS  =##-g
+HP_CC	    =cc
+HP_LINK_DLL =aCC -b +z -Wl,-Bimmediate,-Bnonfatal,-a,default,-E,+b,/lib:/usr/lib
+HP_DELETE   =rm -f
+HP_O_EXT    =o
+
+
+# ***********************************************************************
+#                 OS selection & common parameters
+#
+# Replace the __BUILDID__ target identifier with the identifier that
+# matches the desired target environment for building the authzn_demo.
+# ***********************************************************************
+#
+TARGET		=$(__BUILDID___TARGET)
+DCFLAGS		=$(__BUILDID___DCFLAGS)
+DLFLAGS		=$(__BUILDID___DLFLAGS)
+CFLAGS		=$(__BUILDID___CFLAGS) $(DCFLAGS) 
+IFLAGS		=$(__BUILDID___IFLAGS) 
+LFLAGS		=$(__BUILDID___LFLAGS) $(DLFLAGS)
+LIBS		=$(__BUILDID___LIBS)
+CC		=$(__BUILDID___CC)
+LD		=$(__BUILDID___LD)
+LINK_DLL	=$(__BUILDID___LINK_DLL)
+DELETE		=$(__BUILDID___DELETE)
+O_EXT		=$(__BUILDID___O_EXT)
+
+
+
+
+# ***********************************************************************
+#                     Main body of the Makefile
+# ***********************************************************************
+REQ_OBJS	=xauthn.$(O_EXT)
+
+all: $(TARGET)
+
+clean:
+	$(DELETE) $(REQ_OBJS) $(TARGET)
+
+libxauthn.a: $(REQ_OBJS) 
+	$(LINK_DLL) $(LFLAGS) -o $(TARGET) $(REQ_OBJS) $(LIBS)
+
+libxauthn.so: $(REQ_OBJS) 
+	$(LINK_DLL) $(LFLAGS) -o $(TARGET) $(REQ_OBJS) $(LIBS)
+
+libxauthn.sl: $(REQ_OBJS) 
+	$(LINK_DLL) $(LFLAGS) -o $(TARGET) $(REQ_OBJS) $(LIBS)
+
+

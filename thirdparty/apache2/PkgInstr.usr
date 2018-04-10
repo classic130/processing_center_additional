@@ -1,0 +1,19 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'bin',
+            'build',
+            'cgi-bin',
+            'error',
+            'htdocs',
+            'icons',
+            'include',
+            'lib',
+            'modules',
+            'conf',
+            'logs'
+          ],
+          'apache2',
+          'apache2/buildtools/packaging/VerArchive'
+        ];

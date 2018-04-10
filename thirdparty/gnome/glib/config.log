@@ -1,0 +1,173 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:634: checking for a BSD compatible install
+configure:687: checking whether build environment is sane
+configure:744: checking whether make sets ${MAKE}
+configure:783: checking for working aclocal
+configure:796: checking for working autoconf
+configure:809: checking for working automake
+configure:822: checking for working autoheader
+configure:835: checking for working makeinfo
+configure:951: checking host system type
+configure:972: checking build system type
+configure:992: checking for ranlib
+configure:1022: checking for gcc
+configure:1135: checking whether the C compiler (gcc  ) works
+configure:1151: gcc -o conftest    conftest.c  1>&5
+configure:1177: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:1182: checking whether we are using GNU C
+configure:1210: checking whether gcc accepts -g
+configure:1253: checking for ld used by GCC
+configure:1315: checking if the linker (/usr/ccs/bin/ld) is GNU ld
+configure:1331: checking for BSD-compatible nm
+configure:1367: checking whether ln -s works
+ltconfig:603: checking for object suffix
+ltconfig:604: gcc -c -g -O2  conftest.c 1>&5
+ltconfig:776: checking if gcc PIC flag -fPIC works
+ltconfig:777: gcc -c -g -O2 -fPIC -DPIC  conftest.c 1>&5
+ltconfig:829: checking if gcc supports -c -o file.o
+ltconfig:830: gcc -c -g -O2 -o out/conftest2.o  conftest.c 1>&5
+ltconfig:862: checking if gcc supports -c -o file.lo
+ltconfig:863: gcc -c -g -O2 -c -o conftest.lo  conftest.c 1>&5
+ltconfig:914: checking if gcc supports -fno-rtti -fno-exceptions
+ltconfig:915: gcc -c -g -O2 -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+ltconfig:958: checking if gcc static flag -static works
+ltconfig:959: gcc -o conftest -g -O2   -static conftest.c  1>&5
+ltconfig:1635: checking if global_symbol_pipe works
+ltconfig:1636: gcc -c -g -O2  conftest.c 1>&5
+ltconfig:1639: eval "/usr/ccs/bin/nm -p conftest.o | sed -n -e 's/^.*[ 	]\([BDT]\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2\3 \3/p' > conftest.nm"
+ltconfig:1691: gcc -o conftest -g -O2 -fno-builtin -fno-rtti -fno-exceptions   conftest.c conftstm.o 1>&5
+configure:1553: checking whether to enable maintainer-specific portions of Makefiles
+configure:1583: checking host system type
+configure:1653: checking whether to enable memory checking
+configure:1667: checking whether to enable memory profiling
+configure:1715: checking for gcc
+configure:1828: checking whether the C compiler (gcc -g -O2 ) works
+configure:1844: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:1870: checking whether the C compiler (gcc -g -O2 ) is a cross-compiler
+configure:1875: checking whether we are using GNU C
+configure:1903: checking whether gcc accepts -g
+configure:1938: checking for gcc option to accept ANSI C
+configure:2026: checking for a BSD compatible install
+configure:2099: checking for extra flags to get ANSI library prototypes
+configure:2111: gcc -o conftest -g -O2 -Wall   conftest.c  -lm 1>&5
+configure:2152: checking for extra flags for POSIX compliance
+configure:2161: gcc -c -g -O2 -Wall  conftest.c 1>&5
+configure: In function `main':
+configure:2157: warning: unused variable `dir'
+configure:2195: checking how to run the C preprocessor
+configure:2275: checking for ANSI C header files
+configure:2381: checking for vprintf
+configure:2489: checking for atexit
+configure:2489: checking for on_exit
+configure:2543: checking size of char
+configure:2582: checking size of short
+configure:2621: checking size of long
+configure:2660: checking size of int
+configure:2699: checking size of void *
+configure:2738: checking size of long long
+configure:2778: checking for working const
+configure:2854: checking for __inline
+configure:2895: checking for __inline__
+configure:2936: checking for inline
+configure:2978: checking whether byte ordering is bigendian
+configure:3072: checking for float.h
+configure:3115: checking for limits.h
+configure:3158: checking for pwd.h
+configure:3201: checking for sys/param.h
+configure:3244: checking for sys/poll.h
+configure:3287: checking for sys/select.h
+configure:3330: checking for sys/time.h
+configure:3373: checking for sys/times.h
+configure:3416: checking for unistd.h
+configure:3459: checking for values.h
+configure:3503: checking for lstat
+configure:3503: checking for strerror
+configure:3503: checking for strsignal
+configure:3503: checking for memmove
+configure:3503: checking for vsnprintf
+configure:3503: checking for strcasecmp
+configure:3503: checking for strncasecmp
+configure:3503: checking for poll
+configure:3558: checking for sys_errlist
+configure:3571: gcc -o conftest -g -O2 -Wall   conftest.c  1>&5
+configure:3591: checking for sys_siglist
+configure:3603: gcc -o conftest -g -O2 -Wall   conftest.c  1>&5
+Undefined			first referenced
+ symbol  			    in file
+sys_siglist                         /var/tmp/ccNasu5c.o
+ld: fatal: Symbol referencing errors. No output written to conftest
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 3593 "configure"
+#include "confdefs.h"
+
+int main() {
+
+extern char *sys_siglist[];
+exit (sys_siglist[0]);
+
+; return 0; }
+configure:3623: checking for sys_siglist declaration
+configure:3634: gcc -c -g -O2 -Wall  conftest.c 1>&5
+configure: In function `main':
+configure:3629: `sys_siglist' undeclared (first use in this function)
+configure:3629: (Each undeclared identifier is reported only once
+configure:3629: for each function it appears in.)
+configure: failed program was:
+#line 3625 "configure"
+#include "confdefs.h"
+#include <signal.h>
+int main() {
+
+strlen (sys_siglist[0]);
+
+; return 0; }
+configure:3654: checking for fd_set
+configure:3663: gcc -c -g -O2 -Wall  conftest.c 1>&5
+configure: In function `main':
+configure:3659: warning: unused variable `writeMask'
+configure:3659: warning: unused variable `readMask'
+configure:3711: checking for wchar.h
+configure:3718: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:3742: checking for wctype.h
+configure:3749: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:3773: checking for iswalnum
+configure:3870: checking if iswalnum() and friends are properly defined
+configure:3892: gcc -o conftest -g -O2 -Wall   conftest.c  1>&5
+configure:3913: checking whether realloc (NULL,) will work
+configure:3955: checking for an implementation of va_copy()
+configure:4000: checking for an implementation of __va_copy()
+configure:4045: checking whether va_lists can be copied by value
+configure:4116: checking for dlopen
+configure:4215: checking for dlopen in -ldl
+configure:4250: checking for dlsym in -ldl
+configure:4400: checking for RTLD_GLOBAL brokenness
+configure:4452: checking for preceeding underscore in symbols
+configure:4500: checking for dlerror
+configure:4612: checking for cond_init in -lthread
+configure:4737: checking for thread implementation
+configure:5065: checking for cond_init in -lthread
+configure:5167: checking necessary linker options
+configure:5212: checking necessary compiler options
+configure:5230: checking for localtime_r
+configure:5230: checking for rand_r
+configure:5284: checking for getpwuid_r
+configure:5329: checking whether getpwuid_r is posix like
+configure:5342: gcc -c -g -O2 -Wall  -D_REENTRANT  conftest.c 1>&5
+configure: In function `main':
+configure:5338: too many arguments to function `getpwuid_r'
+configure: failed program was:
+#line 5333 "configure"
+#include "confdefs.h"
+#include <pwd.h>
+                                        #include <sys/types.h>
+                                        #include <stdlib.h>
+int main() {
+getpwuid_r((uid_t)0, NULL, NULL, (size_t)0, NULL);
+; return 0; }
+configure:5479: checking size of mutex_t
+configure:5519: checking byte contents of mutex_t
+configure:5580: checking system definitions for POLLIN POLLOUT POLLPRI POLLERR POLLHUP POLLNVAL
+configure:5611: gcc -o conftest -g -O2 -Wall  -D_REENTRANT   conftest.c  1>&5

@@ -1,0 +1,71 @@
+<EntityDescriptor entityID="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com"
+                  xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
+                  xmlns:ds="https://www.w3.org/2000/09/xmldsig#"
+                  xmlns:shibmd="urn:mace:shibboleth:metadata:1.0"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+
+  <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+
+    <KeyDescriptor>
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>
+MIIC9zCCAd+gAwIBAgIJAOygK53shwd2MA0GCSqGSIb3DQEBBQUAMBsxGTAXBgNV
+BAMTEG1zc2xkZXYwMS1nei1zdW4wHhcNMTAwOTEwMDcxMzU4WhcNMjAwOTA3MDcx
+MzU4WjAbMRkwFwYDVQQDExBtc3NsZGV2MDEtZ3otc3VuMIIBIjANBgkqhkiG9w0B
+AQEFAAOCAQ8AMIIBCgKCAQEAqeUyBfyGwOy1G1ONXoHOjg0DZLnlSfjlY6+UTxrC
+wFlsXs1hshw9+nm4p5oSCxvP7n5Q8HhdaaC+6EiFoB5SDZofUYTnAqc6whlT1EGg
+0NnAhNckJL//q38QYy3f4utpiHIiuJEP3WDn6GV0lhe7UwicNvSDLgQ2TlNcOCc5
+r7aVoXLvJ6+/0EgjFoVPaOexzWIbs9gDiSdKYIw8wrhzxfeSU7evq84tllRpBAMA
+kYaZPPD9iIL+u6CQptR+1O9F2HT7F0U0pm9ihLWIe56KzEBmNNuxrKXa54wTJK4T
+HhN7EAR6qpIeZvdNjOPbCt1lfGJJbTBdOeVaoO42N6grdwIDAQABoz4wPDAbBgNV
+HREEFDASghBtc3NsZGV2MDEtZ3otc3VuMB0GA1UdDgQWBBTURI7uIu4rBWRNXFUb
+yU9bRuiGpTANBgkqhkiG9w0BAQUFAAOCAQEApsvgqatGjWCRyiH84UJshHdA3L1B
+eU3Cpm+q1G4EsIpj+ReBVNuNUbdVb+j/gje6/dqatW823WuxZDeIFfKJ9iwi6opo
+OHkRdrQmp3jkzRnPn3wZLqfIInxJBCd07HXovfMgQPmrdjOt42lf8r4b9aKNijAe
+o0YxSmfWVhbDLaKamISOYpebLElTMRGDjNOwaqoIse26B6OtcoiALe+toaeYrOc6
+094f+UluAFWfMEUZ7ESRrhZlCKZsfVZkRjV3Yz7RBAHoCAnhOpsoJsJXrdyem7qJ
+aM68+tnJC1ccsRxb7glPDjilUYw5qnl+w0UCzHlWWkiCNEi6W1sf+A5nxw==
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+
+    <SingleLogoutService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SLO/SOAP"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"/>
+    <SingleLogoutService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SLO/Redirect"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
+    <SingleLogoutService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SLO/POST"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+    <SingleLogoutService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SLO/Artifact"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"/>
+
+    <AssertionConsumerService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SAML2/POST" index="1"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+    <AssertionConsumerService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SAML2/POST-SimpleSign" index="2"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign"/>
+    <AssertionConsumerService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SAML2/Artifact" index="3"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"/>
+    <AssertionConsumerService Location="https://mssldev01-zn2.ssodev-bo.mtv1.vrsn.com/Shibboleth.sso/SAML2/ECP" index="4"
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:PAOS"/>
+
+
+    <AttributeConsumingService index="1">
+      <ServiceName xml:lang="en">Auth Service</ServiceName>
+      <ServiceDescription xml:lang="en">Authentication Service For MSSL</ServiceDescription>
+      <RequestedAttribute FriendlyName="CLIENT_CERT" Name="CLIENT_CERT" NameFormat="urn:mace:shibboleth:1.0:attributeNamespace:uri" isRequired="true"/>
+       <AttributeValue xsi:type="xs:anyURI">
+          https://example.org/is-a-grad-student
+       </AttributeValue>
+    </AttributeConsumingService>
+
+  </SPSSODescriptor>
+
+  <Organization>
+    <OrganizationName xml:lang="en">VeriSign Inc.</OrganizationName>
+    <OrganizationDisplayName xml:lang="en">Engineering Dept.</OrganizationDisplayName>
+    <OrganizationURL xml:lang="en">https://www.verisign.com/</OrganizationURL>
+  </Organization>
+
+</EntityDescriptor>
+

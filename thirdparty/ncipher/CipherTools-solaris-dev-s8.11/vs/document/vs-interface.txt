@@ -1,0 +1,303 @@
+                            Gold Certificates
+                    Technical interface to HSM provider
+
+                                 Issue 1 
+
+       Copyright 2002 nCipher Corporation Ltd.  All rights reserved.
+                   Confidential to nCipher and VeriSign
+
+
+1. Introduction
+
+    This technical interface specification should be read in the
+    context of the other specifications and agreements regarding Gold
+    Certificates.  The reader is expected to be familiar with the
+    purpose and overall requirements for Gold Certificates.
+
+
+2. Gold Certificate Requests
+
+    Where the customer would for a standard certificate send an X.509
+    format certificate request, instead the customer will send a
+    special extended certificate request message: a Gold Certificate
+    Request or GCR.  This contains a standard CSR and some opaque data
+    for the HSM vendor.
+
+2.1. Encapsulation structure
+
+    The outer structure of a GCR shall be a PEM base-64 encapsulation
+    according to RFC1421 4.3.2.4 and 4.4 as conventionally applied to
+    standard X.509 certificates and certificate requests.  The
+    encapsulation boundaries shall be
+      -----BEGIN GOLD ENHANCED CERTIFICATE REQUEST-----
+    and
+      -----END GOLD ENHANCED CERTIFICATE REQUEST-----
+
+    GCR's may occasionally be base-64 encapsulated or decapsulated by
+    naive software, so software which accepts GCRs in encapsulated
+    form shall also accept the encapsulation boundaries:
+      -----BEGIN CERTIFICATE REQUEST-----
+    and
+      -----END CERTIFICATE REQUEST-----
+
+    Software which needs to distinguish between a GCR and a standard
+    CSR must look at the start of the binary data (inside the
+    encoding).  Additionally, GCRs cannot be supplied as-is to
+    software written to handle standard CSRs.
+
+2.2. Internal binary structure
+
+    The binary data encoded as a PEM file shall be constructed by
+    simple concatenation of the following parts:
+
+    * An initial `magic number' sequence of octets valued
+            f9 03 8a f8  5b 21 ae 8a
+      to allow the GCR to be reliably distinguished from a standard
+      certificate or any other kind of file.
+
+    * A `format version number', currently fixed at
+            00 00 00 01
+
+    * 16 octets of HSM vendor name.  nCipher shall use
+            6e 43 69 70  68 65 72 00  00 00 00 00  00 00 00 00
+      which corresponds to the string `nCipher' padded with nulls.
+
+    * 4 octets representing L, the length of HSM vendor data,
+      in network byte order (ie, big endian).   0 <= L <= 65535
+      (although we expect it to be much smaller to make the GCR
+      reasonably small).
+
+    * L octets of HSM vendor data.  Not to be interpreted by
+      VeriSign other than to pass to the HSM vendor's verification
+      software.
+
+    * 4 octets representing M, the length of the standard CSR.
+      0 <= M <= 65535.
+
+    * M octets which are the standard X.509 certificate request
+      (DER encoded, as usual).
+
+    * A `magic number' trailer sequence of octets
+            a5 93 da c1  0b 98 c4 0d
+
+
+3. Processing steps by VeriSign
+
+    When receiving a CSR or GCR VeriSign must perform the following
+    steps:
+
+    1. If the request is in PEM base-64 encapsulation, decapsulate it.
+
+    2. Compare the first 8 octets of the file to the initial magic
+       number constant.  If they do not match, process the request as
+       a standard CSR (or, if it is supposed to be a Gold CSR, fail).
+
+    3. Check that the next 4 octets are 00 00 00 01.  If they are not,
+       fail.
+
+    4. Dismantle the GCR into its component parts and check that it is
+       correctly formatted, according to the structure above.
+
+    5. Check that the HSM vendor name is recognised and identify the
+       appropriate HSM vendor verification software.
+
+    6. Pass the HSM vendor verification software the HSM vendor
+       data.  The HSM vendor verification software will return the
+       public key value.  See section 4 below for details of this
+       interface.
+
+    7. Compare the public key value with that in the standard CSR.
+       If it does not match fail.
+
+    8. Process the standard CSR as usual, except (if the other usual
+       verification steps are successful) to issue a Gold Certificate
+       instead of a standard certificate.
+
+    The software to perform these steps, as part of VeriSign's
+    processing of a request for a Gold Certificate, will be written
+    and deployed by VeriSign.
+
+
+4. HSM Vendor Verification Software Specification
+
+    The HSM vendor will supply the software required by section 3.6
+    above which examines the HSM vendor data and performs appropriate
+    verification, and outputs the corresponding public key.
+
+    The HSM vendor will supply source code to this software.  Verisign
+    shall be granted a license for the sole purpose of allowing
+    them to internally audit this software to ensure it is not
+    susceptible to buffer overrun exploits or other security problems.
+    The source may depend upon certain standard nCipher retail
+    libraries for which the source shall not be provided.  The
+    scripts used to control the compilation and installation of the
+    software shall not be provided.
+    
+
+4.1. Format and environment
+
+    The HSM vendor verification software is delivered as a tarfile
+    containing a relative directory tree.  The tarfile shall be
+    extracted on VeriSign's system(s), in some location determined
+    by VeriSign.
+
+    In the root of the directory tree is an executable program (or
+    script) called `check-extract'.  This script shall be invoked by
+    VeriSign's software with the current directory set to the root of
+    the tree where the software was installed.  It shall not require a
+    controlling terminal or any special environment variables, nor
+    shall it require special privileges.
+
+    There may be other files and directories in the supplied tarfile.
+    These shall not have unusual permissions (eg set-id bits).  They
+    are to be ignored by VeriSign.
+
+4.2. Behaviour of check-extract
+
+    The program check-extract will read one or more HSM vendor data
+    blocks from standard input and write out the corresponding public
+    keys in order, as follows:
+
+    1. check-extract will read 4 octets in network byte order, giving
+       the length L of the HSM vendor data.  If end of file occurs
+       before the first octet, check-extract will exit with status 0.
+       End of file at any other time is a fatal error (see below).
+
+    2. check-extract will read the L octets of HSM vendor data.
+
+    3. check-extract will process the HSM vendor data, to make the
+       checks required for the Gold Certificate status.
+
+    4. check-extract will write to standard output:
+       * 4 octets status code, zero on success (see below)
+       * 4 octets length of public key data D (network byte order)
+       * D octets public key data, as a DER-encoded
+         SubjectPublicKeyInfo (PKCS#10 4.1)
+
+    5. check-extract will then go back to the beginning and try
+       to read another HSM vendor block.
+
+    Notes:
+
+    *  More than one vendor block may be passed to check-extract's
+       standard input before it has returned the results of earlier
+       blocks.  check-extract will process the blocks in order.  (Note
+       that it is the caller's responsibility to avoid pipe full
+       deadlock conditions.)
+
+    *  More than one instance of check-extract may be executed
+       simultaneously without interference.
+
+    *  check-extract may not modify the directory tree that it was
+       installed in.  If it needs to create temporary files, it
+       will create them in the directory $TMPDIR.  The environment
+       variable TMPDIR must be set to a directory solely for the
+       use of invocation(s) of check-extract.  Created files will
+       be removed under normal exit conditions and any stale files
+       will be removed periodically upon invocation.
+
+     * The HSM vendor verification software will contain the HSM
+       vendor's public key(s) embedded in it.  The HSM vendor shall
+       endeavour to keep these keys secure by protecting them with
+       appropriate hardware and other security measures.  These
+       keys will only be changed in case of (risk of) compromise.
+
+4.3. Error handling
+
+    If check-extract detects a problem with the HSM vendor data it
+    will write a result with a nonzero status code and an empty public
+    key data (ie, D=0).  This indicates that the certificate requestor
+    must contact the HSM vendor for support.  The requestor should be
+    supplied with the value of the status code (interpreted as a
+    4-octet twos-complement signed integer and then represented in
+    decimal).
+
+    To avoid this situation occurring, the software which is provided
+    to the requestor by the HSM vendor shall itself perform all the
+    checks that the HSM vendor verification software supplied to
+    VeriSign will do, before outputting the purported GCR, so that
+    invalid GCRs are unlikely to be generated.
+
+    However, GCRs may still become invalid due to (for example) the
+    need for the HSM vendor key to be changed.  This will be reported
+    using the status mechanism above, and the HSM vendor's support
+    will guide the user through obtaining an HSM vendor block for
+    their key rooted in the appropriate HSM vendor key(s).
+
+4.4. Fatal errors
+
+    If check-extract detects an operational problem (lack of system
+    resources, inablity to write temporary files, inability to read
+    parts of the HSM vendor software) or incorrect input from the
+    caller, or cannot continue for any other reason, it will attempt
+    to print a diagnostic message to stderr, and then exit with a
+    nonzero exit status.
+
+4.5. Operating system
+
+    The HSM vendor's verification software to run at VeriSign, shall
+    be prepared for execution on a Solaris 2.7 system.
+
+
+5. Algorithms
+
+    The HSM vendor's software supplied to the user and to VeriSign
+    shall support the RSA algorithm (PKCS#1 v1.5).
+
+
+6. Test cases
+
+    The HSM vendor shall supply a number of test cases for the testing
+    of the check-extract program.  These test cases shall each be in
+    the form of a file containing input to be supplied check-extract,
+    paired with a file containing the corresponding expected output.
+    There shall be at least one successful excecution and at least one
+    non-fatal error.
+
+    The test files shall be supplied under separate cover (ie, not in
+    the HSM vendor software tarfile).
+
+
+7. Note regarding the facts assured by the GCR HSM vendor data
+
+    The GCR HSM vendor data will allow the HSM vendor verification
+    software to confirm:
+
+    * The value of the public key to which the HSM vendor data
+      relates.
+
+    * That the key is sufficiently long to be considered secure.
+
+    * That the keypair was generated in an HSM which was manufactured
+      and warranted for Gold Certificates by the HSM vendor.
+
+    * That the private half was created with appropriate security
+      settings, fully protected by the HSM's hardware security
+      mechanisms.
+
+    The GCR HSM vendor data, and the HSM vendor verification software,
+    do NOT ensure:
+
+    * That the key or the HSM which generated were delivered to, or
+      are securely in the posession of, any particular person or
+      organisation.
+
+    * That the HSM's user has not weakened or negated the security
+      through incorrect use of the HSM, or through weak procedures.
+
+    * That the HSM's user has not used administrative export
+      functions to extract the key into a less secure environment or
+      otherwise reduce its security level.
+
+    * That the HSM (including the associated per-HSM secret for the
+      warranting process) was not compromised in transit between the
+      nCipher and the customer, or at the user's site.
+
+    * That the key was generated at any particular time.
+
+    Standard good security practices, including reading and following
+    the advice in the HSM vendor manuals, inspecting the HSM's seals
+    for tampering, and other measures, should still be taken.
+
+
+$Id: vs-interface.txt,v 1.1.4.1 2004/04/09 18:54:14 hmiranda Exp $

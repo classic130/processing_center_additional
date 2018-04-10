@@ -1,0 +1,1071 @@
+//***************************************************************************
+//
+//  (c) 1996-1998 by Microsoft Corporation
+//
+//  WBEMDISP.IDL
+//
+//  WBEM IDispatch Compatible Access for Automation
+//
+//***************************************************************************
+
+[
+	uuid(565783C6-CB41-11d1-8B02-00600806D9B6),
+	lcid(0x00),
+	version(1.0),
+	helpstring("WBEM Scripting API V1.0")
+]
+library WbemScripting
+{
+    importlib("stdole32.tlb");
+
+    interface ISWbemServices;
+	interface ISWbemLocator;
+    interface ISWbemObject;
+	interface ISWbemObjectSet;
+	interface ISWbemNamedValue;
+    interface ISWbemNamedValueSet;
+	interface ISWbemQualifier;
+	interface ISWbemQualifierSet;
+	interface ISWbemProperty;
+	interface ISWbemPropertySet;
+	interface ISWbemMethod;
+	interface ISWbemMethodSet;
+	interface ISWbemEventSource;
+	interface ISWbemObjectPath;
+	interface ISWbemLastError;
+    
+	// These are used by ISWbemObject.Put_
+    typedef 
+	[
+		v1_enum, 
+		uuid(4A249B72-FC9A-11d1-8B1E-00600806D9B6),
+		helpstring("Determines intended semantics of putting a Class or Instance")
+	] 
+	enum WbemChangeFlagEnum
+    {
+        wbemChangeFlagCreateOrUpdate = 0x0,
+		wbemChangeFlagUpdateOnly = 0x1,
+        wbemChangeFlagCreateOnly = 0x2
+    } WbemChangeFlagEnum;
+
+	// These are used by ExecQuery, SubclassesOf, InstancesOf, etc.
+    typedef 
+	[
+		v1_enum,
+		uuid(4A249B73-FC9A-11d1-8B1E-00600806D9B6),
+		helpstring("Determines return behavior of various interface calls"),
+	] 
+	enum WbemFlagEnum
+    {
+        wbemFlagReturnImmediately = 0x10,
+        wbemFlagReturnWhenComplete = 0,
+        wbemFlagBidirectional = 0,
+        wbemFlagForwardOnly = 0x20,
+        wbemFlagNoErrorObject = 0x40,
+        wbemFlagReturnErrorObject = 0,
+        wbemFlagSendStatus = 0x80,
+        wbemFlagDontSendStatus = 0
+    } WbemFlagEnum;
+
+	// These are used by ISWbemServices::ExecQuery, SubclassesOf
+	// and InstancesOf
+    typedef 
+	[
+		v1_enum,
+		uuid(4A249B76-FC9A-11d1-8B1E-00600806D9B6),
+		helpstring("Defines depth of enumeration or query")
+	] 
+	enum WbemQueryFlagEnum
+    {
+        wbemQueryFlagDeep = 0,
+        wbemQueryFlagShallow = 1
+    } WbemQueryFlagEnum;
+
+	// Following is used by ISWbemObject::GetObjectText_
+    typedef 
+	[
+		v1_enum,
+		uuid(4A249B78-FC9A-11d1-8B1E-00600806D9B6),
+		helpstring("Defines content of generated object text")
+	] 
+	enum WbemTextFlagEnum
+    {
+        wbemTextFlagNoFlavors = 0x1
+    } WbemTextFlagEnum;
+
+	// Following is used by ISWbemServices::ExecNotificationQuery
+    typedef 
+	[
+		v1_enum,
+		uuid(BF078C2A-07D9-11d2-8B21-00600806D9B6),
+		helpstring("Defines timeout constants")
+	] 
+	enum WbemTimeout
+    {
+        wbemTimeoutInfinite = 0xFFFFFFFF
+    } WbemTimeout;
+
+	// Following is used by ISWbemObject::CompareTo_
+    typedef 
+	[
+		v1_enum,
+		uuid(4A249B79-FC9A-11d1-8B1E-00600806D9B6),
+		helpstring("Defines settings for object comparison")
+	] 
+	enum WbemComparisonFlagEnum
+    {
+        wbemComparisonFlagIncludeAll = 0,
+        wbemComparisonFlagIgnoreQualifiers = 0x1,
+        wbemComparisonFlagIgnoreObjectSource = 0x2,
+        wbemComparisonFlagIgnoreDefaultValues = 0x4,
+        wbemComparisonFlagIgnoreClass = 0x8,
+        wbemComparisonFlagIgnoreCase = 0x10,
+        wbemComparisonFlagIgnoreFlavor = 0x20
+    } WbemComparisonFlagEnum;
+
+	typedef 
+	[
+		v1_enum,
+		uuid(4A249B7B-FC9A-11d1-8B1E-00600806D9B6),
+		helpstring("Defines the valid CIM Types of a Property value")
+	] 
+	enum WbemCimtypeEnum
+    {
+        wbemCimtypeSint8 = 16,
+        wbemCimtypeUint8 = 17,
+        wbemCimtypeSint16 = 2,
+        wbemCimtypeUint16 = 18,
+        wbemCimtypeSint32 = 3,
+        wbemCimtypeUint32 = 19,
+        wbemCimtypeSint64 = 20,
+        wbemCimtypeUint64 = 21,
+        wbemCimtypeReal32 = 4,
+        wbemCimtypeReal64 = 5,
+        wbemCimtypeBoolean = 11,
+        wbemCimtypeString = 8,
+        wbemCimtypeDatetime = 101,
+        wbemCimtypeReference = 102,
+        wbemCimtypeChar16 = 103,
+        wbemCimtypeObject = 13,
+    } WbemCimtypeEnum;
+
+    /////////////////////////////////////////////////////////////////
+    //
+
+    typedef 
+	[
+		v1_enum,
+		uuid(4A249B7C-FC9A-11d1-8B1E-00600806D9B6),
+		helpstring("Defines the errors that may be returned by interface methods in this library")
+	] enum WbemErrorEnum
+	{
+        // Errors.
+        // =======
+
+        wbemErrFailed = 0x80041001,
+        wbemErrNotFound,
+        wbemErrAccessDenied,
+        wbemErrProviderFailure,
+        wbemErrTypeMismatch,
+        wbemErrOutOfMemory,
+        wbemErrInvalidContext,
+        wbemErrInvalidParameter,
+        wbemErrNotAvailable,
+        wbemErrCriticalError,
+        wbemErrInvalidStream,
+        wbemErrNotSupported,
+        wbemErrInvalidSuperclass,
+        wbemErrInvalidNamespace,
+        wbemErrInvalidObject,
+        wbemErrInvalidClass,
+        wbemErrProviderNotFound,
+        wbemErrInvalidProviderRegistration,
+        wbemErrProviderLoadFailure,
+        wbemErrInitializationFailure,
+        wbemErrTransportFailure,
+        wbemErrInvalidOperation,
+        wbemErrInvalidQuery,
+        wbemErrInvalidQueryType,
+        wbemErrAlreadyExists,
+        wbemErrOverrideNotAllowed,
+        wbemErrPropagatedQualifier,
+        wbemErrPropagatedProperty,
+        wbemErrUnexpected,
+        wbemErrIllegalOperation,
+        wbemErrCannotBeKey,
+        wbemErrIncompleteClass,
+        wbemErrInvalidSyntax,
+        wbemErrNondecoratedObject,
+        wbemErrReadOnly,
+        wbemErrProviderNotCapable,
+        wbemErrClassHasChildren,
+        wbemErrClassHasInstances,
+        wbemErrQueryNotImplemented,
+        wbemErrIllegalNull,
+        wbemErrInvalidQualifierType,
+        wbemErrInvalidPropertyType,
+        wbemErrValueOutOfRange,
+        wbemErrCannotBeSingleton,
+        wbemErrInvalidCimType,
+        wbemErrInvalidMethod,
+        wbemErrInvalidMethodParameters,        
+        wbemErrSystemProperty,
+        wbemErrInvalidProperty,
+        wbemErrCallCancelled,
+        wbemErrShuttingDown,
+        wbemErrPropagatedMethod,
+        wbemErrUnsupportedParameter,
+		wbemErrMissingParameter,
+		wbemErrInvalidParameterId,
+		wbemErrNonConsecutiveParameterIds,
+		wbemErrParameterIdOnRetval,
+		wbemErrInvalidObjectPath,
+		wbemErrOutOfDiskSpace,
+
+		// Event Subsystem Errors
+
+        wbemErrRegistrationTooBroad = 0x80042001,
+        wbemErrRegistrationTooPrecise,
+
+		// Automation-specific errors
+
+		wbemErrTimedout = 0x80043001
+        
+    }   WbemErrorEnum;
+
+    [
+		uuid(76A64158-CB41-11d1-8B02-00600806D9B6),
+		helpstring("WBEM Scriptable Locator")
+    ]
+    coclass SWbemLocator
+    {
+        interface ISWbemLocator;
+    };
+
+    [
+		uuid(9AED384E-CE8B-11d1-8B05-00600806D9B6),
+		helpstring("WBEM Scriptable Named Value Collection")
+    ]
+    coclass SWbemNamedValueSet
+    {
+        interface ISWbemNamedValueSet;
+    };
+
+    [
+		uuid(5791BC26-CE9C-11d1-97BF-0000F81E849C),
+		helpstring("WBEM Scriptable Object Path")
+    ]
+    coclass SWbemObjectPath
+    {
+        interface ISWbemObjectPath;
+    };
+
+	[
+		uuid(C2FEEEAC-CFCD-11d1-8B05-00600806D9B6),
+		helpstring("WBEM Scriptable Last Error Object")
+    ]
+    coclass SWbemLastError
+	{
+		interface ISWbemLastError;
+	};
+
+};
+
+[
+	object, 
+	local, 
+	uuid(76A6415B-CB41-11d1-8B02-00600806D9B6), 
+	dual, 
+	oleautomation,
+ 	pointer_default(unique),
+	helpstring("Interface for obtaining WBEM Namespace connections")
+]
+interface ISWbemLocator  : IDispatch
+{
+	[
+		id(1),
+		helpstring("Connect to a Namespace")
+	]
+    HRESULT ConnectServer(
+        [in, optional, defaultvalue(".")]   BSTR strServer,           
+        [in, optional, defaultvalue("")]   	BSTR strNamespace,        
+        [in, optional, defaultvalue("")]	BSTR strUser,
+        [in, optional, defaultvalue("")]    BSTR strPassword,
+        [in, optional, defaultvalue("")]   	BSTR strLocale,
+        [in, optional, defaultvalue("")]   	BSTR strAuthority,
+		[in, optional, defaultvalue(0)]		long iSecurityFlags,
+        [in, optional, defaultvalue(NULL)] 	/*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+		[out, retval]   					ISWbemServices 	**objServices            
+     );
+};
+
+[
+	local, 
+	object, 
+	uuid(76A6415C-CB41-11d1-8B02-00600806D9B6), 
+	oleautomation, 
+	dual,
+	pointer_default(unique),
+	helpstring("Interface to a WBEM Connection")
+]
+interface ISWbemServices : IDispatch
+{
+	// Object Operations
+	// =====================
+
+	[
+		id(1),
+		helpstring("Get a single Class or Instance")
+	]
+    HRESULT Get (
+        [in, optional, defaultvalue("")] BSTR strObjectPath,
+		[in, optional, defaultvalue(0)] long iFlags,
+        [in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+	    [out, retval] ISWbemObject **objObject
+        );
+
+	[
+		id(2),
+		helpstring("Delete a Class or Instance")
+	]
+    HRESULT Delete (
+        [in] BSTR strObjectPath,
+        [in, optional, defaultvalue(0)] long iFlags,
+        [in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet
+        );
+
+	[
+		id(3),
+		helpstring("Enumerate the Instances of a Class")
+	]
+    HRESULT InstancesOf(
+        [in] BSTR strClass,
+        [in, optional, defaultvalue(wbemFlagReturnImmediately)] long iFlags,
+        [in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,        
+        [out, retval] ISWbemObjectSet **objEnum
+        );
+
+	[
+		id(4),
+		helpstring("Enumerate subclasses of a Class")
+	]
+    HRESULT SubclassesOf(
+        [in, optional, defaultvalue("")]  BSTR strSuperclass,
+        [in, optional, defaultvalue(wbemFlagReturnImmediately|wbemQueryFlagDeep)]  long iFlags,
+        [in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,        
+        [out, retval] ISWbemObjectSet **objEnum
+    );
+  
+
+	// Queries
+	// =======
+
+    [
+		id(5),
+		helpstring("Execute a Query")
+	]
+    HRESULT ExecQuery(
+        [in]  BSTR strQuery,
+		[in, optional, defaultvalue("WQL")]  BSTR strQueryLanguage,
+        [in, optional, defaultvalue(wbemFlagReturnImmediately)] long iFlags,
+		[in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemObjectSet **objEnum
+        );
+
+	[
+		id(6),
+		helpstring("Get the Associators of a class or instance")
+	]
+    HRESULT AssociatorsOf(
+		[in] BSTR strObjectPath,
+		[in, optional, defaultvalue("")] BSTR strAssocClass,
+		[in, optional, defaultvalue("")] BSTR strResultClass,
+		[in, optional, defaultvalue("")] BSTR strResultRole,
+		[in, optional, defaultvalue("")] BSTR strRole,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bClassesOnly,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bSchemaOnly,
+		[in, optional, defaultvalue("")] BSTR strRequiredAssocQualifier,
+		[in, optional, defaultvalue("")] BSTR strRequiredQualifier,
+		[in, optional, defaultvalue(wbemFlagReturnImmediately)] long iFlags,
+		[in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemObjectSet **objEnum
+        );
+
+	[
+		id(7),
+		helpstring("Get the References to a class or instance")
+	]
+    HRESULT ReferencesTo(
+		[in] BSTR objectPath,
+		[in, optional, defaultvalue("")] BSTR strResultClass,
+		[in, optional, defaultvalue("")] BSTR strRole,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bClassesOnly,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bSchemaOnly,
+		[in, optional, defaultvalue("")] BSTR strRequiredQualifier,
+		[in, optional, defaultvalue(wbemFlagReturnImmediately)] long iFlags,
+		[in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemObjectSet **objEnum
+        );
+    
+    [
+		id(8),
+		helpstring("Execute a Query to receive Notifications")
+	]
+    HRESULT ExecNotificationQuery(
+        [in] BSTR Query,
+        [in, optional, defaultvalue("WQL")] BSTR strQueryLanguage,
+        [in, optional, defaultvalue(wbemFlagReturnImmediately|wbemFlagForwardOnly)] long iFlags,
+        [in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemEventSource **objEvents
+        );
+
+	// Method Invocation
+	// =================
+    [
+		id(9),
+		helpstring("Execute a Method")
+	]
+    HRESULT ExecMethod(
+        [in] BSTR strObjectPath,
+        [in] BSTR strMethodName,
+        [in, optional, defaultvalue(NULL)] /*ISWbemObject*/ IDispatch *objInParams,
+        [in, optional, defaultvalue(0)] long iFlags,
+        [in, optional, defaultvalue(NULL)] /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemObject **objOutParams
+        );
+
+};
+
+
+[
+	local, 
+	object, 
+	uuid(76A6415A-CB41-11d1-8B02-00600806D9B6), 
+	dual, 
+	oleautomation,
+	helpstring("Interface to a WBEM Class or Instance")
+]
+interface ISWbemObject : IDispatch
+{
+	[
+		id(1),
+		helpstring("Save an Instance or Class")
+	]
+    HRESULT Put_(
+       	[in, optional, defaultvalue(wbemChangeFlagCreateOrUpdate)] long iFlags,
+		[in, optional, defaultvalue(NULL)] /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+		[out, retval] ISWbemObjectPath **objObjectPath
+        );
+
+	[
+		id (2),
+		helpstring("Delete this Instance or Class")
+	]
+	HRESULT Delete_(
+		[in, optional, defaultvalue(0)] long iFlags,
+		[in, optional, defaultvalue(NULL)] /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet
+        );
+
+	[
+		id(3),
+		helpstring("Return all instances of this class")
+	]
+	HRESULT Instances_(
+		[in, optional, defaultvalue(wbemFlagReturnImmediately)] long iFlags,
+        [in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,        
+        [out, retval] ISWbemObjectSet **objEnum
+        );
+
+	[
+		id(4),
+		helpstring("Enumerate subclasses of this Class")
+	]
+    HRESULT Subclasses_(
+        [in, optional, defaultvalue(wbemFlagReturnImmediately|wbemQueryFlagDeep)]  long iFlags,
+        [in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,        
+        [out, retval] ISWbemObjectSet **objEnum
+    );		
+
+	[
+		id(5),
+		helpstring("Get the Associators of this class or instance")
+	]
+    HRESULT Associators_(
+		[in, optional, defaultvalue("")] BSTR strAssocClass,
+		[in, optional, defaultvalue("")] BSTR strResultClass,
+		[in, optional, defaultvalue("")] BSTR strResultRole,
+		[in, optional, defaultvalue("")] BSTR strRole,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bClassesOnly,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bSchemaOnly,
+		[in, optional, defaultvalue("")] BSTR strRequiredAssocQualifier,
+		[in, optional, defaultvalue("")] BSTR strRequiredQualifier,
+		[in, optional, defaultvalue(wbemFlagReturnImmediately)] long iFlags,
+		[in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemObjectSet **objEnum
+        );
+
+	[
+		id(7),
+		helpstring("Get the References to a class or instance")
+	]
+    HRESULT References_(
+		[in, optional, defaultvalue("")] BSTR strResultClass,
+		[in, optional, defaultvalue("")] BSTR strRole,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bClassesOnly,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bSchemaOnly,
+		[in, optional, defaultvalue("")] BSTR strRequiredQualifier,
+		[in, optional, defaultvalue(wbemFlagReturnImmediately)] long iFlags,
+		[in, optional, defaultvalue(NULL)]  /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemObjectSet **objEnum
+        );
+    
+	[
+		id(8),
+		helpstring("Execute a Method")
+	]
+    HRESULT ExecMethod_(
+        [in] BSTR strMethodName,
+        [in, optional, defaultvalue(NULL)] /*ISWbemObject*/ IDispatch *objInParams,
+        [in, optional, defaultvalue(0)] long iFlags,
+        [in, optional, defaultvalue(NULL)] /*ISWbemNamedValueSet*/ IDispatch *objNamedValueSet,
+        [out, retval] ISWbemObject **objOutParams
+        );
+
+	[
+		id(9),
+		helpstring("Clone this Object")
+	]
+    HRESULT Clone_(
+        [out, retval] ISWbemObject **objCopy
+        );
+
+    [
+		id(10),
+		helpstring("Get the MOF text of this Object")
+	]
+    HRESULT GetObjectText_(
+        [in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] BSTR *strObjectText
+        ); 
+
+    [
+		id(11),
+		helpstring("Create a subclass of this Object")
+	]
+    HRESULT SpawnDerivedClass_(
+        [in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemObject** objNewClass
+        );
+
+    [
+		id(12),
+		helpstring("Create an Instance of this Object")
+	]
+    HRESULT SpawnInstance_(
+        [in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemObject** objNewInstance
+        );
+
+    [
+		id(13),
+		helpstring("Compare this Object with another")
+	]
+    HRESULT CompareTo_(
+        [in] /*ISWbemObject*/ IDispatch *objCompareTo,
+        [in, optional, defaultvalue(wbemComparisonFlagIncludeAll)] long iFlags,
+        [out, retval] VARIANT_BOOL *bResult
+        );
+
+	[id(14), propget] HRESULT Qualifiers_ ([out, retval] ISWbemQualifierSet **objQualifierSet);
+	
+	[id(15), propget] HRESULT Properties_ ([out, retval] ISWbemPropertySet **objPropertySet);
+
+	[id(16), propget] HRESULT Methods_ ([out, retval] ISWbemMethodSet **objMethodSet);
+
+const ULONG WBEMS_DISPID_DERIVATION = 17;
+
+	[
+		id(WBEMS_DISPID_DERIVATION), 
+		propget,
+		helpstring("An array of strings describing the derivation heirarchy for the class, in most-derived-from order (the first element in the array defines the superclass and the last element defines the dynasty class).")
+	] 
+	HRESULT Derivation_ ([out, retval] VARIANT *varClassNames);
+
+	[
+		id(18),
+		propget,
+		helpstring("The path of the object")
+	]
+	HRESULT Path_ ([out, retval] ISWbemObjectPath **objObjectPath);
+};
+
+[
+	local, 
+	object, 
+	uuid(D962DB84-D4BB-11d1-8B09-00600806D9B6), 
+	dual, 
+	oleautomation,
+	helpstring("Interface to the last WBEM error object on the current thread")
+]
+interface ISWbemLastError : ISWbemObject
+{
+};
+
+[
+	local, 
+	object, 
+	uuid(76A6415F-CB41-11d1-8B02-00600806D9B6), 
+	oleautomation, 
+	dual,
+	helpstring("Interface to an ISWbemObject collection")
+]
+interface ISWbemObjectSet : IDispatch
+{
+	[id(DISPID_NEWENUM), propget, restricted] HRESULT _NewEnum ([out, retval] IUnknown **pUnk);
+
+	[id(DISPID_VALUE)]
+	HRESULT Item (
+		[in] BSTR strObjectPath, 
+		[in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemObject **objObject
+		);
+
+	[id(1), propget] HRESULT Count ([out, retval] long *iCount);
+
+};
+
+/* ISWbemNamedValueSet is a Collection of ISWbemNamedValue elements */
+[
+	local, 
+	object, 
+	uuid(CF2376EA-CE8C-11d1-8B05-00600806D9B6), 
+	oleautomation, 
+	dual,
+	helpstring("Interface to an ISWbemNamedValue collection")
+]
+interface ISWbemNamedValueSet : IDispatch
+{
+	/* These are used in the context of collections */
+	[id(DISPID_NEWENUM), propget, restricted] HRESULT _NewEnum ([out, retval] IUnknown **pUnk);
+
+	[id(DISPID_VALUE)]
+	HRESULT Item (
+		[in] BSTR strName, 
+		[in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemNamedValue **objNamedValue
+		);
+
+	[id(1), propget] HRESULT Count ([out, retval] long *plCount);
+
+	[id(2)]
+	HRESULT Add (
+		[in] BSTR strName,
+		[in] VARIANT *varValue,
+        [in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemNamedValue **objNamedValue
+		);
+
+	[id(3)]
+	HRESULT Remove (
+		[in] BSTR strName,
+		[in, optional, defaultvalue(0)] long iFlags
+		);
+
+	/* End of collection-specific members */
+		
+	[id(4)]
+    HRESULT Clone(
+		[out, retval] ISWbemNamedValueSet **objNewCopy
+		);
+
+    [id(5)]                
+    HRESULT DeleteAll();        
+};
+
+[
+	local, 
+	object, 
+	uuid(76A64164-CB41-11d1-8B02-00600806D9B6), 
+	dual, 
+	oleautomation,
+	helpstring("Interface to a single named value")
+]
+interface ISWbemNamedValue : IDispatch
+{
+	[id(DISPID_VALUE), propget] HRESULT Value([out, retval] VARIANT *varValue);
+	[id(DISPID_VALUE), propput] HRESULT Value([in] VARIANT *varValue);
+	[id(2), propget] HRESULT Name([out, retval] BSTR *strName);
+};
+
+[
+	object, 
+	local, 
+	uuid(5791BC27-CE9C-11d1-97BF-0000F81E849C), 
+	dual, 
+	oleautomation,
+ 	pointer_default(unique),
+	helpstring("Interface for object paths")
+]
+interface ISWbemObjectPath : IDispatch
+{
+	[id(DISPID_VALUE), propget] HRESULT Path([out, retval] BSTR *varValue);
+	[id(DISPID_VALUE), propput] HRESULT Path([in] BSTR varValue);
+
+	[id(1), propget] HRESULT RelPath([out, retval] BSTR *varValue);
+	[id(1), propput] HRESULT RelPath([in] BSTR varValue);
+
+	[id(2), propget] HRESULT Server([out, retval] BSTR *varValue);
+	[id(2), propput] HRESULT Server([in] BSTR varValue);
+
+	[id(3), propget] HRESULT Namespace([out, retval] BSTR *varValue);
+	[id(3), propput] HRESULT Namespace([in] BSTR varValue);
+
+	[id(4), propget] HRESULT ParentNamespace([out, retval] BSTR *varValue);
+
+	[id(5), propget] HRESULT DisplayName([out, retval] BSTR *varValue);
+	[id(5), propput] HRESULT DisplayName([in] BSTR varValue);
+
+	[id(6), propget] HRESULT Class([out, retval] BSTR *varValue);
+	[id(6), propput] HRESULT Class([in] BSTR varValue);
+
+	[id(7), propget] HRESULT IsClass([out, retval] VARIANT_BOOL *bValue);
+
+	[id(8)] HRESULT SetAsClass();
+
+	[id(9), propget] HRESULT IsSingleton([out, retval] VARIANT_BOOL *bValue);
+
+	[id(10)] HRESULT SetAsSingleton();
+
+	[id(11), propget] HRESULT Keys([out, retval] ISWbemNamedValueSet** objKeys); 
+};
+
+[
+	object, 
+	local, 
+	uuid(1A388F98-D4BA-11d1-8B09-00600806D9B6), 
+	dual, 
+	oleautomation,
+ 	pointer_default(unique),
+	helpstring("Interface for a single Property")
+]
+interface ISWbemProperty : IDispatch
+{
+	[id(DISPID_VALUE), propget] HRESULT Value([out, retval] VARIANT *varValue);
+	[id(DISPID_VALUE), propput] HRESULT Value([in] VARIANT *varValue);
+
+	[
+		id(1), 
+		propget,
+		helpstring("The name of the Property")
+	] 
+	HRESULT Name([out, retval] BSTR *varValue);
+	
+	[
+		id(2), 
+		propget,
+		helpstring("Indicates whether this Property is local or propagated")
+	] 
+	HRESULT IsLocal([out,retval] VARIANT_BOOL *bIsLocal);
+
+	[
+		id(3), 
+		propget,
+		helpstring("The originating class of this Property")
+	] 
+	HRESULT Origin([out,retval] BSTR *strOrigin);
+
+	[
+		id(4), 
+		propget,
+		helpstring("The CIM Type of this Property")
+	] 
+	HRESULT CIMType([out,retval] WbemCimtypeEnum *iCimType);
+
+	[
+		id(5), 
+		propget,
+		helpstring("The set of Qualifiers on this Property")
+	] HRESULT Qualifiers_ ([out, retval] ISWbemQualifierSet **objQualifierSet);
+
+	[
+		id(6),
+		propget,
+		helpstring("Whether this property is an array type")
+	]
+	HRESULT IsArray([out,retval] VARIANT_BOOL *bIsArray);
+};
+
+
+/* ISWbemPropertySet is a Collection of ISWbemProperty elements */
+[
+	local, 
+	object, 
+	local, 
+	uuid(DEA0A7B2-D4BA-11d1-8B09-00600806D9B6), 
+	oleautomation, 
+	dual,
+	helpstring("Interface for an ISWbemProperty collection")
+]
+interface ISWbemPropertySet : IDispatch
+{
+	/* These are used in the context of collections */
+	[id(DISPID_NEWENUM), propget, restricted] HRESULT _NewEnum ([out, retval] IUnknown **pUnk);
+
+	[id(DISPID_VALUE)]
+	HRESULT Item (
+		[in] BSTR strName, 
+		[in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemProperty **objProperty
+		);
+
+	[id(1), propget] HRESULT Count ([out, retval] long *iCount);
+
+	[id(2)]
+	HRESULT Add (
+		[in] BSTR strName,
+		[in] WbemCimtypeEnum iCIMType,
+		[in, optional, defaultvalue(FALSE)] VARIANT_BOOL bIsArray,
+		[in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemProperty **objProperty
+		);
+
+	[id(3)]
+	HRESULT Remove (
+		[in] BSTR strName,
+		[in, optional, defaultvalue(0)] long iFlags
+		);
+
+};
+
+[
+	object, 
+	local, 
+	uuid(79B05932-D3B7-11d1-8B06-00600806D9B6), 
+	dual, 
+	oleautomation,
+ 	pointer_default(unique),
+	helpstring("Interface for a single Qualifier")
+]
+interface ISWbemQualifier : IDispatch
+{
+	[id(DISPID_VALUE), propget] HRESULT Value([out, retval] VARIANT *varValue);
+	[id(DISPID_VALUE), propput] HRESULT Value([in] VARIANT *varValue);
+
+	[
+		id(1), 
+		propget,
+		helpstring("The name of the Qualifier")
+	] 
+	HRESULT Name([out, retval] BSTR *strValue);
+	
+	[
+		id(2), 
+		propget,
+		helpstring("Indicates whether this Qualifier is local or propagated")
+	] 
+	HRESULT IsLocal([out,retval] VARIANT_BOOL *bIsLocal);
+
+	[	
+		id(3), 
+		propget,
+		helpstring("Determines whether this Qualifier can propagate to subclasses")
+	] 
+	HRESULT PropagatesToSubclass([out, retval] VARIANT_BOOL *bValue);
+
+	[	
+		id(3), 
+		propput,
+		helpstring("Determines whether this Qualifier can propagate to subclasses")
+	] 
+	HRESULT PropagatesToSubclass([in] VARIANT_BOOL bValue);
+
+	[	
+		id(4), 
+		propget,
+		helpstring("Determines whether this Qualifier can propagate to instances")
+	] 
+	HRESULT PropagatesToInstance([out, retval] VARIANT_BOOL *bValue);
+
+	[	
+		id(4), 
+		propput,
+		helpstring("Determines whether this Qualifier can propagate to instances")
+	] 
+	HRESULT PropagatesToInstance([in] VARIANT_BOOL bValue);
+
+
+	[	
+		id(5), 
+		propget,
+		helpstring("Determines whether this Qualifier can be overridden where propagated")
+	] 
+	HRESULT IsOverridable([out, retval] VARIANT_BOOL *bValue);
+
+	[	
+		id(5), 
+		propput,
+		helpstring("Determines whether this Qualifier can be overridden where propagated")
+	] 
+	HRESULT IsOverridable([in] VARIANT_BOOL bValue);
+};
+
+
+/* ISWbemQualifierSet is a Collection of ISWbemQualifier elements */
+[
+	local, 
+	object, 
+	local, 
+	uuid(9B16ED16-D3DF-11d1-8B08-00600806D9B6), 
+	oleautomation, 
+	dual,
+	helpstring("Interface for an ISWbemQualifier collection")
+]
+interface ISWbemQualifierSet : IDispatch
+{
+	/* These are used in the context of collections */
+	[
+		id(DISPID_NEWENUM), 
+		propget, 
+		restricted
+	] 
+	HRESULT _NewEnum (
+		[out, retval] IUnknown **pUnk
+		);
+
+	[
+		id(DISPID_VALUE)
+	]
+	HRESULT Item (
+		[in] BSTR name, 
+		[in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemQualifier **objQualifier
+		);
+
+	[
+		id(1),
+		propget
+	] 
+	HRESULT Count (
+		[out, retval] long *iCount
+		);
+
+	[
+		id(2)
+	]
+	HRESULT Add (
+		[in] BSTR strName,
+		[in] VARIANT *varVal,
+		[in, optional, defaultvalue(TRUE)] VARIANT_BOOL bPropagatesToSubclasses,
+		[in, optional, defaultvalue(TRUE)] VARIANT_BOOL bPropagatesToInstances,
+		[in, optional, defaultvalue(TRUE)] VARIANT_BOOL bOverridable,
+        [in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemQualifier **objQualifier
+		);
+
+	[
+		id(3)
+	]
+	HRESULT Remove (
+		[in] BSTR strName,
+		[in, optional, defaultvalue(0)] long iFlags
+		);
+
+	/* End of collection-specific members */
+};
+
+[
+	object, 
+	local, 
+	uuid(422E8E90-D955-11d1-8B09-00600806D9B6), 
+	dual, 
+	oleautomation,
+ 	pointer_default(unique),
+	helpstring("Interface for a single Method")
+]
+interface ISWbemMethod : IDispatch
+{
+	[
+		id(1), 
+		propget,
+		helpstring("The name of the Method")
+	] 
+	HRESULT Name([out, retval] BSTR *strValue);
+	
+	[
+		id(2), 
+		propget,
+		helpstring("The originating class of this Method")
+	] 
+	HRESULT Origin([out,retval] BSTR *strOrigin);
+
+	[	
+		id(3), 
+		propget,
+		helpstring("The in parameters for the Method.")
+	] 
+	HRESULT InParameters ([out, retval] ISWbemObject **objInParameters);
+
+	[	
+		id(4), 
+		propget,
+		helpstring("The out parameters for the Method.")
+	] 
+	HRESULT OutParameters ([out, retval] ISWbemObject **objInParameters);
+
+	[	
+		id(5), 
+		propget,
+		helpstring("The Qualifiers of the Method.")
+	] 
+	HRESULT Qualifiers_ ([out, retval] ISWbemQualifierSet **objQualifiers);
+};
+
+
+/* ISWbemMethodSet is a Collection of ISWbemMethod elements */
+[
+	local, 
+	object, 
+	local, 
+	uuid(C93BA292-D955-11d1-8B09-00600806D9B6), 
+	oleautomation, 
+	dual,
+	helpstring("Interface for an ISWbemMethod collection")
+]
+interface ISWbemMethodSet : IDispatch
+{
+	/* These are used in the context of collections */
+	[id(DISPID_NEWENUM), propget, restricted] HRESULT _NewEnum ([out, retval] IUnknown **pUnk);
+
+	[id(DISPID_VALUE)]
+	HRESULT Item (
+		[in] BSTR strName, 
+		[in, optional, defaultvalue(0)] long iFlags,
+		[out, retval] ISWbemMethod **objMethod
+		);
+
+	[id(1), propget] HRESULT Count ([out, retval] long *iCount);
+	
+	/* End of collection-specific members */
+};
+
+/* ISWbemEventSource is an iterator for returned events from ExecQueryNotification */
+[
+	local, 
+	object, 
+	local, 
+	uuid(27D54D92-0EBE-11d2-8B22-00600806D9B6), 
+	oleautomation, 
+	dual,
+	helpstring("Interface for an Event source")
+]
+interface ISWbemEventSource : IDispatch
+{
+	[
+		id(1),
+		helpstring("Retrieve the next event within a specified time period. The timeout is specified in milliseconds.")
+	]
+	HRESULT NextEvent (
+		[in, optional, defaultvalue(wbemTimeoutInfinite)] long iTimeoutMs,
+		[out, retval] ISWbemObject **objEvent
+		);
+};

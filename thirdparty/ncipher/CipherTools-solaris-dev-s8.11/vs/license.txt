@@ -1,0 +1,13 @@
+   nCipher License Information
+   ===========================
+
+ 
+   All software included in this distribution is (C) 2003 nCipher
+   Corporation Limited. The following licence applies to all software on
+   this distribution.
+
+   This software licence is a non-exclusive, non-transferable and
+   non-sublicensable licence to operate and copy the object code of
+   the software and any related documentation solely for VeriSign Inc.'s
+   own internal use in conjunction with the nCipher Product and to
+   incorporate the software into VeriSign Inc.'s own products.

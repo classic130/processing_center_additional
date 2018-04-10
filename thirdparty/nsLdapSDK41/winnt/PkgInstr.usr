@@ -1,0 +1,10 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'lib',
+            'include'
+          ],
+          'thirdparty/nsLdapSDK41/winnt',
+          'build/log/VerArchive'
+        ];

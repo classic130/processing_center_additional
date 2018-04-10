@@ -1,0 +1,26 @@
+$VAR1 = [
+          '',
+          [
+            [
+              [
+                [
+                  'logs',
+                  'buildman',
+                  'engineering',
+                  493,
+                  undef
+                ]
+              ],
+              [],
+              [],
+              [],
+              [
+                'VRSNrebe'
+              ],
+              'MSSL_FE_INSTALL'
+            ]
+          ],
+          [],
+          'apache2/logs',
+          'build/log/VerArchive'
+        ];

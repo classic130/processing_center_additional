@@ -1,0 +1,487 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>TransService.hpp Source File</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-8');" onMouseOver="rolloverOn('side-ext-8');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-8" onLoad="rolloverLoad('side-ext-8','../graphics/ext-8-label-2.jpg','../graphics/ext-8-label-3.jpg');" src="../graphics/ext-8-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <IMG alt="API Docs" border="0" height="12" hspace="0" src="../graphics/api-label-1.jpg" vspace="0" width="120"><BR>
+
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <A href="../schema.html" onMouseOut="rolloverOff('side-schema');" onMouseOver="rolloverOn('side-schema');"><IMG alt="Schema" border="0" height="12" hspace="0" name="side-schema" onLoad="rolloverLoad('side-schema','../graphics/schema-label-2.jpg','../graphics/schema-label-3.jpg');" src="../graphics/schema-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Releases" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../y2k.html" onMouseOut="rolloverOff('side-y2k');" onMouseOver="rolloverOn('side-y2k');"><IMG alt="Y2K Compliance" border="0" height="12" hspace="0" name="side-y2k" onLoad="rolloverLoad('side-y2k','../graphics/y2k-label-2.jpg','../graphics/y2k-label-3.jpg');" src="../graphics/y2k-label-3.jpg" vspace="0" width="120"></A><BR>
+  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.4 on Thu Mar 7 17:46:51 2002 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>TransService.hpp</h1><a href="TransService_hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <font class="comment">/*</font>
+00002 <font class="comment"> * The Apache Software License, Version 1.1</font>
+00003 <font class="comment"> *</font>
+00004 <font class="comment"> * Copyright (c) 1999-2001 The Apache Software Foundation.  All rights</font>
+00005 <font class="comment"> * reserved.</font>
+00006 <font class="comment"> *</font>
+00007 <font class="comment"> * Redistribution and use in source and binary forms, with or without</font>
+00008 <font class="comment"> * modification, are permitted provided that the following conditions</font>
+00009 <font class="comment"> * are met:</font>
+00010 <font class="comment"> *</font>
+00011 <font class="comment"> * 1. Redistributions of source code must retain the above copyright</font>
+00012 <font class="comment"> *    notice, this list of conditions and the following disclaimer.</font>
+00013 <font class="comment"> *</font>
+00014 <font class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</font>
+00015 <font class="comment"> *    notice, this list of conditions and the following disclaimer in</font>
+00016 <font class="comment"> *    the documentation and/or other materials provided with the</font>
+00017 <font class="comment"> *    distribution.</font>
+00018 <font class="comment"> *</font>
+00019 <font class="comment"> * 3. The end-user documentation included with the redistribution,</font>
+00020 <font class="comment"> *    if any, must include the following acknowledgment:</font>
+00021 <font class="comment"> *       "This product includes software developed by the</font>
+00022 <font class="comment"> *        Apache Software Foundation (http://www.apache.org/)."</font>
+00023 <font class="comment"> *    Alternately, this acknowledgment may appear in the software itself,</font>
+00024 <font class="comment"> *    if and wherever such third-party acknowledgments normally appear.</font>
+00025 <font class="comment"> *</font>
+00026 <font class="comment"> * 4. The names "Xerces" and "Apache Software Foundation" must</font>
+00027 <font class="comment"> *    not be used to endorse or promote products derived from this</font>
+00028 <font class="comment"> *    software without prior written permission. For written</font>
+00029 <font class="comment"> *    permission, please contact apache\@apache.org.</font>
+00030 <font class="comment"> *</font>
+00031 <font class="comment"> * 5. Products derived from this software may not be called "Apache",</font>
+00032 <font class="comment"> *    nor may "Apache" appear in their name, without prior written</font>
+00033 <font class="comment"> *    permission of the Apache Software Foundation.</font>
+00034 <font class="comment"> *</font>
+00035 <font class="comment"> * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED</font>
+00036 <font class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</font>
+00037 <font class="comment"> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</font>
+00038 <font class="comment"> * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR</font>
+00039 <font class="comment"> * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</font>
+00040 <font class="comment"> * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</font>
+00041 <font class="comment"> * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF</font>
+00042 <font class="comment"> * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</font>
+00043 <font class="comment"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</font>
+00044 <font class="comment"> * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT</font>
+00045 <font class="comment"> * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</font>
+00046 <font class="comment"> * SUCH DAMAGE.</font>
+00047 <font class="comment"> * ====================================================================</font>
+00048 <font class="comment"> *</font>
+00049 <font class="comment"> * This software consists of voluntary contributions made by many</font>
+00050 <font class="comment"> * individuals on behalf of the Apache Software Foundation, and was</font>
+00051 <font class="comment"> * originally based on software copyright (c) 1999, International</font>
+00052 <font class="comment"> * Business Machines, Inc., http://www.ibm.com .  For more information</font>
+00053 <font class="comment"> * on the Apache Software Foundation, please see</font>
+00054 <font class="comment"> * &lt;http://www.apache.org/&gt;.</font>
+00055 <font class="comment"> */</font>
+00056 
+00057 <font class="comment">/*</font>
+00058 <font class="comment"> * $Log: TransService.hpp,v $</font>
+00059 <font class="comment"> * Revision 1.1.1.1  2002/02/01 22:22:13  peiyongz</font>
+00060 <font class="comment"> * sane_include</font>
+00061 <font class="comment"> *</font>
+00062 <font class="comment"> * Revision 1.14  2001/11/01 23:37:07  jasons</font>
+00063 <font class="comment"> * 2001-11-01  Jason E. Stewart  &lt;jason@openinformatics.com&gt;</font>
+00064 <font class="comment"> *</font>
+00065 <font class="comment"> *  * src/util/TransService.hpp (Repository):</font>
+00066 <font class="comment"> *  Updated Doxygen documentation for XMLTranscoder class</font>
+00067 <font class="comment"> *</font>
+00068 <font class="comment"> * Revision 1.13  2001/05/11 13:26:30  tng</font>
+00069 <font class="comment"> * Copyright update.</font>
+00070 <font class="comment"> *</font>
+00071 <font class="comment"> * Revision 1.12  2001/01/25 19:19:32  tng</font>
+00072 <font class="comment"> * Let user add their encoding to the intrinsic mapping table.  Added by Khaled Noaman.</font>
+00073 <font class="comment"> *</font>
+00074 <font class="comment"> * Revision 1.11  2000/04/12 22:57:45  roddey</font>
+00075 <font class="comment"> * A couple of fixes to comments and parameter names to make them</font>
+00076 <font class="comment"> * more correct.</font>
+00077 <font class="comment"> *</font>
+00078 <font class="comment"> * Revision 1.10  2000/03/28 19:43:19  roddey</font>
+00079 <font class="comment"> * Fixes for signed/unsigned warnings. New work for two way transcoding</font>
+00080 <font class="comment"> * stuff.</font>
+00081 <font class="comment"> *</font>
+00082 <font class="comment"> * Revision 1.9  2000/03/17 23:59:54  roddey</font>
+00083 <font class="comment"> * Initial updates for two way transcoding support</font>
+00084 <font class="comment"> *</font>
+00085 <font class="comment"> * Revision 1.8  2000/03/02 19:54:46  roddey</font>
+00086 <font class="comment"> * This checkin includes many changes done while waiting for the</font>
+00087 <font class="comment"> * 1.1.0 code to be finished. I can't list them all here, but a list is</font>
+00088 <font class="comment"> * available elsewhere.</font>
+00089 <font class="comment"> *</font>
+00090 <font class="comment"> * Revision 1.7  2000/02/24 20:05:25  abagchi</font>
+00091 <font class="comment"> * Swat for removing Log from API docs</font>
+00092 <font class="comment"> *</font>
+00093 <font class="comment"> * Revision 1.6  2000/02/06 07:48:04  rahulj</font>
+00094 <font class="comment"> * Year 2K copyright swat.</font>
+00095 <font class="comment"> *</font>
+00096 <font class="comment"> * Revision 1.5  2000/01/25 22:49:55  roddey</font>
+00097 <font class="comment"> * Moved the supportsSrcOfs() method from the individual transcoder to the</font>
+00098 <font class="comment"> * transcoding service, where it should have been to begin with.</font>
+00099 <font class="comment"> *</font>
+00100 <font class="comment"> * Revision 1.4  2000/01/25 19:19:07  roddey</font>
+00101 <font class="comment"> * Simple addition of a getId() method to the xcode and netacess abstractions to</font>
+00102 <font class="comment"> * allow each impl to give back an id string.</font>
+00103 <font class="comment"> *</font>
+00104 <font class="comment"> * Revision 1.3  1999/12/18 00:18:10  roddey</font>
+00105 <font class="comment"> * More changes to support the new, completely orthagonal support for</font>
+00106 <font class="comment"> * intrinsic encodings.</font>
+00107 <font class="comment"> *</font>
+00108 <font class="comment"> * Revision 1.2  1999/12/15 19:41:28  roddey</font>
+00109 <font class="comment"> * Support for the new transcoder system, where even intrinsic encodings are</font>
+00110 <font class="comment"> * done via the same transcoder abstraction as external ones.</font>
+00111 <font class="comment"> *</font>
+00112 <font class="comment"> * Revision 1.1.1.1  1999/11/09 01:05:16  twl</font>
+00113 <font class="comment"> * Initial checkin</font>
+00114 <font class="comment"> *</font>
+00115 <font class="comment"> * Revision 1.2  1999/11/08 20:45:16  rahul</font>
+00116 <font class="comment"> * Swat for adding in Product name and CVS comment log variable.</font>
+00117 <font class="comment"> *</font>
+00118 <font class="comment"> */</font>
+00119 
+00120 <font class="preprocessor">#ifndef TRANSSERVICE_HPP</font>
+00121 <font class="preprocessor"></font><font class="preprocessor">#define TRANSSERVICE_HPP</font>
+00122 <font class="preprocessor"></font>
+00123 <font class="preprocessor">#include &lt;<a class="code" href="XercesDefs_hpp.html">xercesc/util/XercesDefs.hpp</a>&gt;</font>
+00124 
+00125 
+00126 <font class="comment">// Forward references</font>
+00127 <font class="keyword">class </font><a class="code" href="class_XMLPlatformUtils.html">XMLPlatformUtils</a>;
+00128 <font class="keyword">class </font><a class="code" href="class_XMLLCPTranscoder.html">XMLLCPTranscoder</a>;
+00129 <font class="keyword">class </font><a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>;
+00130 <font class="keyword">class </font>ENameMap;
+00131 
+00132 
+00133 <font class="comment">//</font>
+00134 <font class="comment">//  This class is an abstract base class which are used to abstract the</font>
+00135 <font class="comment">//  transcoding services that Xerces uses. The parser's actual transcoding</font>
+00136 <font class="comment">//  needs are small so it is desirable to allow different implementations</font>
+00137 <font class="comment">//  to be provided.</font>
+00138 <font class="comment">//</font>
+00139 <font class="comment">//  The transcoding service has to provide a couple of required string</font>
+00140 <font class="comment">//  and character operations, but its most important service is the creation</font>
+00141 <font class="comment">//  of transcoder objects. There are two types of transcoders, which are</font>
+00142 <font class="comment">//  discussed below in the XMLTranscoder class' description.</font>
+00143 <font class="comment">//</font>
+<a name="l00144"></a><a class="code" href="class_XMLTransService.html">00144</a> <font class="keyword">class </font> <a class="code" href="class_XMLTransService.html">XMLTransService</a>
+00145 {
+00146 <font class="keyword">public</font> :
+00147     <font class="comment">// -----------------------------------------------------------------------</font>
+00148     <font class="comment">//  Class specific types</font>
+00149     <font class="comment">// -----------------------------------------------------------------------</font>
+<a name="l00150"></a><a class="code" href="class_XMLTransService.html#s4">00150</a>     <font class="keyword">enum</font> Codes
+00151     {
+00152         Ok
+00153         , UnsupportedEncoding
+00154         , InternalFailure
+00155         , SupportFilesNotFound
+00156     };
+00157 
+<a name="l00158"></a><a class="code" href="struct_XMLTransService__TransRec.html">00158</a>     <font class="keyword">struct </font>TransRec
+00159     {
+<a name="l00160"></a><a class="code" href="struct_XMLTransService__TransRec.html#m0">00160</a>         XMLCh       intCh;
+<a name="l00161"></a><a class="code" href="struct_XMLTransService__TransRec.html#m1">00161</a>         XMLByte     extCh;
+00162     };
+00163 
+00164 
+00165     <font class="comment">// -----------------------------------------------------------------------</font>
+00166     <font class="comment">//  Public constructors and destructor</font>
+00167     <font class="comment">// -----------------------------------------------------------------------</font>
+00168     <font class="keyword">virtual</font> <a class="code" href="class_XMLTransService.html#a0">~XMLTransService</a>();
+00169 
+00170 
+00171     <font class="comment">// -----------------------------------------------------------------------</font>
+00172     <font class="comment">//  Non-virtual API</font>
+00173     <font class="comment">// -----------------------------------------------------------------------</font>
+00174     <a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>* makeNewTranscoderFor
+00175     (
+00176         <font class="keyword">const</font>   XMLCh* <font class="keyword">const</font>            encodingName
+00177         ,       XMLTransService::Codes&amp; resValue
+00178         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>            blockSize
+00179     );
+00180 
+00181     <a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>* makeNewTranscoderFor
+00182     (
+00183         <font class="keyword">const</font>   <font class="keywordtype">char</font>* <font class="keyword">const</font>             encodingName
+00184         ,       XMLTransService::Codes&amp; resValue
+00185         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>            blockSize
+00186     );
+00187 
+00188 
+00189     <font class="comment">// -----------------------------------------------------------------------</font>
+00190     <font class="comment">//  The virtual transcoding service API</font>
+00191     <font class="comment">// -----------------------------------------------------------------------</font>
+00192     <font class="keyword">virtual</font> <font class="keywordtype">int</font> compareIString
+00193     (
+00194         <font class="keyword">const</font>   XMLCh* <font class="keyword">const</font>    comp1
+00195         , <font class="keyword">const</font> XMLCh* <font class="keyword">const</font>    comp2
+00196     ) = 0;
+00197 
+00198     <font class="keyword">virtual</font> <font class="keywordtype">int</font> compareNIString
+00199     (
+00200         <font class="keyword">const</font>   XMLCh* <font class="keyword">const</font>    comp1
+00201         , <font class="keyword">const</font> XMLCh* <font class="keyword">const</font>    comp2
+00202         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    maxChars
+00203     ) = 0;
+00204 
+00205     <font class="keyword">virtual</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLTransService.html#a5">getId</a>() <font class="keyword">const</font> = 0;
+00206 
+00207     <font class="keyword">virtual</font> <font class="keywordtype">bool</font> <a class="code" href="class_XMLTransService.html#a6">isSpace</a>(<font class="keyword">const</font> XMLCh toCheck) <font class="keyword">const</font> = 0;
+00208 
+00209     <font class="keyword">virtual</font> <a class="code" href="class_XMLLCPTranscoder.html">XMLLCPTranscoder</a>* <a class="code" href="class_XMLTransService.html#a7">makeNewLCPTranscoder</a>() = 0;
+00210 
+00211     <font class="keyword">virtual</font> <font class="keywordtype">bool</font> <a class="code" href="class_XMLTransService.html#a8">supportsSrcOfs</a>() <font class="keyword">const</font> = 0;
+00212 
+00213     <font class="keyword">virtual</font> <font class="keywordtype">void</font> <a class="code" href="class_XMLTransService.html#a9">upperCase</a>(XMLCh* <font class="keyword">const</font> toUpperCase) <font class="keyword">const</font> = 0;
+00214 
+00215     <font class="comment">// -----------------------------------------------------------------------</font>
+00216     <font class="comment">//  Allow users to add their own encodings to the intrinsinc mapping</font>
+00217     <font class="comment">//  table</font>
+00218     <font class="comment">//  Usage:</font>
+00219     <font class="comment">//      XMLTransService::addEncoding (</font>
+00220     <font class="comment">//          gMyEncodingNameString</font>
+00221     <font class="comment">//          , new ENameMapFor&lt;MyTransClassType&gt;(gMyEncodingNameString)</font>
+00222     <font class="comment">//      );</font>
+00223     <font class="comment">// -----------------------------------------------------------------------</font>
+00224     <font class="keyword">static</font> <font class="keywordtype">void</font> <a class="code" href="class_XMLTransService.html#d0">addEncoding</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> encoding, ENameMap* <font class="keyword">const</font> ownMapping);
+00225 
+00226 
+00227 <font class="keyword">protected</font> :
+00228     <font class="comment">// -----------------------------------------------------------------------</font>
+00229     <font class="comment">//  Hidden constructors</font>
+00230     <font class="comment">// -----------------------------------------------------------------------</font>
+00231     <a class="code" href="class_XMLTransService.html#b0">XMLTransService</a>();
+00232 
+00233 
+00234     <font class="comment">// -----------------------------------------------------------------------</font>
+00235     <font class="comment">//  Protected virtual methods.</font>
+00236     <font class="comment">// -----------------------------------------------------------------------</font>
+00237     <font class="keyword">virtual</font> <a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>* makeNewXMLTranscoder
+00238     (
+00239         <font class="keyword">const</font>   XMLCh* <font class="keyword">const</font>            encodingName
+00240         ,       XMLTransService::Codes&amp; resValue
+00241         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>            blockSize
+00242     ) = 0;
+00243 
+00244 
+00245 <font class="keyword">private</font> :
+00246     <font class="comment">// -----------------------------------------------------------------------</font>
+00247     <font class="comment">//  Unimplemented constructors and operators</font>
+00248     <font class="comment">// -----------------------------------------------------------------------</font>
+00249     <a class="code" href="class_XMLTransService.html#b0">XMLTransService</a>(<font class="keyword">const</font> <a class="code" href="class_XMLTransService.html">XMLTransService</a>&amp;);
+00250     <font class="keywordtype">void</font> operator=(<font class="keyword">const</font> <a class="code" href="class_XMLTransService.html">XMLTransService</a>&amp;);
+00251 
+00252 
+00253     <font class="comment">// -----------------------------------------------------------------------</font>
+00254     <font class="comment">//  Hidden init method for platform utils to call</font>
+00255     <font class="comment">// -----------------------------------------------------------------------</font>
+<a name="l00256"></a><a class="code" href="class_XMLTransService.html#l0">00256</a>     <font class="keyword">friend</font> <font class="keyword">class </font><a class="code" href="class_XMLPlatformUtils.html">XMLPlatformUtils</a>;
+00257     <font class="keywordtype">void</font> initTransService();
+00258 };
+00259 
+00260 
+00261 
+00269 
+<a name="l00278"></a><a class="code" href="class_XMLTranscoder.html">00278</a> <font class="keyword">class </font> <a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>
+00279 {
+00280 <font class="keyword">public</font> :
+00281 
+<a name="l00289"></a><a class="code" href="class_XMLTranscoder.html#s2">00289</a>     <font class="keyword">enum</font> UnRepOpts
+00290     {
+00291         UnRep_Throw     
+00292         , UnRep_RepChar     
+00293     };
+00294 
+00295 
+00298 
+00303     <font class="keyword">virtual</font> <a class="code" href="class_XMLTranscoder.html#a0">~XMLTranscoder</a>();
+00305 
+00306 
+00307 
+00310 
+00328 
+00329 
+00330     <font class="keyword">virtual</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font> transcodeFrom
+00331     (
+00332         <font class="keyword">const</font>   XMLByte* <font class="keyword">const</font>          srcData
+00333         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>            srcCount
+00334         ,       XMLCh* <font class="keyword">const</font>            toFill
+00335         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>            maxChars
+00336         ,       <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>&amp;           bytesEaten
+00337         ,       <font class="keywordtype">unsigned</font> <font class="keywordtype">char</font>* <font class="keyword">const</font>    charSizes
+00338     ) = 0;
+00339 
+00352 
+00353     <font class="keyword">virtual</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font> transcodeTo
+00354     (
+00355         <font class="keyword">const</font>   XMLCh* <font class="keyword">const</font>    srcData
+00356         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    srcCount
+00357         ,       XMLByte* <font class="keyword">const</font>  toFill
+00358         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    maxBytes
+00359         ,       <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>&amp;   charsEaten
+00360         , <font class="keyword">const</font> UnRepOpts       options
+00361     ) = 0;
+00362 
+00367 
+00368     <font class="keyword">virtual</font> <font class="keywordtype">bool</font> canTranscodeTo
+00369     (
+00370         <font class="keyword">const</font>   <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    toCheck
+00371     )   <font class="keyword">const</font> = 0;
+00372 
+00374 
+00377 
+00386     <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font> <a class="code" href="class_XMLTranscoder.html#a4">getBlockSize</a>() <font class="keyword">const</font>;
+00387 
+00393     <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLTranscoder.html#a5">getEncodingName</a>() <font class="keyword">const</font>;
+00395 
+00396 <font class="keyword">protected</font> :
+00397     <font class="comment">// -----------------------------------------------------------------------</font>
+00398     <font class="comment">//  Hidden constructors</font>
+00399     <font class="comment">// -----------------------------------------------------------------------</font>
+00400     <a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>
+00401     (
+00402         <font class="keyword">const</font>   XMLCh* <font class="keyword">const</font>    encodingName
+00403         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    blockSize
+00404     );
+00405 
+00406 
+00407     <font class="comment">// -----------------------------------------------------------------------</font>
+00408     <font class="comment">//  Protected helper methods</font>
+00409     <font class="comment">// -----------------------------------------------------------------------</font>
+00410     <font class="keywordtype">void</font> <a class="code" href="class_XMLTranscoder.html#b1">checkBlockSize</a>(<font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font> toCheck);
+00411 
+00412 
+00413 <font class="keyword">private</font> :
+00414     <font class="comment">// -----------------------------------------------------------------------</font>
+00415     <font class="comment">//  Unimplemented constructors and operators</font>
+00416     <font class="comment">// -----------------------------------------------------------------------</font>
+00417     <a class="code" href="class_XMLTranscoder.html#b0">XMLTranscoder</a>(<font class="keyword">const</font> <a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>&amp;);
+00418     <font class="keywordtype">void</font> operator=(<font class="keyword">const</font> <a class="code" href="class_XMLTranscoder.html">XMLTranscoder</a>&amp;);
+00419 
+00420 
+00421     <font class="comment">// -----------------------------------------------------------------------</font>
+00422     <font class="comment">//  Private data members</font>
+00423     <font class="comment">//</font>
+00424     <font class="comment">//  fBlockSize</font>
+00425     <font class="comment">//      This is the block size indicated in the constructor. This lets</font>
+00426     <font class="comment">//      the derived class preallocate appopriately sized buffers. This</font>
+00427     <font class="comment">//      sets the maximum number of characters which can be internalized</font>
+00428     <font class="comment">//      per call to transcodeFrom() and transcodeTo().</font>
+00429     <font class="comment">//</font>
+00430     <font class="comment">//  fEncodingName</font>
+00431     <font class="comment">//      This is the name of the encoding this encoder is for. All basic</font>
+00432     <font class="comment">//      XML transcoder's are for named encodings.</font>
+00433     <font class="comment">// -----------------------------------------------------------------------</font>
+00434     <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    fBlockSize;
+00435     XMLCh*          fEncodingName;
+00436 };
+00437 
+00438 
+00439 <font class="comment">//</font>
+00440 <font class="comment">//  This class is a specialized transcoder that only transcodes between</font>
+00441 <font class="comment">//  the internal XMLCh format and the local code page. It is specialized</font>
+00442 <font class="comment">//  for the very common job of translating data from the client app's</font>
+00443 <font class="comment">//  native code page to the internal format and vice versa.</font>
+00444 <font class="comment">//</font>
+<a name="l00445"></a><a class="code" href="class_XMLLCPTranscoder.html">00445</a> <font class="keyword">class </font> <a class="code" href="class_XMLLCPTranscoder.html">XMLLCPTranscoder</a>
+00446 {
+00447 <font class="keyword">public</font> :
+00448     <font class="comment">// -----------------------------------------------------------------------</font>
+00449     <font class="comment">//  Public constructors and destructor</font>
+00450     <font class="comment">// -----------------------------------------------------------------------</font>
+00451     <font class="keyword">virtual</font> <a class="code" href="class_XMLLCPTranscoder.html#a0">~XMLLCPTranscoder</a>();
+00452 
+00453 
+00454     <font class="comment">// -----------------------------------------------------------------------</font>
+00455     <font class="comment">//  The virtual transcoder API</font>
+00456     <font class="comment">//</font>
+00457     <font class="comment">//  NOTE:   All these APIs don't include null terminator characters in</font>
+00458     <font class="comment">//          their parameters. So calcRequiredSize() returns the number</font>
+00459     <font class="comment">//          of actual chars, not including the null. maxBytes and maxChars</font>
+00460     <font class="comment">//          parameters refer to actual chars, not including the null so</font>
+00461     <font class="comment">//          its assumed that the buffer is physically one char or byte</font>
+00462     <font class="comment">//          larger.</font>
+00463     <font class="comment">// -----------------------------------------------------------------------</font>
+00464     <font class="keyword">virtual</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font> <a class="code" href="class_XMLLCPTranscoder.html#a1">calcRequiredSize</a>(<font class="keyword">const</font> <font class="keywordtype">char</font>* <font class="keyword">const</font> srcText) = 0;
+00465 
+00466     <font class="keyword">virtual</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font> <a class="code" href="class_XMLLCPTranscoder.html#a1">calcRequiredSize</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> srcText) = 0;
+00467 
+00468     <font class="keyword">virtual</font> <font class="keywordtype">char</font>* <a class="code" href="class_XMLLCPTranscoder.html#a3">transcode</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> toTranscode) = 0;
+00469 
+00470     <font class="keyword">virtual</font> XMLCh* <a class="code" href="class_XMLLCPTranscoder.html#a3">transcode</a>(<font class="keyword">const</font> <font class="keywordtype">char</font>* <font class="keyword">const</font> toTranscode) = 0;
+00471 
+00472     <font class="keyword">virtual</font> <font class="keywordtype">bool</font> transcode
+00473     (
+00474         <font class="keyword">const</font>   <font class="keywordtype">char</font>* <font class="keyword">const</font>     toTranscode
+00475         ,       XMLCh* <font class="keyword">const</font>    toFill
+00476         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    maxChars
+00477     ) = 0;
+00478 
+00479     <font class="keyword">virtual</font> <font class="keywordtype">bool</font> transcode
+00480     (
+00481         <font class="keyword">const</font>   XMLCh* <font class="keyword">const</font>    toTranscode
+00482         ,       <font class="keywordtype">char</font>* <font class="keyword">const</font>     toFill
+00483         , <font class="keyword">const</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font>    maxBytes
+00484     ) = 0;
+00485 
+00486 
+00487 <font class="keyword">protected</font> :
+00488     <font class="comment">// -----------------------------------------------------------------------</font>
+00489     <font class="comment">//  Hidden constructors</font>
+00490     <font class="comment">// -----------------------------------------------------------------------</font>
+00491     <a class="code" href="class_XMLLCPTranscoder.html#b0">XMLLCPTranscoder</a>();
+00492 
+00493 
+00494 <font class="keyword">private</font> :
+00495     <font class="comment">// -----------------------------------------------------------------------</font>
+00496     <font class="comment">//  Unimplemented constructors and operators</font>
+00497     <font class="comment">// -----------------------------------------------------------------------</font>
+00498     <a class="code" href="class_XMLLCPTranscoder.html#b0">XMLLCPTranscoder</a>(<font class="keyword">const</font> <a class="code" href="class_XMLLCPTranscoder.html">XMLLCPTranscoder</a>&amp;);
+00499     <font class="keywordtype">void</font> operator=(<font class="keyword">const</font> <a class="code" href="class_XMLLCPTranscoder.html">XMLLCPTranscoder</a>&amp;);
+00500 };
+00501 
+00502 
+00503 <font class="comment">// ---------------------------------------------------------------------------</font>
+00504 <font class="comment">//  XMLTranscoder: Protected helper methods</font>
+00505 <font class="comment">// ---------------------------------------------------------------------------</font>
+<a name="l00506"></a><a class="code" href="class_XMLTranscoder.html#a4">00506</a> <font class="keyword">inline</font> <font class="keywordtype">unsigned</font> <font class="keywordtype">int</font> <a class="code" href="class_XMLTranscoder.html#a4">XMLTranscoder::getBlockSize</a>()<font class="keyword"> const</font>
+00507 <font class="keyword"></font>{
+00508     <font class="keywordflow">return</font> fBlockSize;
+00509 }
+00510 
+<a name="l00511"></a><a class="code" href="class_XMLTranscoder.html#a5">00511</a> <font class="keyword">inline</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLTranscoder.html#a5">XMLTranscoder::getEncodingName</a>()<font class="keyword"> const</font>
+00512 <font class="keyword"></font>{
+00513     <font class="keywordflow">return</font> fEncodingName;
+00514 }
+00515 
+00516 <font class="preprocessor">#endif</font>
+</font></div></pre>    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1"></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

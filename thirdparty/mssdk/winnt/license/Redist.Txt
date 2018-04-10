@@ -1,0 +1,529 @@
+Platform SDK Development Kit Redistributables
+==============================================
+Unless otherwise noted, the following redistributables are 
+provided in the Platform SDK in the \mssdk\redist\<platform> 
+directories.
+
+==========================================
+Microsoft Data Acces Components 2.0 (MDAC)
+==========================================
+The MDAC redistributables may only be redistributed as part of MDAC_TYP.Exe.
+You may not redistribute any of the DLLs in MDAC_Typ.Exe except by using
+MDAC_TYP.Exe. You may not modify MDAC_TYP.Exe
+
+MDAC_TYP.EXE is a self-extracting executable that will install the MDAC
+redistributables only if there is not a more recent version of the DLLs 
+installed. MDAC_TYP.EXE will write the registry keys required
+by MDAC.
+
+Running the MDAC Redistribution Setup from the Command-Line in Silent Mode
+
+In a DOS window, enter:
+
+     mdac_typ.exe /q:a /c:"setup.exe /qt"
+
+The /q:a switch removes all user interfaces from the standalone wrapper.
+The /qt switch removes all user interfaces from the MS installer.
+
+In addition to the rights granted in Section 1 of the Microsoft Platform 
+Software Development Kit End User License Agreement ("Agreement"), with 
+respect to the MDAC Redistributable Code, you have the following
+non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute MDAC_TYP.EXE.
+
+================================
+ADSI Redistributables 2.0 (ADS)
+================================
+
+The ADSI redistributables may only be redistributed as part of ADS.EXE.  
+You may not redistribute any of the DLLs in ADS.EXE except by using ADS.EXE.  
+You may not modify ADS.EXE
+
+ADS.EXE is a self-extracting executable that will install the ADSI 
+redistributables only if there is not a more recent version of the DLLs 
+in the system directory. ADS.EXE will write the registry keys required 
+by ADSI.
+
+In addition to the rights granted in Section 1 of the Microsoft Platform 
+Software Development Kit End User License Agreement ("Agreement"), with 
+respect to the ADSI Redistributable Code, you have the following
+non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute ADS.EXE.
+
+===========================================
+Virtual machines for x86 and Alpha systems
+===========================================
+You may redistribute MSJavx86.exe (a self-extracting executable for 
+x86 systems) and MSJavAxP.exe (a self-extracting executable for Alpha 
+systems). You will find MSJavx86.exe and MSJavAxp.Exe in 
+the \Mssdk\Redist\Java 
+
+Individual files in the redistributable executables cannot be 
+redistributed separately. The retail version of the stand alone 
+VM for x86 (MSJavx86.exe) can be used with retail versions of 
+Internet Explorer (IE4.0 or IE3.02); beta versions of Internet 
+Explorer are not supported.
+
+For information on the most recent version of the Microsoft 
+Virtual Machine for Java, please see the web site: 
+http://www.microsoft.com/java/.
+
+
+================================================
+Microsoft Application Foundation Classes (AFC) 
+================================================
+The AFC functionality is included in this version of the SDK 
+and Internet Explorer 4.0. However, the redistributable ZIP 
+file that contains the AFC classes did not ship with this release 
+of the SDK. This ZIP file will be posted on the web shortly. 
+
+Please see http://www.microsoft.com/java/afc for more information. 
+
+
+===========================================================
+Component Categories Manager for Windows NT and Windows 95
+===========================================================
+The COMCAT.DLL may only be redistributed as part of CCDIST.EXE or CCDIST35.EXE.
+You may not redistribute COMCAT.DLL except by using CCDIST.EXE or CCDIST35.EXE.
+You may not modify CCDIST.EXE or CCDIST35.EXE.
+
+CCDIST.EXE is a self-extracting executable that will install the COMCAT.DLL
+only if there is not a more recent version of the COMCAT.DLL in the system
+directory.  CCDIST.EXE will write the registry keys required by COMCAT.DLL.
+CCDIST.EXE may be used on Windows NT 4.0 or Windows 95.  CCDIST35.EXE provides
+the same functionality for Windows NT 3.51.
+
+If CCDIST.EXE or CCDIST35.EXE do not meet your distribution needs for
+COMCAT.DLL, please send detailed feedback to oleidea@microsoft.com.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the COMCAT Redistributable Code,
+you have the following non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute CCDIST.EXE and CCDIST35.EXE.
+
+
+===========================================
+Compound File Optimization Tool (DFLAYOUT)
+===========================================
+The DFLAYOUT.DLL may only be redistributed as part of DFLAYDLL.EXE.  You may
+not redistribute DFLAYOUT.DLL except by using DFLAYDLL.EXE.  You may not
+modify DFLAYDLL.EXE.
+
+DFLAYDLL.EXE is a self-extracting executable that will install the DFLAYOUT.DLL
+only if there is not a more recent version of the DFLAYOUT.DLL in the system
+directory.  DFLAYDLL.EXE will write the registry keys required by DFLAYOUT.DLL.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the DFLAYOUT Redistributable Code,
+you have the following non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute DFLAYDLL.EXE.
+
+
+=================================================
+API functions relating to OLE Controls (OLEPRO32)
+=================================================
+OLEPRO32.DLL may be distributed royalty-free with an OLE Controls project.
+One must, however, take the usual care when installing this DLL on a
+system to ensure that it does not replace a potentially newer version
+of the library.
+
+Before attempting to install this DLL, ensure that a DLL of the same name
+is not already present with a greater version number (as determined by the
+version resources).
+
+If you do install the DLL on a computer, you must also ensure that its
+registry entries are properly created.  OLEPRO32.DLL is a self-registering
+server, which means that it can create its own registry entries on
+demand.  To perform this self-registration, the installation program must
+execute the following code to call the standard export DllRegisterServer:
+
+        // pszPathToInstalledDLL is the path+name of OLEPRO32.DLL
+
+        HINSTANCE       hMod;
+
+        if (FAILED(CoInitialize(NULL))) return 0;
+
+        hMod=LoadLibraryA(pszPathToInstalledDLL);
+
+        if (hMod > (HINSTANCE)HINSTANCE_ERROR)
+            {
+            HRESULT (STDAPICALLTYPE *pfn)(void);
+            BOOL    fRes=FALSE;
+
+            (FARPROC&)pfn=GetProcAddress(hMod, "DllRegisterServer");
+
+            if (NULL!=pfn) fRes=SUCCEEDED((*pfn)());
+
+            //
+            // fRes indicates success or failure. The HRESULT from
+            // (*pfn)() provides the specific error.
+            //
+            }
+
+        FreeLibrary(hMod);
+        CoUninitialize();
+
+This will create the necessary registry entries for the standard font
+and picture objects, among other things.
+
+If you have an uninstaller program, you should call the exported
+function DllUnregisterServer in the same way when removing the DLL from
+the system.  This ensures registry cleanup.
+
+OLEPRO32.DLL is located in the Platform SDK in \bin\win95.
+It should be installed in the %windir%\system directory on Windows 95.  It
+should never be installed on Windows NT 4.0.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the OLE Controls Redistributable
+Code, you have the following non-exclusive, royalty free rights subject
+to the Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute OLEPRO32.DLL.
+
+==============================================
+Standalone Property Set Implementation (IPROP)
+==============================================
+
+The IPROP.DLL may only be redistributed as part of IPROP.EXE.  You may
+not redistribute IPROP.DLL except by using IPROP.EXE.  You may not
+modify IPROP.EXE
+
+IPROP.EXE is a self-extracting executable that will install the IPROP.DLL
+only if there is not a more recent version of the IPROP.DLL in the system
+directory.  IPROP.EXE will write the registry keys required by IPROP.DLL.
+
+In addition to the rights granted in Section 1 of the Development License
+Agreement ("Agreement"), with respect to the IPROP Redistributable Code,
+you have the following non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute IPROP.EXE.
+
+=======================================
+Performance Data Helper for Windows NT
+=======================================
+To install the performance data helper DLL on Windows NT copy PDH.DLL into
+the %windir%\system directory.  The PDH.DLL should never be installed over
+an existing copy of the same DLL that has a later version resource.  The
+PDH.DLL should never be installed on a Windows 95 system (it will not work).
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the performance data helper DLL
+for Windows NT Redistributable Code, you have the following non-exclusive,
+royalty free rights subject to the Distribution Requirements detailed in
+Section 1 of the Agreement:
+
+(1)  You may distribute PDH.DLL.
+
+
+=========================
+IMAGEHLP for Windows 95
+=========================
+To install the IMAGEHLP.DLL on Windows 95 copy the DLL into the
+%windir%\system directory.  The IMAGEHLP.DLL should never be
+installed over an existing copy of the same DLL that has a later
+version resource.  The IMAGEHLP.DLL should never be installed on a
+Windows NT system (it is already built in).
+
+The IMAGEHLP.DLL for Windows 95 is located in the \mssdk\bin\win95
+directory on the Platform SDK CD.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the IMAGEHLP.DLL for Windows 95
+Redistributable Code, you have the following non-exclusive, royalty free
+rights subject to the Distribution Requirements detailed in Section 1 of
+the Agreement:
+
+(1)  You may distribute IMAGEHLP.DLL.
+
+
+=======================
+SETUPAPI for Windows 95
+=======================
+To install SETUPAPI on Windows 95 copy both SETUPAPI.DLL and CFGMGR32.DLL
+into the %windir%\system directory.  These DLLs should never be installed over
+an existing copy of the same DLLs that have later version resources.  These
+DLLs should never be installed on a Windows NT system.
+
+SETUPAPI.DLL and CFGMGR32.DLL for Windows 95 are located in the
+\mssdk\bin\win95 directory in the Platform SDK.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to SETUPAPI for Windows 95
+Redistributable Code, you have the following non-exclusive, royalty free
+rights subject to the Distribution Requirements detailed in Section 1 of
+the Agreement:
+
+(1)  You may distribute SETUPAPI.DLL and CFGMGR32.DLL.
+
+
+===================================
+Microsoft RPC Redistributable Code
+===================================
+The RPC redistributables are located in the \MISC\RPC_RT16 directory 
+of the Platform SDK. These RPC run-time files 
+must be installed on MS_DOS, Microsoft Windows 3.x, or Microsoft Windows 
+for Workgroups 3.1xX to run your distributed applications that use 
+Microsoft RPC.  Your application should ship with and install these 
+components.
+
+You cannot redistribute RPC components for Microsoft Windows NT or 
+Windows 95.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the RPC Redistributable Code,
+you have the following non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute the files identified for the appropriate platform:
+
+MS-DOS Redistributable Components
+    RPC16C1.RPC     RPC16C3.RPC     RPC16C4.RPC     RPC16C5.RPC
+    RPC16C6.RPC     RPC16DG3.RPC    RPC16DG6.RPC    RPCNS.RPC
+    RPCNSLM.RPC     RPCNSMGM.RPC    SECURITY.RPC
+.
+Microsoft Windows 3.x Redistributable Components
+    DNETAPI.DLL     NETAPI.DLL      RPCRT1.DLL      RPCNS1.DLL
+    RPC16C1.DLL     RPC16C3.DLL     RPC16C3X.DLL    RPC16C4.DLL
+    RPC16C5.DLL     RPC16C6.DLL     RPC16DG3.DLL    RPC16DG6.DLL
+    SECURITY.DLL
+
+
+=========================================
+SPORDER for Windows NT 4.0 and Windows 95
+=========================================
+SPORDER.DLL should be installed in your application-specific directory.
+There is no reason to install it into the system directory.  It should
+not be used on Windows NT 3.51 (since it will not work).
+
+The SPORDER.DLL is located in the \mssdk\bin\winnt\<platform>
+directory in the Platform SDK.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the SPORDER Redistributable
+Code, you have the following non-exclusive, royalty free rights subject
+to the Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute SPORDER.DLL.
+
+
+=====================
+PSAPI for Windows NT
+=====================
+PSAPI.DLL should be installed in your application-specific directory,
+and only on Windows NT.  It will not work on Windows 95.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the PSAPI Redistributable
+Code, you have the following non-exclusive, royalty free rights subject
+to the Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute PSAPI.DLL.
+
+
+========================
+DCOM95 Redistributables
+========================
+
+The DCOM95 redistributables may only be redistributed as part of DCOM95.EXE.  
+You may not redistribute any of the DLLs in DCOM95.EXE except by using 
+DCOM95.EXE. You may not modify DCOM95.EXE. DCOM95.EXE is provided in the 
+\mssdk\bin\redist\i386\win95 directory in the Platform SDK.
+
+DCOM95.EXE is a self-extracting executable that will install the DCOM95 
+redistributables only if there is not a more recent version of the DLLs 
+in the system directory. 
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the DCOM95 Redistributable Code,
+you have the following non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute DCOM95.EXE as part of your software application 
+     product solely for use with Windows 95.
+
+
+==========================================
+SNMPAPI for Windows NT 3.51 and Windows 95
+==========================================
+To install the SNMPAPI.DLL on Windows NT 3.51 copy the DLL into the
+%systemroot%\system32 directory.  The SNMPAPI.DLL should never be
+installed over an existing copy of the same DLL that has a later
+version resource.  The SNMPAPI.DLL should never be installed on a
+Windows NT 4.0 system.
+
+The i386 version of SNMPAPI.DLL has been tested and will work on 
+Windows 95. It should be installed in the %windir% directory.
+
+Both debug and retail versions of SNMPAPI.DLL for Windows NT 3.51 have
+been provided here.  The debug versions are for ISV debugging purposes
+only.  They may not be redistributed under any circumstances.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the SNMPAPI Redistributable
+Code, you have the following non-exclusive, royalty free rights subject
+to the Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute SNMPAPI.DLL.
+
+
+=====================
+Redistributable Tools
+=====================
+The following files are redistributable as individual components.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to Redistributable Code,
+you have the following non-exclusive, royalty free rights subject to the
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1) You may distribute the following files for Windows NT or Windows 9x:
+
+    COMPRESS.EXE
+
+
+==================================================
+OLE Automation for Windows NT 3.51 and Windows 95
+==================================================
+To install the updated OLE Automation on Windows NT 3.51, copy 
+OLEAUT32.DLL and STDOLE2.TLB into the %systemroot%\system32 directory.
+These two files are provided in the \misc\oa351 directory in the 
+Platform SDK.
+
+Updated OLE Automation may only be redistributed on Windows 95 as 
+part of OA95.EXE. OA95.EXE is a self-extracting executable that will 
+install OLEAUT32.DLL and STDOLE2.TLB into %windir%\system.  OA95.EXE 
+is provided in the \mssdk\bin\redist\i386\win95 directory in the 
+Platform SDK.
+
+These two files should never be installed over an existing copy of the
+same DLL that has a later version resource.  These two files should not
+be installed on a Windows NT 4.0 system (they are already built in).
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the OLE Automation 
+Redistributable Code, you have the following non-exclusive, royalty 
+free rights subject to the Distribution Requirements detailed in 
+Section 1 of the Agreement:
+
+(1)  You may distribute OLEAUT32.DLL and STDOLE2.TLB as part of your 
+     software application product solely for use with Windows NT 3.51.
+(2)  You may distribute OA95.EXE as part of your software application 
+     product solely for use with Windows 95.
+
+
+
+============================
+DirectX Redistributable Code
+============================
+Redistributable Code is identified as the following files
+and all of the files in the following directories:
+
+Core Directories:
+
+All files in the following directories must be included
+in any distribution of Redistributable Code:
+
+<sdkdir>\REDIST\DirectX5\Win95
+<sdkdir>\REDIST\DirectX5\Win95\DirectX
+
+
+=====================
+OpenGL for Windows 95
+=====================
+The OpenGL for Windows 95 Redistributables are located in 
+\mssdk\redist\opengl\win95\dll. These files must be installed as 
+described in \mssdk\redist\opengl\win95\readme.txt.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the OpenGL for Windows 95
+Redistributable Code, you have the following non-exclusive, royalty free
+rights subject to the Distribution Requirements detailed in Section 1 of
+the Agreement:
+
+(1)  You may distribute OPENGL95.DLL and GLU32.DLL.
+
+
+============================
+Microsoft Management Console
+============================
+The Microsoft Management Console (MMC) redistributables may only be 
+redistributed as part of iMMC.EXE or aMMC.EXE. You may not redistribute 
+any of the DLLs in iMMC.EXE or aMMC.EXE except by using iMMC.EXE or aMMC.EXE. 
+You may not modify iMMC.EXE or aMMC.EXE.
+
+iMMC.EXE and aMMC.EXE are self-extracting executables that will install 
+the MMC redistributables only if there is not a more recent version of 
+the DLLs in the system directory. iMMC.EXE or aMMC.EXE will write the 
+registry keys required by MMC.
+
+In addition to the rights granted in Section 1 of the Development License 
+Agreement ("Agreement"), with respect to the MMC Redistributable Code, 
+you have the following non-exclusive, royalty free rights subject to 
+the Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute iMMC.EXE or aMMC.EXE.
+
+
+=========================
+Microsoft Agent version 1
+=========================
+The following uses for Microsoft Agent Version 1 are currently royalty-free,
+subject to the End-User License Agreement found in 
+\mssdk\redist\complib\msagent\agteula.doc in the Platform SDK: 
+
+* You can automatically cause Microsoft Agent to download from the Microsoft 
+site by including the CLSID for Microsoft Agent in an HTML <OBJECT> tag on 
+one of your site's pages.
+
+* You can also automatically cause the Microsoft Command and Control speech 
+recognition engine and the Lernout & Hauspie® TruVoice Text-To-Speech 
+Engine for Microsoft Agent to download from the Microsoft site, by 
+including their CLSIDs in an HTML <OBJECT> tag on one of your site's pages, 
+provided that these engines are only downloaded and installed for use with 
+Microsoft Agent.
+
+* You can load Microsoft's designated characters or images from the Microsoft 
+Web site in your script code using the Microsoft Agent Load and Get (Prepare) 
+methods. 
+
+However, the Distribution Requirements contained in the Development License 
+Agreement ("Agreement") do not apply to Microsoft Agent.  To add or include 
+Microsoft Agent and any of its components to or with an application, or post 
+Microsoft Agent and any of its components on a 
+server, or distribute Microsoft Agent and any of its components using other 
+electronic media, you must first obtain and submit a redistribution license 
+for Microsoft Agent. The Microsoft Agent character files, the Microsoft 
+Command and Control speech engine, and the Lernout & Hauspie TruVoice 
+Text-To-Speech Engine cannot be redistributed without Microsoft Agent. This 
+license for Microsoft Agent Version 1 is currently royalty-free to 
+redistribute within your organization or to your customers. The license does 
+not include the Microsoft Agent Character Editor or the Microsoft Linguistic 
+Sound Editing Tool. 
+
+To request a redistribution license or further information, contact the 
+Microsoft Agent Product Group at msagent@microsoft.com. 
+
+
+================================
+Winsock Redistributables
+================================
+See \mssdk\redist\winsock\license.txt
+
+
+====================
+NOT Redistributable
+====================
+* The contents of the mssdk\redist\directshow directory in the Platform SDK
+ are still beta code. They are provided here for development 
+purposes only. They are not redistributable. The interfaces may change in
+the future, requiring applications to be recompiled.

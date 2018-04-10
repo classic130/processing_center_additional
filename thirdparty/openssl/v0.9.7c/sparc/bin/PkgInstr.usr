@@ -1,0 +1,7 @@
+$VAR1 = [
+          '',
+          [],
+          [],
+          'thirdparty/openssl/v0.9.7c/sparc/bin',
+          'build/log/VerArchive'
+        ];

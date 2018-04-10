@@ -1,0 +1,26 @@
+#! /bin/sh
+#
+# Created by configure
+
+CC="gcc"; export CC
+CFLAGS="-O2 -L/usr/local/lib -R/usr/local/lib -L/usr/local/ssl/lib -R/usr/local/ssl/lib -L/usr/openwin/lib -R/usr/openwin/lib -I/usr/local/rrdtool-1.2.19/include -I/usr/local/BerkeleyDB.4.7/include"; export CFLAGS
+CPPFLAGS="-I/usr/local/include -I/usr/local/ssl/include -I/usr/local/include/ncurses -I/usr/openwin/include -I/usr/local/rrdtool-1.2.19/include -I/usr/local/BerkeleyDB.4.7/include -I/usr/local/include/lzo"; export CPPFLAGS
+LDFLAGS="-L/usr/local/lib -R/usr/local/lib -R/usr/lib -L/usr/lib -R/usr/openwin/lib -L/usr/openwin/lib -L/usr/local/ssl/lib -R/usr/local/ssl/lib -L/usr/X11R6/lib -R/usr/X11R6/lib -L/usr/local/BerkeleyDB.4.7/lib -R/usr/local/BerkeleyDB.4.7/lib"; export LDFLAGS
+"./configure" \
+"--prefix=/usr/local/apache2" \
+"--enable-mods-shared=all" \
+"--enable-ssl=shared" \
+"--enable-ssl" \
+"--with-ssl=/usr/local/ssl" \
+"--enable-proxy" \
+"--enable-proxy-connect" \
+"--enable-proxy-ftp" \
+"--enable-proxy-http" \
+"--with-ldap" \
+"--enable-ldap" \
+"--enable-authnz-ldap" \
+"CC=gcc" \
+"CFLAGS=-O2 -L/usr/local/lib -R/usr/local/lib -L/usr/local/ssl/lib -R/usr/local/ssl/lib -L/usr/openwin/lib -R/usr/openwin/lib -I/usr/local/rrdtool-1.2.19/include -I/usr/local/BerkeleyDB.4.7/include" \
+"LDFLAGS=-L/usr/local/lib -R/usr/local/lib -R/usr/lib -L/usr/lib -R/usr/openwin/lib -L/usr/openwin/lib -L/usr/local/ssl/lib -R/usr/local/ssl/lib -L/usr/X11R6/lib -R/usr/X11R6/lib -L/usr/local/BerkeleyDB.4.7/lib -R/usr/local/BerkeleyDB.4.7/lib" \
+"CPPFLAGS=-I/usr/local/include -I/usr/local/ssl/include -I/usr/local/include/ncurses -I/usr/openwin/include -I/usr/local/rrdtool-1.2.19/include -I/usr/local/BerkeleyDB.4.7/include -I/usr/local/include/lzo" \
+"$@"

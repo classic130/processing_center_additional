@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'bin'
+          ],
+          'thirdparty/openssl/aix',
+          'build/log/VerArchive'
+        ];

@@ -1,0 +1,53 @@
+//
+// This software is supplied under the terms of a licence agreement or 
+// nondisclosure agreement with Intel Corporation and may not be copied 
+// or disclosed except in accordance with the terms of that agreement.  
+// Copyright © 1997 Microsoft Corporation. All Rights Reserved.
+//
+// Filename : Silence.idl
+// Purpose  : Defines the interfaces exposed by the PCM Silence
+//            suppression filter.
+// Contents : ISilenceSuppressor interface specification.
+//
+// Begin ISilenceSuppressor Specification
+import "oaidl.idl";
+
+[
+    object,
+    uuid(40C1D160-52F2-11d0-A874-00AA00B5CA1B),
+    local,
+    helpstring("ISilenceSuppressor Interface"),
+    pointer_default(unique)
+]
+interface ISilenceSuppressor : IUnknown
+{
+    [id(3)]  HRESULT GetPostplayTime(
+                [out] LPDWORD lpdwPostplayBufferTime
+                );
+    [id(4)]  HRESULT SetPostplayTime(
+                [in]  DWORD   dwPostplayBufferTime
+                );
+
+    [id(5)]  HRESULT GetKeepPlayTime(
+                [out] LPDWORD lpdwRunningAverageTime
+                );
+    [id(6)]  HRESULT SetKeepPlayTime(
+                [in]  DWORD   dwRunningAverageTime
+                );
+
+    [id(7)]  HRESULT GetThresholdIncrementor(
+                [out] LPDWORD lpdwThresholdIncrementor
+                );
+    [id(8)]  HRESULT SetThresholdIncrementor(
+                [in]  DWORD   dwThresholdIncrementor
+                );
+
+    [id(9)]  HRESULT GetBaseThreshold(
+                [out] LPDWORD lpdwBaseThreshold
+                );
+    [id(10)] HRESULT SetBaseThreshold(
+                [in]  DWORD   dwBaseThreshold
+                );
+}
+cpp_quote("EXTERN_C const CLSID CLSID_SilenceSuppressionFilter;")
+cpp_quote("EXTERN_C const CLSID CLSID_SilenceSuppressionProperties;")

@@ -1,0 +1,54 @@
+
+nCipher - Verisign Hardware Protected SSL Certificate Release Notes
+===================================================================
+
+
+
+Vendor Checking Software
+========================
+
+8 April 2004
+
+
+Supported operating system versions: Solaris 2.7
+------------------------------------------------
+
+This note contains important information on the nCipher Hardware Protected SSL
+Certificate Vendor Checking software supplied to VeriSign. This software is
+intended to be used in a production environment.
+
+
+FILES INCLUDED IN THIS ARCHIVE
+==============================
+
+The check-extract vendor checking software is supplied in the directory you
+untarred the archive in. The licence under which this software is used is
+supplied in the ../vs directory. Please read this licence before using the
+software. Documentation for check-extract (vs-interface.txt) is supplied in the
+../vs/document/ directory.
+
+
+CURRENT RELEASE INFORMATION
+===========================
+
+This release is fully compatible with nCipher's v9.xx software with the
+exception that it does not support keys whose private blobs are stored
+in module non-volatile memory.  nCipher does not recommend the use of
+this feature; however, this limitation will be fixed in a later release
+of this software.
+
+
+LEGAL INFORMATION
+=================
+
+These release notes do not cover all situations and are intended as a
+supplement to the nCipher documentation provided with nCipher products.
+
+Disclaimer: nCipher Corporation Limited disclaims all liabilities regarding
+third party products and only provides warranties with its own products as
+addressed in nCipher's Terms and Conditions for Sale. nCipher is a registered
+trade mark of nCipher Corporation Limited. Any other trade marks referenced in
+this document are the property of the respective trade mark owners.
+
+© Copyright 2004 nCipher Corporation Limited, Cambridge, United Kingdom.
+

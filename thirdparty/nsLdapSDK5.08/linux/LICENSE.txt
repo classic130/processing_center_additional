@@ -1,0 +1,228 @@
+
+			Sun Microsystems, Inc.  
+   			    License Terms
+		iPlanet(tm) Directory SDK for C 5.08
+ 
+READ THE TERMS OF THE AGREEMENT (THE "AGREEMENT") CAREFULLY BEFORE DOWNLOADING
+OR INSTALLING THE SOFTWARE.  BY DOWNLOADING OR INSTALLING THE SOFTWARE, YOU
+AGREE TO ALL THE TERMS OF THE AGREEMENT.  IF YOU ARE ACCESSING THE IPLANET(tm)
+DIRECTORY SDK FOR C 5.08 ("CSDK") ELECTRONICALLY, INDICATE YOUR COMPLETE
+ACCEPTANCE OF THE AGREEMENT BY SELECTING THE "ACCEPT" BUTTON DISPLAYED ALONG
+WITH THE AGREEMENT OR OTHERWISE PROVIDING THE AFFIRMATIVE RESPONSE REQUESTED.
+IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THE AGREEMENT, DO NOT INSTALL, COPY
+OR OTHERWISE USE THE CSDK.  IF YOU ARE ACCESSING THE CSDK ELECTRONICALLY,
+INDICATE YOUR NON-ACCEPTANCE OF THE AGREEMENT BY SELECTING THE "REJECT" BUTTON
+OR OTHERWISE PROVIDING THE NEGATIVE RESPONSE REQUESTED.  YOUR INSTALLATION,
+COPYING OR USE OF THE CSDK INDICATES THAT YOU AGREE TO BE BOUND BY ALL THE
+TERMS OF THE AGREEMENT.
+
+If you are accepting the Agreement on behalf of a corporation, partnership or
+other legal entity, the use of the terms "you" and "your" in the Agreement will
+refer to such entity and the entity accepting the Agreement represents and
+warrants to Sun that it has sufficient permissions, capacity, consents and
+authority to enter into the Agreement.
+
+1.0 DEFINITIONS
+"Licensed Software" means all or any portion of the iPlanet(tm) Directory SDK
+for C 5.08 (the "Product") in binary form, and any other machine readable
+materials (including, but not limited to, libraries, header files, and data
+files), additional software, user manuals, programming guides and other
+documentation provided to you by Sun Microsystems, Inc. ("Sun") as part of, or
+embedded with, the files that comprise the Product.
+
+2.0 LIMITED LICENSE
+2.1  Internal Use and Development License.  Subject to the terms and conditions
+of this Agreement and your complete acceptance of this Agreement, Sun grants to
+you a non-exclusive, non-transferable, royalty-free and limited license to
+reproduce internally and use the Licensed Software. 
+
+2.2 License to Distribute.  In addition to the license granted in Section 2.1,
+subject to the terms of this Agreement, Sun grants you a non-exclusive,
+non-transferable, limited license to reproduce and distribute, through multiple
+tiers of sublicensees, the Licensed Software in binary form, provided that you
+(i) distribute the Licensed Software without modifications and only as bundled
+or integrated with your own LDAP applications designed for use with the iPlanet
+Directory Server, (ii) do not distribute additional software intended to
+replace any component(s) of the Licensed Software, (iii) do not remove or alter
+any proprietary legends or notices contained in the Licensed Software, (iv)
+only distribute the Licensed Software subject to a license agreement that
+protects Sun's interests consistent with the terms contained in this Agreement,
+and (v) agree to defend and indemnify Sun and its licensors from and against
+any damages, costs, liabilities, settlement amounts and /or expenses (including
+attorneys' fees) incurred in connection with any claim, lawsuit or action by
+any third party that arises or results from the use or distribution of any and
+all portions of the Licensed Software. 
+
+3.0 LICENSE RESTRICTIONS
+3.1 Except as otherwise provided by law, you may not modify or create
+derivative works of the Licensed Software, or reverse engineer, disassemble or
+decompile binary portions of the Licensed Software, otherwise attempt to derive
+the source code from such portions, or assist any other person or entity in any
+of these activities.
+
+3.2 No right, title, or interest in or to the Licensed Software, any
+trademarks, service marks, or trade names of Sun or Sun's licensors is granted
+under this Agreement.
+
+3.3 You acknowledge that Licensed Software may contain a timebomb mechanism.
+
+3.4 Whenever you are explicitly permitted to copy or reproduce all or any part
+of the Software, you shall reproduce and not efface any and all titles,
+trademark symbols, copyright symbols and legends, and other proprietary
+markings on or accompanying the Software.
+
+3.5 You may not publish or provide the results of any benchmark or comparison
+tests run on the Licensed Software to any third party without Sun's prior
+written consent.
+
+4.0 NO FURTHER OBLIGATIONS
+Neither Sun nor its licensors are under any obligation to support the Licensed
+Software or to provide you with updates or error corrections (collectively
+"Software Updates"). If Sun, at its sole option, supplies Software Updates to
+you, the Software Updates will be considered part of Licensed Software, and
+subject to the terms of this Agreement.  Further, neither Sun nor its licensors
+are under any obligation to develop, market, sell, distribute or take any other
+action with respect to the Licensed Software or to provide or ensure
+compatibility between the Licensed Software and any future version of the
+Licensed Software.
+
+5.0 TERM AND TERMINATION OF AGREEMENT
+5.1 This Agreement will commence on the date on which you install the Licensed
+Software (the "Effective Date") and will terminate as set forth below.
+However, if the Licensed Software does not require installation for use, the
+Effective Date is the date that you accept this Agreement.
+
+5.2 You may terminate this Agreement at any time by completely destroying all
+copies of the Licensed Software and removing all portions of the Licensed
+Software that you deployed on any electronic device (including without
+limitation, computer systems, servers, networks, and personal electronic
+devices).
+
+5.3 Sun may terminate this Agreement upon 10 days' written notice to you.
+However, Sun may terminate this Agreement immediately should any Licensed
+Software become, or in Sun's and/or its licensors' opinion be likely to become,
+the subject of a claim of intellectual property infringement or trade secret
+misappropriation.
+
+5.4 Sun may terminate this Agreement immediately should you materially breach
+any of its provisions or take any action in derogation of Sun's and/or its
+licensors' rights to the Licensed Software.
+
+5.5 Within ten (10) days from termination or expiration of this Agreement, you
+will immediately cease use of and destroy Licensed Software and any copies
+thereof and provide Sun a written statement from a duly authorized
+representative certifying that you have complied with the foregoing obligations.
+
+5.6 The following sections will survive any termination or expiration of this
+Agreement: Sections 1.0, 3.0, 4.0, 5.5, 5.6, and 6.0-9.0. You shall have no
+rights to recover damages or seek indemnification arising from rightful
+termination or expiration of this Agreement, whether by way of lost profits,
+expenditures, payment of goodwill or otherwise.
+
+6.0 DISCLAIMER OF WARRANTY
+6.1 You acknowledge that Licensed Software may contain errors and is not
+designed or intended for use in the design, construction, operation or
+maintenance of any nuclear facility ("High Risk Activities"). Sun and its
+licensors disclaim any express or implied warranty of fitness for such uses.
+You represent and warrant to Sun that you will not use, distribute or license
+the Licensed Software for High Risk Activities.
+
+6.2 LICENSED SOFTWARE IS PROVIDED "AS IS".  TO THE FULLEST EXTENT ALLOWED BY
+LAW, SUN EXPRESSLY DISCLAIMS ALL REPRESENTATIONS AND WARRANTIES OF ANY KIND OR
+NATURE CONCERNING THE LICENSED SOFTWARE, WHETHER EXPRESS OR IMPLIED, INCLUDING
+WITHOUT  LIMITATION, ANY WARRANTY OF MERCHANTABILITY, SATISFACTORY QUALITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE, OR NON-INFRINGEMENT.
+
+7.0 LIMITATION OF LIABILITY
+7.1 You acknowledge that the Licensed Software may have defects or deficiencies
+that cannot or will not be corrected by Sun. You will hold Sun and its
+licensors harmless from any claims based on your use of the Licensed Software
+for any purposes, and from any claims that later versions or releases of any
+Licensed Software furnished to you are incompatible with the Licensed Software
+provided to you under this Agreement.
+
+7.2 You shall have the sole responsibility to protect adequately and backup
+your data and/or equipment used in connection with the Licensed Software. You
+shall not claim against Sun or its licensors for lost data, re-run time,
+inaccurate output, work delays or lost profits resulting from your use of the
+Licensed Software.
+
+7.3 You acknowledge that Sun is under no obligation to release the Licensed
+Software as a product of Sun or to offer any further releases, versions,
+enhancements, or updates of the Licensed Software or any bug fixes or
+corrections for the Licensed Software.
+
+7.4 NEITHER SUN NOR ANY OF SUN'S LICENSORS WILL BE LIABLE FOR ANY INDIRECT,
+PUNITIVE, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES IN CONNECTION WITH OR
+ARISING OUT OF THIS AGREEMENT (INCLUDING LOSS OF BUSINESS, REVENUE, PROFITS,
+USE, DATA OR OTHER ECONOMIC ADVANTAGE), HOWEVER IT ARISES, WHETHER FOR BREACH
+OR IN TORT, EVEN IF THAT PARTY HAS BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY
+OF SUCH DAMAGE.  LIABILITY FOR DAMAGES WILL BE LIMITED AND EXCLUDED, EVEN IF
+ANY EXCLUSIVE REMEDY PROVIDED IN THIS AGREEMENT FAILS OF ITS ESSENTIAL PURPOSE.
+IN NO EVENT WILL THE CUMULATIVE LIABILITY OF SUN FOR ANY DAMAGES WHATSOEVER
+INCURRED BY YOU ARISING OUT OF OR RELATED TO THIS AGREEMENT EXCEED THE TOTAL
+AMOUNT ACTUALLY PAID TO SUN BY YOU UNDER THIS AGREEMENT.
+
+8.0 U.S. GOVERNMENT RESTRICTED RIGHTS.
+If Licensed Software is being acquired by or on behalf of the U.S. Government
+or by a U.S. Government prime contractor or subcontractor (at any tier), then
+the Government's rights in the Licensed Software will be only as set forth in
+this Agreement; this is in accordance with 48 CFR 227.7201 through 227.7202-4
+(for Department of Defense (DOD) acquisitions) and with 48 CFR 2.101 and 12.212
+(for non-DOD acquisitions).
+
+9.0 GENERAL TERMS
+9.1 This Agreement will be governed by and construed in accordance with the
+laws of the State of California, U.S.A., excluding its conflict of laws
+principles.  You expressly agree and consent that exclusive jurisdiction and
+venue for any dispute arising out of or relating to this Agreement will lie
+with the federal and state courts located in and serving Santa Clara County,
+California, U.S.A. The U.N. Convention for the International Sale of Goods and
+the choice of law rules of any jurisdiction will not apply. The official text
+of this Agreement is in the English language and any interpretation or
+construction of this Agreement will be based thereon. In the event that this
+Agreement or any documents or notices related to it are translated into any
+other language, the English language version will control.
+
+9.2 Licensed Software and technical data delivered under this Agreement are
+subject to U.S. export control laws and may be subject to export or import
+regulations in other countries. You agree to comply strictly with all such laws
+and regulations and acknowledge that you have the responsibility to obtain such
+licenses to export, re-export or import as may be required after delivery to
+you.  Unless authorized by the U.S. Government, you will not, directly or
+indirectly, export or re-export Licensed Software, nor direct products
+therefrom, to any embargoed or restricted country identified in the U.S. export
+laws, including but not limited to the Export Administration Regulations
+15 C.F.R. Parts 730-774).  You affirm that you are not identified on any U.S.
+Government export exclusion lists and that you will not use Licensed Software
+for nuclear missile, chemical biological weaponry, or other weapons of mass
+destruction.
+
+9.3 It is understood and agreed that, notwithstanding any other provision of
+this Agreement, your breach of the provisions of Sections 2.0, or 3.0 of this
+Agreement will cause Sun and/or its licensors irreparable damage for which
+recovery of money damages would be inadequate, and that Sun and/or its
+licensors will therefore be entitled to seek timely injunctive relief, without
+the necessity of posting bond or other security, to protect Sun's and/or its
+licensors' rights under this Agreement in addition to any and all remedies
+available at law.
+
+9.4 You may not assign or otherwise transfer any of your rights or obligations
+under this Agreement, without the prior written consent of Sun.
+
+9.5 If any provision of this Agreement is held invalid by any law or regulation
+of any government or by any court, such invalidity will not affect the
+enforceability of any other provisions.
+
+9.6 Any express waiver or failure to exercise promptly any right under this
+Agreement will not create a continuing waiver or any expectation of
+non-enforcement.
+
+9.7 This Agreement is the parties' entire agreement relating to its subject
+matter.  It supersedes all prior or contemporaneous oral or written
+communications, proposals, conditions, representations and warranties and
+prevails over any conflicting or additional terms of any quote, order,
+acknowledgment, or other communication between the parties relating to its
+subject matter during the term of this Agreement. No modification to this
+Agreement will be binding, unless in writing and signed by an authorized
+representative of each party.

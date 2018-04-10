@@ -1,0 +1,792 @@
+<?xml version="1.0"?>
+<GDOME_APIGEN>
+  <SRCDIR>../../libgdome/gdomecore/</SRCDIR>
+  <OUTFILE>gdome.c</OUTFILE>
+  <APIPREFIX>gdome</APIPREFIX>
+  <MODPREFIX>xml</MODPREFIX>
+  <OUTFILEHEAD><![CDATA[/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 2; tab-width: 2 -*- */
+/* gdome.c
+ *
+ * Copyright (C) 1999 Raph Levien <raph@acm.org>
+ * Copyright (C) 2000 Mathieu Lacage <mathieu@gnu.org>
+ * CopyRight (C) 2001 Paolo Casarini <paolo@casarini.org>
+ *
+ * This file is generated automatically.  To make changes, edit
+ * test/apigen/core.xml
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+#include <libxml/hash.h>
+#include "gdome.h"
+#include "gdome-xml-str.h"
+#include "gdome-xml-domimpl.h"
+#include "gdome-xml-nnodem.h"
+#include "gdome-xml-nodel.h"
+#include "gdome-xml-domimpl.h"
+#include "gdome-xml-node.h"
+#include "gdome-xml-cdata.h"
+#include "gdome-xml-text.h"
+#include "gdome-xml-cdatas.h"
+#include "gdome-xml-comment.h"
+#include "gdome-xml-document.h"
+#include "gdome-xml-documentf.h"
+#include "gdome-xml-documentt.h"
+#include "gdome-xml-attribute.h"
+#include "gdome-xml-element.h"
+#include "gdome-xml-entity.h"
+#include "gdome-xml-entityref.h"
+#include "gdome-xml-pi.h"
+#include "gdome-xml-xmldtdutil.h"
+#include "gdome-xml-notation.h"
+#include "gdome-xml-xpns.h"
+
+]]></OUTFILEHEAD>
+
+  <INTERFACE NAME="DOMString" PREFIX="str" SRC="gdome-xml-str.c">
+    <METHOD TYPE="GdomeDOMString *" NAME="mkref" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="const gchar *" NAME="str"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDOMString *" NAME="mkref_own" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="gchar *" NAME="str"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDOMString *" NAME="mkref_xml" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="xmlChar *" NAME="str"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDOMString *" NAME="mkref_dup" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="const gchar *" NAME="str"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="ref" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="unref" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="equal" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="str"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="equalIgnoreCase" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="str"/>
+    </METHOD>
+    <METHOD TYPE="gchar" NAME="charAt" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+      <PARAM TYPE="int" NAME="index"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDOMString *" NAME="concat" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="str"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="isEmpty" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="endsWith" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="suffix"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="startsWith" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="prefix"/>
+    </METHOD>
+    <METHOD TYPE="int" NAME="length" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="GdomeDOMString *" NAME="self"/>
+    </METHOD>
+  </INTERFACE>
+  
+  <INTERFACE NAME="DOMImplementation" PREFIX="di" SRC="gdome-xml-domimpl.c">
+    <METHOD TYPE="GdomeDOMImplementation *" NAME="mkref" RAW="YES" STANDARD="NO">
+      <PARAM TYPE="void" NAME=""/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="ref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="unref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+    </METHOD>
+    <METHOD TYPE="gpointer" NAME="query_interface">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="const char *" NAME="interface"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDocument *" NAME="createDocument">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="qualifiedName"/>
+      <PARAM TYPE="GdomeDocumentType *" NAME="doctype"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDocumentType *" NAME="createDocumentType">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="qualifiedName"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="publicId"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="systemId"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="hasFeature">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="feature"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="version"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="freeDoc" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDocument *" NAME="doc"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDocument *" NAME="createDocFromURI" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="const char *" NAME="uri"/>
+      <PARAM TYPE="unsigned int" NAME="mode"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDocument *" NAME="createDocFromMemory" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="char *" NAME="buffer"/>
+      <PARAM TYPE="unsigned int" NAME="mode"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDocument *" NAME="createDocFromURIWithEntitiesTable" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="const char *" NAME="uri"/>
+      <PARAM TYPE="const GdomeEntitiesTableEntry []" NAME="entityTable"/>
+      <PARAM TYPE="unsigned int" NAME="mode"/>
+    </METHOD>
+    <METHOD TYPE="GdomeDocument *" NAME="createDocFromMemoryWithEntitiesTable" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="char *" NAME="buffer"/>
+      <PARAM TYPE="const GdomeEntitiesTableEntry []" NAME="entityTable"/>
+      <PARAM TYPE="unsigned int" NAME="mode"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="saveDocToFile" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDocument *" NAME="doc"/>
+      <PARAM TYPE="const char *" NAME="filename"/>
+      <PARAM TYPE="GdomeSavingCode" NAME="mode"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="saveDocToFileEnc" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDocument *" NAME="doc"/>
+      <PARAM TYPE="const char *" NAME="filename"/>
+      <PARAM TYPE="const char *" NAME="encoding"/>
+      <PARAM TYPE="GdomeSavingCode" NAME="mode"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="saveDocToMemory" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDocument *" NAME="doc"/>
+      <PARAM TYPE="char **" NAME="mem"/>
+      <PARAM TYPE="GdomeSavingCode" NAME="mode"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="saveDocToMemoryEnc" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <PARAM TYPE="GdomeDocument *" NAME="doc"/>
+      <PARAM TYPE="char **" NAME="mem"/>
+      <PARAM TYPE="const char *" NAME="encoding"/>
+      <PARAM TYPE="GdomeSavingCode" NAME="mode"/>
+    </METHOD>
+  </INTERFACE>
+  
+  <INTERFACE NAME="Node" PREFIX="n" SRC="gdome-xml-node.c">
+    <ATTR READONLY="YES" TYPE="GdomeNamedNodeMap *" NAME="attributes">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeNodeList *" NAME="childNodes">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeNode *" NAME="firstChild">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeNode *" NAME="lastChild">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="localName">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="namespaceURI">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeNode *" NAME="nextSibling">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="nodeName">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="unsigned short" NAME="nodeType">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="NO" TYPE="GdomeDOMString *" NAME="nodeValue">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeDocument *" NAME="ownerDocument">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeNode *" NAME="parentNode">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="NO" TYPE="GdomeDOMString *" NAME="prefix">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <ATTR READONLY="YES" TYPE="GdomeNode *" NAME="previousSibling">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </ATTR>
+    <METHOD TYPE="void" NAME="ref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="unref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <IMPLEMENTATION><![CDATA[	if (((Gdome_xml_Node *)self)->n == NULL) {
+		if (((Gdome_xml_Node *)self)->refcnt > 0)
+			((Gdome_xml_Node *)self)->refcnt--;
+
+		if (((Gdome_xml_Node *)self)->refcnt == 0 && ((Gdome_xml_Node *)self)->ll == NULL) {
+#ifdef DEBUG_REFCNT
+			gdome_refdbg_delRef ((void *)self, GDOME_REFDBG_NODE);
+#endif
+			g_free (self);
+		}
+		return;
+	}
+]]></IMPLEMENTATION>
+    </METHOD>
+    <METHOD TYPE="gpointer" NAME="query_interface">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="const char *" NAME="interface"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="appendChild">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeNode *" NAME="newChild"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="cloneNode">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeBoolean" NAME="deep"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="hasAttributes">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="hasChildNodes">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="insertBefore">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeNode *" NAME="newChild"/>
+      <PARAM TYPE="GdomeNode *" NAME="refChild"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="isSupported">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="feature"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="version"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="normalize">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="removeChild">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeNode *" NAME="oldChild"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="replaceChild">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeNode *" NAME="newChild"/>
+      <PARAM TYPE="GdomeNode *" NAME="oldChild"/>
+    </METHOD>
+    <!-- BEGIN EventTarget implementation -->
+    <METHOD TYPE="void" NAME="addEventListener">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="type"/>
+      <PARAM TYPE="GdomeEventListener *" NAME="listener"/>
+      <PARAM TYPE="GdomeBoolean" NAME="useCapture"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="removeEventListener">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="type"/>
+      <PARAM TYPE="GdomeEventListener *" NAME="listener"/>
+      <PARAM TYPE="GdomeBoolean" NAME="useCapture"/>
+    </METHOD>
+    <METHOD TYPE="GdomeBoolean" NAME="dispatchEvent">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeEvent *" NAME="evt"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="subTreeDispatchEvent" STANDARD="NO">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeEvent *" NAME="evt"/>
+    </METHOD>
+    <!-- END EventTarget implementation -->
+    <METHOD TYPE="GdomeBoolean" NAME="canAppend">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)self)->n == NULL"/>
+      <PARAM TYPE="GdomeNode *" NAME="newChild"/>
+    </METHOD>
+
+    <INTERFACE NAME="DocumentFragment" PREFIX="df" SRC="gdome-xml-documentf.c"/>
+    
+    <INTERFACE NAME="Document" PREFIX="doc" SRC="gdome-xml-document.c">
+      <ATTR READONLY="YES" TYPE="GdomeDocumentType *" NAME="doctype">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeElement *" NAME="documentElement">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMImplementation *" NAME="implementation">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+      </ATTR>
+      <METHOD TYPE="GdomeAttr *" NAME="createAttribute">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+      </METHOD>
+      <METHOD TYPE="GdomeAttr *" NAME="createAttributeNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="qualifiedName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeCDATASection *" NAME="createCDATASection">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="data"/>
+      </METHOD>
+      <METHOD TYPE="GdomeComment *" NAME="createComment">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="data"/>
+      </METHOD>
+      <METHOD TYPE="GdomeDocumentFragment *" NAME="createDocumentFragment">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+      </METHOD>
+      <METHOD TYPE="GdomeElement *" NAME="createElement">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="tagName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeElement *" NAME="createElementNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="qualifiedName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeEntityReference *" NAME="createEntityReference">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+      </METHOD>
+      <METHOD TYPE="GdomeProcessingInstruction *" NAME="createProcessingInstruction">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="target"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="data"/>
+      </METHOD>
+      <METHOD TYPE="GdomeText *" NAME="createTextNode">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="data"/>
+      </METHOD>
+      <METHOD TYPE="GdomeElement *" NAME="getElementById">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="elementId"/>
+      </METHOD>
+      <METHOD TYPE="GdomeNodeList *" NAME="getElementsByTagName">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="tagname"/>
+      </METHOD>
+      <METHOD TYPE="GdomeNodeList *" NAME="getElementsByTagNameNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeNode *" NAME="importNode">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeNode *" NAME="importedNode"/>
+        <PARAM TYPE="GdomeBoolean" NAME="deep"/>
+      </METHOD>
+      <METHOD TYPE="GdomeEvent *" NAME="createEvent">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Document *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="eventType"/>
+      </METHOD>
+    </INTERFACE>
+    
+    <INTERFACE NAME="CharacterData" PREFIX="cd" SRC="gdome-xml-cdata.c">
+      <ATTR READONLY="NO" TYPE="GdomeDOMString *" NAME="data">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_CharacterData *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="gulong" NAME="length">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_CharacterData *)self)->n == NULL"/>
+      </ATTR>
+      <METHOD TYPE="void" NAME="appendData">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_CharacterData *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="arg"/>
+      </METHOD>
+      <METHOD TYPE="void" NAME="deleteData">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_CharacterData *)self)->n == NULL"/>
+        <PARAM TYPE="gulong" NAME="offset"/>
+        <PARAM TYPE="gulong" NAME="count"/>
+      </METHOD>
+      <METHOD TYPE="void" NAME="insertData">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_CharacterData *)self)->n == NULL"/>
+        <PARAM TYPE="gulong" NAME="offset"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="arg"/>
+      </METHOD>
+      <METHOD TYPE="void" NAME="replaceData">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_CharacterData *)self)->n == NULL"/>
+        <PARAM TYPE="gulong" NAME="offset"/>
+        <PARAM TYPE="gulong" NAME="count"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="arg"/>
+      </METHOD>
+      <METHOD TYPE="GdomeDOMString *" NAME="substringData">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_CharacterData *)self)->n == NULL"/>
+        <PARAM TYPE="gulong" NAME="offset"/>
+        <PARAM TYPE="gulong" NAME="count"/>
+      </METHOD>
+      
+      <INTERFACE NAME="Text" PREFIX="t" SRC="gdome-xml-text.c">
+        <METHOD TYPE="GdomeText *" NAME="splitText">
+          <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+          <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Text *)self)->n == NULL"/>
+          <PARAM TYPE="gulong" NAME="offset"/>
+        </METHOD>
+        
+        <INTERFACE NAME="CDATASection" PREFIX="cds" SRC="gdome-xml-cdatas.c"/>
+      </INTERFACE>
+
+      <INTERFACE NAME="Comment" PREFIX="c" SRC="gdome-xml-comment.c"/>
+    </INTERFACE>
+    
+    <INTERFACE NAME="Attr" PREFIX="a" SRC="gdome-xml-attribute.c">
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="name">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Attr *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeElement *" NAME="ownerElement">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Attr *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeBoolean" NAME="specified">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Attr *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="NO" TYPE="GdomeDOMString *" NAME="value">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Attr *)self)->n == NULL"/>
+      </ATTR>
+    </INTERFACE>
+
+    <INTERFACE NAME="Element" PREFIX="el" SRC="gdome-xml-element.c">
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="tagName">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+      </ATTR>
+      <METHOD TYPE="GdomeDOMString *" NAME="getAttribute">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+      </METHOD>
+      <METHOD TYPE="GdomeDOMString *" NAME="getAttributeNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeAttr *" NAME="getAttributeNode">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+      </METHOD>
+      <METHOD TYPE="GdomeAttr *" NAME="getAttributeNodeNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeNodeList *" NAME="getElementsByTagName">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+      </METHOD>
+      <METHOD TYPE="GdomeNodeList *" NAME="getElementsByTagNameNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeBoolean" NAME="hasAttribute">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+      </METHOD>
+      <METHOD TYPE="GdomeBoolean" NAME="hasAttributeNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+      </METHOD>
+      <METHOD TYPE="void" NAME="removeAttribute">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+      </METHOD>
+      <METHOD TYPE="void" NAME="removeAttributeNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+      </METHOD>
+      <METHOD TYPE="GdomeAttr *" NAME="removeAttributeNode">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeAttr *" NAME="oldAttr"/>
+      </METHOD>
+      <METHOD TYPE="void" NAME="setAttribute">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="value"/>
+      </METHOD>
+      <METHOD TYPE="void" NAME="setAttributeNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="qualifiedName"/>
+        <PARAM TYPE="GdomeDOMString *" NAME="value"/>
+      </METHOD>
+      <METHOD TYPE="GdomeAttr *" NAME="setAttributeNode">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeAttr *" NAME="newAttr"/>
+      </METHOD>
+      <METHOD TYPE="GdomeAttr *" NAME="setAttributeNodeNS">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Element *)self)->n == NULL"/>
+        <PARAM TYPE="GdomeAttr *" NAME="newAttr"/>
+      </METHOD>
+    </INTERFACE>
+
+    <INTERFACE NAME="DocumentType" PREFIX="dt" SRC="gdome-xml-documentt.c">
+      <ATTR READONLY="YES" TYPE="GdomeNamedNodeMap *" NAME="entities">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_DocumentType *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="internalSubset">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_DocumentType *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="name">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_DocumentType *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeNamedNodeMap *" NAME="notations">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_DocumentType *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="publicId">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_DocumentType *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="systemId">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_DocumentType *)self)->n == NULL"/>
+      </ATTR>
+    </INTERFACE>
+
+    <INTERFACE NAME="Notation" PREFIX="not" SRC="gdome-xml-notation.c">
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="publicId">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Notation *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="systemId">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Notation *)self)->n == NULL"/>
+      </ATTR>
+    </INTERFACE>
+
+    <INTERFACE NAME="Entity" PREFIX="ent" SRC="gdome-xml-entity.c">
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="publicId">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Entity *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="systemId">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Entity *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="notationName">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Entity *)self)->n == NULL"/>
+      </ATTR>
+    </INTERFACE>
+
+    <INTERFACE NAME="EntityReference" PREFIX="er" SRC="gdome-xml-entityref.c"/>
+
+    <INTERFACE NAME="ProcessingInstruction" PREFIX="pi" SRC="gdome-xml-pi.c">
+      <ATTR READONLY="NO" TYPE="GdomeDOMString *" NAME="data">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_EntityReference *)self)->n == NULL"/>
+      </ATTR>
+      <ATTR READONLY="YES" TYPE="GdomeDOMString *" NAME="target">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_EntityReference *)self)->n == NULL"/>
+      </ATTR>
+    </INTERFACE>
+    <INTERFACE NAME="XPathNamespace" PREFIX="xpns" SRC="gdome-xml-xpns.c">
+      <ATTR READONLY="YES" TYPE="GdomeElement *" NAME="ownerElement">
+        <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+        <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_EntityReference *)self)->n == NULL"/>
+      </ATTR>
+    </INTERFACE>
+  </INTERFACE>
+  
+  <INTERFACE NAME="NodeList" PREFIX="nl" SRC="gdome-xml-nodel.c">
+    <ATTR READONLY="YES" TYPE="gulong" NAME="length">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)((Gdome_xml_NodeList *)self)->root)->n == NULL"/>
+    </ATTR>
+    <METHOD TYPE="void" NAME="ref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)((Gdome_xml_NodeList *)self)->root)->n == NULL"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="unref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <IMPLEMENTATION><![CDATA[	if (((Gdome_xml_Node *)((Gdome_xml_NodeList *)self)->root)->n == NULL) {
+		if (--((Gdome_xml_NodeList *)self)->refcnt == 0) {
+			gdome_n_unref (((Gdome_xml_NodeList *)self)->root, exc);
+			if(((Gdome_xml_NodeList *)self)->tagName != NULL)
+				gdome_str_unref(((Gdome_xml_NodeList *)self)->tagName);
+			if(((Gdome_xml_NodeList *)self)->tagURI != NULL)
+				gdome_str_unref(((Gdome_xml_NodeList *)self)->tagURI);
+#ifdef DEBUG_REFCNT
+			gdome_refdbg_delRef ((void *)self, GDOME_REFDBG_NODELIST);
+#endif
+			g_free (self);
+		}
+		return;
+	}
+]]></IMPLEMENTATION>
+    </METHOD>
+    <METHOD TYPE="gpointer" NAME="query_interface">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)((Gdome_xml_NodeList *)self)->root)->n == NULL"/>
+      <PARAM TYPE="const char *" NAME="interface"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="item">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_Node *)((Gdome_xml_NodeList *)self)->root)->n == NULL"/>
+      <PARAM TYPE="gulong" NAME="index"/>
+    </METHOD>
+  </INTERFACE>
+
+  <INTERFACE NAME="NamedNodeMap" PREFIX="nnm" SRC="gdome-xml-nnodem.c">
+    <ATTR READONLY="YES" TYPE="gulong" NAME="length">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+    </ATTR>
+    <METHOD TYPE="void" NAME="ref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+    </METHOD>
+    <METHOD TYPE="void" NAME="unref">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <IMPLEMENTATION><![CDATA[	if (((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE && ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL) {
+		if (--((Gdome_xml_NamedNodeMap *)self)->refcnt == 0) {
+			gdome_doc_unref (((Gdome_xml_NamedNodeMap *)self)->doc, exc);
+			gdome_el_unref (((Gdome_xml_NamedNodeMap *)self)->elem, exc);
+
+#ifdef DEBUG_REFCNT
+			gdome_refdbg_delRef ((void *)self, GDOME_REFDBG_NAMEDNODEMAP);
+#endif
+			g_free (self);
+		}
+		return;
+	}
+]]></IMPLEMENTATION>
+    </METHOD>
+    <METHOD TYPE="gpointer" NAME="query_interface">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="const char *" NAME="interface"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="getNamedItem">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="getNamedItemNS">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="item">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="gulong" NAME="index"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="removeNamedItem">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="name"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="removeNamedItemNS">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="namespaceURI"/>
+      <PARAM TYPE="GdomeDOMString *" NAME="localName"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="setNamedItem">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="GdomeNode *" NAME="arg"/>
+    </METHOD>
+    <METHOD TYPE="GdomeNode *" NAME="setNamedItemNS">
+      <EXCEPTION TYPE="NULL_POINTER_ERR" ON="self == NULL"/>
+      <EXCEPTION TYPE="INVALID_STATE_ERR" ON="((Gdome_xml_NamedNodeMap *)self)->type == GDOME_ATTRIBUTE_NODE &amp;&amp; ((Gdome_xml_Node *)((Gdome_xml_NamedNodeMap *)self)->elem)->n == NULL"/>
+      <PARAM TYPE="GdomeNode *" NAME="arg"/>
+    </METHOD>
+  </INTERFACE>
+
+</GDOME_APIGEN>
