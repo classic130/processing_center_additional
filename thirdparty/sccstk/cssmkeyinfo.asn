@@ -1,0 +1,69 @@
+--
+-- COMPONENT_NAME: UTIL
+--
+-- (C) COPYRIGHT International Business Machines Corp. 1997
+-- All Rights Reserved
+-- Licensed Materials - Property of IBM
+--
+-- FILE: cssmkeyinfo.asn
+--
+-- The ASN.1 definitions for a generic key and related parameters
+--
+-- History:
+--
+--  Identifier		Date		Description
+--  ==========      ====        ===========
+--  VV001           09/24/1997  Initial version 
+
+
+--
+-- ASN.1 Type Definitions for Generic Key 
+--
+
+KeyInfo DEFINITIONS EXPLICIT TAGS 	::=		BEGIN
+
+-- EXPORTS all
+-- IMPORTS none
+-- <PDU>--
+
+CssmKeyInfo	::=			SEQUENCE		{
+	headerVersion		Uint32,
+	cspId				CssmGuid,
+	blobType			Uint32,
+	format				Uint32,
+	algorithmId			Uint32,
+	keyClass			Uint32,
+	keySizeInBits   	Uint32,
+    keyAttr				Uint32,
+    keyUsage			Uint32,  
+	startDate			CssmDate,                
+    endDate             CssmDate,                    
+    wrapAlgorithmId     Uint32,                
+    wrapMode			Uint32,                    
+    reserved			Uint32,
+	mode			[0]	Uint32			OPTIONAL,
+	initVector		[1]	OCTET STRING	OPTIONAL,
+    padding         [2] Uint32          OPTIONAL,
+	parameters		[3]	OCTET STRING	OPTIONAL,
+	keyData			[4] OCTET STRING	OPTIONAL
+}
+
+Uint32          ::=             INTEGER(0..4294967295)
+
+Uint16          ::=             INTEGER(0..65535)
+
+CssmGuid		::=		SEQUENCE		{
+	data1				Uint32,
+	data2				Uint16,
+	data3				Uint16,
+	data4				OCTET STRING (SIZE(8))
+}
+
+CssmDate		::=		SEQUENCE		{
+	year				OCTET STRING (SIZE(4)),
+	month				OCTET STRING (SIZE(2)),
+	day				OCTET STRING (SIZE(2))
+}
+
+
+END

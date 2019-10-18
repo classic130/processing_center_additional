@@ -1,0 +1,7 @@
+#!/bin/ksh
+./configure --prefix=/home/ohoang/work/aaa/thirdparty/gnome/xmlsec \
+--with-libxml=/home/ohoang/work/aaa/thirdparty/gnome/libxml2/sparc \
+--with-libxslt=/home/ohoang/work/aaa/thirdparty/gnome/libxslt/sparc \
+--with-openssl=/home/ohoang/work/aaa/thirdparty/openssl/sparc
+make
+

@@ -1,0 +1,12 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'aix',
+            'hpux',
+            'sparc',
+            'winnt'
+          ],
+          'thirdparty/nsLdapSDK41',
+          'build/log/VerArchive'
+        ];

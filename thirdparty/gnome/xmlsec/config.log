@@ -1,0 +1,108 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:621: checking for a BSD compatible install
+configure:674: checking whether build environment is sane
+configure:731: checking whether make sets ${MAKE}
+configure:770: checking for working aclocal
+configure:783: checking for working autoconf
+configure:796: checking for working automake
+configure:809: checking for working autoheader
+configure:822: checking for working makeinfo
+configure:836: checking whether to enable maintainer-specific portions of Makefiles
+configure:863: checking for gcc
+configure:976: checking whether the C compiler (gcc  ) works
+configure:992: gcc -o conftest    conftest.c  1>&5
+configure:1018: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:1023: checking whether we are using GNU C
+configure:1051: checking whether gcc accepts -g
+configure:1083: checking for POSIXized ISC
+configure:1106: checking for gcc
+configure:1219: checking whether the C compiler (gcc -g -O2 ) works
+configure:1235: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:1261: checking whether the C compiler (gcc -g -O2 ) is a cross-compiler
+configure:1266: checking whether we are using GNU C
+configure:1294: checking whether gcc accepts -g
+configure:1337: checking for a BSD compatible install
+configure:1390: checking how to run the C preprocessor
+configure:1470: checking for ANSI C header files
+configure:1668: checking host system type
+configure:1689: checking build system type
+configure:1709: checking for ranlib
+configure:1748: checking for ld used by GCC
+configure:1810: checking if the linker (/usr/ccs/bin/ld) is GNU ld
+configure:1826: checking for BSD-compatible nm
+configure:1862: checking whether ln -s works
+ltconfig:603: checking for object suffix
+ltconfig:604: gcc -c -g -O2  conftest.c 1>&5
+ltconfig:629: checking for executable suffix
+ltconfig:630: gcc -o conftest -g -O2   conftest.c  1>&5
+ltconfig:776: checking if gcc PIC flag -fPIC works
+ltconfig:777: gcc -c -g -O2 -fPIC -DPIC  conftest.c 1>&5
+ltconfig:829: checking if gcc supports -c -o file.o
+ltconfig:830: gcc -c -g -O2 -o out/conftest2.o  conftest.c 1>&5
+ltconfig:862: checking if gcc supports -c -o file.lo
+ltconfig:863: gcc -c -g -O2 -c -o conftest.lo  conftest.c 1>&5
+ltconfig:914: checking if gcc supports -fno-rtti -fno-exceptions
+ltconfig:915: gcc -c -g -O2 -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+ltconfig:958: checking if gcc static flag -static works
+ltconfig:959: gcc -o conftest -g -O2   -static conftest.c  1>&5
+ltconfig:1653: checking if global_symbol_pipe works
+ltconfig:1654: gcc -c -g -O2  conftest.c 1>&5
+ltconfig:1657: eval "/usr/ccs/bin/nm -p conftest.o | sed -n -e 's/^.*[ 	]\([BDT]\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2\3 \3/p' > conftest.nm"
+ltconfig:1709: gcc -o conftest -g -O2 -fno-builtin -fno-rtti -fno-exceptions   conftest.c conftstm.o 1>&5
+configure:2055: checking for rm
+configure:2091: checking for mv
+configure:2127: checking for tar
+configure:2165: checking for gcc option to accept ANSI C
+configure:2218: gcc  -c -g -O2  conftest.c 1>&5
+configure:2244: checking for function prototypes
+configure:2405: checking for ANSI C header files
+configure:2513: checking for dirent.h that defines DIR
+configure:2526: gcc -c -g -O2  conftest.c 1>&5
+configure:2551: checking for opendir in -ldir
+configure:2570: gcc -o conftest -g -O2   conftest.c -ldir   1>&5
+ld: fatal: library -ldir: not found
+ld: fatal: File processing errors. No output written to conftest
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 2559 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char opendir();
+
+int main() {
+opendir()
+; return 0; }
+configure:2634: checking for ANSI C header files
+configure:2741: checking for stdio.h
+configure:2751: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:2741: checking for stdlib.h
+configure:2751: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:2741: checking for string.h
+configure:2751: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:2741: checking for ctype.h
+configure:2751: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:2741: checking for errno.h
+configure:2751: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:2741: checking for ansidecl.h
+configure:2751: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:2787: checking for libxml2 libraries >= 2.4.23
+configure:2831: checking for libxslt libraries >= 1.0.19
+configure:2887: checking for openssl libraries >= 0.9.6
+configure:2989: checking for SHA1 support
+configure:3007: checking for RIPEMD-160 support
+configure:3025: checking for HMAC support
+configure:3043: checking for DSA support
+configure:3061: checking for RSA support
+configure:3079: checking for x509 support
+configure:3097: checking for DES support
+configure:3115: checking for AES support (OpenSSL >= 0.9.7 is required)
+configure:3143: checking for XMLDSig support
+configure:3179: checking for XMLEnc support
+configure:3215: checking for AltXPath support
+configure:3234: checking for Simple Keys Manager testing
+configure:3269: checking for debug log messages
+configure:3284: checking for pedantic compilation

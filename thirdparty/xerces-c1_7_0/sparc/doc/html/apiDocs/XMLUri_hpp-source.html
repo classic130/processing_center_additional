@@ -1,0 +1,353 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>XMLUri.hpp Source File</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-8');" onMouseOver="rolloverOn('side-ext-8');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-8" onLoad="rolloverLoad('side-ext-8','../graphics/ext-8-label-2.jpg','../graphics/ext-8-label-3.jpg');" src="../graphics/ext-8-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <IMG alt="API Docs" border="0" height="12" hspace="0" src="../graphics/api-label-1.jpg" vspace="0" width="120"><BR>
+
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <A href="../schema.html" onMouseOut="rolloverOff('side-schema');" onMouseOver="rolloverOn('side-schema');"><IMG alt="Schema" border="0" height="12" hspace="0" name="side-schema" onLoad="rolloverLoad('side-schema','../graphics/schema-label-2.jpg','../graphics/schema-label-3.jpg');" src="../graphics/schema-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Releases" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../y2k.html" onMouseOut="rolloverOff('side-y2k');" onMouseOver="rolloverOn('side-y2k');"><IMG alt="Y2K Compliance" border="0" height="12" hspace="0" name="side-y2k" onLoad="rolloverLoad('side-y2k','../graphics/y2k-label-2.jpg','../graphics/y2k-label-3.jpg');" src="../graphics/y2k-label-3.jpg" vspace="0" width="120"></A><BR>
+  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.4 on Thu Mar 7 17:47:03 2002 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>XMLUri.hpp</h1><a href="XMLUri_hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <font class="comment">/*</font>
+00002 <font class="comment"> * The Apache Software License, Version 1.1</font>
+00003 <font class="comment"> *</font>
+00004 <font class="comment"> * Copyright (c) 2001 The Apache Software Foundation.  All rights</font>
+00005 <font class="comment"> * reserved.</font>
+00006 <font class="comment"> *</font>
+00007 <font class="comment"> * Redistribution and use in source and binary forms, with or without</font>
+00008 <font class="comment"> * modification, are permitted provided that the following conditions</font>
+00009 <font class="comment"> * are met:</font>
+00010 <font class="comment"> *</font>
+00011 <font class="comment"> * 1. Redistributions of source code must retain the above copyright</font>
+00012 <font class="comment"> *    notice, this list of conditions and the following disclaimer.</font>
+00013 <font class="comment"> *</font>
+00014 <font class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</font>
+00015 <font class="comment"> *    notice, this list of conditions and the following disclaimer in</font>
+00016 <font class="comment"> *    the documentation and/or other materials provided with the</font>
+00017 <font class="comment"> *    distribution.</font>
+00018 <font class="comment"> *</font>
+00019 <font class="comment"> * 3. The end-user documentation included with the redistribution,</font>
+00020 <font class="comment"> *    if any, must include the following acknowledgment:</font>
+00021 <font class="comment"> *       "This product includes software developed by the</font>
+00022 <font class="comment"> *        Apache Software Foundation (http://www.apache.org/)."</font>
+00023 <font class="comment"> *    Alternately, this acknowledgment may appear in the software itself,</font>
+00024 <font class="comment"> *    if and wherever such third-party acknowledgments normally appear.</font>
+00025 <font class="comment"> *</font>
+00026 <font class="comment"> * 4. The names "Xerces" and "Apache Software Foundation" must</font>
+00027 <font class="comment"> *    not be used to endorse or promote products derived from this</font>
+00028 <font class="comment"> *    software without prior written permission. For written</font>
+00029 <font class="comment"> *    permission, please contact apache\@apache.org.</font>
+00030 <font class="comment"> *</font>
+00031 <font class="comment"> * 5. Products derived from this software may not be called "Apache",</font>
+00032 <font class="comment"> *    nor may "Apache" appear in their name, without prior written</font>
+00033 <font class="comment"> *    permission of the Apache Software Foundation.</font>
+00034 <font class="comment"> *</font>
+00035 <font class="comment"> * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED</font>
+00036 <font class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</font>
+00037 <font class="comment"> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</font>
+00038 <font class="comment"> * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR</font>
+00039 <font class="comment"> * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</font>
+00040 <font class="comment"> * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</font>
+00041 <font class="comment"> * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF</font>
+00042 <font class="comment"> * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</font>
+00043 <font class="comment"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</font>
+00044 <font class="comment"> * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT</font>
+00045 <font class="comment"> * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</font>
+00046 <font class="comment"> * SUCH DAMAGE.</font>
+00047 <font class="comment"> * ====================================================================</font>
+00048 <font class="comment"> *</font>
+00049 <font class="comment"> * This software consists of voluntary contributions made by many</font>
+00050 <font class="comment"> * individuals on behalf of the Apache Software Foundation, and was</font>
+00051 <font class="comment"> * originally based on software copyright (c) 1999, International</font>
+00052 <font class="comment"> * Business Machines, Inc., http://www.ibm.com .  For more information</font>
+00053 <font class="comment"> * on the Apache Software Foundation, please see</font>
+00054 <font class="comment"> * &lt;http://www.apache.org/&gt;.</font>
+00055 <font class="comment"> */</font>
+00056 
+00057 <font class="comment">/*</font>
+00058 <font class="comment"> * $Id: XMLUri.hpp,v 1.2 2002/02/20 18:17:02 tng Exp $</font>
+00059 <font class="comment"> * $Log: XMLUri.hpp,v $</font>
+00060 <font class="comment"> * Revision 1.2  2002/02/20 18:17:02  tng</font>
+00061 <font class="comment"> * [Bug 5977] Warnings on generating apiDocs.</font>
+00062 <font class="comment"> *</font>
+00063 <font class="comment"> * Revision 1.1.1.1  2002/02/01 22:22:17  peiyongz</font>
+00064 <font class="comment"> * sane_include</font>
+00065 <font class="comment"> *</font>
+00066 <font class="comment"> * Revision 1.3  2001/08/29 19:03:03  peiyongz</font>
+00067 <font class="comment"> * Bugzilla# 2816:on AIX 4.2, xlC 3 r ev.1, Compilation error on inline method</font>
+00068 <font class="comment"> *</font>
+00069 <font class="comment"> * Revision 1.2  2001/08/16 14:09:44  peiyongz</font>
+00070 <font class="comment"> * Removed unused ctors and methods</font>
+00071 <font class="comment"> *</font>
+00072 <font class="comment"> * Revision 1.1  2001/08/10 16:23:41  peiyongz</font>
+00073 <font class="comment"> * XMLUri: creation</font>
+00074 <font class="comment"> *</font>
+00075 <font class="comment"> *</font>
+00076 <font class="comment"> */</font>
+00077 
+00078 <font class="preprocessor">#if !defined(XMLURI_HPP)</font>
+<a name="l00079"></a><a class="code" href="XMLUri_hpp.html#a0">00079</a> <font class="preprocessor"></font><font class="preprocessor">#define XMLURI_HPP</font>
+00080 <font class="preprocessor"></font>
+00081 <font class="preprocessor">#include &lt;<a class="code" href="XercesDefs_hpp.html">xercesc/util/XercesDefs.hpp</a>&gt;</font>
+00082 <font class="preprocessor">#include &lt;<a class="code" href="XMLException_hpp.html">xercesc/util/XMLException.hpp</a>&gt;</font>
+00083 <font class="preprocessor">#include &lt;<a class="code" href="XMLUniDefs_hpp.html">xercesc/util/XMLUniDefs.hpp</a>&gt;</font>
+00084 <font class="preprocessor">#include &lt;<a class="code" href="XMLString_hpp.html">xercesc/util/XMLString.hpp</a>&gt;</font>
+00085 
+00086 <font class="comment">/*</font>
+00087 <font class="comment"> * This class is a direct port of Java's URI class, to distinguish</font>
+00088 <font class="comment"> * itself from the XMLURL, we use the name XMLUri instead of</font>
+00089 <font class="comment"> * XMLURI.</font>
+00090 <font class="comment"> *</font>
+00091 <font class="comment"> * TODO: how to relate XMLUri and XMLURL since URL is part of URI.</font>
+00092 <font class="comment"> *</font>
+00093 <font class="comment"> */</font>
+00094 
+<a name="l00095"></a><a class="code" href="class_XMLUri.html">00095</a> <font class="keyword">class </font> <a class="code" href="class_XMLUri.html">XMLUri</a>
+00096 {
+00097 <font class="keyword">public</font>:
+00098 
+00099     <font class="comment">// -----------------------------------------------------------------------</font>
+00100     <font class="comment">//  Constructors and Destructor</font>
+00101     <font class="comment">// -----------------------------------------------------------------------</font>
+00102 
+00128     <a class="code" href="class_XMLUri.html#a0">XMLUri</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font>    uriSpec);
+00129 
+00142     <a class="code" href="class_XMLUri.html#a0">XMLUri</a>(<font class="keyword">const</font> <a class="code" href="class_XMLUri.html">XMLUri</a>* <font class="keyword">const</font>     baseURI
+00143          , <font class="keyword">const</font> XMLCh* <font class="keyword">const</font>      uriSpec);
+00144 
+00145     <font class="keyword">virtual</font> <a class="code" href="class_XMLUri.html#a2">~XMLUri</a>();
+00146 
+00147     <font class="comment">// -----------------------------------------------------------------------</font>
+00148     <font class="comment">//  Operators</font>
+00149     <font class="comment">// -----------------------------------------------------------------------</font>
+00150 
+00151 
+00152     <font class="comment">// -----------------------------------------------------------------------</font>
+00153     <font class="comment">//  Getter methods</font>
+00154     <font class="comment">// -----------------------------------------------------------------------</font>
+00155 
+00161      <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a3">getScheme</a>() <font class="keyword">const</font>;
+00162 
+00168      <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a4">getUserInfo</a>() <font class="keyword">const</font>;
+00169 
+00170 
+00176      <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a5">getHost</a>() <font class="keyword">const</font>;
+00177 
+00183      <font class="keywordtype">int</font> <a class="code" href="class_XMLUri.html#a6">getPort</a>() <font class="keyword">const</font>;
+00184 
+00191      <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a7">getPath</a>() <font class="keyword">const</font>;
+00192 
+00200      <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a8">getQueryString</a>() <font class="keyword">const</font>;
+00201 
+00209      <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a9">getFragment</a>() <font class="keyword">const</font>;
+00210 
+00211     <font class="comment">// -----------------------------------------------------------------------</font>
+00212     <font class="comment">//  Setter methods</font>
+00213     <font class="comment">// -----------------------------------------------------------------------</font>
+00214 
+00222      <font class="keywordtype">void</font> <a class="code" href="class_XMLUri.html#a10">setScheme</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> newScheme);
+00223 
+00231      <font class="keywordtype">void</font> <a class="code" href="class_XMLUri.html#a11">setUserInfo</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> newUserInfo);
+00232 
+00240      <font class="keywordtype">void</font> <a class="code" href="class_XMLUri.html#a12">setHost</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> newHost);
+00241 
+00251      <font class="keywordtype">void</font> <a class="code" href="class_XMLUri.html#a13">setPort</a>(<font class="keywordtype">int</font> newPort);
+00252 
+00273      <font class="keywordtype">void</font> <a class="code" href="class_XMLUri.html#a14">setPath</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> newPath);
+00274 
+00283      <font class="keywordtype">void</font> <a class="code" href="class_XMLUri.html#a15">setQueryString</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> newQueryString);
+00284 
+00293      <font class="keywordtype">void</font> <a class="code" href="class_XMLUri.html#a16">setFragment</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> newFragment);
+00294 
+00295      <font class="comment">// -----------------------------------------------------------------------</font>
+00296     <font class="comment">//  Miscellaneous methods</font>
+00297     <font class="comment">// -----------------------------------------------------------------------</font>
+00298 
+00299 <font class="keyword">private</font>:
+00300 
+00301     <font class="keyword">static</font> <font class="keyword">const</font> XMLCh RESERVED_CHARACTERS[];
+00302     <font class="keyword">static</font> <font class="keyword">const</font> XMLCh MARK_CHARACTERS[];
+00303     <font class="keyword">static</font> <font class="keyword">const</font> XMLCh SCHEME_CHARACTERS[];
+00304     <font class="keyword">static</font> <font class="keyword">const</font> XMLCh USERINFO_CHARACTERS[];
+00305 
+00309     <a class="code" href="class_XMLUri.html#a0">XMLUri</a>(<font class="keyword">const</font> <a class="code" href="class_XMLUri.html">XMLUri</a>&amp; toCopy);
+00310     <a class="code" href="class_XMLUri.html">XMLUri</a>&amp; operator=(<font class="keyword">const</font> <a class="code" href="class_XMLUri.html">XMLUri</a>&amp; toAssign);
+00311 
+00312     <font class="comment">// -----------------------------------------------------------------------</font>
+00313     <font class="comment">//  Private helper methods</font>
+00314     <font class="comment">// -----------------------------------------------------------------------</font>
+00315 
+00321     <font class="keyword">static</font> <font class="keywordtype">bool</font> isReservedCharacter(<font class="keyword">const</font> XMLCh theChar);
+00322 
+00328     <font class="keyword">static</font> <font class="keywordtype">bool</font> isUnreservedCharacter(<font class="keyword">const</font> XMLCh theChar);
+00329 
+00337     <font class="keyword">static</font> <font class="keywordtype">bool</font> isConformantSchemeName(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> scheme);
+00338 
+00344     <font class="keyword">static</font> <font class="keywordtype">void</font> isConformantUserInfo(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> userInfo);
+00345 
+00353     <font class="keyword">static</font> <font class="keywordtype">bool</font> isURIString(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> uric);
+00354 
+00369      <font class="keyword">static</font> <font class="keywordtype">bool</font> isWellFormedAddress(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> addr);
+00370 
+00378      <font class="keywordtype">bool</font> isGenericURI();
+00379 
+00380     <font class="comment">// -----------------------------------------------------------------------</font>
+00381     <font class="comment">//  Miscellaneous methods</font>
+00382     <font class="comment">// -----------------------------------------------------------------------</font>
+00383 
+00389      <font class="keywordtype">void</font> initialize(<font class="keyword">const</font> <a class="code" href="class_XMLUri.html">XMLUri</a>&amp; toCopy);
+00390 
+00405      <font class="keywordtype">void</font> initialize(<font class="keyword">const</font> <a class="code" href="class_XMLUri.html">XMLUri</a>* <font class="keyword">const</font> baseURI
+00406                    , <font class="keyword">const</font> XMLCh*  <font class="keyword">const</font> uriSpec);
+00407 
+00414      <font class="keywordtype">void</font> initializeScheme(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> uriSpec);
+00415 
+00423      <font class="keywordtype">void</font> initializeAuthority(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> uriSpec);
+00424 
+00431      <font class="keywordtype">void</font> initializePath(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> uriSpec);
+00432 
+00433     <font class="comment">// -----------------------------------------------------------------------</font>
+00434     <font class="comment">//  Data members</font>
+00435     <font class="comment">//</font>
+00436     <font class="comment">//  for all the data member, we own it,</font>
+00437     <font class="comment">//  responsible for the creation and/or deletion for</font>
+00438     <font class="comment">//  the memory allocated.</font>
+00439     <font class="comment">//</font>
+00440     <font class="comment">// -----------------------------------------------------------------------</font>
+00441 
+00442     XMLCh*          fScheme;
+00443     XMLCh*          fUserInfo;
+00444     XMLCh*          fHost;
+00445     <font class="keywordtype">int</font>             fPort;
+00446     XMLCh*          fPath;
+00447     XMLCh*          fQueryString;
+00448     XMLCh*          fFragment;
+00449 
+00450 };
+00451 
+00452 <font class="comment">// ---------------------------------------------------------------------------</font>
+00453 <font class="comment">//  XMLUri: Public operators</font>
+00454 <font class="comment">// ---------------------------------------------------------------------------</font>
+00455 
+00456 <font class="comment">// ctor# 2</font>
+<a name="l00457"></a><a class="code" href="class_XMLUri.html#a0">00457</a> <font class="keyword">inline</font> <a class="code" href="class_XMLUri.html#a0">XMLUri::XMLUri</a>(<font class="keyword">const</font> XMLCh* <font class="keyword">const</font> uriSpec)
+00458 :fScheme(0)
+00459 ,fUserInfo(0)
+00460 ,fHost(0)
+00461 ,fPort(-1)
+00462 ,fPath(0)
+00463 ,fQueryString(0)
+00464 ,fFragment(0)<font class="keyword"></font>
+00465 <font class="keyword"></font>{
+00466     initialize((<a class="code" href="class_XMLUri.html">XMLUri</a> *)0, uriSpec);
+00467 }
+00468 
+00469 <font class="comment">// ctor# 7 relative ctor</font>
+<a name="l00470"></a><a class="code" href="class_XMLUri.html#a1">00470</a> <font class="keyword">inline</font> <a class="code" href="class_XMLUri.html#a0">XMLUri::XMLUri</a>(<font class="keyword">const</font> <a class="code" href="class_XMLUri.html">XMLUri</a>* <font class="keyword">const</font>      baseURI
+00471                     , <font class="keyword">const</font> XMLCh* <font class="keyword">const</font>       uriSpec)
+00472 :fScheme(0)
+00473 ,fUserInfo(0)
+00474 ,fHost(0)
+00475 ,fPort(-1)
+00476 ,fPath(0)
+00477 ,fQueryString(0)
+00478 ,fFragment(0)<font class="keyword"></font>
+00479 <font class="keyword"></font>{
+00480     initialize(baseURI, uriSpec);
+00481 }
+00482 
+00483 <font class="comment">// ---------------------------------------------------------------------------</font>
+00484 <font class="comment">//  XMLUri: Getter methods</font>
+00485 <font class="comment">// ---------------------------------------------------------------------------</font>
+<a name="l00486"></a><a class="code" href="class_XMLUri.html#a3">00486</a> <font class="keyword">inline</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a3">XMLUri::getScheme</a>()<font class="keyword"> const</font>
+00487 <font class="keyword"></font>{
+00488     <font class="keywordflow">return</font> fScheme;
+00489 }
+00490 
+<a name="l00491"></a><a class="code" href="class_XMLUri.html#a4">00491</a> <font class="keyword">inline</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a4">XMLUri::getUserInfo</a>()<font class="keyword"> const</font>
+00492 <font class="keyword"></font>{
+00493     <font class="keywordflow">return</font> fUserInfo;
+00494 }
+00495 
+<a name="l00496"></a><a class="code" href="class_XMLUri.html#a5">00496</a> <font class="keyword">inline</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a5">XMLUri::getHost</a>()<font class="keyword"> const</font>
+00497 <font class="keyword"></font>{
+00498     <font class="keywordflow">return</font> fHost;
+00499 }
+00500 
+<a name="l00501"></a><a class="code" href="class_XMLUri.html#a6">00501</a> <font class="keyword">inline</font> <font class="keywordtype">int</font> <a class="code" href="class_XMLUri.html#a6">XMLUri::getPort</a>()<font class="keyword"> const</font>
+00502 <font class="keyword"></font>{
+00503     <font class="keywordflow">return</font> fPort;
+00504 }
+00505 
+<a name="l00506"></a><a class="code" href="class_XMLUri.html#a7">00506</a> <font class="keyword">inline</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a7">XMLUri::getPath</a>()<font class="keyword"> const</font>
+00507 <font class="keyword"></font>{
+00508     <font class="keywordflow">return</font> fPath;
+00509 }
+00510 
+<a name="l00511"></a><a class="code" href="class_XMLUri.html#a8">00511</a> <font class="keyword">inline</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a8">XMLUri::getQueryString</a>()<font class="keyword"> const</font>
+00512 <font class="keyword"></font>{
+00513     <font class="keywordflow">return</font> fQueryString;
+00514 }
+00515 
+<a name="l00516"></a><a class="code" href="class_XMLUri.html#a9">00516</a> <font class="keyword">inline</font> <font class="keyword">const</font> XMLCh* <a class="code" href="class_XMLUri.html#a9">XMLUri::getFragment</a>()<font class="keyword"> const</font>
+00517 <font class="keyword"></font>{
+00518     <font class="keywordflow">return</font> fFragment;
+00519 }
+00520 
+00521 <font class="comment">// ---------------------------------------------------------------------------</font>
+00522 <font class="comment">//  XMLUri: Helper methods</font>
+00523 <font class="comment">// ---------------------------------------------------------------------------</font>
+00524 <font class="keyword">inline</font> <font class="keywordtype">bool</font> XMLUri::isReservedCharacter(<font class="keyword">const</font> XMLCh theChar)<font class="keyword"></font>
+00525 <font class="keyword"></font>{
+00526     <font class="keywordflow">return</font> (<a class="code" href="class_XMLString.html#d28">XMLString::indexOf</a>(RESERVED_CHARACTERS, theChar) != -1);
+00527 }
+00528 
+00529 <font class="keyword">inline</font> <font class="keywordtype">bool</font> XMLUri::isUnreservedCharacter(<font class="keyword">const</font> XMLCh theChar)<font class="keyword"></font>
+00530 <font class="keyword"></font>{
+00531     <font class="keywordflow">return</font> (<a class="code" href="class_XMLString.html#d57">XMLString::isAlphaNum</a>(theChar) ||
+00532             <a class="code" href="class_XMLString.html#d28">XMLString::indexOf</a>(MARK_CHARACTERS, theChar) != -1);
+00533 }
+00534 
+00535 <font class="preprocessor">#endif</font>
+</font></div></pre>    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1"></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

@@ -1,0 +1,76 @@
+*****************************************************************************
+Setup Apache web server on solaris 10 for MSSL Control Center Front End
+*****************************************************************************
+0. prerequisites: 
+    ssl 1.0.0
+    shibboleth-sp being deployed under /opt/shibboleth-sp/
+
+1. obtain the apache binary file apache2.2.16.tar.gz, 
+   run gunzip on the .gz file and untar the package under /app/ (e.g. tar -xvf apache2.2.16.tar)
+   we are assuming that the apache web server to be installed on /app/apache2/. if you plan to install it 
+   on a different directory, please change the related parameters accordingly.
+
+2. configure http.conf under /app/apache2/, the httpd.conf file contains the configuration for ssl as well as the jk
+   tomcat connector.
+# Secure (SSL/TLS) connections
+   2.1: generate private key, save it as "/app/apache2/conf/<server host>.key", create CSR, and get the cert approved
+        and save it as "/app/apache2/conf/<server host>.crt"
+ openssl command to generate the csr and private key
+> openssl req -out <server host>.csr -new -newkey rsa:2048 -nodes -keyout <server host>.key
+
+   2.2: set the private key file 
+SSLCertificateKeyFile "/app/apache2/conf/<server host>.key"
+
+   2.3. set the certificate
+SSLCertificateFile "/app/apache2/conf/<server host>.crt"
+
+   2.4. obtain the CAs , save them in the <server host>-ca.crt file, then set the following ca file path
+SSLCertificateChainFile "/app/apache2/conf/<server host>-ca.crt"
+
+   2.5. set env SERVER_URL to the webserver name, (this is needed to get the CGIs to work properly)
+SetEnv SERVER_URL https://<server host>/
+
+   2.6. configure the tomcat jk connector 
+JkWorkerProperty worker.ajpworker1.host=<tomcat server host>
+    the <tomcat server host> should point to the tomcat server for mssl reporting services
+
+3. start the apache webserver by running
+ ./bin/apachectl -d /app/apache2 -k start
+   from the /app/apache2 directory
+
+/////////////////////////////////////////////////////////////
+// Disable Shibboleth and use apache client auth
+/////////////////////////////////////////////////////////////
+There will be cases to by pass shibboleth authentication and use the native Apache SSL client authentication,
+follow these steps to setup apache front end for this purpose.
+1. comment out the following Shibboleth configuration in httpd.conf
+   463  # Shibboleth SSO
+   464  #Include /opt/shibboleth-sp/etc/shibboleth/apache22.config
+   465  #########################################################################
+   466  #  Shibboleth SSO Specific Configuration
+   467  #<IfModule mod_alias.c>
+   468  #  <Location /shibboleth-sp>
+   469  #    Allow from all
+   470  #  </Location>
+   471  #</IfModule>
+   472
+   473  #<Location "/">
+   474  #  AuthType shibboleth
+   475  #  ShibRequestSetting requireSession 1
+   476  #  require valid-user
+   477  #</Location>
+   478  #########################################################################
+
+2. Turn on SSL Client Authentication by uncommenting line 664 and 665 in the file
+   659  #   Client Authentication (Type):
+   660  #   Client certificate verification type and depth.  Types are
+   661  #   none, optional, require and optional_no_ca.  Depth is a
+   662  #   number which specifies how deeply to verify the certificate
+   663  #   issuer chain before deciding the certificate is not valid.
+   664  SSLVerifyClient require
+   665  SSLVerifyDepth  10
+
+3. Make sure the file "/app/apache2/conf/trusted-cas.crt" contains the trusted CAs for pilot or production.
+   i.e. the CAs that signed the administrators certificates used to log in to the control center.
+
+

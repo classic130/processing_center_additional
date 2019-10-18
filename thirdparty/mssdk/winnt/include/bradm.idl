@@ -1,0 +1,470 @@
+// CHANGE LOG
+//
+//	12/15/97, arlied
+//	- removed BridgeRouteLookup (meaningless, obsolete)
+//	- removed BridgeRouteModify (meaningless, obsolete)
+//	- added BridgeResvModify
+//	- added BridgePeerQuery
+//	- added version fields to most enumerators
+//	- bumped version number to 0.3
+//
+//	1/??/98, arlied
+//	- renamed all references to "output" and "output subsystem" to "vif" (virtual interface)
+//	- renamed all references to "bridge" to "mrouter"
+//	- renamed all Add methods to Create
+//	- added Flags, Data to MROUTER_VIF_INFO
+//	- bumped version number to 0.4
+//
+//	2/4/98, arlied
+//	- moved MROUTER_VIF_VALUE structure and associated enumerated type into a separate file, mrvalue.idl
+//	- added MRouterDriverEnum method and associated structures
+//	- changed DLL config data from DllFilename to DriverCLSID
+//
+//	2/18/98, arlied
+//	- added logging flags to MROUTER_CONFIG, field definitions for MROUTER_CONFIG to MRouterGlobalSetConfig
+//
+//	2/19/98, arlied
+//	- modified MROUTER_VIF_STATISTICS, added bidirectional bandwidth counters
+//
+//	3/16/98, arlied
+//	- modified list of bandwidth reservation policies
+//	- added field mask parameter to MRouterResvCreate
+//	- changed BitsPerSecond in MROUTER_RESERVATION to BitRate
+//
+//	4/20/98, arlied
+//	- added ApplicationID to MROUTER_ROUTE_RECORD
+//	- added ApplicationID to MROUTER_RESERVATION
+//	- added MRouterApplicationDescribe
+//	- added MRouterApplicationDelete
+//	- added MRouterApplicationEnum
+//	- added MRouterApplicationQuery
+//	- added	MRouterResvDeleteByApplication
+//	- added MRouterResvEnumByApplication
+//	- added MRouterRouteDeleteByApplication
+//	- added MRouterRouteEnumByApplication
+//	- removed MRouterPeerEnum
+//	- removed version parameter from enumeration methods
+//	- removed MROUTER_TABLE_VERSIONS
+//	- removed MRouterGlobalGetTableVersions
+//	- added MRouterVifCommand
+//	- removed MRouterPeerConnect
+//	- removed MRouterPeerDisconnect
+//	- removed MRouterPeerSetEnable
+//	- removed MROUTER_PEER
+//	- bumped version number to 0.5
+//
+//	5/4/98, arlied
+//	- removed MRouterVifSetState
+//
+//	5/9/98, arlied
+//	- added MROUTER_PACKET_FILTER_MODE enum
+//	- added PacketFilterMode to MROUTER_CONFIG
+//	- added MROUTER_CONFIG_FIELD_PACKET_FILTER_MODE
+//	- removed WorkerThreads from MROUTER_CONFIG
+//	- removed MROUTER_CONFIG_FIELD_WORKER_THREADS
+
+
+import "wtypes.idl";
+import "mrvalue.idl";
+
+
+// All bandwidth figures are expressed in bits per second.
+// All IP addresses and ports are in host-endian (NOT network-endian)
+// format, because the RPC stubs take care of the conversion.
+
+[
+version(0.5),
+uuid(A4916A26-1051-11d1-BFC4-00C04FBBDEC1),
+pointer_default(unique)
+]
+
+interface MRouterAdmin
+{
+	[context_handle]
+	typedef PVOID MROUTER_RESV_ENUM;
+
+	typedef
+	struct	MROUTER_APPLICATION
+	{
+		GUID	ApplicationID;
+		LPWSTR	Description;
+	}	MROUTER_APPLICATION;
+
+	typedef
+	struct	MROUTER_VIF_DRIVER
+	{
+		LPWSTR	DisplayName;
+		LPWSTR	Description;
+		CLSID	DriverCLSID;
+		DWORD	DefaultMaxBandwidth;
+	}	MROUTER_VIF_DRIVER;
+
+	// congruent with vif ID prefixes
+	typedef enum MROUTER_VIF_TYPE {
+		MROUTER_VIF_TYPE_DLL = 1,
+		MROUTER_VIF_TYPE_NDIS = 2,
+		MROUTER_VIF_TYPE_PEER = 3,
+		MROUTER_VIF_TYPE_TUNNEL = 4
+	}	MROUTER_VIF_TYPE;
+
+	// commands you can issue to VIFs
+	// not all VIFs support all (or any) commands
+	typedef enum MROUTER_VIF_COMMAND {
+		MROUTER_VIF_COMMAND_LOAD_DRIVER,
+		MROUTER_VIF_COMMAND_UNLOAD_DRIVER,
+		MROUTER_VIF_COMMAND_PEER_CONNECT,
+		MROUTER_VIF_COMMAND_PEER_DISCONNECT,
+		MROUTER_VIF_COMMAND_PEER_DISABLE,
+		MROUTER_VIF_COMMAND_PEER_ENABLE,
+	}	MROUTER_VIF_COMMAND;
+
+	// MROUTER_VIF_INFO.Flags
+	enum {
+		MROUTER_VIF_FLAG_CAN_DELETE = 0x00000001,		// vif can be deleted
+	};
+
+	typedef enum MROUTER_VIF_STATE {
+		MROUTER_VIF_STATE_UNLOADED,
+		MROUTER_VIF_STATE_RUNNING
+	}	MROUTER_VIF_STATE;
+
+	typedef enum MROUTER_RESV_POLICY {
+		MROUTER_RESV_POLICY_REGULATED_GUARANTEED,
+		MROUTER_RESV_POLICY_REGULATED_OPPORTUNISTIC,
+		MROUTER_RESV_POLICY_GUARANTEED,
+	}	MROUTER_RESV_POLICY;
+
+	typedef DWORD MROUTER_IP_ADDR;
+	typedef WORD MROUTER_IP_PORT;
+
+	typedef struct MROUTER_IP_SOCKADDR {
+		MROUTER_IP_ADDR		IPAddress;
+		MROUTER_IP_PORT		Port;
+	} MROUTER_IP_SOCKADDR;
+
+	// flags for use in MROUTER_CONFIG.LogFlags
+	enum {
+		MROUTER_CONFIG_LOG_TUNNEL_CLIENT	= 0x00000001,	// log tunnel client changes
+		MROUTER_CONFIG_LOG_PEER_TUNNEL		= 0x00000002	// log peer tunnel changes
+	};
+
+	// flags specifying options to modify in call to MRouterGlobalSetConfig
+	enum {
+		MROUTER_CONFIG_FIELD_TUNNEL_CLIENT_TTL	= 0x00000002,
+		MROUTER_CONFIG_FIELD_LOG_FLAGS			= 0x00000004,
+		MROUTER_CONFIG_FIELD_PACKET_FILTER_MODE	= 0x00000008
+	};
+
+	typedef enum MROUTER_PACKET_FILTER_MODE {
+		MROUTER_PACKET_FILTER_MODE_ACCEPT,
+		MROUTER_PACKET_FILTER_MODE_REJECT
+	} MROUTER_PACKET_FILTER_MODE;
+
+	typedef struct MROUTER_CONFIG {
+		DWORD	TunnelClientTTL;
+		DWORD	LogFlags;
+		MROUTER_PACKET_FILTER_MODE	PacketFilterMode;
+	}	MROUTER_CONFIG;
+
+	typedef struct MROUTER_INFO {
+		MROUTER_CONFIG			Config;
+		DWORD					ServiceVersion;
+	}	MROUTER_INFO;
+
+	typedef struct MROUTER_STATISTICS {
+		DWORD	PacketsReceived;
+		DWORD	PacketsReceivedMulticast;
+		DWORD	PacketsReceivedTunnel;
+		DWORD	PacketsForwarded;
+	} MROUTER_STATISTICS;
+
+	typedef struct MROUTER_VIF_STATISTICS_DIR {
+		DWORD		CurrentBitRate;
+		DWORD		TotalPackets;
+		DWORDLONG	TotalBytes;
+	} MROUTER_VIF_STATISTICS_DIR;
+
+	typedef struct MROUTER_VIF_STATISTICS {
+		MROUTER_VIF_STATISTICS_DIR	In;
+		MROUTER_VIF_STATISTICS_DIR	Out;
+	} MROUTER_VIF_STATISTICS;
+
+	typedef [switch_type(MROUTER_VIF_TYPE)]
+	union MROUTER_VIF_CONFIG_DATA {
+		[case(MROUTER_VIF_TYPE_PEER)]
+		struct {
+			MROUTER_IP_ADDR			LocalAddress;
+			MROUTER_IP_ADDR			PeerAddress;
+		}	Peer;
+
+		[case(MROUTER_VIF_TYPE_DLL)]
+		struct {
+			CLSID					DriverCLSID;
+		}	Dll;
+
+		[default];
+	} MROUTER_VIF_CONFIG_DATA;
+
+	typedef struct MROUTER_VIF_CONFIG {
+		LPWSTR					DisplayName;
+		DWORD					MaxBandwidth;					// in bits/sec
+		DWORD					MinOpportunisticBandwidth;		// in bits/sec
+		MROUTER_VIF_TYPE		Type;
+
+		[switch_is(Type)]
+		MROUTER_VIF_CONFIG_DATA	TypeData;
+	} MROUTER_VIF_CONFIG;
+
+	typedef struct MROUTER_ROUTE_RECORD {
+		MROUTER_IP_ADDR		Address;
+		DWORD				VifID;
+		GUID				ApplicationID;
+		DWORD				ReservationID;
+		DWORD				TotalMatches;
+		DWORD				LastBitRate;
+	} MROUTER_ROUTE_RECORD, *PMROUTER_ROUTE_RECORD;
+
+	// this defines the bit mask passed to MRouterResvModify
+	enum {
+		MROUTER_RESERVATION_FIELD_DISPLAY_NAME		= 0x00000001,
+		MROUTER_RESERVATION_FIELD_BIT_RATE			= 0x00000002,
+	};
+
+	typedef struct MROUTER_RESERVATION {
+		DWORD					ReservationID;
+		DWORD					VifID;
+		MROUTER_RESV_POLICY		Policy;
+		DWORD					BitRate;
+		LPWSTR					DisplayName;
+		GUID					ApplicationID;
+		FILETIME				TimeStart;
+		FILETIME				TimeEnd;
+		BOOL					IsActive;
+		DWORD					CurrentBitRate;
+	} MROUTER_RESERVATION;
+
+	typedef enum MROUTER_PEER_STATUS {
+		MROUTER_PEER_STATUS_ERROR,
+		MROUTER_PEER_STATUS_CONNECTED,
+		MROUTER_PEER_STATUS_DISABLED,
+	}	MROUTER_PEER_STATUS;
+
+	typedef struct MROUTER_TUNNEL_INFO {
+		MROUTER_IP_SOCKADDR	LocalAddress;
+		MROUTER_IP_SOCKADDR	ClientAddress;
+		DWORD				TotalPackets;
+		DWORDLONG			TotalBytes;
+		DWORD				QueueLength;
+		BOOL				IsBlocked;
+		FILETIME			ConnectTime;
+		DWORD				LastBitRate;
+	} MROUTER_TUNNEL_INFO;
+
+	typedef [switch_type (MROUTER_VIF_TYPE)]
+	union MROUTER_VIF_INFO_DATA {
+		[case (MROUTER_VIF_TYPE_PEER)]
+		struct {
+			MROUTER_PEER_STATUS		Status;
+			DWORD					WinsockError;		// valid only if status is down
+		}	Peer;
+
+		[case (MROUTER_VIF_TYPE_DLL)]
+		struct {
+			MROUTER_VIF_STATE		State;
+			DWORD					Status;		// ERROR_SUCCESS if DLL loaded OK, otherwise Win32 error
+		}	Dll;
+
+		[case (MROUTER_VIF_TYPE_NDIS)]
+		struct {
+			BYTE					MacAddress	[6];
+		}	Ndis;
+
+		[default];
+	} MROUTER_VIF_INFO_DATA;
+
+	typedef struct MROUTER_VIF_INFO {
+		DWORD						VifID;
+		DWORD						Flags;
+		MROUTER_VIF_STATISTICS		Statistics;
+		MROUTER_VIF_CONFIG			Config;
+		MROUTER_VIF_TYPE			Type;
+		DWORD						AvailableBandwidth;
+		DWORD						AllocatedBandwidth;
+		[switch_is(Type)]
+		MROUTER_VIF_INFO_DATA		TypeData;
+	} MROUTER_VIF_INFO;
+
+	// used in mask for MRouterResetCounters
+	enum {
+		MROUTER_COUNTER_VIF		= 0x00000001,
+		MROUTER_COUNTER_ROUTE	= 0x00000002,
+		MROUTER_COUNTER_ALL		= 0xFFFFFFFF
+	};
+
+	// ------------------------------------------------------------------------------
+
+	// test to see if RPC server is listening
+	HRESULT	MRouterPing	(void);
+
+	HRESULT	MRouterGlobalGetInfo (
+		[out]	MROUTER_INFO *);
+
+	HRESULT	MRouterGlobalGetConfig (
+		[out]	MROUTER_CONFIG *);
+
+	HRESULT	MRouterGlobalSetConfig (
+		[in]	DWORD	fields,
+		[in]	MROUTER_CONFIG *);
+
+	HRESULT	MRouterResetCounters (
+		[in]	DWORD	mask);
+
+	// vif functions -----------------------------------------------------
+
+	HRESULT	MRouterVifCreate (
+		[out]	DWORD *					vif_id,
+		[in]	MROUTER_VIF_CONFIG *	config);
+	HRESULT MRouterVifDelete (
+		[in]	DWORD					vif_id);
+
+	HRESULT MRouterVifModify (
+		[in]	DWORD					vif_id,
+		[in]	MROUTER_VIF_CONFIG *	config);
+
+	HRESULT	MRouterVifGetConfig (
+		[in]	DWORD					vif_id,
+		[out]	MROUTER_VIF_CONFIG *	config);
+
+	HRESULT MRouterVifGetInfo (
+		[in]	DWORD					vif_id,
+		[out]	MROUTER_VIF_INFO *		info);
+
+	HRESULT	MRouterVifEnum (
+		[out]	DWORD *				length,
+		[out, size_is (,*length)]	MROUTER_VIF_INFO ** array);
+
+	HRESULT MRouterVifGetValue (
+		[in]	DWORD	vif_id,
+		[in]	DWORD	index,
+		[out]	MROUTER_VIF_VALUE *	value);
+
+	HRESULT MRouterVifSetValue (
+		[in]	DWORD	vif_id,
+		[in]	MROUTER_VIF_VALUE *	value);
+
+	HRESULT MRouterVifEnumValue (
+		[in]	DWORD	vif_id,
+		[out]	DWORD *	length,
+		[out, size_is (,*length)]	MROUTER_VIF_VALUE ** array);
+
+	HRESULT	MRouterVifQueryByDisplayName (
+		[in]	LPCWSTR		display_name,
+		[out]	DWORD *		vif_id);
+
+	HRESULT	MRouterVifCommand (
+		[in]	DWORD					vif_id,
+		[in]	MROUTER_VIF_COMMAND		command);
+
+	// routing interface -------------------------------------------------------
+
+	HRESULT	MRouterRouteCreate (
+		[in]	MROUTER_ROUTE_RECORD *	route);
+
+	HRESULT	MRouterRouteDelete (
+		[in]	MROUTER_ROUTE_RECORD *	route);
+
+	HRESULT MRouterRouteEnum (
+		[out]	DWORD * length,
+		[out, size_is (,*length)]	MROUTER_ROUTE_RECORD ** array);
+
+	HRESULT	MRouterRouteEnumByApplication (
+		[in]	const GUID *			app_id,
+		[out]	DWORD *					length,
+		[out, size_is (,*length)]		MROUTER_ROUTE_RECORD ** array);
+
+	// delete all routes for a given application ID
+	HRESULT	MRouterRouteDeleteByApplication (
+		[in]	const GUID *			app_id);
+
+	HRESULT MRouterInterfaceEnum (
+		[out]	DWORD *	length,
+		[out, size_is (,*length)]	MROUTER_IP_ADDR ** array);
+
+	// reservation functions ----------------------------------------------------
+
+	HRESULT	MRouterResvCreate (
+		[in]	MROUTER_RESERVATION *	resv,
+		[out]	DWORD *					resv_id);
+
+	HRESULT	MRouterResvDelete (
+		[in]	DWORD					resv_id);
+
+	HRESULT	MRouterResvQuery (
+		[in]	DWORD					resv_id,
+		[out]	MROUTER_RESERVATION *	resv);
+
+	HRESULT	MRouterResvEnumAll (
+		handle_t,
+		[in, out]	MROUTER_RESV_ENUM *		enum_handle);
+
+	HRESULT	MRouterResvEnumActive (
+		handle_t,
+		[in, out]	MROUTER_RESV_ENUM *		enum_handle);
+
+	HRESULT	MRouterResvEnumByApplication (
+		handle_t,
+		[in]	const GUID *			app_id,
+		[in, out]	MROUTER_RESV_ENUM *		enum_handle);
+
+	HRESULT	MRouterResvEnumNext (
+		handle_t,
+		[in]	MROUTER_RESV_ENUM		enum_handle,
+		[in, out]	DWORD *		fetch_count,
+		[out, size_is(*fetch_count)]
+				MROUTER_RESERVATION *	fetch_array);
+
+	HRESULT	MRouterResvEnumClose (
+		handle_t,
+		[in, out]	MROUTER_RESV_ENUM *);
+
+	HRESULT MRouterResvModify (
+		[in]	DWORD					field_mask,
+		[in]	MROUTER_RESERVATION *	resv);
+
+	HRESULT	MRouterResvDeleteByApplication (
+		[in]	const GUID *			app_id);
+
+	// client tunnel functions --------------------------------------------------
+
+	HRESULT MRouterTunnelEnum (
+		[out]		DWORD *			length,
+		[out, size_is(,*length)]	MROUTER_TUNNEL_INFO ** array);
+
+	// driver methods -----------------------------------------------------------
+
+	HRESULT	MRouterDriverEnum (
+		[out]		DWORD *			length,
+		[out, size_is(,*length)]	MROUTER_VIF_DRIVER ** array);
+
+	HRESULT	MRouterDriverQuery (
+		[in]		const CLSID *	clsid,
+		[out]		MROUTER_VIF_DRIVER *);
+
+	// application methods
+
+	HRESULT	MRouterApplicationDescribe (
+		[in]		const GUID *	app_id,
+		[in]		LPCWSTR			description);
+
+	HRESULT	MRouterApplicationDelete (
+		[in]		const GUID *	app_id);
+
+	HRESULT	MRouterApplicationQuery (
+		[in]		const GUID *	app_id,
+		[out]		LPWSTR *		description);
+
+	HRESULT	MRouterApplicationEnum (
+		[out]		DWORD *			length,
+		[out, size_is(,*length)]	MROUTER_APPLICATION **	array);
+}
+

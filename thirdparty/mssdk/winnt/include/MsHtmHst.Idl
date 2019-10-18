@@ -1,0 +1,490 @@
+//+------------------------------------------------------------------------
+//
+//  Microsoft Forms
+//  Copyright (C) Microsoft Corporation, 1996-1998.
+//
+//  File:       mshtmhst.h
+//
+//  Contents:   MSHTML advanced host interfaces
+//
+//-------------------------------------------------------------------------
+
+cpp_quote("//=--------------------------------------------------------------------------=")
+cpp_quote("// mshtmhst.h")
+cpp_quote("//=--------------------------------------------------------------------------=")
+cpp_quote("// (C) Copyright 1995-1998 Microsoft Corporation.  All Rights Reserved.")
+cpp_quote("//")
+cpp_quote("// THIS CODE AND INFORMATION IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF")
+cpp_quote("// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO")
+cpp_quote("// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A")
+cpp_quote("// PARTICULAR PURPOSE.")
+cpp_quote("//=--------------------------------------------------------------------------=")
+cpp_quote("")
+cpp_quote("#pragma comment(lib,\"uuid.lib\")")
+cpp_quote("")
+cpp_quote("//--------------------------------------------------------------------------")
+cpp_quote("// MSTHML Advanced Host Interfaces.")
+cpp_quote("")
+cpp_quote("#ifndef MSHTMHST_H")
+cpp_quote("#define MSHTMHST_H")
+
+cpp_quote("#define CONTEXT_MENU_DEFAULT        0")
+cpp_quote("#define CONTEXT_MENU_IMAGE          1")
+cpp_quote("#define CONTEXT_MENU_CONTROL        2")
+cpp_quote("#define CONTEXT_MENU_TABLE          3")
+cpp_quote("// in browse mode")
+cpp_quote("#define CONTEXT_MENU_TEXTSELECT     4")
+cpp_quote("#define CONTEXT_MENU_ANCHOR         5")
+cpp_quote("#define CONTEXT_MENU_UNKNOWN        6")
+cpp_quote("// These 2 are mapped to IMAGE for the public")
+cpp_quote("#define CONTEXT_MENU_IMGDYNSRC      7")
+cpp_quote("#define CONTEXT_MENU_IMGART         8")
+cpp_quote("#define CONTEXT_MENU_DEBUG          9")
+
+cpp_quote("#define MENUEXT_SHOWDIALOG           0x1")
+
+cpp_quote("#define DOCHOSTUIFLAG_BROWSER       DOCHOSTUIFLAG_DISABLE_HELP_MENU | DOCHOSTUIFLAG_DISABLE_SCRIPT_INACTIVE ")
+
+import "ocidl.idl";
+import "objidl.idl";
+import "oleidl.idl";
+import "oaidl.idl";
+import "docobj.idl";
+import "mshtml.idl";
+
+cpp_quote("EXTERN_C const GUID CGID_MSHTML;")
+cpp_quote("#define CMDSETID_Forms3 CGID_MSHTML")
+cpp_quote("#define SZ_HTML_CLIENTSITE_OBJECTPARAM L\"{d4db6850-5385-11d0-89e9-00a0c90a90ac}\"")
+
+#pragma midl_echo("typedef HRESULT STDAPICALLTYPE SHOWHTMLDIALOGFN (HWND hwndParent, IMoniker *pmk, VARIANT *pvarArgIn, WCHAR* pchOptions, VARIANT *pvArgOut);")
+
+#pragma midl_echo("STDAPI ShowHTMLDialog(                   ")
+#pragma midl_echo("    HWND        hwndParent,              ")
+#pragma midl_echo("    IMoniker *  pMk,                     ")
+#pragma midl_echo("    VARIANT *   pvarArgIn,               ")
+#pragma midl_echo("    WCHAR *     pchOptions,              ")
+#pragma midl_echo("    VARIANT *   pvarArgOut               ")
+#pragma midl_echo("    );                                   ")
+
+
+#pragma midl_echo("STDAPI RunHTMLApplication(               ")
+#pragma midl_echo("    HINSTANCE hinst,                     ")
+#pragma midl_echo("    HINSTANCE hPrevInst,                 ")
+#pragma midl_echo("    LPSTR szCmdLine,                     ")
+#pragma midl_echo("    int nCmdShow                         ")
+#pragma midl_echo("    );                                   ")
+
+//-------------------------------------------------------------------------
+//  IDocHostUIHandler
+//
+//-------------------------------------------------------------------------
+
+typedef
+enum tagDOCHOSTUITYPE {
+        DOCHOSTUITYPE_BROWSE    = 0,
+        DOCHOSTUITYPE_AUTHOR    = 1,
+} DOCHOSTUITYPE;
+
+typedef enum tagDOCHOSTUIDBLCLK {
+        DOCHOSTUIDBLCLK_DEFAULT         = 0,
+        DOCHOSTUIDBLCLK_SHOWPROPERTIES  = 1,
+        DOCHOSTUIDBLCLK_SHOWCODE        = 2,
+} DOCHOSTUIDBLCLK ;
+
+typedef enum tagDOCHOSTUIFLAG {
+        DOCHOSTUIFLAG_DIALOG            = 1,
+        DOCHOSTUIFLAG_DISABLE_HELP_MENU = 2,
+        DOCHOSTUIFLAG_NO3DBORDER        = 4,
+        DOCHOSTUIFLAG_SCROLL_NO         = 8,
+        DOCHOSTUIFLAG_DISABLE_SCRIPT_INACTIVE = 16,
+        DOCHOSTUIFLAG_OPENNEWWIN        = 32,
+        DOCHOSTUIFLAG_DISABLE_OFFSCREEN = 64,
+        DOCHOSTUIFLAG_FLAT_SCROLLBAR = 128,
+        DOCHOSTUIFLAG_DIV_BLOCKDEFAULT = 256,
+        DOCHOSTUIFLAG_ACTIVATE_CLIENTHIT_ONLY = 512,
+} DOCHOSTUIFLAG ;
+
+
+[
+        object,
+        uuid(bd3f23c0-d43e-11cf-893b-00aa00bdce1a),
+        pointer_default(unique),
+        local
+]
+interface IDocHostUIHandler : IUnknown
+{
+
+    typedef struct _DOCHOSTUIINFO
+    {
+        ULONG cbSize;
+        DWORD dwFlags;
+        DWORD dwDoubleClick;
+    } DOCHOSTUIINFO;
+
+    HRESULT ShowContextMenu(
+            [in] DWORD dwID,
+            [in] POINT* ppt,
+            [in] IUnknown* pcmdtReserved,
+            [in] IDispatch* pdispReserved);
+    HRESULT GetHostInfo([in, out] DOCHOSTUIINFO * pInfo);
+    HRESULT ShowUI(
+            [in] DWORD dwID,
+            [in] IOleInPlaceActiveObject * pActiveObject,
+            [in] IOleCommandTarget * pCommandTarget,
+            [in] IOleInPlaceFrame * pFrame,
+            [in] IOleInPlaceUIWindow * pDoc);
+    HRESULT HideUI();
+    HRESULT UpdateUI();
+    HRESULT EnableModeless([in] BOOL fEnable);
+    HRESULT OnDocWindowActivate([in] BOOL fActivate);
+    HRESULT OnFrameWindowActivate([in] BOOL fActivate);
+    HRESULT ResizeBorder(
+            [in] LPCRECT prcBorder,
+            [in] IOleInPlaceUIWindow * pUIWindow,
+            [in] BOOL fRameWindow);
+    HRESULT TranslateAccelerator(
+            [in] LPMSG lpMsg,
+            [in] const GUID * pguidCmdGroup,
+            [in] DWORD nCmdID);
+    HRESULT GetOptionKeyPath([out] LPOLESTR * pchKey, [in] DWORD dw);
+    HRESULT GetDropTarget(
+            [in] IDropTarget * pDropTarget,
+            [out] IDropTarget ** ppDropTarget);
+    HRESULT GetExternal([out] IDispatch **ppDispatch);
+    HRESULT TranslateUrl([in]DWORD dwTranslate, [in]OLECHAR *pchURLIn, [out]OLECHAR **ppchURLOut);
+    HRESULT FilterDataObject([in]IDataObject *pDO, [out]IDataObject **ppDORet);
+}
+
+//-------------------------------------------------------------------------
+//  ICustomDoc
+//
+//-------------------------------------------------------------------------
+
+[
+        object,
+        uuid(3050f3f0-98b5-11cf-bb82-00aa00bdce0b),
+        pointer_default(unique),
+        local
+]
+interface ICustomDoc : IUnknown
+{
+    HRESULT SetUIHandler(
+            [in] IDocHostUIHandler * pUIHandler);
+}
+
+//-------------------------------------------------------------------------
+//  IDocHostShowUI
+//
+//-------------------------------------------------------------------------
+
+[
+        object,
+        uuid(c4d244b0-d43e-11cf-893b-00aa00bdce1a),
+        pointer_default(unique),
+        local
+]
+interface IDocHostShowUI : IUnknown
+{
+    HRESULT ShowMessage(
+            [in] HWND hwnd,
+            [in] LPOLESTR lpstrText,
+            [in] LPOLESTR lpstrCaption,
+            [in] DWORD dwType,
+            [in] LPOLESTR lpstrHelpFile,
+            [in] DWORD dwHelpContext,
+            [out] LRESULT * plResult);
+    HRESULT ShowHelp(
+            [in] HWND hwnd,
+            [in] LPOLESTR pszHelpFile,
+            [in] UINT uCommand,
+            [in] DWORD dwData,
+            [in] POINT ptMouse,
+            [out] IDispatch * pDispatchObjectHit);
+}
+
+
+//-------------------------------------------------------------------------
+//  ICSSFilterSite
+//
+//-------------------------------------------------------------------------
+[
+	odl,
+	oleautomation,
+	dual,
+	uuid(3050f3ed-98b5-11cf-bb82-00aa00bdce0b)
+]
+interface ICSSFilterSite : IUnknown
+{
+	[] HRESULT GetElement([retval, out] IHTMLElement** ppElem);
+	[] HRESULT FireOnFilterChangeEvent();
+};
+
+
+//-------------------------------------------------------------------------
+//  ICSSFilter
+//
+//-------------------------------------------------------------------------
+[
+	odl,
+	oleautomation,
+	dual,
+	uuid(3050f3ec-98b5-11cf-bb82-00aa00bdce0b)
+]
+interface ICSSFilter : IUnknown
+{
+	[] HRESULT SetSite([in] ICSSFilterSite* pSink);
+	[] HRESULT OnAmbientPropertyChange([in] LONG dispid);
+};
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehavior
+//
+//-------------------------------------------------------------------------
+
+interface IElementBehaviorSite;
+
+cpp_quote("#define BEHAVIOREVENT_CONTENTCHANGE 0")
+cpp_quote("#define BEHAVIOREVENT_DOCUMENTREADY 1")
+
+[
+	object,
+	uuid(3050f425-98b5-11cf-bb82-00aa00bdce0b),
+	helpstring("IElementBehavior Interface"),
+	pointer_default(unique),
+    local
+]
+interface IElementBehavior : IUnknown
+{
+	[helpstring("method Init")] HRESULT Init([in] IElementBehaviorSite * pBehaviorSite);
+	[helpstring("method Notify")] HRESULT Notify([in] DWORD dwEvent, [in, out] VARIANT * pVar);
+};
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorSite
+//
+//-------------------------------------------------------------------------
+[
+	object,
+	uuid(3050f427-98b5-11cf-bb82-00aa00bdce0b),
+	helpstring("IElementBehaviorSite Interface"),
+	pointer_default(unique),
+    local
+]
+interface IElementBehaviorSite : IUnknown
+{
+    [helpstring("method GetElement")] HRESULT GetElement([out] IHTMLElement ** ppElement);
+};
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorSiteOM
+//
+//-------------------------------------------------------------------------
+
+cpp_quote("#define BEHAVIOREVENTFLAGS_BUBBLE 1 ")
+
+[
+    object,
+    uuid(3050f489-98b5-11cf-bb82-00aa00bdce0b),
+    helpstring("IElementBehaviorSiteOM Interface"),
+    pointer_default(unique),
+    local
+]
+interface IElementBehaviorSiteOM : IUnknown
+{
+    [helpstring("method RegisterEvent")] HRESULT RegisterEvent ([in] LPOLESTR pchEvent, [in] DWORD dwFlags, [out] DWORD * pdwCookie);
+    [helpstring("method GetEventCookie")] HRESULT GetEventCookie ([in] LPOLESTR pchEvent, [out] DWORD * pdwCookie);
+    [helpstring("method FireEvent")] HRESULT FireEvent ([in] DWORD  dwCookie, [in, out] IHTMLEventObj * pEventObject);
+    [helpstring("method CreateEventObject")] HRESULT CreateEventObject ([out] IHTMLEventObj ** ppEventObject);
+    [helpstring("method RegisterName")] HRESULT RegisterName ([in] LPOLESTR pchName);
+};
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorRender
+//
+//-------------------------------------------------------------------------
+
+cpp_quote("#define BEHAVIORRENDERINFO_BEFOREBACKGROUND   0x00000001") 
+cpp_quote("#define BEHAVIORRENDERINFO_AFTERBACKGROUND    0x00000002") 
+cpp_quote("#define BEHAVIORRENDERINFO_BEFORECONTENT      0x00000004") 
+cpp_quote("#define BEHAVIORRENDERINFO_AFTERCONTENT       0x00000008") 
+cpp_quote("//#define BEHAVIORRENDERINFO_BEFOREFOREGROUND 0x00000010 // equivalent to BEHAVIORRENDERINFO_AFTERTEXT") 
+cpp_quote("#define BEHAVIORRENDERINFO_AFTERFOREGROUND    0x00000020") 
+
+cpp_quote("#define BEHAVIORRENDERINFO_DISABLEBACKGROUND  0x00000100") 
+cpp_quote("#define BEHAVIORRENDERINFO_DISABLENEGATIVEZ   0x00000200") 
+cpp_quote("#define BEHAVIORRENDERINFO_DISABLECONTENT     0x00000400") 
+cpp_quote("#define BEHAVIORRENDERINFO_DISABLEPOSITIVEZ   0x00000800") 
+
+[
+    object,
+    uuid(3050f4aa-98b5-11cf-bb82-00aa00bdce0b),
+    helpstring("IElementBehaviorRender Interface"),
+    pointer_default(unique),
+    local
+]
+interface IElementBehaviorRender : IUnknown
+{
+    [helpstring("method Draw")] HRESULT Draw([in] HDC hdc, [in] DWORD dwLayer, [in] LPRECT prc, [in, out] IUnknown * pReserved);
+    [helpstring("method GetRenderInfo")] HRESULT GetRenderInfo([in] LPDWORD pdwRenderInfo);
+};
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorSiteRender
+//
+//-------------------------------------------------------------------------
+
+[
+    object,
+    uuid(3050f4a7-98b5-11cf-bb82-00aa00bdce0b),
+    helpstring("IElementBehaviorSiteRender Interface"),
+    pointer_default(unique),
+    local
+]
+interface IElementBehaviorSiteRender : IUnknown
+{
+    [helpstring("method Invalidate")] HRESULT Invalidate([in] LPRECT pRect);
+    [helpstring("method InvalidateRenderInfo")] HRESULT InvalidateRenderInfo();
+};
+
+//-------------------------------------------------------------------------
+//
+//  ISubDivisionProvider
+//
+//-------------------------------------------------------------------------
+[
+    object,
+    uuid(3050f4d2-98b5-11cf-bb82-00aa00bdce0b),
+    helpstring("ISubDivisionProvider Interface"),
+    pointer_default(unique),
+    local
+]
+interface ISubDivisionProvider : IUnknown
+{
+    [helpstring("method GetSubDivisionCount")] HRESULT GetSubDivisionCount([out] ULONG * pcSubDivision);
+    [helpstring("method GetSubDivisionTabs")] HRESULT GetSubDivisionTabs([out] LONG * pSubDivisionTabs, [in] LONG cSubDivisions);
+    [helpstring("method SubDivisionFromPt")] HRESULT SubDivisionFromPt([in] POINT pt, [out] LONG * piSubDivision);
+};
+
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorUI
+//
+//-------------------------------------------------------------------------
+
+[
+    object,
+    uuid(3050f4bf-98b5-11cf-bb82-00aa00bdce0b),
+    helpstring("IElementBehaviorUI Interface"),
+    pointer_default(unique),
+    local
+]
+interface IElementBehaviorUI : IUnknown
+{
+    [helpstring("method OnReceiveFocus")] void OnReceiveFocus([in] BOOL fFocus, [in] LONG iSubDivision);
+    [helpstring("method GetSubDivisionProvider")] HRESULT GetSubDivisionProvider([out] ISubDivisionProvider ** pp);
+    [helpstring("method CanTakeFocus")] BOOL CanTakeFocus();
+};
+
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorCategory
+//
+//-------------------------------------------------------------------------
+
+[
+    object,
+    uuid(3050f4ed-98b5-11cf-bb82-00aa00bdce0b),
+    helpstring("IElementBehaviorCategory Interface"),
+    pointer_default(unique),
+    local
+]
+interface IElementBehaviorCategory : IUnknown
+{
+    [helpstring("method GetCategory")] HRESULT GetCategory([out] LPOLESTR * ppchCategory);
+};
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorSiteCategory
+//
+//-------------------------------------------------------------------------
+
+cpp_quote("#define BEHAVIOR_FIRSTRELATION   0") 
+
+cpp_quote("#define BEHAVIOR_SAMEELEMENT     0") 
+cpp_quote("#define BEHAVIOR_PARENT          1") 
+cpp_quote("#define BEHAVIOR_CHILD           2") 
+cpp_quote("#define BEHAVIOR_SIBLING         3") 
+
+cpp_quote("#define BEHAVIOR_LASTRELATION    3") 
+
+[
+	object,
+	uuid(3050f4ee-98b5-11cf-bb82-00aa00bdce0b),
+	helpstring("IElementBehaviorSiteCategory Interface"),
+	pointer_default(unique),
+    local
+]
+interface IElementBehaviorSiteCategory : IUnknown
+{
+    [helpstring("method GetRelatedBehaviors")] HRESULT GetRelatedBehaviors(
+        [in] DWORD dwDirection,
+        [in] LPTSTR pchCategory,
+        [out] IEnumUnknown ** ppEnumerator);
+};
+
+//-------------------------------------------------------------------------
+//
+//  IElementBehaviorFactory
+//
+//-------------------------------------------------------------------------
+
+cpp_quote("#define SID_SElementBehaviorFactory IID_IElementBehaviorFactory") 
+
+[
+	object,
+	uuid(3050f429-98b5-11cf-bb82-00aa00bdce0b),
+	helpstring("IElementBehaviorFactory Interface"),
+	pointer_default(unique),
+    local
+]
+interface IElementBehaviorFactory : IUnknown
+{
+    [helpstring("method FindBehavior")] HRESULT FindBehavior(
+        [in]    LPOLESTR            pchNameSpace,
+        [in]    LPOLESTR            pchBehavior,
+        [in]    IUnknown *          pUnkArg,
+        [out]   IElementBehavior ** ppBehavior);
+};
+
+//-------------------------------------------------------------------------
+//
+//
+//
+//-------------------------------------------------------------------------
+
+cpp_quote("DEFINE_GUID(SID_SEditCommandTarget,0x3050f4b5,0x98b5,0x11cf,0xbb,0x82,0x00,0xaa,0x00,0xbd,0xce,0x0b);")
+cpp_quote("DEFINE_GUID(CGID_EditStateCommands,0x3050f4b6,0x98b5,0x11cf,0xbb,0x82,0x00,0xaa,0x00,0xbd,0xce,0x0b);")
+cpp_quote("DEFINE_GUID(CGID_DocHostCommandHandler,0xf38bc242,0xb950,0x11d1,0x89,0x18,0x00,0xc0,0x4f,0xc2,0xc8,0x36);")
+
+
+[
+        object,
+		uuid(342D1EA0-AE25-11D1-89C5-006008C3FBFC),
+        pointer_default(unique),
+        local
+]
+interface IClassFactory3 : IClassFactory
+{
+	HRESULT CreateInstanceWithContext(IUnknown *punkContext, 
+			IUnknown *punkOuter, REFIID riid, [out] void **ppv);
+};
+
+cpp_quote("#endif")

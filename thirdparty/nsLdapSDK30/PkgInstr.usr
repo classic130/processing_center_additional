@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'sparc'
+          ],
+          'thirdparty/nsLdapSDK30',
+          'build/log/VerArchive'
+        ];

@@ -1,0 +1,12 @@
+prefix=/home/jlancelle/work/extlib/sparc/libxslt-1.0.22
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+
+Name: libxslt
+Version: 1.0.22
+Description: XSLT library version 2.
+Requires: libxml-2.0
+Libs: -L${libdir} -R${exec_prefix}/lib -lxslt  -L/home/jlancelle/work/extlib/sparc/libxml2-2.4.26/lib -R/home/jlancelle/work/extlib/sparc/libxml2-2.4.26/lib -lxml2 -lz -lpthread -lm -lsocket -lnsl -lm
+Cflags: -I${includedir}

@@ -1,0 +1,846 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Michael Hein">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; SunOS 5.7 sun4u) [Netscape]">
+   <title>Release notes for LDAP C SDK 5.x</title>
+</head>
+<body>
+
+<h1>
+Release Notes for LDAP C SDK 5.x</h1>
+<i>Michael Hein <a href="mailto:mhein@sun.com">mhein@sun.com</a></i>
+<p><font size=+1><a href="#LDAP C SDK 4.x release notes">LDAP C SDK 4.x
+historical release notes</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.0">LDAP C SDK 5.0 (3/28/2001)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.1">LDAP C SDK 5.01 (06/13/2001)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.2">LDAP C SDK 5.02 (07/03/2001)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.3">LDAP C SDK 5.03 (08/02/2001)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.04 (08/15/2001)">LDAP C SDK 5.04
+(08/15/2001)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.05 (10/04/2001)">LDAP C SDK 5.05
+(10/04/2001)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.06 (10/04/2001) (This release is targeted for www.">LDAP
+C SDK 5.06 (11/07/2001)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.06 (10/04/2001) (This release is targeted for www.">LDAP
+C SDK 5.07 (02/02/2002)</a></font>
+<br><font size=+1><a href="#LDAP C SDK 5.0">LDAP C SDK 5.08 (02/10/2002)</a></font>
+<p><a NAME="LDAP C SDK 5.0"></a><b><font size=+2>LDAP C SDK 5.0 (3/28/2001)
+(www.iplanet.com release)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+Migrated to NSS 3.2 and NSPR 4.1</li>
+
+<li>
+Build system rewritten to accommodate move to mozilla</li>
+
+<li>
+530135 - simple filters are truncated</li>
+
+<li>
+520548 - only print info if -vv is used</li>
+
+<li>
+529868 - support "version 2" proxied auth control</li>
+
+<li>
+Various bugs reported through Mozilla.org fixed in this release</li>
+</ul>
+
+<p><br><a NAME="LDAP C SDK 5.1"></a><b><font size=+2>LDAP C SDK 5.01 (06/13/2001)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+540490 - ber_scanf leaks memory on encoding errors</li>
+
+<li>
+don't link libldap with NSPR libraries</li>
+
+<li>
+543857 - broken command line utilities because of ber_scanf() changes</li>
+
+<li>
+394822 - command line tools should support password policy</li>
+
+<li>
+539148 - Unix ldapmodify cannot parse NT replica dump</li>
+
+<li>
+526153 - -Z option is not checked in case of SSL client auth</li>
+
+<li>
+Added files in coreconf as needed for Linux 7.1 build</li>
+
+<li>
+(added to tip of ldapcsdk_branch_50 branch)</li>
+
+<li>
+Took out libdbm module as we are no longer dependent on&nbsp; it (NSS includes
+it) as we don't build static ldap library versions anymore</li>
+
+<li>
+546204 - HP-UX command line utilities not working</li>
+
+<li>
+added SunOS5.8_i86pc.mk, SunOS5.9.mk, SunOS5.9_i86pc.mk, and updated SunOS5.mk
+for Solaris x86 support</li>
+
+<li>
+misc changes for i86 support</li>
+</ul>
+
+<p><br><a NAME="LDAP C SDK 5.2"></a><b><font size=+2>LDAP C SDK 5.02 (07/03/2001)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+&nbsp;
+<ul>
+<li>
+header file reorg.&nbsp; The ldap.h header file has now been split up into
+4 separate files (ldap-standard.h, ldap-extension.h, ldap-deprecated.h,
+and ldap-to-be-deprecated.h) and a new file, ldap-platform.h has been added
+to the distribution.&nbsp; As per LDAP C API draft, user is only required
+to ldap.h and the files list above are included automatically.</li>
+
+<li>
+ltest builds once again (Solaris only).</li>
+
+<li>
+Use IPv6 (if available) when NSPR I/O is used via libprldap.</li>
+
+<li>
+Change the cmd line utilities to always use NSPR I/O via libprldap.</li>
+
+<li>
+Add support for IPv6 addresses (in square brackets) to the ldap_init()
+call and libldap's LDAP URL parser.</li>
+
+<li>
+Export ldap-platform.h and ldappr.h (shipped as public headers).</li>
+
+<li>
+Add top-level COMPS_FROM_OBJDIR=1 gmake option for use in the non-coreconf
+case.</li>
+
+<li>
+Remove outdated build instructions.</li>
+
+<li>
+Add support for building examples within a source tree.</li>
+
+<li>
+nsprio now takes an optional hostport argument.</li>
+
+<li>
+add check for ld_mutex != NULL in LDAP_MUTEX_LOCK/UNLOCK macros This fixes
+a crash that can occur when using libprldap.</li>
+
+<li>
+73830 - Calling ldap_init() with a NULL hostname results in core.&nbsp;
+The crash occurred because the host pointer ("localhost") was being freed
+twice. Now we ensure that the host is set to NULL by ldap_x_hostlist_next()
+in the special case when NULL was passed into ldap_x_hostlist_first(),
+which is more consistent to the caller and eliminates the double free problem.</li>
+
+<li>
+nsprio build fixes</li>
+
+<li>
+build static libldap50.a library and include in distribution (Note this
+is the ldap library only.&nbsp; We do not ship the ssl enable library as
+a static library.&nbsp; When you use this library you will have to link
+with the static liblber library as well)</li>
+
+<li>
+Cannot use the __declspec (thread) semantics for thread local storage if
+one want to use LoadLibrary to dynamically load DLL at runtime.&nbsp; This
+issue was found on NT only and cause PerLdap to fail.</li>
+</ul>
+
+<p><br><a NAME="LDAP C SDK 5.3"></a><b><font size=+2>LDAP C SDK 5.03 (08/02/2001)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+345002 - Implement persistent search (345002)</li>
+
+<li>
+550410 - "-s" scope implementation</li>
+
+<li>
+550409 - fix for false success report in verbose mode</li>
+
+<li>
+Include liblber functions in Linux libldap build</li>
+
+<li>
+BER speedup changes (via writev)</li>
+
+<li>
+Update components to NSS 3.3,&nbsp; NSPR 4.12, and SVRCORE 3.3</li>
+
+<li>
+553151 - Abnormal behavior of get_get_next_buffer() under extreme conditions</li>
+
+<li>
+package up additional header files for internal product builds</li>
+</ul>
+
+<br>&nbsp;
+<p><a NAME="LDAP C SDK 5.04 (08/15/2001)"></a><b><font size=+2>LDAP C SDK
+5.04 (08/15/2001)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+555890 - ldapsearch is broken on NT/Linux/OSF</li>
+
+<li>
+added the new packaging script for www.iplanet.com</li>
+</ul>
+
+<p><br><a NAME="LDAP C SDK 5.05 (10/04/2001)"></a>
+<br><b><font size=+2>LDAP C SDK 5.05 (10/04/2001)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+new option to command line utilities to alllow for -w - to prompt for the
+simple bind password from the command line</li>
+
+<li>
+new option to command line utilities to allow for -j to read the simple
+bind password from a specified file name</li>
+
+<li>
+misc. ber changes to io.c</li>
+
+<li>
+take out -lC in tools/clients/Makefile.client since we are now picking
+up clean forte6 components</li>
+
+<li>
+558135 - smart referrals with three contiguous slashes don't work</li>
+
+<li>
+allow for the setting of controls via command line interface</li>
+
+<li>
+bump to forte6.2 component for Solaris 5.8 (This change only applies to
+the NSS component)</li>
+
+<li>
+559670 - use of select() cause problems with > 1024 connections in iDS
+chaining code</li>
+
+<li>
+support sun4m architecture</li>
+</ul>
+<a NAME="LDAP C SDK 5.06 (10/04/2001) (This release is targeted for www."></a>
+<br><b><font size=+2>LDAP C SDK 5.06 (11/07/2001) (www.iplanet.com release)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+560859 - use of select() appears to limit connections to 1024.&nbsp; This
+is manifested in using select in the non-blocking connect code (os-ip.c).&nbsp;
+Have increased platform specific FD_SETSIZE constant to get around this
+limitation.&nbsp; This was done to reduce the risk of creating poll bugs.</li>
+
+<li>
+561412 - no timeout in ssl_write in liblber.&nbsp; Changed the usage of
+PR_Write to PR_Send as PR_Send will allow for the specifying a timeout.&nbsp;
+This value should probably be settable from outside libprldap.&nbsp; This
+is the real fix that needs to be put in place.</li>
+
+<li>
+561268 - Option '-w -' for command line utilities does not work on Win
+NT &amp; Win 2000</li>
+
+<li>
+a bunch of misc changes were committed to make the build system "company"
+agnostic which allows the builder of the LDAP C SDK to specify company
+version, company name etc.</li>
+</ul>
+<a NAME="LDAP C SDK 5.07 (11/07/2001) (This release is targeted for www."></a>
+<br><b><font size=+2>LDAP C SDK 5.07 (02/02/2002) (www.iplanet.com release)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+fix regression on command line tools with -J option</li>
+
+<li>
+add new prldap functionality to set timeout on PR_Send(), PR_Write() etc.
+calls.</li>
+
+<li>
+A base64 encode value that commences (after decoding) with a '&lt;' is
+incorrectly interpreted as LDIF URL syntax attr:&lt;</li>
+
+<li>
+114041 - previously allocated mutexes leaked when using LDAP_OPT_THREAD_FNS.</li>
+
+<li>
+73830 - Calling ldap_init() with a NULL hostname results in core. The crash
+occurred because the host pointer ("localhost") was being freed twice.
+Now we ensure that the host is set to NULL by ldap_x_hostlist_next() in
+the special case when NULL was passed into ldap_x_hostlist_first(), which
+is more consistent to the caller and eliminates the double free problem.</li>
+
+<li>
+112076 - crash due to double free of ssip->lssei_keypasswd.&nbsp; This
+code was inadvertently not migrated to NSS 3.x as this was a known change
+in behavior from 2.x</li>
+
+<li>
+updated changes for idar writev (io.c, lber-int.h)</li>
+
+<li>
+120406 - can't use more than 127 threads with SSL or NSPR. Previously,
+we allocated one NSPR thread-private data index for each active LDAP *.&nbsp;
+Now we only allocate one for the entire prldap library (this library now
+has its own thread-private DATA layer).</li>
+
+<li>
+include nspr header files in distribution (in include-nspr) as a convenience
+for developers</li>
+
+<li>
+move component version info to a separate file</li>
+
+<li>
+enable COMPONENT_PULL_METHOD=FTP for UNIX builds</li>
+
+<li>
+106057 - the nsldapi_os_connect_with_to() function should use poll()</li>
+
+<li>
+upgrade to NSS 3.2.2</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;</ul>
+<a NAME="LDAP C SDK 5.08 (02/10/2002) (www.iplanet.com release)"></a><b><font size=+2>LDAP
+C SDK 5.08 (02/10/2002) (www.iplanet.com release)</font></b>
+<h2>
+Bugs/enhancements fixed in this release:</h2>
+
+<ul>
+<li>
+4615315 - C&nbsp;SDK needs mechanism for verifying SSL peer's hostname</li>
+
+<br>&nbsp;</ul>
+
+<hr WIDTH="100%">
+<br>&nbsp;
+<h2>
+<a NAME="LDAP C SDK 4.x release notes"></a>LDAP C SDK 4.x release notes</h2>
+
+<h3>
+<font size=+3>N</font>EW <font size=+3>F</font>EATURES AND <font size=+3>E</font>NHANCEMENTS</h3>
+This section of enhancements details the changes that were made to both
+versions 4.0 and 4.1 of the LDAP SDK for C.
+<p>The following set of modifications were made to the LDAP SDK for C,
+version 4.1:
+<ul>
+<li>
+The LDAP SDK for C library names were changed to indicate the new version
+of the SDK. For example, the new Solaris version of the SDK library is
+<tt>libldapssl41.so</tt>.
+For information on how to build and link applications that uses this SDK,
+see the make files for the SDK examples.</li>
+
+<li>
+Various changes were made to the LDAP SDK for C to align it with the LDAPv3,
+described in RFC 2251. You can find this RFC at the following URL:</li>
+
+<blockquote><a href="http://www.ietf.org/rfc/rfc2251.txt?number=2251">http://www.ietf.org/rfc/rfc2251.txt?number=2251</a></blockquote>
+
+<li>
+Non-blocking connect functionality has been added. For more information,
+please see <a href="#connect_timeout">LDAP_X_OPT_CONNECT_TIMEOUT</a>.</li>
+
+<li>
+A new extended I/O function callback scheme was added to the SDK. The <tt>ldap_x_ext_io_fns</tt>
+struct has been added to hold extended I/O function pointers. The <tt>ldap.h</tt>
+file outlines the new callbacks.</li>
+
+<li>
+Netscape Portable Runtime library (NSPR) support was added. The library,
+<tt>libldappr</tt>
+was added to provide a simple way for an application that is using NSPR
+to tie <tt>libldap</tt> into their environment. The
+<tt>ldappr.h</tt> file
+outlines the new interface. The library <tt>libldapr</tt> is statically
+linked in the version of the SDK that is available from both Mozilla and
+iPlanet's web sites.</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>The new example <tt>nsprio.c</tt> shows how to use the new interfaces.
+Note that before you can compile the example, you will need to rework the
+makefile to include NSPR v3.5.1. You can checkout the NSPR 3.5.1 source
+from <a href="http://www.mozilla.org">www.mozilla.org</a> with the following
+CVS command:
+<pre>cvs co -r NSPRPUB_RELEASE_3_5_1 mozilla/nsprpub</pre>
+Make sure to set your <tt>CVSROOT</tt> environment variable as described
+on <a href="http://www.mozilla.org/cvs.html">http://www.mozilla.org/cvs.html</a>
+before running the cvs checkout command. For information on NSPR and its
+API, see <a href="http://www.mozilla.org/docs/refList/refNSPR/">http://www.mozilla.org/docs/refList/refNSPR/</a>.
+<br>&nbsp;
+<br>&nbsp;
+<li>
+The <tt>ldap_search*()</tt> line of functions was modified as follows:</li>
+
+<ul>
+<li>
+The <tt>ldap_search*()</tt> line of functions now return <tt>LDAP_PARAM_ERROR</tt>
+if a <tt>sizelimit</tt> smaller than -1 is passed to the function call.</li>
+
+<li>
+The <tt>ldap_search*()</tt> line of functions now set <tt>*result</tt>
+to <tt>NULL</tt> in all error situations.</li>
+</ul>
+
+<li>
+The <tt>ldapmodify</tt> utility was modified as follows:</li>
+
+<ul>
+<li>
+The <tt>-A</tt> option was added, which causes the tool to display non-ASCII
+values in conjunction with the <tt>-v</tt> option.</li>
+
+<li>
+The <tt>-B</tt> and <tt>-q</tt> options were added, which provide support
+for the bulk import feature available in the iPlanet Directory Server,
+version 5.0.</li>
+
+<br><!-- 4.0 enhancements -->
+<li>
+Support for the <tt>version</tt> directive was added.</li>
+
+<li>
+Support for <tt>changetype</tt> with <tt>moddn</tt> was added.</li>
+
+<li>
+Improved the LDIF output to provide better support for file URLs.</li>
+</ul>
+
+<li>
+The <tt>ldapsearch</tt> utility was modified as follows:</li>
+
+<ul>
+<li>
+The <tt>-e</tt> option was added, which minimizes base-64 encoding of values.</li>
+
+<br>By default, <tt>ldapsearch</tt> will always produce ASCII values and
+any non-ASCII values (such as UTF-8 characters) as base-64 encoded characters.
+The new <tt>-e</tt> option causes <tt>ldapsearch</tt> to return as much
+real data as is possible. With <tt>-e</tt>, only values or DNs that contain
+an '<tt>\r</tt>', an '<tt>\n</tt>', or that start with ':', ' ', or '<tt>&lt;</tt>'
+are base-64 encoded. Note that the <tt>-e</tt> option may cause <tt>ldapsearch</tt>
+to produce LDIF that does not conform to RFC 2849, found at (<a href="ftp://ftp.isi.edu/in-notes/rfc2849.txt">ftp://ftp.isi.edu/in-notes/rfc2849.txt</a>).
+<li>
+The <tt>-U</tt> option was added, which operates in conjunction with the
+<tt>-t</tt>
+option (which causes <tt>ldapsearch</tt> to produce file URLs).</li>
+
+<li>
+To conform with RFC 2849, <tt>ldapsearch</tt> now outputs a "<tt>version:
+1</tt>" line at the start of all LDIF. A new <tt>-1</tt> (minus 1) option
+has been added to <tt>ldapsearch</tt> to suppress this line.</li>
+
+<li>
+The <tt>ldapsearch</tt> utility has been modified to support a zero length
+filter, represented as either "" or <tt>NULL</tt>. The zero-length filter
+"" is now an alias for "<tt>(objectclass=*)</tt>".</li>
+</ul>
+
+<li>
+The following new examples have been added to the SDK:</li>
+
+<ul>
+<li>
+csearch -- search with ldap_memcache</li>
+
+<li>
+ssnoauth -- search over SSL</li>
+
+<li>
+ssearch -- search over SSL with cert based authentication</li>
+
+<li>
+nsprio -- example usage of the extended IO callbacks</li>
+
+<li>
+psearch -- uses persistent search</li>
+
+<li>
+srvsort -- shows server-side sorting</li>
+
+<br><!-- Added in 4.0-->
+<li>
+ppolicy -- shows use of password policies</li>
+
+<br><!-- Added in 4.0-->
+<li>
+crtfilt -- demonstrates the use of <tt>ldap_create_filter()</tt></li>
+
+<br><!-- Added in 4.0--></ul>
+</ul>
+<!-- End of 4.1 enhancements --><!-- Start of of 4.0 enhancements -->
+<p>The following set of modifications were made to the LDAP SDK for C,
+version 4.0:
+<ul>
+<li>
+The <tt>ldap.h</tt> header file was modified as follows:</li>
+
+<ul>
+<li>
+Support was added for discovery of API version information at run-time
+with the <tt>LDAP_OPT_API_INFO</tt> option and <tt>LDAPAPIInfo</tt> structure.</li>
+
+<li>
+Support was added for the discovery of API extensions at run-time with
+the <tt>LDAP_OPT_API_FEATURE_INFO</tt> and <tt>LDAPAPIFeatureInfo</tt>
+structures.</li>
+
+<li>
+The following macros were added to support the discovery of API version
+information at compile-time: <tt>LDAP_VENDOR_VERSION</tt>, <tt>LDAP_VENDOR_NAME</tt>,
+and <tt>LDAP_API_VERSION</tt>.</li>
+
+<li>
+A set pf <tt>LDAP_API_FEATURE_*</tt> macros were added to support the discovery
+of API extensions at compile-time.</li>
+
+<li>
+The <tt>LDAP_OPT_PRIVATE_EXTENSION_BASE</tt> macro was added.</li>
+
+<li>
+The <tt>ldap_unbind_ext()</tt> function was added.</li>
+
+<li>
+The <tt>ldap_mods_u</tt> name was added to the <tt>mod_vals</tt> union.</li>
+
+<li>
+A number of function parameters were modified to be declared with <tt>const</tt>.</li>
+</ul>
+
+<li>
+The <tt>ldap_get_option()</tt> function was modified as follows:</li>
+
+<ul>
+<li>
+Support for the <tt>LDAP_OPT_HOST_NAME</tt> option was added.</li>
+
+<li>
+The function now returns a duplicate copy of data when <tt>LDAP_OPT_SERVER_CONTROLS</tt>,
+<tt>LDAP_OPT_CLIENT_CONTROLS</tt>,
+or <tt>LDAP_OPT_ERROR_STRING</tt> are retrieved.</li>
+
+<li>
+The <tt>LDAP_OPT_MATCHED_DN</tt> option was added.</li>
+
+<li>
+Support for <tt>LDAP_OPT_ERROR_NUMBER</tt> and <tt>LDAP_OPT_ERROR_STRING</tt>
+were added.</li>
+</ul>
+
+<li>
+The <tt>lber.h</tt> header file was modified as follows:</li>
+
+<ul>
+<li>
+Support was added for the <tt>LBER_USE_DER</tt> option.</li>
+
+<li>
+Several internal datatypes were changed to provide support for <tt>liblber</tt>.
+In the header file, see the definition for <tt>_LP64</tt> for details.</li>
+
+<li>
+The typedef <tt>BerValue</tt> was added to the <tt>berval</tt> struct,
+as follows:</li>
+
+<blockquote>
+<pre>typedef struct berval {
+&nbsp; unsigned long bv_len;
+&nbsp; char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *bv_val;
+} BerValue;</pre>
+</blockquote>
+</ul>
+
+<li>
+Support was added for receiving unsolicited LDAPv3 notification messages.</li>
+
+<li>
+The header files <tt>disptmpl.h</tt> and <tt>srchpref.h</tt> are now shipped
+with the SDK.</li>
+
+<li>
+When using SSL client authentication with the command-line utilities, you
+are no longer required to provide the Cert DB password with the <tt>-W</tt>
+option on the command line. If you do not specify the <tt>-W</tt> option,
+the command-line utility will prompt you for your Cert DB password.</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>Alternatively, you can provide a path to a PIN file that contains your
+Cert DB password. The format of a PIN file is the same as the PIN file
+that you would use for a 4.1 Netscape Directory Server. That is, if your
+Cert DB password is <tt>secret12</tt>, then you would enter the following
+line into your PIN file:
+<blockquote>
+<pre>Internal (Software) Token:secret12</pre>
+</blockquote>
+You would then point to this file using the <tt>-I</tt> option on the command
+line utility. For example:
+<blockquote>
+<pre>-I /h/bjensen/.netscape/my_pin_file</pre>
+</blockquote>
+The use of either the PIN file or interactive prompting for your password
+means that your Cert DB password is not exposed through process examination
+(that is, by using the <tt>ps</tt> command on Unix).</ul>
+<!-- End of Enhancements -->
+<p>
+<hr ALIGN=LEFT SIZE="12">
+<h3>
+LDAP_X_OPT_CONNECT_TIMEOUT</h3>
+The LDAP SDK for C, v4.1 provides a new option that allows you to control
+the TCP/IP timeout. Normally connection attempts will block for a period
+of time when the connection is for a host that is not reachable. <tt>LDAP_X_OPT_CONNECT_TIMEOUT</tt>
+allows you to control the amount of time for which a connection attempt
+will block in the event that the host is not reachable. You can tell the
+SDK to return immediately, return after an amount of time that you specify,
+or to block indefinitely.
+<p>The timeout value is set on a per-session handle basis and you can control
+the default timeout that is used by all session handles. Use <tt>ldap_set_option()</tt>
+to set the timeout value. Use <tt>ldap_get_option()</tt> to return the
+timeout value that is set for the current session handle.
+<h3>
+Timeout Values</h3>
+To support this option, the following special values are now available:
+<ul><tt>LDAP_X_IO_TIMEOUT_NO_WAIT</tt> -- The connection attempt returns
+immediately even if the server is reachable.
+<p><tt>LDAP_X_IO_TIMEOUT_NO_TIMEOUT</tt> -- The connection attempt will
+block until the host responds, or for the duration of the platform's connection
+timeout. Depending on the platform, the default connection timeout can
+be anywhere from 20 seconds to 3 minutes or longer. This value is the default.</ul>
+In addition, you can specify a timeout value in milliseconds.
+<h3>
+Setting the Timeout Value</h3>
+The following code fragment sets the timeout value for the session handle
+to 10 seconds.
+<pre>#include &lt;stdio.h>
+#include "ldap.h"
+
+#define HOST "mydirectory.siroe.com"
+#define PORT 389
+
+...
+
+LDAP *ld;
+LDAPMessage *result;
+int rc, version;
+
+/* timeout is specified in milliseconds. 10000 = 10 seconds. */
+int timeout = 10000;
+
+...
+
+if ( ( ld = ldap_init( HOST, PORT ) ) == NULL ) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; perror( "ldap_init" );
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return( -1 );
+}
+
+if ( ldap_set_option( ld, LDAP_X_OPT_CONNECT_TIMEOUT, &amp;timeout ) != LDAP_SUCCESS ) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rc = ldap_get_lderrno( ld, NULL, NULL);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fprintf( stderr, "ldap_set_option: %s\n", ldap_err2string( rc ) );
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ldap_unbind( ld );
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (rc);
+}
+
+...</pre>
+You can also control the default timeout for all LDAP session handles by
+setting the&nbsp;<t>LDAP * value to <tt>NULL</tt> using <tt>ldap_set_option()</tt>.
+For example:
+<pre>int timeout = LDAP_X_IO_TIMEOUT_WAIT;
+
+ldap_set_option( NULL, LDAP_X_OPT_CONNECT_TIMEOUT, &amp;timeout );
+
+/* the default timeout is now set for all new ldap connections that&nbsp;
+&nbsp;&nbsp;&nbsp; are created after this call to ldap_set_option. */</pre>
+
+<h3>
+Retrieving the Timeout Value</h3>
+The following code fragment retrieves the timeout value for the current
+session handle.
+<pre>#include &lt;stdio.h>
+#include "ldap.h"
+
+#define HOST "mydirectory.siroe.com"
+#define PORT 389
+
+...
+
+LDAP *ld;
+LDAPMessage *result;
+int rc, version, timeout;
+
+...
+
+if ( ( ld = ldap_init( HOST, PORT ) ) == NULL ) {
+&nbsp; perror( "ldap_init" );
+&nbsp; return( -1 );
+}
+
+if ( ldap_get_option( ld, LDAP_X_OPT_CONNECT_TIMEOUT, &amp;timeout ) != LDAP_SUCCESS ) {
+&nbsp; rc = ldap_get_lderrno( ld, NULL, NULL);
+&nbsp; fprintf( stderr, "ldap_set_option: %s\n", ldap_err2string( rc ) );
+&nbsp; ldap_unbind( ld );
+&nbsp; return (rc);
+}
+
+switch( timeout ) {
+&nbsp; case LDAP_X_IO_TIMEOUT_NO_WAIT:
+&nbsp;&nbsp;&nbsp; printf("The connection is set to not block\n");
+&nbsp;&nbsp;&nbsp; break;
+
+&nbsp; case LDAP_X_IO_TIMEOUT_NO_TIMEOUT:
+&nbsp;&nbsp;&nbsp; printf("The connection is set to block indefinitely\n");
+&nbsp;&nbsp;&nbsp; break;
+
+&nbsp; default:
+&nbsp;&nbsp;&nbsp; printf("The connection timeout is set to %d seconds", (timeout/1000) );
+&nbsp;&nbsp;&nbsp; break;
+}
+
+...</pre>
+
+<hr ALIGN=LEFT SIZE="12">
+<h3>
+LDAP library/API Version Mismatch Error Messages</h3>
+This feature was added to version 4.0 of the LDAP SDK for C.
+<p>Various macros and structures have been added to the SDK to allow for
+compile-time and run-time discovery of the API version. Their intended
+use is to allow you to ensure that you are compiling and running with the
+correct version of the LDAP SDK for C. These features are in line with
+the latest LDAP SDK for C API Internet Draft.
+<p>As a result of these changes, the command line tools bundled with the
+LDAP SDK for C now check to ensure that they are running with the correct
+version of the library. If your library path variable (LD_LIBRARY_PATH
+on most Unix systems and the PATH variable on Windows NT) is set so that
+an old version of the LDAP SDK for C library is in use, then the command
+line tools can return one of the following error messages:
+<pre>ldapsearch: unable to retrieve LDAP library version information;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this program requires an LDAP library that implements revision&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2003 or greater of the LDAP API.&nbsp;
+
+ldapsearch: this program requires an LDAP library that implements revision&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2003 or greater of the LDAP API; running with revision 2002.&nbsp;
+
+ldapsearch: this program requires Netscape Communications Corp.'s LDAP&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; library version 3.20 or greater; running with version 3.00.</pre>
+By default, the tools will exit if they see a mismatch in versions. To
+override the version mismatch, you can use <tt>-0</tt> option (zero, not
+'o') with the tools, but results may vary.
+<br>&nbsp;
+<p>
+<hr ALIGN=LEFT SIZE="12">
+<h3>
+ldap_url_parse() with Space-Separated Lists of Hosts</h3>
+This feature was added to version 4.0 of the LDAP SDK for C.
+<p>You can now pass <tt>ldap_url_parse()</tt> a string that uses the following
+format:
+<pre>ldap://host1:port1 host2:port2 host2:port3 ... hostn:portn/&lt;basedn></pre>
+Using this formatting, <tt>ldap_url_parse()</tt> will return results that
+are acceptable to <tt>ldap_init()</tt>. For example:
+<blockquote>
+<pre>LDAP *ld;
+LDAPURLDesc *ludpp;
+int res;
+
+char *url = "ldap://phonebook.example.com:2389 directory.example.com:389/o=example.com";
+
+res = ldap_url_parse(url, &amp;ludpp);
+ld = ldap_init(ludpp->host, ludpp->port);</pre>
+</blockquote>
+This input causes <tt>ldap_init()</tt> to try to connect to each host and
+port in the URL string until it finds a host with which it can connect.
+<p>Note that <tt>ludpp->port</tt> is set to the port identified on the
+last host in the URL string. If <tt>ludpp->port</tt> is used as shown here,
+then the last port identified on the URL string becomes the default port
+for any hosts for which a port is not explicitly set. Using the example
+above, suppose the URL string contained the following:
+<pre>ldap://phonebook.example.com phonebook2.example.com phonebook3.example.com:2389/o=example.com</pre>
+Here, <tt>ldap_init()</tt> would use port 2389 for all the hosts that it
+tries. If the last host in the string does not identify a port, then <tt>ludpp->port</tt>
+is set to zero (0). Setting the port to 0 tells <tt>ldap_init()</tt> to
+use the default port, which is 389 for <tt>ldap://</tt> urls and 636 for
+<tt>ldaps://</tt>
+urls.
+<p>
+<hr ALIGN=LEFT SIZE="12">
+<h3>
+<font size=+3>K</font>NOWN<font size=+3>P</font>ROBLEMS</h3>
+The following is a known bug in this release of the LDAP SDK for C:
+<ul>
+<li>
+The IO Connect Timeout feature does not work on Windows NT with SSL. That
+is, the Windows NT connection always blocks for the Windows NT TCP/IP timeout
+value (approximately 50 seconds) in the event that the host is not reachable.
+This is because the PR_Connect() function in the Windows NT version of
+NSPR does not timeout, and so a timeout value cannot be set for it. This
+problem will be resolved in a future release when a fixed version of NSPR
+becomes available. (42900)</li>
+</ul>
+
+<hr ALIGN=LEFT SIZE="12">
+<h3>
+<font size=+3>M</font>ORE
+<font size=+3>I</font>NFORMATION</h3>
+iPlanet provide binary releases of this SDK. However, note that this SDK
+is also available in source code form as part of the Mozilla.org open source
+project. Refer to the following site for more information on how you can
+get the source code and contribute to the further development of this SDK:
+<br><blockquore>
+<pre>http://www.mozilla.org/directory</pre>
+
+<h3>
+Product Documentation</h3>
+The <i>LDAP SDK for C Programmer's Guide, version 4.1</i> is available
+in HTML and PDF formats. You can access this manual at the following site:
+<a href="http://docs.iplanet.com/docs/manuals/directory.html#SDK">http://docs.iplanet.com/docs/manuals/directory.html#SDK</a>.
+<p>Installation instructions and release notes for all iPlanet and Netscape
+servers are posted at <a href="http://docs.iplanet.com/docs/manuals/index.html">http://docs.iplanet.com/docs/manuals/index.html</a>.
+<h3>
+Reporting Problems with the LDAP SDK for C</h3>
+Please submit problem reports to the netscape.public.mozilla.directory
+newsgroup and/or mailing list. For information on locating this and other
+Mozilla newsgroups and mailing lists, please see <a href="http://www.mozilla.org/community.html">http://www.mozilla.org/community.html</a>
+</body>
+</html>

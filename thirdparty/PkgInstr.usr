@@ -1,0 +1,13 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'nsLdapSDK30',
+            'nsLdapSDK41',
+            'openssl',
+            'ncipher',
+            'Safenet'
+          ],
+          'thirdparty',
+          'build/log/VerArchive'
+        ];

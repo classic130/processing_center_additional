@@ -1,0 +1,74 @@
+*****************************************************************************
+Shibboleth SP for Control Center Single Sign On (SSO)
+*****************************************************************************
+prerequisite: 
+  a. install openssl version 1.0.0 or later on /usr/local/ssl
+     > gunzip openssl.1.0.0.tar.gz and untar from under the root directory /
+  b. install libcurl version 4.2.0 or later on /usr/local/lib
+     > gunzip curl.4.2.0.tar.gz and untar from under the root directory /
+
+Configure Shibboleth SP
+   1. obtain idp-metadata.xml and place it under /opt/shibboleth-sp/etc/shibboleth/. This file should contain the correct
+      idp server cert. 
+
+   2. modify  shibboleth2.xml in /opt/shibboleth-sp/etc/shibboleth/.
+      2.1. change Request Mapper to use the host name that the apache server is using
+    <RequestMapper type="Native">
+        <RequestMap applicationId="default">
+            <!--
+            The example requires a session for documents in /secure on the containing host with http and
+            https on the default ports. Note that the name and port in the <Host> elements MUST match
+            Apache's ServerName and Port directives or the IIS Site name in the <ISAPI> element
+            below.
+            -->
+            <Host name="$$SERVER_FQDN$$">
+                <Path name="secure" authType="shibboleth" requireSession="true"/>
+            </Host>
+        </RequestMap>
+    </RequestMapper>
+        Note: The FQDN should be the domain name in the url the client's browser will be accessing. 
+        e.g. enterprise-ssl-admin.verisign.com
+
+      2.2. Change the application defaults
+        <ApplicationDefaults id="default" policyId="default"
+        entityID="https://$$SERVER_FQDN$$"
+        REMOTE_USER="eppn persistent-id targeted-id"
+        signing="false" encryption="false" >
+
+      2.3. Change Session Initiator, in the following section, change the entityID to the one used in idp-metadata.xml
+           <SessionInitiator type="Chaining" Location="/Login" isDefault="true" id="Intranet"
+                    relayState="cookie" entityID="https://shsueh-lnx.corppc.vrsn.com/idp/shibboleth">
+                <SessionInitiator type="SAML2" acsIndex="1" template="bindingTemplate.html"/>
+                <SessionInitiator type="Shib1" acsIndex="5"/>
+            </SessionInitiator>
+      2.4. Make sure you have the following set for AssertionConsumerService
+          <md:AssertionConsumerService Location="/SAML2/POST" index="1"
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+            <md:AssertionConsumerService Location="/SAML2/POST-SimpleSign" index="2"
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign"/>
+            <md:AssertionConsumerService Location="/SAML2/Artifact" index="3"
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"/>
+            <md:AssertionConsumerService Location="/SAML2/ECP" index="4"
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:PAOS"/>
+            <md:AssertionConsumerService Location="/SAML/POST" index="5"
+                Binding="urn:oasis:names:tc:SAML:1.0:profiles:browser-post"/>
+            <md:AssertionConsumerService Location="/SAML/Artifact" index="6"
+                Binding="urn:oasis:names:tc:SAML:1.0:profiles:artifact-01"/>
+
+      2.5. create new key pairs for the sp, (this generates the key pairs and automatically create a self-signed cert)
+            cd to /opt/shibboleth-sp/etc/shibboleth/, and run the ./keygen.sh as follows,
+            ./keygen.sh -f -h <host name> -y <validity period in years>
+            Note: host name should be the one in the url the browser will be accessing. Don't use internal domain names.
+            example: ./keygen.sh -f -h mssldev01-zn2.ssodev-bo.mtv1.vrsn.com -y 20
+            this will create sp-cert.pem and sp-key.pem under the current directory with 20-year validity period 
+
+      2.6. create sp-metadata.xml and give it to the idp admin(this file should contain the sp's digital cert)
+            a. copy sp-metadata.xml.sample to sp-metadata.xml
+            b. replace all 'mssldev01-zn2.ssodev-bo.mtv1.vrsn.com' occurancies with the FQDN this sp is running.
+            c. replace the certificate in between <ds:X509Certificate> and </ds:X509Certificate> with the content from sp-cert.pem. (you need to exclude -----BEGIN CERTIFICATE----- and -----END CERTIFICATE----- in the certificate)
+
+      2.7. start shibboleth daemon shibd
+           under /opt/shibboleth-sp/sbin/
+           Note: to stop the process, you will do a 'ps -ef | grep shibd' and kill the process by pid.
+
+

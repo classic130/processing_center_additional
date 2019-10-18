@@ -1,0 +1,1426 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>IDOM_Document Class Reference</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-8');" onMouseOver="rolloverOn('side-ext-8');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-8" onLoad="rolloverLoad('side-ext-8','../graphics/ext-8-label-2.jpg','../graphics/ext-8-label-3.jpg');" src="../graphics/ext-8-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <IMG alt="API Docs" border="0" height="12" hspace="0" src="../graphics/api-label-1.jpg" vspace="0" width="120"><BR>
+
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <A href="../schema.html" onMouseOut="rolloverOff('side-schema');" onMouseOver="rolloverOn('side-schema');"><IMG alt="Schema" border="0" height="12" hspace="0" name="side-schema" onLoad="rolloverLoad('side-schema','../graphics/schema-label-2.jpg','../graphics/schema-label-3.jpg');" src="../graphics/schema-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Releases" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../y2k.html" onMouseOut="rolloverOff('side-y2k');" onMouseOver="rolloverOn('side-y2k');"><IMG alt="Y2K Compliance" border="0" height="12" hspace="0" name="side-y2k" onLoad="rolloverLoad('side-y2k','../graphics/y2k-label-2.jpg','../graphics/y2k-label-3.jpg');" src="../graphics/y2k-label-3.jpg" vspace="0" width="120"></A><BR>
+  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.4 on Thu Mar 7 17:51:22 2002 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>IDOM_Document  Class Reference</h1>Class to refer to XML Document nodes in the IDOM. 
+<a href="#_details">More...</a>
+<p>
+<code>#include &lt;<a class="el" href="IDOM_Document_hpp-source.html">IDOM_Document.hpp</a>&gt;</code>
+<p>
+Inheritance diagram for IDOM_Document<p><center><img src="class_IDOM_Document_inherit_graph.gif" border="0" usemap="#IDOM_Document_inherit_map" alt="Inheritance graph"></center>
+<map name="IDOM_Document_inherit_map">
+<area href="class_IDOM_Node.html" shape="rect" coords="13,0,96,18">
+</map>
+<center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center>Collaboration diagram for IDOM_Document:<p><center><img src="class_IDOM_Document_coll_graph.gif" border="0" usemap="#IDOM_Document_coll_map" alt="Collaboration graph"></center>
+<map name="IDOM_Document_coll_map">
+<area href="class_IDOM_Node.html" shape="rect" coords="13,0,96,18">
+</map>
+<center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center><a href="class_IDOM_Document-members.html">List of all members.</a><table border=0 cellpadding=0 cellspacing=0>
+<tr><td colspan=2><br><h2>Public Methods</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Destructor</div></td></tr>
+<tr><td nowrap align=right valign=top>virtual&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a0">~IDOM_Document</a> ()</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Factory methods to create new nodes for the Document</div></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Entity.html">IDOM_Entity</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a1">createEntity</a> (const XMLCh *name)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Create a new entity.</em> <a href="#a1">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Element.html">IDOM_Element</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a2">createElement</a> (const XMLCh *tagName)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates an element of the type specified.</em> <a href="#a2">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_DocumentFragment.html">IDOM_DocumentFragment</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a3">createDocumentFragment</a> ()=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates an empty DocumentFragment object.</em> <a href="#a3">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Text.html">IDOM_Text</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a4">createTextNode</a> (const XMLCh *data)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates a Text node given the specified string.</em> <a href="#a4">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Comment.html">IDOM_Comment</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a5">createComment</a> (const XMLCh *data)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates a Comment node given the specified string.</em> <a href="#a5">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_CDATASection.html">IDOM_CDATASection</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a6">createCDATASection</a> (const XMLCh *data)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates a CDATASection node whose value is the specified string.</em> <a href="#a6">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_DocumentType.html">IDOM_DocumentType</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a7">createDocumentType</a> (const XMLCh *name)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Create a DocumentType node.</em> <a href="#a7">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Notation.html">IDOM_Notation</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a8">createNotation</a> (const XMLCh *name)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Create a Notation.</em> <a href="#a8">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_ProcessingInstruction.html">IDOM_ProcessingInstruction</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a9">createProcessingInstruction</a> (const XMLCh *target,const XMLCh *data)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates a ProcessingInstruction node given the specified name and data strings.</em> <a href="#a9">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Attr.html">IDOM_Attr</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a10">createAttribute</a> (const XMLCh *name)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates an Attr of the given name.</em> <a href="#a10">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_EntityReference.html">IDOM_EntityReference</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a11">createEntityReference</a> (const XMLCh *name)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates an EntityReference object.</em> <a href="#a11">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_NodeIterator.html">IDOM_NodeIterator</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a12">createNodeIterator</a> (<a class="el" href="class_IDOM_Node.html">IDOM_Node</a> *root,unsigned long whatToShow,<a class="el" href="class_IDOM_NodeFilter.html">IDOM_NodeFilter</a> *filter,bool entityReferenceExpansion)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates a NodeIterator object.</em> <a href="#a12">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_TreeWalker.html">IDOM_TreeWalker</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a13">createTreeWalker</a> (<a class="el" href="class_IDOM_Node.html">IDOM_Node</a> *root,unsigned long whatToShow,<a class="el" href="class_IDOM_NodeFilter.html">IDOM_NodeFilter</a> *filter,bool entityReferenceExpansion)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates a TreeWalker object.</em> <a href="#a13">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Range.html">IDOM_Range</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a14">createRange</a> ()=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>To create the range consisting of boundary-points and offset of the selected contents.</em> <a href="#a14">More...</a><em></em></font><br><br></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Getter functions</div></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_DocumentType.html">IDOM_DocumentType</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a15">getDoctype</a> ()const=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Get Document Type Declaration (see <code><a class="el" href="class_IDOM_DocumentType.html">IDOM_DocumentType</a></code>) associated with this document.</em> <a href="#a15">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_DOMImplementation.html">IDOM_DOMImplementation</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a16">getImplementation</a> ()const=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Return the <code>IDOMImplementation</code> object that handles this document.</em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Element.html">IDOM_Element</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a17">getDocumentElement</a> ()const=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Return a reference to the root element of the document.</em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a18">getElementsByTagName</a> (const XMLCh *tagname)const=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Returns a <code><a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a></code> of all the elements with a given tag name.</em> <a href="#a18">More...</a><em></em></font><br><br></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Functions introduced in IDOM Level 2.</div></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Node.html">IDOM_Node</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a19">importNode</a> (<a class="el" href="class_IDOM_Node.html">IDOM_Node</a> *importedNode,bool deep)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Imports a node from another document to this document.</em> <a href="#a19">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Element.html">IDOM_Element</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a20">createElementNS</a> (const XMLCh *namespaceURI,const XMLCh *qualifiedName)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates an element of the given qualified name and namespace URI.</em> <a href="#a20">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Attr.html">IDOM_Attr</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a21">createAttributeNS</a> (const XMLCh *namespaceURI,const XMLCh *qualifiedName)=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Creates an attribute of the given qualified name and namespace URI.</em> <a href="#a21">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a22">getElementsByTagNameNS</a> (const XMLCh *namespaceURI,const XMLCh *localName)const=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Returns a <code><a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a></code> of all the <code><a class="el" href="class_IDOM_Element.html">IDOM_Element</a></code>s with a given <em>local name</em> and namespace URI in the order in which they would be encountered in a preorder traversal of the <code>IDOM_Document</code> tree.</em> <a href="#a22">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>virtual <a class="el" href="class_IDOM_Element.html">IDOM_Element</a>*&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#a23">getElementById</a> (const XMLCh *elementId)const=0</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Returns the <code><a class="el" href="class_IDOM_Element.html">IDOM_Element</a></code> whose ID is given by <code>elementId</code>.</em> <a href="#a23">More...</a><em></em></font><br><br></td></tr>
+<tr><td colspan=2><br><h2>Protected Methods</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Constructors and assignment operators</div></td></tr>
+<tr><td nowrap align=right valign=top>&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#b0">IDOM_Document</a> ()</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>The default constructor for IDOM_Document creates a null IDOM_Document object that refers to no document.</em> <a href="#b0">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#b1">IDOM_Document</a> (const IDOM_Document &amp;other)</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Copy constructor.</em> <a href="#b1">More...</a><em></em></font><br><br></td></tr>
+<tr><td nowrap align=right valign=top>IDOM_Document&amp;&nbsp;</td><td valign=bottom><a class="el" href="class_IDOM_Document.html#b2">operator=</a> (const IDOM_Document &amp;other)</td></tr>
+<tr><td>&nbsp;</td><td><font size=-1><em>Assignment operator.</em> <a href="#b2">More...</a><em></em></font><br><br></td></tr>
+<tr><td colspan=2><br><h2>Friends</h2></td></tr>
+<tr><td nowrap align=right valign=top>class &nbsp;</td><td valign=bottom><a class="el" href="#l0">IDOM_Node</a></td></tr>
+<tr><td nowrap align=right valign=top>class &nbsp;</td><td valign=bottom><a class="el" href="#l1">DocumentImpl</a></td></tr>
+<tr><td nowrap align=right valign=top>class &nbsp;</td><td valign=bottom><a class="el" href="#l2">NodeIteratorImpl</a></td></tr>
+<tr><td nowrap align=right valign=top>class &nbsp;</td><td valign=bottom><a class="el" href="#l3">IDOM_IDOMImplementation</a></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+Class to refer to XML Document nodes in the IDOM.
+<p>
+Conceptually, a IDOM document node is the root of the document tree, and provides the primary access to the document's data. 
+<p>
+Since elements, text nodes, comments, processing instructions, etc. cannot exist outside the context of a <code>Document</code>, the <code>Document</code> interface also contains the factory methods needed to create these objects. The <code>Node</code> objects created have a <code>ownerDocument</code> attribute which associates them with the <code>Document</code> within whose context they were created. 
+<p>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a name="b0" doxytag="IDOM_Document::IDOM_Document"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+IDOM_Document::IDOM_Document (
+          </b></td>
+          <td valign="bottom"><b>
+)<code> [protected]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+The default constructor for IDOM_Document creates a null IDOM_Document object that refers to no document.
+<p>
+It may subsequently be assigned to refer to an actual Document node.
+<p>
+To create a new document, use the DOMImplementation <code> <a class="el" href="class_IDOM_DOMImplementation.html#a4">IDOM_DOMImplementation::createDocument</a>(). </code>     </td>
+  </tr>
+</table>
+<a name="b1" doxytag="IDOM_Document::IDOM_Document"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+IDOM_Document::IDOM_Document (
+          </b></td>
+          <td valign="bottom"><b>
+const IDOM_Document &amp; <em>other</em>&nbsp;)<code> [protected]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Copy constructor.
+<p>
+Creates a new <code>IDOM_Document</code> that refers to the same underlying actual document as the original.<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>other</em>
+&nbsp;</td><td>
+ The object to be copied </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a0" doxytag="IDOM_Document::~IDOM_Document"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+IDOM_Document::~IDOM_Document (
+          </b></td>
+          <td valign="bottom"><b>
+)<code> [virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Function Documentation</h2>
+<a name="a10" doxytag="IDOM_Document::createAttribute"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Attr.html">IDOM_Attr</a> * IDOM_Document::createAttribute (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>name</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates an Attr of the given name.
+<p>
+Note that the <code>Attr</code> instance can then be attached to an Element using the <code>IDOMElement::setAttribute()</code> method. <dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>name</em>
+&nbsp;</td><td>
+ The name of the attribute. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A new <code><a class="el" href="class_IDOM_Attr.html">IDOM_Attr</a></code> object with the <code>nodeName</code> attribute set to <code>name</code>, and <code>localName</code>, <code>prefix</code>, and <code>namespaceURI</code> set to <code>null</code>. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ INVALID_CHARACTER_ERR: Raised if the specified name contains an illegal character. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a21" doxytag="IDOM_Document::createAttributeNS"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Attr.html">IDOM_Attr</a> * IDOM_Document::createAttributeNS (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>namespaceURI</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+const XMLCh * <em>qualifiedName</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates an attribute of the given qualified name and namespace URI.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>namespaceURI</em>
+&nbsp;</td><td>
+ The <em>namespace URI</em> of the attribute to create. </td></tr>
+<tr><td valign=top><em>qualifiedName</em>
+&nbsp;</td><td>
+ The <em>qualified name</em> of the attribute to instantiate. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A new <code><a class="el" href="class_IDOM_Attr.html">IDOM_Attr</a></code> object. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ INVALID_CHARACTER_ERR: Raised if the specified qualified name contains an illegal character. <br>
+ NAMESPACE_ERR: Raised if the <code>qualifiedName</code> is malformed, if the <code>qualifiedName</code> has a prefix and the <code>namespaceURI</code> is <code>null</code> or an empty string, if the <code>qualifiedName</code> has a prefix that is "xml" and the <code>namespaceURI</code> is different from "<a href="http://www.w3.org/XML/1998/namespace">http://www.w3.org/XML/1998/namespace</a>", if the <code>qualifiedName</code> has a prefix that is "xmlns" and the <code>namespaceURI</code> is different from "<a href="http://www.w3.org/2000/xmlns/">http://www.w3.org/2000/xmlns/</a>", or if the <code>qualifiedName</code> is "xmlns" and the <code>namespaceURI</code> is different from "<a href="http://www.w3.org/2000/xmlns/">http://www.w3.org/2000/xmlns/</a>". </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a6" doxytag="IDOM_Document::createCDATASection"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_CDATASection.html">IDOM_CDATASection</a> * IDOM_Document::createCDATASection (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>data</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates a CDATASection node whose value is the specified string.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>data</em>
+&nbsp;</td><td>
+ The data for the <code><a class="el" href="class_IDOM_CDATASection.html">IDOM_CDATASection</a></code> contents. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_CDATASection.html">IDOM_CDATASection</a></code> object. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ NOT_SUPPORTED_ERR: Raised if this document is an HTML document. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a5" doxytag="IDOM_Document::createComment"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Comment.html">IDOM_Comment</a> * IDOM_Document::createComment (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>data</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates a Comment node given the specified string.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>data</em>
+&nbsp;</td><td>
+ The data for the comment. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_Comment.html">IDOM_Comment</a></code> that references the newly created comment node. </dl>    </td>
+  </tr>
+</table>
+<a name="a3" doxytag="IDOM_Document::createDocumentFragment"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_DocumentFragment.html">IDOM_DocumentFragment</a> * IDOM_Document::createDocumentFragment (
+          </b></td>
+          <td valign="bottom"><b>
+)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates an empty DocumentFragment object.
+<p>
+<dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_DocumentFragment.html">IDOM_DocumentFragment</a></code> that references the newly created document fragment. </dl>    </td>
+  </tr>
+</table>
+<a name="a7" doxytag="IDOM_Document::createDocumentType"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_DocumentType.html">IDOM_DocumentType</a> * IDOM_Document::createDocumentType (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>name</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Create a DocumentType node.
+<p>
+Non-standard extension.
+<p>
+<dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_DocumentType.html">IDOM_DocumentType</a></code> that references the newly created DocumentType node. </dl>    </td>
+  </tr>
+</table>
+<a name="a2" doxytag="IDOM_Document::createElement"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Element.html">IDOM_Element</a> * IDOM_Document::createElement (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>tagName</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates an element of the type specified.
+<p>
+Note that the instance returned implements the Element interface, so attributes can be specified directly on the returned object. <dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>tagName</em>
+&nbsp;</td><td>
+ The name of the element type to instantiate. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_Element.html">IDOM_Element</a></code> that reference the new element. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ INVALID_CHARACTER_ERR: Raised if the specified name contains an illegal character. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a20" doxytag="IDOM_Document::createElementNS"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Element.html">IDOM_Element</a> * IDOM_Document::createElementNS (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>namespaceURI</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+const XMLCh * <em>qualifiedName</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates an element of the given qualified name and namespace URI.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>namespaceURI</em>
+&nbsp;</td><td>
+ The <em>namespace URI</em> of the element to create. </td></tr>
+<tr><td valign=top><em>qualifiedName</em>
+&nbsp;</td><td>
+ The <em>qualified name</em> of the element type to instantiate. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A new <code><a class="el" href="class_IDOM_Element.html">IDOM_Element</a></code> object. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ INVALID_CHARACTER_ERR: Raised if the specified qualified name contains an illegal character. <br>
+ NAMESPACE_ERR: Raised if the <code>qualifiedName</code> is malformed, if the <code>qualifiedName</code> has a prefix and the <code>namespaceURI</code> is <code>null</code> or an empty string, or if the <code>qualifiedName</code> has a prefix that is "xml" and the <code>namespaceURI</code> is different from "<a href="http://www.w3.org/XML/1998/namespace">http://www.w3.org/XML/1998/namespace</a>". </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a1" doxytag="IDOM_Document::createEntity"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Entity.html">IDOM_Entity</a> * IDOM_Document::createEntity (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>name</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Create a new entity.
+<p>
+Non-standard extension. <dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>name</em>
+&nbsp;</td><td>
+ The name of the entity to instantiate </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a11" doxytag="IDOM_Document::createEntityReference"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_EntityReference.html">IDOM_EntityReference</a> * IDOM_Document::createEntityReference (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>name</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates an EntityReference object.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>name</em>
+&nbsp;</td><td>
+ The name of the entity to reference. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_EntityReference.html">IDOM_EntityReference</a></code> that references the newly created EntityReference node. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ INVALID_CHARACTER_ERR: Raised if the specified name contains an illegal character. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a12" doxytag="IDOM_Document::createNodeIterator"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_NodeIterator.html">IDOM_NodeIterator</a> * IDOM_Document::createNodeIterator (
+          </b></td>
+          <td valign="bottom"><b>
+<a class="el" href="class_IDOM_Node.html">IDOM_Node</a> * <em>root</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+unsigned long <em>whatToShow</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+<a class="el" href="class_IDOM_NodeFilter.html">IDOM_NodeFilter</a> * <em>filter</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+bool <em>entityReferenceExpansion</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates a NodeIterator object.
+<p>
+(IDOM2)
+<p>
+NodeIterators are used to step through a set of nodes, e.g. the set of nodes in a NodeList, the document subtree governed by a particular node, the results of a query, or any other set of nodes. The set of nodes to be iterated is determined by the implementation of the NodeIterator. IDOM Level 2 specifies a single NodeIterator implementation for document-order traversal of a document subtree. Instances of these iterators are created by calling <code>DocumentTraversal.createNodeIterator()</code>.
+<p>
+To produce a view of the document that has entity references expanded and does not expose the entity reference node itself, use the <code>whatToShow</code> flags to hide the entity reference node and set expandEntityReferences to true when creating the iterator. To produce a view of the document that has entity reference nodes but no entity expansion, use the <code>whatToShow</code> flags to show the entity reference node and set expandEntityReferences to false.<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>root</em>
+&nbsp;</td><td>
+ The root node of the IDOM tree </td></tr>
+<tr><td valign=top><em>whatToShow</em>
+&nbsp;</td><td>
+ This attribute determines which node types are presented via the iterator. </td></tr>
+<tr><td valign=top><em>filter</em>
+&nbsp;</td><td>
+ The filter used to screen nodes </td></tr>
+<tr><td valign=top><em>entityReferenceExpansion</em>
+&nbsp;</td><td>
+ The value of this flag determines whether the children of entity reference nodes are visible to the iterator. If false, they will be skipped over. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a8" doxytag="IDOM_Document::createNotation"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Notation.html">IDOM_Notation</a> * IDOM_Document::createNotation (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>name</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Create a Notation.
+<p>
+Non-standard extension.<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>name</em>
+&nbsp;</td><td>
+ The name of the notation to instantiate </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_Notation.html">IDOM_Notation</a></code> that references the newly created Notation node. </dl>    </td>
+  </tr>
+</table>
+<a name="a9" doxytag="IDOM_Document::createProcessingInstruction"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_ProcessingInstruction.html">IDOM_ProcessingInstruction</a> * IDOM_Document::createProcessingInstruction (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>target</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+const XMLCh * <em>data</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates a ProcessingInstruction node given the specified name and data strings.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>target</em>
+&nbsp;</td><td>
+ The target part of the processing instruction. </td></tr>
+<tr><td valign=top><em>data</em>
+&nbsp;</td><td>
+ The data for the node. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_ProcessingInstruction.html">IDOM_ProcessingInstruction</a></code> that references the newly created PI node. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ INVALID_CHARACTER_ERR: Raised if an illegal character is specified. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a14" doxytag="IDOM_Document::createRange"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Range.html">IDOM_Range</a> * IDOM_Document::createRange (
+          </b></td>
+          <td valign="bottom"><b>
+)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+To create the range consisting of boundary-points and offset of the selected contents.
+<p>
+<dl compact><dt>
+<b>Returns: </b><dd>
+ The initial state of the Range such that both the boundary-points are positioned at the beginning of the corresponding IDOM_DOcument, before any content. The range returned can only be used to select content associated with this document, or with documentFragments and Attrs for which this document is the ownerdocument </dl>    </td>
+  </tr>
+</table>
+<a name="a4" doxytag="IDOM_Document::createTextNode"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Text.html">IDOM_Text</a> * IDOM_Document::createTextNode (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>data</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates a Text node given the specified string.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>data</em>
+&nbsp;</td><td>
+ The data for the node. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A <code><a class="el" href="class_IDOM_Text.html">IDOM_Text</a></code> object that references the newly created text node. </dl>    </td>
+  </tr>
+</table>
+<a name="a13" doxytag="IDOM_Document::createTreeWalker"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_TreeWalker.html">IDOM_TreeWalker</a> * IDOM_Document::createTreeWalker (
+          </b></td>
+          <td valign="bottom"><b>
+<a class="el" href="class_IDOM_Node.html">IDOM_Node</a> * <em>root</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+unsigned long <em>whatToShow</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+<a class="el" href="class_IDOM_NodeFilter.html">IDOM_NodeFilter</a> * <em>filter</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+bool <em>entityReferenceExpansion</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates a TreeWalker object.
+<p>
+(IDOM2)
+<p>
+TreeWalker objects are used to navigate a document tree or subtree using the view of the document defined by its whatToShow flags and any filters that are defined for the TreeWalker. Any function which performs navigation using a TreeWalker will automatically support any view defined by a TreeWalker.
+<p>
+Omitting nodes from the logical view of a subtree can result in a structure that is substantially different from the same subtree in the complete, unfiltered document. Nodes that are siblings in the TreeWalker view may be children of different, widely separated nodes in the original view. For instance, consider a Filter that skips all nodes except for Text nodes and the root node of a document. In the logical view that results, all text nodes will be siblings and appear as direct children of the root node, no matter how deeply nested the structure of the original document.
+<p>
+To produce a view of the document that has entity references expanded and does not expose the entity reference node itself, use the whatToShow flags to hide the entity reference node and set <code>expandEntityReferences</code> to true when creating the TreeWalker. To produce a view of the document that has entity reference nodes but no entity expansion, use the <code>whatToShow</code> flags to show the entity reference node and set <code>expandEntityReferences</code> to false<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>root</em>
+&nbsp;</td><td>
+ The root node of the IDOM tree </td></tr>
+<tr><td valign=top><em>whatToShow</em>
+&nbsp;</td><td>
+ This attribute determines which node types are presented via the tree-walker. </td></tr>
+<tr><td valign=top><em>filter</em>
+&nbsp;</td><td>
+ The filter used to screen nodes </td></tr>
+<tr><td valign=top><em>entityReferenceExpansion</em>
+&nbsp;</td><td>
+ The value of this flag determines whether the children of entity reference nodes are visible to the tree-walker. If false, they will be skipped over. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="a15" doxytag="IDOM_Document::getDoctype"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_DocumentType.html">IDOM_DocumentType</a> * IDOM_Document::getDoctype (
+          </b></td>
+          <td valign="bottom"><b>
+) const<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Get Document Type Declaration (see <code><a class="el" href="class_IDOM_DocumentType.html">IDOM_DocumentType</a></code>) associated with this document.
+<p>
+For documents without a document type declaration this returns <code>null</code> reference object. The IDOM Level 1 does not support editing the Document Type Declaration, therefore <code>docType</code> cannot be altered in any way.     </td>
+  </tr>
+</table>
+<a name="a17" doxytag="IDOM_Document::getDocumentElement"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Element.html">IDOM_Element</a> * IDOM_Document::getDocumentElement (
+          </b></td>
+          <td valign="bottom"><b>
+) const<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Return a reference to the root element of the document.
+<p>
+    </td>
+  </tr>
+</table>
+<a name="a23" doxytag="IDOM_Document::getElementById"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Element.html">IDOM_Element</a> * IDOM_Document::getElementById (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>elementId</em>&nbsp;) const<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Returns the <code><a class="el" href="class_IDOM_Element.html">IDOM_Element</a></code> whose ID is given by <code>elementId</code>.
+<p>
+If no such element exists, returns <code>null</code>. Behavior is not defined if more than one element has this <code>ID</code>. 
+<p>
+<b>Note:</b> The IDOM implementation must have information that says which attributes are of type ID. <a class="el" href="class_Attributes.html">Attributes</a> with the name "ID" are not of type ID unless so defined. Implementations that do not know whether attributes are of type ID or not are expected to return <code>null</code>.<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>elementId</em>
+&nbsp;</td><td>
+ The unique <code>id</code> value for an element. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ The matching element. </dl>    </td>
+  </tr>
+</table>
+<a name="a18" doxytag="IDOM_Document::getElementsByTagName"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a> * IDOM_Document::getElementsByTagName (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>tagname</em>&nbsp;) const<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Returns a <code><a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a></code> of all the elements with a given tag name.
+<p>
+The returned node list is "live", in that changes to the document tree made after a nodelist was initially returned will be immediately reflected in the node list.
+<p>
+The elements in the node list are ordered in the same order in which they would be encountered in a preorder traversal of the <code>Document</code> tree. <dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>tagname</em>
+&nbsp;</td><td>
+ The name of the tag to match on. The special value "*" matches all tags. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A reference to a NodeList containing all the matched <code>Element</code>s. </dl>    </td>
+  </tr>
+</table>
+<a name="a22" doxytag="IDOM_Document::getElementsByTagNameNS"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a> * IDOM_Document::getElementsByTagNameNS (
+          </b></td>
+          <td valign="bottom"><b>
+const XMLCh * <em>namespaceURI</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+const XMLCh * <em>localName</em>&nbsp;) const<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Returns a <code><a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a></code> of all the <code><a class="el" href="class_IDOM_Element.html">IDOM_Element</a></code>s with a given <em>local name</em> and namespace URI in the order in which they would be encountered in a preorder traversal of the <code>IDOM_Document</code> tree.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>namespaceURI</em>
+&nbsp;</td><td>
+ The <em>namespace URI</em> of the elements to match on. The special value "*" matches all namespaces. </td></tr>
+<tr><td valign=top><em>localName</em>
+&nbsp;</td><td>
+ The <em>local name</em> of the elements to match on. The special value "*" matches all local names. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ A new <code><a class="el" href="class_IDOM_NodeList.html">IDOM_NodeList</a></code> object containing all the matched <code><a class="el" href="class_IDOM_Element.html">IDOM_Element</a></code>s. </dl>    </td>
+  </tr>
+</table>
+<a name="a16" doxytag="IDOM_Document::getImplementation"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_DOMImplementation.html">IDOM_DOMImplementation</a> * IDOM_Document::getImplementation (
+          </b></td>
+          <td valign="bottom"><b>
+) const<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Return the <code>IDOMImplementation</code> object that handles this document.
+<p>
+    </td>
+  </tr>
+</table>
+<a name="a19" doxytag="IDOM_Document::importNode"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+<a class="el" href="class_IDOM_Node.html">IDOM_Node</a> * IDOM_Document::importNode (
+          </b></td>
+          <td valign="bottom"><b>
+<a class="el" href="class_IDOM_Node.html">IDOM_Node</a> * <em>importedNode</em>, 
+          </b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>
+bool <em>deep</em>&nbsp;)<code> [pure virtual]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Imports a node from another document to this document.
+<p>
+The returned node has no parent (<code>parentNode</code> is <code>null</code>). The source node is not altered or removed from the original document; this method creates a new copy of the source node.<br>
+For all nodes, importing a node creates a node object owned by the importing document, with attribute values identical to the source node's <code>nodeName</code> and <code>nodeType</code>, plus the attributes related to namespaces (prefix and namespaces URI).<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>importedNode</em>
+&nbsp;</td><td>
+ The node to import. </td></tr>
+<tr><td valign=top><em>deep</em>
+&nbsp;</td><td>
+ If <code>true</code>, recursively import the subtree under the specified node; if <code>false</code>, import only the node itself, as explained above. This does not apply to <code><a class="el" href="class_IDOM_Attr.html">IDOM_Attr</a></code>, <code><a class="el" href="class_IDOM_EntityReference.html">IDOM_EntityReference</a></code>, and <code><a class="el" href="class_IDOM_Notation.html">IDOM_Notation</a></code> nodes. </td></tr>
+</table>
+</dl><dl compact><dt>
+<b>Returns: </b><dd>
+ The imported node that belongs to this <code>IDOM_Document</code>. </dl><dl compact><dt>
+<b>Exceptions: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>IDOMException</em>
+&nbsp;</td><td>
+ NOT_SUPPORTED_ERR: Raised if the type of node being imported is not supported. </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<a name="b2" doxytag="IDOM_Document::operator="></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+IDOM_Document &amp; IDOM_Document::operator= (
+          </b></td>
+          <td valign="bottom"><b>
+const IDOM_Document &amp; <em>other</em>&nbsp;)<code> [protected]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Assignment operator.
+<p>
+<dl compact><dt>
+<b>Parameters: </b><dd>
+<table border=0 cellspacing=2 cellpadding=0>
+<tr><td valign=top><em>other</em>
+&nbsp;</td><td>
+ The object to be copied </td></tr>
+</table>
+</dl>    </td>
+  </tr>
+</table>
+<hr><h2>Friends And Related Function Documentation</h2>
+<a name="l1" doxytag="IDOM_Document::DocumentImpl"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+class DocumentImpl<code> [friend]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a name="l3" doxytag="IDOM_Document::IDOM_IDOMImplementation"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+class IDOM_IDOMImplementation<code> [friend]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a name="l0" doxytag="IDOM_Document::IDOM_Node"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+class IDOM_Node<code> [friend]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a name="l2" doxytag="IDOM_Document::NodeIteratorImpl"></a><p>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+  <tr>
+    <td class="md">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td nowrap valign="top"><b> 
+class NodeIteratorImpl<code> [friend]</code>
+          </b></td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing=5 cellpadding=0 border=0>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<hr>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="IDOM_Document_hpp-source.html">IDOM_Document.hpp</a></ul>
+    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1"></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

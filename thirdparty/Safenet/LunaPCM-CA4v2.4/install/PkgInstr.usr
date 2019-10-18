@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'x86_64'
+          ],
+          'thirdparty/Safenet/LunaPCM-CA4v2.4/install',
+          'build/log/VerArchive'
+        ];

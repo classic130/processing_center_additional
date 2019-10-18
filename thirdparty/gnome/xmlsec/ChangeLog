@@ -1,0 +1,59 @@
+Wed Jul 10 8:45:23 2002  Aleksey Sanin  <aleksey@aleksey.com>
+	* configure.in docs/* : 0.0.7 release
+	
+Fri Jun 21 00:48:52 2002  Aleksey Sanin  <aleksey@aleksey.com>
+	* Makefile.am configure.in: added win32 folder to the
+	distribution
+
+2002-06-20  Aleksey Sanin  <aleksey@aleksey.com>
+	* apps/xmlsec.c: added password protected pem files
+        support 
+
+2002-06-19  Aleksey Sanin  <aleksey@aleksey.com>
+	* include/xmlsec/xmltree.h src/xmlsec.c src/xmltree.c: 
+	fixed ID attribute bug found by Sascha Breite
+
+Mon Jun  3 21:18:54 2002  Aleksey Sanin  <aleksey@aleksey.com>
+	* src/enveloped.c: improved performance
+
+Thu May 30 21:29:21 2002  Aleksey Sanin  <aleksey@aleksey.com>
+	* src/xmltree.c: propagating XPath fix from LibXML2
+
+Wed May 29 21:28:13 2002  Aleksey Sanin  <aleksey@aleksey.com>
+	* apps/xmlsec.c include/xmlsec/keysmngr.h include/xmlsec/x509.h
+	src/keysmngr.c src/x509.c tests/keys.xml: pkcs12 support added
+
+Wed 29 May 2002 12:07:35 AM PDT Aleksey Sanin <aleksey@aleksey.com>
+	*: merged 0.0.6 release from local CVS
+        *: win32 port
+	*: xpath filter2
+        *: custom network handlers
+    
+Mon 29 Apr 2002 12:07:35 AM PDT Aleksey Sanin <aleksey@aleksey.com>
+	*: Significant API re-factoring (make it more simple and consistent)
+        *: added symmetric Key Wrappers support (AES, DES)
+	*: added RIPEMD-160 support
+    
+Sat 30 Mar 2002 12:55:30 AM PST Aleksey Sanin <aleksey@aleksey.com>
+	*: Finished x509 supprot
+        *: Added functions to create signature "on-the-fly"
+	*: Updated examples and docs
+        *: Fixed header files installation bug
+    
+Wed 27 Mar 2002 11:20:42 PM PST Aleksey Sanin <aleksey@aleksey.com> 
+	*: Added x509 verification support and a skeleton for x509 
+          x509 based sigantures
+    
+Tue 26 Mar 2002 06:30:10 PM PST Aleksey Sanin <aleksey@aleksey.com>
+	*: The result of operation (sign/verify) is returned in the
+          list of xmlDSigSignature objects. Application can examine
+	  the key and signature method, content just before digesting or
+          signing, etc. and decide what to do with it.
+	*: The Transform and KeyInfo code was significantly re-written and 
+          separated from the XMLDSig code with a goal to reuse in in 
+          XML Signature or whatever.
+        *: Added support for RetrievalMethod and Manifests (pretty simple
+	  adter the first change because both are based on Transforms)
+        *: Added XSLT support (based on libxslt from Daniel Veillard)
+    
+      

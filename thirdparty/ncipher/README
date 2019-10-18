@@ -1,0 +1,25 @@
+		nCipher Package Description
+			03/13/2003
+	---------------------------------------------
+
+This folder contains nCipher check-extract package and deployment files.
+
+1. Directories and Files
+-------------------------
+CipherTools-solaris-dev-s7.06.tar.gz:
+    nCipher latest release tool for gold CSR validation.
+
+check-extract:
+    Excutable gold CSR validation program extract from CipherTools-solaris-dev-sxxx.tar.gz.
+
+ncipher.conf:
+    Sample config file for VeriSign frontend CGI sophia.exe to access the check-extract.
+
+monitor:
+    CMS compatible monitor to check the health of check-extract program. Should be added to VeriSign's CMS.
+
+2. Deployment
+-------------
+The program check-extract must be installed on VeriSign's frontend machines, where sophia.exe is running. The ncipher.conf must be put in directory $ECASINSTALL/config on the frontend machines also.
+
+To install check-extract, first, create a directory $NCIPHER_HOME, such as /ecas/public/ncipher. And put the file there. Make sure the file mod is excutable and the 'NCipherModule' parameter in the ncipher.conf pointing to the right path. Second, create a 'tmp' dir under $NCIPHER_HOME. Change the directory mod to global read/write/execute. And make sure the 'TempDir' parameter in the ncipher.conf pointing to it.

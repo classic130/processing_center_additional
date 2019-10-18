@@ -1,0 +1,383 @@
+//+-------------------------------------------------------------------------
+//
+//  Microsoft Windows
+//  Copyright (C) Microsoft Corporation, 1998.
+//
+//  File: xmldom.idl
+//
+//--------------------------------------------------------------------------
+
+#ifdef unix
+import "wtypes.idl";
+import "ocidl.idl";
+#endif
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  Microsoft Windows")
+cpp_quote("//  Copyright (C) Microsoft Corporation, 1998.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+#include "xmldomdid.h"
+#include <idispids.h>
+
+interface IDOMNode;
+interface IDOMNodeList;
+interface IDOMDocument;
+interface IDOMError;
+
+typedef [
+helpstring("Constants that define a node's type")
+] enum tagXMLNodeType 
+{  
+    NODE_ELEMENT,       // 0
+    NODE_PCDATA,        // 1
+    NODE_COMMENT,       // 2
+    NODE_DOCUMENT,      // 3
+    NODE_DOCTYPE,       // 4
+    NODE_PI,            // 5
+    NODE_CDATA,         // 6
+    NODE_NAMESPACE,     // 7
+    NODE_ENTITYREF,     // 8
+    NODE_WHITESPACE,    // 9
+    NODE_ATTRIBUTE,     // 10
+    NODE_XMLDECL        // 11
+
+} XMLNodeType; 
+
+[
+    local, object,
+    uuid(71978480-A88F-11d1-A6B6-00C04FD91555), // IID_INode
+    odl, 
+    dual,
+    oleautomation,
+    nonextensible,
+    helpstring("Core DOM node interface"),
+    pointer_default(unique)
+]
+interface IDOMNode : IDispatch
+{
+    [propget, id(DISPID_DOM_NODE_TYPE), helpstring("the node's type")] HRESULT nodeType(
+                [retval, out] XMLNodeType * plType);
+
+    [propget, id(DISPID_DOM_NODE_NAME), helpstring("the node's name, e.g. the tag name")] HRESULT nodeName(
+                [retval, out] BSTR * pbstrName);
+
+    [propget, id(DISPID_DOM_NODE_VALUE), helpstring("get the node's value, e.g. an attribute value or the contents of an element")] HRESULT nodeValue(
+                [retval, out] BSTR * pbstrVal);
+
+    [propput, id(DISPID_DOM_NODE_VALUE), helpstring("set the node's value, e.g. an attribute value or the contents of an element")] HRESULT nodeValue(
+                [in] BSTR bstrVal);
+
+    [propget, id(DISPID_DOM_NODE_PARENT), helpstring("pointer to the node's parent")] HRESULT parentNode(
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODE_GETATTRIBUTE), helpstring("get the named attribute's value")] HRESULT getAttribute(
+                [in] BSTR bstrName, 
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] VARIANT * pvarVal);
+
+    [id(DISPID_DOM_NODE_SETATTRIBUTE), helpstring("set the named attribute's value")] HRESULT setAttribute(
+                [in] BSTR bstrName, 
+                [in] VARIANT bstrVal,
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] IDOMNode ** ppAttribute);
+
+    [id(DISPID_DOM_NODE_REMOVEATTRIBUTE), helpstring("remove the named attribute")] HRESULT removeAttribute(
+                [in] BSTR bstrName,
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] IDOMNode ** ppAttribute);
+
+    [propget, id(DISPID_DOM_NODE_SPECIFIED), helpstring("indicates whether the node is explicitly specified in the DTD or schema")] HRESULT specified(
+                [retval, out] VARIANT_BOOL * pbool);
+
+    [id(DISPID_DOM_NODE_INSERT), helpstring("insert a child node")] HRESULT insertNode(
+                [in] IDOMNode * pChild, 
+                [optional, in] VARIANT After,
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODE_REMOVE), helpstring("remove a child node")] HRESULT removeNode(
+                [in] IDOMNode * pChild,
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODE_REPLACE), helpstring("replace a child node")] HRESULT replaceNode(
+                [in] IDOMNode * pOld, 
+                [in] IDOMNode * pNew,
+                [retval, out] IDOMNode ** ppNode);
+
+    [propget, id(DISPID_DOM_NODE_ATTRIBUTES), helpstring("get a collection of the node's attributes")] HRESULT attributes(
+                [retval, out] IDOMNodeList ** ppNodeList);
+
+    [propget, id(DISPID_DOM_NODE_CHILDREN), helpstring("get a collection of the node's child nodes")] HRESULT childNodes(
+                [retval, out] IDOMNodeList ** ppNodeList);
+};
+
+[
+    local, object,
+    uuid(AB9CD7D0-C05A-11d1-B1BF-00C04F983E60), // IID_INode
+    odl, 
+    dual,
+    oleautomation,
+    nonextensible,
+    helpstring("XML DOM node interface"),
+    pointer_default(unique)
+]
+interface IXMLDOMNode : IDOMNode
+{
+    // DTD Navigation.
+    [propget, id(DISPID_XMLDOM_NODE_DEFINITION), helpstring("pointer to the node's definition as it appears in the DTD or schema")] HRESULT definition(
+                [retval,out] IDOMNode ** ppNode);
+
+    // Namespace support
+    [propget, id(DISPID_XMLDOM_NODE_QUALIFIEDNAME), helpstring("the qualified name, e.g. the node's name including its namespace")] HRESULT qualifiedNodeName(
+                [retval, out] BSTR * pbstrName);
+
+    [propget, id(DISPID_XMLDOM_NODE_NAMESPACE), helpstring("the definition for the namespace on the node")] HRESULT nameSpace(
+                [retval, out] IDOMNode ** ppNS);
+
+    [propget, id(DISPID_XMLDOM_NODE_NODETYPEDVALUE), helpstring("get the node's value according to its data type")] HRESULT nodeTypedValue(
+                [retval, out] VARIANT * TypedValue);
+
+    [propput, id(DISPID_XMLDOM_NODE_NODETYPEDVALUE), helpstring("set the node's value according to its data type")] HRESULT nodeTypedValue(
+                [in] VARIANT TypedValue);
+
+    [id(DISPID_XMLDOM_NODE_GETTYPEDATTRIBUTE), helpstring("get the attribute's value according to its data type")] HRESULT getTypedAttribute(
+                [in] BSTR strPropertyName, 
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] VARIANT* TypedValue);
+
+    [id(DISPID_XMLDOM_NODE_SETTYPEDATTRIBUTE), helpstring("set the attribute's value according to its data type")] HRESULT setTypedAttribute(
+                [in] BSTR strPropertyName, 
+                [in] VARIANT TypedValue,
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] IDOMNode ** ppAttribute);
+
+    [propget, id(DISPID_XMLDOM_NODE_DATATYPE), helpstring("get the node's data type")] HRESULT dataType(
+                [retval, out] VARIANT * p);
+
+    [propput, id(DISPID_XMLDOM_NODE_DATATYPE), helpstring("set the node's data type")] HRESULT dataType(
+                [in] BSTR p);
+};
+
+[
+    local, object,
+    uuid(71978481-A88F-11d1-A6B6-00C04FD91555), // IID_INodeList
+    odl, 
+    dual,
+    oleautomation,
+    nonextensible,
+    helpstring("Core DOM NodeList interface - an enumerable collection of nodes"),
+    pointer_default(unique)
+]
+interface IDOMNodeList : IDispatch
+{
+    [propget, id(DISPID_DOM_NODELIST_LENGTH), helpstring("the number of nodes in the node list")] HRESULT length(
+                [retval, out] long * plLength);
+
+    [id(DISPID_DOM_NODELIST_ITEM), helpstring("get the node by ordinal index")] HRESULT item(
+                [in] long index, 
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODELIST_NEXT), helpstring("get the next node within the node list")] HRESULT nextNode(
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODELIST_CURRENT), helpstring("get the current node within the node list")] HRESULT currentNode(
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODELIST_PREVIOUS), helpstring("get the previous node within the node list")] HRESULT previousNode(
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODELIST_MOVETO), helpstring("make the node specified by ordinal index the current node")] HRESULT moveTo(
+                [in] long lIndex,
+                [retval, out] IDOMNode ** ppNode);
+
+    [id(DISPID_DOM_NODELIST_MOVETONODE), helpstring("make the node specified by name the current node")] HRESULT moveToNode(
+                [in] IDOMNode * pNode,
+                [retval, out] IDOMNode ** ppNode);
+
+    [propget, restricted, hidden, id(DISPID_DOM_NODELIST_NEWENUM)] HRESULT _newEnum(
+                [retval, out] IUnknown ** ppUnk);
+};
+
+[
+    local, object,
+    uuid(09b75a24-6bb5-11d1-bc29-00c04fb925f3), // IID_IDOMDocument
+    odl, 
+    dual,
+	hidden,
+    oleautomation,
+    nonextensible,
+    helpstring("Core DOM Document interface"),
+    pointer_default(unique)
+]
+interface IDOMDocument : IDOMNode
+{
+    [propget, id(DISPID_DOM_DOCUMENT_DOCUMENTTYPE), helpstring("get the XML document's internal subset from the !DOCTYPE node")] HRESULT documentType(
+                [retval, out] IDOMNode ** ppNode);
+
+    [propget, id(DISPID_DOM_DOCUMENT_DOCUMENTELEMENT), helpstring("get the XML document's root node")] HRESULT documentNode (
+                [retval, out] IDOMNode ** ppNode);
+
+    [propput, id(DISPID_DOM_DOCUMENT_DOCUMENTELEMENT), helpstring("set the XML document's root node")] HRESULT documentNode (
+                [in] VARIANT varNode);
+
+    // If type is ELEMENT, text is tagname.  If type if PCDATA, text is text value.
+    [id(DISPID_DOM_DOCUMENT_CREATENODE), helpstring("create a node of the specified node type and name")] HRESULT createNode(
+                [in] XMLNodeType lType, 
+                [optional, in] BSTR bstrText, 
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] IDOMNode ** ppNode);
+};
+
+[
+    local, object,
+    uuid(AB9CD7D1-C05A-11d1-B1BF-00C04F983E60), // IID_IXMLDOMDocument
+	odl,
+	dual,
+	oleautomation,
+    nonextensible,
+    hidden, // Because that this is the default interface of coclass DOMDocument
+    helpstring("XML DOM Document Interface"),
+    pointer_default(unique)
+]
+interface IXMLDOMDocument : IDOMDocument
+{
+    [id(DISPID_XMLDOM_DOCUMENT_GETNODE), helpstring("get node by ID")] HRESULT nodeFromID(
+                [in] BSTR pbstrID,
+                [retval, out] IDOMNode ** ppNode);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_NAMESPACES), helpstring("get a collection of all namespace declarations")] HRESULT documentNameSpaces(
+                [retval, out] IDOMNodeList ** ppNodeList);
+
+    [id(DISPID_XMLDOM_DOCUMENT_LOAD), helpstring("load document from the given URL")] HRESULT load(
+                [in] BSTR bstrUrl);
+
+    [propget, id(DISPID_READYSTATE), helpstring("get the state of the XML document")] HRESULT readyState(
+                [retval, out]long * plState);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_LASTERROR), helpstring("get the last parser error")] HRESULT lastError(
+                [retval, out]IDOMError ** pError);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_URL), helpstring("get the URL for the loaded XML document")] HRESULT url(
+                [retval, out] BSTR * pbstrUrl);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_ASYNC), helpstring("get async download flag")] HRESULT async(
+                [retval, out] VARIANT_BOOL * pf);
+
+    [propput, id(DISPID_XMLDOM_DOCUMENT_ASYNC), helpstring("set async download flag")] HRESULT async(
+                [in] VARIANT_BOOL f);
+
+    [id(DISPID_XMLDOM_DOCUMENT_ABORT), helpstring("abort an async download")] HRESULT abort();
+
+    [id(DISPID_XMLDOM_DOCUMENT_SAVENODE), helpstring("return the XML source of the node and each of its descendants")] HRESULT saveNode(
+                [in] IDOMNode * ppNode,
+                [retval, out] BSTR * pbstrXml);
+
+    [id(DISPID_XMLDOM_DOCUMENT_LOADXML), helpstring("load the document by parsing the given XML string")] HRESULT loadXML( 
+                [in] BSTR pbstrXML);
+
+    // These are just duplicates of the methods on IXMLDOMNode, since IXMLDOMDocument : IDOMDocument : IDOMNode ...
+    [propget, id(DISPID_XMLDOM_DOCUMENT_DEFINITION), helpstring("pointer to the node's definition as it appears in the DTD or schema")] HRESULT definition(
+                [retval,out] IDOMNode ** ppNode);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_QUALIFIEDNAME), helpstring("the qualified name, e.g. the node's name including its namespace")] HRESULT qualifiedNodeName(
+                [retval, out] BSTR * pbstrName);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_NAMESPACE), helpstring("the definition for the namespace on the node")] HRESULT nameSpace(
+                [retval, out] IDOMNode ** ppNS);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_NODETYPEDVALUE), helpstring("get the node's value according to its data type")] HRESULT nodeTypedValue(
+                [retval, out] VARIANT * TypedValue);
+
+    [propput, id(DISPID_XMLDOM_DOCUMENT_NODETYPEDVALUE), helpstring("set the node's value according to its data type")] HRESULT nodeTypedValue(
+                [in] VARIANT TypedValue);
+
+    [id(DISPID_XMLDOM_DOCUMENT_GETTYPEDATTRIBUTE), helpstring("get the attribute's value according to its data type")] HRESULT getTypedAttribute(
+                [in] BSTR strPropertyName, 
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] VARIANT* TypedValue);
+
+    [id(DISPID_XMLDOM_DOCUMENT_SETTYPEDATTRIBUTE), helpstring("set the attribute's value according to its data type")] HRESULT setTypedAttribute(
+                [in] BSTR strPropertyName, 
+                [in] VARIANT TypedValue,
+                [optional, in] VARIANT NameSpaceDecl,
+                [retval, out] IDOMNode ** ppAttribute);
+
+    [propget, id(DISPID_XMLDOM_DOCUMENT_DATATYPE), helpstring("get the node's data type")] HRESULT dataType(
+                [retval, out] VARIANT * p);
+
+    [propput, id(DISPID_XMLDOM_DOCUMENT_DATATYPE), helpstring("set the node's data type")] HRESULT dataType(
+                [in] BSTR p);
+
+};
+
+[
+    local, object,
+    uuid(d0402a96-7662-11d1-bc2a-00c04fb925f3), // IID_IDOMError
+    odl, 
+    dual,
+    oleautomation,
+    nonextensible,
+    helpstring("structure for reporting parser errors"),
+    pointer_default(unique)
+]
+interface IDOMError : IDispatch
+{ 
+    [propget, id(DISPID_DOM_ERROR_ERRORCODE), helpstring("the error code")] HRESULT errorCode(
+                [retval, out] ULONG * pulErrorCode);
+
+    [propget, id(DISPID_DOM_ERROR_URL), helpstring("the URL of the XML document containing the error")] HRESULT url(
+                [retval, out] BSTR * pbstrUrl);
+
+    [propget, id(DISPID_DOM_ERROR_REASON), helpstring("the cause of the error")] HRESULT reason(
+                [retval, out] BSTR * pbstrReason);
+
+    [propget, id(DISPID_DOM_ERROR_SRCTEXT), helpstring("the node containing the error")] HRESULT srcText(
+                [retval, out] BSTR * pbstrText);
+
+    [propget, id(DISPID_DOM_ERROR_LINE), helpstring("the line number in the XML document where the error occurred")] HRESULT line(
+                [retval, out] long * plLine);
+
+    [propget, id(DISPID_DOM_ERROR_LINEPOS), helpstring("the character position in the line containing the error")] HRESULT linepos(
+                [retval, out] long * plLinePos);
+
+    [propget, id(DISPID_DOM_ERROR_FILEPOS), helpstring("the absolute file position in the XML document containing the error")] HRESULT filepos(
+                [retval, out] long * plFilePos);
+};
+
+ // DOM Document co-Class 
+[
+    uuid(e54941b2-7756-11d1-bc2a-00c04fb925f3), // CLSID_DOMDocument
+    helpstring("XML data island coclass (DHTML Peer Object)")
+]
+coclass DOMDocument
+{
+    [default] interface IXMLDOMDocument;
+}
+
+
+
+[
+    local, object,
+    uuid(7108ECB4-AFDC-11D1-ADC1-00805FC752D8), // IID_IXMLIslandPeer
+    dual,
+    hidden,
+    helpstring("IXMLIslandPeer Interface"),
+    pointer_default(unique)
+]
+interface IXMLIslandPeer : IUnknown
+{
+};
+
+[
+    uuid(379E501F-B231-11d1-ADC1-00805FC752D8), // CLSID_XMLIslandPeer
+    hidden,
+    noncreatable,
+    helpstring("XMLIslandPeer coclass")
+]
+coclass XMLIslandPeer
+{
+    [default] interface IXMLIslandPeer;
+
+};

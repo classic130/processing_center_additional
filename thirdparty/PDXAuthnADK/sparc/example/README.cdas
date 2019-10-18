@@ -1,0 +1,26 @@
+Policy Director CDAS
+-------------------------------------------------
+This is the README associated with the WebSEAL CDAS 
+
+FILES:
+-----
+example/xauthn.c - The source file that for the example CDAS
+         This will be compiled and linked into the CDAS shared library.
+example/Makefile.in - Makefile for the cdas demo
+include/pdxauthn.h
+include/xattr.h
+include/xnvlist.h
+
+(Windows only)
+lib/pdxauthn.lib
+
+(Unix platforms only)
+lib/libpdxauthn.a
+
+STEPS:
+-----
+1) Edit Makefile.in for your specific platform
+
+2) Build the cdas shared library 
+
+3) Read the CDAS ADK documentation for configuration instructions
