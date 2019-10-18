@@ -1,0 +1,39 @@
+#
+# end-user-EE-renew.fdf
+#
+# End-user CRS renewal
+# 
+CONST operation			userRenewal
+CONST application		VeriSignOnSiteCRS
+CONST message			confirm
+CONST cert_type			end-user
+
+# VSSKBEGIN Global/System#2 
+# VSSKEND Global/System#2 
+
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+
+CONST TDictionary		cert_blob
+
+#------------------------------------------------------------------------------
+#  NAME                 TYPE    REQUIREMENT		DEPENDENCY	CONTROL
+#------------------------------------------------------------------------------
+
+transaction_id          CLEAR   MANDATORY		NONE            NONE
+lifecycle_request       TEXT    MANDATORY		NONE            NONE
+
+# new public key
+public_key              BASE64  MANDATORY 		NONE            NONE
+public_key_format       TEXT    MANDATORY		NONE            NONE
+
+# renewal data
+getMethod               HYBRID	MANDATORY               NONE            NONE
+
+# MSIE Renewal
+pkcsInformation         BASE64	MANDATORY               NONE            getMethod = pkcs7
+detachedMesg            TEXT    MANDATORY               NONE            getMethod = pkcs7
+
+# Firefox Renewal
+secretCode              TEXT    MANDATORY               NONE            getMethod = renewalID
+challenge               TEXT    MANDATORY               NONE            getMethod = renewalID

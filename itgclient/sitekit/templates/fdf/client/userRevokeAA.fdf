@@ -1,0 +1,58 @@
+#
+# userRevokeAA.fdf
+#
+# This is a template FDF used to configure the LRA end user enrollment
+# page. The in the REQUIREMENT column will be
+# filled in based on the OnSite administrator's choices on the 
+# User Certificate configuration page.
+#
+# VSSKTEMPLATEVERSION#1.2.5.3 
+#
+# VSSKBEGIN Apps/KeyManager#1
+# VSSKEND Apps/KeyManager#1
+#
+CONST         operation       do user revoke
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+#------------------------------------------------------------------------------
+#  NAME        	TYPE   	REQUIREMENT		DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+form_file	CLEAR	MANDATORY		NONE		NONE
+certSerial	TEXT	MANDATORY		NONE		NONE
+reason		TEXT	MANDATORY		NONE		NONE
+challenge	T61	MANDATORY		NONE		NONE
+comment         CLEAR   OPTIONAL                NONE            NONE
+issuerDigest	TEXT	MANDATORY		NONE		NONE
+issuerName2	CLEAR   MANDATORY               NONE            NONE
+#------------------------------------------------------------------------------
+#CONSTANTS  
+#----------------------------------------------------------------
+# 
+# customizable constants
+#
+# VSSKBEGIN Global/System#9
+# VSSKEND Global/System#9 
+#
+# VSSKBEGIN Apps/KeyManager#9
+# VSSKEND Apps/KeyManager#9
+#
+#-----------------------------------------------------------------
+STATUS          0               VSApps/client/certRevokeSuccess.htm
+STATUS		307F		VSApps/client/certRevokeSuccess.htm
+STATUS		3060		VSApps/error/certRevokeAlreadyRevoked.htm
+STATUS		3069		VSApps/error/onsiteAAwrongChallenge.htm
+STATUS		057B		VSApps/error/onsiteAAwrongserial.htm
+STATUS          A001            VSApps/error/onsiteAAerror1.htm
+STATUS          A002            VSApps/error/onsiteAAerror2.htm
+STATUS          A003            VSApps/error/onsiteAAerror3.htm
+STATUS          A004            VSApps/error/onsiteAAerror4.htm
+STATUS          A005            VSApps/error/onsiteAAerror5.htm
+STATUS          A006            VSApps/error/onsiteAAerror6.htm
+STATUS          A007            VSApps/error/onsiteAAerror7.htm
+STATUS          A008            VSApps/error/onsiteAAerror8.htm
+STATUS          A009            VSApps/error/onsiteAAerror9.htm
+STATUS          A00A            VSApps/error/onsiteAAerror10.htm
+STATUS          DEFAULT         VSApps/error/onsiteAAerror.htm
+

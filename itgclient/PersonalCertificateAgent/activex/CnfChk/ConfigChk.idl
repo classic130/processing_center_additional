@@ -1,0 +1,47 @@
+// ConfigChk.idl : IDL source for ConfigChk.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ConfigChk.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(08F04138-8DFC-11D2-80E9-006008B066EE),
+		dual,
+		helpstring("IConfigChkr Interface"),
+		pointer_default(unique)
+	]
+	interface IConfigChkr : IDispatch
+	{
+		[id(1), helpstring("method GetVersion")] HRESULT GetVersion(VARIANT* i_pvarFile, VARIANT* o_pvarVersion, [out,retval] long* o_lResult);
+		[id(2), helpstring("method VerCompare")] HRESULT VerCompare(VARIANT* i_pvarVer1, VARIANT* i_pvarVer2, [out,retval] long* o_plResult);
+		[id(3), helpstring("method CheckMSEnhCSP")] HRESULT CheckMSEnhCSP([out,retval] long* o_lRetVal);
+		[id(4), helpstring("method FixEnhCSP")] HRESULT FixEnhCSP(VARIANT* i_pvarEnhCSPVer, [out,retval]long* o_plRetVal);
+		[id(5), helpstring("method ChkWindowsLogin")] HRESULT ChkWindowsLogin([out,retval]long* o_lResult);
+		[id(6), helpstring("method CheckKeyGen")] HRESULT CheckKeyGen(VARIANT* i_pvarProvName, VARIANT* i_pvarKeyFlags, [out,retval] VARIANT* o_pvarResult );
+	};
+
+[
+	uuid(08F0412C-8DFC-11D2-80E9-006008B066EE),
+	version(1.0),
+	helpstring("ConfigChk 1.0 Type Library")
+]
+library CONFIGCHKLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(08F04139-8DFC-11D2-80E9-006008B066EE),
+		helpstring("ConfigChkr Class")
+	]
+	coclass ConfigChkr
+	{
+		[default] interface IConfigChkr;
+	};
+};

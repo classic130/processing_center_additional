@@ -1,0 +1,147 @@
+Content-Type: multipart/mixed; boundary="===== This is the multipart mime bounda=====184532178"
+
+--===== This is the multipart mime bounda=====184532178
+$$cert_blob$$
+--===== This is the multipart mime bounda=====184532178
+Content-Type:text/html
+
+<!-- $ VSSKTEMPLATEVERSION#1.0.0.2 $ userInstallDualNS.htm 
+
+# VSSKTEMPLATEVERSION#1.0.0.2 #
+-->
+<!-- VSSKTEMPLATEVERSION#1.0.0.1 -->
+<HTML>
+<HEAD>
+<TITLE>Digital ID Installation and Registration Page</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+</HEAD>
+<BODY BGCOLOR="ffffff" LINK="cc0000" vlink="666666">
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE=0 VSPACE=0>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER valign=bottom colspan=5><IMG SRC="../VSApps/graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 hspace=0 vspace=0></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../VSApps/graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD>
+        <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../VSApps/graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../VSApps/graphics/hd_services.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Services Header"></TD>  
+        <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../VSApps/graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../VSApps/graphics/logo_2.gif" ALT=""></TD>
+</TR>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../VSApps/graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 hspace=0 vspace=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+
+<P>
+
+<!--PAGE TITLE AND DIRECTIONS-->
+<TABLE WIDTH=588 BGCOLOR="ffffFF" CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588 colspan=7><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=+2><B>What Next?</B></FONT><BR>
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>Your Digital ID has been delivered to your Web browser. To ensure your ID was
+        properly installed, follow the instructions below:</b><BR></TD>
+</TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+<P>
+<TABLE WIDTH=588 CELLPADDING=6 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD BGCOLOR="cccccc">
+	<CENTER>
+	<TABLE WIDTH=574 CELLPADDING=2 CELLSPACING=0 BORDER=0 BGCOLOR="ffffcc">
+	<TR>
+                <TD><FONT FACE="verdana, arial, helvetica" SIZE=2>
+		<OL>
+			<LI>(On a Windows system) Launch the Firefox browser, click <B>Tools</B> and then click <B>Options</B>.
+			<BR>(On a Mac system) Launch the Firefox browser, click <B>Firefox</B> and then click <B>Preferences</B>.
+			<LI>Click the <B>Advanced</B> tab and then click the <B>Certificates</B> tab.
+			<LI>Click <B>View Certificates</B> and then click the <B>Your Certificates</B> tab.
+			<BR>Here you can view all your certificates.
+			</FONT> 
+		</OL>  
+		</TD>
+		</TR>
+		</TABLE>
+		</TD>
+</TR>
+</TABLE>
+<P>
+<TABLE WIDTH=588 CELLPADDING=6 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD BGCOLOR="cccccc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Next step... </B></FONT><BR>
+	 <FONT FACE="verdana, arial, helvetica" SIZE=2><P></FONT>
+	<CENTER>
+	<TABLE WIDTH=574 CELLPADDING=2 CELLSPACING=0 BORDER=0 BGCOLOR="ffffcc">
+	<TR>
+		<TD><FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2><B>Install the Encryption Digital ID</B><BR>
+		<BLOCKQUOTE>
+		&#149;Located in this directory:<BR>
+			&nbsp;<CODE>$$pkcs12_path$$</CODE><P>
+
+		&#149;In the file named:<BR>
+			&nbsp;<CODE>$$pkcs12_file$$</CODE><P>
+                
+                <FORM NAME="p12Form" ACTION=../cgi-bin/sophialite.exe ENCTYPE=x-www-form-encoded METHOD="POST">
+                <INPUT TYPE=hidden Name=b64p12 Value='$$b64p12$$'>
+                <INPUT TYPE=hidden NAME=form_file VALUE="../fdf/VSApps/client/getP12.fdf">
+                <INPUT TYPE=hidden NAME=pkcs12_file VALUE='$$pkcs12_file$$'>
+                <INPUT type=submit value="Download P12 File" name=mySubmit>
+                </FORM><P>
+
+		&#149;The password is:<BR>
+			&nbsp;<CODE>$$pkcs12_password$$</CODE><BR>
+		<BLOCKQUOTE>
+		</TD>
+		</TR>
+		</TABLE>
+		</TD>
+</TR>
+</TABLE>
+<P>
+
+<TABLE WIDTH=588 CELLPADDING=6 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD BGCOLOR="cccccc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Consult our Help Desk and Tutorials:</B></FONT><P>
+	 <CENTER>
+	<TABLE WIDTH=574 CELLPADDING=2 CELLSPACING=0 BORDER=0 BGCOLOR="ffffcc">
+	<TR>
+	<TD>
+		<OL>
+			<LI>Go to the <a href="../VSApps/client/help/index.html">Help Desk </a>to view our tutorials and other useful information.
+			<LI>Go to the <a href="../VSApps/digitalidCenter.htm">Digital ID Center </a>to find out more about Digital IDs and Digital ID services.
+			</FONT> 
+		</OL>  
+		</TR>
+		</TABLE>
+		</TD>
+
+</TR>
+</TABLE>
+<!--PLACE HOLDER FOR SITEKIT BACK BUTTON-->
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG SRC="../VSApps/graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../VSApps/graphics/logo_3.gif" ALT="Symantec Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+
+</BODY>
+</HTML>
+
+--===== This is the multipart mime bounda=====184532178--

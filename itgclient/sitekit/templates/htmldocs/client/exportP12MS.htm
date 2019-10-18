@@ -1,0 +1,302 @@
+<!-- $ VSSKTEMPLATEVERSION#1.2.5.4 $ htmldocs/VSApps/client/exportP12MS.htm
+
+-->
+<HTML>
+<HEAD>
+<TITLE>VeriSign Key Export</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Apps/PTAv2#8 -->
+<!-- VSSKEND Apps/PTAv2#8 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<Script Language="JavaScript">
+<!--
+var browserName=navigator.appName;
+var browserNum=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+           self.location="exportP12NS.htm";
+    }
+else
+    {
+       if (browserNum < requiredBrowserNumMS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function declinefunc()
+{
+   window.navigate("../ptaprefCenter.htm") ;
+}
+//-->
+</Script>
+
+
+<SCRIPT Language="VBScript">
+<!--
+
+  '-- VSSKBEGIN Apps/PTAv2#5 --
+  '-- VSSKEND Apps/PTAv2#5 --
+ 
+  Dim strChooseProfileTitle
+  Dim strChooseProfileText
+  Dim emptyFileName
+  strChooseProfileTitle = "Open Profile"
+  strChooseProfileText = "Choose the profile from which you want to export the Digital ID."
+  strSelectTitle = "Select Digital ID"
+  strSelectText = "Select the Digital that you want to export."
+  emptyFileName = ""
+
+
+     Dim strIssuerDN
+     Dim strCertSerial
+
+     Dim IVSProfMgmt
+     Dim IVSUIPrefs
+     Dim IVSSrchCrit
+     Dim IVSRoamPrefs
+     Dim IVSExportP12
+
+     On Error Resume Next
+     Set IVSProfMgmt = IVSPTA.IVSProfMgmt
+     If (Hex(err.number) = "1B6") Then
+         window.location = "../error/win2k.htm"
+     End if
+     Set IVSUIPrefs = IVSPTA.IVSUIPrefs
+     Set IVSSrchCrit = IVSPTA.IVSSrchCrit
+     Set IVSRoamPrefs = IVSPTA.IVSRoamPrefs
+     Set IVSExportP12 = IVSPTA.IVSP12Export
+
+  Function CloseObjects (ErrorCode, Operation, WinErrorCode)
+    On Error Resume Next
+    IVSPTA.Close
+    if ( ErrorCode <> 0 ) then
+       Call SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", CheckErrorCodeMS(ErrorCode), WinErrorCode, Operation)
+       Exit Function
+    end if 
+    If ( err.number <> 0 ) then
+        Call SetErrorInfo("../fdf/VSApps/client/PTAv2Errors.fdf", 00000001, Hex(err.number), "IVSPTA.Close")
+        Exit Function
+    End If
+  End Function
+  
+   Sub exportP12()
+     
+     Dim boolProfileOpen
+   	 Dim boolTPMAvailable
+
+	 boolTPMAvailable = CBool(0)
+
+	 On Error Resume Next
+	 if(TPMEnabled = "CHECKED") then
+		 boolTPMAvailable = IVSPTA.IsTPMAvailable 
+	 End If
+
+	 if(TPMEnabled = "CHECKED" And boolTPMAvailable = "True") then
+        MsgBox "You are not using the PTA in VeriSign mode" &vbCRLF &_
+                "Export functionality not supported."
+         Exit Sub	 
+	 End If
+     if (strCertStore <> 1) then
+         MsgBox "You are not using the PTA in VeriSign mode" &vbCRLF &_
+                "You should use the options dialog in Internet Explorer directly to export your keys."
+         Exit Sub
+     end if 
+     
+     On Error Resume Next
+     IVSPTA.Initialize strAppCtxtName,0
+     If ( err.number <> 0 ) then
+         Call CloseObjects(Hex(err.number), "Export P12::IVSPTA.Initialize", Hex(err.number))      
+         Exit Sub
+     End If
+		
+   	
+	On Error Resume Next
+    If (Len(strAppLogoUrl) <> 0) then
+	IVSUIPrefs.UILogoUrl = strAppLogoUrl
+	   If ( err.number <> 0 ) then
+                  Call CloseObjects(Hex(err.number), "Export P12::IVSUIPrefs.LogoUrl", Hex(err.number))
+		  Exit Sub
+	   End If
+	End If
+	
+	On Error Resume Next
+    If (Len(strAffiliateLogoUrl) <> 0 And strAffiliateLogoUrl <> "VeriSign") then
+      	 IVSPTA.AffLogoUrl = strAffiliateLogoUrl
+         If ( err.number <> 0 And err.number <> &h800010c4 ) then
+               Call CloseObjects(Hex(err.number), "Export P12::IVSPTA.AffLogoUrl", Hex(err.number))
+		       Exit Sub
+         End If
+	End If
+
+	On Error Resume Next
+	If (Len(strChooseProfileTitle) <> 0) then
+		IVSUIPrefs.OpenProf_Title = strChooseProfileTitle
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Export P12::IVSUIPrefs.OpenProf_Title", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+
+	On Error Resume Next
+	If (Len(strChooseProfileText) <> 0) then
+		IVSUIPrefs.OpenProf_Text = strChooseProfileText
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Export P12::IVSUIPrefs.OpenProf_Text", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+		
+    On Error Resume Next
+    If (Len(strSelectTitle) <> 0) then 
+		IVSUIPrefs.SelID_Title = strSelectTitle
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Export P12::IVSUIPrefs.SelID_Title", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+
+    On Error Resume Next
+    If (Len(strSelectText) <> 0) then 
+		IVSUIPrefs.SelID_Text = strSelectText
+		If ( err.number <> 0 ) then
+			Call CloseObjects(Hex(err.number), "Export P12::IVSUIPrefs.SelID_Text", Hex(err.number))
+			Exit Sub
+		End If
+	End If
+
+    Dim boolShowDef
+    boolShowDef = CBool(0)
+    On Error Resume Next
+    IVSUIPrefs.SelID_ShowDefChkBox = boolShowDef
+    If ( err.number <> 0 ) then
+       Call CloseObjects(Hex(err.number), "Export P12::IVSUIPrefs.SelID_ShowDefChkBox", Hex(err.number))
+       Exit Sub
+    End If
+
+     '-- VSSKBEGIN Apps/PTAv2/Roaming#3 --
+     '-- VSSKEND Apps/PTAv2/Roaming#3 --
+	
+    ' set the open profile flags
+    OPENPROF_CREATE_OR_OPEN = CInt(547)
+    OPENPROF_OPEN_ONLY = CInt(529)
+    On Error Resume Next
+    IVSProfMgmt.OpenProfFlags = OPENPROF_OPEN_ONLY
+    If ((err.number <> 0) And (Hex(err.number) <> "8000102F") ) Then
+       Call CloseObjects(Hex(err.number), "IVSProfMgmt.OpenProfFlags", Hex(err.number))
+       Exit Sub
+    End If
+
+
+     ' call Export P12
+     On Error Resume Next 
+     IVSExportP12.ExportP12 1,0,emptyFileName
+     If ( (err.number <> 0) And (Hex(err.number) <> "80001067") And (Hex(err.number) <> "8000102B")) then 
+         Call CloseObjects(Hex(err.number), "Export P12::IVSProfMgmt.ExportP12", Hex(err.number))
+         Exit Sub
+     End If 
+     If (Hex(err.number) = "80001067") then 
+         Call CloseObjects(0, "", 0)
+         window.navigate "../ptaprefCenter.htm"
+         Exit Sub
+     End If
+     If (Hex(err.number) = "8000102B") then 
+         MsgBox "The PTA could not find any keys that could be exported."
+         Call CloseObjects(0, "", 0)
+         window.navigate "../ptaprefCenter.htm"
+         Exit Sub
+     End If
+     If (err.number = 0) Then
+         MsgBox "Your keys have been successfully exported by the PTA."
+         window.navigate "../ptaprefCenter.htm"
+     End If 
+    
+     Call CloseObjects(0, "", 0)      
+   End Sub  
+'-->
+</SCRIPT>
+</HEAD>
+
+<BODY 	BGCOLOR="#ffffff" LINK="#cc0000" VLINK="#666666">
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<BR><P><BR><!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE="0" VSPACE="0">
+<TR>
+     <TD WIDTH=600 ALIGN=middle VALIGN=bottom COLSPAN=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=middle><IMG height=63 alt=Logo src="../graphics/logo_1.gif" width=100></TD> 
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD> 
+        <TD WIDTH=358 ALIGN=middle><IMG height=47 alt ="Services Header" src="../graphics/hd_services.gif" width=350 border=0 ></TD>   
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD> 
+        <TD WIDTH=120 ALIGN=middle><IMG alt="" src="../graphics/logo_2.gif"></TD> 
+</TR>
+<TR>
+     <TD WIDTH=600 ALIGN=middle VALIGN=top COLSPAN=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+</TABLE><!--END BANNER-->
+<P><BR><P>
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=top>
+<FONT COLOR="#0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Key Export</B></FONT></TD></TR>
+<TR>
+<TD>
+<P><BR><P>
+This page will allow you to export your Digital ID from your Personal Trust Agent Profile to a file in PKCS 12 format. 
+</TD>
+</TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+
+<Script Language="JavaScript">
+<!--
+	window.setTimeout("exportp12()",1000);
+//-->
+</Script>
+
+<P><BR><P>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+
+<TR>
+     <TD WIDTH=50><IMG height=39 src="../graphics/action_39x39.gif" width=39></TD>
+     <TD WIDTH=538 COLSPAN=2><FONT COLOR="#009933" FACE="verdana, arial, helvetica" SIZE=2>If all the information above is correct,
+<BR>click <B>Export</B> to continue.<BR></FONT></TD>
+</TR>
+<TR>
+     <TD WIDTH=50>&nbsp;</TD>
+     <TD WIDTH=234 ALIGN=left><INPUT TYPE="button" NAME="Accept" VALUE="Export" onClick="exportp12()"></TD>
+     <TD WIDTH=304 ALIGN=left><INPUT TYPE=button NAME="Cancel" VALUE="Cancel" onClick="declinefunc()"></TD>
+</TR>
+</TABLE>
+</FORM><!--END MAIN CONTENT AREA--><!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG height=1 hspace=0 src="../../VSApps/graphics/dot_grey.gif" width=600 >
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../../VSApps/graphics/logo_3.gif" ALT="VeriSign Trust Network"></TD>
+</TR>
+</TABLE><!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO--></P>
+
+</BODY>
+</HTML>		
+

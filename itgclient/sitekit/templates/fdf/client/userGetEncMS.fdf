@@ -1,0 +1,56 @@
+# $ VSSKTEMPLATEVERSION#1.0.0.2 $
+#
+# This is a template FDF used to configure the OnSite end user pickup page.
+#
+# VSSKTEMPLATEVERSION#1.0.0.2 #
+#
+# VSSKBEGIN Apps/KeyManager#1
+# VSSKEND Apps/KeyManager#1 
+CONST	operation		PickupPKCS12
+CONST	enroll_track	MSIE
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+# VSSKBEGIN Global/Mode#25
+# VSSKEND Global/Mode#25
+# 
+#------------------------------------------------------------------------------
+#  NAME        	TYPE   	REQUIREMENT		DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+pkcs12_password	   		TEXT	MANDATORY		NONE		NONE
+
+secretCode      TEXT    MANDATORY               NONE            NONE
+certSerial      TEXT    OPTIONAL                secretCode      NONE
+
+CONST    key_format          pkcs8
+#
+# VSSKBEGIN Enrollment/CharEncoding#5
+# VSSKEND Enrollment/CharEncoding#5
+#
+# VSSKBEGIN Enrollment/KeyProtect#6 
+# VSSKEND Enrollment/KeyProtect#6
+#
+
+#-----------------------------------------------------------------
+STATUS          0		VSApps/client/userInstallEncMS.htm
+STATUS          6FFF		VSApps/client/userInstallEncMS.htm
+STATUS          A001            VSApps/error/onsiteAAerror1.htm
+STATUS          A002            VSApps/error/onsiteAAerror2.htm
+STATUS          A003            VSApps/error/onsiteAAerror3.htm
+STATUS          A004            VSApps/error/onsiteAAerrorr.htm
+STATUS          A005            VSApps/error/onsiteAAerror5.htm
+STATUS          A006            VSApps/error/onsiteAAerror6.htm
+STATUS          A007            VSApps/error/onsiteAAerror7.htm
+STATUS          A008            VSApps/error/onsiteAAerror8.htm
+STATUS          A009            VSApps/error/onsiteAAerror9.htm
+STATUS          A00A            VSApps/error/onsiteAAerror10.htm
+STATUS          A198            VSApps/client/KMpending.htm
+STATUS          A193            VSApps/error/onsiteKMerror403.htm
+STATUS          A19D            VSApps/error/onsiteKMerror413.htm
+STATUS          304E            VSApps/error/permerr.htm
+STATUS          3061            VSApps/error/onsiteAAreject.htm
+STATUS          3062            VSApps/client/KMpending.htm
+STATUS          1005            VSApps/error/overlap.htm
+STATUS          DEFAULT         VSApps/error/onsiteAAerror.htm
+

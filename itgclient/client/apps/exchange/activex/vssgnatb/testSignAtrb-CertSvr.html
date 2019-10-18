@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Stuff Exchange Demo</TITLE>
+
+<OBJECT
+   classid="clsid:71C6919E-F9C0-11D2-8344-0060B0B32E16"
+   CODEBASE="http://aranade-pc/SignAtrb.dll#VERSION=2,0,0,1"
+   id="ISignAtrb"
+>
+</OBJECT>
+
+<SCRIPT LANGUAGE="VBSCRIPT">
+<!--
+    Sub SignAttrIt
+		Dim fSuccess
+		Dim Tmp, szPKCS7
+
+		document.open
+
+		szPKCS7 = "-----BEGIN CERTIFICATE-----" & _
+"MIAGCSqGSIb3DQEHAqCAMIACAQExADALBgkqhkiG9w0BBwGggDCCA5AwggM6oAMC" & _
+"AQICEDDDMwbiZ3W3IdZl/qYXwM4wDQYJKoZIhvcNAQEEBQAwQzERMA8GA1UEChMI" & _
+"VmVyaVNpZ24xLjAsBgNVBAsTJVZlcmlTaWduIENsYXNzIDIgT25TaXRlIEluZGl2" & _
+"aWR1YWwgQ0EwHhcNOTkwNjE3MDAwMDAwWhcNMDAwNjE2MjM1OTU5WjBeMREwDwYD" & _
+"VQQKEwhWZXJpU2lnbjENMAsGA1UECxMEQkVUQTETMBEGA1UEAxMKUmVjaXBpZW50" & _
+"czElMCMGA1UEAxMcQVJhbmFkZSAoQWJoYXkgUmFuYWRlLCBCRVRBKTCBnjANBgkq" & _
+"hkiG9w0BAQEFAAOBjAAwgYgCgYBzIOUVWXOBzM60Q1kW55AkYOkrvb3m2O1IWpYB" & _
+"k6p8JlhEVdxhvmFhCFBeFCouwhPOHfAPpj7VIEgA5f8K3Ewhfw8nViUlC9/lvZTG" & _
+"LA0Clv5FVr3CVH92Xhdz7bhcIJMQjv6xJHHKm68Tt2Uhppdq5VHjDF7g8d1GQYcf" & _
+"PE8rBQIDAQABo4IBqjCCAaYwCQYDVR0TBAIwADAfBgNVHREEGDAWgRRhcmFuYWRl" & _
+"QHZlcmlzaWduLmNvbTCCASQGA1UdIASCARswggEXMIIBEwYLYIZIAYb4RQEHAQYw" & _
+"ggECMCsGCCsGAQUFBwIBFh9odHRwczovL3d3dy52ZXJpc2lnbi5jb20vcnBhLWty" & _
+"MIHSBggrBgEFBQcCAjCBxRqBwk5PVElDRTogUHJpdmF0ZSBrZXkgbWF5IGJlIHJl" & _
+"Y292ZXJlZCBieSBWZXJpU2lnbidzIGN1c3RvbWVyIHdobyBtYXkgYmUgYWJsZSB0" & _
+"byBkZWNyeXB0IG1lc3NhZ2VzIHlvdSBzZW5kIHRvIGNlcnRpZmljYXRlIGhvbGRl" & _
+"ci4gIFVzZSBpcyBzdWJqZWN0IHRvIHRlcm1zIGF0IGh0dHBzOi8vd3d3LnZlcmlz" & _
+"aWduLmNvbS9ycGEta3IgKGMpOTkuMBEGCWCGSAGG+EIBAQQEAwIHgDARBgpghkgB" & _
+"hvhFAQYJBAMBAf8wCwYDVR0PBAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMEBggr" & _
+"BgEFBQcDAjANBgkqhkiG9w0BAQQFAANBACUh6pPJ159i7pRyH9JVCqEyYWMTDuig" & _
+"Nc85CU9Q3m2UMNg74+AZRShMJ/MQR/cWM/C1JFbBqlp72maDn2q6pBYwggF+MIIB" & _
+"KAIQEEpLkEXaQLyZw2edkA1xPjANBgkqhkiG9w0BAQQFADBCMQswCQYDVQQGEwJV" & _
+"UzEXMBUGA1UEChMOVmVyaVNpZ24sIEluYy4xGjAYBgNVBAsTEUNsYXNzIDIgVEVT" & _
+"VCBST09UMB4XDTk4MDEwNjAwMDAwMFoXDTI1MDEwNjIzNTk1OVowQzERMA8GA1UE" & _
+"ChMIVmVyaVNpZ24xLjAsBgNVBAsTJVZlcmlTaWduIENsYXNzIDIgT25TaXRlIElu" & _
+"ZGl2aWR1YWwgQ0EwXDANBgkqhkiG9w0BAQEFAANLADBIAkEAwcc0HK4Pk1RhNnqy" & _
+"lcqMHQmBAlhziAg6o/6B4jJbgVXhd6DSBGGQLH2KIWJpJDqBj/6nwnnB++kKF0zj" & _
+"UPGl9QIDAQABMA0GCSqGSIb3DQEBBAUAA0EAmzEIJliVM4mhH9Z4DjDcHyaU362S" & _
+"8ER0tiJOpLS/jU6byj+x9bDzfSZm6ZC8xF62ihVMmMY7NGo06zZqvrk21AAAMQAA" & _
+"AAAAAAA=""-----END CERTIFICATE-----"
+
+		szPKCS7 = Mid(szPKCS7, 28)
+		szPKCS7 = Left(szPKCS7, InStr(szPKCS7, "-")-1)
+
+		On Error Resume Next
+		ISignAtrb.UserCertificate = szPKCS7
+		If err.number <> 0 Then
+			MsgBox "Error in UserCertificate : Error number is : 0x" & Hex(err.number)
+			Exit Sub
+		End If
+
+		On Error Resume Next
+		encUserCertificate = ISignAtrb.EncUserCertificate
+		If err.number <> 0 Then
+			MsgBox "Error in EncUserCertificate : Error number is : 0x" & Hex(err.number)
+			Exit Sub
+		End If
+
+		On Error Resume Next
+		encUserSMIMECertificate = ISignAtrb.EncUserSMIMECertificate
+		If err.number <> 0 Then
+			MsgBox "Error in EncUserSMIMECertificate : Error number is : 0x" & Hex(err.number)
+			Exit Sub
+		End If
+
+		document.Stuff.userCertificate.value = encUserCertificate
+		document.Stuff.userSMIMECertificate.value = encUserSMIMECertificate
+		document.Stuff.userDN.value = "CN=ARanade,CN=Recipients,OU=Alpha,O=VeriSign"
+
+		document.Stuff.submit
+
+		document.close
+    End Sub
+-->
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<FORM NAME="Stuff" ACTION="/cgi-bin/srchexce.exe?fileName=Final.html&ExchangeServerDomain=VeriSign&ExchangeServerName=ARANADE-PC&Type=Stuff" ENCTYPE=x-www-form-encoded METHOD=POST>
+	<INPUT TYPE="HIDDEN" NAME="userCertificate" VALUE="">
+	<INPUT TYPE="HIDDEN" NAME="userSMIMECertificate" VALUE=""> 
+	<INPUT TYPE="HIDDEN" NAME="userDN" VALUE=""> 
+</FORM>
+
+	<SCRIPT LANGUAGE="VBSCRIPT">
+	<!--
+		Call SignAttrIt
+	-->
+	</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,516 @@
+<HTML>
+<HEAD>
+<!-- ptaLoginNS.htm
+
+-->
+<TITLE>
+  VeriSign Personal Trust Agent Login
+</TITLE>
+
+<!-- VSSKTEMPLATEVERSION#1.2.0.7 -->
+
+<script language = "JavaScript">
+<!--
+	var browserNum = parseInt(navigator.appVersion);
+	var NSCP_IVSPTA;
+//-->
+</script>
+
+<!-- VSSKBEGIN Apps/PTAv2#7 -->
+<!-- VSSKEND Apps/PTAv2#7 -->
+
+<!-- VSSKBEGIN Apps/PTAv2#2 -->
+<!-- VSSKEND Apps/PTAv2#2 -->
+
+
+<!-- VSSKBEGIN Global/System#8 -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+  function SetErrorInfo(form_file, error_code, winerrorcode, operation)
+  {
+    document.ErrorForm.form_file.value = form_file ;
+    document.ErrorForm.errorCode.value = error_code ;
+    document.ErrorForm.winerrorcode.value = winerrorcode ;
+    document.ErrorForm.operation.value = operation ;
+
+    document.ErrorForm.submit() ;
+  }
+//-->
+</SCRIPT>
+<!-- VSSKEND Global/System#8 -->
+
+
+<SCRIPT LANGUAGE="JavaScript">
+  var StartDate; 
+  var todaysDate;
+  var Signature;
+  var PKCS10;
+
+ function CheckReasonCode()
+  {
+    // The script variable "reasonCode" gets assigned a value through the 
+    // Java Script prepended by NSAPI Filter when the Login Page
+    // is sent to the browser.
+
+    if ( reasonCode.search(/expired/i) == 0 )
+    {
+      // This could be because either Inactivity or Absolute timeout.
+      document.write("<br><FONT SIZE=4 COLOR=RED><CENTER>Timeout ...</CENTER></FONT><br>") ;
+    }
+    else if ( reasonCode.search(/login/i) == -1 )
+    {
+      document.write("<br><FONT SIZE=4 COLOR=RED><CENTER>Unknown Error Occured ...</CENTER></FONT><br>") ;
+    }
+  }
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+  //-- VSSKBEGIN Global/Mode#30 --
+  //-- VSSKEND Global/Mode#30 --
+  
+  function GoToRenewDigitalIDJava()
+  {
+    var RenewalUrl = hostName + "/VSApps/client/userRenewalNS.htm";
+    self.location =  RenewalUrl;
+  }
+
+ function CloseObjects(errCode, Operation, WinErrorCode)
+ {
+    RetVal = document.NSCP_IVSPTA.PTA_Close ();
+    if (errCode != 0) {
+        SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", ReBaseErrorCodeNS(errCode), ConvertToHexNS (WinErrorCode), Operation);
+    }   
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {    
+      SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", "00000001", ConvertToHexNS (ErrorCode), "NSCP_IVSPTA.PTA_Close");
+    }
+     return;
+ }  
+  
+  function SignUpJava()
+  {
+    var EnrollUrl;
+
+    //-- VSSKBEGIN Apps/KeyManager#11 --
+    //-- VSSKEND Apps/KeyManager#11 --
+    
+    EnrollUrl = hostName + "/VSApps/client/" + EnrollPage;
+    self.location = EnrollUrl;
+  }
+
+  function LoginJava()
+  {  
+    CloseObjects(0, "", 0);
+    document.LoginForm.dataToSign.value = toSign ;
+    document.LoginForm.dataSignature.value = Signature ;
+    document.LoginForm.submit() ;
+  }
+
+
+  function RenewDigitalIDJava()
+  {
+    MD5 = 3 ;
+    SHA1 = 4 ;
+
+    // Set the Message that needs to be signed.
+    var RenewMsgg = "Renew Digital ID";
+    MD5Renewal = 3 ;
+
+    // Get the "Signature" that is to be used to renew a given certificate
+    RenewSignature = document.NSCP_IVSPTA.PTA_SignRenewal(MD5Renewal) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0)
+    {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.PTA_SignRenewal", ErrorCode);
+      //alert ("Error in NSCP_IVSPTA.SignChallenge : " + ErrorCode) ;
+      return ;
+    }
+
+    // This sets the signature which has the certificate that needs renewal
+    document.RenewalForm.pkcsInformation.value = RenewSignature ;
+
+    // This sets message that is being signed
+    document.RenewalForm.detachedMesg.value = RenewMsgg ;
+
+    // Get Serial Number of Certificate that needs renewal
+    CertSerialNumber = document.NSCP_IVSPTA.get_SelectedDigID_SerNum() ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0)
+    {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.get_SelectedDigID_SerNum", ErrorCode);
+      //alert ("Error in NSCP_IVSPTA.get_SelectedDigID_SerNum : " + ErrorCode) ;
+      return ;
+    }
+
+    document.RenewalForm.orig_cert_serial.value = CertSerialNumber ;
+
+    // Get Issuer DN of Certificate that needs renewal
+    IssuerDN = document.NSCP_IVSPTA.get_SelectedDigID_IssuerDN() ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0)
+    {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.get_SelectedDigID_IssuerDN", ErrorCode);
+      return ;
+    }
+    document.RenewalForm.orig_cert_issuerdn.value = IssuerDN ;
+
+    CloseObjects(0, "", 0);
+    document.RenewalForm.submit() ;
+  }
+
+
+  function SignItJava()
+  {
+ //-- VSSKBEGIN Apps/PTAv2#3 --
+ //-- VSSKEND Apps/PTAv2#3 --
+
+	if(browserNum < 5) {
+		StartDate = new java.util.Date(); 
+		todaysDate = new java.util.Date() ;
+		Signature = new java.lang.StringBuffer() ;
+		PKCS10 = new java.lang.StringBuffer("") ;
+		document.NSCP_IVSPTA = document.ThePlugin;
+
+	} else {
+		StartDate = new Date(); 
+		StartDate = StartDate.getTime();
+		todaysDate = new Date() ;
+		Signature = new String() ;
+		PKCS10 = new String("") ;
+		document.NSCP_IVSPTA = document.ThePlugin.ns6IPTA;
+	}
+    if (strCertStore == "1") {
+		document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 0) ;
+	}
+	else {
+	    document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 1) ;
+	}	
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.PTA_Initialize", ErrorCode);
+      return ;
+    }
+
+    // Initialize the IssuerDN
+    document.NSCP_IVSPTA.set_SrchCrit_IssuerDN(strCertIssuerDN) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0)
+    {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_SrchCrit_IssuerDN", ErrorCode);
+      return ;
+    }
+
+    EXP_DATE_GREATER_THAN = 0x20 ;
+    EXP_DATE_EQUALTO      = 0x10 ;
+    EXP_DATE_LESS_THAN    = 0x08 ;
+    EFF_DATE_GREATER_THAN = 0x04 ;
+    EFF_DATE_EQUALTO      = 0x02 ;
+    EFF_DATE_LESS_THAN    = 0x01 ;
+
+    // Initialize the Certificate Search Criterion "Date Equality"
+    document.NSCP_IVSPTA.set_SrchCrit_DateEquality(EXP_DATE_GREATER_THAN) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0)
+    {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_SrchCrit_DateEquality", ErrorCode);
+      return ;
+    }
+
+    // Initialize the Certificate Search Criterion "Expiry Date"
+    // to the CURRENT DATE.
+    document.NSCP_IVSPTA.set_SrchCrit_ExpDate(StartDate) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0)
+    {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_SrchCrit_ExpDate", ErrorCode);
+      return ;
+    }
+
+
+	document.NSCP_IVSPTA.set_SrchCrit_Renewed(false) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0)
+    {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_SrchCrit_Renewed", ErrorCode);
+      return ;
+    }
+
+    // set the UI preferences
+    if (strLoginWizardTitle[0] != null){
+        document.NSCP_IVSPTA.set_UIPrefs_LgnDlg_Title(strLoginWizardTitle) ;
+        if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+           CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_LgnDlg_Title", ErrorCode);
+           return ;
+        }
+    }
+    // Initialize the open profile preferences
+	if (strCertStore == "1") {	   
+       if (strLoginChooseTitle[0] != null){
+          document.NSCP_IVSPTA.set_UIPrefs_OpenProf_Title(strLoginChooseTitle) ;
+          if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+             CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_OpenProf_Title", ErrorCode);
+             return ;
+          }
+       }
+       if (strLoginChooseText[0] != null){
+          document.NSCP_IVSPTA.set_UIPrefs_OpenProf_Text(strLoginChooseText) ;
+          if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+             CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_OpenProf_Text", ErrorCode);
+             return ;
+          }
+       }
+       if (strLoginChooseHelpUrl[0] != null){
+          document.NSCP_IVSPTA.set_UIPrefs_OpenProf_HelpUrl(strLoginChooseHelpUrl) ;
+          if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+             CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_OpenProf_HelpUrl", ErrorCode);
+             return ;
+          }
+       }
+       if (strUnLockHelpUrl[0] != null){
+          document.NSCP_IVSPTA.set_UIPrefs_Timeout_HelpUrl(strUnLockHelpUrl) ;
+          if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+             CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_Timeout_HelpUrl", ErrorCode);
+             return ;
+          }
+       }
+       OPENPROF_OPEN_ONLY = 529;
+       E_CARDALREADYOPEN = 0x8000102F;
+       document.NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags(OPENPROF_OPEN_ONLY) ;
+       if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != E_CARDALREADYOPEN )) {
+          CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags", ErrorCode);
+          return ;
+       }       
+      //-- VSSKBEGIN Apps/PTAv2/Roaming#5 -- 
+      //-- VSSKEND Apps/PTAv2/Roaming#5 --
+
+	} // done setting open profile preferences 
+
+    // set the select id preferences
+    if (strLoginTitle[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_SelID_Title(strLoginTitle) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+        CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_SelID_Title", ErrorCode);
+        return ;
+      }
+    }
+
+    if (strLoginText[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_SelID_Text(strLoginText) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+        CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_SelID_Text", ErrorCode);
+        return ;
+      }
+    }
+
+    document.NSCP_IVSPTA.set_UIPrefs_SelID_ShowDefChkBox(true) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_SelID_ShowDefChkBox", ErrorCode);
+      return ;
+    }
+
+    if (strAppLogoUrl[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_UILogoUrl(strAppLogoUrl) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+        CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_UILogoUrl", ErrorCode);
+        return ;
+      }
+    }
+
+    if ( (strAffiliateLogoUrl[0] != null) && (strAffiliateLogoUrl != "VeriSign") ){
+       document.NSCP_IVSPTA.set_PTA_AffLogoUrl(strAffiliateLogoUrl) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != 0x800010c4)) {
+          CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_PTA_AffLogoUrl", ErrorCode);
+          return;
+       }
+    }
+
+    if (strLoginHelpUrl[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_SelID_HelpUrl(strLoginHelpUrl) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+        CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_SelID_HelpUrl", ErrorCode);
+        return ;
+      }
+    }
+
+    document.NSCP_IVSPTA.set_UIPrefs_SelID_OKBtnText(122) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_UIPrefs_SelID_OKBtnText", ErrorCode);
+      return ;
+    }
+    
+    // Select the Digital ID now
+    if (document.LoginForm.ResetPref.checked == true) {
+    //   set the new property
+        document.NSCP_IVSPTA.set_PTA_UseDefCertFlag(0);
+    }
+    else {
+    //   set the new property
+        document.NSCP_IVSPTA.set_PTA_UseDefCertFlag(1);
+    }
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.set_PTA_UseDefCertFlag", ErrorCode);
+      return ;
+    }
+    
+    // alert("From LoginJava : toSign : " + toSign) ;
+  
+    // The script variable "toSign" gets assigned a value through the 
+    // Java Script prepended by the NSAPI Filter when the Login Page
+    // is sent to the browser.
+ 
+    MD5 = 3 ;
+    SHA1 = 4 ;
+    // Get the "Signature"
+    // var Signature = new java.lang.StringBuffer() ;
+    if (digestAlg == "MD5")
+    {
+       Signature = document.NSCP_IVSPTA.PTA_SignChallenge (toSign, MD5) ;
+    }
+    else
+      if (digestAlg == "SHA")
+        {
+          Signature = document.NSCP_IVSPTA.PTA_SignChallenge(toSign, SHA1) ;
+        } 
+    //alert ("Signature is : " + Signature) ;
+    RetVal = document.NSCP_IVSPTA.GetLastError();
+
+    VS_CERTNOMATCHCRIT = 0x80001095;
+    VS_CERTMATCHBUTEXP = 0x80001096;
+    VS_SUCCESS = 0x00000000;
+    VS_PROFDOESNOTEXIST = 0x8000102B;
+    VS_USER_CANCELLED = 0x80001067;
+    VS_CERTNOTFOUND = 0x80001091;
+
+    if (RetVal != 0) {
+       if (RetVal == VS_CERTMATCHBUTEXP ) {
+          alert("You do not have a valid Digital ID. \nNow the PTA will try to renew your expired Digital IDs.");
+          CloseObjects(0, "", 0);
+          GoToRenewDigitalIDJava();
+          return;
+       } else 
+       if ( (RetVal == VS_CERTNOMATCHCRIT) || (RetVal == VS_PROFDOESNOTEXIST) || (RetVal == VS_CERTNOTFOUND)) {
+            EnrollState = confirm("You do not have a valid Digital ID.\nWould you like to enroll for a Digital ID at this time?") ;
+            if ( EnrollState == true ) {
+                CloseObjects(0, "", 0);
+			    SignUpJava();
+			    return;
+            }
+       } else 
+       if (RetVal == VS_USER_CANCELLED) {
+            alert ("You have cancelled the Login operation.\nPlease click login again to continue.");
+            CloseObjects(0, "", 0);
+            return;
+       } else {
+           CloseObjects (RetVal, "Login::IVSPTA.SignChallenge", RetVal);
+           return;
+       }       
+    }
+    else
+    {
+      //alert("Cert selection succeded ...") ;
+
+      // Detect here by looking at the Selected cert's Expriy Date if it
+      // is about to expire in ADVANCE_DAYS days.If it is, then ask the user if 
+      // he wants to renew the cert which is about to expire OR 
+      // he just wants to continue with the login.
+
+      ADVANCE_DAYS = AbtToExpWindow;
+
+      var SelExpDate = document.NSCP_IVSPTA.get_SelectedDigID_ExpDate() ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+        CloseObjects(ErrorCode, "Login::NSCP_IVSPTA.get_SelectedDigID_ExpDate", ErrorCode );
+      }
+      // alert("Selected certs exp date is : " + SelExpDate) ;
+
+      var AdvanceExpDate;
+      
+      if(browserNum < 5) {
+		AdvanceExpDate = SelExpDate;
+      } else {
+		AdvanceExpDate = new Date();
+		AdvanceExpDate.setTime(SelExpDate);
+      }
+      
+      somedate = AdvanceExpDate.getDate() ;
+      somedate = somedate - ADVANCE_DAYS ;
+      AdvanceExpDate.setDate(somedate) ;
+      // alert("AdvanceExpDate is : " + AdvanceExpDate) ;
+
+      // var todaysDate = new java.util.Date() ;
+      // alert("Today's Date is : " + todaysDate) ;
+	  var isAbtToExp = false;
+	  if(browserNum < 5) {
+		if ( todaysDate.after(AdvanceExpDate) ) {
+			isAbtToExp = true;
+		}
+	  } else {
+		if(todaysDate.getTime() > AdvanceExpDate.getTime()) {
+			isAbtToExp = true;
+		}
+	  }
+	  
+      if ( isAbtToExp)
+      {
+        // You come here if today's date is after the Advance Exp Date.
+        // Therefore, the cert is in the "ABOUT TO EXPIRE" period.
+        // alert("Your cert is about to expire ...") ;
+
+        RenewState = confirm("The Digital ID that you selected is about to expire.\nYou can either choose to continue with this login or you can renew your Digital ID.\nWould you like to renew your Digital ID ?") ;
+
+        if ( RenewState == true ) {
+          // You come here if the user pressed OK and therefore wants to
+          // renew his Digital ID.
+          RenewDigitalIDJava() ;
+        }
+	    else {
+          // You come here if the user pressed Cancel and therefore wants to
+          // continue with the login.
+          LoginJava() ;
+        }
+      }
+      else
+      {
+        // alert("Your cert is cool ...") ;
+        LoginJava() ; 
+      }
+    }
+  }
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+  CheckReasonCode() ;
+</SCRIPT>
+
+<!-- VSSKBEGIN Global/Mode#28 -->
+<!-- VSSKEND Global/Mode#28 -->
+<INPUT TYPE=hidden NAME=orig_cert_serial>
+<INPUT TYPE=hidden NAME=orig_cert_issuerdn>
+<INPUT TYPE=hidden NAME=pkcsInformation>
+<INPUT TYPE=hidden NAME=detachedMesg VALUE="Renew Digital ID">
+<INPUT TYPE=hidden NAME=VHTML_FILE VALUE="../htmldocs/VSApps/client/userRenewalNS.htm">
+</FORM>
+
+
+<FORM NAME="LoginForm" ACTION="/vsadmin/post" METHOD="POST">
+<INPUT TYPE="HIDDEN" NAME="dataToSign">
+<INPUT TYPE="HIDDEN" NAME="dataSignature">
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="590" >
+  <TR ALIGN=LEFT VALIGN=TOP>
+    <TD WIDTH="328">  
+        <BR>&nbsp;
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>To access the protected pages, click Login.</FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME=Login VALUE=LOGIN onClick="SignItJava()">
+        <INPUT TYPE=checkbox NAME=ResetPref> Check this box to ignore your preferences.
+        <P><B><FONT FACE="Verdana"><FONT SIZE=-1>
+        If you do not have a Digital ID you can Sign Up Now!</FONT></FONT></B>
+        <P>
+        <INPUT TYPE=BUTTON NAME="Sign Up" VALUE="Sign Up" onClick="SignUpJava()">
+    </TD>
+  </TR>
+</TABLE>
+
+</FORM>
+<HR WIDTH=100%>
+
+</BODY>
+</HTML>
+

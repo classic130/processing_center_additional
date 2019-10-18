@@ -1,0 +1,86 @@
+# IPSec Frontend FDF file for EE->CA CRS enrollment
+#
+# constant
+#
+CONST operation		C3OSServerEnroll
+CONST class		CLASS3
+CONST application       VeriSignIPSecOnSiteCSR
+CONST cert_type         ipsec
+CONST message           confirm
+
+CONST public_key_format         pkcs10
+#
+# VSSKBEGIN Global/System#2 
+# VSSKEND Global/System#2 
+#
+# VSSKBEGIN Global/System#6 
+# VSSKEND Global/System#6 
+#
+# VSSKBEGIN Global/System#11
+# VSSKEND Global/System#11  
+#
+#------------------------------------------------------------------------------
+#  NAME                 TYPE    REQUIREMENT		DEPENDENCY	CONTROL
+#------------------------------------------------------------------------------
+
+# I18N support
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+
+# Public Key
+public_key              BASE64  MANDATORY               NONE		NONE
+
+# Challenge
+#
+challenge		TEXT    MANDATORY	NONE	      NONE
+#
+
+# VSSKBEGIN Enrollment/Comments#4
+# VSSKEND Enrollment/Comments#4
+#
+
+# Passcode stuff
+#
+# VSSKBEGIN Enrollment/PassCode#4
+# VSSKEND Enrollment/PassCode#4
+#
+
+transaction_id		CLEAR	MANDATORY		NONE		NONE
+extensions              CLEAR   OPTIONAL                NONE		NONE
+
+# Certificate DN
+#
+common_name             TEXT    OPTIONAL                NONE		NONE
+mail_firstName		TEXT    OPTIONAL                NONE		NONE
+mail_lastName		TEXT    OPTIONAL                NONE		NONE
+#
+# VSSKBEGIN Enrollment/EMAIL#5
+# VSSKEND Enrollment/EMAIL#5
+#
+# VSSKBEGIN Enrollment/JobTitle#4
+# VSSKEND Enrollment/JobTitle#4
+#
+# VSSKBEGIN Enrollment/MailStop#4
+# VSSKEND Enrollment/MailStop#4
+#
+# VSSKBEGIN Enrollment/EmpID#4
+# VSSKEND Enrollment/EmpID#4
+#
+# VSSKBEGIN Enrollment/AddField4#4
+# VSSKEND Enrollment/AddField4#4
+#
+# VSSKBEGIN Enrollment/AddField5#4
+# VSSKEND Enrollment/AddField5#4
+#
+# VSSKBEGIN Enrollment/AddField6#4
+# VSSKEND Enrollment/AddField6#4
+#
+# VSSKBEGIN Enrollment/Locality#4 
+# VSSKEND Enrollment/Locality#4
+#
+# VSSKBEGIN Enrollment/State#4 
+# VSSKEND Enrollment/State#4
+#
+# VSSKBEGIN Enrollment/Country#4 
+# VSSKEND Enrollment/Country#4
+#

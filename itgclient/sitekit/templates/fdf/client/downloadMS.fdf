@@ -1,0 +1,30 @@
+# $ VSSKTEMPLATEVERSION#1.0.0.2 $ downloadMS.fdf
+#
+#------------------------------------------------------------------------------
+#  NAME                     TYPE        REQUIREMENT    DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+issuerserial	TEXT	MANDATORY	NONE		NONE
+format		CLEAR	MANDATORY	NONE		NONE
+form_file	CLEAR	MANDATORY	NONE		NONE
+#
+remote_host     TEXT    OPTIONAL        NONE            NONE
+#
+# constants...
+#
+CONST           operation               download cert
+CONST           vs_status               Valid
+CONST           enroll_track            MSIE
+#
+# configurable file 
+#
+# VSSKBEGIN Global/System#4
+# VSSKEND Global/System#4
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+#---------------------------------------------------------------------
+# STATUS CODES
+#---------------------------------------------------------------------
+STATUS  10d		VSApps/error/MSkeygenerr.htm
+STATUS	6fff		VSApps/client/userInstallMS.htm

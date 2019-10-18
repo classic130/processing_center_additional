@@ -1,0 +1,4 @@
+#define VS_OK						0x00000001
+#define VS_NOT_GMT					0x80001001
+#define VS_MKTIME_ERR				0x80001002
+#define VS_SYSTOFT_ERR				0x80001003

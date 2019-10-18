@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'VerifySignature'
+          ],
+          'itgclient/server/apps/pta/tools',
+          'build/log/VerArchive'
+        ];

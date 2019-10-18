@@ -1,0 +1,26 @@
+#------------------------------------------------------------------------------
+#  NAME         	TYPE   	REQUIREMENT     DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+form_file		TEXT	MANDATORY	NONE		NONE
+CSR			CLEAR	OPTIONAL	NONE		NONE
+remote_host		TEXT	OPTIONAL		NONE            NONE
+
+CONST       cert_type      end-user
+CONST       message        confirm
+<!-- VSSKBEGIN Global/System#4 -->
+<!-- VSSKEND Global/System#4 -->
+
+
+#  NAME         CODE    VALUE     
+#------------------------------------------------------------------------------
+STATUS		6600	VSApps/client/userEnrollCSRMain.htm
+STATUS		6500	VSApps/error/ulcsruploaderror.htm
+STATUS		6501	VSApps/error/ulcsruploaderror.htm
+STATUS		6502	VSApps/error/ulcsruploaderror.htm
+STATUS		6503	VSApps/error/ulcsruploaderror.htm
+STATUS		6504	VSApps/error/ulcsruploaderror.htm
+STATUS		6505	VSApps/error/ulcsruploaderror.htm
+STATUS		6506	VSApps/error/ulcsruploaderror.htm
+STATUS		6507	VSApps/error/ulcsruploaderror.htm
+STATUS		6508	VSApps/error/ulcsruploaderror.htm
+STATUS		6509	VSApps/error/ulcsruploaderror.htm

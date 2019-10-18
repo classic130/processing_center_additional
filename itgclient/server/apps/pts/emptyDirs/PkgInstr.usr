@@ -1,0 +1,26 @@
+$VAR1 = [
+          '',
+          [
+            [
+              [
+                [
+                  'logs',
+                  'buildman',
+                  'engineering',
+                  493,
+                  undef
+                ]
+              ],
+              [],
+              [],
+              [],
+              [
+                'PTS'
+              ],
+              'PTS_INSTALL'
+            ]
+          ],
+          [],
+          'itgclient/server/apps/pts/emptyDirs',
+          'jbuild/packaging/VerArchive'
+        ];

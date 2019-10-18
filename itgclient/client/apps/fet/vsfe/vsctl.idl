@@ -1,0 +1,42 @@
+// vsctl.idl : IDL source for vsctl.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (vsctl.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(6C67604D-91A2-11D3-8C1B-0010830169AF),
+		dual,
+		helpstring("Ivsctrl Interface"),
+		pointer_default(unique)
+	]
+	interface Ivsctrl : IDispatch
+	{
+		[id(1), helpstring("method SetEnterpriseServer")] HRESULT SetEnterpriseServer(BSTR);
+	};
+
+[
+	uuid(6C676041-91A2-11D3-8C1B-0010830169AF),
+	version(1.0),
+	helpstring("vsctl 1.0 Type Library")
+]
+library VSCTLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(6C67604E-91A2-11D3-8C1B-0010830169AF),
+		helpstring("VeriSign File Encyption Tool Control")
+	]
+	coclass vsctrl
+	{
+		[default] interface Ivsctrl;
+	};
+};

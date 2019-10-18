@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'pta'
+          ],
+          'itgclient/client/apps',
+          'build/log/VerArchive'
+        ];

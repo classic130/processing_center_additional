@@ -1,0 +1,28 @@
+#ServerRoot /usr/iplanet/servers/https-GSWA6PTA
+ServerID https-GSWA6PTA
+ServerName gmiura-sun.verisign.com
+ErrorLog /usr/iplanet/servers/https-GSWA6PTA/logs/errors
+PidLog /usr/iplanet/servers/https-GSWA6PTA/logs/pid
+User nobody
+MtaHost localhost
+DNS off
+Security off
+ClientLanguage en
+AdminLanguage en
+DefaultLanguage en
+RqThrottle 128
+StackSize 131072
+CGIWaitPid on
+TempDir /tmp/https-GSWA6PTA-ab0d7966
+
+Init fn=flex-init access="$accesslog" format.access="%Ses->client.ip% - %Req->vars.auth-user% [%SYSDATE%] \"%Req->reqpb.clf-request%\" %Req->srvhdrs.clf-status% %Req->srvhdrs.content-length%"
+Init fn=load-types mime-types=mime.types
+Init fn="load-modules" shlib="/usr/iplanet/servers/bin/https/lib/libNSServletPlugin.so" funcs="NSServletEarlyInit,NSServletLateInit,NSServletNameTrans,NSServletService" shlib_flags="(global|now)"
+Init fn="NSServletEarlyInit" EarlyInit=yes
+Init fn="NSServletLateInit"  LateInit=yes
+
+# BEGIN_PTA
+Init fn="load-modules" funcs="vsSSCInit,vsSSCCheck,vsSSCSend" shlib="/usr/lib/libvsptan.sl"
+Init fn="vsSSCInit" option-file="/VeriSign/pta/config/options.txt" log-info=1
+# END-PTA
+

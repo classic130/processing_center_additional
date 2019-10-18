@@ -1,0 +1,29 @@
+	import "oaidl.idl";
+	import "ocidl.idl";
+	#include "olectl.h"
+
+	[
+		object,
+		uuid(d962f4c3-ddb0-11d3-a428-d1a369ca484f),
+		dual,
+		helpstring("IVSSrchCrit Interface"),
+		pointer_default(unique)
+	]
+	interface IVSSelectedDigID : IDispatch
+	{
+		[propget, id(1), helpstring("Issuer DN of the selected digital id.")] HRESULT IssuerDN([out, retval] VARIANT *pVal);
+		[propget, id(2), helpstring("Subject DN of the selected digital id.")] HRESULT SubjectDN([out, retval] VARIANT *pVal);
+		[propget, id(3), helpstring("Serial Number (ascii hex)of the selected digital id. ")] HRESULT SerNum([out, retval] VARIANT *pVal);
+		[propget, id(4), helpstring("Expiration date of the selected digital id.")] HRESULT ExpDate([out, retval] DATE *pVal);
+		[propget, id(5), helpstring("Effective date of the selected digital id.")] HRESULT EffDate([out, retval] DATE *pVal);
+		[propget, id(6), helpstring("Key Usage of the selected digital id.")] HRESULT KeyUsage([out, retval] VARIANT *pVal);
+		[propget, id(7), helpstring("Size of the public key of the selected digital id.")] HRESULT KeySize([out, retval] VARIANT *pVal);
+		[propget, id(8), helpstring("Flag indicating if the selected digital id is marked as renewed or not.")] HRESULT Renewed([out, retval] VARIANT *pVal);
+		[propget, id(9), helpstring("MD5 Hash (ascii hex) of the public key of the selected digital id.")] HRESULT PubKeyMD5([out, retval] VARIANT *pVal);
+		[propget, id(10), helpstring("SHA1 Hash (ascii hex) of the public key of the selected digital id.")] HRESULT PubKeySHA1([out, retval] VARIANT *pVal);
+		[propget, id(11), helpstring("The friendly name of the certificate")] HRESULT FrndlyName([out, retval] VARIANT *pVal);
+		[propget, id(12), helpstring("The url of the cert logo")] HRESULT LogoUrl([out, retval] VARIANT *pVal);
+		[propget, id(13), helpstring("The url of the cert texture")] HRESULT TextureUrl([out, retval] VARIANT *pVal);
+	};
+
+

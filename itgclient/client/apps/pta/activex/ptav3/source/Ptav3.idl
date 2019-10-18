@@ -1,0 +1,137 @@
+// Ptav3.idl : IDL source for Ptav3.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Ptav3.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "source/certprefs.idl";
+import "source/profmgmt.idl";
+import "source/seldigid.idl";
+import "source/srchcrit.idl";
+import "source/uiprefs.idl";
+import "source/roamprefs.idl";
+import "source/ptadllapi.idl";
+import "source/import.idl";
+import "source/export.idl";
+
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(6F7864F8-DB33-11D3-8166-0060B0F885E6),
+		dual,
+		helpstring("IVSPTA Interface"),
+		pointer_default(unique)
+	]
+	interface IVSPTA : IDispatch
+	{
+		[id(1), helpstring("method Initialize")] HRESULT Initialize(VARIANT* in_pvarAppCtxtName, VARIANT* in_pvarUseCapi);
+		[id(13), helpstring("method AppPref_SetPreference")] HRESULT AppPref_SetPreference(VARIANT* in_pvarPrefName, VARIANT* in_pvarPrefVal);
+		[id(14), helpstring("method AppPref_GetPreference")] HRESULT AppPref_GetPreference(VARIANT* in_pvarPrefName, VARIANT* in_pvarPrefValue);
+		[propget, id(15), helpstring("property IVSUIPrefs")] HRESULT IVSUIPrefs([out, retval] IDispatch* *pVal);
+		[propget, id(16), helpstring("property IVSProfMgmt")] HRESULT IVSProfMgmt([out, retval] IDispatch* *pVal);
+		[propget, id(17), helpstring("property IVSCertPrefs")] HRESULT IVSCertPrefs([out, retval] IDispatch* *pVal);
+		[propget, id(18), helpstring("property IVSSrchCrit")] HRESULT IVSSrchCrit([out, retval] IDispatch* *pVal);
+		[propget, id(19), helpstring("property IVSSelectedDigID")] HRESULT IVSSelectedDigID([out, retval] IDispatch* *pVal);
+		[propget, id(20), helpstring("property IVSRoamPrefs")] HRESULT IVSRoamPrefs([out, retval] IDispatch* *pVal);
+		[propget, id(21), helpstring("The CSP to be used in the CAPI ")] HRESULT CSPName([out, retval] VARIANT *pVal);
+		[propput, id(21), helpstring("The CSP to be used in the CAPI ")] HRESULT CSPName([in] VARIANT newVal);
+		[id(22), helpstring("method CreateCertReq")] HRESULT CreateCertReq(VARIANT* i_pvarSubjectDN, VARIANT* i_pvarKeyGenFlag, VARIANT* i_pvarHashAlg, VARIANT* i_pvarAttributes, [out,retval]VARIANT* o_pvarB64EncPKCS10);
+		[id(23), helpstring("method InstallCert")] HRESULT InstallCert(VARIANT* in_pvarCert);
+		[id(24), helpstring("method SignChallenge")] HRESULT SignChallenge(VARIANT* in_pvarChallenge, VARIANT* in_pvarAlgID, [out,retval]VARIANT* o_pvarSignature);
+		[id(25), helpstring("method SignTransaction")] HRESULT SignTransaction(VARIANT* in_pvarMessage, VARIANT* in_pvarAlgID, [out,retval]VARIANT* o_pvarSignature);
+		[id(26), helpstring("method Close")] HRESULT Close();
+		[id(27), helpstring("method SelIDForTrans")] HRESULT SelIDForTrans();
+		[id(28), helpstring("method SelIDForChallenge")] HRESULT SelIDForChallenge();
+		[propget, id(29), helpstring("The protocol to be used")] HRESULT ProtocolName([out, retval] VARIANT *pVal);
+		[propput, id(29), helpstring("The protocol to be used")] HRESULT ProtocolName([in] VARIANT newVal);
+		[id(30), helpstring("method SignRenewal")] HRESULT SignRenewal( VARIANT* in_pvarAlgID, [out,retval]VARIANT* o_pvarSignature);
+		[id(31), helpstring("method InstallKeyPair")] HRESULT InstallKeyPair( VARIANT* i_pvarPrivKeyBlob,VARIANT* i_pvarPKCS7Cert);
+		[propget, id(32), helpstring("Flag specifying whether to use defcert")] HRESULT UseDefCertFlag([out, retval] VARIANT *pVal);
+		[propput, id(32), helpstring("Flag specifying whether to use defcert")] HRESULT UseDefCertFlag([in] VARIANT newVal);
+		[propget, id(33), helpstring("The auth dll")] HRESULT AuthDll([out, retval] VARIANT *pVal);
+		[propput, id(33), helpstring("The auth dll")] HRESULT AuthDll([in] VARIANT newVal);
+		[propget, id(34), helpstring("The Profile Creator's Friendly name")] HRESULT ProfileIssFrndlyName([out, retval] VARIANT *pVal);
+		[propput, id(34), helpstring("The Profile Creator's Friendly name")] HRESULT ProfileIssFrndlyName([in] VARIANT newVal);
+		[propget, id(35), helpstring("The Profile Creator's Unique Id")] HRESULT ProfileIssUniqueId([out, retval] VARIANT *pVal);
+		[propput, id(35), helpstring("The Profile Creator's Unique Id")] HRESULT ProfileIssUniqueId([in] VARIANT newVal);
+		[propget, id(36), helpstring("property IVSP12Import")] HRESULT IVSP12Import([out, retval] IDispatch* *pVal);
+		[id(37), helpstring("method DecryptSessionKey")] HRESULT DecryptSessionKey([in] VARIANT i_varEncryptedSessionKey, [out, retval] VARIANT* o_pvarDecryptedSessionKey);
+		[id(38), helpstring("method SetInformationBlob")] HRESULT SetInformationBlob([in] VARIANT i_varName, [in] VARIANT i_varValue);
+		[id(39), helpstring("method GetInformationBlob")] HRESULT GetInformationBlob([in] VARIANT i_varName, [out, retval] VARIANT* o_pvarValue);
+		[id(40), helpstring("method DeleteInformationBlob")] HRESULT DeleteInformationBlob([in] VARIANT i_varName);
+		[propget, id(41), helpstring("property IVSP12Export")] HRESULT IVSP12Export([out, retval] IDispatch**pVal);
+		[propget, id(42), helpstring("URL indicating the Affiliate Logo")] HRESULT AffLogoUrl([out, retval] VARIANT *pVal);
+		[propput, id(42), helpstring("URL indicating the Affiliate Logo")] HRESULT AffLogoUrl([in] VARIANT newVal);
+		[propput, id(43), helpstring("The wild-card pattern for the application creator")] HRESULT ApplicationCreatorWildCard([in] VARIANT newVal);
+		[propget, id(44), helpstring("ReadOK domains for the current application")] HRESULT ApplicationReadOKDomains([out, retval] VARIANT *o_pvarApplicationReadOKDomains);
+		[propput, id(44), helpstring("ReadOK domains for the current application")] HRESULT ApplicationReadOKDomains([in] VARIANT newVal);
+		[propget, id(45), helpstring("WriteOK domains for the current application")] HRESULT ApplicationWriteOKDomains([out, retval] VARIANT *o_pvarApplicationWriteOKDomains);
+		[propput, id(45), helpstring("WriteOK domains for the current application")] HRESULT ApplicationWriteOKDomains([in] VARIANT newVal);
+		[propget, id(46), helpstring("The creator of the application")] HRESULT AmITheApplicationCreator([out, retval] VARIANT *o_pvarIsCreator);
+		[propget, id(47), helpstring("the date and time that should be set in the authenticated attributes, while performing signature operation")] HRESULT SignDate([out, retval] DATE *pVal);
+		[propput, id(47), helpstring("the date and time that should be set in the authenticated attributes, while performing signature operation")] HRESULT SignDate([in] DATE newVal);
+		[propput, id(48), helpstring("property EnableCertForCapi")] HRESULT EnableCertForCapi([in] VARIANT newVal);
+		[id(49), helpstring("method CreatePassword")] HRESULT CreatePassword();
+		[id(50), helpstring("method EnterPassword")] HRESULT EnterPassword();
+		[propget, id(51), helpstring("property IsTPMAvailable")] HRESULT IsTPMAvailable([out, retval] VARIANT *pVal);
+		[propget, id(52), helpstring("property UTF8EncodeMessage")] HRESULT UTF8EncodeMessage([out, retval] VARIANT *pVal);
+		[propput, id(52), helpstring("property UTF8EncodeMessage")] HRESULT UTF8EncodeMessage([in] VARIANT newVal);
+		[id(53), helpstring("method DisableNonRepudiationCertKeyUsage")] HRESULT DisableNonRepudiationCertKeyUsage();
+	};
+
+	[
+		object,
+		uuid(50E71FEA-2234-11d4-8D73-0060B0FC0637),
+		dual,
+		helpstring("VSRootsUpdate Interface"),
+		pointer_default(unique)
+	]
+	interface IVSRootsUpdate : IDispatch
+	{
+		[id(1), helpstring("method Initialize")] HRESULT Initialize();
+		[id(2), helpstring("method CreateStandardTrustProfile")] HRESULT CreateStandardTrustProfile();
+		[id(3), helpstring("method CreateVerisignTrustProfile")] HRESULT CreateVerisignTrustProfile();
+	};
+
+
+[
+	uuid(6F7864EC-DB33-11D3-8166-0060B0F885E6),
+	version(1.0),
+	helpstring("Ptav3 1.0 Type Library")
+]
+library PTAV3Lib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	
+	[
+		uuid(6F7864F9-DB33-11D3-8166-0060B0F885E6),
+		helpstring("VSPTA Class")
+	]
+	coclass VSPTA
+	{
+		[default] interface IVSPTA;
+		interface IVSProfMgmt;
+		interface IVSUIPrefs;
+		interface IVSSrchCrit;
+		interface IVSCertPrefs;
+		interface IVSSrchCrit;
+		interface IVSSelectedDigID;
+		interface IVSRoamPrefs;
+		interface IVSPTADllApi;
+		interface IVSP12Import;
+		interface IVSP12Export;
+	};
+	[
+		uuid(50E71FEB-2234-11d4-8D73-0060B0FC0637),
+		helpstring("VSROOTS Class")
+	]
+	coclass VSROOTS
+	{
+		[default] interface IVSRootsUpdate;
+	};
+};

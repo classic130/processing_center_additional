@@ -1,0 +1,373 @@
+<!-- notarizationInstallMS.htm
+
+-->
+<!-- VSSKTEMPLATEVERSION#1.0.2.1 -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<TITLE>Digital Notarization Client Installation</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<Script Language="JavaScript">
+<!--
+  var browserName=navigator.appName;
+  var requiredBrowserNumMS=4;
+  var browserVer=parseInt(navigator.appVersion);
+
+  if(browserName == "Netscape")
+     self.location="notarizationInstallNS.htm";
+
+//-->
+</Script>
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<!-- VSSKBEGIN Global/Mode#114 -->
+<!-- VSSKEND Global/Mode#114 -->
+
+
+<!-- VSSKBEGIN Apps/NotarizationClient#1 -->
+<!-- VSSKEND Apps/NotarizationClient#1 -->
+
+<Script Language="VBScript">
+<!--
+Sub SetNzPreferences
+
+  On Error Resume Next
+  IVSNZ.AddNZCertificate NZIntermediateCA
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", 			  	CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNZ:AddNzCertificate")
+	Exit Sub
+  End If  
+
+  On Error Resume Next
+  Set IVSNZAppPref = IVSNZ.IVSNZAppPrefs
+
+  		
+  PreferenceName = "NotarizationServer"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbNotarizationServer
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:NotarizationServer")
+	Exit Sub
+  End If
+
+  PreferenceName = "HashAlg"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbHashAlgorithm
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:HashAlgorithm")
+	Exit Sub
+  End If
+
+
+  PreferenceName = "DisplayID"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbDisplayID
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:DisplayID")
+	Exit Sub
+  End If
+
+
+  PreferenceName = "ValidationFlag"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbValidationFlag
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ValidationFlag")
+	Exit Sub
+  End If
+
+
+  PreferenceName = "HostingServer"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbHostingServer
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:HostingServer")
+	Exit Sub
+  End If
+
+
+  PreferenceName = "Crl"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbRevocationInformation
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:Crl")
+	Exit Sub
+  End If
+
+  PreferenceName = "LogoUrl"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbLogoUrl
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:LogoUrl")
+	Exit Sub
+  End If
+
+  PreferenceName = "WizTitle"
+  On Error Resume Next
+  If (Len(vbWizardTitle) > 1) then 
+	IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbWizardTitle
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:WizTitle")
+		Exit Sub
+	End If
+  End If
+
+
+  PreferenceName = "SelFileTitle"
+  On Error Resume Next
+  If (Len(vbSelectFileTitle) > 1) then   
+	IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbSelectFileTitle
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:SelFileTitle")
+		Exit Sub
+	End If
+  End If 
+
+
+  PreferenceName = "SelFileDesc"
+  On Error Resume Next
+  If (Len(vbSelectFileDescription) > 1) then     
+	IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbSelectFileDescription
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:SelFileDescription")
+		Exit Sub
+	End If
+  End If
+
+
+  PreferenceName = "ProgressTitle"
+  On Error Resume Next
+  If (Len(vbProgressTitle) > 1) then       
+	IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbProgressTitle
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ProgressTitle")
+		Exit Sub
+	End If
+  End If 
+
+
+  PreferenceName = "ProgressDesc"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbProgressDescription
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ProgressDescription")
+	Exit Sub
+  End If
+
+
+  PreferenceName = "ProgressHelpUrl"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbProgressHelpUrl
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ProgressHelpUrl")
+	Exit Sub
+  End If
+
+
+  PreferenceName = "VerifyReceiptTitle"
+  If (Len(vbVerifyReceiptTitle) > 1) then       
+	On Error Resume Next
+	IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbVerifyReceiptTitle
+	If ( err.number <> 0 ) then
+	  Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:VerifyReceiptTitle")
+	  Exit Sub
+	End If
+  End If
+
+  PreferenceName = "VerifyReceiptDesc"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbVerifyReceiptDesc
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:VerifyReceiptDescription")
+	Exit Sub
+  End If
+
+  PreferenceName = "VerifyReceiptHelpUrl"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbVerifyReceiptHelpUrl
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:VerifyReceiptHelpUrl")
+	Exit Sub
+  End If
+
+  PreferenceName = "ReceiptDesc"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbReceiptDesc
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ReceiptDescription")
+	Exit Sub
+  End If
+
+  PreferenceName = "HelpUrl"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbHelpUrl
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:HelpUrl")
+	Exit Sub
+  End If
+
+  PreferenceName = "AppContext"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbAppContext
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ApplicationContext")
+	Exit Sub
+  End If
+
+  PreferenceName = "SearchCriteria"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbSearchCriteria
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:SearchCriteria")
+	Exit Sub
+  End If
+
+  PreferenceName = "ClientInfo"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbClientInfo
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ClientInfo")
+	Exit Sub
+  End If
+
+  PreferenceName = "ClientInfoSig"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbClientInfoSig
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:ClientInfoSig")
+	Exit Sub
+  End If
+
+  PreferenceName = "Capi"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbCapi
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:Capi")
+	Exit Sub
+  End If
+
+  PreferenceName = "EnrollHomePage"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbHostingServer
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:EnrollHomePage")
+	Exit Sub
+  End If
+
+  PreferenceName = "RenewalHomePage"
+  On Error Resume Next
+  IVSNZAppPref.SetApplicationPreference ApplicationName, PreferenceName, vbHostingServer
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "Setting Application preference:RenewalHomePage")
+	Exit Sub
+  End If
+End Sub
+'-->
+</Script>
+</HEAD>
+
+<BODY BGCOLOR="ffffff" LINK="cc0000" VLINK="666666">
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<Script Language="VBScript">
+<!--
+	SetNzPreferences()
+'-->
+</Script>
+
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE=0 VSPACE=0>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER valign=bottom colspan=5><IMG SRC="../../VSApps/graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../../VSApps/graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD>
+        <TD WIDTH=1 VALIGN=MIDDLE><img src="../../VSApps/graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../../VSApps/graphics/hd_services.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Digital ID Center Header"></TD>  
+        <TD WIDTH=1 VALIGN=MIDDLE><img src="../../VSApps/graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD>
+        <TD WIDTH=120 ALIGN=CENTER><img src="../../VSApps/graphics/logo_2.gif" ALT=""></TD>
+</TR>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../../VSApps/graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+<!--INSTRUCTIONAL TEXT-->
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<!--
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+    <A HREF="help/null.htm" target="help"><img src="../../VSApps/graphics/button_help_page.gif" width=145 height=26 
+    hspace=1 vspace=0 border=0 alt="Help with this Page"></a></TD>
+</TR>
+</TABLE>
+-->
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<P>
+
+<!--PAGE TITLE AND DIRECTIONS-->
+<TABLE WIDTH=588 BGCOLOR="ffffFF" CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588 colspan=7><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Congratulations!</B></FONT><BR>
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2><B>Digital Notarization client has been successfully installed.</B><BR></TD>
+</TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+<P>
+<!--MAIN CONTENT AREA-->
+<TABLE WIDTH=588 CELLPADDING=6 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD BGCOLOR="cccccc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Digital Notarization client</B></FONT><P>
+	 <CENTER>
+	<TABLE WIDTH=574 CELLPADDING=2 CELLSPACING=0 BORDER=0 BGCOLOR="ffffcc">
+	<TR>
+	<TD>
+        The Digital Notarization client has been successully installed. To use the client through a Web page, click <A HREF="notarizeMS.htm" >here</A>. You can also use the right-click context menu option that appears in the Windows explorer to digitally notarize documents on your machine.
+        <P>
+	</TD>
+	</TR>
+	</TABLE>
+	</TD>
+</TR>
+</TABLE>
+<p>
+
+<!--END MAIN CONTENT AREA-->
+
+
+<!-- continue button for the PTA -->
+<!-- VSSKBEGIN Apps/PTAv2#24 -->
+<!-- VSSKEND Apps/PTAv2#24 -->
+
+
+<!--PLACE HOLDER FOR SITEKIT BACK BUTTON-->
+
+<BR><P><BR>
+
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../../VSApps/graphics/logo_3.gif" ALT="VeriSign Trust Network"></TD>
+</TR>
+</TABLE>
+
+
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+</BODY>
+</HTML>		

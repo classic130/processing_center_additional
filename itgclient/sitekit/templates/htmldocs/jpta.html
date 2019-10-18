@@ -1,0 +1,109 @@
+<!-- $ VSSKTEMPLATEVERSION#1.0.0.0 $ jpta.htm
+
+-->
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta HTTP-EQUIV="Expires" CONTENT="NOW">
+<meta HTTP-EQUIV="last modified" CONTENT="NOW">
+<TITLE>JPTA</TITLE>
+<SCRIPT Language="JavaScript" src="client/copyright.js"></SCRIPT>
+</HEAD>
+
+
+
+<!-- VSSKEND Global/Mode#124 -->
+
+<BODY BGCOLOR="#ffffff" onload="runApplet()">
+
+<!--BEGIN PAGE CONTENT-->
+
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE=0 VSPACE=0>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER VALIGN=bottom COLSPAN=5><IMG SRC="graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=center><IMG SRC="graphics/logo_1.gif" WIDTH=100 HEIGHT=63></td>
+        <TD WIDTH=1 VALIGN=middle><IMG SRC="graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 HSPACE=0 VSPACE=0></td>
+        <TD WIDTH=358 ALIGN=center><IMG SRC="graphics/hd_digitalid.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Services"></td>
+        <TD WIDTH=1 VALIGN=middle><IMG SRC="graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 HSPACE=0 VSPACE=0></td>
+
+		<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#46 -->
+		<!-- VSSKEND Apps/PTAv2/GSWAClientType#46 -->
+
+</TR>
+<TR>
+        <TD WIDTH=600 ALIGN=center VALIGN=top COLSPAN=5><IMG SRC="graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+     <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+	   <A HREF="javascript:alertVersion()"><IMG SRC="graphics/button_about.gif" WIDTH=45 HEIGHT=25 HSPACE=1 VSPACE=0 BORDER=0 alt="Home Page"></A>
+       <A HREF="javascript:getHelp()" ><IMG SRC="graphics/button_help.gif" WIDTH=45 HEIGHT=25 HSPACE=1 VSPACE=0 BORDER=0 alt="Help"></A>
+     </TD>
+</TR>
+</TABLE>
+<Form name = proform></Form>
+</BODY>
+
+
+<SCRIPT>
+	function runApplet()
+	{
+		window.history.forward();
+		appletRef = waitUntilAppletIsReady();
+	}
+</SCRIPT>
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#48 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#48 -->
+<!--  23 July 2004: End Changes -->
+
+<!-- load waitUntilAppletReady function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	function alertVersion(){
+
+		appletRef = waitUntilAppletIsReady();
+		ptaVersion = appletRef.getVersion();
+		alert ("Verison of Java PTA is : "+ ptaVersion );
+	}
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+	function getHelp(){
+		appletRef = waitUntilAppletIsReady();
+		helpUrl = appletRef.getHelpPage();
+		window.open(helpUrl);
+
+	}
+</SCRIPT>
+
+<!-- load applet -->
+<!-- VSSKBEGIN Global/Mode#120 -->
+<!-- VSSKEND Global/Mode#120 -->
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480 ><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="client/copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG SRC="graphics/logo_3.gif" ALIGN="right" ALT="VeriSign Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+</HTML>
+

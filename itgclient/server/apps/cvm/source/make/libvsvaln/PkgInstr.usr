@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'dynamic'
+          ],
+          'itgclient/server/apps/cvm/source/make/libvsvaln',
+          'build/log/VerArchive'
+        ];

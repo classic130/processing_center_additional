@@ -1,0 +1,183 @@
+<!--  $ VSSKTEMPLATEVERSION#1.0.0.2 $ htmldocs/client/checkLibraryEncMS.htm
+
+-->
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE>Configuration Checker</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/System#16 -->
+<!-- VSSKEND Global/System#16 -->
+
+<!-- VSSKBEGIN Global/System#18 -->
+<!-- VSSKEND Global/System#18 -->
+
+<Script Language="JavaScript">
+<!--
+//if the browser is firefox check for browser navigate to index2.htm
+var browserName=navigator.appName;
+var browserNum=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1#default --
+//!-- VSSKEND Global/BrowserVersion --
+
+if (browserName == "Netscape")
+    {
+       if (browserNum < requiredBrowserNumNS )
+       {
+         self.location="./error/invalidBrowser.html";
+       }
+       else
+          self.location="userEnrollEncNS.htm";
+    }
+else
+    {
+       if (browserNum < requiredBrowserNumMS )
+       {
+         self.location="./error/invalidBrowser.html";
+       }
+    }
+//-->
+</script>
+
+<!-- VSSKBEGIN Global/Mode#17 -->
+<!-- VSSKEND Global/Mode#17 -->
+
+
+
+<SCRIPT LANGUAGE="VBScript">
+<!--
+Sub ConfigCheck
+
+	Dim fSuccess
+	Dim bCryptDllFound
+	Dim bAdvapiDllFound
+	Dim bCryptDllOk
+	Dim bAdvapiDllOk
+	Dim bEnhProvOk
+	Dim bEnhProvFixed
+	Dim szCryptVersion
+	Dim szAdvapiVersion
+	Dim szCryptOkVer 
+	Dim szAdvapiOkVer 
+	Dim retVal
+	Dim bCheckEnh
+	Dim browserName
+	Dim IsUserLogged
+
+	'!-- VSSKBEGIN Global/CryptVer#1 --
+	'!-- VSSKEND Global/CryptVer#1 --
+
+	bCryptDllFound = TRUE
+	bAdvapiDllFound = TRUE
+
+	szCryptVersion = ""
+	szAdvapiVersion = ""
+
+	'Get the version of the Crypt32.dll and see if it is high enough
+	On Error Resume Next
+	fSuccess = ConfChk.GetVersion("crypt32.dll",szCryptVersion)
+	If err.number <> 0 Then
+		Select Case CStr(Hex(err.number))
+		Case "1B6"
+			Call SetErrorInfo2("../fdf/VSApps/client/ExchangeErrors.fdf", "00000037", CStr(Hex(err.number)),"Configuration Check") 
+			exit sub
+		End Select
+	End If
+			
+	if fSuccess = 1 then
+	   retVal = ConfChk.VerCompare(szCryptVersion,szCryptOKVer)
+	   if retVal < 0 then
+	      bCryptDllOk = FALSE
+	   else
+	      bCryptDllOk = TRUE
+	   end if
+	else
+	   bCryptDllFound = FALSE
+	   bCryptDllOk = FALSE
+	end if
+
+	'Get the version of the advapi32.dll and see if it is high enough
+	fSuccess = ConfChk.GetVersion("advapi32.dll",szAdvapiVersion)
+	if fSuccess = 1 then
+	    retVal = ConfChk.VerCompare(szAdvapiVersion,szAdvapiOKVer)
+	    if retVal < 0 then
+	        bAdvapiDllOk = FALSE
+	    else
+	        bAdvapiDllOk = TRUE
+	    end if
+	else
+	   bAdvapiDllFound = FALSE
+	   bAdvapiDllOk = FALSE
+	end if
+
+	if bCheckEnh = 1 then
+	    'Check if the enhanced cryptograhic provider is present or not
+	    fSuccess = ConfChk.GetVersion("rsaenh.dll", szVersion)
+	    if fSuccess = 1 then
+	       'Check if the enhanced cryptographic provider is broken or not
+	       bEnhProvOk = ConfChk.CheckMSEnhCSP
+	       if bEnhProvOk <= 0 then
+	          bEnhProvOK = FALSE
+	          'Try to fix the enhanced cryptographic provider
+	           bEnhProvFixed = ConfChk.FixEnhCSP(szVersion)
+	           if bEnhProvFixed <= 0 then
+	              bEnhProvFixed = FALSE
+	              bEnhProvOk = FALSE
+	           else
+	              bEnhProvFixed = TRUE
+	              bEnhProvOk = TRUE
+	           end if
+	       else
+	           bEnhProvOk = TRUE
+	           bEnhProvFixed = TRUE
+	       end if
+	   else
+	       'Enhanced cryptographic provider is not installed on this system
+	       bEnhProvOk = TRUE
+	       bEnhProvFixed = TRUE
+	   end if
+	else
+	   bEnhProvOk = TRUE
+	end if
+
+	'-- VSSKBEGIN Enrollment/CSP#6 --
+	'-- VSSKEND Enrollment/CSP#6 --
+
+	'If system configuration is not good then display error dialog box
+	'else take the user to the enrollment page
+	if  (Not bCryptDllOk) Or (Not bAdvapiDllOk) Or (Not bEnhProvOk) Or (Not bKeyGen) then
+	    window.navigate("../error/outDatedDLL.htm")
+	else 
+	  IsUserLogged = ConfChk.ChkWindowsLogin
+	  if (IsUserLogged=0) then
+	     window.navigate("../error/notLoggedWin95.htm")
+	  end if
+
+	  if (IsUserLogged = -1) then
+	     MsgBox "An unexpected error occurred. Try restarting the browser before continuing."
+	  end if
+
+	  ' if everything is OK go to the enroll page...
+	  window.navigate("userEnrollEncMS.htm")
+	end if
+
+End Sub
+'-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<SCRIPT LANGUAGE="VBScript">
+       ConfigCheck
+</SCRIPT>
+
+</BODY>
+</HTML>

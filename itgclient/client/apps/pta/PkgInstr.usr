@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'VSAuthSmpl'
+          ],
+          'itgclient/client/apps/pta',
+          'build/log/VerArchive'
+        ];

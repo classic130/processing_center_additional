@@ -1,0 +1,23 @@
+#ServerRoot C:/iPlanet/Servers/https-sgogineni-pc1
+ServerID https-sgogineni-pc1
+ServerName sgogineni-pc1
+ExtraPath C:/iPlanet/Servers/bin/https/bin;${NSES_JRE_RUNTIME_LIBPATH}
+ErrorLog C:/iPlanet/Servers/https-sgogineni-pc1/logs/errors
+MtaHost name-of-mail-server
+DNS off
+Security on
+ClientLanguage en
+AdminLanguage en
+DefaultLanguage en
+RqThrottle 128
+
+Init fn=flex-init access="$accesslog" format.access="%Ses->client.ip% - %Req->vars.auth-user% [%SYSDATE%] \"%Req->reqpb.clf-request%\" %Req->srvhdrs.clf-status% %Req->srvhdrs.content-length%"
+Init fn=load-types mime-types=mime.types
+Init fn="load-modules" shlib="C:/iPlanet/Servers/bin/https/bin/NSServletPlugin.dll" funcs="NSServletEarlyInit,NSServletLateInit,NSServletNameTrans,NSServletService" shlib_flags="(global|now)"
+Init fn="NSServletEarlyInit" EarlyInit=yes
+Init fn="NSServletLateInit"  LateInit=yes
+
+# BEGIN-PTA-FOR-NETSCAPE-SERVERS
+Init fn="load-modules" funcs="vsSSCInit,vsSSCCheck,vsSSCSend" shlib="C:/iPlanet/Servers/bin/https/bin/libvsptan.dll"
+Init fn="vsSSCInit" option-file="C:/VeriSign/pta/config/options.txt"
+# END-PTA

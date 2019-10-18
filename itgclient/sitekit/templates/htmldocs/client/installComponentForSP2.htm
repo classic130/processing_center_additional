@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE> Install page </TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<Script language="JavaScript" Type="text/JavaScript" src="xpsp2.js"></Script>
+
+</HEAD>
+<SCRIPT>
+//Function to check whether the activex control is already installed
+function checkComponent()
+{
+		<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#53 -->
+		<!-- VSSKEND Apps/PTAv2/GSWAClientType#53 -->
+		<!-- VSSKBEGIN Enrollment/CertStore#38 -->
+		<!-- VSSKEND Enrollment/CertStore#38 -->
+		<!-- VSSKBEGIN Global/Mode#124 -->
+		<!-- VSSKEND Global/Mode#124 -->
+		<!-- VSSKBEGIN Apps/GSE#76 -->
+		<!-- VSSKEND Apps/GSE#76 -->
+		<!-- VSSKBEGIN Apps/GSE#77 -->
+		<!-- VSSKEND Apps/GSE#77 -->
+
+		return(temp);
+}
+
+//Function to redirect the flow after checking for the presence of activex control
+function check(){
+	var _flag=checkComponent();
+	if (_flag == 1){
+		window.open("../vsapps/digitalidcenter.htm","_self");
+	}
+	else{
+		document.write("<HTML><HEAD><TITLE> Install page </TITLE>");
+		document.write("<Script language=\"JavaScript\" Type=\"text/JavaScript\" src=\"xpsp2.js\"></Script\>");
+		document.write("</HEAD>");
+		document.write("<BODY BGCOLOR='#ffffff' LINK='#000066'>");
+		document.write("<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>");
+		document.write("<TR>");
+		document.write("<TD><FONT COLOR='#cc0000' FACE='verdana, arial, helvetica' SIZE=5><B>Install ActiveX Control</B></FONT><BR>");
+		document.write("</TD> ");
+		document.write("</TR>");
+		document.write('</TABLE>');
+		document.write("<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>");
+		document.write("<TR>");
+		document.write("<TD><FONT FACE='verdana, arial, helvetica' SIZE=2>");
+		document.write("You need to install the following VeriSign ActiveX Controls to proceed. Either ");
+		document.write("click the <font color='#cc0000'>Information Bar</font> above to start the automated installation process.");
+		document.write("You must install ALL ActiveX Controls to proceed");
+		document.write("<p><b>One or more of the following 4 ActiveX Controls will be installed based upon your configuration</b></p>");
+		document.write("<ol>");
+		document.write("<li>VeriSign Personal Trust Agent ActiveX Control</A></li><br><br>");
+		document.write("<li>VeriSign Go Secure! for Exchange ActiveX Control</A></li><br><br>");
+		document.write("<li>VeriSign Import Control</A></li><br><br>");
+		document.write("<li>VeriSign Attributes ActiveX Control</A></li><br><br>");
+		document.write("</ol>");
+		document.write("<p>");
+		document.write("If you do not wish to install VeriSign's ActiveX control click ");
+		document.write("<A HREF = 'error.htm'>cancel</A>.</p>");
+		document.write("</FONT></TD>");
+		document.write("</TR>");
+		document.write("</TABLE><P>&nbsp;</P>");
+		document.write("</BODY>");
+		document.write("</HTML>");
+	}
+}
+
+</SCRIPT>
+
+<BODY BGCOLOR="#ffffff" LINK="#000066" onLoad='check()'>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD><FONT COLOR="#cc0000" FACE="verdana, arial, helvetica" SIZE=5><B>Install ActiveX Control</B></FONT><BR></TD> 
+</TR>
+</TABLE>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+<TD><FONT FACE="verdana, arial, helvetica" SIZE=2>
+You need to install the following VeriSign ActiveX Controls to proceed. Either 
+click the <font color="#cc0000">Information Bar</font> above to start the automated installation process.
+You must install ALL ActiveX Controls to proceed.
+ 
+<p><b>One or more of the following 4 ActiveX Controls will be installed based upon your configuration</b></p>
+
+<ol>
+<li>VeriSign Personal Trust Agent ActiveX Control</li><br><br>
+<li>VeriSign Go Secure! for Exchange ActiveX Control</li><br><br>
+<li>VeriSign Import Control</li><br><br>
+<li>VeriSign Attributes ActiveX Control</li><br><br>
+</ol>
+<p>
+If you do not wish to install VeriSign's ActiveX control click 
+<A HREF = "error.html">cancel</A>.</p>
+</FONT></TD>
+</TR>
+</TABLE><P>&nbsp;</P>
+</BODY>
+</HTML>

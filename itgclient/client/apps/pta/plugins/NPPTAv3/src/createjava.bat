@@ -1,0 +1,3 @@
+javac -verbose -classpath ".;d:\pluginsdk\classes\java_30.zip;c:\program files\netscape\commun~1\program\java\classes\java40.jar" VSPTAv3.java
+d:\pluginsdk\bin\win32\javah -v -jri -classpath ".;d:\pluginsdk\classes\java_30.zip;c:\program files\netscape\commun~1\program\java\classes\java40.jar" VSPTAv3
+d:\pluginsdk\bin\win32\javah -v -jri -stubs -classpath ".;d:\pluginsdk\classes\java_30.zip;c:\program files\netscape\commun~1\program\java\classes\java40.jar" VSPTAv3

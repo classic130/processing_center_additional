@@ -1,0 +1,63 @@
+
+
+
+		README for JCSI 2.1.1 source-code release
+
+
+
+This is a release of a subset of the JDK 2.1.1 source code.
+
+The JCSI 2.1.1 Makefiles normally attempt to build the entire JDK 2.1.1 source 
+base and would fail when only a subset was found.  This release contains 
+versions of those Makefiles with the minimal modifications that were required
+to produce a working default "make" (or "make all").  Note that many of the 
+other targets in the Makefiles should NOT be expected to work with this subset.
+
+The Makefiles expect the environment variable JAVA_HOME to specify the 
+directory that contains a version of the JDK (e.g. /usr/java1.2 on Solaris).
+
+We recommend using JDK 1.2.x for builds rather than JDK 1.3.x -- if you use 
+JDK 1.3.x to build then the resulting classes will not run on JDK 1.2.x, 
+because JDK 1.3.x generates references to java.security.interfaces.RSAKey,
+which exists in JDK 1.3.x but not in JDK 1.2.x.
+
+(Normally we use JDK 1.2.2 ourselves, because of a Javadoc bug with multiple 
+"-link" options in JDK 1.2 and 1.2.1, but that isn't an issue for this subset).
+
+The normal JCSI binary distribution and sample code generally expect you to 
+modify jre/lib/security/java.security to add the JCSI provider(s) and perhaps
+to set the default keystore type to PKCS12.  This source release does NOT
+require you to make any such modifications in order to get it to build.
+
+The current Makefiles do not dependency-based rebuilding;  they are more like 
+a shell script that rebuilds everything that it is told to rebuild.  They also 
+do not automatically clean out the ./lib/classes build area, so if you delete 
+or move source files we recommend "make clean" before "make".  (The build 
+system and the source structure are slated to be overhauled in a future 
+release, most likely using Ant).  
+
+
+Commitment levels of com.dstc.* packages
+----------------------------------------
+
+JCSI packages that are included in the public JCSI javadoc, e.g. at
+
+		http://www.wedgetail.com/jcsi/2.1.1/apidocs/
+
+are considered to be public APIs and should mostly evolve gracefully in
+subsequent JCSI releases.
+
+JCSI packages that are not included in the public JCSI javadoc are considered
+private, and may change, be renamed, or be deleted in subsequent JCSI releases.
+This category includes, among others:
+
+			com.dstc.security.asn1
+			com.dstc.security.certpath
+			com.dstc.security.common
+			com.dstc.security.keymanage...
+			com.dstc.security.provider
+			com.dstc.security.util
+			com.dstc.security.x509...
+
+Most of these packages have already changed substantially for JCSI 2.2.
+

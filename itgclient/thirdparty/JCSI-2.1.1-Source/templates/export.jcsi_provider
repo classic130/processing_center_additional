@@ -1,0 +1,8 @@
+Extension-Name: com.dstc.security.provider
+Specification-Title: JCSI Provider for JCA, JCE etc
+Specification-Vendor: DSTC Pty Ltd
+Specification-Version: @JCSI_VERSION@    
+Implementation-Title: JCSI Provider for JCA, JCE etc
+Implementation-Vendor: DSTC Pty Ltd
+Implementation-Vendor-Id: com.dstc
+Implementation-Version: @JCSI_VERSION@    

@@ -1,0 +1,11 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'sparc',
+            'winnt',
+            'hpux'
+          ],
+          'itgclient/server/apps/cpm/bin/onsite_v4_5_1',
+          'build/log/VerArchive'
+        ];

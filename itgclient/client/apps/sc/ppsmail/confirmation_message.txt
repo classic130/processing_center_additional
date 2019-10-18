@@ -1,0 +1,49 @@
+<% var hosts;
+var loginUrl;
+var pkg = tw.currentPackage;
+var nonSslAvailable = tw.server.getConfigParameter( "TW_HTTP_NON_SSL" );
+
+// only use http if it is explicitly selected by admin + sender
+if (nonSslAvailable && !(pkg.securityOptions & tw.constant.TW_PACKAGE_SECURITY_SECURE_CONNECTION_DELIVERY)) {
+	loginUrl="http://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_HOSTS", pkg.locale );
+} else {
+	loginUrl="https://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_SECURE_HOSTS", pkg.locale );
+}
+
+if ( hosts.length > 0 ) {
+	loginUrl += hosts[Math.randomInteger() % hosts.length];
+}
+
+var address = tw.recipient.singleRecipient.address;
+if ( address.toLowerCase().indexOf("@aol.com") != -1 ) {
+    var buffer = "";
+    loginUrl = buffer.formatPositional("<A HREF=\"%1$s\">\n%2$s\n</A>", loginUrl, loginUrl);
+} %>
+
+Your New PrivatePath Service Account .................................................
+
+A PrivatePath Service Account has been created for you.
+
+Account Name: <%=tw.account.name;%>
+
+You may log in and start using this account at the following
+Web address:
+
+<%=loginUrl;%>
+
+......................................................................
+
+Need help accessing your new PrivatePath Service Account?
+
+*  If the Web address above is highlighted, click on it to open a
+   browser window. You will automatically be taken to the log in page.
+
+*  If the Web address above is not highlighted, follow these steps:
+   - Open a Web browser window.  
+   - Copy and paste the entire Web address into the "location" or 
+     "address" bar of the browser.
+   - Press enter.
+
+______________________________________________________________________

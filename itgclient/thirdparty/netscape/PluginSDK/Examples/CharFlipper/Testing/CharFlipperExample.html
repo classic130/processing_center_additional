@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+
+<TITLE>CharFlipper Example</TITLE>
+
+
+</HEAD>
+<BODY>
+<H2>What is CharFlipper?</H2>
+
+The CharFlipper example jumps through a lot of hoops to perform a simple
+task: it displays a series of characters specified in its source file.
+It jumps through so many hoops to demonstrate many different aspects of
+plugin development, including LiveConnect, EMBED tag parameters,
+cross-platform development with maximal code reuse, stream dispatching,
+and animation.<P>
+
+The CharFlipper example includes the TimeMediaPlugin java class, which
+is meant to be a reusable class with a standard interface for plugins
+that deal with time-media (animation, video, audio.)<P>
+
+<HR>
+<CENTER>
+<EMBED SRC="flip1.flip" ALIGN=CENTER WIDTH=100 HEIGHT=100 speed=60 autostart=true loop=true name ="flipper"><P>
+</CENTER>
+
+<form>
+<input	type=button
+		onclick="document.flipper.SetSource('flip1.flip');"
+		value="Use flip1.flip">
+
+<input	type=button
+		onclick="document.flipper.SetSource('flip2.flip');"
+		value="Use flip2.flip">
+
+<input	type=button
+		onclick="document.flipper.Start();"
+		value=Start>
+
+<input	type=button
+		onclick="document.flipper.Stop();"
+		value=stop>
+</form>
+
+</BODY>
+</HTML>

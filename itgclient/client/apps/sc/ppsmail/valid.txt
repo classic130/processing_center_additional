@@ -1,0 +1,46 @@
+<% var hosts;
+var baseUrl;
+var pkg = tw.currentPackage;
+var nonSslAvailable = tw.server.getConfigParameter( "TW_HTTP_NON_SSL" );
+
+// only use http if it is explicitly selected by admin + sender
+if (nonSslAvailable && !(pkg.securityOptions & tw.constant.TW_PACKAGE_SECURITY_SECURE_CONNECTION_DELIVERY)) {
+	baseUrl="http://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_HOSTS", pkg.locale );
+} else {
+	baseUrl="https://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_SECURE_HOSTS", pkg.locale );
+}
+
+var host;
+
+if ( hosts.length > 0 ) {
+    host = hosts[Math.randomInteger() % hosts.length];
+}
+
+var virtualUrl = tw.server.getConfigParameter( "TW_VIRTUAL_URL" );
+var url = baseUrl + host + virtualUrl + "?x="+ pkg.deliveryId;
+
+var address = tw.recipient.singleRecipient.address;
+if ( address.toLowerCase().indexOf("@aol.com") != -1 ) {
+    var buffer = "";
+    url = buffer.formatPositional("<A HREF=\"%1$s\">\n%2$s\n</A>", url, url);
+} %>
+
+-------------------------------------------------------------------
+You have been added as new Member to an existing PrivatePath Service Account by the Account Administrator:
+<% if (tw.account.SGMS_admin_firstName != "undefined") { %>
+	<%=tw.account.SGMS_admin_firstName;%> <%=tw.account.SGMS_admin_lastName;%>, <%=tw.account.SGMS_admin_address;%>
+<% }; %>
+Your membership in this account will allow you to send and receive secure messages.
+
+This message is to validate your new PrivatePath Service Membership:
+
+	<%=tw.account.name;%>
+
+Please activate your Membership by pointing your web browser to:
+
+<%=url;%>
+
+-------------------------------------------------------------------
+

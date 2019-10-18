@@ -1,0 +1,33 @@
+HKCR
+{
+	Ptav3.VSPTA.1 = s 'VSPTA Class'
+	{
+		CLSID = s '{6F7864F9-DB33-11D3-8166-0060B0F885E6}'
+	}
+	Ptav3.VSPTA = s 'VSPTA Class'
+	{
+		CLSID = s '{6F7864F9-DB33-11D3-8166-0060B0F885E6}'
+		CurVer = s 'Ptav3.VSPTA.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6F7864F9-DB33-11D3-8166-0060B0F885E6} = s 'VSPTA Class'
+		{
+			ProgID = s 'Ptav3.VSPTA.1'
+			VersionIndependentProgID = s 'Ptav3.VSPTA'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{6F7864EC-DB33-11D3-8166-0060B0F885E6}'
+			'Version' = s '1.0'
+		}
+	}
+}

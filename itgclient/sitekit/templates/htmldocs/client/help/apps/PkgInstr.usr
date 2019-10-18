@@ -1,0 +1,9 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'tutorial'
+          ],
+          'itgclient/sitekit/templates/htmldocs/client/help/apps',
+          'build/log/VerArchive'
+        ];

@@ -1,0 +1,10 @@
+#ifndef __VSFERRS_
+#define __VSFERRS_
+
+#define E_VSFEMPTYARGS					0x80003001
+#define E_VSFEINVALIDARGS				0x80003002
+#define	E_VSFEINVALIDRIVE				0x80003003
+#define	E_VSFEINVALIDPATH				0x80003004
+
+
+#endif	// __VSFERRS_

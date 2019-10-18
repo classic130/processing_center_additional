@@ -1,0 +1,128 @@
+<!-- $ VSSKTEMPLATEVERSION#1.0.0.0 $ transient.htm
+
+-->
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE>JPTA Create Profile</TITLE>
+<SCRIPT Language="JavaScript" src="client/copyright.js"></SCRIPT>
+</HEAD>
+
+<SCRIPT>
+	function runApplet()
+	{
+		 if(_info.indexOf("Sun")> 0)
+		 waitHandle = setInterval("waitApplet()",22000);
+		 else if(_info.indexOf("Linux")> 0)
+		 waitHandle = setInterval("waitApplet()",10000);
+		 else
+		 waitApplet()
+
+	  	 return true;
+
+	}
+	function waitApplet()
+	{
+
+		 if(_info.indexOf("Linux")> 0 || _info.indexOf("Sun")> 0)
+		 clearInterval(waitHandle);
+
+		appletRef = waitUntilAppletIsReady();
+
+		document.proform.mail_email.value = appletRef.getKey("mail_email");
+		document.proform.public_key.value = appletRef.getKey("USER_ENROLL");
+		document.proform.mail_firstName.value = appletRef.getKey("mail_firstName");
+		document.proform.mail_lastName.value = appletRef.getKey("mail_lastName");
+		document.proform.challenge.value = appletRef.getKey("challenge");
+		<!-- VSSKBEGIN Enrollment/PassCode#8 -->
+		<!-- VSSKEND Enrollment/PassCode#8 -->
+		<!-- VSSKBEGIN Enrollment/EmpID#8 -->
+		<!-- VSSKEND Enrollment/EmpID#8 -->
+
+		<!-- VSSKBEGIN Enrollment/JobTitle#8 -->
+		<!-- VSSKEND Enrollment/JobTitle#8 -->
+
+
+
+		<!-- VSSKBEGIN Enrollment/MailStop#8 -->
+		<!-- VSSKEND Enrollment/MailStop#8 -->
+
+
+		<!-- VSSKBEGIN Enrollment/Country#8 -->
+		<!-- VSSKEND Enrollment/Country#8 -->
+
+		<!-- VSSKBEGIN Enrollment/State#8 -->
+		<!-- VSSKEND Enrollment/State#8 -->
+
+		<!-- VSSKBEGIN Enrollment/Locality#8 -->
+		<!-- VSSKEND Enrollment/Locality#8 -->
+
+		<!-- VSSKBEGIN Enrollment/AddField4#8 -->
+		<!-- VSSKEND Enrollment/AddField4#8 -->
+
+
+		<!-- VSSKBEGIN Enrollment/AddField5#8 -->
+		<!-- VSSKEND Enrollment/AddField5#8 -->
+
+		<!-- VSSKBEGIN Enrollment/AddField6#8 -->
+		<!-- VSSKEND Enrollment/AddField6#8 -->
+
+
+		document.proform.submit();
+
+
+
+	}
+</SCRIPT>
+
+
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#51 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#51 -->
+<!--  23 July 2004: End Changes -->
+
+<!-- load waitUntilAppletReady function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+
+<!-- load applet -->
+<!-- VSSKBEGIN Global/Mode#120 -->
+<!-- VSSKEND Global/Mode#120 -->
+
+<BODY bgColor="#ffffff" onload="runApplet()">
+
+
+<!-- load applet -->
+<!-- VSSKBEGIN Global/Mode#1 -->
+<!-- VSSKEND Global/Mode#1 -->
+
+<input TYPE=hidden NAME=form_file VALUE="../fdf/VSApps/client/userEnrollJava.fdf">
+<INPUT TYPE=hidden NAME=public_key VALUE="">
+<INPUT TYPE=hidden NAME=enroll_track VALUE="MSIE">
+
+<INPUT NAME=mail_email VALUE="" TYPE=hidden>
+<INPUT NAME=mail_firstName VALUE="" TYPE=hidden>
+<INPUT NAME=mail_lastName VALUE="" TYPE=hidden>
+
+<INPUT NAME=employeeID VALUE="" TYPE=hidden>
+<INPUT NAME=cert_corp_company VALUE="" TYPE=hidden>
+<INPUT NAME=onsite_token VALUE="" TYPE=hidden>
+
+<INPUT NAME=jobTitle VALUE="" TYPE=hidden>
+<INPUT NAME=mailStop VALUE="" TYPE=hidden>
+<INPUT NAME=challenge VALUE="" TYPE=hidden>
+
+<INPUT NAME=country VALUE="" TYPE=hidden>
+<INPUT NAME=state VALUE="" TYPE=hidden>
+<INPUT NAME=locality VALUE="" TYPE=hidden>
+
+<INPUT NAME=additional_field4 VALUE="" TYPE=hidden>
+<INPUT NAME=additional_field5 VALUE="" TYPE=hidden>
+<INPUT NAME=additional_field6 VALUE="" TYPE=hidden>
+
+</FORM>
+
+</BODY>
+

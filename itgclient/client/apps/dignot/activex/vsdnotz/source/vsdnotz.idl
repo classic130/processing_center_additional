@@ -1,0 +1,61 @@
+// vsdnotz.idl : IDL source for vsdnotz.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (vsdnotz.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+import "source/nzuiprefs.idl";
+import "source/nzapprefs.idl";
+import "source/nzdllapi.idl";
+
+	[
+		object,
+		uuid(D66256E1-B99C-11D4-8C74-0010830169AF),
+		dual,
+		helpstring("IVSNZ Interface"),
+		pointer_default(unique)
+	]
+	interface IVSNZ : IDispatch
+	{
+		[id(1), helpstring("method Initialize")] HRESULT Initialize();
+		[id(2), helpstring("method Close")] HRESULT Close();
+		[propput, id(3), helpstring("property NotarizationServer")] HRESULT NotarizationServer([in] VARIANT newVal);
+		[propput, id(4), helpstring("property HashAlg")] HRESULT HashAlg([in] VARIANT newVal);
+		[propput, id(5), helpstring("property DisplayDigitalID")] HRESULT DisplayDigitalID([in] VARIANT newVal);
+		[propget, id(6), helpstring("property IVSNZPta")] HRESULT IVSNZPta([out, retval] IDispatch* *pVal);
+		[propget, id(7), helpstring("property IVSNZUIPrefs")] HRESULT IVSNZUIPrefs([out, retval] IDispatch* *pVal);
+		[propget, id(8), helpstring("property IVSNZAppPrefs")] HRESULT IVSNZAppPrefs([out, retval] IDispatch* *pVal);
+		[id(9), helpstring("method NotarizeDocument")] HRESULT NotarizeDocument(VARIANT* i_pvarDocument, VARIANT* i_pvarUIMask, VARIANT* i_pvarResponseType, [out, retval]VARIANT* o_pvarResponse);
+		[id(10), helpstring("method VerifyNotarizationRecord")] HRESULT VerifyNotarizationRecord(VARIANT* i_pvarRecord, VARIANT* i_pvarDocument, VARIANT* i_pvarRecordType,  VARIANT* i_pvarUIMask);
+		[propput, id(11), helpstring("property ValidationPreference")] HRESULT ValidationPreference([in] VARIANT newVal);
+		[propput, id(12), helpstring("property NotarizationDescription")] HRESULT NotarizationDescription([in] VARIANT newVal);
+		[id(13), helpstring("method AddNZCertificate")] HRESULT AddNZCertificate(VARIANT *i_pvarCertificate);
+		[propput, id(14), helpstring("property CRLLocation")] HRESULT CRLLocation([in] VARIANT newVal);
+		[id(15), helpstring("method NotarizeHash")] HRESULT NotarizeHash(VARIANT *i_pvarHash, VARIANT *i_pvarUIMask, [out, retval]VARIANT *o_pvarResponse);
+	};
+
+[
+	uuid(D66256D5-B99C-11D4-8C74-0010830169AF),
+	version(1.0),
+	helpstring("vsdnotz 1.0 Type Library")
+]
+library VSDNOTZLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(D66256E2-B99C-11D4-8C74-0010830169AF),
+		helpstring("VeriSign Digital Notarization Control")
+	]
+	coclass VSNZ
+	{
+		[default] interface IVSNZ;
+		interface IVSNZUIPrefs;
+		interface IVSNZAppPrefs;
+		interface IVSNZDllApi;
+	};
+};

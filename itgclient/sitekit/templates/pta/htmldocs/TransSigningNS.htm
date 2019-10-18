@@ -1,0 +1,418 @@
+
+<HEAD>
+<TITLE>Transaction Signing Template</TITLE>
+<!-- VSSKTEMPLATEVERSION#1.2.0.8 -->
+<SCRIPT Language="JavaScript">
+<!--
+   var browserNum=parseInt(navigator.appVersion);
+   var NSCP_IVSPTA;
+//-->
+</SCRIPT>
+
+<!-- VSSKBEGIN Apps/PTAv2#7 -->
+<!-- VSSKEND Apps/PTAv2#7 -->
+
+<!-- VSSKBEGIN Apps/PTAv2#2 -->
+<!-- VSSKEND Apps/PTAv2#2 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+</HEAD>
+<BODY>
+
+
+<SCRIPT language=JavaScript>
+<!--
+var Signature;	
+var StartDate; 	
+
+//-- VSSKBEGIN Global/Mode#30 --
+//-- VSSKEND Global/Mode#30 --
+  
+function GoToRenewDigitalIDJava() {
+  var RenewalUrl = hostName + "/VSApps/client/userRenewalNS.htm";
+  self.location =  RenewalUrl;
+}
+
+function SignUpJava() {
+  var EnrollUrl;
+  //-- VSSKBEGIN Apps/KeyManager#11 --
+  //-- VSSKEND Apps/KeyManager#11 --    
+  EnrollUrl = hostName + "/VSApps/client/" + EnrollPage;
+  self.location = EnrollUrl;
+}
+  
+ function CloseObjects(errCode, Operation, WinErrorCode)
+ {
+    RetVal = document.NSCP_IVSPTA.PTA_Close ();
+    if (errCode != 0) {
+        SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", ReBaseErrorCodeNS(errCode), ConvertToHexNS(WinErrorCode), Operation);
+        return;
+    }   
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {    
+      SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", "00000001", ConvertToHexNS(ErrorCode), "NSCP_IVSPTA.PTA_Close");
+    }
+     return;
+ }  
+
+  function SubmitJava()
+  {  
+	 CloseObjects(0, "", 0);
+	 document.theform.dataToSign.value = Msgg ;
+     document.theform.dataSignature.value = Signature ;
+     document.theform.submit () ;
+  }
+
+function PressedSignItJava() {
+ var choice;
+
+ //!-- VSSKBEGIN Apps/PTAv2#3 --
+ //!-- VSSKEND Apps/PTAv2#3 --
+
+if(browserNum < 5) {
+	StartDate = new java.util.Date(); 
+	Signature = new java.lang.StringBuffer() ;
+	document.NSCP_IVSPTA = document.ThePlugin;
+} else {
+	StartDate = new Date(); 
+	StartDate = StartDate.getTime();
+	Signature = new String() ;
+	document.NSCP_IVSPTA = document.ThePlugin.ns6IPTA;
+}
+
+ setMessage();
+
+ if (strCertStore == "1") {
+     document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 0) ;
+ }
+ else {
+     document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 1) ;
+ }	
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+     CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.PTA_Initialize", ErrorCode);
+     return ;
+ }
+
+ // Initialize the IssuerDN
+ document.NSCP_IVSPTA.set_SrchCrit_IssuerDN(strCertIssuerDN) ;
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+     CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_SrchCrit_IssuerDN", ErrorCode);
+     return ;
+ }		
+
+ EXP_DATE_GREATER_THAN = 0x20 ;
+ EXP_DATE_EQUALTO      = 0x10 ;
+ EXP_DATE_LESS_THAN    = 0x08 ;
+ EFF_DATE_GREATER_THAN = 0x04 ;
+ EFF_DATE_EQUALTO      = 0x02 ;
+ EFF_DATE_LESS_THAN    = 0x01 ;
+
+ // Initialize the Certificate Search Criterion "Date Equality"
+ document.NSCP_IVSPTA.set_SrchCrit_DateEquality(EXP_DATE_GREATER_THAN) ;
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+    CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_SrchCrit_DateEquality", ErrorCode);
+    return ;
+ }
+
+ // Initialize the Certificate Search Criterion "Expiry Date"
+ // to the CURRENT DATE.
+ document.NSCP_IVSPTA.set_SrchCrit_ExpDate(StartDate) ;
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+    CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_SrchCrit_ExpDate", ErrorCode);
+    return ;
+ }
+		
+ document.NSCP_IVSPTA.set_SrchCrit_Renewed(false) ;
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+    CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_SrchCrit_Renewed", ErrorCode);
+    return ;
+ }
+
+ // set the UI preferences
+ if (strSignWizardTitle[0] != null){
+     document.NSCP_IVSPTA.set_UIPrefs_LgnDlg_Title(strLoginWizardTitle) ;
+     if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+        CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_LgnDlg_Title", ErrorCode);
+        return ;
+     }
+ }
+ 
+ // Initialize the open profile preferences
+ if (strCertStore == "1") {	   
+    if (strSignChooseTitle[0] != null){
+       document.NSCP_IVSPTA.set_UIPrefs_OpenProf_Title(strSignChooseTitle) ;
+       if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+           CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_OpenProf_Title", ErrorCode);
+            return ;
+        }
+     }
+     if (strSignChooseText[0] != null){
+        document.NSCP_IVSPTA.set_UIPrefs_OpenProf_Text(strSignChooseText) ;
+        if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+           CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_OpenProf_Text", ErrorCode);
+           return ;
+        }
+     }
+     if (strSignChooseHelpUrl[0] != null){
+        document.NSCP_IVSPTA.set_UIPrefs_OpenProf_HelpUrl(strSignChooseHelpUrl) ;
+        if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+           CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_OpenProf_HelpUrl", ErrorCode);
+           return ;
+        }
+     }
+     if (strUnLockHelpUrl[0] != null){
+        document.NSCP_IVSPTA.set_UIPrefs_Timeout_HelpUrl(strUnLockHelpUrl) ;
+        if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+           CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_Timeout_HelpUrl", ErrorCode);
+           return ;
+        }
+     }
+     OPENPROF_OPEN_ONLY = 529;
+     E_CARDALREADYOPEN = 0x8000102F;
+     document.NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags(OPENPROF_OPEN_ONLY) ;
+     if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != E_CARDALREADYOPEN )) {
+        CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags", ErrorCode);
+        return ;
+     }       
+
+      //-- VSSKBEGIN Apps/PTAv2/Roaming#5 -- 
+      //-- VSSKEND Apps/PTAv2/Roaming#5 --
+
+ } // done setting open profile preferences 
+
+ 
+ // set the select id preferences
+ if (strSignTitle[0] != null){
+    document.NSCP_IVSPTA.set_UIPrefs_SelID_Title(strSignTitle) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_SelID_Title", ErrorCode);
+      return ;
+    }
+ }
+
+ if (strSignText[0] != null){
+    document.NSCP_IVSPTA.set_UIPrefs_SelID_Text(strLoginText) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_SelID_Text", ErrorCode);
+      return ;
+    }
+ }
+ 
+ if (strSignHelpUrl[0] != null){
+    document.NSCP_IVSPTA.set_UIPrefs_SelID_HelpUrl(strSignHelpUrl) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_SelID_HelpUrl", ErrorCode);
+      return ;
+    }
+ }
+
+ document.NSCP_IVSPTA.set_UIPrefs_SelID_ShowDefChkBox(false) ;
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+    CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_SelID_ShowDefChkBox", ErrorCode);
+    return ;
+ }
+ 
+ //alert ("before setting ok button text for SelID");
+ document.NSCP_IVSPTA.set_UIPrefs_SelID_OKBtnText(122) ;
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+    CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_SelID_OKBtnText", ErrorCode);
+    return ;
+ }
+//alert ("after setting ok button text for SelID");
+ if (strReviewTitle[0] != null){
+    document.NSCP_IVSPTA.set_UIPrefs_RvwMsg_Title(strReviewTitle) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_RvwMsg_Title", ErrorCode);
+      return ;
+    }
+ }
+
+ if (strReviewText[0] != null){
+    document.NSCP_IVSPTA.set_UIPrefs_RvwMsg_Text(strReviewText) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_RvwMsg_Text", ErrorCode);
+      return ;
+    }
+ }
+ 
+ document.NSCP_IVSPTA.set_UIPrefs_RvwMsg_OKBtnText(123) ;
+ if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+    CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_RvwMsg_OKBtnText", ErrorCode);
+    return ;
+ }
+
+ if (strReviewHelpUrl[0] != null){
+    document.NSCP_IVSPTA.set_UIPrefs_RvwMsg_HelpUrl(strReviewHelpUrl) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_RvwMsg_HelpUrl", ErrorCode);
+      return ;
+    }
+ }
+ if (strAppLogoUrl[0] != null){
+    document.NSCP_IVSPTA.set_UIPrefs_UILogoUrl(strAppLogoUrl) ;
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_UIPrefs_UILogoUrl", ErrorCode);
+      return ;
+    }
+ }
+
+ if ( (strAffiliateLogoUrl[0] != null) && (strAffiliateLogoUrl != "VeriSign") ){
+   document.NSCP_IVSPTA.set_PTA_AffLogoUrl(strAffiliateLogoUrl) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != 0x800010c4)) {
+      CloseObjects(ErrorCode, "Transaction Signing::NSCP_IVSPTA.set_PTA_AffLogoUrl", ErrorCode);
+      return;
+   }
+ }
+
+ MD5 = 3 ;
+ SHA1 = 4;
+				
+ VS_CERTNOMATCHCRIT = 0x80001095;
+ VS_CERTMATCHBUTEXP = 0x80001096;
+ VS_SUCCESS = 0x00000000;
+ VS_PROFDOESNOTEXIST = 0x8000102B;
+ VS_USER_CANCELLED = 0x80001067;
+ VS_CERTNOTFOUND = 0x80001091;
+ VS_HTMLMSG_DEF_COLORDIFF = 0x8000110C;
+
+ 		
+ // Sign the message
+ Signature = document.NSCP_IVSPTA.PTA_SignTransaction(Msgg, MD5) ;
+ RetVal = document.NSCP_IVSPTA.GetLastError();
+ 
+ if (RetVal != 0) {
+    if (RetVal == VS_CERTMATCHBUTEXP ) {
+       alert("You do not have a valid Digital ID. \nNow the PTA will try to renew your expired Digital IDs.");
+       CloseObjects(0, "", 0);
+       GoToRenewDigitalIDJava();
+       return;
+    } else 
+    if ( (RetVal == VS_CERTNOMATCHCRIT) || (RetVal == VS_PROFDOESNOTEXIST) || (RetVal == VS_CERTNOTFOUND)) {
+         EnrollState = confirm("You do not have a valid Digital ID.\nWould you like to enroll for a Digital ID at this time?") ;
+         if ( EnrollState == true ) {
+             CloseObjects(0, "", 0);
+	         SignUpJava();
+			 return;
+         }
+    }else 
+    if (RetVal == VS_USER_CANCELLED) {
+        alert ("You have cancelled the operation.\nPlease click submit again to continue.");
+        CloseObjects(0, "", 0);
+        return;
+    } else 
+    if (RetVal == VS_HTMLMSG_DEF_COLORDIFF ) {
+       alert("Your current browser settings prevent us \nfrom displaying your transaction.");
+       CloseObjects(0, "", 0);
+       return;
+    } else {
+        CloseObjects (RetVal, "Transaction Signing::IVSPTA.SignTransaction", RetVal);
+        return;
+    }       
+ }
+ else
+ {
+        // alert("Your cert is cool ...") ;
+        SubmitJava() ; 
+ }
+}
+//-->
+
+</SCRIPT>
+
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+
+<FORM action=../protected-cgi/sophialite.exe onsubmit="PressedSignItJava()" method=post name=theform>
+
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=TOP>
+<FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Transfer Funds</B></FONT></TD>
+</TABLE>
+
+<TABLE WIDTH=588 BGCOLOR="ffffcc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+      <TD WIDTH=588>
+<FONT SIZE=2 FACE="verdana, arial, helvetica"><B>Transaction Details</B></FONT><BR><P>
+<CENTER>
+        
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffffcc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Transfer($)</B></FONT></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">From</TD>               
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffffcc">To</TD>             
+</TR>
+
+<TR>
+<TD WIDTH=34% BGCOLOR="ffcc00"><INPUT maxLength=12 name=MyMessage onblur=setMessage() size=12></TD>
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=from onchange=setFromTo() size=1> 
+    <OPTION selected>Money Market
+    <OPTION>Cash
+    <OPTION>Mutual Fund
+    </OPTION>
+ </SELECT>
+</TD>               
+<TD COLSPAN=2 WIDTH=33% BGCOLOR="ffcc00">
+ <SELECT name=to onchange=setFromTo() size=1> 
+   <OPTION>Money Market
+   <OPTION selected>Cash
+   <OPTION>Mutual Fund</OPTION>
+ </SELECT> 
+</TD>             
+</TR>
+
+<TR>
+<TD COLSPAN=2 WIDTH=100% BGCOLOR="ffffcc"><INPUT name=SignIt type=submit value="Submit Transfer">  </TD>             
+</TR>
+
+
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+<P><BR><P>
+
+<INPUT TYPE="hidden" NAME="form_file" VALUE="../fdf/rsaverify.fdf">
+<INPUT name=dataSignature type=hidden> <INPUT name=dataToSign type=hidden> 
+</FORM>
+
+<SCRIPT language=javascript>
+function setMessage ()
+{
+//		Msgg = document.theform.MyMessage.value + "," + document.theform.from[document.theform.from.selectedIndex].text + "," + document.theform.to[document.theform.to.selectedIndex].text;
+Msgg = "<table width=100%>" +
+"<TR align=center><TH COLSPAN=3>Transfer Funds Request</TH></TR>" +
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">TRANSFER FROM</FONT></TD>" + 
+	"<TD>..........</TD>" + 
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.from[document.theform.from.selectedIndex].text + "</B></FONT></TD>" +
+"</TR>"+
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">TRANSFER TO</FONT></TD>" + 
+	"<TD>..........</TD>" + 
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.to[document.theform.to.selectedIndex].text+ "</B></FONT></TD>" +
+"</TR>"+
+"<TR>"+
+	"<TD ALIGN=RIGHT><FONT COLOR=\"#0000FF\" SIZE=-1 FACE=\"Courier\">AMOUNT</FONT></TD>" + 
+	"<TD>..........</TD>" + 
+	"<TD><FONT SIZE=-1 FACE=\"Courier\"><B>" +document.theform.MyMessage.value+ "</B></FONT></TD>" +
+"</TR>"+
+"</table>"+
+"<BR>" + 
+"I am authorizing the transfer of the above funds <B>by digitally signing </B> this request.";
+}
+
+function setFromTo()
+{
+parent.theFrom = document.theform.from[document.theform.from.selectedIndex].text
+parent.theTo = document.theform.to[document.theform.to.selectedIndex].text
+
+}
+</SCRIPT>
+</P></BODY></HTML>

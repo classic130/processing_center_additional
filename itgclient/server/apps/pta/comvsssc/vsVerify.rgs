@@ -1,0 +1,24 @@
+HKCR
+{
+	Comvsssc.vsVerify.1 = s 'vsVerify Class'
+	{
+		CLSID = s '{DB314068-B552-4EF9-97D6-05F97D659C08}'
+	}
+	Comvsssc.vsVerify = s 'vsVerify Class'
+	{
+		CLSID = s '{DB314068-B552-4EF9-97D6-05F97D659C08}'
+		CurVer = s 'Comvsssc.vsVerify.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DB314068-B552-4EF9-97D6-05F97D659C08} = s 'vsVerify Class'
+		{
+			ProgID = s 'Comvsssc.vsVerify.1'
+			VersionIndependentProgID = s 'Comvsssc.vsVerify'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{AD748C1A-433B-4223-A788-35FBDFA66A5D}'
+			'TypeLib' = s '{CEAB2106-8765-4D02-A1D6-94EA7FAE4625}'
+		}
+	}
+}

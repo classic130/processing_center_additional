@@ -1,0 +1,33 @@
+; Ptav3.def : Declares the module parameters.
+
+LIBRARY      "Ptav3.DLL"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer	PRIVATE
+	DllInitialize
+		CPAcquireContext 
+		CPCreateHash 
+		CPDecrypt 
+		CPDeriveKey 
+		CPDestroyHash 
+		CPDestroyKey 
+		CPEncrypt 
+		CPExportKey 
+		CPGenKey 
+		CPGenRandom 
+		CPGetHashParam 
+		CPGetKeyParam 
+		CPGetProvParam 
+		CPGetUserKey 
+		CPHashData 
+		CPHashSessionKey 
+		CPImportKey 
+		CPReleaseContext 
+		CPSetHashParam 
+		CPSetKeyParam 
+		CPSetProvParam 
+		CPSignHash 
+		CPVerifySignature 

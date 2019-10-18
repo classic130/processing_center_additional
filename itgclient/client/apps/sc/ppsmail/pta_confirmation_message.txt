@@ -1,0 +1,69 @@
+<% var hosts;
+var loginUrl;
+var login_url_postfix;
+var pkg = tw.currentPackage;
+var nonSslAvailable = tw.server.getConfigParameter( "TW_HTTP_NON_SSL" );
+
+// only use http if it is explicitly selected by admin + sender
+if (nonSslAvailable && !(pkg.securityOptions & tw.constant.TW_PACKAGE_SECURITY_SECURE_CONNECTION_DELIVERY)) {
+	loginUrl="http://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_HOSTS", pkg.locale );
+} else {
+	loginUrl="https://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_SECURE_HOSTS", pkg.locale );
+
+	var		effective = tw.account.effectiveCapabilities;
+
+	var authenticationMethod;
+	authenticationMethod = effective.authenticationMethod;
+}
+
+if ( hosts.length > 0 ) {
+	loginUrl += hosts[Math.randomInteger() % hosts.length];
+}
+
+if ( authenticationMethod == "TW_AUTHENTICATION_METHOD_PTA" ) {
+
+  var pta_virtual_urls 	= tw.server.getConfigParameter( "TW_CERTIFICATE_BASED_LOGIN_VIRTUAL_URLS", pkg.locale );
+  var pta_virtual_url;
+
+  if ( pta_virtual_urls.length > 0 ) {
+    pta_virtual_url = pta_virtual_urls[Math.randomInteger() % pta_virtual_urls.length];
+  }else {
+    pta_virtual_url = "";
+  }
+
+  loginUrl += pta_virtual_url;
+}
+
+var address = tw.recipient.singleRecipient.address;
+if ( address.toLowerCase().indexOf("@aol.com") != -1 ) {
+    var buffer = "";
+    loginUrl = buffer.formatPositional("<A HREF=\"%1$s\">\n%2$s\n</A>", loginUrl, loginUrl);
+} %>
+
+Your New PrivatePath Service Account .................................................
+
+A PrivatePath Service Account has been created for you.
+
+Account Name: <%=tw.account.name;%>
+
+You may log in and start using this account at the following
+Web address:
+
+<%=loginUrl;%>
+
+......................................................................
+
+Need help accessing your new PrivatePath Service Account?
+
+*  If the Web address above is highlighted, click on it to open a
+   browser window. You will automatically be taken to the log in page.
+
+*  If the Web address above is not highlighted, follow these steps:
+   - Open a Web browser window.  
+   - Copy and paste the entire Web address into the "location" or 
+     "address" bar of the browser.
+   - Press enter.
+
+______________________________________________________________________

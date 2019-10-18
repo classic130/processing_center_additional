@@ -1,0 +1,100 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: vsexchange - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/resource.res" /d "NDEBUG" "D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\resource.rc"" 
+Creating temporary file "D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D0.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "./include" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "VSEXCHANGE_EXPORTS" /FR"Release/" /Fp"Release/vsexchange.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsaanls.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsaautil.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsexchangeutil.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vslog.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsutil.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsverifyexchange.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D0.tmp" 
+Creating temporary file "D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D1.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  wldap32.lib advapi32.lib ws2_32.lib /nologo /dll /incremental:no /pdb:"Release/vsexchange.pdb" /machine:I386 /def:".\vsexchange.def" /out:"Release/vsexchange.dll" /implib:"Release/vsexchange.lib" 
+.\Release\vsaanls.obj
+.\Release\vsaautil.obj
+.\Release\vsexchangeutil.obj
+.\Release\vslog.obj
+.\Release\vsutil.obj
+.\Release\vsverifyexchange.obj
+.\Release\resource.res
+]
+Creating command line "link.exe @D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D1.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+vsaanls.cpp
+vsaautil.cpp
+vsexchangeutil.cpp
+D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsexchangeutil.cpp(444) : warning C4018: '<' : signed/unsigned mismatch
+vslog.cpp
+vsutil.cpp
+vsverifyexchange.cpp
+Linking...
+   Creating library Release/vsexchange.lib and object Release/vsexchange.exp
+Creating command line "bscmake.exe /nologo /o"Release/vsexchange.bsc"  .\Release\vsaanls.sbr .\Release\vsaautil.sbr .\Release\vsexchangeutil.sbr .\Release\vslog.sbr .\Release\vsutil.sbr .\Release\vsverifyexchange.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+vsexchange.dll - 0 error(s), 1 warning(s)
+<h3>
+--------------------Configuration: vsexchange - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/resource.res" /d "_DEBUG" "D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\resource.rc"" 
+Creating temporary file "D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D8.tmp" with contents
+[
+/nologo /MD /W3 /GX /ZI /Od /I ".\include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "VSEXCHANGE_EXPORTS" /Fp"Debug/vsexchange.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsaanls.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsaautil.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsexchangeutil.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vslog.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsutil.cpp"
+"D:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsverifyexchange.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D8.tmp" 
+Creating temporary file "D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D9.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  wldap32.lib advapi32.lib ws2_32.lib /nologo /dll /incremental:yes /pdb:"Debug/vsexchange.pdb" /debug /machine:I386 /def:".\vsexchange.def" /out:"Debug/vsexchange.dll" /implib:"Debug/vsexchange.lib" /pdbtype:sept 
+.\Debug\vsaanls.obj
+.\Debug\vsaautil.obj
+.\Debug\vsexchangeutil.obj
+.\Debug\vslog.obj
+.\Debug\vsutil.obj
+.\Debug\vsverifyexchange.obj
+.\Debug\resource.res
+]
+Creating command line "link.exe @D:\DOCUME~1\npaul\LOCALS~1\Temp\RSP4D9.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+vsaanls.cpp
+vsaautil.cpp
+vsexchangeutil.cpp
+d:\work\nar_061203_gse60\itgclient\server\apps\exchange\vsexchange\vsexchangeutil.cpp(444) : warning C4018: '<' : signed/unsigned mismatch
+vslog.cpp
+vsutil.cpp
+vsverifyexchange.cpp
+Linking...
+   Creating library Debug/vsexchange.lib and object Debug/vsexchange.exp
+
+
+
+<h3>Results</h3>
+vsexchange.dll - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

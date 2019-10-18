@@ -1,0 +1,12 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'cgi-bin',
+            'htmldocs',
+            'config',
+            'fdf'
+          ],
+          'itgclient/sitekit/templates/pta',
+          'build/log/VerArchive'
+        ];

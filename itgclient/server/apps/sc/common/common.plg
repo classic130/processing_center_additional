@@ -1,0 +1,31 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: common - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\TEMP\RSP9.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /I "include" /I "..\..\..\..\common\simder\include" /I "..\..\..\..\client\apps\pta\activex\ptav3\include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /FR"Debug/" /Fp"Debug/common.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\SecureMsg\itgclient\server\apps\sc\common\sources\charutils.cpp"
+"D:\SecureMsg\itgclient\server\apps\sc\common\sources\certinfo.cpp"
+"D:\SecureMsg\itgclient\server\apps\sc\common\sources\vsstring.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP9.tmp" 
+Creating command line "link.exe -lib /nologo /out:"lib/debug\common.lib"  .\Debug\charutils.obj .\Debug\certinfo.obj .\Debug\vsstring.obj "
+<h3>Output Window</h3>
+Compiling...
+charutils.cpp
+certinfo.cpp
+vsstring.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+common.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,27 @@
+// AttachInfo.cpp: implementation of the CAttachInfo class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+//#include "vssc.h"
+#include "AttachInfo.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CAttachInfo::CAttachInfo()
+{
+
+}
+
+CAttachInfo::~CAttachInfo()
+{
+
+}

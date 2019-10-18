@@ -1,0 +1,14 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'source',
+            'tools',
+            'bin',
+            'examples',
+            'config',
+            'comvsssc'
+          ],
+          'itgclient/server/apps/pta',
+          'build/log/VerArchive'
+        ];

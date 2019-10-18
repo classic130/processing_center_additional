@@ -1,0 +1,27 @@
+##
+## Configuration options used by the Netegrity SiteMinder Auth Module 
+##
+
+log-security="1"
+digest-alg="MD5"
+
+no-crl-check="1"
+
+cfg-filename="/VeriSign/pta/config/rsaverify.cfg"
+file-prefix="/VeriSign/pta/certcache/"
+url-prefix="http://crl.verisign.com/"
+cache-dir="/VeriSign/pta/certcache/"
+
+#ocsp-url="http://ocsp.verisign.com"
+
+no-check-chain="1"
+
+
+sm-login-url="https://<Your-Web-Agent-Server>/siteminderagent/forms/ptaSmLogin.fcc"
+sm-log-file="/VeriSign/pta/log/smpta.log"
+htable-size="12"
+
+# add your server name 
+server-name="<Your-Web-Agent-Server>"
+
+## End Config options used by SiteMinder Auth Module

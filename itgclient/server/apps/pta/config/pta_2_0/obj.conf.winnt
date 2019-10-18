@@ -1,0 +1,77 @@
+# Sun Netscape Alliance - obj.conf
+# You can edit this file, but comments and formatting changes
+# might be lost when the admin server makes changes.
+
+# Use only forward slashes in pathnames--backslashes can cause
+# problems. See the documentation for more information.
+
+<Object name="default">
+NameTrans fn="NSServletNameTrans" name="servlet"
+NameTrans fn="pfx2dir" from="/servlet" dir="$docroot/servlet" name="ServletByExt"
+NameTrans fn="pfx2dir" from="/mc-icons" dir="C:/iPlanet/Servers/ns-icons" name="es-internal"
+NameTrans fn="pfx2dir" from="/cgi-bin" dir="C:/VeriSign/pta/cgi-bin" name="shellcgi"
+NameTrans fn="pfx2dir" from="/manual" dir="C:/iPlanet/Servers/manual/https" name="es-internal"
+
+# BEGIN-PTA
+NameTrans fn="pfx2dir" from="/protected" dir="C:/VeriSign/pta/htmldocs" name="protected"
+NameTrans fn="pfx2dir" from="/protected-cgi" dir="C:/VeriSign/pta/cgi-bin" name="protected-cgi"
+NameTrans fn="assign-name" from="/vsadmin/*" name="protected"
+# END-PTA
+
+NameTrans fn="document-root" root="$docroot"
+PathCheck fn="nt-uri-clean"
+PathCheck fn="check-acl" acl="default"
+PathCheck fn="find-pathinfo"
+PathCheck fn="find-index" index-names="index.html,home.html"
+ObjectType fn="type-by-extension"
+ObjectType fn="force-type" type="text/plain"
+Service type="magnus-internal/jsp" fn="NSServletService"
+Service method="(GET|HEAD)" type="magnus-internal/imagemap" fn="imagemap"
+Service method="(GET|HEAD)" type="magnus-internal/directory" fn="index-common"
+Service fn="send-shellcgi" type="magnus-internal/shellcgi"
+Service method="(GET|HEAD|POST)" type="*~magnus-internal/*" fn="send-file"
+AddLog fn="flex-log" name="access"
+</Object>
+
+<Object name="cgi">
+ObjectType fn="force-type" type="magnus-internal/cgi"
+Service fn="send-cgi"
+</Object>
+
+<Object name="servlet">
+ObjectType fn="force-type" type="text/html"
+Service fn="NSServletService"
+</Object>
+
+<Object name="jsp092">
+ObjectType fn="type-by-extension"
+ObjectType fn="change-type" type="magnus-internal/jsp092" if-type="magnus-internal/jsp"
+Service fn="NSServletService" type="magnus-internal/jsp092"
+</Object>
+
+<Object name="ServletByExt">
+ObjectType fn="force-type" type="magnus-internal/servlet"
+Service type="magnus-internal/servlet" fn="NSServletService"
+</Object>
+
+<Object name="es-internal">
+PathCheck fn="check-acl" acl="es-internal"
+</Object>
+
+# BEGIN-PTA
+<Object name="protected-cgi">
+AuthTrans fn="vsSSCCheck"
+ObjectType fn="force-type" type="magnus-internal/cgi"
+Service type="*" fn="vsSSCSend"
+Service fn="send-cgi"
+</Object>
+
+<Object name="protected">
+AuthTrans fn="vsSSCCheck"
+PathCheck fn="find-index" index-names="index.html,home.html"
+ObjectType fn="type-by-extension"
+Service type="*" fn="vsSSCSend"
+</Object>
+# END-PTA
+
+

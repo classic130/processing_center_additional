@@ -1,0 +1,5 @@
+Class-Path: jcsi_base.jar
+Extension-List: jcsi_base
+jcsi_base-Extension-Name: com.dstc.security.common
+jcsi_base-Specification-Version: @JCSI_VERSION@
+jcsi_base-Implementation-URL: jcsi_base.jar

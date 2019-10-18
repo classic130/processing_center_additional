@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+   <TITLE>Digital Signatures</TITLE>
+<SCRIPT Language="JavaScript" src="/client/copyright.js"></SCRIPT>
+	<META NAME="robots" CONTENT="noindex">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#CC0000" VLINK="#666666">
+
+
+<!--BEGIN PAGE CONTENT-->
+
+
+<TABLE WIDTH="94%">
+<TR>
+<TD>
+
+
+<!-- HEADING -->
+	<FONT FACE="VERDANA, ARIAL, HELVETICA" COLOR="#000066" SIZE=+1><B> How does a digital signature work?</B></FONT>
+<!-- END HEADING -->
+
+<P>
+
+<!-- CONTENT -->
+
+
+<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE=2>
+
+When you use an application to digitally sign a message, you are basically attaching the public
+part of your Digital ID to the message along with other information that ensures the integrity of
+your e-mail message.
+
+<P>
+
+Before the e-mail message and Digital ID are sent, the message goes through an encoding process,
+called a <A HREF="hash.htm"><I>hash algorithm</I></A>, whereby the message you are sending is used to mathematically
+generate a set of characters (letters and numbers) that could only be created by your exact message.
+This set of characters is called a <A HREF="msgdigest.htm"><I>message digest</I></A>.
+
+<P>
+
+It is important to know that the hash algorithm works quickly in one direction and is very difficult
+to work in reverse. That is, your e-mail application can take your e-mail message, run it through
+the hash algorithm, and quickly create a unique message digest. However, if given just the message
+digest, it would take years to decipher the e-mail message.
+
+<P>
+
+Once the e-mail application creates the message digest, it uses your private key to encrypt the
+message digest. This is critical. If you were to send the e-mail and the message digest, someone
+could easily change your message text, recreate the message digest, and then send that along as if
+it came from you.
+
+<P>
+
+Your e-mail application sends the e-mail with the Digital ID and encrypted message digest as
+attachments. Note that none of the e-mail message text is sent encrypted. So if someone wanted
+to, they could still read the contents of your message.
+
+<P>
+
+When someone receives your e-mail message, their application uses your Digital ID (the public
+key) to decrypt the message digest. Then the application runs your e-mail text through the same
+hash algorithm that your application used. It then compares the results (the message digests). If
+the message digests that it created matches the one attached to your e-mail, then the message text
+was not tampered with during the transfer from your computer to theirs.
+
+<P>
+
+For more information, see the section on public and private keys.
+
+<P>
+
+
+
+<P>
+
+
+
+</TD>
+</TR>
+</TABLE>
+
+<!-- END CONTENT -->
+
+
+<!-- VSSKBEGIN Copyright#1 -->
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../../graphics/dot_grey.gif" WIDTH=94% HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=94% CELLPADDING=2 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=480 VALIGN="TOP">
+		<FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="../../copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+
+        <TD WIDTH=120 VALIGN="TOP" ALIGN="RIGHT">
+		<!-- VSSKBEGIN LOGO3#2 -->
+        <IMG ALIGN="right" SRC="../../graphics/logo3.gif" ALT="Logo">
+		<!-- VSSKEND LOGO3#2 -->
+		</TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<!-- VSSKEND Copyright#1 -->
+
+</BODY>
+</HTML>

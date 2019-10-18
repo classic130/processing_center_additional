@@ -1,0 +1,10 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'crs',
+            'client'
+          ],
+          'itgclient/sitekit/templates/fdf',
+          'build/log/VerArchive'
+        ];

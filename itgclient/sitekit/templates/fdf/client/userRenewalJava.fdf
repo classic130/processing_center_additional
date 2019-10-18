@@ -1,0 +1,89 @@
+# $ VSSKTEMPLATEVERSION#1.0 $ userRenewalJava.fdf
+#
+# This is a template FDF used to configure the LRA end user enrollment
+# page. The $$ values in the REQUIREMENT column will be
+# filled in based on the OnSite administrator's choices on the 
+# User Certificate configuration page.
+#
+  CONST  operation         userRenewal
+  CONST  lifecycle_request renew
+#
+#
+#
+#------------------------------------------------------------------------------
+#  NAME         	TYPE   	REQUIREMENT		 DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+#
+# new public key 
+public_key              BASE64  MANDATORY               NONE            NONE
+#
+# renewal data
+getMethod               HYBRID  MANDATORY               NONE            NONE
+#
+# Client Auth Renewal
+CLIENT_CERT             CLEAR   OPTIONAL		NONE            getMethod = autoAuth
+#
+# Firefox Renewal
+secretCode              TEXT     MANDATORY               NONE            getMethod = renewalID
+challenge               T61     MANDATORY               NONE            getMethod = renewalID
+#
+# Firefox Renewal with WAC
+orig_cert_serial        CLEAR   OPTIONAL                NONE            getMethod=pkcs7
+orig_cert_issuerdn      CLEAR   OPTIONAL                NONE            getMethod=pkcs7
+certSerial              CLEAR   OPTIONAL                orig_cert_serial   getMethod=pkcs7
+issuerName              CLEAR   OPTIONAL                orig_cert_issuerdn getMethod=pkcs7
+pkcsInformation		BASE64  OPTIONAL                NONE            getMethod=pkcs7
+detachedMesg		CLEAR	OPTIONAL                NONE            getMethod=pkcs7
+#
+form_file		CLEAR	OPTIONAL		NONE		NONE
+remote_host             TEXT    OPTIONAL                NONE            NONE
+#
+# VSSKBEGIN Renewal/CertPublish#2
+# VSSKEND Renewal/CertPublish#2
+#
+# Constant values
+#----------------------------------------------------------------------
+# CONST   NAME                      VALUE
+#----------------------------------------------------------------------
+  CONST   cert_type                 end-user
+  CONST   message                   confirm
+  CONST   install_dir               client
+  CONST   lifecycle_request	    renew
+# 
+# Customizable constants 
+  CONST   class                     CLASS1
+  CONST   originator                VeriSign OnSite
+#
+# VSSKBEGIN Enrollment/CertStore#13
+# VSSKEND Enrollment/CertStore#13
+#
+# VSSKBEGIN Global/System#2
+# VSSKEND Global/System#2
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+# if auto-auth
+#
+# VSSKBEGIN Global/System#1
+# VSSKEND Global/System#1
+#
+#  NAME         CODE    VALUE     
+#------------------------------------------------------------------------------
+STATUS          3062    client/userEnrollChkEMail.htm
+STATUS          7000    client/userEnrollChkEMail.htm
+STATUS          1B58	client/userEnrollChkEMail.htm
+STATUS          1B59	client/userEnrollChkEMail.htm
+STATUS	        3069	error/onsiteAAwrongChallenge.htm
+STATUS	        3086	error/OSuserCertNotValid.htm
+STATUS	        306C	error/pinerror.htm
+STATUS	        3007	error/pinerror.htm
+STATUS	        3084	error/OSuserWrongJurisdiction.htm
+STATUS          0       client/userEnrollChkEMail.htm
+STATUS          A0CA    error/dim_ServerErrror.htm
+STATUS          A0CB    error/dim_AuthenticationError.htm
+STATUS          A0CC    error/dim_VerificationError.htm
+STATUS          A193    error/onsiteKMerror403.htm
+STATUS          A19D    error/onsiteKMerror413.htm
+STATUS          A198    client/userEnrollChkEMail.htm
+STATUS  	    6FFF    VSApps/client/userRenewalInstallJava.htm

@@ -1,0 +1,95 @@
+// VGSE.idl : IDL source for VGSE.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VGSE.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(5685505B-DA94-11D3-A1C3-001083023D07),
+		dual,
+		helpstring("IVSGSE Interface"),
+		pointer_default(unique)
+	]
+	interface IVSGSE : IDispatch
+	{
+		[propget, id(1), helpstring("property Alias")] HRESULT Alias([out, retval] BSTR *pVal);
+		[propget, id(2), helpstring("property DN")] HRESULT DN([out, retval] BSTR *pVal);
+		[propget, id(3), helpstring("property FullName")] HRESULT FullName([out, retval] BSTR *pVal);
+		[propget, id(4), helpstring("property HomeMTA")] HRESULT HomeMTA([out, retval] BSTR *pVal);
+		[propget, id(5), helpstring("property ProfileServer")] HRESULT ProfileServer([out, retval] BSTR *pVal);
+		[propget, id(6), helpstring("property RFC822Name")] HRESULT RFC822Name([out, retval] BSTR *pVal);
+		[id(7), helpstring("method PromptForSelection")] HRESULT PromptForSelection();
+		[propput, id(8), helpstring("property MailDN")] HRESULT MailDN([in] BSTR newVal);
+		[propput, id(9), helpstring("property ServerName")] HRESULT ServerName([in] BSTR newVal);
+		[id(13), helpstring("method AddEncryptSignButton")] HRESULT AddEncryptSignButton();
+		[propget, id(14), helpstring("property ProfileName")] HRESULT ProfileName([out, retval] BSTR *pVal);
+		[propput, id(14), helpstring("property ProfileName")] HRESULT ProfileName([in] BSTR newVal);
+		[propget, id(15), helpstring("property EnableCRLDistPoint")] HRESULT EnableCRLDistPoint([out, retval] short *pVal);
+		[propput, id(15), helpstring("property EnableCRLDistPoint")] HRESULT EnableCRLDistPoint([in] short newVal);
+		[id(16), helpstring("method UpdateClientExt")] HRESULT UpdateClientExt();
+		[propget, id(17), helpstring("property CAInfo")] HRESULT CAInfo([out, retval] short *pVal);
+		[propput, id(17), helpstring("property CAInfo")] HRESULT CAInfo([in] short newVal);
+		[propget, id(18), helpstring("property ExchangeVer")] HRESULT ExchangeVer([out, retval] short *pVal);
+		[propput, id(18), helpstring("property ExchangeVer")] HRESULT ExchangeVer([in] short newVal);
+		[propget, id(19), helpstring("property ADServerInfo")] HRESULT ADServerInfo([out, retval] short *pVal);
+		[propput, id(19), helpstring("property ADServerInfo")] HRESULT ADServerInfo([in] short newVal);
+		[propget, id(20), helpstring("property ADServerInfoList")] HRESULT ADServerInfoList([out, retval] BSTR *pVal);
+		[propput, id(20), helpstring("property ADServerInfoList")] HRESULT ADServerInfoList([in] BSTR newVal);
+		[propget, id(21), helpstring("property UserDN")] HRESULT UserDN([out, retval] BSTR *pVal);
+		[propput, id(21), helpstring("property UserDN")] HRESULT UserDN([in] BSTR newVal);
+		[propget, id(22), helpstring("property ExchangeVerString")] HRESULT ExchangeVerString([out, retval] BSTR *pVal);
+		[propput, id(24), helpstring("property PKCS7")] HRESULT PKCS7([in] BSTR newVal);
+		[propget, id(23), helpstring("property UserPrincipalName")] HRESULT UserPrincipalName([out, retval] BSTR *pVal);
+		[propget, id(25), helpstring("property IsUserMemberOfAdminGroup")] HRESULT IsUserMemberOfAdminGroup([out, retval] BSTR *pVal);
+		[propput, id(26), helpstring("property CertFriendlyName")] HRESULT CertFriendlyName([in] BSTR newVal);
+
+		[propget, id(28), helpstring("property CharEncodingInfo")] HRESULT CharEncodingInfo([out, retval] short *pVal);
+		[propput, id(28), helpstring("property CharEncodingInfo")] HRESULT CharEncodingInfo([in] short newVal);
+		[propget, id(29), helpstring("property Explode_DN")] HRESULT Explode_DN([out, retval] VARIANT *pVal);
+		[propput, id(30), helpstring("property RenewCert")] HRESULT RenewCert([in] short newVal);
+		[propget, id(31), helpstring("property CertSerialNum")] HRESULT CertSerialNum([out, retval] BSTR *pVal);
+		[propget, id(32), helpstring("property ExchServer")] HRESULT ExchServer([out, retval] BSTR *pVal);
+		[propput, id(33), helpstring("property SetEFSCertificate")] HRESULT SetEFSCertificate([in] short newVal);
+		[propget, id(34), helpstring("property SetDefaultCertFlag")] HRESULT SetDefaultCertFlag([out, retval] short *pVal);
+		[propput, id(34), helpstring("property SetDefaultCertFlag")] HRESULT SetDefaultCertFlag([in] short newVal);
+		[propget, id(35), helpstring("property FirstName")] HRESULT FirstName([out, retval] BSTR *pVal);
+		[propget, id(36), helpstring("property LastName")] HRESULT LastName([out, retval] BSTR *pVal);
+
+	};
+
+[
+	uuid(5685504F-DA94-11D3-A1C3-001083023D07),
+	version(1.0),
+	helpstring("VGSE 1.0 Type Library")
+]
+library VGSELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//[
+	//	uuid(5685505D-DA94-11D3-A1C3-001083023D07),
+	//	helpstring("_IVSGSEEvents Interface")
+	//]
+	//dispinterface _IVSGSEEvents
+	//{
+	//	properties:
+	//	methods:
+	//};
+
+	[
+		uuid(5685505C-DA94-11D3-A1C3-001083023D07),
+		helpstring("VSGSE Class")
+	]
+	coclass VSGSE
+	{
+		[default] interface IVSGSE;
+//		[default, source] dispinterface _IVSGSEEvents;
+	};
+};

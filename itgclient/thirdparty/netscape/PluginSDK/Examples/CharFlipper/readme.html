@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+
+<TITLE>CharFlipper Readme</TITLE>
+
+
+</HEAD>
+<BODY>
+<H2>What is CharFlipper?</H2>
+
+The CharFlipper example jumps through a lot of hoops to perform a simple
+task: it displays a series of characters specified in its source file.
+It jumps through so many hoops to demonstrate many different aspects of
+plugin development, including LiveConnect, EMBED tag parameters,
+cross-platform development with maximal code reuse, stream dispatching,
+and animation.<P>
+
+The CharFlipper example includes the TimeMediaPlugin java class, which
+is meant to be a reusable class with a standard interface for plugins
+that deal with time-media (animation, video, audio.)<P>
+
+<H2>Building and using CharFlipper</H2>
+
+<H3>Win32/MSVC++ 4.0: </H3>
+<OL>
+<LI>In the Examples\CharFlipper\Windows directory, open the
+	CharFlipper.mdp project workspace file.
+<LI>Select the "Build|Build NPFlip.dll" menu item.
+<LI>Copy the java class file Examples\CharFlipper\TimeMediaPlugin.class
+	to the navigator plugins directory.
+<LI>Copy the plugin Examples\CharFlipper\Windows\NPFlip.dll to the
+	navigator plugins directory.
+<LI>Quit and relaunch the Navigator, if it is running.
+<LI>With the Navigator (preferably 3.0b5 or above) open the file
+	Examples\CharFlipper\Testing\CharFlipperExample.html.
+</OL>
+
+<H3>PPC Mac/CodeWarrior 9:</H3>
+
+<OL>
+<LI>In the "Examples:CharFlipper:Macintosh" folder, open the
+	CharFlipperPPC.µ project file.
+<LI>Select the "Project|Make" menu item.
+<LI>Copy the java class file "Examples:CharFlipper:TimeMediaPlugin.class"
+	to "System Folder:Preferences:Netscape Ÿ:Java:netscape-classes". (In
+	the next beta release it should be possible to simply place the
+	class file in the plugins directory.)
+<LI>Copy the plugin (or an alias) "Examples:CharFlipper:CharFlipperPPC"
+	to the navigator Plug-ins folder.
+<LI>Quit and relaunch the Navigator, if it is running.
+<LI>With the Navigator (preferably 3.0b5 or above) open the file
+	"Examples:CharFlipper:Testing:CharFlipperExample.html".
+</OL>
+	
+<H3>68k Mac/CodeWarrior 9:</H3> 
+<I>(note that LiveConnect does not function for 68k plugins)</I><P>
+
+<OL>
+<LI>In the "Examples:CharFlipper:Macintosh" folder, open the
+	CharFlipper68k.µ project file.
+<LI>Select the "Project|Make" menu item.
+<LI>Copy the plugin (or an alias) "Examples:CharFlipper:CharFlipper68k"
+	to the navigator Plug-ins folder.
+<LI>With the Navigator (preferably 3.0b5 or above) open the file
+	"Examples:CharFlipper:Testing:CharFlipperExample.html".
+</OL>
+
+</BODY>
+</HTML>

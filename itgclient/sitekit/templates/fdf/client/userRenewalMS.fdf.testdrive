@@ -1,0 +1,70 @@
+#
+# This is a template FDF used to configure the LRA end user enrollment
+# page. The $$ values in the REQUIREMENT column will be
+# filled in based on the OnSite administrator's choices on the 
+# User Certificate configuration page.
+#
+  CONST     operation           userRenewal
+  CONST     lifecycle_request   renew
+#
+#------------------------------------------------------------------------------
+#  NAME         	TYPE   	REQUIREMENT		 DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+#
+public_key		BASE64	MANDATORY		NONE		NONE
+form_file		CLEAR	OPTIONAL		NONE		NONE
+#
+getMethod               HYBRID  MANDATORY               NONE            NONE
+orig_cert_serial        CLEAR   OPTIONAL                NONE            getMethod=pkcs7
+certSerial              CLEAR   OPTIONAL                orig_cert_serial getMethod=pkcs7
+orig_cert_issuerdn      CLEAR   OPTIONAL                NONE            getMethod=pkcs7
+issuerName              CLEAR   OPTIONAL                orig_cert_issuerdn getMethod=pkcs7
+pkcsInformation		BASE64  OPTIONAL                NONE            getMethod=pkcs7
+detachedMesg		CLEAR	OPTIONAL                NONE            getMethod=pkcs7
+#
+remote_host		TEXT	OPTIONAL		NONE            NONE
+#
+# VSSKBEGIN Renewal/CertPublish#2 
+# VSSKEND Renewal/CertPublish#2 
+#
+# Client Auth Renewal
+CLIENT_CERT             CLEAR   OPTIONAL                NONE            getMethod = autoAuth
+#
+# Constant values
+# CONST   NAME                      VALUE
+#----------------------------------------------------------------------
+  CONST   cert_type                 end-user
+  CONST   public_key_format         pkcs10
+  CONST   message                   confirm
+  CONST   install_dir               client
+# 
+# Customizable constants 
+  CONST   class                     CLASS1
+  CONST   originator                VeriSign OnSite TestDrive
+#
+# VSSKBEGIN Global/Mode#23
+# VSSKEND Global/Mode#23
+#
+# VSSKBEGIN Global/System#2
+# VSSKEND Global/System#2
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+# if auto-auth
+#
+# VSSKBEGIN Global/System#1
+# VSSKEND Global/System#1
+#
+#  NAME         CODE    VALUE     
+#------------------------------------------------------------------------------
+STATUS          3062    VSApps/client/userEnrollChkEMail.htm
+STATUS          7000    VSApps/client/userEnrollChkEMail.htm
+STATUS          1B58	VSApps/client/userEnrollChkEMail.htm
+STATUS          1B59	VSApps/client/userEnrollChkEMail.htm
+STATUS          0       VSApps/client/userEnrollChkEMail.htm
+STATUS  	100     VSApps/error/MSkeygenerr.htm
+STATUS  	6FFF    VSApps/client/userRenewalInstallMS.htm
+STATUS          3069    VSApps/error/onsiteAAwrongChallenge.htm
+STATUS          3084    VSApps/error/OSuserWrongJurisdiction.htm
+STATUS          3086    VSApps/error/OSuserCertNotValid.htm

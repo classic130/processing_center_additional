@@ -1,0 +1,15 @@
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(ce6c45ce-d239-11d5-8cba-0010830169af),
+		dual,
+		helpstring("IVSNZDllApi Interface"),
+		pointer_default(unique)
+	]
+	interface IVSNZDllApi : IDispatch
+	{
+		
+		[propget, id(1), helpstring("User Agent of the application in which the notarization client is hosted")] HRESULT UAgent([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("User Agent of the application in which the notarization client is hosted")] HRESULT UAgent([in] VARIANT newVal);
+	};

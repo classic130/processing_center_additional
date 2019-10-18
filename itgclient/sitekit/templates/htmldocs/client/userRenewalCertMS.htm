@@ -1,0 +1,263 @@
+<!-- userRenewalCertMS.htm
+
+-->
+<!-- VSSKTEMPLATEVERSION#1.0.0.3 -->
+<HTML>
+<HEAD>
+<TITLE>Subscriber Renewal</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<SCRIPT Language="JavaScript" src="../client/env.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- VSSKBEGIN Global/Mode#19 -->
+<!-- VSSKEND Global/Mode#19 -->
+
+</HEAD>
+
+<script language="JavaScript">
+<!--
+//if the browser is firefox check for browser navigate to index2.htm
+var browserName=navigator.appName;
+var browserVer=parseInt(navigator.appVersion);
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+         self.location="userRenewalCertNS.htm";
+    }
+else
+    {
+       if (browserVer < requiredBrowserNumMS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function dumbfunc()
+  {
+    var newwin = window.open("../client/help/securitySetting.htm", "private_window", 
+                 "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=420,height=480");
+  }
+
+// link for cancel button
+function cancelFunc()
+  {
+    window.navigate("cancel.htm") ;
+  }
+  
+// opens up new window for copyright link
+function copyright ()
+{
+//Create a new window
+var newWin = window.open("copyright.htm", "popup_window", 
+             'toolbar=1,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=620,height=510'); 
+//Note where the window came from
+self.name = "mainWin";
+}
+// -->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="VBScript">
+<!--
+  Function IsIE4
+    dim ua 
+    dim pos
+    dim msie
+    dim tmp
+    ua = window.navigator.userAgent
+    pos = instr(ua, "MSIE 4")
+    if pos > 0 then
+      tmp = true
+    else
+      tmp = false
+    end if
+    IsIE4 = tmp
+  End Function
+
+  Function IsIE5
+    dim ua
+    dim pos
+    dim tmp
+    ua = window.navigator.userAgent
+    pos = instr(ua, "MSIE 5")
+    if pos > 0 then
+      tmp = true
+    else
+      tmp = false
+    end if
+    IsIE5 = tmp
+  End Function   
+
+  Function IsIE4orLater
+    dim ua
+    dim pos
+    dim ieVer
+    IsIE4orLater = false
+    ua = window.navigator.userAgent
+    pos = instr(ua, "MSIE ")
+      if pos > 0 then
+        ieVer = CInt(Mid(ua, pos+5, 1))
+        if (ieVer>=4) then
+          IsIE4orLater = true
+      end if
+    end if
+  End Function
+
+  '-- VSSKBEGIN Renewal/CSP#3 --
+  '-- VSSKEND Renewal/CSP#3 --
+
+Function CreateP10( keyflags )
+ On Error Resume Next
+ CreateP10 = ""
+
+ spnCertEnroll.innerHTML="<OBJECT id='g_objClassFactory' CLASSID='clsid:884e2049-217d-11da-b2a4-000e7bbb2b09'></OBJECT>"
+
+'-- VSSKBEGIN Renewal/KeyLength#1 --
+'-- VSSKEND Renewal/KeyLength#1 --
+End Function
+
+Sub DoKeyGen
+    dim theForm 
+    dim options
+    dim keyflags
+    dim cryptoProvName
+    dim cryptoProvType
+
+    keyflags=0
+    set theForm = document.theform
+    'theForm.submit.disabled = true
+    ' VSSKTEST - commented out for testing purposes...the document is not submitted 
+    ' to the server.
+
+    '-- VSSKBEGIN Renewal/CSP#2 --
+    '-- VSSKEND Renewal/CSP#2 --
+
+    If isRunningOnVista = 0 Then
+    cenroll.HashAlgorithm = "MD5"
+    cenroll.KeySpec = 1
+    End If
+
+    '-- VSSKBEGIN Renewal/KeyProtect#2 --
+    '-- VSSKEND Renewal/KeyProtect#2 --
+
+    '-- VSSKBEGIN Renewal/KeyExportable#1 --
+    '-- VSSKEND Renewal/KeyExportable#1 --
+
+    theForm.public_key.value = CreateP10(keyflags)
+    if Len(theForm.public_key.value) = 0 then
+      MsgBox("The error: " + hex(err.number) + " occurred in generating certificate request")
+        window.navigate("../error/MSkeygenerr.htm")
+    else
+      theForm.submit
+    end if
+End Sub
+'-->
+</SCRIPT>
+
+
+<BODY  onLoad="CheckIfVista(),FindProviders()" BGCOLOR="ffffff" LINK="cc0000" VLINK="666666">
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 ALIGN=CENTER VALIGN=BOTTOM COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+<TR>
+    <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_1.gif" WIDTH=100 HEIGHT=63 ALT="Logo"></TD> 
+    <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD> 
+    <TD WIDTH=358 ALIGN=CENTER><IMG SRC="../graphics/hd_enroll.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Enroll Header"></TD> 
+    <TD WIDTH=1 VALIGN=MIDDLE><IMG SRC="../graphics/dot_grey.gif" WIDTH=1 HEIGHT=47 hspace=0 vspace=0></TD> 
+    <TD WIDTH=120 ALIGN=CENTER><IMG SRC="../graphics/logo_2.gif" ALT=""></TD> 
+</TR>
+<TR>
+    <TD WIDTH=600 ALIGN=CENTER VALIGN=TOP COLSPAN=5><IMG SRC="../graphics/dot_grey.gif" HEIGHT=1 WIDTH=600 HSPACE=0 VSPACE=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+    <A HREF="help/tasks/enrollform.htm" target="help"><IMG SRC="../graphics/button_help_page.gif" width=145 height=26 hspace=1 vspace=0 border=0 alt="Help with this Page"></a>
+    </TD>
+</TR>
+</TABLE>
+<P>
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+
+<!--BEGIN INSTRUCTIONAL TEXT-->
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+    <TD WIDTH=100%><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Digital ID Renewal</B></FONT><BR>
+    <FONT FACE="verdana, arial, helvetica" SIZE=2>The Digital ID used to access this enrollment page will be renewed when you click
+    <B>Submit.</B></FONT> 
+    </TD>
+</TR>
+</TABLE>
+<!--END INSTRUCTIONAL TEXT-->
+
+<!-- used only in autoauth mode for client-auth so only posting to sophia-lite -->
+<FORM METHOD=POST NAME="theform" ACTION=../../cgi-bin/sophialite.exe  ENCTYPE=x-www-form-encoded>
+<INPUT TYPE=hidden NAME=form_file VALUE="../fdf/VSApps/userRenewalMS.fdf">
+<INPUT TYPE=hidden NAME=getMethod VALUE="autoAuth">
+<INPUT TYPE=hidden NAME=cryptoProv VALUE="user choice">
+ 
+<script language="JavaScript">
+<!--
+var browserNum=parseInt(navigator.appVersion);
+//-->
+</script>
+
+<!-- VSSKBEGIN Renewal/CSP#1 -->
+<!--VSSKEND Renewal/CSP#1 -->
+
+<P><BR><P>
+
+<!-- VSSKBEGIN Renewal/KeyProtect#1 -->
+<!-- VSSKEND Renewal/KeyProtect#1 -->
+
+<!-- VSSKBEGIN Renewal/CertPublish#1 -->
+<!-- VSSKEND Renewal/CertPublish#1 -->
+
+<P>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=50><img SRC="../graphics/action_39x39.gif" WIDTH=39 HEIGHT=39></TD>
+		<TD WIDTH=538 COLSPAN=2><FONT COLOR="009933" FACE="verdana, arial, helvetica" SIZE=2>If information above is correct,<BR>
+	click <B>Submit</B> to continue.<BR><BR></FONT></TD>
+        </TR>
+<TR>
+        <TD WIDTH=50>&nbsp;</TD>
+        <TD WIDTH=234 ALIGN=LEFT><INPUT TYPE="button" VALUE="Renew" NAME="Submit"></TD>
+        <TD WIDTH=304 ALIGN=LEFT><INPUT TYPE=button NAME="decline" VALUE="Cancel" onClick="cancelFunc()"></TD>
+</TR>
+</TABLE>
+
+<INPUT TYPE="hidden" NAME="public_key" VALUE="">
+
+</FORM>
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="javascript:copyright();"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../graphics/logo_3.gif" ALT="Symantec Trust Network"></TD>
+</TR>
+</TABLE>
+
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+
+</BODY>
+</HTML>
+ 

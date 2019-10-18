@@ -1,0 +1,34 @@
+HKCR
+{
+	VGSE.VSGSE.1 = s 'VSGSE Class'
+	{
+		CLSID = s '{5685505C-DA94-11D3-A1C3-001083023D07}'
+	}
+	VGSE.VSGSE = s 'VSGSE Class'
+	{
+		CLSID = s '{5685505C-DA94-11D3-A1C3-001083023D07}'
+		CurVer = s 'VGSE.VSGSE.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5685505C-DA94-11D3-A1C3-001083023D07} = s 'VSGSE Class'
+		{
+			ProgID = s 'VGSE.VSGSE.1'
+			VersionIndependentProgID = s 'VGSE.VSGSE'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{5685504F-DA94-11D3-A1C3-001083023D07}'
+			'Version' = s '1.0'
+		}
+	}
+}

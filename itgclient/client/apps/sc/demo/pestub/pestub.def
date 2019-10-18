@@ -1,0 +1,12 @@
+; pestub.def : Declares the module parameters.
+
+LIBRARY  pestub
+EXPORTS
+
+ProcessEntries   @1	
+FreeEntries      @2
+
+
+
+
+

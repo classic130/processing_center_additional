@@ -1,0 +1,115 @@
+The ASN.1 notation for the file will be:
+
+VeriSignDB ::= SEQUENCE 
+{
+	VS_Plain_Text_Information					VS_PlainTextInformation,
+	VS_Protected_Information					VS_ProtectedInformation
+}
+
+VS_PlainTextInformation ::= SEQUENCE
+{
+	VeriSignConstantString						OCTET STRING,
+	VS_PS_VersionNumber							VS_VersionNumber,
+	VS_PTA_VersionNumber						VS_VersionNumber,
+	VS_Password_Strength						INTEGER,
+	VS_Number_And_Certificates					VS_NumberAndCertificates,
+	VS_Number_And_Application_Information		VS_NumberAndApplicationInformation	
+}
+
+VS_ProtectedInformation ::= SEQUENCE
+{
+	VS_SaltIterationCount						SEQUENCE,
+	VS_EncryptedProtectedInformation			OCTET STRING
+}
+
+VS_VersionNumber ::= SEQUENCE
+{
+	VS_FirstVersionNumber						INTEGER,
+	VS_SecondVersionNumber						INTEGER,
+	VS_ThirdVersionNumber						INTEGER,
+	VS_FourthVersionNumber						INTEGER
+}
+
+VS_NumberAndCertificates ::= SEQUENCE
+{
+	NumberOfElements							INTEGER,
+	VS_Certificate_Information					SEQUENCE OF VS_CertificateInformation,
+}
+
+VS_CertificateInformation ::= SEQUENCE
+{
+	CertificateBlob								OCTET STRING //ExtendedCertificateOrCertificate,
+	NumberOfElements							INTEGER,
+	VS_Certificate_Preferences					SEQUENCE OF VS_CertificatePreference
+}
+
+VS_NumberAndApplicationInformation ::= SEQUENCE
+{
+	NumberOfElements							INTEGER,
+	VS_Application_Information					SEQUENCE OF VS_ApplicationInformation
+}
+
+VS_ApplicationInformation ::= SEQUENCE
+{
+	ApplicationName								OCTET STRING,
+	ApplicationHostName							OCTET STRING,
+	NumberOfElements							INTEGER,
+	VS_Application_Preferences					SEQUENCE OF VS_ApplicationPreference
+}
+
+VS_CertificatePreference ::= SEQUENCE
+{
+	CertificatePreferenceName					OCTET STRING,
+	CertificatePreferenceData					OCTET STRING
+}
+
+VS_ApplicationPreference ::= SEQUENCE
+{
+	ApplicationPreferenceName					OCTET STRING,
+	ApplicationPreferenceData					OCTET STRING
+}
+
+
+VS_SaltIterationCount ::= SEQUENCE
+{
+	Salt										OCTET STRING,
+	IterationCount								INTEGER
+}
+
+Decrypting VS_EncryptedProtectedInformation (OCTET STRING) gives the VS_ProtectedInformation
+
+VS_ProtectedInformation ::= SEQUENCE
+{
+	VeriSignConstantString						OCTET STRING,
+	VS_Number_And_Private_Key					NumberAndPrivateKey,
+	VS_Number_And_Application_Information		VS_NumberAndApplicationInformation,
+	VS_Number_And_Informaiton_Blobs				VS_NumberAndInformationBlobs	
+}
+
+VS_NumberAndPrivateKey ::= SEQUENCE
+{
+	NumberOfElements							INTEGER,
+	VS_Private_Keys								SEQUENCE OF VS_PrivateKey,
+}
+
+VS_PrivateKey ::= SEQUENCE
+{
+	AssociatedHash								VS_AssociatedHash,
+	PrivateKeyBlob								OCTET STRING
+}
+
+VS_AssociatedHash ::= OCTET STRING
+
+VS_NumberAndInformationBlobs ::= SEQUENCE
+{
+	NumberOfElements							INTEGER,
+	VS_Information_Blobs						SEQUENCE OF	VS_InformationBlobs
+}
+
+VS_InformationBlobs ::= SEQUENCE
+{
+	InformationBlobName							OCTET STRING,
+	InformationBlobData							OCTET STRING
+}
+
+

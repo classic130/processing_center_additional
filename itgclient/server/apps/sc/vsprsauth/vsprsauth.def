@@ -1,0 +1,9 @@
+; VSPRSAUTH.def : Declares the module parameters for the DLL.
+
+LIBRARY      "vsprsauth"
+DESCRIPTION  'Proxy Recipient PTA Auth Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	GetUsernamePasswd
+	ProcessEvent

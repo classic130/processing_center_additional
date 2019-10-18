@@ -1,0 +1,445 @@
+<HTML>
+<HEAD>
+<TITLE>VeriSign Digital Notarization Service</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKTEMPLATEVERSION#1.0.2.3 -->
+
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<Script Language="JavaScript">
+<!--
+  var browserName=navigator.appName;
+  var requiredBrowserNumMS=4;
+  var browserVer=parseInt(navigator.appVersion);
+
+  if(browserName == "Netscape")
+     self.location="notarizeNS.htm";
+  else
+    {
+       if(browserVer < requiredBrowserNumMS)
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+//-->
+</Script>
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<!-- VSSKBEGIN Global/Mode#114 -->
+<!-- VSSKEND Global/Mode#114 -->
+
+<!-- VSSKBEGIN Apps/NotarizationClient#2 -->
+<!-- VSSKEND Apps/NotarizationClient#2 -->
+
+<Script Language="VBScript">
+<!--
+  Dim IVSPTA
+  Dim IVSProfMgmt
+  Dim IVSRoamPrefs
+  Dim IVSSrchCrit
+  Dim IVSNzUIPref
+  Dim IVSPTAUIPref
+  Dim strNzDesc
+  
+  On Error Resume Next  
+  Set IVSPTA = IVSNZ.IVSNZPta
+  Set IVSProfMgmt = IVSPTA.IVSProfMgmt
+  Set IVSRoamPrefs = IVSPTA.IVSRoamPrefs
+  Set IVSSrchCrit = IVSPTA.IVSSrchCrit
+  Set IVSNzUIPref = IVSNZ.IVSNZUIPrefs
+  Set IVSPTAUIPref = IVSPTA.IVSUIPrefs
+
+  
+  strNzDesc = ""
+
+  EXP_DATE_GREATER_THAN = &h20
+
+  Function CloseObjects (ErrorCode, Operation, WinErrorCode)
+    On Error Resume Next
+    IVSPTA.Close
+    if ( ErrorCode <> 0 ) then
+       Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(ErrorCode), WinErrorCode, Operation)
+       Exit Function
+    end if 
+    If ( err.number <> 0 ) then
+        Call SetErrorInfo("../fdf/VSApps/client/DnzErrors.fdf", 00000001, Hex(err.number), "IVSPTA.Close")
+        Exit Function
+    End If
+  End Function
+
+Sub NotarizeDocument	
+  On Error Resume Next
+  IVSNZ.AddNZCertificate NZIntermediateCA
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNZ:AddNzCertificate")
+	Exit Sub
+  End If  
+  
+  On Error Resume Next
+  If (Len(strWizardTitle) > 1) then 
+	IVSNzUIPref.UIWizardTitle = strWizardTitle
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNzUIPref.UIWizardTitle")
+		Exit Sub
+	End If  
+  End If 
+
+  On Error Resume Next
+  If (Len(strSelectFileTitle) > 1) then 
+	IVSNzUIPref.UISelFileTitle = strSelectFileTitle
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNzUIPref.UISelFileTitle")
+		Exit Sub
+	End If  
+  End If  
+  
+  On Error Resume Next
+  If (Len(strSelectFileDescription) > 1) then   
+	IVSNzUIPref.UISelFileDescription = strSelectFileDescription
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNzUIPref.UISelFileDescription")
+		Exit Sub
+	End If  
+  End If 
+
+  On Error Resume Next
+  If (Len(strProgressTitle) > 1) then     
+	IVSNzUIPref.UIProgressTitle = strProgressTitle 
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNzUIPref.UIProgressTitle")
+		Exit Sub
+	End If  
+  End If 	
+  
+  On Error Resume Next
+  IVSNzUIPref.UIProgressHelpUrl = strProgressHelpUrl 
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNzUIPref.UIProgressHelpUrl")
+	Exit Sub
+  End If  
+	
+  If ( strCertStore = 1 ) then
+  	IVSPTA.Initialize strAppCtxtName, 0
+  Else
+	IVSPTA.Initialize strAppCtxtName, 1
+  End If
+
+  If ( err.number <> 0 ) then
+      Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTA.Initialize", Hex(err.number))      
+      Exit Sub
+  End If
+
+  If ( strCertStore = 1 ) then  
+
+	OPENPROF_OPEN_ONLY = CInt(529)
+
+	VS_PROF_ALREADY_OPEN = &h8000102F
+
+	On Error Resume Next
+	IVSProfMgmt.OpenProfFlags = OPENPROF_OPEN_ONLY
+  	If ( (err.number <> 0) And (err.number <> VS_PROF_ALREADY_OPEN) ) then
+      		Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSProfMgmt.OpenProfFlags", Hex(err.number))      
+      		Exit Sub
+  	End If
+
+	'-- VSSKBEGIN Apps/PTAv2/Roaming#3 --
+    '-- VSSKEND Apps/PTAv2/Roaming#3 --
+
+  End If
+
+  On Error Resume Next
+  IVSPTAUIPref.LgnDlg_Title = "Digitally Notarize Document"
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTAUIPref.LgnDlgTitle", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSPTAUIPref.OpenProf_Title = "Open Your Digital Notarization Profile"
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTAUIPref.OpenProf_Title",	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSPTAUIPref.SelID_Title = "Select Digital Notarization ID"
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTAUIPref.SelID_Title", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSPTAUIPref.SgnDlg_Title = "Digitally Notarize Document" 
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTAUIPref.SgnDlg_Title", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSPTAUIPref.SelID_ChkBoxText = "Always use this Digital ID for Digital Notarization "
+  If ( err.number <> 0 ) then
+      Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTAUIPref.SelID_ChkBoxText", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSPTAUIPref.UILogoUrl = strLogoUrl
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTAUIPref.UILogoUrl", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSNzUIPref.UILogoUrl = strLogoUrl
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSNzUIPref.UILogoUrl", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSSrchCrit.DateEquality = EXP_DATE_GREATER_THAN
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSSrchCrit.DateEquality", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  StartDate = CDate(Date)
+  ShortStartDate = CDate(StartDate)
+
+  On Error Resume Next
+  IVSSrchCrit.ExpDate = ShortStartDate
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSSrchCrit.ExpDate", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next       
+  IVSSrchCrit.Renewed = CBool(0)
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSSrchCrit.Renewed", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSSrchCrit.IssuerDN = strSrchCriteria
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSSrchCrit.IssuerDN", 	Hex(err.number))      
+    	Exit Sub
+  End If
+
+  VS_USER_CANCELLED = &h80001067
+
+  On Error Resume Next
+  If ( strDisplayDigitalID = "1" ) then
+  	    IVSPTA.SelIDForChallenge
+  Else
+        IVSPTA.SelIDForTrans
+  End If
+
+  If ( err.number <> 0 ) then
+	If ( err.number = VS_USER_CANCELLED ) then
+		Call CloseObjects(0, "", 0)
+	Else
+  		Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSPTA.SelID", Hex(err.number))      
+	End If
+
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSNZ.NotarizationServer = strNotarizationServer
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSNZ.NotarizationServer", Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSNZ.HashAlg = strHashAlg
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSNZ.HashAlg", Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next
+  IVSNZ.ValidationPreference = ValidationFlags
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSNZ.ValidationPreference", Hex(err.number))      
+    	Exit Sub
+  End If
+
+  If ( document.Notarization.description.value <> "" ) then
+	strNzDesc = document.Notarization.description.value
+  End If
+
+  On Error Resume Next  
+  IVSNZ.NotarizationDescription = strNzDesc
+  If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSNZ.NotarizationDescription", Hex(err.number))      
+    	Exit Sub
+  End If
+
+  On Error Resume Next  
+  NzData = IVSNZ.NotarizeDocument ( document.Notarization.fname.value, 3, 0 )
+  If ( err.number <> 0 ) then
+	If ( err.number = VS_USER_CANCELLED ) then
+		Call CloseObjects(0, "", 0)
+	Else
+  		Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSNZ.NotarizeDocument", Hex(err.number))
+	End If
+
+    	Exit Sub
+  End If
+
+  document.Notarization.Receipt.value = NzData
+
+  Call CloseObjects(0, "", 0)
+
+End Sub
+
+Sub VerifyReceipt
+    
+   If ( document.Notarization.Receipt.value = "") then
+	MsgBox ("Please notarize a document before verifying the receipt.")
+	Exit Sub
+   End If
+
+  On Error Resume Next
+  If (Len(strVerifyReceiptTitle) > 1) then       
+	IVSNzUIPref.UIVerifyRcptTitle = strVerifyReceiptTitle 
+	If ( err.number <> 0 ) then
+		Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNzUIPref.UIVerifyRcptTitle")
+		Exit Sub
+	End If  
+  End If 	
+  
+  On Error Resume Next
+  IVSNzUIPref.UIVerifyRcptHelpUrl = strVerifyReceiptHelpUrl 
+  If ( err.number <> 0 ) then
+	Call SetErrorInfo ("../fdf/VSApps/client/DnzErrors.fdf", CheckErrorCodeMS(Hex(err.number)), Hex(err.number), "IVSNzUIPref.UIVerifyRcptHelpUrl")
+	Exit Sub
+  End If  
+
+   On Error Resume Next
+   IVSNZ.VerifyNotarizationRecord document.Notarization.Receipt.value, document.Notarization.fname.value, 1, 4
+   If ( err.number <> 0 ) then
+  	Call CloseObjects(Hex(err.number), "NotarizeDocument::IVSNZ.VerifyNotarizationRecord", Hex(err.number))      
+    	Exit Sub
+  End If
+
+End Sub
+
+'-->
+</Script>
+</HEAD>
+
+<BODY  BGCOLOR="#ffffff" LINK="#cc0000" VLINK="#666666">
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<FORM NAME="Notarization">
+
+<!--BEGIN PAGE CONTENT-->
+<!-- GRAPHIC USED TO TRACK ENROLLMENT THROUGH THE CSR WIZARD -->
+<IMG SRC="../graphics/csrWiz_Step1d.gif" WIDTH=1 HEIGHT=1 BORDER=0 ALT="">
+
+
+<P>
+
+<!--LIST OF STEPS-->
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+        <TD WIDTH=588 COLSPAN=7><FONT COLOR="#0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Digitally Notarize Your Document</B></FONT></TD>
+</TR>
+</TABLE>
+
+<!--MAIN CONTENT AREA-->
+<P>
+
+<!--BEGIN CONTENT TABLE ONE-->
+<TABLE WIDTH=588 BGCOLOR="cccccc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+    <TD WIDTH=588>    
+	<FONT FACE="arial, helvetica" SIZE=2>
+	Enter the information required for notarization.
+	<P>
+	<CENTER>
+	<!--BEGIN CONTENT IN TABLE ONE-->
+    <TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+	<TR>
+    	<TD WIDTH=50% ALIGN=CENTER BGCOLOR="ffffcc">
+		<FONT COLOR="000000" FACE="verdana, arial, helvetica" SIZE=2><B>Description</B></FONT></TD>
+        <TD WIDTH=50% ALIGN=CENTER BGCOLOR="ffffcc">
+		<FONT COLOR="000000" FACE="verdana, arial, helvetica" SIZE=2><B>&nbsp;</B></FONT></TD>
+	</TR>
+ 	<TR>
+    	<TD WIDTH=50% VALIGN=top BGCOLOR="ffffcc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>Select File:</B><BR></FONT>
+		<FONT FACE="arial, helvetica" SIZE=2>
+		Select the file you want to digitally notarize.
+		<P></FONT>
+		</TD>
+        <TD WIDTH=50% VALIGN=top BGCOLOR="ffffcc">
+		
+		<IMG SRC="../graphics/blank2.gif" WIDTH=27 HEIGHT=27 ALT="" BORDER="0"><INPUT TYPE=FILE NAME=fname SIZE=20><BR>
+		
+			
+
+		</TD>
+	</TR>
+
+	</TR>
+	
+ 	<TR>
+    	<TD WIDTH=50% VALIGN=top BGCOLOR="ffffcc"><FONT FACE="verdana, arial, helvetica" SIZE=2><B>File Description:</B><BR></FONT>
+		<FONT FACE="arial, helvetica" SIZE=2>
+		Add a description of your file and/or purpose for digital notarization.
+		</FONT>
+
+		</TD>
+        <TD WIDTH=50% VALIGN=top BGCOLOR="ffffcc">
+		
+		<IMG SRC="../graphics/blank2.gif" WIDTH=27 HEIGHT=27 ALT="" BORDER="0"><TEXTAREA NAME=description ROWS=6 COLS=30></TEXTAREA>
+			
+
+		</TD>
+	</TR>	
+    </TABLE>
+	</CENTER>
+	<!--END CONTENT IN TABLE ONE-->
+</TR>
+</TABLE>
+<BR><BR>		
+		<INPUT TYPE=button NAME=Notarize VALUE="Notarize Document" onClick = "NotarizeDocument()">
+
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <INPUT TYPE=button NAME=Verify VALUE="Verify Receipt" onClick = "VerifyReceipt()">
+
+<INPUT TYPE="hidden" NAME="Receipt">
+
+<!--END CONTENT TABLE ONE-->
+
+<!--END MAIN CONTENT AREA-->
+
+
+<!--end form tag-->
+</FORM>
+<!--end form tag-->
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480 ><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, VeriSign, Inc. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../graphics/logo_3.gif" WIDTH=120 HEIGHT=50 ALT="VeriSign Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+
+</BODY>
+</HTML>
+ 

@@ -1,0 +1,110 @@
+<% 
+
+// Locale Settings.
+var month_long_current_locale = new Array( 
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December");
+
+var day_long_current_locale = new Array(
+			"Sunday",
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday");
+
+var pkg=tw.currentPackage;
+
+var message="";
+var count;
+if ( pkg.notificationOptions & tw.constant.TW_PACKAGE_NOTIFICATION_INCLUDE_MESSAGE ) {
+    var streams = pkg.streams;
+    var streamLength = streams.length;
+    var currentStream;
+
+    for ( count=0; count < streamLength; ++count ) {
+        currentStream = streams[count];
+        if ( currentStream.usage == tw.constant.TW_STREAM_CONTENT_COVER ) {
+            message = pkg.readStream( pkg.id, currentStream.id, currentStream.usage );
+	    break;
+        }
+    }
+}
+
+var url;
+var hosts;
+var nonSslAvailable = tw.server.getConfigParameter( "TW_HTTP_NON_SSL" );
+
+// set the locale to recipient account locale if package locale is not specified
+var locale = pkg.locale;
+if ( locale == "" ) {
+	if ( tw.recipient.singleRecipient.accountId != 0 ) {
+		var recipient = TW_Account.getAccountById( tw.recipient.singleRecipient.accountId );
+		locale = recipient.locale;
+	}	
+}
+
+// only use http if it is explicitly selected by admin + sender
+if (nonSslAvailable && !(pkg.securityOptions & tw.constant.TW_PACKAGE_SECURITY_SECURE_CONNECTION_DELIVERY)) {
+	url="http://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_HOSTS", locale );
+} else {
+    url="https://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_SECURE_HOSTS", locale );
+}
+
+if ( hosts.length > 0 ) {
+	url += hosts[Math.randomInteger() % hosts.length];
+}
+
+url += tw.server.getConfigParameter( "TW_VIRTUAL_URL" );
+url += "?x=";
+url += pkg.deliveryId;
+
+var address = tw.recipient.singleRecipient.address;
+if ( address.toLowerCase().indexOf("@aol.com") != -1 ) {
+    var buffer = "";
+    url = buffer.formatPositional("<A HREF=\"%1$s\">\n%2$s\n</A>", url, url);
+} %>
+
+You have received a secure PrivatePath Service message from <% if (!((pkg.senderFirstname ==null) ||(pkg.senderFirstname == "")) || !((pkg.senderLastname == null) ||(pkg.senderLastname == "") ) ) { tw.write( pkg.senderFirstname + " " + pkg.senderLastname ); } else { %> <%=pkg.senderAddress;%> <% } %>
+<%if ( pkg.notificationOptions & tw.constant.TW_PACKAGE_NOTIFICATION_INCLUDE_RECEIVE_PAGE) { %>
+Please pick up the message by opening the attached PrivatePath Service Secure Envelope.
+<%} else {%> 
+Pick up the message at the following Web address: 
+
+<%=url;%>
+<%}%>
+This message expires on <%=String("").formatPositional( pkg.expireTime.format("%%1$s %%2$s %d, %Y at %T %Z"), day_long_current_locale[ pkg.expireTime.getDay() ], month_long_current_locale[pkg.expireTime.getMonth()]);%>
+<%if (message != "") { %>
+Message from Sender ..................................................
+
+<%=message;%>
+<%}%>
+<%if ( ! (pkg.notificationOptions & tw.constant.TW_PACKAGE_NOTIFICATION_INCLUDE_RECEIVE_PAGE) ) { %>
+......................................................................
+
+Need help picking up your message?
+
+*  If the Web address above is highlighted, click on it to open a
+   browser window. You will automatically be taken to the message.
+
+*  If the Web address above is not highlighted, follow these steps:
+   - Open a Web browser window.  
+   - Copy and paste the entire Web address into the "location" or 
+     "address" bar of the browser.
+   - Press enter.
+<%}%>
+
+_______________________________________________

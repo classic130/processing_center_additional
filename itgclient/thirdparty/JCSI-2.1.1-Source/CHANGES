@@ -1,0 +1,213 @@
+JCSI version 2.1.1
+
+JCSI Version 2.1.1 is a bug-fixupdate to 2.1 with no new features. The 
+following describes changes made since JCSI version 1.0 beta 1.
+
+Changes from release version 2.1
+
+Bugs fixed:
+
+  1.  Fixed possible NPE in X509Certificate.getExtensionValue()
+  2.  Correct JSSE apidoc 
+  3.  When processing a PKCS#12 file, ignore bad certs (eg. ones with
+      illegal encodings of standard cert extensions) instead of letting
+      it halt processing.
+  4.  Removed dependency on JCSI crypto Provider in the X.509 Provider's
+      X509Certificate.verify(PublicKey)
+  5.  Use the preferred RSA DSI defined OID for shaWithRSAEncryption
+  6.  In SSL client mode, cache sessions according to peer address
+      instead of session ID.
+  7.  Use JCE-defined standard names for PBE algorithms
+  8.  The SSL library now detects a non-SSL conversation much earlier
+      than before
+  9.  Kerberos keytab parsing code made more robust to bad data
+  10. GSS API token processing made more robust 
+  11. Correct export tokens are now emitted by GSS API
+  12. GSSName.canonicalize() now returns object with correct name type
+  13. GSSContext.dispose() now does the right thing
+  14. In GSSContext, any delegated credentials received are now added
+      to the cache.
+
+Changes from release version 2.0
+
+New features:
+
+  1. LDAP repository support in the PKI package
+  2. IDEA cipher support for CMS as per RFC 3058
+  3. PKCS#10 attribute APIs
+  4. Support for S/MIME mimetypes without "x-" prefix
+  5. Transparent support for backup Kerberos KDCs
+  6. Preferred encryption types for Kerberos now configurable with
+     System property 
+
+  .. plus significant performance enhancements in the crypto Provider, SSL
+  and GSS-API.
+
+Bugs fixed:
+
+  1. X509Certificate.getExtensionValue() in the X.509 Provider returned 
+     a bad encoding
+  2. Relaxed cert checking in PKCS#12 KeyStore Provider so that eg.
+     expired certs can now be retrieved
+  3. Wrong encoding for Ephemeral-Static Diffie-Hellman OID in CMS
+  4. X509CRLGen was not X.509 Provider independent
+  5. Kerberos key retrieval from keytab was case sensitive
+  6. TLS was not interoperable with the universe
+  7. PKCS#1 encryption sometimes returned bad encoding, affecting eg.
+     S/MIME encryption
+  8. Socket.setUseClientMode() could hang in certain situations
+  9. Ciphersuite re-negotiation in SSL was defective in certain cases
+ 10. In GSS-API context establishment, any service tickets received are cached.
+
+Changes from release version 2.0 beta 4
+
+New features:
+
+  1. New class pki.CertUtil which groups together and exposes methods 
+     to generate PEM and degenerate PKCS7 encodings.
+
+  2. Added support for parsing a PEM-encoded pkcs10 request. Changed
+     X509CertGen.getCertificate() to X509CertGen.generateCertificate().
+
+Bugs fixed:
+
+  1.  CipherInputStream could throw ArrayIndexOutOfBoundsException when
+      nozero offset used.
+  2.  CipherInputStream.available() now returns 0. Use read() until -1.
+  3.  Blowfish keys no longer static
+  4.  Bug fixed in S/MIME clear signing. Acceptable line terminators in
+      the message body are now "\r", "\n" and "\r\n".
+
+
+Changes from release version 2.0 beta 3
+
+New features:
+
+  1.  Changed CMS API so that OutputStream and byte-array based methods
+      are removed in favour of InputStream-based ones, to allow stream
+      chaining naturally
+  2.  Introduced VerificationResult and DecryptionResult interfaces for
+      inspection of verification and decryption results in CMS
+  3.  Added CMSTypedDataInputStream to support nesting of CMS data
+      (eg. SignedData encapsulated in EnvelopedData)
+  4.  Exposed attributes as interfaces in new 'atts' sub-package of cms, 
+      so that signing time, forinstance, can be inspected if present.
+  5.  Support CMS signing without attributes as an option (enabled by
+      setting a system property 'jcsi.cms.nosignedatts')
+    
+Bugs fixed:
+
+  1.  CipherInputStream.read(byte[]) was returning wrong values in certain
+      cases
+  2.  'getInstance()' in Cipher, Mac & keyAgreement now take case-insensitive
+      algorithm names
+  3.  Fixed DESKeyGenerator and DESedeKeyGenerator so that init() does not
+      need to be called
+  4.  Fixed X509Certificate.getKeyUsage() (now interoperable with
+      Sun's CertificateFactory in JDK 1.3 , but will need workarounds to
+      overcome a Sun CertificateFactory bug in JDK 1.2.2)
+  5.  Fixed in-place signature verification in PKCS10CertificationRequest
+  6.  Changed internal structure of (and fixed bugs in) pkcs#12-based KeyStore
+      (previously-generated pkcs12 files may no longer import correctly
+      into KeyStore)
+  7.  Put in extra checks on cert chain in KeyStore.setKetEntry()
+  8.  Fixed static Diffie-Hellman bugs in SSL
+  9.  Support initial (non-TGT) ticket requests in Kerberos with minor
+      changes to Kerberos API
+  10. Fixed GSSAPI interoperability problems (now tested successfully
+      against MIT V5 1.1 and Win2K)
+  11. Made CredentialStore and KeyTab thread-safe
+  12. Send signing time as a CMS signed attribute by default
+  13. Check certificate key usage in initSign() and initEncrypt() methods
+      in CMS and S/MIME
+  14. S/MIME now requires JavaMail 1.2
+  15. Introduced a Warning interface for indicating non-fatal conditions 
+      encountered during S/MIME signed message verification, and a 
+      sub-interface AddressMismatch for address mismatches between a signed
+      message and its signer certificate
+  16. MimeMessages are constructed fully upon sign(), encrypt(), verify()
+      and decrypt() calls in S/MIME so that they can, for instance, be
+      safely cloned
+
+
+Changes from release version 2.0 beta 2
+
+Features enabled:
+
+  1. S/MIME support for opaque signing
+  2. S/MIME encryption support for multiple recipients 
+
+Bugs fixed:
+
+  1. X500Name "quoting" bug which affected cert path processing of 
+     certificates with commas in issue common name (eg. Verisign)
+  2. PKCS#12 ASN.1 parsing bug which affected pkcs12 encodings generated by
+     Microsoft IE.
+  3. CMS signing workaround for Netscape Messenger which accepts 
+     only a subset of BER encodings.
+  4. Sun JCE1.2 interop fix for Cipher
+  5. PKCS#12 KeyStore bug which missed some certs in a file exported
+     from Microsoft IE.
+  6. PKCS#12 KeyStore bug in handling cert chains
+  7. Support for non-standard (wrt RFC1779) keyword "S" for 
+     StateOrProvinceName attribute for interop with Sun.
+  8. PKCS#12 key derivation bug (potentially) affecting all previously
+     generated pkcs12 files or pkcs#8 files using PBEwithSHAand*.
+  
+  
+Changes from release version 1.0 beta 1
+
+(Items preceded by an asterisk were previously available as 
+public patches to 1.0 beta 1)
+
+
+  General:
+    Different package structure which allow better modularity
+    New APIs which expose only what is necessary
+    Moved away from mandatory configuration via properties files
+  * Fixes to bugs reported in mailing list for 1.0 Beta 1
+    Miscellaneous optimizations
+    Improved exception handling
+    Improved API documentation
+    Tested against JDK 1.2.2 & JDK 1.3
+
+  Base:
+
+  * Clean-room JCE framework compatible with Sun JCE 1.2 
+    PKCS#12-based KeyStore
+    X.509 v3 certificate extensions
+    New API for PKCS#8 private key protection
+    SSLeay-style private key protection
+
+  Crypto provider:
+
+    Support for Ephemeral-static Diffie-Hellman
+
+  SSL:
+
+  * Implements JSSE API
+    TLS support
+    Session cache management
+    Non-static configuration of socket factories
+    New API for socket factories
+
+  CMS and S/MIME:
+
+    Streaming support for CMS
+    Support for Diffie-Hellman KeyAgreement in CMS encryption
+    New API for CMS signing/encryption
+
+  PKI:
+
+    More X.509 v3 certificate & v2 CRL extensions
+    New API for certificate/CRL generation
+
+  Kerberos:
+
+    Java GSS API upgraded to final version (IETF RFC2853)
+  * Support for MD4 checksums
+  * Support for encrypted timestamp pre-authentication
+  * Support for arbitrary password salts
+    Support for user-to-user autentication
+    Non-static configuration of Kerberos/GSSAPI
+    New API for Kerberos

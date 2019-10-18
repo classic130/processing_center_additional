@@ -1,0 +1,23 @@
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(b358cc98-af8e-11d4-8c73-0010830169af),
+		dual,
+		helpstring("IVSNZUIPrefs Interface"),
+		pointer_default(unique)
+	]
+	interface IVSNZUIPrefs : IDispatch
+	{
+		[propput, id(1), helpstring("property UILogoUrl")] HRESULT UILogoUrl([in] VARIANT newVal);
+		[propput, id(2), helpstring("property UITitle")] HRESULT UISelFileTitle([in] VARIANT newVal);
+		[propput, id(3), helpstring("property UIDescription")] HRESULT UISelFileDescription([in] VARIANT newVal);
+		[propput, id(4), helpstring("property UIHelpUrl")] HRESULT UISelFileHelpUrl([in] VARIANT newVal);
+		[propput, id(5), helpstring("property UITitle")] HRESULT UIProgressTitle([in] VARIANT newVal);
+		[propput, id(6), helpstring("property UIDescription")] HRESULT UIProgressDescription([in] VARIANT newVal);
+		[propput, id(7), helpstring("property UIHelpUrl")] HRESULT UIProgressHelpUrl([in] VARIANT newVal);
+		[propput, id(8), helpstring("property UITitle")] HRESULT UIVerifyRcptTitle([in] VARIANT newVal);
+		[propput, id(9), helpstring("property UIDescription")] HRESULT UIVerifyRcptDescription([in] VARIANT newVal);
+		[propput, id(10), helpstring("property UIHelpUrl")] HRESULT UIVerifyRcptHelpUrl([in] VARIANT newVal);
+		[propput, id(11), helpstring("property UIWizardTitle")] HRESULT UIWizardTitle([in] VARIANT newVal);
+	};

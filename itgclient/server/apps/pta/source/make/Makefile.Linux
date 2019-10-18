@@ -1,0 +1,14 @@
+#	GNUmakefile 
+#       Developed by Siddharth Bajaj
+#	$Id: Makefile.Linux,v 1.1.4.1 2006/04/13 19:11:03 bagrawala Exp $
+#
+
+ECAS_HOME = ../../../../../..
+
+include $(ECAS_CUSTOM_CFG)
+include $(ECAS_COMMON_DIR)/directory.cfg
+
+SUBDIRS = mod_pta_2
+
+include $(ECAS_RULES_DIR)/directory.cfg
+

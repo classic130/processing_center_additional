@@ -1,0 +1,42 @@
+# $ VSSKTEMPLATEVERSION#1.0.0.2 $ userQuery.fdf
+#
+#------------------------------------------------------------------------------
+#  NAME                     TYPE        REQUIREMENT    DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+Template                    TEXT        MANDATORY      NONE            NONE
+form_file                   TEXT        MANDATORY      NONE            NONE
+query                       HYBRID      MANDATORY      NONE            NONE
+vs_email                    EMAIL       MANDATORY      NONE            query=1 
+vs_common_name              T61         MANDATORY      NONE            query=2
+vs_cert_serial              TEXT        MANDATORY      NONE            query=3
+vs_org_unit                 TEXT        MANDATORY      NONE            query=3
+qmCompileAlways             CLEAR       OPTIONAL       NONE            NONE
+qmTableAlways               CLEAR       OPTIONAL       NONE            NONE
+qmStartRecNumber            CLEAR       OPTIONAL       NONE            NONE
+qmRecNumber                 CLEAR       OPTIONAL       NONE            NONE
+qmRowOffset                 CLEAR       OPTIONAL       NONE            NONE
+QM_MAXROWS                  CLEAR       OPTIONAL       NONE            NONE
+remote_host                 TEXT        OPTIONAL       NONE            NONE
+
+#------------------------------------------------------------------------------
+#  CONST    NAME                       VALUE
+#------------------------------------------------------------------------------
+   CONST    cert_type                  end-user
+# 
+# customized stuff
+#
+# VSSKBEGIN Global/System#3
+# VSSKEND Global/System#3
+#
+#
+#------------------------------------------------------------------------------
+#  NAME     CODE   VALUE
+#------------------------------------------------------------------------------
+STATUS      4000   VSApps/client/userQueryResult.htm
+STATUS      4001   VSApps/client/userQueryResult.htm
+STATUS      0016   VSApps/client/noCertFound.htm
+STATUS      4002   VSApps/client/endOfSearch.htm

@@ -1,0 +1,39 @@
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+
+	[
+		object,
+		uuid(d962f4c2-ddb0-11d3-a428-d1a369ca484f),
+		dual,
+		helpstring("IVSSrchCrit Interface"),
+		pointer_default(unique)
+	]
+	interface IVSSrchCrit : IDispatch
+	{
+		[propget, id(1), helpstring("Certificates Issuer DN must contain this string")] HRESULT IssuerDN([out, retval] VARIANT *pVal);
+		[propput, id(1), helpstring("Certificates Issuer DN must contain this string")] HRESULT IssuerDN([in] VARIANT newVal);
+		[propget, id(2), helpstring("Certificates Subject DN must contain this string")] HRESULT SubjectDN([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("Certificates Subject DN must contain this string")] HRESULT SubjectDN([in] VARIANT newVal);
+		[propget, id(3), helpstring("Certificates Subject DN Email field must contain this string.")] HRESULT Email([out, retval] VARIANT *pVal);
+		[propput, id(3), helpstring("Certificates Subject DN Email field must contain this string.")] HRESULT Email([in] VARIANT newVal);
+		[propget, id(4), helpstring("Certificate's Serial Number (ascii hex) must contain this string. ")] HRESULT SerNum([out, retval] VARIANT *pVal);
+		[propput, id(4), helpstring("Certificate's Serial Number (ascii hex) must contain this string. ")] HRESULT SerNum([in] VARIANT newVal);
+		[propget, id(5), helpstring("Specifies the date with which to compare the expiration date ")] HRESULT ExpDate([out, retval] DATE *pVal);
+		[propput, id(5), helpstring("Specifies the date with which to compare the expiration date ")] HRESULT ExpDate([in] DATE newVal);
+		[propget, id(6), helpstring("Specifies the date with which to compare the effective date ")] HRESULT EffDate([out, retval] DATE *pVal);
+		[propput, id(6), helpstring("Specifies the date with which to compare the effective date ")] HRESULT EffDate([in] DATE newVal);
+		[propget, id(7), helpstring("Flag specifying how the expiration date and effective dates are to be compared with the dates specified by the above criteria.")] HRESULT DateEquality([out, retval] VARIANT *pVal);
+		[propput, id(7), helpstring("Flag specifying how the expiration date and effective dates are to be compared with the dates specified by the above criteria.")] HRESULT DateEquality([in] VARIANT newVal);
+		[propget, id(8), helpstring("Specifies if certificate should be marked as renewed or not.")] HRESULT Renewed([out, retval] VARIANT *pVal);
+		[propput, id(8), helpstring("Specifies if certificate should be marked as renewed or not.")] HRESULT Renewed([in] VARIANT newVal);
+		[propget, id(9), helpstring("Key Usage extension in the certificate must be equal to this value.")] HRESULT KeyUsage([out, retval] VARIANT *pVal);
+		[propput, id(9), helpstring("Key Usage extension in the certificate must be equal to this value.")] HRESULT KeyUsage([in] VARIANT newVal);
+		[propget, id(10), helpstring("Size of the keys in the certificate must be equal to this value.")] HRESULT KeySize([out, retval] VARIANT *pVal);
+		[propput, id(10), helpstring("Size of the keys in the certificate must be equal to this value.")] HRESULT KeySize([in] VARIANT newVal);
+		[propget, id(11), helpstring("Certificate must have an extension whose OID is equal this string.")] HRESULT ExtOID([out, retval] VARIANT *pVal);
+		[propput, id(11), helpstring("Certificate must have an extension whose OID is equal this string.")] HRESULT ExtOID([in] VARIANT newVal);
+		[propget, id(12), helpstring("Value of the above OID must be equal to this ascii hex string.")] HRESULT ExtVal([out, retval] VARIANT *pVal);
+		[propput, id(12), helpstring("Value of the above OID must be equal to this ascii hex string.")] HRESULT ExtVal([in] VARIANT newVal);
+	};
+

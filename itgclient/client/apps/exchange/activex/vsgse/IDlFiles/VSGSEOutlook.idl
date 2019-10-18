@@ -1,0 +1,1532 @@
+// Generated .IDL file (by the OLE/COM Object Viewer)
+// 
+// typelib filename: msoutl85.olb
+
+[
+  uuid(00062FFF-0000-0000-C000-000000000046),
+  version(8.5),
+  helpstring("Outlook 98 Type Library"),
+  helpfile("VBAOUTL.HLP"),
+  helpcontext(00000000)
+]
+library Outlook
+{
+    // TLib :     // TLib : OLE Automation : {00020430-0000-0000-C000-000000000046}
+    importlib("STDOLE2.TLB");
+
+    // Forward declare all types defined in this typelib
+    interface Action;
+    interface _Application;
+	interface Actions;
+    interface NameSpace;
+	interface Recipient;
+    interface AddressLists;
+	interface AddressList;
+	interface AddressEntry;
+    interface AddressEntries;
+	interface Attachments;
+    interface Attachment;
+    interface Recipients;
+    interface FormDescription;
+	interface UserProperties;
+    interface UserProperty;
+	interface Folders;
+    interface MAPIFolder;
+    interface Items;
+    interface Explorer;	
+    
+    interface Inspector;
+    interface _MailItem;
+   
+    interface Exceptions;
+    interface Exception;
+
+    // Enum should be here	
+
+	 typedef enum {
+        olReply = 0,
+        olReplyAll = 1,
+        olForward = 2,
+        olReplyFolder = 3,
+        olRespond = 4
+    } OlActionCopyLike;
+
+	  typedef enum {
+        olNoFlag = 0,
+        olFlagComplete = 1,
+        olFlagMarked = 2
+    } OlFlagStatus;
+
+	  typedef enum {
+        olText = 1,
+        olNumber = 3,
+        olDateTime = 5,
+        olYesNo = 6,
+        olDuration = 7,
+        olKeywords = 11,
+        olPercent = 12,
+        olCurrency = 14,
+        olFormula = 18,
+        olCombination = 19
+    } OlUserPropertyType;
+
+
+	 typedef enum {
+        olImportanceLow = 0,
+        olImportanceNormal = 1,
+        olImportanceHigh = 2
+    } OlImportance;
+
+	  typedef enum {
+        olNormal = 0,
+        olPersonal = 1,
+        olPrivate = 2,
+        olConfidential = 3
+    } OlSensitivity;
+
+	typedef enum {
+        olDefaultRegistry = 0,
+        olPersonalRegistry = 2,
+        olFolderRegistry = 3,
+        olOrganizationRegistry = 4
+    } OlFormRegistry;
+
+	 typedef enum {
+        olRemoteStatusNone = 0,
+        olUnMarked = 1,
+        olMarkedForDownload = 2,
+        olMarkedForCopy = 3,
+        olMarkedForDelete = 4
+    } OlRemoteStatus;
+
+	typedef enum {
+        olOmitOriginalText = 0,
+        olEmbedOriginalItem = 1,
+        olIncludeOriginalText = 2,
+        olIndentOriginalText = 3,
+        olLinkOriginalItem = 4,
+        olUserPreference = 5,
+        olReplyTickOriginalText = 1000
+    } OlActionReplyStyle;
+
+    typedef enum {
+        olOpen = 0,
+        olSend = 1,
+        olPrompt = 2
+    } OlActionResponseStyle;
+
+    typedef enum {
+        olDontShow = 0,
+        olMenu = 1,
+        olMenuAndToolbar = 2
+    } OlActionShowOn;
+
+    typedef enum {
+        olByValue = 1,
+        olByReference = 4,
+        olEmbeddeditem = 5,
+        olOLE = 6
+    } OlAttachmentType;
+
+    typedef enum {
+        olFree = 0,
+        olTentative = 1,
+        olBusy = 2,
+        olOutOfOffice = 3
+    } OlBusyStatus;
+
+
+	typedef enum {
+        olSave = 0,
+        olDiscard = 1,
+        olPromptForSave = 2
+    } OlInspectorClose;
+
+	typedef enum {
+        olUser = 0,
+        olDistList = 1,
+        olForum = 2,
+        olAgent = 3,
+        olOrganization = 4,
+        olPrivateDistList = 5,
+        olRemoteUser = 6
+    } OlDisplayType;
+
+	typedef enum {
+        olEditorText = 1,
+        olEditorHTML = 2,
+        olEditorRTF = 3,
+        olEditorWord = 4
+    } OlEditorType;
+
+	typedef enum {
+        olTrackingNone = 0,
+        olTrackingDelivered = 1,
+        olTrackingNotDelivered = 2,
+        olTrackingNotRead = 3,
+        olTrackingRecallFailure = 4,
+        olTrackingRecallSuccess = 5,
+        olTrackingRead = 6,
+        olTrackingReplied = 7
+    } OlTrackingStatus;
+
+	typedef enum {
+        olResponseNone = 0,
+        olResponseOrganized = 1,
+        olResponseTentative = 2,
+        olResponseAccepted = 3,
+        olResponseDeclined = 4,
+        olResponseNotResponded = 5
+    } OlResponseStatus;
+
+    typedef enum {
+        olMailItem = 0,
+        olAppointmentItem = 1,
+        olContactItem = 2,
+        olTaskItem = 3,
+        olJournalItem = 4,
+        olNoteItem = 5,
+        olPostItem = 6
+    } OlItemType;
+
+	typedef enum {
+        olFolderDeletedItems = 3,
+        olFolderOutbox = 4,
+        olFolderSentMail = 5,
+        olFolderInbox = 6,
+        olFolderCalendar = 9,
+        olFolderContacts = 10,
+        olFolderJournal = 11,
+        olFolderNotes = 12,
+        olFolderTasks = 13,
+        olFolderDrafts = 16
+    } OlDefaultFolders;
+
+	typedef enum {
+        olApplication = 0,
+        olNamespace = 1,
+        olFolder = 2,
+        olRecipient = 4,
+        olAttachment = 5,
+        olAddressList = 7,
+        olAddressEntry = 8,
+        olFolders = 15,
+        olItems = 16,
+        olRecipients = 17,
+        olAttachments = 18,
+        olAddressLists = 20,
+        olAddressEntries = 21,
+        olAppointment = 26,
+        olMeetingRequest = 53,
+        olMeetingCancellation = 54,
+        olMeetingResponseNegative = 55,
+        olMeetingResponsePositive = 56,
+        olMeetingResponseTentative = 57,
+        olRecurrencePattern = 28,
+        olExceptions = 29,
+        olException = 30,
+        olAction = 32,
+        olActions = 33,
+        olExplorer = 34,
+        olInspector = 35,
+        olPages = 36,
+        olFormDescription = 37,
+        olUserProperties = 38,
+        olUserProperty = 39,
+        olContact = 40,
+        olDocument = 41,
+        olJournal = 42,
+        olMail = 43,
+        olNote = 44,
+        olPost = 45,
+        olReport = 46,
+        olRemote = 47,
+        olTask = 48,
+        olTaskRequest = 49,
+        olTaskRequestUpdate = 50,
+        olTaskRequestAccept = 51,
+        olTaskRequestDecline = 52
+    } OlObjectClass;
+
+	
+
+    [
+      uuid(0006F033-0000-0000-C000-000000000046),
+      helpcontext(0x004de932)
+    ]
+    coclass Application {
+        [default] interface _Application;
+    };
+
+
+	[
+      odl,
+      uuid(00063043-0000-0000-C000-000000000046),
+      helpcontext(0x004e03d8),
+      dual,
+      oleautomation
+    ]
+    interface Action : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000064), propget, helpcontext(0x004de835)]
+        HRESULT CopyLike([out, retval] OlActionCopyLike* CopyLike);
+        [id(0x00000064), propput, helpcontext(0x004de835)]
+        HRESULT CopyLike([in] OlActionCopyLike CopyLike);
+        [id(0x00000067), propget, helpcontext(0x004de86b)]
+        HRESULT Enabled([out, retval] VARIANT_BOOL* Enabled);
+        [id(0x00000067), propput, helpcontext(0x004de86b)]
+        HRESULT Enabled([in] VARIANT_BOOL Enabled);
+        [id(0x0000001a), propget, helpcontext(0x004de8b6)]
+        HRESULT MessageClass([out, retval] BSTR* MessageClass);
+        [id(0x0000001a), propput, helpcontext(0x004de8b6)]
+        HRESULT MessageClass([in] BSTR MessageClass);
+        [id(0x00003001), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+        [id(0x00003001), propput, helpcontext(0x004de8bc)]
+        HRESULT Name([in] BSTR Name);
+        [id(0x0000003d), propget, helpcontext(0x004de8da)]
+        HRESULT Prefix([out, retval] BSTR* Prefix);
+        [id(0x0000003d), propput, helpcontext(0x004de8da)]
+        HRESULT Prefix([in] BSTR Prefix);
+        [id(0x00000065), propget, helpcontext(0x004de8f7)]
+        HRESULT ReplyStyle([out, retval] OlActionReplyStyle* ReplyStyle);
+        [id(0x00000065), propput, helpcontext(0x004de8f7)]
+        HRESULT ReplyStyle([in] OlActionReplyStyle ReplyStyle);
+        [id(0x00000066), propget, helpcontext(0x004de901)]
+        HRESULT ResponseStyle([out, retval] OlActionResponseStyle* ResponseStyle);
+        [id(0x00000066), propput, helpcontext(0x004de901)]
+        HRESULT ResponseStyle([in] OlActionResponseStyle ResponseStyle);
+        [id(0x00000069), propget, helpcontext(0x004de90f)]
+        HRESULT ShowOn([out, retval] OlActionShowOn* ShowOn);
+        [id(0x00000069), propput, helpcontext(0x004de90f)]
+        HRESULT ShowOn([in] OlActionShowOn ShowOn);
+        [id(0x0000006c), helpcontext(0x004de84c)]
+        HRESULT Delete();
+        [id(0x0000006a), helpcontext(0x004de86f)]
+        HRESULT Execute([out, retval] IDispatch** Item);
+    };
+
+
+
+    [
+      odl,
+      uuid(00063001-0000-0000-C000-000000000046),
+      helpcontext(0x004de932),
+      dual,
+      oleautomation
+    ]
+    interface _Application : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000114), propget, helpcontext(0x004de814)]
+        HRESULT Assistant([out, retval] IDispatch** Assistant);
+        [id(0x00003001), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+        [id(0x00000116), propget, helpcontext(0x004defce)]
+        HRESULT Version([out, retval] BSTR* Version);
+        [id(0x00000111), helpcontext(0x004de7fb)]
+        HRESULT ActiveExplorer([out, retval] Explorer** ActiveExplorer);
+        [id(0x00000112), helpcontext(0x004de7fd)]
+        HRESULT ActiveInspector([out, retval] Inspector** ActiveInspector);
+        [id(0x0000010a), helpcontext(0x004de839)]
+        HRESULT CreateItem(
+                        [in] OlItemType ItemType, 
+                        [out, retval] IDispatch** Item);
+        [id(0x0000010b), helpcontext(0x004def9b)]
+        HRESULT CreateItemFromTemplate(
+                        [in] BSTR TemplatePath, 
+                        [in, optional] VARIANT InFolder, 
+                        [out, retval] IDispatch** Item);
+        [id(0x00000115), helpcontext(0x004e14be)]
+        HRESULT CreateObject(
+                        [in] BSTR ObjectName, 
+                        [out, retval] IDispatch** Object);
+        [id(0x00000110), helpcontext(0x004de88c)]
+        HRESULT GetNamespace(
+                        [in] BSTR Type, 
+                        [out, retval] NameSpace** NameSpace);
+        [id(0x00000113), helpcontext(0x004defb0)]
+        HRESULT Quit();
+    };
+
+	[
+      odl,
+      uuid(0006303E-0000-0000-C000-000000000046),
+      helpcontext(0x004e03d9),
+      dual,
+      oleautomation
+    ]
+    interface Actions : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] Action** Item);
+        [id(0x00000064), helpcontext(0x004debcc)]
+        HRESULT Add([out, retval] Action** Action);
+        [id(0x00000052), helpcontext(0x004de8f2)]
+        HRESULT Remove([in] long Index);
+    };
+
+	[
+      odl,
+      uuid(0006303C-0000-0000-C000-000000000046),
+      helpcontext(0x004de935),
+      dual,
+      oleautomation
+    ]
+    interface Attachments : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] Attachment** Item);
+        [id(0x00000065), helpcontext(0x004debcc)]
+        HRESULT Add(
+                        [in] VARIANT Source, 
+                        [in, optional] VARIANT Type, 
+                        [in, optional] VARIANT Position, 
+                        [in, optional] VARIANT DisplayName, 
+                        [out, retval] Attachment** Attachment);
+        [id(0x00000054), helpcontext(0x004de8f2)]
+        HRESULT Remove([in] long Index);
+    };
+
+	[
+      odl,
+      uuid(00063007-0000-0000-C000-000000000046),
+      helpcontext(0x004de934),
+      dual,
+      oleautomation
+    ]
+    interface Attachment : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x00000071), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00003001), propget, helpcontext(0x004de852)]
+        HRESULT DisplayName([out, retval] BSTR* DisplayName);
+        [id(0x00003001), propput, helpcontext(0x004de852)]
+        HRESULT DisplayName([in] BSTR DisplayName);
+        [id(0x00003704), propget, helpcontext(0x004dfb52)]
+        HRESULT FileName([out, retval] BSTR* FileName);
+        [id(0x0000005b), propget, helpcontext(0x004fc869)]
+        HRESULT Index([out, retval] long* Index);
+        [id(0x0000f100), propget, hidden]
+        HRESULT MAPIOBJECT([out, retval] IUnknown** MAPIOBJECT);
+        [id(0x00003708), propget, helpcontext(0x004de8d5)]
+        HRESULT PathName([out, retval] BSTR* PathName);
+        [id(0x00000072), propget, helpcontext(0x004de8d8)]
+        HRESULT Position([out, retval] long* Position);
+        [id(0x00000072), propput, helpcontext(0x004de8d8)]
+        HRESULT Position([in] long Position);
+        [id(0x00003705), propget, helpcontext(0x004de921)]
+        HRESULT Type([out, retval] OlAttachmentType* Type);
+        [id(0x00000069), helpcontext(0x004de84c)]
+        HRESULT Delete();
+        [id(0x00000068)]
+        HRESULT SaveAsFile([in] BSTR Path);
+    };
+
+	[
+      odl,
+      uuid(00063046-0000-0000-C000-000000000046),
+      helpcontext(0x004deb97),
+      dual,
+      oleautomation
+    ]
+    interface FormDescription : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00003304), propget, helpcontext(0x004deb8f)]
+        HRESULT Category([out, retval] BSTR* Category);
+        [id(0x00003304), propput, helpcontext(0x004deb8f)]
+        HRESULT Category([in] BSTR Category);
+        [id(0x00003305), propget, helpcontext(0x004deb90)]
+        HRESULT CategorySub([out, retval] BSTR* CategorySub);
+        [id(0x00003305), propput, helpcontext(0x004deb90)]
+        HRESULT CategorySub([in] BSTR CategorySub);
+        [id(0x00003004), propget, helpcontext(0x004deb91)]
+        HRESULT Comment([out, retval] BSTR* Comment);
+        [id(0x00003004), propput, helpcontext(0x004deb91)]
+        HRESULT Comment([in] BSTR Comment);
+        [id(0x00003303), propget, helpcontext(0x004deb94)]
+        HRESULT ContactName([out, retval] BSTR* ContactName);
+        [id(0x00003303), propput, helpcontext(0x004deb94)]
+        HRESULT ContactName([in] BSTR ContactName);
+        [id(0x00003001), propget, helpcontext(0x004de852)]
+        HRESULT DisplayName([out, retval] BSTR* DisplayName);
+        [id(0x00003001), propput, helpcontext(0x004de852)]
+        HRESULT DisplayName([in] BSTR DisplayName);
+        [id(0x00003307), propget, helpcontext(0x004decf5)]
+        HRESULT Hidden([out, retval] VARIANT_BOOL* Hidden);
+        [id(0x00003307), propput, helpcontext(0x004decf5)]
+        HRESULT Hidden([in] VARIANT_BOOL Hidden);
+        [id(0x00000ffd), propget, helpcontext(0x004decf8)]
+        HRESULT Icon([out, retval] BSTR* Icon);
+        [id(0x00000ffd), propput, helpcontext(0x004decf8)]
+        HRESULT Icon([in] BSTR Icon);
+        [id(0x00000066), propget, helpcontext(0x004def9e)]
+        HRESULT Locked([out, retval] VARIANT_BOOL* Locked);
+        [id(0x00000066), propput, helpcontext(0x004def9e)]
+        HRESULT Locked([in] VARIANT_BOOL Locked);
+        [id(0x0000001a), propget, helpcontext(0x004de8b6)]
+        HRESULT MessageClass([out, retval] BSTR* MessageClass);
+        [id(0x00000ffc), propget, helpcontext(0x004defa1)]
+        HRESULT MiniIcon([out, retval] BSTR* MiniIcon);
+        [id(0x00000ffc), propput, helpcontext(0x004defa1)]
+        HRESULT MiniIcon([in] BSTR MiniIcon);
+        [id(0x0000f01d), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+        [id(0x0000f01d), propput, helpcontext(0x004de8bc)]
+        HRESULT Name([in] BSTR Name);
+        [id(0x00000068), propget, helpcontext(0x004defa5)]
+        HRESULT Number([out, retval] BSTR* Number);
+        [id(0x00000068), propput, helpcontext(0x004defa5)]
+        HRESULT Number([in] BSTR Number);
+        [id(0x00000065), propget, helpcontext(0x004defa6)]
+        HRESULT OneOff([out, retval] VARIANT_BOOL* OneOff);
+        [id(0x00000065), propput, helpcontext(0x004defa6)]
+        HRESULT OneOff([in] VARIANT_BOOL OneOff);
+        [id(0x00000067), propget, helpcontext(0x004defa8)]
+        HRESULT Password([out, retval] BSTR* Password);
+        [id(0x00000067), propput, helpcontext(0x004defa8)]
+        HRESULT Password([in] BSTR Password);
+        [id(0x0000006d), propget, helpcontext(0x004fcf00)]
+        HRESULT ScriptText([out, retval] BSTR* ScriptText);
+        [id(0x0000006a), propget, helpcontext(0x004defbf)]
+        HRESULT Template([out, retval] BSTR* Template);
+        [id(0x0000006a), propput, helpcontext(0x004defbf)]
+        HRESULT Template([in] BSTR Template);
+        [id(0x00000069), propget, helpcontext(0x004defcb)]
+        HRESULT UseWordMail([out, retval] VARIANT_BOOL* UseWordMail);
+        [id(0x00000069), propput, helpcontext(0x004defcb)]
+        HRESULT UseWordMail([in] VARIANT_BOOL UseWordMail);
+        [id(0x00003301), propget, helpcontext(0x004defce)]
+        HRESULT Version([out, retval] BSTR* Version);
+        [id(0x00003301), propput, helpcontext(0x004defce)]
+        HRESULT Version([in] BSTR Version);
+        [id(0x0000006b), helpcontext(0x004dfd6f)]
+        HRESULT PublishForm(
+                        [in] OlFormRegistry Registry, 
+                        [in, optional] VARIANT Folder);
+    };
+
+
+	
+    [
+      odl,
+      uuid(00063002-0000-0000-C000-000000000046),
+      helpcontext(0x004de93f),
+      dual,
+      oleautomation
+    ]
+    interface NameSpace : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00002101), propget, helpcontext(0x004de843)]
+        HRESULT CurrentUser([out, retval] Recipient** CurrentUser);
+        [id(0x00002103), propget, helpcontext(0x004de87a)]
+        HRESULT Folders([out, retval] Folders** Folders);
+        [id(0x00002104), propget, helpcontext(0x004de921)]
+        HRESULT Type([out, retval] BSTR* Type);
+        [id(0x0000210d), propget, helpcontext(0x004fc930)]
+        HRESULT AddressLists([out, retval] AddressLists** AddressLists);
+        [id(0x0000210a), helpcontext(0x004de83b)]
+        HRESULT CreateRecipient(
+                        [in] BSTR RecipientName, 
+                        [out, retval] Recipient** Recipient);
+        [id(0x0000210b), helpcontext(0x004de884)]
+        HRESULT GetDefaultFolder(
+                        [in] OlDefaultFolders FolderType, 
+                        [out, retval] MAPIFolder** Folder);
+        [id(0x00002108), helpcontext(0x004de888)]
+        HRESULT GetFolderFromID(
+                        [in] BSTR EntryIDFolder, 
+                        [in, optional] VARIANT EntryIDStore, 
+                        [out, retval] MAPIFolder** Folder);
+        [id(0x00002109), helpcontext(0x004de88b)]
+        HRESULT GetItemFromID(
+                        [in] BSTR EntryIDItem, 
+                        [in, optional] VARIANT EntryIDStore, 
+                        [out, retval] IDispatch** Item);
+        [id(0x00002107), helpcontext(0x004de88e)]
+        HRESULT GetRecipientFromID(
+                        [in] BSTR EntryID, 
+                        [out, retval] Recipient** Recipient);
+        [id(0x0000210c), helpcontext(0x004de891)]
+        HRESULT GetSharedDefaultFolder(
+                        [in] Recipient* Recipient, 
+                        [in] OlDefaultFolders FolderType, 
+                        [out, retval] MAPIFolder** Folder);
+        [id(0x00002106), helpcontext(0x004de8b1)]
+        HRESULT Logoff();
+        [id(0x00002105), helpcontext(0x004de8b2)]
+        HRESULT Logon(
+                        [in, optional] VARIANT Profile, 
+                        [in, optional] VARIANT Password, 
+                        [in, optional] VARIANT ShowDialog, 
+                        [in, optional] VARIANT NewSession);
+        [id(0x0000210e), helpcontext(0x004fc863)]
+        HRESULT PickFolder([out, retval] MAPIFolder** Folder);
+        [id(0x00002117), hidden]
+        HRESULT RefreshRemoteHeaders();
+    };
+
+   [
+      odl,
+      uuid(00063045-0000-0000-C000-000000000046),
+      helpcontext(0x004de942),
+      dual,
+      oleautomation
+    ]
+    interface Recipient : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000006d), propget, helpcontext(0x004de87a)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00003003), propget, helpcontext(0x004debce)]
+        HRESULT Address([out, retval] BSTR* Address);
+        [id(0x00000079), propget, helpcontext(0x004fc931)]
+        HRESULT AddressEntry([out, retval] AddressEntry** AddressEntry);
+        [id(0x00000079), propputref, helpcontext(0x004fc931)]
+        HRESULT AddressEntry([in] AddressEntry* AddressEntry);
+        [id(0x0000006a), propget, helpcontext(0x004deb89)]
+        HRESULT AutoResponse([out, retval] BSTR* AutoResponse);
+        [id(0x0000006a), propput, helpcontext(0x004deb89)]
+        HRESULT AutoResponse([in] BSTR AutoResponse);
+        [id(0x00003900), propget, helpcontext(0x004fc932)]
+        HRESULT DisplayType([out, retval] OlDisplayType* DisplayType);
+        [id(0x0000f01e), propget, helpcontext(0x004de86d)]
+        HRESULT EntryID([out, retval] BSTR* EntryID);
+        [id(0x0000005b), propget, helpcontext(0x004fc869)]
+        HRESULT Index([out, retval] long* Index);
+        [id(0x00000066), propget, helpcontext(0x004dfb53)]
+        HRESULT MeetingResponseStatus([out, retval] OlResponseStatus* MeetingResponseStatus);
+        [id(0x00003001), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+        [id(0x00000064), propget, helpcontext(0x004de8f9)]
+        HRESULT Resolved([out, retval] VARIANT_BOOL* Resolved);
+        [id(0x00000076), propget, helpcontext(0x004defc1)]
+        HRESULT TrackingStatus([out, retval] OlTrackingStatus* TrackingStatus);
+        [id(0x00000076), propput, helpcontext(0x004defc1)]
+        HRESULT TrackingStatus([in] OlTrackingStatus TrackingStatus);
+        [id(0x00000077), propget, helpcontext(0x004defc2)]
+        HRESULT TrackingStatusTime([out, retval] DATE* TrackingStatusTime);
+        [id(0x00000077), propput, helpcontext(0x004defc2)]
+        HRESULT TrackingStatusTime([in] DATE TrackingStatusTime);
+        [id(0x00000c15), propget, helpcontext(0x004de921)]
+        HRESULT Type([out, retval] long* Type);
+        [id(0x00000c15), propput, helpcontext(0x004de921)]
+        HRESULT Type([in] long Type);
+        [id(0x0000006e), helpcontext(0x004de84c)]
+        HRESULT Delete();
+        [id(0x0000006f), helpcontext(0x004de87f)]
+        HRESULT FreeBusy(
+                        [in] DATE Start, 
+                        [in] long MinPerChar, 
+                        [in, optional] VARIANT CompleteFormat, 
+                        [out, retval] BSTR* FreeBusyInfo);
+        [id(0x00000071), helpcontext(0x004defb5)]
+        HRESULT Resolve([out, retval] VARIANT_BOOL* Success);
+    };
+
+	[
+      odl,
+      uuid(00063048-0000-0000-C000-000000000046),
+      helpcontext(0x004fc82c),
+      dual,
+      oleautomation
+    ]
+    interface AddressLists : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] AddressList** Item);
+    };
+
+    [
+      odl,
+      uuid(00063049-0000-0000-C000-000000000046),
+      helpcontext(0x004fc82b),
+      dual,
+      oleautomation
+    ]
+    interface AddressList : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000100), propget, helpcontext(0x004fc852)]
+        HRESULT AddressEntries([out, retval] AddressEntries** AddressEntries);
+        [id(0x0000f01e), propget, helpcontext(0x004fc84f)]
+        HRESULT ID([out, retval] BSTR* ID);
+        [id(0x0000005b), propget, helpcontext(0x004fc869)]
+        HRESULT Index([out, retval] long* Index);
+        [id(0x0000f017), propget, helpcontext(0x004fc853)]
+        HRESULT IsReadOnly([out, retval] VARIANT_BOOL* IsReadOnly);
+        [id(0x00003001), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+    };
+
+	  [
+      odl,
+      uuid(0006303B-0000-0000-C000-000000000046),
+      helpcontext(0x004de943),
+      dual,
+      oleautomation
+    ]
+    interface Recipients : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] Recipient** Item);
+        [id(0x0000006f), helpcontext(0x004debcc)]
+        HRESULT Add(
+                        [in] BSTR Name, 
+                        [out, retval] Recipient** Recipient);
+        [id(0x00000054), helpcontext(0x004de8f2)]
+        HRESULT Remove([in] long Index);
+        [id(0x0000007e), helpcontext(0x004dec18)]
+        HRESULT ResolveAll([out, retval] VARIANT_BOOL* Success);
+    };
+
+
+
+	[
+      odl,
+      uuid(0006304B-0000-0000-C000-000000000046),
+      helpcontext(0x004fc82a),
+      dual,
+      oleautomation
+    ]
+    interface AddressEntry : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00003003), propget, helpcontext(0x004debce)]
+        HRESULT Address([out, retval] BSTR* Address);
+        [id(0x00003003), propput, helpcontext(0x004debce)]
+        HRESULT Address([in] BSTR Address);
+        [id(0x00003900), propget, helpcontext(0x004fc932)]
+        HRESULT DisplayType([out, retval] OlDisplayType* DisplayType);
+        [id(0x0000f01e), propget, helpcontext(0x004fc84f)]
+        HRESULT ID([out, retval] BSTR* ID);
+        [id(0x00000303), propget, helpcontext(0x004fc850)]
+        HRESULT Manager([out, retval] AddressEntry** Manager);
+        [id(0x0000f100), propget, hidden]
+        HRESULT MAPIOBJECT([out, retval] IUnknown** MAPIOBJECT);
+        [id(0x0000f100), propput, hidden]
+        HRESULT MAPIOBJECT([in] IUnknown* MAPIOBJECT);
+        [id(0x00000304), propget, helpcontext(0x004fd47b)]
+        HRESULT Members([out, retval] AddressEntries** Members);
+        [id(0x00003001), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+        [id(0x00003001), propput, helpcontext(0x004de8bc)]
+        HRESULT Name([in] BSTR Name);
+        [id(0x00003002), propget, helpcontext(0x004de921)]
+        HRESULT Type([out, retval] BSTR* Type);
+        [id(0x00003002), propput, helpcontext(0x004de921)]
+        HRESULT Type([in] BSTR Type);
+        [id(0x00000302), helpcontext(0x004de84c)]
+        HRESULT Delete();
+        [id(0x00000301), helpcontext(0x004fc866)]
+        HRESULT Details([in, optional] VARIANT HWnd);
+        [id(0x00000306), helpcontext(0x004fc85e)]
+        HRESULT GetFreeBusy(
+                        [in] DATE Start, 
+                        [in] long MinPerChar, 
+                        [in, optional] VARIANT CompleteFormat, 
+                        [out, retval] BSTR* FreeBusyInfo);
+        [id(0x00000300), helpcontext(0x004fc85f)]
+        HRESULT Update(
+                        [in, optional] VARIANT MakePermanent, 
+                        [in, optional] VARIANT Refresh);
+        [id(0x00000307), hidden]
+        HRESULT UpdateFreeBusy();
+    };
+
+    [
+      odl,
+      uuid(0006304A-0000-0000-C000-000000000046),
+      helpcontext(0x004fc829),
+      dual,
+      oleautomation
+    ]
+    interface AddressEntries : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] AddressEntry** Item);
+        [id(0x0000005a), propget, hidden]
+        HRESULT RawTable([out, retval] IUnknown** RawTable);
+        [id(0x0000005f), helpcontext(0x004debcc)]
+        HRESULT Add(
+                        [in] BSTR Type, 
+                        [in, optional] VARIANT Name, 
+                        [in, optional] VARIANT Address, 
+                        [out, retval] AddressEntry** Entry);
+        [id(0x00000056), helpcontext(0x004fc867)]
+        HRESULT GetFirst([out, retval] AddressEntry** AddressEntry);
+        [id(0x00000058), helpcontext(0x004fc84b)]
+        HRESULT GetLast([out, retval] AddressEntry** AddressEntry);
+        [id(0x00000057), helpcontext(0x004fc84c)]
+        HRESULT GetNext([out, retval] AddressEntry** AddressEntry);
+        [id(0x00000059), helpcontext(0x004fc84d)]
+        HRESULT GetPrevious([out, retval] AddressEntry** AddressEntry);
+        [id(0x00000061), helpcontext(0x004de912)]
+        HRESULT Sort(
+                        [in, optional] VARIANT Property, 
+                        [in, optional] VARIANT Order);
+    };
+
+
+
+   [
+      odl,
+      uuid(00063040-0000-0000-C000-000000000046),
+      helpcontext(0x004de87a),
+      dual,
+      oleautomation
+    ]
+    interface Folders : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] MAPIFolder** Item);
+        [id(0x0000005a), propget, hidden]
+        HRESULT RawTable([out, retval] IUnknown** RawTable);
+        [id(0x0000005f), helpcontext(0x004debcc)]
+        HRESULT Add(
+                        [in] BSTR Name, 
+                        [in, optional] VARIANT Type, 
+                        [out, retval] MAPIFolder** Folder);
+        [id(0x00000056), helpcontext(0x004fc867)]
+        HRESULT GetFirst([out, retval] MAPIFolder** Folder);
+        [id(0x00000058), helpcontext(0x004fc84b)]
+        HRESULT GetLast([out, retval] MAPIFolder** Folder);
+        [id(0x00000057), helpcontext(0x004fc84c)]
+        HRESULT GetNext([out, retval] MAPIFolder** Folder);
+        [id(0x00000059), helpcontext(0x004fc84d)]
+        HRESULT GetPrevious([out, retval] MAPIFolder** Folder);
+        [id(0x00000054), helpcontext(0x004de8f2)]
+        HRESULT Remove([in] long Index);
+    };
+
+    [
+      odl,
+      uuid(00063006-0000-0000-C000-000000000046),
+      helpcontext(0x004de93d),
+      dual,
+      oleautomation
+    ]
+    interface MAPIFolder : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00003106), propget, helpcontext(0x004def9c)]
+        HRESULT DefaultItemType([out, retval] OlItemType* DefaultItemType);
+        [id(0x00003107), propget, helpcontext(0x004debd1)]
+        HRESULT DefaultMessageClass([out, retval] BSTR* DefaultMessageClass);
+        [id(0x00003004), propget, helpcontext(0x004de84f)]
+        HRESULT Description([out, retval] BSTR* Description);
+        [id(0x00003004), propput, helpcontext(0x004de84f)]
+        HRESULT Description([in] BSTR Description);
+        [id(0x0000f01e), propget, helpcontext(0x004de86d)]
+        HRESULT EntryID([out, retval] BSTR* EntryID);
+        [id(0x00002103), propget, helpcontext(0x004de87a)]
+        HRESULT Folders([out, retval] Folders** Folders);
+        [id(0x00003100), propget, helpcontext(0x004de8ab)]
+        HRESULT Items([out, retval] Items** Items);
+        [id(0x00003001), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+        [id(0x00003001), propput, helpcontext(0x004de8bc)]
+        HRESULT Name([in] BSTR Name);
+        [id(0x00003108), propget, helpcontext(0x004defbd)]
+        HRESULT StoreID([out, retval] BSTR* StoreID);
+        [id(0x00003603), propget, helpcontext(0x004defc6)]
+        HRESULT UnReadItemCount([out, retval] long* UnReadItemCount);
+        [id(0x0000f032), helpcontext(0x004de836)]
+        HRESULT CopyTo(
+                        [in] MAPIFolder* DestinationFolder, 
+                        [out, retval] MAPIFolder** Folder);
+        [id(0x0000f045), helpcontext(0x004de84c)]
+        HRESULT Delete();
+        [id(0x00003104), helpcontext(0x004de850)]
+        HRESULT Display();
+        [id(0x00003101), helpcontext(0x004e11e1)]
+        HRESULT GetExplorer(
+                        [in, optional] VARIANT DisplayMode, 
+                        [out, retval] Explorer** Explorer);
+        [id(0x0000f034), helpcontext(0x004de8ba)]
+        HRESULT MoveTo([in] MAPIFolder* DestinationFolder);
+    };
+
+	
+    [
+      odl,
+      uuid(00063041-0000-0000-C000-000000000046),
+      helpcontext(0x004de93a),
+      dual,
+      oleautomation
+    ]
+    interface Items : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] IDispatch** Item);
+        [id(0x0000005a), propget, hidden]
+        HRESULT RawTable([out, retval] IUnknown** RawTable);
+        [id(0x000000ce), propget, helpcontext(0x004de8a2)]
+        HRESULT IncludeRecurrences([out, retval] VARIANT_BOOL* IncludeRecurrences);
+        [id(0x000000ce), propput, helpcontext(0x004de8a2)]
+        HRESULT IncludeRecurrences([in] VARIANT_BOOL IncludeRecurrences);
+        [id(0x0000005f), helpcontext(0x004debcc)]
+        HRESULT Add(
+                        [in, optional] VARIANT Type, 
+                        [out, retval] IDispatch** Item);
+        [id(0x00000062), helpcontext(0x004de873)]
+        HRESULT Find(
+                        [in] BSTR Filter, 
+                        [out, retval] IDispatch** Item);
+        [id(0x00000063), helpcontext(0x004de875)]
+        HRESULT FindNext([out, retval] IDispatch** Item);
+        [id(0x00000056), helpcontext(0x004fc867)]
+        HRESULT GetFirst([out, retval] IDispatch** Item);
+        [id(0x00000058), helpcontext(0x004fc84b)]
+        HRESULT GetLast([out, retval] IDispatch** Item);
+        [id(0x00000057), helpcontext(0x004fc84c)]
+        HRESULT GetNext([out, retval] IDispatch** Item);
+        [id(0x00000059), helpcontext(0x004fc84d)]
+        HRESULT GetPrevious([out, retval] IDispatch** Item);
+        [id(0x00000054), helpcontext(0x004de8f2)]
+        HRESULT Remove([in] long Index);
+        [id(0x0000005d), helpcontext(0x004fc861)]
+        HRESULT ResetColumns();
+        [id(0x00000064), helpcontext(0x004de902)]
+        HRESULT Restrict(
+                        [in] BSTR Filter, 
+                        [out, retval] Items** Items);
+        [id(0x0000005c), helpcontext(0x004fc862)]
+        HRESULT SetColumns([in] BSTR Columns);
+        [id(0x00000061), helpcontext(0x004de912)]
+        HRESULT Sort(
+                        [in] BSTR Property, 
+                        [in, optional] VARIANT Descending);
+    };
+
+    [
+      odl,
+      uuid(00063003-0000-0000-C000-000000000046),
+      helpcontext(0x004de937),
+      dual,
+      oleautomation
+    ]
+    interface Explorer : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00002100), propget, helpcontext(0x004de829)]
+        HRESULT CommandBars([out, retval] IDispatch** CommandBars);
+        [id(0x00002101), propget, helpcontext(0x004de83f)]
+        HRESULT CurrentFolder([out, retval] MAPIFolder** CurrentFolder);
+        [id(0x00002101), propputref, helpcontext(0x004de83f)]
+        HRESULT CurrentFolder([in] MAPIFolder* CurrentFolder);
+        [id(0x00002103), helpcontext(0x004de825)]
+        HRESULT Close();
+        [id(0x00002104), helpcontext(0x004de850)]
+        HRESULT Display();
+    };
+
+
+    [
+      odl,
+      uuid(00063005-0000-0000-C000-000000000046),
+      helpcontext(0x004de939),
+      dual,
+      oleautomation
+    ]
+    interface Inspector : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00002100), propget, helpcontext(0x004de829)]
+        HRESULT CommandBars([out, retval] IDispatch** CommandBars);
+        [id(0x00002102), propget, helpcontext(0x004de841)]
+        HRESULT CurrentItem([out, retval] IDispatch** CurrentItem);
+        [id(0x00002110), propget, helpcontext(0x004fdc53)]
+        HRESULT EditorType([out, retval] OlEditorType* EditorType);
+        [id(0x00002106), propget, helpcontext(0x004defa3)]
+        HRESULT ModifiedFormPages([out, retval] IDispatch** ModifiedFormPages);
+        [id(0x00002103), helpcontext(0x004de825)]
+        HRESULT Close([in] OlInspectorClose SaveMode);
+        [id(0x00002104), helpcontext(0x004de850)]
+        HRESULT Display([in, optional] VARIANT Modal);
+        [id(0x00002108), helpcontext(0x004decf6)]
+        HRESULT HideFormPage([in] BSTR PageName);
+        [id(0x00002105), helpcontext(0x004fd03e)]
+        HRESULT IsWordMail([out, retval] VARIANT_BOOL* IsWordMail);
+        [id(0x0000210c), helpcontext(0x004e0e9d)]
+        HRESULT SetCurrentFormPage([in] BSTR PageName);
+        [id(0x00002109), helpcontext(0x004defba)]
+        HRESULT ShowFormPage([in] BSTR PageName);
+        [id(0x0000210e), propget, helpcontext(0x004fcf3d)]
+        HRESULT HTMLEditor([out, retval] IDispatch** HTMLEditor);
+        [id(0x0000210f), propget, helpcontext(0x004fcf3e)]
+        HRESULT WordEditor([out, retval] IDispatch** WordEditor);
+    };
+
+
+    [
+      uuid(00061033-0000-0000-C000-000000000046),
+      helpcontext(0x004de93c)
+    ]
+    coclass MailItem {
+        [default] interface _MailItem;
+        [default, source] interface ItemEvents;
+    };
+
+    [
+      odl,
+      uuid(00063034-0000-0000-C000-000000000046),
+      helpcontext(0x004de93c),
+      dual,
+      oleautomation
+    ]
+    interface _MailItem : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x0000f817), propget, helpcontext(0x004dfd6e)]
+        HRESULT Actions([out, retval] Actions** Actions);
+        [id(0x0000f815), propget, helpcontext(0x004de816)]
+        HRESULT Attachments([out, retval] Attachments** Attachments);
+        [id(0x00008535), propget, helpcontext(0x004de819)]
+        HRESULT BillingInformation([out, retval] BSTR* BillingInformation);
+        [id(0x00008535), propput, helpcontext(0x004de819)]
+        HRESULT BillingInformation([in] BSTR BillingInformation);
+        [id(0x00009100), propget, helpcontext(0x004de81b)]
+        HRESULT Body([out, retval] BSTR* Body);
+        [id(0x00009100), propput, helpcontext(0x004de81b)]
+        HRESULT Body([in] BSTR Body);
+        [id(0x00009001), propget, helpcontext(0x004de820)]
+        HRESULT Categories([out, retval] BSTR* Categories);
+        [id(0x00009001), propput, helpcontext(0x004de820)]
+        HRESULT Categories([in] BSTR Categories);
+        [id(0x0000853b), propget, helpcontext(0x004de82a)]
+        HRESULT Companies([out, retval] BSTR* Companies);
+        [id(0x0000853b), propput, helpcontext(0x004de82a)]
+        HRESULT Companies([in] BSTR Companies);
+        [id(0x00000071), propget, helpcontext(0x004de831)]
+        HRESULT ConversationIndex([out, retval] BSTR* ConversationIndex);
+        [id(0x00000070), propget, helpcontext(0x004de832)]
+        HRESULT ConversationTopic([out, retval] BSTR* ConversationTopic);
+        [id(0x00003007), propget, helpcontext(0x004de83e)]
+        HRESULT CreationTime([out, retval] DATE* CreationTime);
+        [id(0x0000f01e), propget, helpcontext(0x004de86d)]
+        HRESULT EntryID([out, retval] BSTR* EntryID);
+        [id(0x0000f095), propget, helpcontext(0x004de87b)]
+        HRESULT FormDescription([out, retval] FormDescription** FormDescription);
+        [id(0x0000f03e), propget, helpcontext(0x004de889)]
+        HRESULT GetInspector([out, retval] Inspector** GetInspector);
+        [id(0x00000017), propget, helpcontext(0x004de8a1)]
+        HRESULT Importance([out, retval] OlImportance* Importance);
+        [id(0x00000017), propput, helpcontext(0x004de8a1)]
+        HRESULT Importance([in] OlImportance Importance);
+        [id(0x00003008), propget, helpcontext(0x004de8ae)]
+        HRESULT LastModificationTime([out, retval] DATE* LastModificationTime);
+        [id(0x0000f100), propget, hidden]
+        HRESULT MAPIOBJECT([out, retval] IUnknown** MAPIOBJECT);
+        [id(0x0000001a), propget, helpcontext(0x004de8b6)]
+        HRESULT MessageClass([out, retval] BSTR* MessageClass);
+        [id(0x0000001a), propput, helpcontext(0x004de8b6)]
+        HRESULT MessageClass([in] BSTR MessageClass);
+        [id(0x00008534), propget, helpcontext(0x004de8b7)]
+        HRESULT Mileage([out, retval] BSTR* Mileage);
+        [id(0x00008534), propput, helpcontext(0x004de8b7)]
+        HRESULT Mileage([in] BSTR Mileage);
+        [id(0x0000850e), propget, helpcontext(0x004de8bf)]
+        HRESULT NoAging([out, retval] VARIANT_BOOL* NoAging);
+        [id(0x0000850e), propput, helpcontext(0x004de8bf)]
+        HRESULT NoAging([in] VARIANT_BOOL NoAging);
+        [id(0x00008552), propget, helpcontext(0x004e116d)]
+        HRESULT OutlookInternalVersion([out, retval] long* OutlookInternalVersion);
+        [id(0x00008554), propget, helpcontext(0x004e0079)]
+        HRESULT OutlookVersion([out, retval] BSTR* OutlookVersion);
+        [id(0x0000f0a3), propget, helpcontext(0x004de906)]
+        HRESULT Saved([out, retval] VARIANT_BOOL* Saved);
+        [id(0x00000036), propget, helpcontext(0x004de90c)]
+        HRESULT Sensitivity([out, retval] OlSensitivity* Sensitivity);
+        [id(0x00000036), propput, helpcontext(0x004de90c)]
+        HRESULT Sensitivity([in] OlSensitivity Sensitivity);
+        [id(0x00000e08), propget, helpcontext(0x004de910)]
+        HRESULT Size([out, retval] long* Size);
+        [id(0x00000037), propget, helpcontext(0x004de91b)]
+        HRESULT Subject([out, retval] BSTR* Subject);
+        [id(0x00000037), propput, helpcontext(0x004de91b)]
+        HRESULT Subject([in] BSTR Subject);
+        [id(0x0000f01c), propget, helpcontext(0x004de922)]
+        HRESULT UnRead([out, retval] VARIANT_BOOL* UnRead);
+        [id(0x0000f01c), propput, helpcontext(0x004de922)]
+        HRESULT UnRead([in] VARIANT_BOOL UnRead);
+        [id(0x0000f816), propget, helpcontext(0x004de923)]
+        HRESULT UserProperties([out, retval] UserProperties** UserProperties);
+        [id(0x0000f023), helpcontext(0x004de825)]
+        HRESULT Close([in] OlInspectorClose SaveMode);
+        [id(0x0000f032), helpcontext(0x004de833)]
+        HRESULT Copy([out, retval] IDispatch** Item);
+        [id(0x0000f04a), helpcontext(0x004de84c)]
+        HRESULT Delete();
+        [id(0x0000f0a6), helpcontext(0x004de850)]
+        HRESULT Display([in, optional] VARIANT Modal);
+        [id(0x0000f034), helpcontext(0x004de8b9)]
+        HRESULT Move(
+                        [in] MAPIFolder* DestFldr, 
+                        [out, retval] IDispatch** Item);
+        [id(0x0000f033), helpcontext(0x004defae)]
+        HRESULT PrintOut();
+        [id(0x0000f048), helpcontext(0x004de903)]
+        HRESULT Save();
+        [id(0x0000f051), helpcontext(0x004de904)]
+        HRESULT SaveAs(
+                        [in] BSTR Path, 
+                        [in, optional] VARIANT Type);
+        [id(0x00000002), propget, helpcontext(0x004de812)]
+        HRESULT AlternateRecipientAllowed([out, retval] VARIANT_BOOL* AlternateRecipientAllowed);
+        [id(0x00000002), propput, helpcontext(0x004de812)]
+        HRESULT AlternateRecipientAllowed([in] VARIANT_BOOL AlternateRecipientAllowed);
+        [id(0x00000005), propget, helpcontext(0x004dfb51)]
+        HRESULT AutoForwarded([out, retval] VARIANT_BOOL* AutoForwarded);
+        [id(0x00000005), propput, helpcontext(0x004dfb51)]
+        HRESULT AutoForwarded([in] VARIANT_BOOL AutoForwarded);
+        [id(0x00000e02), propget, helpcontext(0x004de818)]
+        HRESULT BCC([out, retval] BSTR* BCC);
+        [id(0x00000e02), propput, helpcontext(0x004de818)]
+        HRESULT BCC([in] BSTR BCC);
+        [id(0x00000e03), propget, helpcontext(0x004de821)]
+        HRESULT CC([out, retval] BSTR* CC);
+        [id(0x00000e03), propput, helpcontext(0x004de821)]
+        HRESULT CC([in] BSTR CC);
+        [id(0x0000000f), propget, helpcontext(0x004de849)]
+        HRESULT DeferredDeliveryTime([out, retval] DATE* DeferredDeliveryTime);
+        [id(0x0000000f), propput, helpcontext(0x004de849)]
+        HRESULT DeferredDeliveryTime([in] DATE DeferredDeliveryTime);
+        [id(0x00000e01), propget, helpcontext(0x004de84d)]
+        HRESULT DeleteAfterSubmit([out, retval] VARIANT_BOOL* DeleteAfterSubmit);
+        [id(0x00000e01), propput, helpcontext(0x004de84d)]
+        HRESULT DeleteAfterSubmit([in] VARIANT_BOOL DeleteAfterSubmit);
+        [id(0x00000015), propget, helpcontext(0x004de871)]
+        HRESULT ExpiryTime([out, retval] DATE* ExpiryTime);
+        [id(0x00000015), propput, helpcontext(0x004de871)]
+        HRESULT ExpiryTime([in] DATE ExpiryTime);
+        [id(0x00000030), propget, helpcontext(0x004de877)]
+        HRESULT FlagDueBy([out, retval] DATE* FlagDueBy);
+        [id(0x00000030), propput, helpcontext(0x004de877)]
+        HRESULT FlagDueBy([in] DATE FlagDueBy);
+        [id(0x00008530), propget, helpcontext(0x004de878)]
+        HRESULT FlagRequest([out, retval] BSTR* FlagRequest);
+        [id(0x00008530), propput, helpcontext(0x004de878)]
+        HRESULT FlagRequest([in] BSTR FlagRequest);
+        [id(0x00001090), propget, helpcontext(0x004de879)]
+        HRESULT FlagStatus([out, retval] OlFlagStatus* FlagStatus);
+        [id(0x00001090), propput, helpcontext(0x004de879)]
+        HRESULT FlagStatus([in] OlFlagStatus FlagStatus);
+        [id(0x0000f404), propget, helpcontext(0x004fdc54)]
+        HRESULT HTMLBody([out, retval] BSTR* HTMLBody);
+        [id(0x0000f404), propput, helpcontext(0x004fdc54)]
+        HRESULT HTMLBody([in] BSTR HTMLBody);
+        [id(0x00000023), propget, helpcontext(0x004de8c7)]
+        HRESULT OriginatorDeliveryReportRequested([out, retval] VARIANT_BOOL* OriginatorDeliveryReportRequested);
+        [id(0x00000023), propput, helpcontext(0x004de8c7)]
+        HRESULT OriginatorDeliveryReportRequested([in] VARIANT_BOOL OriginatorDeliveryReportRequested);
+        [id(0x00000029), propget, helpcontext(0x004de8e0)]
+        HRESULT ReadReceiptRequested([out, retval] VARIANT_BOOL* ReadReceiptRequested);
+        [id(0x00000029), propput, helpcontext(0x004de8e0)]
+        HRESULT ReadReceiptRequested([in] VARIANT_BOOL ReadReceiptRequested);
+        [id(0x0000003f), propget, helpcontext(0x004de8e1)]
+        HRESULT ReceivedByEntryID([out, retval] BSTR* ReceivedByEntryID);
+        [id(0x00000040), propget, helpcontext(0x004de8e2)]
+        HRESULT ReceivedByName([out, retval] BSTR* ReceivedByName);
+        [id(0x00000043), propget, helpcontext(0x004de8e3)]
+        HRESULT ReceivedOnBehalfOfEntryID([out, retval] BSTR* ReceivedOnBehalfOfEntryID);
+        [id(0x00000044), propget, helpcontext(0x004de8e4)]
+        HRESULT ReceivedOnBehalfOfName([out, retval] BSTR* ReceivedOnBehalfOfName);
+        [id(0x00000e06), propget, helpcontext(0x004defb3)]
+        HRESULT ReceivedTime([out, retval] DATE* ReceivedTime);
+        [id(0x0000002b), propget, helpcontext(0x004de8e5)]
+        HRESULT RecipientReassignmentProhibited([out, retval] VARIANT_BOOL* RecipientReassignmentProhibited);
+        [id(0x0000002b), propput, helpcontext(0x004de8e5)]
+        HRESULT RecipientReassignmentProhibited([in] VARIANT_BOOL RecipientReassignmentProhibited);
+        [id(0x0000f814), propget, helpcontext(0x004de8e6)]
+        HRESULT Recipients([out, retval] Recipients** Recipients);
+        [id(0x0000851c), propget, helpcontext(0x004de8eb)]
+        HRESULT ReminderOverrideDefault([out, retval] VARIANT_BOOL* ReminderOverrideDefault);
+        [id(0x0000851c), propput, helpcontext(0x004de8eb)]
+        HRESULT ReminderOverrideDefault([in] VARIANT_BOOL ReminderOverrideDefault);
+        [id(0x0000851e), propget, helpcontext(0x004de8ec)]
+        HRESULT ReminderPlaySound([out, retval] VARIANT_BOOL* ReminderPlaySound);
+        [id(0x0000851e), propput, helpcontext(0x004de8ec)]
+        HRESULT ReminderPlaySound([in] VARIANT_BOOL ReminderPlaySound);
+        [id(0x00008503), propget, helpcontext(0x004de8ed)]
+        HRESULT ReminderSet([out, retval] VARIANT_BOOL* ReminderSet);
+        [id(0x00008503), propput, helpcontext(0x004de8ed)]
+        HRESULT ReminderSet([in] VARIANT_BOOL ReminderSet);
+        [id(0x0000851f), propget, helpcontext(0x004de8ee)]
+        HRESULT ReminderSoundFile([out, retval] BSTR* ReminderSoundFile);
+        [id(0x0000851f), propput, helpcontext(0x004de8ee)]
+        HRESULT ReminderSoundFile([in] BSTR ReminderSoundFile);
+        [id(0x00008502), propget, helpcontext(0x004de8ef)]
+        HRESULT ReminderTime([out, retval] DATE* ReminderTime);
+        [id(0x00008502), propput, helpcontext(0x004de8ef)]
+        HRESULT ReminderTime([in] DATE ReminderTime);
+        [id(0x00008511), propget, helpcontext(0x004de8f1)]
+        HRESULT RemoteStatus([out, retval] OlRemoteStatus* RemoteStatus);
+        [id(0x00008511), propput, helpcontext(0x004de8f1)]
+        HRESULT RemoteStatus([in] OlRemoteStatus RemoteStatus);
+        [id(0x00000050), propget, helpcontext(0x004de8f5)]
+        HRESULT ReplyRecipientNames([out, retval] BSTR* ReplyRecipientNames);
+        [id(0x0000f013), propget, helpcontext(0x004de8f6)]
+        HRESULT ReplyRecipients([out, retval] Recipients** ReplyRecipients);
+        [id(0x0000f401), propget, helpcontext(0x004de908)]
+        HRESULT SaveSentMessageFolder([out, retval] MAPIFolder** SaveSentMessageFolder);
+        [id(0x0000f401), propputref, helpcontext(0x004de908)]
+        HRESULT SaveSentMessageFolder([in] MAPIFolder* SaveSentMessageFolder);
+        [id(0x00000c1a), propget, helpcontext(0x004de90a)]
+        HRESULT SenderName([out, retval] BSTR* SenderName);
+        [id(0x0000f402), propget, helpcontext(0x004fc840)]
+        HRESULT Sent([out, retval] VARIANT_BOOL* Sent);
+        [id(0x00000039), propget, helpcontext(0x004de90d)]
+        HRESULT SentOn([out, retval] DATE* SentOn);
+        [id(0x00000042), propget, helpcontext(0x004de90e)]
+        HRESULT SentOnBehalfOfName([out, retval] BSTR* SentOnBehalfOfName);
+        [id(0x00000042), propput, helpcontext(0x004de90e)]
+        HRESULT SentOnBehalfOfName([in] BSTR SentOnBehalfOfName);
+        [id(0x0000f403), propget, helpcontext(0x004fc841)]
+        HRESULT Submitted([out, retval] VARIANT_BOOL* Submitted);
+        [id(0x00000e04), propget, helpcontext(0x004de91f)]
+        HRESULT To([out, retval] BSTR* To);
+        [id(0x00000e04), propput, helpcontext(0x004de91f)]
+        HRESULT To([in] BSTR To);
+        [id(0x0000f01b), propget, helpcontext(0x004de926)]
+        HRESULT VotingOptions([out, retval] BSTR* VotingOptions);
+        [id(0x0000f01b), propput, helpcontext(0x004de926)]
+        HRESULT VotingOptions([in] BSTR VotingOptions);
+        [id(0x00008524), propget, helpcontext(0x004de927)]
+        HRESULT VotingResponse([out, retval] BSTR* VotingResponse);
+        [id(0x00008524), propput, helpcontext(0x004de927)]
+        HRESULT VotingResponse([in] BSTR VotingResponse);
+        [id(0x0000f822), helpcontext(0x004e1107)]
+        HRESULT ClearConversationIndex();
+        [id(0x0000f813), helpcontext(0x004de87d)]
+        HRESULT Forward([out, retval] MailItem** Item);
+        [id(0x0000f810), helpcontext(0x004de8f3)]
+        HRESULT Reply([out, retval] MailItem** Item);
+        [id(0x0000f811), helpcontext(0x004de8f4)]
+        HRESULT ReplyAll([out, retval] MailItem** Item);
+        [id(0x0000f075), helpcontext(0x004de909)]
+        HRESULT Send();
+    };
+
+
+
+    [
+      odl,
+      uuid(0006303A-0000-0000-C000-000000000046),
+      helpcontext(0x004e007b),
+      dual,
+      oleautomation
+    ]
+    interface ItemEvents : IDispatch {
+        [id(0x0000f006), helpcontext(0x004e007c)]
+        HRESULT CustomAction(
+                        [in] IDispatch* Action, 
+                        [in] IDispatch* Response);
+        [id(0x0000f008), helpcontext(0x004e007d)]
+        HRESULT CustomPropertyChange([in] BSTR Name);
+        [id(0x0000f468), helpcontext(0x004e007e)]
+        HRESULT Forward([in] IDispatch* Forward);
+        [id(0x0000f003), helpcontext(0x004e007f)]
+        HRESULT Open();
+        [id(0x0000f004), helpcontext(0x004e007b)]
+        HRESULT Close();
+        [id(0x0000f009), helpcontext(0x004e0080)]
+        HRESULT PropertyChange([in] BSTR Name);
+        [id(0x0000f001), helpcontext(0x004e0081)]
+        HRESULT Read();
+        [id(0x0000f466), helpcontext(0x004e0082)]
+        HRESULT Reply([in] IDispatch* Response);
+        [id(0x0000f467), helpcontext(0x004e0083)]
+        HRESULT ReplyAll([in] IDispatch* Response);
+        [id(0x0000f005), helpcontext(0x004e0084)]
+        HRESULT Send();
+        [id(0x0000f002), helpcontext(0x004e0085)]
+        HRESULT Write();
+    };
+
+
+    [
+      odl,
+      uuid(0006304C-0000-0000-C000-000000000046),
+      helpcontext(0x004fc82f),
+      dual,
+      oleautomation
+    ]
+    interface Exceptions : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] Exception** Item);
+    };
+
+    [
+      odl,
+      uuid(0006304D-0000-0000-C000-000000000046),
+      helpcontext(0x004fc82e),
+      dual,
+      oleautomation
+    ]
+    interface Exception : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+//        [id(0x00002001), propget, helpcontext(0x004fc86f)]
+//        HRESULT AppointmentItem([out, retval] AppointmentItem** AppointmentItem);
+        [id(0x00002002), propget, helpcontext(0x004fc870)]
+        HRESULT Deleted([out, retval] VARIANT_BOOL* Deleted);
+        [id(0x00002000), propget, helpcontext(0x004fc854)]
+        HRESULT OriginalDate([out, retval] DATE* OriginalDate);
+    };
+
+	[
+      odl,
+      uuid(0006303D-0000-0000-C000-000000000046),
+      helpcontext(0x004de947),
+      dual,
+      oleautomation
+    ]
+    interface UserProperties : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000050), propget, helpcontext(0x004de838)]
+        HRESULT Count([out, retval] long* Count);
+        [id(0x00000051), helpcontext(0x004de8a9)]
+        HRESULT Item(
+                        [in] VARIANT Index, 
+                        [out, retval] UserProperty** Item);
+        [id(0x00000066), helpcontext(0x004debcc)]
+        HRESULT Add(
+                        [in] BSTR Name, 
+                        [in] OlUserPropertyType Type, 
+                        [in, optional] VARIANT AddToFolderFields, 
+                        [in, optional] VARIANT DisplayFormat, 
+                        [out, retval] UserProperty** UserProperty);
+        [id(0x00000067), helpcontext(0x004de873)]
+        HRESULT Find(
+                        [in] BSTR Name, 
+                        [in, optional] VARIANT Custom, 
+                        [out, retval] UserProperty** UserProperty);
+        [id(0x00000052), helpcontext(0x004de8f2)]
+        HRESULT Remove([in] long Index);
+    };
+
+	[
+      odl,
+      uuid(00063042-0000-0000-C000-000000000046),
+      helpcontext(0x004de948),
+      dual,
+      oleautomation
+    ]
+    interface UserProperty : IDispatch {
+        [id(0x0000f000), propget, helpcontext(0x004deb87)]
+        HRESULT Application([out, retval] Application** Application);
+        [id(0x0000f00a), propget, helpcontext(0x004fca3a)]
+        HRESULT Class([out, retval] OlObjectClass* Class);
+        [id(0x0000f00b), propget, helpcontext(0x004fc7e7)]
+        HRESULT Session([out, retval] NameSpace** Session);
+        [id(0x0000f001), propget, helpcontext(0x004de8d4)]
+        HRESULT Parent([out, retval] IDispatch** Parent);
+        [id(0x00000067), propget, helpcontext(0x004dec83)]
+        HRESULT Formula([out, retval] BSTR* Formula);
+        [id(0x00000067), propput, helpcontext(0x004dec83)]
+        HRESULT Formula([in] BSTR Formula);
+        [id(0x00000070), propget, helpcontext(0x004de8bc)]
+        HRESULT Name([out, retval] BSTR* Name);
+        [id(0x0000006d), propget, helpcontext(0x004de921)]
+        HRESULT Type([out, retval] OlUserPropertyType* Type);
+        [id(0x00000068), propget, helpcontext(0x004defcc)]
+        HRESULT ValidationFormula([out, retval] BSTR* ValidationFormula);
+        [id(0x00000068), propput, helpcontext(0x004defcc)]
+        HRESULT ValidationFormula([in] BSTR ValidationFormula);
+        [id(0x00000069), propget, helpcontext(0x004defcd)]
+        HRESULT ValidationText([out, retval] BSTR* ValidationText);
+        [id(0x00000069), propput, helpcontext(0x004defcd)]
+        HRESULT ValidationText([in] BSTR ValidationText);
+        [id(00000000), propget, helpcontext(0x004de924)]
+        HRESULT Value([out, retval] VARIANT* Value);
+        [id(00000000), propput, helpcontext(0x004de924)]
+        HRESULT Value([in] VARIANT Value);
+        [id(0x0000006c), helpcontext(0x004de84c)]
+        HRESULT Delete();
+    };
+
+
+
+    
+
+
+// End Here	
+
+
+
+};

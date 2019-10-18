@@ -1,0 +1,28 @@
+#! /usr/bin/csh
+echo " "
+echo "Usage:  ptaSm-install-sun <src_dir> <dest_dir> <policy_file>"
+echo "source directory       : $1"
+echo "destination directory  : $2"
+echo "policy file            : $3"
+
+setenv LD_LIBRARY_PATH .
+
+if ($#argv != 3) then
+  echo " "
+  echo " "
+  echo "***** Invalid parameters *****"
+  echo "Usage:  ptaSm-install-sun <src_dir> <dest_dir> <policy_file>"
+  echo " "
+else if ("$1" != "$2") then
+    echo "creating directory structure and copying files"
+    cp -r $1/ptaSmLogin $2
+    mkdir -p $2/ptaSmLogin/log
+    chmod 777 $2/ptaSmLogin/log
+    echo "running customizer"
+    ./customizer.exe -c ../templates/sitekit_ptaSm_unix.lst -s $1 -d $2 -f ../fragments/VSApps -p $3 -l $2/ptaSmLogin/log/ptaSmCustomizer.log
+else
+    echo "running customizer"
+    ./customizer.exe -c ../templates/sitekit_ptaSm_unix.lst -s $1 -d $2 -f ../fragments/VSApps -p $3 -l $2/ptaSmLogin/log/ptaSmCustomizer.log
+endif 
+
+exit 0

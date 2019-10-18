@@ -1,0 +1,212 @@
+<!-- userRenewalEncNS.htm
+
+-->
+<HTML>
+<HEAD>
+<TITLE>Renew Encryption Digital ID</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<META HTTP-EQUIV="Pragma" Content="no-cache">
+
+<!-- VSSKTEMPLATEVERSION#1.2.0.6 -->
+
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<script language = "JavaScript">
+<!--
+	var browserNum = parseInt(navigator.appVersion);
+	var NSCP_IVSPTA;
+//-->
+</script>
+
+
+<!-- VSSKBEGIN Enrollment/CertStore#10  -->
+<!-- VSSKEND Enrollment/CertStore#10 -->
+
+<!-- VSSKBEGIN Renewal/CertStore#5 -->
+<!-- VSSKEND Renewal/CertStore#5 -->
+
+<Script Language="JavaScript">
+<!--
+//-- VSSKBEGIN Renewal/CertStore#12 --
+//-- VSSKEND Renewal/CertStore#12 --
+
+//if the browser is firefox check for browser navigate to index2.htm
+var browserName=navigator.appName;
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+       if (browserNum < requiredBrowserNumNS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+else
+    {
+         self.location="userRenewalEncMS.htm";
+    }
+
+function declinefunc()
+{
+   self.location="../client/cancel.htm" ;
+}
+//-->
+</script>
+
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function dumbfunc()
+{
+   var newwin = window.open("../client/help/securitySetting.htm", "private_window",
+                "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0, resizable=0,WIDTH=420,HEIGHT=480");
+}
+
+var setKeyUsage="true";
+var keyUsageFlag = 0xA0;
+var KeyUsage;
+
+//-- VSSKBEGIN Apps/KeyManager#25 --
+//-- VSSKEND Apps/KeyManager#25 --   
+
+if (KeyUsage == "dual") {
+    keyUsageFlag =  0x20;
+}
+
+// -->
+</SCRIPT>
+
+<!-- VSSKBEGIN Renewal/CertStore#6 -->
+<!-- VSSKEND Renewal/CertStore#6 -->
+
+<!-- script for generating the keys, etc... -->
+
+</HEAD>
+
+<BODY 	BGCOLOR="ffffff" LINK="cc0000" vlink="666666">
+
+<!-- Detect the crypto providers -->
+<!-- VSSKBEGIN Renewal/CertStore#7 -->
+<!-- VSSKEND Renewal/CertStore#7 -->
+
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE=0 VSPACE=0>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER valign=bottom colspan=5><img src="../graphics/dot_grey.gif" height=1 width=600 hspace=0 vspace=0></TD>
+</TR>
+<TR>
+        <td width=120 align=center><img src="../graphics/logo_1.gif" width=100 height=63 ALT="Logo"></td>
+        <td width=1 valign=middle><img src="../graphics/dot_grey.gif" width=1 height=47 hspace=0 vspace=0></td>
+        <td width=358 align=center><IMG SRC="../graphics/hd_enroll.gif" WIDTH="350" HEIGHT="47" BORDER="0" ALT="Enroll Header"></td>  
+        <td width=1 valign=middle><img src="../graphics/dot_grey.gif" width=1 height=47 hspace=0 vspace=0></td>
+        <td width=120 align=center><img src="../graphics/logo_2.gif" ALT=""></td>
+</tr>
+<TR>
+        <TD WIDTH=600 ALIGN=CENTER valign=top colspan=5>
+        <img src="../graphics/dot_grey.gif" height=1 width=600 hspace=0 vspace=0></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+
+<!--NAVIGATIONAL BUTTONS AND BLACK RULE-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600>
+<TR>
+    <TD WIDTH=600 HEIGHT=31 VALIGN=BOTTOM>
+      <A HREF="../client/help/tasks/renew_ns.htm" target="help"><IMG SRC="../graphics/button_help_page.gif" width=145 height=26 hspace=1 vspace=0 border=0 alt="Help with this Page"></a>
+    </TD>
+</TR>
+</TABLE>
+<!--END NAVIGATIONAL BUTTONS AND BLACK RULE-->
+
+<!-- VSSKBEGIN Global/Mode#14 -->
+<!-- VSSKEND Global/Mode#14 -->
+
+<INPUT TYPE=hidden NAME=form_file VALUE="../fdf/VSApps/client/userRenewalEncNS.fdf">
+
+<!-- VSSKBEGIN Renewal/CertStore#8 -->
+<!-- VSSKEND Renewal/CertStore#8 -->
+
+
+<!--INSTRUCTIONAL TEXT-->
+<P>
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+		<TD WIDTH=100%><FONT COLOR="0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Encryption Digital ID Renewal</B></FONT><BR>
+		</TD>
+</TR>
+</TABLE>
+<!--END INSTRUCTIONAL TEXT-->
+<P><BR><P>
+
+<Script Language="JavaScript">
+<!--
+var isRenewInProcess;
+isRenewInProcess = false;
+
+function renewclick()
+{
+   if (isRenewInProcess) {
+	alert("Error: This operation is already in process.");
+	return;
+   }
+
+   //-- VSSKBEGIN Renewal/CertStore#9 --
+   //-- VSSKEND Renewal/CertStore#9 --
+}
+//-->
+</Script>
+
+
+<!-- VSSKBEGIN Renewal/CertStore#10 -->
+<!-- VSSKEND Renewal/CertStore#10 -->
+
+<!-- VSSKBEGIN Renewal/CertPublish#1 -->
+<!-- VSSKEND Renewal/CertPublish#1 -->
+
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=50><img SRC="../graphics/action_39x39.gif" WIDTH=39 HEIGHT=39></TD>
+	<TD WIDTH=538 COLSPAN=2><FONT COLOR="009933" FACE="verdana, arial, helvetica" SIZE=2><B>If information above is correct,<BR>
+	click Submit to continue.</B><BR><BR></FONT></TD>
+	</TR>
+
+<TR>
+	<TD WIDTH=50>&nbsp;</TD>
+        <TD WIDTH=234 ALIGN=LEFT><INPUT TYPE="button" NAME="Accept" VALUE="Renew" onClick="renewclick()"></TD>
+        <TD WIDTH=304 ALIGN=LEFT><INPUT TYPE=button NAME="Cancel" VALUE="Cancel" onClick="declinefunc()"></TD>
+<!--
+	<TD WIDTH=234 ALIGN=LEFT><INPUT type="image" IMG SRC="../graphics/button_submit.gif" BORDER=0 ALT="Submit"></TD>
+	<TD WIDTH=304 ALIGN=LEFT><A HREF="cancel.htm"><img SRC="../graphics/button_cancel.gif" WIDTH=121 HEIGHT=39 BORDER=0></A></TD>
+-->
+</TR>
+</TABLE>
+</FORM>
+<P>
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+<IMG SRC="../graphics/dot_grey.gif" WIDTH=600 HEIGHT=1 HSPACE=0 VSPACE=0>
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480 ><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../graphics/logo_3.gif" ALT="Symantec Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+</BODY>
+<META HTTP-EQUIV="Pragma" Content="no-cache">
+</HTML>

@@ -1,0 +1,101 @@
+<%
+// Locale Settings.
+var month_long_current_locale = new Array( 
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December");
+
+var day_long_current_locale = new Array(
+			"Sunday",
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday");
+
+var pkg = tw.currentPackage;
+var theRecipient = "";
+var files="";
+var encrypted;
+var currentStream;
+var recipient = tw.recipient.singleRecipient;
+var firstname = recipient.firstname;
+var lastname  = recipient.lastname;
+var address   = recipient.address;
+
+var hosts;
+var url;
+var ssl_available = tw.server.getConfigParameter( "TW_HTTP_SSL" );
+
+// only use http if it is explicitly selected by admin + sender
+if ( ssl_available ) {
+	url="https://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_SECURE_HOSTS", pkg.locale );
+} else {
+	url="http://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_HOSTS", pkg.locale );
+}
+
+if ( hosts.length > 0 ) {
+	url += hosts[Math.randomInteger() % hosts.length];
+}
+
+if ( pkg.senderAddress.toLowerCase().indexOf("@aol.com") != -1 ) {
+    var buffer = "";
+    url = buffer.formatPositional("<A HREF=\"%1$s\">\n%2$s\n</A>", url, url);
+}
+
+var address = tw.recipient.singleRecipient.address;
+if ( firstname == null || firstname == "" || lastname == null || lastname == "" ) {
+	theRecipient = address;
+} else {
+	theRecipient = firstname + " " + lastname + " (" + address + ")";
+}
+
+var count;
+var nbStream = pkg.streams.length;
+for (count=0; count < nbStream; ++count) {
+	currentStream = pkg.streams[count];
+	if ( currentStream.usage == tw.constant.TW_STREAM_CONTENT_COVER ) {
+		continue;
+	} else {
+		if ( files != "" ) {
+			files += ", ";
+		}
+		encrypted = pkg.securityOptions & (tw.constant.TW_PACKAGE_SECURITY_SIGNED_CLEARTEXT | tw.constant.TW_PACKAGE_SECURITY_SIGNED_CYPHER | tw.constant.TW_PACKAGE_SECURITY_ENCRYPTED_BY_CLIENT); 
+		if ( encrypted ) {
+			files += "Encrypted";
+			break;
+		} else {
+			if ( currentStream.isFileStream ) {
+				files += currentStream.filename;
+			} else {
+				files += currentStream.dynamicName;
+			}
+
+		}
+	}
+}
+%>
+-------------------------------------------------------------------
+
+PrivatePath Service could not deliver a notification to <%=theRecipient;%> for your
+message <%=pkg.subject;%>. make sure <%=theRecipient;%> is a valid and active
+e-mail address before attempting to send PrivatePath Service messages to this
+address again.
+
+If you believe this message is incorrect, please see <%=url;%>
+for more information.
+
+-------------------------------------------------------------------
+

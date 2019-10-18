@@ -1,0 +1,10 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'lib',
+            'include'
+          ],
+          'itgclient/thirdparty/vsvalsdk',
+          'build/log/VerArchive'
+        ];

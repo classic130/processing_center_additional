@@ -1,0 +1,47 @@
+
+# Configuration file for Web Access Control
+
+log-info="1"
+log-security="1"
+log-file-name="c:/VeriSign/pta/log/ssc.log"
+
+login-page-ms="c:/VeriSign/pta/config/ptaLoginMS.htm"
+login-page-ns="c:/VeriSign/pta/config/ptaLoginNS.htm"
+#
+# If you are using Java PTA
+# comment the above 2 lines and uncomment the 2 below
+#
+#login-page-ms="c:/VeriSign/pta/config/jptaLogin.htm"
+#login-page-ns="c:/VeriSign/pta/config/jptaLogin.htm"
+#
+# If you are using PTS 
+# comment the above 2 lines and uncomment the 2 below
+#
+#login-page-ms="c:/VeriSign/pta/config/ptsLogin.htm"
+#login-page-ns="c:/VeriSign/pta/config/ptsLogin.htm"
+
+
+protected-dirs="/protected;/vsadmin;/protected-cgi"
+error-page="c:/VeriSign/pta/htmldocs/error/ptaError.htm"
+logout-url="/protected/logout.htm" 
+absolute-timeout="60"
+no-cache-pages="1"
+
+add-env-vars="1"
+add-error-js-vars="1"
+save-pkcs7="0" 
+digest-alg="SHA1"
+
+no-crl-check="1"
+update-hours="24"
+
+cfg-filename="c:/VeriSign/pta/config/rsaverify.cfg"
+file-prefix="c:/VeriSign/pta/certcache/"
+url-prefix="http://crl.verisign.com/"
+cache-dir="c:/VeriSign/pta/certcache/"
+no-check-chain="1"
+
+# add your server name instead of www.verisign.com
+server-name="www.verisign.com"
+# This flag is required if the MS hotfix is not installed and the web server is IIS 6.0.
+Wait-for-loading="1"

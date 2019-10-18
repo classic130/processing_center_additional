@@ -1,0 +1,101 @@
+VSPM0100
+# this is the policy file for Secure Guranteed Messaging Service's
+# Proxy Recipient Server's CGI configuration file.
+#
+# Created: Isaac Liu, 8/12/2001
+#
+PTAv2 { # 1 sub containers
+        ptaAppName:SGMS Demo
+}
+# SGMS Proxy Recipient related
+# If debugMode=1 then sgmsprs.exe will not
+# take SMIME messsage inputs from Web server.  It will
+# look for a canned SMIME Message file and print
+# out the decrypted MIME message.  The decryption will work if the
+# MIME message was encrypted using the certificate
+# in the PTA profile.
+SGMSPRS { #0 sub containers
+	ptaUserName:1232423423423		
+	ptaPassword:password
+
+#
+# this switches the input from HTTP (cgi) to file.
+	debugMode:1
+#
+# this is the file input to this program.  This is useful
+# for debug, sanity check, etc.
+	debugSMIMEFile:smallmessage.eml
+
+#
+# this is the password-dialog box bypass AUTH DLL in PTA.
+#	authDLL:vsprsauth.dll
+	authDLL:vsprsauth.dll
+#
+# this will base64rize all attachments. This will be overriden
+# via cgi mode.
+	base64Attachment:0
+#
+# this tells SSC to use a cert for re-encryption. This will be overriden
+# via cgi mode.
+	useEncCert:0
+#
+# this is the re-encryption email id of the recipient that wants
+# to use his cert instead of PRC. his will be override
+# via cgi mode.
+	reEncryptEmail:ajay@ajay.com
+#
+# this is Romaing related stuff.
+	clientInfo:AAAAAAkACQByb2FtMV91cmwiAAAAaHR0cDovL3BpbG90cm9hbS52ZXJpc2lnbi5jb20vdnNybQkAcm9hbTJfdXJsIgAAAGh0dHA6Ly9waWxvdHN0b3IudmVyaXNpZ24uY29tL3Zzcm0JAHN0b3JlX3VybCIAAABodHRwOi8vcGlsb3RzdG9yLnZlcmlzaWduLmNvbS92c3JtDAByb2FtMV9wdWJrZXnAAAAAQUFBQWdLdHlFVDhoU2hqUU81VUZLSGNrRmJNTHltVXVjMnJ2UVVGaUxtZHI0WnBKY2hYTEM3VzVRaDhMWXVWUTU2OG11SW1sDQpFd3cyWUVvTFZZNXdRNUtRRTFNRlRZUlJpd1pERmpPTkVwcDdBL3JpTm1tZWdWWFhUZzAvWUgzNGZxd3hnV0dWZmo3YXpiVU4NClYvTjRQRmlIaW9YbiticXljWUxlOXpwZXloLzNtZlBOQUFBQUF3RUFBUT09DAByb2FtMl9wdWJrZXnAAAAAQUFBQWdQVXdRMVM0OWMzOVI1d0h0RnlRQVBva1pVVFdibHhGdGxIQkROb1V5L1ZWcjh1MWJCdVZ2TmFlb0VuZGt3U2ZDajBRDQppZnZBVHJEVUNiU2g5T3JQc25XaFRQK2hQTHVwMkxvR2lqNVkvTnpZektNK0NobG0xTk54R21IQjg0MEpVcTlkY2w2QmlBU1gNCjFMLyt3UHNtME1ickxrZlV1LzV5SjQ5My9LQVlwWlF2QUFBQUF3RUFBUT09BwBjb21wYW55BAAAAFNHTVMEAGRlcHQHAAAAVGVzdGluZxEAanVyaXNkaWN0aW9uX2hhc2ggAAAAZTM5NjcwMjc4NGMxMzZhODFlNzc0ZGQ4MWYxNGRkZmYMAHNpZ25pbmdfY2VydPQCAABNSUlDTVRDQ0FacWdBd0lCQWdJUUdIMjRDeVpBWWhlRWR4QWg4c2ZVZnpBTkJna3Foa2lHOXcwQkFRVUZBREE4TVJjd0ZRWURWUVFLRXc1V1pYSnBVMmxuYml3Z1NXNWpMakVoTUI4R0ExVUVBeE1ZVm1WeWFWTnBaMjRnVW05aGJXbHVaeUJTYjI5MElFTkJNQjRYRFRBd01EVXlOVEF3TURBd01Gb1hEVEExTURVeU5USXpOVGsxT1Zvd056RVhNQlVHQTFVRUNoTU9WbVZ5YVZOcFoyNHNJRWx1WXk0eEhEQWFCZ05WQkFNVEUxWmxjbWxUYVdkdUlGSnZZVzFwYm1jZ1EwRXdnWjh3RFFZSktvWklodmNOQVFFQkJRQURnWTBBTUlHSkFvR0JBSmU1QnFVdm9Fa0JnN0RJNzhGcnR5TUQyOGwyTXJ4b3piVXdLKzJBeitHNnp2YXdjL0NINmNCdGRVL1AzbDZ6R1RXbElUSVZzbDNUaGp0aEdHSGZsODc3cW1JNzhFOUdya3RDUG1kS0Q2cXR4QzdpZVFCL2NPMTl3ckUvZ3ZuZmVacC9Rek9nbzd6dUNvbmRQQ21mY29vVzlLalhUbndpdjhmeWxEVkRTdDJIQWdNQkFBR2pPVEEzTUJFR0NXQ0dTQUdHK0VJQkFRUUVBd0lCQmpBU0JnTlZIUk1CQWY4RUNEQUdBUUgvQWdFQU1BNEdBMVVkRHdFQi93UUVBd0lCQmpBTkJna3Foa2lHOXcwQkFRVUZBQU9CZ1FCUU11U0l6RnZoQ0t1WDBzbks1WmV6TVIrMzMyMEtuTzYwUFdHdm5yWkJCcnh6T2Zib0ZZQVQxQ1Z0aVVKd3BrYnZ5dlFmeTgwYW41WWdrR1N1clZtZUxGbm81dHNKaDc2RWxQcWtYdk0xeHA4Z1NyM0N0UjRpOWM3ZzZ2K3JjQUtEOGxJaTM1N3NMVzdnRmhqYTRyKzg4bFJiaEpJbUJnZUpqbmlVblNKa0NRPT0=
+	clientInfoSig:lMRgJHkS0iM6khDAtTNqSnziwCc0ZCkABT22N2jRBGm6AldaGur+1Ocg7juaLQO+Y52goB9XFf7CE//Ilm43t8ZT0WS9v62hAQLjxRH2qID7HcunwsePcSgbIVS9SLELKZrmrblQapB/yLEIBUQyMJHXztvqVhU5VNCWIxb+8Hw=
+#
+# tell it whether or not the PTA profile is roaming capable or not.
+	roaming:0
+#
+# This is used to verify signature, we dont trust
+# the certificated embedded in the PKCS7.
+# NOTE: this URL must contain a VALID certificate resolution URL 
+# even though the 'certResolutionSource' says to fetch the certificate
+# from PKCS7.  This is because we are verifying certificate
+# revocation status using the certificate resolution service
+# automatically during the decryption operation.
+	certResolutionURL:http://jburstein-sun.verisign.com:8080/cgi-bin/certres.new
+#
+# Server-Side crypto email addr. i.e system email addr.
+# this is used for re-encryption, the 'From' will be this email.
+	sscEmail: ssc-system@verisign.com
+#
+# This is the 'Subject' field.  SSC can customize the 'Subject field
+# to inform recipient of the re-encrypted email.
+	sscSubject: This email has been re-encrypted with your certificate.
+#
+# This is to control whether or not the certifciate resolution
+# should use the recipient certificate embedded in the PKCS7
+# or via a dedicated certificate resolution service.
+#
+# The following values are meaningful:
+# 0 - from the certificate resolution service, 'certResolutionURL' will be used.
+# 1 - from PKCS7.
+	certResolutionSource:1
+
+# This value allows the user to specify where the log file should be created
+logFile:c:\temp\logsdebug.txt
+
+# This value controls which events are logged
+# The following values are meaningful: 0-5 ( 0 = no logs, 5 = maximum logging where all events are logged)
+# 0 - No logging 
+# 1 - Critical Errors
+# 2 - Errors and Critical Errors
+# 3 - Warnings, Errors and Critical Errors
+# 4 - Informational messages, Warnings, Errors and Critical Errors
+# 5 - Debug messages, Informational messages, Warnings, Errors and Critical Errors
+# Note: Events that are logged are always equal to or lower than the desired log level. The higher the log level
+# the more verbose the log messages
+logLevel:5
+
+# this indicates the service type required by VSSC
+scType:SCTYPE - VeriSignSGMS
+
+# this indicates which version of the PTA is the VSSC compatible with
+supportedPTAVersions:1025
+}	
+

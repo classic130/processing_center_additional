@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: vsprs - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\RPANDR~1\LOCALS~1\Temp\RSP7C.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "include" /I "..\..\..\..\common\utils\include" /I "..\..\..\..\common\scmodules\mimeengine\include" /I "..\..\..\..\client\modules\bsafelite\include" /I "..\..\..\..\common\simder\include" /I "..\..\..\..\client\apps\pta\activex\ptav3\include" /I "..\..\..\..\itgclient\client\apps\pta\activex\ptav3\source" /I "..\..\..\..\..\itgclient\client\apps\sc\activex\vssc" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fp"Debug/vsprs.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\work\ram012202\itgclient\server\apps\sc\vsprs\sources\vsprs.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\RPANDR~1\LOCALS~1\Temp\RSP7C.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Debug\vsprs.lib"  .\Debug\vsprs.obj .\Debug\vsprs_pta.obj .\Debug\vsprsattachments.obj "
+<h3>Output Window</h3>
+Compiling...
+vsprs.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+vsprs.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

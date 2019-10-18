@@ -1,0 +1,81 @@
+<!-- $ VSSKTEMPLATEVERSION#1.0.0.0 $ submitTransaction.htm
+
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+toSign="1aba4766366780b14dd8888a38880d82041020fb";
+reasonCode="login";
+digestAlg="SHA";
+// -->
+</script>
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+
+<meta HTTP-EQUIV="Expires" CONTENT="NOW">
+<meta HTTP-EQUIV="last modified" CONTENT="NOW">
+<TITLE>JPTA Submit Transaction</TITLE>
+<SCRIPT Language="JavaScript" src="client/copyright.js"></SCRIPT>
+</HEAD>
+
+<SCRIPT>
+	function runApplet()
+	{
+		 if(_info.indexOf("Sun")> 0)
+		 waitHandle = setInterval("waitApplet()",22000);
+    	 else if(_info.indexOf("Linux")> 0)
+		 waitHandle = setInterval("waitApplet()",10000);
+		 else
+		 waitApplet()
+
+	  	 return true;
+
+	}
+	function waitApplet()
+	{
+
+		if(_info.indexOf("Linux")> 0 || _info.indexOf("Sun")> 0)
+		clearInterval(waitHandle);
+
+		appletRef = waitUntilAppletIsReady()
+		document.LoginForm.dataToSign.value = toSign
+		document.LoginForm.dataSignature.value = appletRef.getKey("SIGNATURE")
+		appletRef.setPreferences("SIGNATURE","")
+		<!-- Begin: Fix for artf14455-->
+		document.LoginForm.action = appletRef.getProtectedUrl() + "vsadmin/post";
+		<!-- End: Fix for artf14455-->
+		document.LoginForm.submit()
+	}
+
+</SCRIPT>
+
+<!--  23 July 2004: Begin Changes -->
+<!-- This scriptlet sets the correct client browser -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#51 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#51 -->
+<!--  23 July 2004: End Changes -->
+
+<!-- load waitUntilAppletReady function -->
+<!-- VSSKBEGIN Apps/PTAv2/GSWAClientType#15 -->
+<!-- VSSKEND Apps/PTAv2/GSWAClientType#15 -->
+
+<!-- load applet -->
+<!-- VSSKBEGIN Global/Mode#120 -->
+<!-- VSSKEND Global/Mode#120 -->
+
+
+<BODY bgColor="#ffffff" onload="runApplet()">
+<!-- <APPLET style="WIDTH: 800px; HEIGHT: 500px" height=800 width=500
+align="centre" code=com.verisign.pta.applet.PtaApplet.class name=PtaApplet ALIGN="right">
+-->
+<!-- Begin: Fix for artf14455-->
+<FORM name="LoginForm" method="post">
+<!-- End: Fix for artf14455-->
+  <input type="hidden" name="dataToSign">
+  <input type="hidden" name="dataSignature">
+  <input type="hidden" name="form_file" value="../fdf/rsaverify.fdf">
+
+</FORM>
+</BODY>
+

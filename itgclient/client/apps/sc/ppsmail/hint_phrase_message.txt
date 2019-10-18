@@ -1,0 +1,54 @@
+<% var hosts;
+var loginUrl;
+var pkg = tw.currentPackage;
+var ssl_available = tw.server.getConfigParameter( "TW_HTTP_SSL" );
+
+// only use http if it is explicitly selected by admin + sender
+if (ssl_available) {
+	loginUrl="https://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_SECURE_HOSTS", pkg.locale );
+} else {
+	loginUrl="http://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_HOSTS", pkg.locale );
+}
+
+if ( hosts.length > 0 ) {
+	loginUrl += hosts[Math.randomInteger() % hosts.length];
+}
+
+var address = tw.recipient.singleRecipient.address;
+if ( address.toLowerCase().indexOf("@aol.com") != -1 ) {
+    var buffer = "";
+    loginUrl = buffer.formatPositional("<A HREF=\"%1$s\">\n%2$s\n</A>", loginUrl, loginUrl);
+} %>
+
+Your Password Hint ...................................................
+
+The password hint phrase for your PrivatePath Service Account is:
+
+<%=tw.account.passwordHintPhrase;%>
+
+If this has helped you to remember your password, you may log in to
+your account at the following Web address:
+
+<%=loginUrl;%>
+
+If you are still unable to remember your password, please contact the
+administrator for your PrivatePath Service account at:
+
+<%=tw.server.getConfigParameter( "TW_HUMAN_EMAIL" );%>
+
+......................................................................
+
+Need help accessing your PrivatePath Service Account?
+
+*  If the Web address above is highlighted, click on it to open a
+   browser window. You will automatically be taken to the log in page.
+
+*  If the Web address above is not highlighted, follow these steps:
+   - Open a Web browser window.  
+   - Copy and paste the entire Web address into the "location" or 
+     "address" bar of the browser.
+   - Press enter.
+
+______________________________________________________________________

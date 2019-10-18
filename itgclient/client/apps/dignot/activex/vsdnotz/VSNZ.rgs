@@ -1,0 +1,34 @@
+HKCR
+{
+	Vsdnotz.VSNZ.1 = s 'VeriSign Digital Notarization Control'
+	{
+		CLSID = s '{D66256E2-B99C-11D4-8C74-0010830169AF}'
+	}
+	Vsdnotz.VSNZ = s 'VeriSign Digital Notarization Control'
+	{
+		CLSID = s '{D66256E2-B99C-11D4-8C74-0010830169AF}'
+		CurVer = s 'Vsdnotz.VSNZ.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D66256E2-B99C-11D4-8C74-0010830169AF} = s 'VeriSign Digital Notarization Control'
+		{
+			ProgID = s 'Vsdnotz.VSNZ.1'
+			VersionIndependentProgID = s 'Vsdnotz.VSNZ'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{D66256D5-B99C-11D4-8C74-0010830169AF}'
+			'Version' = s '1.0'
+		}
+	}
+}

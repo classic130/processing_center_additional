@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 1.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+  <context-param>
+    <param-name>IniFile</param-name>
+    <param-value>PersonalTrustService.ini</param-value>
+  </context-param>
+  <context-param>
+    <param-name>DBManagerConfigFile</param-name>
+    <param-value>PtsDBManager.lcf</param-value>
+  </context-param>
+  <context-param>
+    <param-name>LogConfigFile</param-name>
+    <param-value>PtsLogConfig.lcf</param-value>
+  </context-param>
+
+  <servlet> 
+    <servlet-name>HandleRedirect</servlet-name> 
+    <servlet-class>com.verisign.raus.test.HandleRedirect</servlet-class> 
+  </servlet> 
+  <servlet-mapping> 
+    <servlet-name>HandleRedirect</servlet-name> 
+    <url-pattern>/handleRedirect</url-pattern> 
+  </servlet-mapping> 
+</web-app>

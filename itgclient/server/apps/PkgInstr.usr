@@ -1,0 +1,11 @@
+$VAR1 = [
+          '',
+          [],
+          [
+            'cvm',
+            'pta',
+            'cpm'
+          ],
+          'itgclient/server/apps',
+          'build/log/VerArchive'
+        ];

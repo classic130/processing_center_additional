@@ -1,0 +1,22 @@
+;VSSMPTA
+
+[Add.Code]
+VSSC.dll=VSSC.dll
+Ptav3.dll=Ptav3.dll
+vscspsign=vscspsign
+
+[vscspsign]
+file-win32-x86=thiscab
+
+[VSSC.dll]
+file-win32-x86=thiscab
+RegisterServer=yes
+clsid={C5E8B9E2-D217-11D4-A21E-001083023D07}
+FileVersion=1,0,1,3
+
+[Ptav3.dll]
+file-win32-x86=thiscab
+RegisterServer=yes
+clsid = {6F7864F9-DB33-11D3-8166-0060B0F885E6}
+clsid = {50E71FEB-2234-11d4-8D73-0060B0FC0637}
+FileVersion=1,0,2,5

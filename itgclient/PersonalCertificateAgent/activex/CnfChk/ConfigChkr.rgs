@@ -1,0 +1,34 @@
+HKCR
+{
+	ConfigChk.ConfigChkr.1 = s 'ConfigChkr Class'
+	{
+		CLSID = s '{08F04139-8DFC-11D2-80E9-006008B066EE}'
+	}
+	ConfigChk.ConfigChkr = s 'ConfigChkr Class'
+	{
+		CLSID = s '{08F04139-8DFC-11D2-80E9-006008B066EE}'
+		CurVer = s 'ConfigChk.ConfigChkr.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {08F04139-8DFC-11D2-80E9-006008B066EE} = s 'ConfigChkr Class'
+		{
+			ProgID = s 'ConfigChk.ConfigChkr.1'
+			VersionIndependentProgID = s 'ConfigChk.ConfigChkr'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{08F0412C-8DFC-11D2-80E9-006008B066EE}'
+			'Version' = s '1.0'
+		}
+	}
+}

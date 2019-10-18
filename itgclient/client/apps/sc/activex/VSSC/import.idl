@@ -1,0 +1,16 @@
+	import "oaidl.idl";
+	import "ocidl.idl";
+	#include "olectl.h"
+
+	[
+		object,
+		uuid(76AFB89C-87FE-11d4-81D3-0060B0F885E6),
+		dual,
+		helpstring("IVSP12Import Interface"),
+		pointer_default(unique)
+	]
+	interface IVSP12Import : IDispatch
+	{
+		[id(1), helpstring("method ImportP12")] HRESULT ImportP12(VARIANT* in_pvarParamType, VARIANT* in_pvarParam, VARIANT* o_pvarImportedIDSerNum, VARIANT* o_pvarImportedIDIssDN);
+
+	};

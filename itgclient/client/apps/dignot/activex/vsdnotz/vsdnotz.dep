@@ -1,0 +1,440 @@
+# Microsoft Developer Studio Generated Dependency File, included by vsdnotz.mak
+
+.\source\DNZUI.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptaerrs.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\notarize.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	
+
+.\source\notarize.cpp : \
+	"..\..\..\..\..\common\simder\include\baseder.h"\
+	"..\..\..\..\..\common\simder\include\basedercollection.h"\
+	"..\..\..\..\..\common\simder\include\basederhierarchy.h"\
+	"..\..\..\..\..\common\simder\include\boolean.h"\
+	"..\..\..\..\..\common\simder\include\datatypes.h"\
+	"..\..\..\..\..\common\simder\include\derblob.h"\
+	"..\..\..\..\..\common\simder\include\objectidentifier.h"\
+	"..\..\..\..\..\common\simder\include\octetstring.h"\
+	"..\..\..\..\..\common\simder\include\sequence.h"\
+	"..\..\..\..\..\common\simder\include\taggedvalue.h"\
+	"..\..\..\..\..\common\simder\include\universalinteger.h"\
+	"..\..\..\..\modules\bsafelite\include\aglobal.h"\
+	"..\..\..\..\modules\bsafelite\include\atypes.h"\
+	"..\..\..\..\modules\bsafelite\include\bsafelite.h"\
+	"..\..\..\..\modules\bsafelite\include\cmp.h"\
+	"..\..\..\..\modules\bsafelite\include\cmpspprt.h"\
+	"..\..\..\..\modules\bsafelite\include\global.h"\
+	"..\..\..\..\modules\bsafelite\include\integrate.h"\
+	"..\..\..\..\modules\bsafelite\include\keysize.h"\
+	"..\..\..\..\modules\bsafelite\include\rc2.h"\
+	"..\..\..\..\modules\bsafelite\include\rc2cbc.h"\
+	"..\..\..\..\modules\bsafelite\include\rc4.h"\
+	"..\..\..\..\modules\bsafelite\include\rsa.h"\
+	"..\..\..\..\modules\bsafelite\include\rsakeygn.h"\
+	"..\..\..\..\modules\bsafelite\include\secrcbc.h"\
+	"..\..\..\..\modules\bsafelite\include\sha.h"\
+	"..\..\..\..\modules\bsafelite\include\shacomm.h"\
+	"..\..\..\..\modules\bsafelite\include\stdlibrf.h"\
+	"..\..\..\..\modules\protectedstorage\include\vsps_defines.h"\
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptaerrs.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\dnzuistructs.h"\
+	".\include\notarize.h"\
+	".\include\nzdefines.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzutils.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	
+
+.\source\nzapprefs.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\INzCtxtMenu.h"\
+	".\include\INzShellExtInit.h"\
+	".\include\notarize.h"\
+	".\include\nzapprefs.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzdllapi.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzuiprefs.h"\
+	".\include\nzuser.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	".\include\vsdnotz.h"\
+	".\include\VSNZ.h"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\shldisp.h"\
+	
+
+.\source\nzcxtmenu.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\INzCtxtMenu.h"\
+	".\include\INzShellExtInit.h"\
+	".\include\notarize.h"\
+	".\include\nzapprefs.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzdllapi.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzuiprefs.h"\
+	".\include\nzuser.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	".\include\vsdnotz.h"\
+	".\include\VSNZ.h"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\shldisp.h"\
+	
+
+.\source\nzdatacc.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\dnzuistructs.h"\
+	".\include\notarize.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzutils.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	
+
+.\source\nzrecord.cpp : \
+	"..\..\..\..\..\common\simder\include\baseder.h"\
+	"..\..\..\..\..\common\simder\include\basedercollection.h"\
+	"..\..\..\..\..\common\simder\include\basederhierarchy.h"\
+	"..\..\..\..\..\common\simder\include\datatypes.h"\
+	"..\..\..\..\..\common\simder\include\derblob.h"\
+	"..\..\..\..\..\common\simder\include\octetstring.h"\
+	"..\..\..\..\..\common\simder\include\sequence.h"\
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\dnzuistructs.h"\
+	".\include\notarize.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzrecord.h"\
+	".\include\nzutils.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	
+
+.\source\nzshlext.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\INzCtxtMenu.h"\
+	".\include\INzShellExtInit.h"\
+	".\include\notarize.h"\
+	".\include\nzapprefs.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzdllapi.h"\
+	".\include\nzmacros.h"\
+	".\include\nzuiprefs.h"\
+	".\include\nzuser.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	".\include\vsdnotz.h"\
+	".\include\VSNZ.h"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\shldisp.h"\
+	
+
+.\source\nzuiprefs.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\INzCtxtMenu.h"\
+	".\include\INzShellExtInit.h"\
+	".\include\notarize.h"\
+	".\include\nzapprefs.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzdllapi.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzuiprefs.h"\
+	".\include\nzuser.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	".\include\vsdnotz.h"\
+	".\include\VSNZ.h"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\shldisp.h"\
+	
+
+.\source\nzuser.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\dnzuistructs.h"\
+	".\include\notarize.h"\
+	".\include\nzdefines.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzuser.h"\
+	".\include\nzutils.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	
+
+.\source\nzutils.cpp : \
+	"..\..\..\..\modules\bsafelite\include\aglobal.h"\
+	"..\..\..\..\modules\bsafelite\include\atypes.h"\
+	"..\..\..\..\modules\bsafelite\include\bsafelite.h"\
+	"..\..\..\..\modules\bsafelite\include\cmp.h"\
+	"..\..\..\..\modules\bsafelite\include\cmpspprt.h"\
+	"..\..\..\..\modules\bsafelite\include\global.h"\
+	"..\..\..\..\modules\bsafelite\include\integrate.h"\
+	"..\..\..\..\modules\bsafelite\include\keysize.h"\
+	"..\..\..\..\modules\bsafelite\include\rc2.h"\
+	"..\..\..\..\modules\bsafelite\include\rc2cbc.h"\
+	"..\..\..\..\modules\bsafelite\include\rc4.h"\
+	"..\..\..\..\modules\bsafelite\include\rsa.h"\
+	"..\..\..\..\modules\bsafelite\include\rsakeygn.h"\
+	"..\..\..\..\modules\bsafelite\include\secrcbc.h"\
+	"..\..\..\..\modules\bsafelite\include\sha.h"\
+	"..\..\..\..\modules\bsafelite\include\shacomm.h"\
+	"..\..\..\..\modules\bsafelite\include\stdlibrf.h"\
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptaerrs.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\dnzuistructs.h"\
+	".\include\notarize.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzutils.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	
+
+.\source\shlink.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptaerrs.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\notarize.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	
+
+.\source\StdAfx.cpp : \
+	".\include\StdAfx.h"\
+	"i:\platform sdk\include\basetsd.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\propidl.h"\
+	"i:\platform sdk\include\tvout.h"\
+	"i:\platform sdk\include\winefs.h"\
+	
+
+.\source\vsdnotz.cpp : \
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\INzCtxtMenu.h"\
+	".\include\INzShellExtInit.h"\
+	".\include\notarize.h"\
+	".\include\nzapprefs.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzdllapi.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzrecord.h"\
+	".\include\nzuiprefs.h"\
+	".\include\nzuser.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	".\include\vsdnotz.h"\
+	".\include\VSNZ.h"\
+	".\source\vsdnotz_i.c"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\shldisp.h"\
+	
+
+.\source\vsdnotz.rc : \
+	".\source\bitmap8.bmp"\
+	".\source\cross.bmp"\
+	".\source\digrcpt.bmp"\
+	".\source\icon1.ico"\
+	".\source\invalid.bmp"\
+	".\source\valid.bmp"\
+	".\source\validrbs.bmp"\
+	".\vsdnotz.tlb"\
+	".\VSNZ.rgs"\
+	
+
+.\source\VSNZ.cpp : \
+	"..\..\..\..\modules\protectedstorage\include\vsps_defines.h"\
+	"..\..\..\pta\activex\ptav3\include\certprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\export.h"\
+	"..\..\..\pta\activex\ptav3\include\import.h"\
+	"..\..\..\pta\activex\ptav3\include\profmgmt.h"\
+	"..\..\..\pta\activex\ptav3\include\ptadllapi.h"\
+	"..\..\..\pta\activex\ptav3\include\ptaerrs.h"\
+	"..\..\..\pta\activex\ptav3\include\ptav3.h"\
+	"..\..\..\pta\activex\ptav3\include\roamprefs.h"\
+	"..\..\..\pta\activex\ptav3\include\seldigid.h"\
+	"..\..\..\pta\activex\ptav3\include\srchcrit.h"\
+	"..\..\..\pta\activex\ptav3\include\uiprefs.h"\
+	"..\..\..\pta\activex\ptav3\source\ptadllapi_i.c"\
+	"..\..\..\pta\activex\ptav3\source\ptav3_i.c"\
+	"..\..\..\pta\activex\ptav3\source\uiprefs_i.c"\
+	".\include\DNZUI.h"\
+	".\include\dnzuistructs.h"\
+	".\include\INzCtxtMenu.h"\
+	".\include\INzShellExtInit.h"\
+	".\include\notarize.h"\
+	".\include\nzapprefs.h"\
+	".\include\nzdatacc.h"\
+	".\include\nzdefines.h"\
+	".\include\nzdllapi.h"\
+	".\include\nzerrs.h"\
+	".\include\nzmacros.h"\
+	".\include\nzrecord.h"\
+	".\include\nzuiprefs.h"\
+	".\include\nzuser.h"\
+	".\include\nzutils.h"\
+	".\include\shlink.h"\
+	".\include\vsdnotz.h"\
+	".\include\VSNZ.h"\
+	".\source\nzapprefs_i.c"\
+	".\source\nzdllapi_i.c"\
+	".\source\nzuiprefs_i.c"\
+	"i:\platform sdk\include\dimm.h"\
+	"i:\platform sdk\include\guiddef.h"\
+	"i:\platform sdk\include\shldisp.h"\
+	

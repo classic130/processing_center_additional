@@ -1,0 +1,290 @@
+Content-Type:text/html
+
+<HTML>
+<HEAD>
+
+<!-- userInstallEncNSpta.htm 
+
+-->
+
+<TITLE>Certificate Download</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKTEMPLATEVERSION#1.2.0.8 -->
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<!-- this file installs single key certs in microsoft or verisign certstore modes -->
+
+<script language = "JavaScript">
+<!--
+	var browserNum = parseInt(navigator.appVersion);
+	var NSCP_IVSPTA;
+//-->
+</script>
+
+<!-- VSSKBEGIN Enrollment/CertStore#8 -->
+<!-- VSSKEND Enrollment/CertStore#8 -->
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+// get all the PTA related parameters...
+//-- VSSKBEGIN Apps/PTAv2#13 --
+//-- VSSKEND Apps/PTAv2#13 --
+
+var strCertSerial = "$$cert_serial$$";
+var strChooseProfileTitle = "Open Profile";
+var strChooseProfileText = "Choose the profile in which you want to install the Digital ID.";
+
+
+function CloseObjects(errCode, Operation, WinErrorCode)
+{
+   RetVal = document.NSCP_IVSPTA.PTA_Close ();
+   if (errCode != 0) {
+       SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", ReBaseErrorCodeNS(errCode), ConvertToHexNS (WinErrorCode), Operation);
+   }   
+   if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {    
+       SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", "00000001", ConvertToHexNS (ErrorCode), "NSCP_IVSPTA.PTA_Close");
+   }
+   return;
+}
+
+function InstallP12AndPreferences()
+{
+   //alert ("Inside InstallP12AndPreferences ...") ;
+
+   var bExportable = 1;
+   var KeyBlob = document.SetVars.KeyBlob.value;
+   var PKCS7Msg = document.SetVars.PKCS7Msg.value;  
+   var MyErrorCodeMsg;
+
+   if(browserNum < 5) {
+	MyErrorCodeMsg = new java.lang.StringBuffer("");
+   } else   {
+	MyErrorCodeMsg = new String("");
+   }
+      
+   if ( (enrollStore != "verisign") && (enrollStore != "microsoft") ) {
+      SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", "00000100", ConvertToHexNS(ErrorCode), "Certificate store needs to be Microsoft or VeriSign");
+      return -1;
+   }
+
+   if (enrollStore == "verisign") {
+	  document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 0) ;
+   }
+   else {
+	  document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 1) ;
+   }	
+   if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.PTA_Initialize", ErrorCode);
+      return -1;
+   }
+   
+   //alert ("Initalized PTA");
+   
+   if ( enrollStore == "verisign" ) {
+      if (strChooseProfileTitle[0] != null){
+         document.NSCP_IVSPTA.set_UIPrefs_OpenProf_Title(strChooseProfileTitle) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+             CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_UIPrefs_OpenProf_Title", ErrorCode);
+             return -1;
+         }
+      }
+      if (strChooseProfileText[0] != null){
+         document.NSCP_IVSPTA.set_UIPrefs_OpenProf_Text(strChooseProfileText) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+             CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_UIPrefs_OpenProf_Text", ErrorCode);
+             return -1;
+         }
+      }
+      if (strChooseHelpUrl[0] != null){
+          document.NSCP_IVSPTA.set_UIPrefs_OpenProf_HelpUrl(strChooseHelpUrl) ;
+          if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+             CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_UIPrefs_OpenProf_HelpUrl", ErrorCode);
+             return ;
+          }
+      }
+      OPENPROF_OPEN_ONLY = 0x00000211;
+      E_CARDALREADYOPEN = 0x8000102F;
+      document.NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags(OPENPROF_OPEN_ONLY) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != E_CARDALREADYOPEN )) {
+         CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags", ErrorCode);
+         return -1;
+      }
+      if (strAppLogoUrl[0] != null){
+         document.NSCP_IVSPTA.set_UIPrefs_UILogoUrl(strAppLogoUrl) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_UIPrefs_UILogoUrl", ErrorCode);
+            return -1;
+         }
+      }
+
+     if ( (strAffiliateLogoUrl[0] != null) && (strAffiliateLogoUrl != "VeriSign") ){
+       document.NSCP_IVSPTA.set_PTA_AffLogoUrl(strAffiliateLogoUrl) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != 0x800010c4)) {
+          CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_PTA_AffLogoUrl", ErrorCode);
+          return -1;
+       }
+     }
+      //-- VSSKBEGIN Apps/PTAv2/Roaming#5 -- 
+      //-- VSSKEND Apps/PTAv2/Roaming#5 --
+
+      //open the profile
+      //document.NSCP_IVSPTA.ProfMgmt_OpenProfile();
+      //ErrorCode = document.NSCP_IVSPTA.GetLastError();
+      //if (ErrorCode == 0x80001067) {
+      //   CloseObjects(102, "Digital ID Installation", ErrorCode);
+      //   return -1;
+      //} else
+      //if (( ErrorCode != 0) && (ErrorCode != E_CARDALREADYOPEN )) {
+      //   CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_ProfMgmt_OpenProfile", ErrorCode);
+      //   return -1;
+      //}
+      document.NSCP_IVSPTA.PTA_InstallKeyPair(KeyBlob, PKCS7Msg);
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0 ) {
+         CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.PTA_InstallKeyPair", ErrorCode);
+         return -1;
+      }      
+   } else {
+      // Set the KeyExportable parameter
+      document.NSCP_IVSPTA.VSImport_set_KeyExportable(bExportable) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+         CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.VSImport_set_KeyExportable", ErrorCode);
+         return -1;
+      }
+        
+      document.NSCP_IVSPTA.VSImport_set_ProviderName(kmProvider) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+         CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.VSImport_set_ProviderName", ErrorCode);
+         return -1;
+      }   
+
+      MyErrorCode = document.NSCP_IVSPTA.VSImport_Import(KeyBlob,PKCS7Msg,MyErrorCodeMsg) ;
+      if ( MyErrorCode != 0) {
+         //alert ("Error in NSCP_IVSPTA.VSImport_Import : " + ErrorCode);
+         //alert("Returned Error value is : " + MyErrorCode);
+         //alert("Error string is : " + MyErrorCodeMsg);
+         CloseObjects(MyErrorCode, "Digital ID Installation::NSCP_IVSPTA.VSImport_Import", MyErrorCode);
+         //self.location="../error/nsinserr_pca.htm";
+         return -1;
+      }
+   }
+   
+   // at this point the certificate is installed
+   // set the preferences. 
+   if (ptaEnabled == 1)
+   {
+      if (strIssuserDN[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertIssDN(strIssuserDN) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_CertPref_CertIssDN", ErrorCode);
+            return -2;
+         }
+      } else {
+         CloseObjects(103, "Empty Issuer DN", 0);
+         return -2;
+      }
+      if (strCertSerial[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertSerNum(strCertSerial) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            alert ("There has been an error in setting your Digital ID preferences.  NSCP_IVSPTA.set_CertPref_CertSerNum : " + ErrorCode) ;
+            CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_CertPref_CertSerNum", ErrorCode);
+            return -2;
+         }
+      } else {
+         CloseObjects(103, "Empty Serial Number", 0);
+         return -2;
+      }
+      if (strCertLogoUrl[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertLogoUrl(strCertLogoUrl) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_CertPref_CertLogoUrl", ErrorCode);
+            return -2;
+         }
+      }
+      if (strCertFriendlyName[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertFrndlyName(strCertFriendlyName) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_CertPref_CertFrndlyName", ErrorCode);
+            return -2;
+         }
+      }
+      if (strCertTextureUrl[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertTextureUrl(strCertTextureUrl) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_CertPref_CertTextureUrl", ErrorCode);
+            return -2;
+         }
+      }
+   }
+
+   if ( enrollStore == "verisign" ) {
+      document.NSCP_IVSPTA.ProfMgmt_SaveProfile();
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+         CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.set_ProfMgmt_SaveProfile", ErrorCode);
+         return -1;
+      }
+
+      document.NSCP_IVSPTA.ProfMgmt_CloseProfile();
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+         CloseObjects(ErrorCode, "Digital ID Installation::NSCP_IVSPTA.ProfMgmt_CloseProfile", ErrorCode);
+         return -1;
+      }
+
+   }
+   CloseObjects(0, "", 0);
+}  // end function InstallCertAndPreferences ()
+ 
+</SCRIPT>
+
+<!-- VSSKBEGIN Apps/AddRoots#3 -->
+<!-- VSSKEND Apps/AddRoots#3 -->
+</HEAD>
+<BODY>
+
+<!-- VSSKBEGIN Global/System#7 -->
+<!-- VSSKEND Global/System#7 -->
+
+<FORM NAME="SetVars" METHOD=POST>
+  <INPUT TYPE=hidden NAME=KeyBlob VALUE="$$pkcs8_line$$">
+  <INPUT TYPE=hidden NAME=PKCS7Msg VALUE="$$pkcs7_line$$">
+</FORM>
+
+<SCRIPT LANGUAGE=JavaScript>
+function DoInstall() 
+{
+	if(browserNum < 5) {
+		document.NSCP_IVSPTA = document.ThePlugin;
+	} else   {
+		document.NSCP_IVSPTA = document.ThePlugin.ns6IPTA;
+	}
+	
+    retVal = InstallP12AndPreferences();
+    
+    if (retVal == -1) {
+      alert("There was an error in installing your ID");
+    } 
+    else 
+    if (retVal == -2) {
+      alert("There was an error in installing your PTA preferences");
+    }
+    else {
+      alert ("The Certificate has been successfully downloaded");
+    }
+    
+    //!-- VSSKBEGIN Apps/AddRoots#4 -->
+	//!-- VSSKEND Apps/AddRoots#4 -->
+	
+	if (ptaEnabled == 1) {
+		if (retVal != -1 && retVal != -2) {
+			self.location=PTAHome;
+		}
+	}
+}
+window.setTimeout("DoInstall()", 1000);
+</Script>
+
+</BODY>
+</HTML>

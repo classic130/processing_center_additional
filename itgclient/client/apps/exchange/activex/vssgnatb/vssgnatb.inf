@@ -1,0 +1,9 @@
+[Add.Code]
+VSSgnAtb.dll=VSSgnAtb.dll
+
+[VSSgnAtb.dll]
+file-win32-x86=thiscab
+RegisterServer=yes
+clsid={71C6919E-F9C0-11D2-8344-0060B0B32E16}
+FileVersion=2,0,0,8
+

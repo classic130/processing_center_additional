@@ -1,0 +1,44 @@
+#
+# VSSKTEMPLATEVERSION#1.0.0.2 #
+#
+# userRevoke.fdf
+#
+# This is a template FDF used to configure the LRA end user enrollment
+# page. The in the REQUIREMENT column will be
+# filled in based on the OnSite administrator's choices on the 
+# User Certificate configuration page.
+#
+CONST          operation     user do revoke
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+# VSSKBEGIN Apps/KeyManager#9
+# VSSKEND Apps/KeyManager#9  
+#
+#------------------------------------------------------------------------------
+#  NAME        	TYPE   	REQUIREMENT		DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+form_file	CLEAR	MANDATORY		NONE		NONE
+issuerSerial	TEXT	MANDATORY		NONE		NONE
+issuerName	CLEAR	MANDATORY		NONE		NONE
+reason		TEXT	MANDATORY		NONE		NONE
+challenge	T61	MANDATORY		NONE		NONE
+remote_host     TEXT    OPTIONAL                NONE            NONE
+#------------------------------------------------------------------------------
+STATUS		307F		VSApps/client/certRevokeSuccess.htm
+STATUS		3060		VSApps/error/certRevokeAlreadyRevoked.htm
+STATUS		3069		VSApps/error/onsiteAAwrongChallenge.htm
+STATUS		057B		VSApps/error/onsiteAAwrongserial.htm
+STATUS          A001            VSApps/error/onsiteAAerror1.htm
+STATUS          A002            VSApps/error/onsiteAAerror2.htm
+STATUS          A003            VSApps/error/onsiteAAerror3.htm
+STATUS          A004            VSApps/error/onsiteAAerror4.htm
+STATUS          A005            VSApps/error/onsiteAAerror5.htm
+STATUS          A006            VSApps/error/onsiteAAerror6.htm
+STATUS          A007            VSApps/error/onsiteAAerror7.htm
+STATUS          A008            VSApps/error/onsiteAAerror8.htm
+STATUS          A009            VSApps/error/onsiteAAerror9.htm
+STATUS          A00A            VSApps/error/onsiteAAerror10.htm
+STATUS          DEFAULT         VSApps/client/userRevokeResult.htm
+

@@ -1,0 +1,102 @@
+#
+# This is a template FDF used to configure the LRA end user enrollment
+# page. The $$ values in the REQUIREMENT column will be
+# filled in based on the OnSite administrator's choices on the 
+# User Certificate configuration page.
+#
+  CONST     operation           userRenewal
+  CONST     lifecycle_request   renew
+#
+#------------------------------------------------------------------------------
+#  NAME         	TYPE   	REQUIREMENT		 DEPENDENCY      CONTROL
+#------------------------------------------------------------------------------
+#
+public_key		BASE64	MANDATORY		NONE		NONE
+form_file		CLEAR	OPTIONAL		NONE		NONE
+#
+getMethod               HYBRID  MANDATORY               NONE            NONE
+orig_cert_serial        CLEAR   OPTIONAL                NONE            getMethod=pkcs7
+certSerial              CLEAR   OPTIONAL                orig_cert_serial getMethod=pkcs7
+orig_cert_issuerdn      CLEAR   OPTIONAL                NONE            getMethod=pkcs7
+issuerName              CLEAR   OPTIONAL                orig_cert_issuerdn getMethod=pkcs7
+pkcsInformation		BASE64  OPTIONAL                NONE            getMethod=pkcs7
+detachedMesg		CLEAR	OPTIONAL                NONE            getMethod=pkcs7
+#
+remote_host		TEXT	OPTIONAL		NONE            NONE
+#
+# VSSKBEGIN Renewal/CertPublish#2 
+# VSSKEND Renewal/CertPublish#2 
+#
+# Client Auth Renewal
+CLIENT_CERT             CLEAR   OPTIONAL                NONE            getMethod = autoAuth
+#
+# Constant values
+# CONST   NAME                      VALUE
+#----------------------------------------------------------------------
+  CONST   cert_type                 end-user
+  CONST   public_key_format         pkcs10
+  CONST   message                   confirm
+  CONST   install_dir               client
+# 
+# Customizable constants 
+  CONST   class                     CLASS1
+  CONST   originator                VeriSign OnSite
+#
+# VSSKBEGIN Global/Mode#23
+# VSSKEND Global/Mode#23
+#
+# VSSKBEGIN Global/System#2
+# VSSKEND Global/System#2
+#
+# Start Add : CR21582
+# Added name value pairs for common_name, cert_DN , EFS and UPN values.
+#
+# VSSKBEGIN Enrollment/CharEncoding#7
+# VSSKEND Enrollment/CharEncoding#7
+#
+# End Add : CR21582
+#
+# VSSKBEGIN Enrollment/CharEncoding#5
+# VSSKEND Enrollment/CharEncoding#5
+#
+# VSSKBEGIN Enrollment/CharEncoding#2
+# VSSKEND Enrollment/CharEncoding#2
+#
+# if auto-auth
+#
+# VSSKBEGIN Global/System#1
+# VSSKEND Global/System#1
+#
+#  NAME         CODE    VALUE     
+#------------------------------------------------------------------------------
+STATUS          3062    VSApps/client/userEnrollChkEMail.htm
+STATUS          7000    VSApps/client/userEnrollChkEMail.htm
+STATUS          1B58	VSApps/client/userEnrollChkEMail.htm
+STATUS          1B59	VSApps/client/userEnrollChkEMail.htm
+STATUS          0       VSApps/client/userEnrollChkEMail.htm
+STATUS  		100     VSApps/error/MSkeygenerr.htm
+STATUS  		6FFF    VSApps/client/userRenewalInstallMS.htm
+STATUS			A001		VSApps/error/onsiteAAerror1.htm
+STATUS			A002		VSApps/error/onsiteAAerror2.htm
+STATUS			A003		VSApps/error/onsiteAAerror3.htm
+STATUS			A004		VSApps/error/onsiteAAerror4.htm
+STATUS			A005		VSApps/error/onsiteAAerror5.htm
+STATUS			A006		VSApps/error/onsiteAAerror6.htm
+STATUS			A007		VSApps/error/onsiteAAerror7.htm
+STATUS			A008		VSApps/error/onsiteAAerror8.htm
+STATUS			A009		VSApps/error/onsiteAAerror9.htm
+STATUS			A00A		VSApps/error/onsiteAAerror10.htm
+STATUS			A193        VSApps/error/onsiteKMerror403.htm
+STATUS			A19D        VSApps/error/onsiteKMerror413.htm
+STATUS			A0CA        VSApps/error/dim_ServerError.htm
+STATUS			A0CB        VSApps/error/dim_ServerBindError.htm
+STATUS			A0CC        VSApps/error/dim_VerificationError.htm
+STATUS			A0D3		VSApps/error/dim_AuthenticationError.htm
+STATUS			A0D4		VSApps/error/dim_ServerConnectError.htm
+STATUS			A198		VSApps/error/KMSigningPending.htm
+STATUS			A193        VSApps/error/onsiteKMerror403.htm
+STATUS			A19D        VSApps/error/onsiteKMerror413.htm
+STATUS          3069    VSApps/error/onsiteAAwrongChallenge.htm
+STATUS          3084    VSApps/error/OSuserWrongJurisdiction.htm
+STATUS          3086    VSApps/error/OSuserCertNotValid.htm
+STATUS			DEFAULT		VSApps/error/onsiteAAerror.htm

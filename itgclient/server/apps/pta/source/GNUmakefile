@@ -1,0 +1,16 @@
+#	GNUmakefile 
+#       Developed by Siddharth Bajaj
+#	$Id: GNUmakefile,v 1.1.6.1 2001/03/16 21:59:09 bzou Exp $
+#
+
+ECAS_HOME = ../../../../..
+
+include $(ECAS_CUSTOM_CFG)
+include $(ECAS_COMMON_DIR)/directory.cfg
+
+
+SUBDIRS = make
+
+
+include $(ECAS_RULES_DIR)/directory.cfg
+

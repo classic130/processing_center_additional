@@ -1,0 +1,6 @@
+; exchange.def : Declares the module parameters.
+
+LIBRARY      vsexchange.DLL
+
+EXPORTS
+	VerifyExchange @1

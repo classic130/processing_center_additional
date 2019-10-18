@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE>Configuration Checker</TITLE>
+<OBJECT classid="clsid:08F04139-8DFC-11D2-80E9-006008B066EE" codeBase=http://my.webserver.address/vscnfchk.dll.location/vscnfchk.dll 
+	data=data:application/x-oleobject;base64,OUHwCPyN0hGA6QBgCLBm7gADAADYEwAA2BMAAA== 
+	id=ConfChk style="LEFT: 0px; TOP: 0px"></OBJECT>
+
+</object>
+</HEAD>
+<BODY bgColor=skyblue>
+<HR>
+
+<P >
+The version of the
+<STRONG>crypt32.dll</STRONG>on the user machine 
+is&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+<SCRIPT language=VBScript>
+<!--
+Dim fSuccess
+Dim Version
+
+fSuccess = ConfChk.GetVersion("crypt32.dll", Version)
+if fSuccess = 1 then
+	document.write(Version)
+else
+	document.write("Error obtaining version")
+end if
+//-->
+</SCRIPT>
+ &nbsp;&nbsp;
+ 
+</P>
+
+<P >
+Version of <STRONG>crypt32.dll</STRONG> 
+required&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+: 5.101.0.0&nbsp;
+ 
+<P></P> 
+<SCRIPT LANGUAGE=VBScript>
+<!--
+Dim fResult
+Dim MinVersion 
+
+MinVersion = "5.101.0.0"
+
+fResult = ConfChk.VerCompare(MinVersion, Version)
+if(fResult > 0 ) then
+	document.write("The crypt32.dll file <STRONG>needs to be upgraded</STRONG>")
+else
+	document.write("The crypt32.dll file on the system is <STRONG>OK</STRONG>")
+end if
+	
+//-->
+</SCRIPT>
+
+<P></P>
+
+
+<P>
+<P>
+<HR style="LEFT: 10px; TOP: 132px">
+
+<BR>
+The version of the
+<STRONG>advapi32.dll&nbsp;</STRONG>on the user machine 
+is&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;
+
+<SCRIPT language=VBScript>
+<!--
+Dim fSuccess
+Dim Version
+
+fSuccess = ConfChk.GetVersion("advapi32.dll", Version)
+if fSuccess = 1 then
+	document.write(Version)
+else
+	document.write("Error obtaining version")
+end if
+//-->
+</SCRIPT>
+
+<P></P>
+<P><FONT style="BACKGROUND-COLOR: #87ceeb">Version of&nbsp; <STRONG><FONT 
+style="BACKGROUND-COLOR: #87ceeb">advapi32.dll</STRONG> 
+required</FONT></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+:&nbsp; 4.0.0.0 </P>
+
+ <P></P>
+ <SCRIPT LANGUAGE=VBScript>
+<!--
+Dim fResult
+Dim MinVersion 
+
+MinVersion = "4.0"
+
+fResult = ConfChk.VerCompare(MinVersion, Version)
+if(fResult > 0 ) then
+	document.write("The advapi32.dll file <STRONG>needs to be upgraded</STRONG>")
+else
+	document.write("The advapi32.dll file on the system is <STRONG>OK</STRONG>")
+end if
+	
+//-->
+</SCRIPT>
+<P>
+<P>
+<HR>
+
+<SCRIPT LANGUAGE=VBScript>
+<!--
+Dim fSuccess
+Dim Version
+
+fSuccess = ConfChk.GetVersion("rsaenh.dll", Version)
+if fSuccess = 1 then
+	
+	fSuccess = ConfChk.CheckMSEnhCSP
+	if fSuccess = 1 then
+		document.write("<P>Microsoft Enhanced Cryptographic Provider <B>is correctly installed</B> on the system.</P>")
+	elseif fSuccess = 0 then
+		document.write("<P>Microsoft Enhanced Cryptographic Provider <B>is NOT correctly installed</B> on the system. Contact Microsoft to obtain a patch to fix the broken Enhanced Cryptographic Provider.</P>")
+	else
+		document.write("<P>Microsoft Enhanced Cryptographic Provider <B>is NOT correctly installed</B> on the system. You need to reinstall the Enhanced Cryptographic Provider</P>")
+	end if		
+else	
+		document.write("Microsoft Enhanced Cryptographic Provider <B>is not installed </B>on the system.")
+end if	
+//-->
+</SCRIPT>
+
+<P>
+<P>
+<HR>
+
+</P>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

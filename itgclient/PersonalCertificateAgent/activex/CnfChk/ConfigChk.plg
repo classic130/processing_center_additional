@@ -1,0 +1,69 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ConfigChk - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/ConfigChk.res" /d "_DEBUG" "F:\sasi_0520\itgclient\PersonalCertificateAgent\activex\CnfChk\ConfigChk.rc"" 
+Creating temporary file "C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP894.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Debug/ConfigChk.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\sasi_0520\itgclient\PersonalCertificateAgent\activex\CnfChk\ConfigChk.cpp"
+"F:\sasi_0520\itgclient\PersonalCertificateAgent\activex\CnfChk\ConfigChkr.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP894.tmp" 
+Creating temporary file "C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP895.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Debug/ConfigChk.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\sasi_0520\itgclient\PersonalCertificateAgent\activex\CnfChk\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP895.tmp" 
+Creating temporary file "C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP896.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib version.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/VSCnfChk.pdb" /debug /machine:I386 /def:".\ConfigChk.def" /out:"Debug/VSCnfChk.dll" /implib:"Debug/VSCnfChk.lib" /pdbtype:sept 
+.\Debug\ConfigChk.obj
+.\Debug\ConfigChkr.obj
+.\Debug\StdAfx.obj
+.\Debug\ConfigChk.res
+]
+Creating command line "link.exe @C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP896.tmp"
+Creating temporary file "C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP897.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\Debug\VSCnfChk.dll"
+echo regsvr32 exec. time > ".\Debug\regsvr32.trg"
+]
+Creating command line "C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP897.bat"
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ConfigChk.cpp
+ConfigChkr.cpp
+Generating Code...
+Linking...
+   Creating library Debug/VSCnfChk.lib and object Debug/VSCnfChk.exp
+VSCnfChk.exp : warning LNK4070: /OUT:ConfigChk.DLL directive in .EXP differs from output filename "Debug/VSCnfChk.dll"; ignoring directive
+<h3>Output Window</h3>
+Performing registration
+RegSvr32: DllRegisterServer in .\Debug\VSCnfChk.dll succeeded.
+
+Creating temporary file "C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP89D.bat" with contents
+[
+@echo off
+if not exist "..\..\lib\dynamic\debug" md "..\..\lib\dynamic\debug"
+copy debug\vscnfchk.dll "..\..\lib\dynamic\debug"
+]
+Creating command line "C:\DOCUME~1\SGOGIN~1\LOCALS~1\Temp\RSP89D.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+VSCnfChk.dll - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

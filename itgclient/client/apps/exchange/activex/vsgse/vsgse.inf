@@ -1,0 +1,15 @@
+[Add.Code]
+VSGSE.dll=VSGSE.dll
+VSGSEExt.dll=VSGSEExt.dll
+
+[VSGSE.dll]
+file-win32-x86=thiscab
+RegisterServer=yes
+clsid={5685505C-DA94-11D3-A1C3-001083023D07}
+FileVersion=2,6,0,2
+
+[VSGSEExt.dll]
+File=thiscab
+FileVersion=2,0,0,2
+
+

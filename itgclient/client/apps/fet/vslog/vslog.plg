@@ -1,0 +1,33 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: vslog - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\TEMP\RSP1D4.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/vslog.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\work\wasim_022300\itgclient\client\apps\fet\vslog\main.cpp"
+]
+Creating command line "cl.exe @D:\TEMP\RSP1D4.tmp" 
+Creating temporary file "D:\TEMP\RSP1D5.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/vslog.pdb" /machine:I386 /out:"Release/vslog.exe" 
+.\Release\main.obj
+]
+Creating command line "link.exe @D:\TEMP\RSP1D5.tmp"
+<h3>Output Window</h3>
+Compiling...
+main.cpp
+D:\work\wasim_022300\itgclient\client\apps\fet\vslog\main.cpp(20) : warning C4101: 'msg' : unreferenced local variable
+Linking...
+
+
+
+<h3>Results</h3>
+vslog.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

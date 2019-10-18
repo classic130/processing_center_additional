@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<% 
+
+// Locale Settings.
+var month_long_current_locale = new Array( 
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December");
+
+var day_long_current_locale = new Array(
+			"Sunday",
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday");
+
+var message="";
+var pkg=tw.currentPackage;
+var imagepath = tw.server.getConfigParameter( "TW_IMAGE_ROOT_URL", pkg.locale );
+
+if ( pkg.notificationOptions & tw.constant.TW_PACKAGE_NOTIFICATION_INCLUDE_MESSAGE ) {
+    var streams = pkg.streams;
+    var currentStream;
+    var streamLength = streams.length;
+    var count;
+
+    for ( count=0; count < streamLength; ++count ) {
+		currentStream = streams[count];
+		if ( currentStream.usage == tw.constant.TW_STREAM_CONTENT_COVER ) {
+			message = pkg.readStream( pkg.id, currentStream.id, currentStream.usage );
+			break;
+		}
+    }
+}
+
+var hosts;
+var loginUrl;
+var nonSslAvailable = tw.server.getConfigParameter( "TW_HTTP_NON_SSL" );
+
+// set the locale to recipient account locale if package locale is not specified
+var locale = pkg.locale;
+if ( locale == "" ) {
+	if ( tw.recipient.singleRecipient.accountId != 0 ) {
+		var recipient = TW_Account.getAccountById( tw.recipient.singleRecipient.accountId );
+		locale = recipient.locale;
+	}	
+}
+
+// only use http if it is explicitly selected by admin + sender
+if (nonSslAvailable && !(pkg.securityOptions & tw.constant.TW_PACKAGE_SECURITY_SECURE_CONNECTION_DELIVERY)) {
+	loginUrl="http://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_HOSTS", locale );
+} else {
+	loginUrl="https://";
+	hosts = tw.server.getConfigParameter( "TW_HTTP_SECURE_HOSTS", locale );
+}
+
+if ( hosts.length > 0 ) {
+	loginUrl += hosts[Math.randomInteger() % hosts.length];
+}
+
+var imagepathurl = loginUrl + imagepath;
+var url = loginUrl;
+url += tw.server.getConfigParameter( "TW_VIRTUAL_URL" );
+url += "?x=";
+url += pkg.deliveryId;
+
+%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>PrivatePath Service Message Delivery</title>
+<STYLE TYPE="text/css" MEDIA="screen">
+.navmenu {
+	text-decoration : none;
+}
+.buttonText {
+	text-decoration : none;
+}
+a:hover{
+	text-decoration : underline;
+}
+</STYLE>
+
+</head>
+
+<body bgcolor="White" topmargin="0" marginwidth="0" leftmargin="0" marginheight="0" link="Black" vlink="Black" alink="#660033">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr> 
+    <td bgcolor="#6699CC" valign="top" width="107"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr> 
+          <td valign="top" colspan="2" height="61"><img height="61" width="107" src="<%=imagepathurl;%>/TahitiLogo.gif" alt="Tumbleweed Integrated Messaging Exchange"></td>
+        </tr>
+        <tr> 
+          <td colspan="2"><img src="<%=imagepathurl;%>/dot.gif" height="5" width="20"></td>
+        </tr>
+        <tr> 
+          <td align="center" colspan="2"><font face="Arial, Helvetica, Geneva, Swiss, Sans-Serif, SunSans-Regular" color="#FFFFFF"><b>PrivatePath Service Delivery Menu</b></font></td>
+        </tr>
+        <tr> 
+          <td colspan="2"><img src="<%=imagepathurl;%>/dot.gif" height="10" width="20"></td>
+        </tr>
+        <tr> 
+          <td width="1"></td>
+          <td width="*">
+            <center>
+              <b><a href="<%=loginUrl;%>" class="navmenu"><font face="Arial, Helvetica, Geneva, Swiss, Sans-Serif, SunSans-Regular">Log In </font></a></b> 
+            </center>
+          </td>
+        </tr>
+        <tr> 
+          <td colspan="2"><img src="<%=imagepathurl;%>/dot.gif" height="5" width="20"></td>
+        </tr>
+        <tr> 
+          <td bgcolor="#333333" colspan="2"><img src="<%=imagepathurl;%>/dot.gif" height="1" width="20"></td>
+        </tr>
+        <tr> 
+          <td bgcolor="#FFFFFF" height="1" colspan="2"><img src="<%=imagepathurl;%>/dot.gif" height="1" width="20"></td>
+        </tr>
+        <tr> 
+          <td colspan="2"><img src="<%=imagepathurl;%>/dot.gif" height="10" width="20"></td>
+        </tr>
+        <tr valign="top"> 
+          <td align="center" colspan="2"><a href="http://www.tumbleweed.com"><img src="<%=imagepathurl;%>/PoweredByTMWD.gif" width="107" height="30" border="0" alt="E-mail Solutions for E-Business"></a></td>
+        </tr>
+      </table>
+    </td>
+    <td bgcolor="#333333" valign="top" width="2"> 
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr> 
+          <td bgcolor="#6699CC" img height="25" width="2"><img height="25" width="2" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+        <tr> 
+          <td bgcolor="#333333" img height="2" width="2"><img height="2" width="2" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" width="7"> 
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr> 
+          <td bgcolor="#6699CC" height="25" width="7"><img height="25" width="7" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+        <tr> 
+          <td bgcolor="#333333" height="2" width="7"><img height="2" width="7" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" width="*"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr> 
+          <td bgcolor="#6699cc" height="25" nowrap width="100%"><b><font face="Arial, Helvetica, Geneva, Swiss, Sans-Serif, SunSans-Regular" color="#FFFFFF"> 
+            Important Delivery</font></b></td>
+          <td bgcolor="#6699cc" align="right" height="25"><b><a href="#help"><font color="#FFFFFF" face="Arial, Helvetica, Geneva, Swiss, Sans-Serif, SunSans-Regular">Help</font></a></b></td>
+        </tr>
+        <tr> 
+          <td bgcolor="#333333" colspan="2"><img height="2" width="100" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+      </table>
+      <p>You have received a secure PrivatePath Service message from  <b><% if (!((pkg.senderFirstname ==null) ||(pkg.senderFirstname == "")) || !((pkg.senderLastname == null) ||(pkg.senderLastname == "") ) ) { tw.write( escapeHTML(pkg.senderFirstname + " " + pkg.senderLastname) ); } else { %> <%=escapeHTML(pkg.senderAddress);%> <% } %></b>.<br>
+        Pick up the message at the following Web address: 
+        </p>
+      <table border="0" cellpadding="0" cellspacing="0" align="center" vspace="10">
+        <tr> 
+          <td><img height="19" width="9" src="<%=imagepathurl;%>/buttonGreyLeft.gif"></td>
+          <td bgcolor="#999999"> <a href="<%=url;%>" class="buttonText"><b><font face="Arial, Helvetica, Geneva, Swiss, Sans-Serif, SunSans-Regular" size="2" color="#FFFFFF">Pick up Message
+            </font></b></a> </td>
+          <td><img height="19" width="9" src="<%=imagepathurl;%>/buttonGreyRight.gif"></td>
+        </tr>
+      </table>
+      <p> This message expires on  <%=String("").formatPositional( pkg.expireTime.format("%%1$s %%2$s %d, %Y at %T %Z"), day_long_current_locale[ pkg.expireTime.getDay() ], month_long_current_locale[pkg.expireTime.getMonth()]);%>.</p>
+<%if (message != "") { %>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr> 
+          <td width="20"><img width="20" src="<%=imagepathurl;%>/tabLeftTop.gif" height="4"></td>
+          <td width="180" bgcolor="#6699cc"> <img height="4" width="180" src="<%=imagepathurl;%>/dot.gif"></td>
+          <td width="20"> <img height="4" width="20" src="<%=imagepathurl;%>/tabRightTop.gif"></td>
+          <td width="100%"><img height="4" width="20" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+        <tr> 
+          <td><img height="13" width="20" src="<%=imagepathurl;%>/tabLeftBottom.gif"></td>
+          <td align="center" bgcolor="#cccccc"><font size="1" face="Arial, Helvetica, Geneva, Swiss, Sans-Serif, SunSans-Regular">Message from Sender</font></td>
+          <td><img height="13" width="20" src="<%=imagepathurl;%>/tabRightBottom.gif"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td colspan="4" bgcolor="#6699CC"><img height="3" width="20" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+        <tr> 
+          <td colspan="4" bgcolor="#333333"><img height="1" width="20" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+      </table>
+      <p>
+      <%=escapeHTML(message,true);%>
+      </p>
+<%}%>
+      <a name="help"></a>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr> 
+          <td width="20"><img width="20" src="<%=imagepathurl;%>/tabLeftTop.gif" height="4"></td>
+          <td width="180" bgcolor="#6699cc"> <img height="4" width="180" src="<%=imagepathurl;%>/dot.gif"></td>
+          <td width="20"> <img height="4" width="20" src="<%=imagepathurl;%>/tabRightTop.gif"></td>
+          <td width="100%"><img height="4" width="20" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+        <tr> 
+          <td><img height="13" width="20" src="<%=imagepathurl;%>/tabLeftBottom.gif"></td>
+          <td align="center" bgcolor="#cccccc"><font size="1" face="Arial, Helvetica, Geneva, Swiss, Sans-Serif, SunSans-Regular">Help with Your Message</font></td>
+          <td><img height="13" width="20" src="<%=imagepathurl;%>/tabRightBottom.gif"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td colspan="4" bgcolor="#6699CC"><img height="3" width="20" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+        <tr> 
+          <td colspan="4" bgcolor="#333333"><img height="1" width="20" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+      </table>
+      <p><b>Having trouble?<br>
+        </b>If clicking the &quot;Pick up Message&quot; button above does not automatically launch your web browser and take you to the message, then follow these steps:</p>
+      <ol>
+        <li> Open a web browser window.</li>
+        <li>Copy and paste the following Web address into the "location" or "address" bar of the browser:<br>
+          <b><%=url;%></b></li>
+        <li>Press enter.</li>
+      </ol>
+      <p>Once you arrive at the message web page, you can access the attached file(s) and/or private message.</p>
+      <p><b>Still having trouble?</b><br>
+        Please send a brief email explaining the situation to: <a href="mailto:ime.support@tumbleweed.com">ime.support@tumbleweed.com</a></p>
+      <p align="center"> <a href="http://www.tumbleweed.com"><img src="<%=imagepathurl;%>/PoweredByTMWD.gif" width="107" height="30" border="0" alt="E-mail Solutions for E-Business"></a></p>
+	  <p align="center">IME is a trademark of Tumbleweed Communications Corp.</p>
+    </td>
+    <td valign="top" width="7"> 
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr> 
+          <td bgcolor="#6699CC" height="25" width="7"><img height="25" width="7" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+        <tr> 
+          <td bgcolor="#333333" height="2" width="7"><img height="2" width="7" src="<%=imagepathurl;%>/dot.gif"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td bgcolor="#6699CC" valign="top" colspan="2" align="right" height="20"><img src="<%=imagepathurl;%>/TahitiBottomCap.gif" width="107" height="20" vspace="0" hspace="0" align="top" border="0"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE></TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000066" LINK="black" >
+<TABLE WIDTH="100%">
+<TR>
+<TD>
+
+<IMG SRC="../graphics/understanding-in.gif" WIDTH=108 HEIGHT=20 ALT="" BORDER="0">
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+var browserName = navigator.appName;
+var browserRealnum = navigator.appVersion;
+var browserNum = parseInt(navigator.appVersion);
+var browserParsed = browserRealnum.substring(0,4);
+var version = navigator.appVersion
+
+//<!-- for javascript enabled browser, this script writes the opening of the a href tag -->
+
+if(browserName == "Netscape")
+	{
+	if((browserParsed < "5") && (browserParsed >= "4.5"))
+		{
+		document.write("<A HREF='using_ns45.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>")
+		}
+	else if((browserParsed < "4.5") && (browserParsed >= "4"))
+		{
+		document.write("<A HREF='using_ns45.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>")
+		}
+	else if((browserParsed < "4") && (browserParsed >= "3"))
+		{
+		document.write("<A HREF='using_ns3.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>")
+		}
+	else
+		{
+		document.write("<A HREF='indselect.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>")
+		}
+	}
+
+else if(browserName == "Microsoft Internet Explorer")
+	{
+ 
+		if(browserNum < "4")
+			{
+			document.write("<A HREF='using_ie3.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>");
+			}
+		else
+			{		
+				//locate the opening (
+				var iParen = version.indexOf("(", 0);
+	
+				//The client version is the string before the (
+				navigator.clientVersion = version.substring(0, iParen - 1);
+				var information = new Array();
+	
+				//Automatically split the remaining values into an array
+				information = version.substring(iParen + 1, version.length - 1).split(";");
+		
+				//First value is the platform
+				navigator.platforminfo = information[0];
+	
+				//Second value is the information field
+				navigator.information = information[1];
+			
+				if(information[1].indexOf("MSIE 5") != -1)
+				{
+				document.write("<A HREF='using_ie5.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>")
+				}
+				else if(information[1].indexOf("MSIE 4") != -1)
+				{
+				document.write("<A HREF='using_ie4.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>")
+				}
+			}
+	
+	}
+else
+	{
+		document.write("<A HREF='indselect.htm' TARGET='_parent'><IMG SRC='../graphics/using.gif' WIDTH=108 HEIGHT=20 ALT='' BORDER='0'></A>")
+	}
+
+</SCRIPT>
+
+<!-- for non javascript enabled browsers, this noscript writes the opening of the a href-->
+<NOSCRIPT>
+<A HREF="indselect.htm" TARGET="_parent"><IMG SRC="../graphics/using.gif" WIDTH=108 HEIGHT=20 ALT="" BORDER="0"></A>
+</NOSCRIPT> 
+
+
+<A HREF="indfaq.htm" TARGET="_parent"><IMG SRC="../graphics/faq.gif" WIDTH=108 HEIGHT=20 ALT="" BORDER="0"></A> 
+
+</TD>
+
+<TD ALIGN="RIGHT" VALIGN="TOP">
+
+<FONT FACE="VERDANA, ARIAL, HELVETICA" SIZE="4" COLOR="#FFFFFF">
+Digital ID Help
+</FONT>
+
+</TD>
+</TR>
+</TABLE>
+
+
+</BODY>
+</HTML>

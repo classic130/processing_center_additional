@@ -1,0 +1,400 @@
+<!-- $ VSSKTEMPLATEVERSION#1.2.5.4 $ htmldocs/VSApps/client/importP12NS.htm
+
+-->
+<HTML>
+<HEAD>
+<TITLE>Symantec Key Import</TITLE>
+<SCRIPT Language="JavaScript" src="../client/copyright.js"></SCRIPT>
+<!-- VSSKBEGIN Enrollment/CharEncoding#3 -->
+<!-- VSSKEND Enrollment/CharEncoding#3 -->
+
+<Script Language="JavaScript">
+<!--
+var browserName=navigator.appName;
+var browserNum=parseInt(navigator.appVersion);
+var NSCP_IVSPTA;
+//-->
+</script>
+
+<!-- VSSKBEGIN Enrollment/CertStore#10  -->
+<!-- VSSKEND Enrollment/CertStore#10 -->
+
+<!-- VSSKBEGIN Enrollment/CertStore#8 -->
+<!-- VSSKEND Enrollment/CertStore#8 -->
+
+<Script Language="JavaScript">
+<!--
+
+//-- VSSKBEGIN Enrollment/CertStore#28 --
+//-- VSSKEND Enrollment/CertStore#28 --
+
+//!-- VSSKBEGIN Global/BrowserVersion#1 --
+//!-- VSSKEND Global/BrowserVersion#1 --
+
+if (browserName == "Netscape")
+    {
+       if (browserNum < requiredBrowserNumNS )
+       {
+         self.location="../error/invalidBrowser.html";
+       }
+    }
+else
+    {
+      self.location="importP12MS.htm";
+    }
+//-->
+</script>
+
+<!-- VSSKBEGIN Global/System#8 -->
+<!-- VSSKEND Global/System#8 -->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function declinefunc()
+{
+   self.location="cancelimport.htm";
+}
+//-->
+</Script>
+
+<SCRIPT Language="JavaScript">
+<!--
+
+ //-- VSSKBEGIN Apps/PTAv2#6 -- 
+ //-- VSSKEND Apps/PTAv2#6 --
+
+ //-- VSSKBEGIN Apps/PTAv2#26 -- 
+ //-- VSSKEND Apps/PTAv2#26 --
+ var strIssuerDN; 
+ var strCertSerial; 
+
+
+
+ function CloseObjects(errCode, Operation, WinErrorCode)
+ {
+    RetVal = document.NSCP_IVSPTA.PTA_Close ();
+    if (errCode != 0) {
+        SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", ReBaseErrorCodeNS(errCode), ConvertToHexNS (WinErrorCode), Operation);
+    }   
+    if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {    
+      SetErrorInfo ("../fdf/VSApps/client/PTAv2Errors.fdf", "00000001", ConvertToHexNS (ErrorCode), "NSCP_IVSPTA.PTA_Close");
+    }
+    return;
+ }
+  
+ function importp12()
+ {
+   
+   if (strCertStore != 1) {
+        alert("You are not using the PTA in Symantec mode.\nYou should use the Security Panel in Firefox to import your keys.");
+        return false;
+   }   
+
+   if(browserNum < 5) {
+	document.NSCP_IVSPTA = document.ThePlugin;
+	strCertSerial = new java.lang.StringBuffer("");
+	strIssuerDN = new java.lang.StringBuffer("");
+   } else {
+	document.NSCP_IVSPTA = document.ThePlugin.ns6IPTA;
+	strCertSerial = new String();
+	strIssuerDN = new String();
+   }
+   
+   if (strCertStore == "1") {
+	  document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 0) ;
+   }
+   else {
+	  document.NSCP_IVSPTA.PTA_Initialize(strAppCtxtName, 1) ;
+   }	
+   if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+      CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.PTA_Initialize", ErrorCode);
+      return false;
+   }
+   
+   if (strNewPasswordTitle[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_NewPasswd_Title(strNewPasswordTitle) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_UIPrefs_NewPasswd_Title", ErrorCode);
+          return false;
+      }
+   }
+    
+   if (strNewPasswordText[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_NewPasswd_Text(strNewPasswordText) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_UIPrefs_NewPasswd_Text", ErrorCode);
+          return false;
+      }
+   }
+
+
+   if (strAppLogoUrl[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_UILogoUrl(strAppLogoUrl) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_UIPrefs_UILogoUrl", ErrorCode);
+          return false;
+      }
+   }
+   
+    if ( (strAffiliateLogoUrl[0] != null) && (strAffiliateLogoUrl != "VeriSign") ){
+      document.NSCP_IVSPTA.set_PTA_AffLogoUrl(strAffiliateLogoUrl) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != 0x800010c4)) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_PTA_AffLogoUrl", ErrorCode);
+          return false;
+      }
+    }
+
+   if (strNewProfileHelpUrl[0] != null){
+      document.NSCP_IVSPTA.set_UIPrefs_NewPasswd_HelpUrl(strNewProfileHelpUrl) ;
+      if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_UIPrefs_NewPasswd_HelpUrl", ErrorCode);
+          return false;
+      }
+   }
+
+   E_CARDALREADYOPEN = 0x8000102F;
+        
+   if (!isNaN(parseInt(passwordQuality))){
+      document.NSCP_IVSPTA.set_ProfMgmt_PasswdQuality(parseInt(passwordQuality)) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != E_CARDALREADYOPEN )) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_ProfMgmt_PasswdQuality", ErrorCode);
+          return false;
+      }
+   }  
+     
+   if (!isNaN(parseInt(passwordLength))){
+      document.NSCP_IVSPTA.set_ProfMgmt_PasswdLength(parseInt(passwordLength)) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0 ) && (ErrorCode != E_CARDALREADYOPEN ) ) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_ProfMgmt_PasswdLength", ErrorCode);
+          return false;
+      }
+   }    
+   
+   if (!isNaN(parseInt(passwordTimeOut))){
+      document.NSCP_IVSPTA.set_ProfMgmt_PasswdTimeOut(parseInt(passwordTimeOut)) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0 ) && (ErrorCode != E_CARDALREADYOPEN ) ) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_ProfMgmt_PasswdTimeOut", ErrorCode);
+          return false;
+      }
+   }    
+   
+   if (!isNaN(parseInt(passwordTries))){
+      document.NSCP_IVSPTA.set_ProfMgmt_PasswdLockOutTries(parseInt(passwordTries)) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0 ) && (ErrorCode != E_CARDALREADYOPEN ) ) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_ProfMgmt_PasswdLockOutTries", ErrorCode);
+          return false;
+      }
+   }    
+   
+   if (!isNaN(parseInt(passwordUnlockPeriod))){
+      document.NSCP_IVSPTA.set_ProfMgmt_PasswdUnLockPeriod(parseInt(passwordUnlockPeriod)) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0 ) && (ErrorCode != E_CARDALREADYOPEN ) ) {
+          CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_ProfMgmt_PasswdunLockPeriod", ErrorCode);
+          return false;
+      }
+   }    
+   
+   //-- VSSKBEGIN Apps/PTAv2/Roaming#8 --
+   //-- VSSKEND Apps/PTAv2/Roaming#8 --
+	
+      OPENPROF_CREATE_OR_OPEN = 547;
+      document.NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags(OPENPROF_CREATE_OR_OPEN) ;
+      if ( ((ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) && (ErrorCode != E_CARDALREADYOPEN )) {
+         CloseObjects(ErrorCode, "NSCP_IVSPTA.set_ProfMgmt_OpenProfFlags", ErrorCode);
+         return false;
+      }
+
+   document.NSCP_IVSPTA.P12Import_ImportP12(1, document.proform.p12filename.value,strCertSerial,strIssuerDN) ;
+   ErrorCode = document.NSCP_IVSPTA.GetLastError();
+   if (ErrorCode == 0x80001067) {
+         CloseObjects(0, "", 0);
+         return false;
+   } else 
+   if (ErrorCode != 0) {
+         CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.P12Import_ImportP12", ErrorCode);
+         return false;
+   }
+   
+   
+      // set the certificate preferences
+   if(browserNum >= 5)
+   {
+      strCertSerial = strCertSerial.value;
+      strIssuerDN = strIssuerDN.value;
+
+      if (strIssuerDN.length != 0) {
+         document.NSCP_IVSPTA.set_CertPref_CertIssDN(strIssuerDN.toString()) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_CertPref_CertIssDN", ErrorCode);
+            return false;
+         }
+      } else {
+         CloseObjects(103, "Empty Issuer DN", 0);
+         return false;
+      }
+      if (strCertSerial.length != 0){
+         document.NSCP_IVSPTA.set_CertPref_CertSerNum(strCertSerial.toString()) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_CertPref_CertSerNum", ErrorCode);
+            return false;
+         }
+      } else {
+         CloseObjects(103, "Empty Serial Number", 0);
+         return false;
+      }
+   } else {
+      if (strIssuerDN.length() != 0) {
+         document.NSCP_IVSPTA.set_CertPref_CertIssDN(strIssuerDN.toString()) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_CertPref_CertIssDN", ErrorCode);
+            return false;
+         }
+      } else {
+         CloseObjects(103, "Empty Issuer DN", 0);
+         return false;
+      }
+      if (strCertSerial.length() != 0){
+         document.NSCP_IVSPTA.set_CertPref_CertSerNum(strCertSerial.toString()) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_CertPref_CertSerNum", ErrorCode);
+            return false;
+         }
+      } else {
+         CloseObjects(103, "Empty Serial Number", 0);
+         return false;
+      }
+   }
+
+      
+      if (strCertLogoUrl[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertLogoUrl(strCertLogoUrl) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_CertPref_CertLogoUrl", ErrorCode);
+            return false;
+         }
+      }
+      if (strCertFriendlyName[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertFrndlyName(strCertFriendlyName) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_CertPref_CertFrndlyName", ErrorCode);
+            return false;
+         }
+      }
+      if (strCertTextureUrl[0] != null){
+         document.NSCP_IVSPTA.set_CertPref_CertTextureUrl(strCertTextureUrl) ;
+         if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0) {
+            CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.set_CertPref_CertTextureUrl", ErrorCode);
+            return false;
+         }
+      }
+
+   
+   document.NSCP_IVSPTA.ProfMgmt_SaveProfile() ;
+   if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0 ) {
+       CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.ProfMgmt_SaveProfile", ErrorCode);
+       return false;
+   } 
+
+   document.NSCP_IVSPTA.ProfMgmt_CloseProfile() ;
+   if ( (ErrorCode = document.NSCP_IVSPTA.GetLastError()) != 0 ) {
+       CloseObjects(ErrorCode, "Import P12::NSCP_IVSPTA.ProfMgmt_SaveProfile", ErrorCode);
+       return false;
+   } else {
+       alert ("Your keys have been successfully imported by the PTA.");
+       self.location = "../ptaprefCenter.htm";
+   }
+
+   CloseObjects(0, "", 0);
+}
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY 	BGCOLOR="#ffffff" LINK="#cc0000" VLINK="#666666">
+
+<!-- VSSKBEGIN Global/System#13 -->
+<!-- VSSKEND Global/System#13 -->
+
+<BR><P><BR>
+<!--BANNER-->
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=600 HSPACE="0" VSPACE="0">
+<TR>
+     <TD WIDTH=600 ALIGN=middle VALIGN=bottom COLSPAN=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+<TR>
+        <TD WIDTH=120 ALIGN=middle><IMG alt=Logo height=63 src="../graphics/logo_1.gif" width=100></TD> 
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD> 
+        <TD WIDTH=358 ALIGN=middle><IMG alt="Services Header" border=0 height=47 src="../graphics/hd_services.gif" width=350 ></TD>   
+        <TD WIDTH=1 VALIGN=center><IMG height=47 hspace=0 src="../graphics/dot_grey.gif" width=1 ></TD> 
+        <TD WIDTH=120 ALIGN=middle><IMG alt="" src="../graphics/logo_2.gif"></TD> 
+</TR>
+<TR>
+     <TD WIDTH=600 ALIGN=middle VALIGN=top COLSPAN=5><IMG height=1 hspace=0 src="../graphics/dot_grey.gif" width=600 ></TD>
+</TR>
+</TABLE>
+<!--END BANNER-->
+<P><BR><P>
+<FORM name=proform>
+<TABLE WIDTH=588 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD VALIGN=top>
+<FONT COLOR="#0000cc" FACE="verdana, arial, helvetica" SIZE=5><B>Complete Key Import Form</B></FONT></TD></TR>
+</TABLE>
+<!--END PAGE TITLE AND DIRECTIONS-->
+
+<TABLE WIDTH=588 BGCOLOR="#ffffcc" CELLPADDING=7 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=588>
+<FONT SIZE=2 FACE="verdana, arial, helvetica"><B>Key File Name</B><br>
+Enter the location of the file that was sent to you by your administrator. </FONT>
+</TD>	
+</TR>
+<TR><TD>
+<TABLE WIDTH=574 CELLPADDING=3 CELLSPACING=2 BORDER=0>
+<TR>
+<TD WIDTH="50%" BGCOLOR='#ffcc00'><font face="verdana, arial, helvetica" size=2><B>Select the <BR>Key File</B></font></TD>
+<TD COLSPAN=2 WIDTH="50%" BGCOLOR='#ffcc00'><IMG height=27 src="../graphics/blank2.gif" width=27>
+<INPUT name=p12filename type=file>
+</TD>
+</TR>
+</TABLE></TR>
+</TABLE>
+
+<P><BR><P>
+<!-- VSSKBEGIN Apps/PTAv2/Roaming#1 -->
+<!-- VSSKEND Apps/PTAv2/Roaming#1 -->
+
+<TABLE WIDTH=588 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+
+<TR>
+     <TD WIDTH=50><IMG height=39 src="../graphics/action_39x39.gif" width=39></TD>
+     <TD WIDTH=538 COLSPAN=2><FONT COLOR="#009933" FACE="verdana, arial, helvetica" SIZE=2><B>If all the information above is correct,
+<BR>click Import to continue.</B><BR></FONT></TD>
+</TR>
+<TR>
+     <TD WIDTH=50>&nbsp;</TD>
+     <TD WIDTH=234 ALIGN=left><INPUT TYPE="button" NAME="Accept" VALUE="Import" onClick="importp12()"></TD>
+     <TD WIDTH=304 ALIGN=left><INPUT TYPE=button NAME="Cancel" VALUE="Cancel" onClick="declinefunc()"></TD>
+</TR>
+</TABLE>
+</FORM>
+
+
+<!--END MAIN CONTENT AREA-->
+
+<!--BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO-->
+
+<IMG height=1 hspace=0 src="../../VSApps/graphics/dot_grey.gif" width=600 >
+<TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR>
+	<TD WIDTH=480><FONT FACE="arial, helvetica" SIZE=1>
+<A HREF="copyright.htm" TARGET="copyright"><script>document.write(COPYRIGHT_STRING);</script></A>, Symantec Corporation. All rights reserved.<BR></FONT></TD>
+	<TD WIDTH=120 VALIGN=top ALIGN=right>
+	<IMG ALIGN="right" SRC="../../VSApps/graphics/logo_3.gif" ALT="Symantec Trust Network"></TD>
+</TR>
+</TABLE>
+<!--END BOTTOM RULE, TEXT NAVIGATION AND COPYRIGHT INFO--></P>
+
+</BODY>
+</HTML>		
+

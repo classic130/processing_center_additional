@@ -1,0 +1,20 @@
+	import "oaidl.idl";
+	import "ocidl.idl";
+	#include "olectl.h"
+
+	[
+		object,
+		uuid(8BCDDA2A-1C95-11D5-8209-0060B0F885E6),
+		dual,
+		helpstring("IVSP12Export Interface"),
+		pointer_default(unique)
+	]
+	interface IVSP12Export : IDispatch
+	{
+		[id(1), helpstring("method ExportP12")] HRESULT ExportP12(VARIANT* in_pvarOutputType, VARIANT* in_pvarFlags, VARIANT* io_pvarFileOrP12);
+		[propget, id(2), helpstring("Level of the password quality ")] HRESULT PasswdQuality([out, retval] VARIANT *pVal);
+		[propput, id(2), helpstring("Level of the password quality ")] HRESULT PasswdQuality([in] VARIANT newVal);
+		[propget, id(3), helpstring("password length that should be enforced")] HRESULT PasswdLength([out, retval] VARIANT *pVal);
+		[propput, id(3), helpstring("password length that should be enforced")] HRESULT PasswdLength([in] VARIANT newVal);
+
+	};
